@@ -1,0 +1,11 @@
+Package: NCBRgseaheatmap
+Version: 1.0
+Title: NCBR Heatmaps from Gene Set Enrichment Scores
+Author: Susan Huse
+Description: Reads a GSEA output file and creates a pretty heatmap from the positive and negative report files
+Depends: R (>= 3.1.0)
+Imports: 
+    pheatmap,
+    randomcoloR,
+    RColorBrewer
+RoxygenNote: 6.1.0
