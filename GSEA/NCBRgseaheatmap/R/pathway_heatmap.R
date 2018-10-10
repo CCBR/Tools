@@ -34,9 +34,15 @@
 #'                 main=main, samples=samples, annotlegend=FALSE, 
 #'                 fontsize_row=fontsize_row, fontsize_col=12)
 #'
+#' @import pheatmap
+#' @import RColorBrewer
+#' @import randomcoloR
 #' @export
 pathway_heatmap <- function(nes, q=0.1, clustrow=1, clustcol=1, cluster_cols=TRUE, main=NULL, 
                             annotlegend, samples=NULL, fontsize_row=12, fontsize_col=12) {
+  require("pheatmap")
+  require("RColorBrewer")
+  require("randomcoloR")
   datamtx <- nes$mtx[, nes$dcols]
   datamtx[is.na(datamtx)] <- 0
 
