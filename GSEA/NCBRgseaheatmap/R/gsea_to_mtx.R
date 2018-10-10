@@ -75,23 +75,23 @@ gsea_to_mtx <- function(dirlist, db="GO", q=0.1, preN=25, postN=NULL, colname="G
     colnames(df) <- c("Name", comparison, paste0("qFDR_", comparison))
 
     # sort by q-value then filter the individual dataframes with "preN"
-    df <- df[df[, 3] <= q, ]
+    dfq <- df[df[, 3] <= q, ]
     
     # We need to individually decide the top preN rows, 
     # but have to keep everything in the matrix, so that if it is not q-significant here, but is elsewhere
     # we have the NES value for it.
-    theRows <- df[,1]
+    theRows <- dfq[,1]
     if (! is.null(preN)) {
       df <- df[order(df[,3]),]
       
-      if(dim(df)[1] > preN) {
+      if(length(theRows) > preN) {
         theRows <- theRows[1:preN]
       }
     }
     # print(df)
     
     # create a list for merge later
-    if(dim(df)[1] > 0) {
+    if(length(theRows) > 0) {
       nes_list[[comparison]] <- df
       allRows <- union(allRows, theRows)
     }

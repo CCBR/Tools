@@ -79,7 +79,7 @@ pathway_heatmap <- function(nes, q=0.1, clustrow=1, clustcol=1, cluster_cols=TRU
   pctBlue <- abs(round(min(datamtx) / (max(datamtx) - min(datamtx)) * 100))
   reds = colorRampPalette(brewer.pal(n=7, name = "Reds"))(pctRed)
   blues = colorRampPalette(rev(brewer.pal(n=7, name = "Blues")))(pctBlue)
-  color = c(blues, rep("#BEBEBE",3), reds)
+  color = c(blues, rep("#BEBEBE",1), reds)
   
   
   # export the heatmap
