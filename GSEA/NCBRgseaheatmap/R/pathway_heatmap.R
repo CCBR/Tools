@@ -5,17 +5,21 @@
 #  October 9, 2018
 #
 ####################
-#' Creates a pretty heatmap with q-values for multiple GSEA comparisons
-#'  expects a matrix containing normalized enrichment scores and q-values from gsea_to_mtx()
+#' Creates a pretty heatmap of both gene set enrichment and q-values for multiple GSEA comparisons
 #'
 #' Creates a heatmap (using pheatmap) from the matrix, with a primary heatmap of GSEA enrichment scores
 #'   and a secondary heatmap of q-values (FDR). 
-#'   A more stringent q-value can be set then used in gsea_to_mtx for subsequent heatmaps
+#'
+#' Assumes that a matrix of normalized enrichment scores from GSEA analyses has been created using gsea_to_mtx.
+#' The heatmap is created using the pheatmap package.  Many of the pheatmap parameters are included in this function.
+#' A more stringent q-value can be set then used in gsea_to_mtx for subsequent heatmaps
+#' Currently the ordering of the q-value columns is not the same as the data (enrichment score) columns.
+#' Setting of the fontsize_row, fontsize_col, clustrow, and clustcol will likely take several tries to create the optimum heatmap for your data.
 #'
 #' @param nes matrix of GSEA normalized enrichment scores and q-values created with gsea_to_mtx()
 #' @param q minimum FDR / q-value cutoff for including genesets in the output matrix
-#' @param clustrow number of clusters for the row dendogram (see pheatmap)
-#' @param clustcol number of clusters for the row dendogram (see pheatmap)
+#' @param clustrow number of sections to split the heatmap into based on the row dendogram. (see pheatmap: cutree_rows)
+#' @param clustcol number of sections to split the heatmap into based on the column dendogram. (see pheatmap: cutree_cols)
 #' @param annotlegend boolean to include the annotation_legend or not (see pheatmap)
 #' @param samples sample names to be used in the annotation_col, should be in the same order as the data matrix (see pheatmap) 
 #' @param fontsize_row font size for row text displaying gene sets (see pheatmap)
@@ -29,10 +33,16 @@
 #'
 #' @examples
 #' alldirs = list.dirs(path=dir_gsea3, full.names=TRUE, recursive=FALSE)
+#' dirlist = alldirs[grepl(paste0("KO_vs_WT.", i, ".GseaPreranked.[0-9]*$"), alldirs, perl=TRUE)]
 #' nes <- gsea_to_mtx(dirlist, db="GO", q=0.1, preN=50, postN=50)
+#' main=paste("Gene Set Enrichment:", i, "\nPairwise comparisons by experiment")
+#' fontsize_row=8
+#' clustrow = 3
+#' pdf("myoutput.pdf")
 #' pathway_heatmap(nes, clustrow=clustrow, clustcol=1, cluster_cols=FALSE,
-#'                 main=main, samples=samples, annotlegend=FALSE, 
+#'                 main=main, samples=NULL, annotlegend=FALSE, 
 #'                 fontsize_row=fontsize_row, fontsize_col=12)
+#' dev.off()
 #'
 #' @import pheatmap
 #' @import RColorBrewer

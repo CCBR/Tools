@@ -45,10 +45,13 @@ Use colname to set the appropriate column name for GSEA results derived from out
 }
 \examples{
 alldirs = list.dirs(path=dir_gsea3, full.names=TRUE, recursive=FALSE)
+dirlist = alldirs[grepl(paste0("KO_vs_WT.", i, ".GseaPreranked.[0-9]*$"), alldirs, perl=TRUE)]
 nes <- gsea_to_mtx(dirlist, db="GO", q=0.1, preN=50, postN=50)
+main=paste("Gene Set Enrichment:", i, "\\nPairwise comparisons of genotype within experiment")
+fontsize_row=8
 pdf("myoutput.pdf")
-pathway_heatmap(nes, clustrow=clustrow, clustcol=1, cluster_cols=FALSE,
-                main=main, samples=samples, annotlegend=FALSE, 
+pathway_heatmap(nes, clustrow=1, clustcol=1, cluster_cols=FALSE,
+                main=main, samples=NULL, annotlegend=FALSE, 
                 fontsize_row=fontsize_row, fontsize_col=12)
 dev.off()
 
