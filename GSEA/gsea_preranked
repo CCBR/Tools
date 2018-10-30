@@ -23,7 +23,7 @@ LABEL=$3
 OUT="."
 
 NPERM=100
-SCORE='classic'
+SCORE='weighted'
 SVGS='false'
 MAKESETS='true'
 PLOTTOP=20
