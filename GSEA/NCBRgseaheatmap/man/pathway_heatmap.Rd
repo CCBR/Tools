@@ -5,8 +5,8 @@
 \title{Creates a pretty heatmap of both gene set enrichment and q-values for multiple GSEA comparisons}
 \usage{
 pathway_heatmap(nes, q = 0.1, clustrow = 1, clustcol = 1,
-  cluster_cols = TRUE, main = NULL, annotlegend, samples = NULL,
-  fontsize_row = 12, fontsize_col = 12)
+  cluster_cols = TRUE, main = "", annotlegend = TRUE,
+  samples = NULL, fontsize_row = 12, fontsize_col = 12)
 }
 \arguments{
 \item{nes}{matrix of GSEA normalized enrichment scores and q-values created with gsea_to_mtx()}

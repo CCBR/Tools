@@ -48,8 +48,8 @@
 #' @import RColorBrewer
 #' @import randomcoloR
 #' @export
-pathway_heatmap <- function(nes, q=0.1, clustrow=1, clustcol=1, cluster_cols=TRUE, main=NULL, 
-                            annotlegend, samples=NULL, fontsize_row=12, fontsize_col=12) {
+pathway_heatmap <- function(nes, q=0.1, clustrow=1, clustcol=1, cluster_cols=TRUE, main="", 
+                            annotlegend=TRUE, samples=NULL, fontsize_row=12, fontsize_col=12) {
   require("pheatmap")
   require("RColorBrewer")
   require("randomcoloR")
@@ -91,8 +91,17 @@ pathway_heatmap <- function(nes, q=0.1, clustrow=1, clustcol=1, cluster_cols=TRU
   if (! cluster_cols) {clustcol == NULL}
   
   # Set the colorramp for the data
-  pctRed <- round(max(datamtx) / (max(datamtx) - min(datamtx)) * 100)
-  pctBlue <- abs(round(min(datamtx) / (max(datamtx) - min(datamtx)) * 100))
+  if(max(datamtx) <= 0) {
+    pctRed = 0
+    pctBlue = 100
+  } else if(min(datamtx) >= 0) {
+    pctRed = 100
+    pctBlue = 0
+  } else {
+    pctRed <- round(max(datamtx) / (max(datamtx) - min(datamtx)) * 100)
+    pctBlue <- abs(round(min(datamtx) / (max(datamtx) - min(datamtx)) * 100))
+  }
+  
   reds = colorRampPalette(brewer.pal(n=7, name = "Reds"))(pctRed)
   blues = colorRampPalette(rev(brewer.pal(n=7, name = "Blues")))(pctBlue)
   color = c(blues, rep("#BEBEBE",1), reds)
