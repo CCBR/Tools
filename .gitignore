@@ -1,0 +1,17 @@
+# R History files
+.Rhistory
+.Rapp.history
+.RData
+
+# Python Byte-compiled / optimized / DLL files
+__pycache__/
+*.py[cod]
+
+# OS generated files
+.DS_Store
+.DS_Store?
+._*
+
+# Other Unwanted Files
+*~
+*.bak
