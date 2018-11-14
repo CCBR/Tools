@@ -12,6 +12,7 @@ deg2gs.py
 
 v 1.0 - initial code version.
 v 1.1 - updated for new column headers in pipeliner limma_DEG_all_genes.txt
+v 1.2 - top2Excel format is now csv rather than tab-delimited
 
 '''
 
@@ -143,7 +144,8 @@ Example:\n\
         df = pd.read_excel(infile.name, sheet_name = sheetname, header=0, index_col=0)
 
     else:
-        df = pd.read_csv(infile, sep='\t', header=0, index_col=0)
+        #df = pd.read_csv(infile, sep='\t', header=0, index_col=0)
+        df = pd.read_csv(infile, sep=',', header=0, index_col=0)
 
     #
     # Set the columns based on the input format and the analysis method, but only if they match
@@ -160,7 +162,7 @@ Example:\n\
     df.columns = in_cols
     
     # split the ensemblID|Gene if necessary
-    if fformat == 'topTable' and method == 'gsea':
+    if fformat == 'topTable': #and method == 'gsea':
         df['gene'] = [re.sub("^.*\|", "", i) for i in df.index.values.tolist()]
 
     # Filter the df to the p-values, FDR, and number of hits specified

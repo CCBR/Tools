@@ -12,11 +12,12 @@ multitext2excel.py
     Reads a list of files to import as separate tabs in Excel
 
 v 1.0 - initial code version.
+v 1.1 - updated to include first splitter markowitzte@nih.gov
 
 """
 __author__ = 'Susan Huse'
 __date__ = 'August 6, 2018'
-__version__ = '1.0'
+__version__ = '1.1'
 __copyright__ = 'No copyright protection, can be used freely'
 
 #import csv
@@ -72,7 +73,9 @@ def main():
     parser.add_argument('-k', '--delimiter', required=False, type=str, default='\t',
                         help='character delimiter that separates columns in each of the input data files [default="\t"]')
     parser.add_argument('-s', '--splitter', required=False, type=str, default='.',
-                        help='character to split input filenames to create output tab names [default="."]')
+                        help='character to split input filenames to create output tab names. Cuts everything to the right [default="."]')
+    parser.add_argument('-f', '--firstsplitter', required=False, type=str, default='',
+                        help='character to split input filenames to create output tab names. Cuts everything to the left [default=""]')
 
 
     #
@@ -84,6 +87,7 @@ def main():
     pattern = args.pattern
     delimiter = args.delimiter
     splitter = args.splitter
+    firstsplitter = args.firstsplitter
     indir = args.indir
 
     thedate = str(datetime.datetime.now()).split()[0]
@@ -104,6 +108,8 @@ def main():
         # Extract the output tab name
         #sheet_name = os.path.basename(filename).split(splitter)[0]
         sheet_name = re.sub(indir + "/", "", filename).split(splitter)[0]
+        if firstsplitter != "":
+	        sheet_name = sheet_name.split(firstsplitter)[1]
         print("Writing data from input file: {} to output tab: {}".format(filename, sheet_name))
         
         # Read in the data
@@ -124,4 +130,3 @@ def main():
 
 if __name__ == '__main__':
     main()
-
