@@ -18,7 +18,7 @@ fi
 function get_sacct_info {
 	jobid=$1
 	attribute=$2
-	x=$(sacct -j $jobid --noheader --format="${attribute}%50"|head -n1|awk '{print $1}')
+	x=$(sacct -j $jobid --noheader --format="${attribute}%500"|head -n1|awk '{print $1}')
 	echo $x
 } 
 
@@ -79,7 +79,7 @@ echo -ne "${jobdataarray["workdir"]}\n"
 
 snakemakelogfile=$1
 grep "with external jobid" $snakemakelogfile | awk '{print $NF}' | sed "s/['.]//g" | sort | uniq > ${snakemakelogfile}.jobids.lst
-echo -ne "##SubmitTime\tHumanSubmitTime\tJobID:JobState:JobName\t\Node;Partition:QOS\tQueueTime;RunTime;TimeLimit\tReqCPU;AllocCPU\tReqMEM\tUsername:Group:Account\tWorkdir\n"
+echo -ne "##SubmitTime\tHumanSubmitTime\tJobID:JobState:JobName\tNode;Partition:QOS\tQueueTime;RunTime;TimeLimit\tReqCPU;AllocCPU\tReqMEM\tUsername:Group:Account\tWorkdir\n"
 while read jid;do
 	print_jobid_stats $jid
 done < ${snakemakelogfile}.jobids.lst |sort -k1,1n
