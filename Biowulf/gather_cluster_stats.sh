@@ -105,6 +105,8 @@ else
 	jobdataarray["queued"]=$(displaytime $qt)
 	jobdataarray["elapsed"]=$(get_sacct_info $jobid "Elapsed")
 	jobdataarray["time_limit"]=$(get_sacct_info $jobid "TimeLimit")
+	jobdataarray["reqcpus"]=$(get_sacct_info $jobid "ReqCPUS")
+	jobdataarray["alloccpus"]=$(get_sacct_info $jobid "AllocCPUS")
 
 
 fi
@@ -113,3 +115,4 @@ echo -ne "${jobdataarray["human_submit_time"]}\t"
 echo -ne "${jobdataarray["jobid"]};${jobdataarray["state"]};${jobdataarray["job_name"]}\t"
 echo -ne "${jobdataarray["node_list"]};${jobdataarray["run_node_partition"]}\t"
 echo -ne "${jobdataarray["queued"]};${jobdataarray["elapsed"]};${jobdataarray["time_limit"]}\t"
+echo -ne "${jobdataarray["reqcpus"]};${jobdataarray["alloccpus"]}\t"
