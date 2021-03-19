@@ -76,15 +76,15 @@ function get_sacct_info {
 jobid=$1
 declare -A jobdataarray
 nlines=$(sacct -j $jobid|wc -l)
+	jobdataarray["jobid"]="$jobid"
 if [ "$nlines" == "2" ];then
 	jobdataarray["submit_time"]="JOBNOTACCOUNTABLE"
-	jobdataarray["jobid"]="$jobid"
 else
 	export SLURM_TIME_FORMAT="%s" # epoch time
 	jobdataarray["submit_time"]=$(get_sacct_info $jobid "Submit")
 	st=${jobdataarray["submit_time"]}
 	jobdataarray["human_submit_time"]=$(date -d @$st|sed "s/ /_/g")
-	jobdataarray["state"]=$(get_sacct_info $jobid "JobName")
+	jobdataarray["state"]=$(get_sacct_info $jobid "State")
 	jobdataarray["job_name"]=$(get_sacct_info $jobid "JobName")
 fi
 echo -ne "${jobdataarray["submit_time"]}\t"
