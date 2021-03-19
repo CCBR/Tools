@@ -110,6 +110,6 @@ else
 fi
 echo -ne "${jobdataarray["submit_time"]}\t"
 echo -ne "${jobdataarray["human_submit_time"]}\t"
-echo -ne "${jobdataarray["jobid"]}:${jobdataarray["state"]}:${jobdataarray["job_name"]}\t"
-echo -ne "${jobdataarray["node_list"]}:${jobdataarray["run_node_partition"]}\t"
-echo -ne "${jobdataarray["queued"]}:${jobdataarray["elapsed"]}:${jobdataarray["time_limit"]}\t"
+echo -ne "${jobdataarray["jobid"]};${jobdataarray["state"]};${jobdataarray["job_name"]}\t"
+echo -ne "${jobdataarray["node_list"]};${jobdataarray["run_node_partition"]}\t"
+echo -ne "${jobdataarray["queued"]};${jobdataarray["elapsed"]};${jobdataarray["time_limit"]}\t"
