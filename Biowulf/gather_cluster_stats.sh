@@ -107,12 +107,19 @@ else
 	jobdataarray["time_limit"]=$(get_sacct_info $jobid "TimeLimit")
 	jobdataarray["reqcpus"]=$(get_sacct_info $jobid "ReqCPUS")
 	jobdataarray["alloccpus"]=$(get_sacct_info $jobid "AllocCPUS")
+	jobdataarray["req_mem"]=$(get_sacct_info $jobid "ReqMem")
+	jobdataarray["qos"]=$(get_sacct_info $jobid "QOS")
+	jobdataarray["username"]=$(get_sacct_info $jobid "user")
+	jobdataarray["groupname"]=$(get_sacct_info $jobid "group")
+	jobdataarray["account"]=$(get_sacct_info $jobid "account")
 
 
 fi
 echo -ne "${jobdataarray["submit_time"]}\t"
 echo -ne "${jobdataarray["human_submit_time"]}\t"
 echo -ne "${jobdataarray["jobid"]};${jobdataarray["state"]};${jobdataarray["job_name"]}\t"
-echo -ne "${jobdataarray["node_list"]};${jobdataarray["run_node_partition"]}\t"
+echo -ne "${jobdataarray["node_list"]};${jobdataarray["run_node_partition"]};${jobdataarray["qos"]}\t"
 echo -ne "${jobdataarray["queued"]};${jobdataarray["elapsed"]};${jobdataarray["time_limit"]}\t"
 echo -ne "${jobdataarray["reqcpus"]};${jobdataarray["alloccpus"]}\t"
+echo -ne "${jobdataarray["req_mem"]}\t"
+echo -ne "${jobdataarray["username"]}:${jobdataarray["groupname"]}:${jobdataarray["account"]}\t"
