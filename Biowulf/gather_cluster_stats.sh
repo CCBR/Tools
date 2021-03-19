@@ -103,7 +103,7 @@ else
 	jobdataarray["run_node_partition"]=$(get_sacct_info $jobid "Partition")
 	qt=$(echo ${jobdataarray["start"]} ${jobdataarray["submit_time"]}|awk '{print $1-$2}')
 	jobdataarray["queued"]=$(displaytime $qt)
-	jobdataarray["elaped"]=$(get_sacct_info $jobid "Elapsed")
+	jobdataarray["elapsed"]=$(get_sacct_info $jobid "Elapsed")
 	jobdataarray["time_limit"]=$(get_sacct_info $jobid "TimeLimit")
 
 
