@@ -73,6 +73,17 @@ function get_sacct_info {
 	echo $x
 } 
 
+function displaytime {
+  local T=$1
+  local D=$((T/60/60/24))
+  local H=$((T/60/60%24))
+  local M=$((T/60%60))
+  local S=$((T%60))
+  (( $D > 0 )) && printf '%d-' $D
+  printf '%02d:%02d:%02d' $H $M $S
+}
+
+
 jobid=$1
 declare -A jobdataarray
 nlines=$(sacct -j $jobid|wc -l)
@@ -82,15 +93,23 @@ if [ "$nlines" == "2" ];then
 else
 	export SLURM_TIME_FORMAT="%s" # epoch time
 	jobdataarray["submit_time"]=$(get_sacct_info $jobid "Submit")
+	jobdataarray["start"]=$(get_sacct_info $jobid "Start")
+	jobdataarray["end"]=$(get_sacct_info $jobid "End")
 	st=${jobdataarray["submit_time"]}
 	jobdataarray["human_submit_time"]=$(date -d @$st|sed "s/ /_/g")
 	jobdataarray["state"]=$(get_sacct_info $jobid "State")
 	jobdataarray["job_name"]=$(get_sacct_info $jobid "JobName")
 	jobdataarray["node_list"]=$(get_sacct_info $jobid "Nodelist")
 	jobdataarray["run_node_partition"]=$(get_sacct_info $jobid "Partition")
+	qt=$(echo ${jobdataarray["start"]} ${jobdataarray["submit_time]}|awk '{print $1-$2}')
+	jobdataarray["queued"]=$(displaytime $qt)
+	jobdataarray["elaped"]=$(get_sacct_info $jobid "Elapsed")
+	jobdataarray["time_limit"]=$(get_sacct_info $jobid "TimeLimit")
+
 
 fi
 echo -ne "${jobdataarray["submit_time"]}\t"
 echo -ne "${jobdataarray["human_submit_time"]}\t"
 echo -ne "${jobdataarray["jobid"]}:${jobdataarray["state"]}:${jobdataarray["job_name"]}\t"
 echo -ne "${jobdataarray["node_list"]}:${jobdataarray["run_node_partition"]}\t"
+echo -ne "${jobdataarray["queued"]}:${jobdataarray["elapsed"]}:${jobdataarray["time_limit"]}\t"
