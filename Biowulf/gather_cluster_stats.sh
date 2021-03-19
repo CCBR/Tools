@@ -66,7 +66,7 @@ fi
 # done < ${snakemakelogfile}.jobids.lst |sort -k1,1n
 # rm -f ${snakemakelogfile}.jobids.lst
 
-function get_sacct_info{
+function get_sacct_info {
 	jobid=$1
 	attribute=$2
 	x=$(sacct -j $jobid --noheader --format="${attribute}%50"|head -n1|awk '{print $1}')
