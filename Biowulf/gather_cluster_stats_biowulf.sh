@@ -1,9 +1,9 @@
 #!/bin/bash
 ## AUTHOR : Vishal N. Koparde, Ph.D., CCBR, NCI
-## DATE : Mar 2021
+## DATE : Feb 2021
 ## This scripts gathers cluster related statistics for jobs run on Biowulf using Snakemake by:
 ##   > extracting "external" jobids from snakemake.log files
-##   > gather cluster stats for each job using sacct command
+##   > gather cluster stats for each job using "jobdata" and "jobhist" commands
 ##   > sorts output by job submission time
 ##   > output TSV file
 ##
@@ -15,7 +15,7 @@ function node2runpartition {
 	if [ "$run_partition" == "" ];then
 		echo "unknown"
 	else
-		echo "$run_partition"	
+		echo "$run_partition"
 	fi
 }
 
@@ -58,35 +58,10 @@ if [ "$#" != "1" ];then
 	exit 1
 fi
 
-# snakemakelogfile=$1
-# grep "with external jobid" $snakemakelogfile | awk '{print $NF}' | sed "s/['.]//g" | sort | uniq > ${snakemakelogfile}.jobids.lst
-# echo -ne "##SubmitTime\tHumanSubmitTime\tJobID:JobState:JobName\tAllocNode:AllocNodePartition:RunNode:RunNodePartition\tQueueTime:RunTime:TimeLimit\tAvgCPU:MaxCPU:CPULimit\tAvgMEM:MaxMEM:MEMLimit\tPartition:QOS\tUsername:Group:Account\tWorkdir\tStdOut\tStdErr\n"
-# while read jid;do
-# 	get_jobid_stats $jid
-# done < ${snakemakelogfile}.jobids.lst |sort -k1,1n
-# rm -f ${snakemakelogfile}.jobids.lst
-
-function get_sacct_info{
-	jobid=$1
-	attribute=$2
-	x=$(sacct -j $jobid --noheader --format="${attribute}%50"|head -n1|awk '{print $1}')
-	echo $x
-} 
-
-jobid=$1
-declare -A jobdataarray
-nlines=$(sacct -j $jobid|wc -l)
-if [ "$nlines" == "2" ];then
-	jobdataarray["submit_time"]="JOBNOTACCOUNTABLE"
-	jobdataarray["jobid"]="$jobid"
-else
-	export SLURM_TIME_FORMAT="%s" # epoch time
-	jobdataarray["submit_time"]=$(get_sacct_info $jobid "Submit")
-	st=${jobdataarray["submit_time"]}
-	jobdataarray["human_submit_time"]=$(date -d @$st|sed "s/ /_/g")
-	jobdataarray["state"]=$(get_sacct_info $jobid "JobName")
-	jobdataarray["job_name"]=$(get_sacct_info $jobid "JobName")
-fi
-echo -ne "${jobdataarray["submit_time"]}\t"
-echo -ne "${jobdataarray["human_submit_time"]}\t"
-echo -ne "${jobdataarray["jobid"]}:${jobdataarray["state"]}:${jobdataarray["job_name"]}\t"
+snakemakelogfile=$1
+grep "with external jobid" $snakemakelogfile | awk '{print $NF}' | sed "s/['.]//g" | sort | uniq > ${snakemakelogfile}.jobids.lst
+echo -ne "##SubmitTime\tHumanSubmitTime\tJobID:JobState:JobName\tAllocNode:AllocNodePartition:RunNode:RunNodePartition\tQueueTime:RunTime:TimeLimit\tAvgCPU:MaxCPU:CPULimit\tAvgMEM:MaxMEM:MEMLimit\tPartition:QOS\tUsername:Group:Account\tWorkdir\tStdOut\tStdErr\n"
+while read jid;do
+	get_jobid_stats $jid
+done < ${snakemakelogfile}.jobids.lst |sort -k1,1n
+rm -f ${snakemakelogfile}.jobids.lst
