@@ -86,7 +86,11 @@ else
 	jobdataarray["human_submit_time"]=$(date -d @$st|sed "s/ /_/g")
 	jobdataarray["state"]=$(get_sacct_info $jobid "State")
 	jobdataarray["job_name"]=$(get_sacct_info $jobid "JobName")
+	jobdataarray["node_list"]=$(get_sacct_info $jobid "Nodelist")
+	jobdataarray["run_node_partition"]=$(get_sacct_info $jobid "Partition")
+
 fi
 echo -ne "${jobdataarray["submit_time"]}\t"
 echo -ne "${jobdataarray["human_submit_time"]}\t"
 echo -ne "${jobdataarray["jobid"]}:${jobdataarray["state"]}:${jobdataarray["job_name"]}\t"
+echo -ne "${jobdataarray["node_list"]}:${jobdataarray["run_node_partition"]}\t"
