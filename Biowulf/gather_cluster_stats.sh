@@ -18,7 +18,7 @@ fi
 function get_sacct_info {
 	jobid=$1
 	attribute=$2
-	x=$(sacct -j $jobid --noheader --format="${attribute}%50"|head -n1|awk '{print $1}')
+	x=$(sacct -j $jobid --noheader --format="${attribute}%500"|head -n1|awk '{print $1}')
 	echo $x
 } 
 
