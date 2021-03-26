@@ -1,0 +1,279 @@
+Building DAG of jobs...
+Pulling singularity image docker://nciccbr/ccbr_build_rnaseq:v0.0.1.
+Pulling singularity image docker://nciccbr/ccbr_rsem_1.3.1:v032219.
+Pulling singularity image docker://nciccbr/ccbr_arriba_2.0.0:v0.0.1.
+Using shell: /usr/bin/bash
+Provided cluster nodes: 500
+Job counts:
+	count	jobs
+	1	all
+	1	annotate
+	1	jsonmaker
+	1	karyo_beds
+	1	karyo_coord
+	1	qualimapinfo
+	1	rRNA_list
+	1	rsem
+	1	star_genome
+	5	star_rl
+	1	tin_ref
+	15
+
+[Thu Mar 25 10:32:43 2021]
+rule star_rl:
+    input: /data/kopardevn/GitRepos/RNA-seek/references/hg38_37/GRCh38.primary_assembly.genome.fa, /data/kopardevn/GitRepos/RNA-seek/references/hg38_37/gencode.v37.primary_assembly.annotation.gtf
+    output: STAR/2.7.6a/genes-75/SA
+    jobid: 3
+    wildcards: readlength=75
+    threads: 32
+
+
+	# Create Index for read length
+	rl=$((75-1))
+
+	STAR 		--runThreadN 32 		--runMode genomeGenerate 		--genomeDir STAR/2.7.6a/genes-75 		--genomeFastaFiles /data/kopardevn/GitRepos/RNA-seek/references/hg38_37/GRCh38.primary_assembly.genome.fa 		--sjdbGTFfile /data/kopardevn/GitRepos/RNA-seek/references/hg38_37/gencode.v37.primary_assembly.annotation.gtf 		--sjdbOverhang $rl 		--outFileNamePrefix STAR/2.7.6a/build_75_ 		--outTmpDir /lscratch/$SLURM_JOB_ID/tmp_75
+	
+Submitted job 3 with external jobid '11331386'.
+
+[Thu Mar 25 10:32:45 2021]
+rule star_rl:
+    input: /data/kopardevn/GitRepos/RNA-seek/references/hg38_37/GRCh38.primary_assembly.genome.fa, /data/kopardevn/GitRepos/RNA-seek/references/hg38_37/gencode.v37.primary_assembly.annotation.gtf
+    output: STAR/2.7.6a/genes-125/SA
+    jobid: 5
+    wildcards: readlength=125
+    threads: 32
+
+
+	# Create Index for read length
+	rl=$((125-1))
+
+	STAR 		--runThreadN 32 		--runMode genomeGenerate 		--genomeDir STAR/2.7.6a/genes-125 		--genomeFastaFiles /data/kopardevn/GitRepos/RNA-seek/references/hg38_37/GRCh38.primary_assembly.genome.fa 		--sjdbGTFfile /data/kopardevn/GitRepos/RNA-seek/references/hg38_37/gencode.v37.primary_assembly.annotation.gtf 		--sjdbOverhang $rl 		--outFileNamePrefix STAR/2.7.6a/build_125_ 		--outTmpDir /lscratch/$SLURM_JOB_ID/tmp_125
+	
+Submitted job 5 with external jobid '11331388'.
+
+[Thu Mar 25 10:32:46 2021]
+rule rRNA_list:
+    input: /data/kopardevn/GitRepos/RNA-seek/references/hg38_37/GRCh38.primary_assembly.genome.fa, /data/kopardevn/GitRepos/RNA-seek/references/hg38_37/gencode.v37.primary_assembly.annotation.gtf
+    output: hg38.rRNA_interval_list
+    jobid: 7
+    wildcards: genome=hg38
+
+
+	python3 /data/kopardevn/GitRepos/RNA-seek/references/hg38_37/workflow/scripts/builder/create_rRNA_intervals.py 		/data/kopardevn/GitRepos/RNA-seek/references/hg38_37/GRCh38.primary_assembly.genome.fa 		/data/kopardevn/GitRepos/RNA-seek/references/hg38_37/gencode.v37.primary_assembly.annotation.gtf 		hg38 > hg38.rRNA_interval_list
+	
+Submitted job 7 with external jobid '11331390'.
+
+[Thu Mar 25 10:32:47 2021]
+rule jsonmaker:
+    input: /data/kopardevn/GitRepos/RNA-seek/references/hg38_37/GRCh38.primary_assembly.genome.fa, /data/kopardevn/GitRepos/RNA-seek/references/hg38_37/gencode.v37.primary_assembly.annotation.gtf
+    output: hg38_37.json
+    jobid: 1
+    wildcards: genome=hg38_37
+
+Submitted job 1 with external jobid '11331392'.
+
+[Thu Mar 25 10:32:49 2021]
+rule star_genome:
+    input: /data/kopardevn/GitRepos/RNA-seek/references/hg38_37/GRCh38.primary_assembly.genome.fa, /data/kopardevn/GitRepos/RNA-seek/references/hg38_37/gencode.v37.primary_assembly.annotation.gtf
+    output: STAR/2.7.6a/genome/SA
+    jobid: 9
+    threads: 32
+
+
+	STAR 		--runThreadN 32 		--runMode genomeGenerate 		--genomeDir STAR/2.7.6a/genome 		--genomeFastaFiles /data/kopardevn/GitRepos/RNA-seek/references/hg38_37/GRCh38.primary_assembly.genome.fa 		--outFileNamePrefix STAR/2.7.6a/build_genome_ 		--outTmpDir /lscratch/$SLURM_JOB_ID/tmp_genome
+	
+Submitted job 9 with external jobid '11331394'.
+
+[Thu Mar 25 10:32:50 2021]
+rule annotate:
+    input: /data/kopardevn/GitRepos/RNA-seek/references/hg38_37/gencode.v37.primary_assembly.annotation.gtf
+    output: annotate.isoforms.txt, annotate.genes.txt, refFlat.txt, genes.ref.bed, geneinfo.bed
+    jobid: 10
+
+
+	python3 /data/kopardevn/GitRepos/RNA-seek/references/hg38_37/workflow/scripts/builder/get_gene_annotate.py /data/kopardevn/GitRepos/RNA-seek/references/hg38_37/gencode.v37.primary_assembly.annotation.gtf > annotate.genes.txt
+	python3 /data/kopardevn/GitRepos/RNA-seek/references/hg38_37/workflow/scripts/builder/get_isoform_annotate.py /data/kopardevn/GitRepos/RNA-seek/references/hg38_37/gencode.v37.primary_assembly.annotation.gtf > annotate.isoforms.txt
+	gtfToGenePred -ignoreGroupsWithoutExons /data/kopardevn/GitRepos/RNA-seek/references/hg38_37/gencode.v37.primary_assembly.annotation.gtf genes.genepred
+	genePredToBed genes.genepred genes.bed12
+	sort -k1,1 -k2,2n genes.bed12 > genes.ref.bed
+	python3 /data/kopardevn/GitRepos/RNA-seek/references/hg38_37/workflow/scripts/builder/make_refFlat.py > refFlat.txt
+	python3 /data/kopardevn/GitRepos/RNA-seek/references/hg38_37/workflow/scripts/builder/make_geneinfo.py /data/kopardevn/GitRepos/RNA-seek/references/hg38_37/gencode.v37.primary_assembly.annotation.gtf > geneinfo.bed
+	
+Submitted job 10 with external jobid '11331396'.
+
+[Thu Mar 25 10:32:51 2021]
+rule qualimapinfo:
+    input: /data/kopardevn/GitRepos/RNA-seek/references/hg38_37/GRCh38.primary_assembly.genome.fa, /data/kopardevn/GitRepos/RNA-seek/references/hg38_37/gencode.v37.primary_assembly.annotation.gtf
+    output: qualimap_info.txt
+    jobid: 12
+
+
+	python3 /data/kopardevn/GitRepos/RNA-seek/references/hg38_37/workflow/scripts/builder/generate_qualimap_ref.py 		-g /data/kopardevn/GitRepos/RNA-seek/references/hg38_37/gencode.v37.primary_assembly.annotation.gtf 		-f /data/kopardevn/GitRepos/RNA-seek/references/hg38_37/GRCh38.primary_assembly.genome.fa 		-o qualimap_info.txt 		--ignore-strange-chrom 2> qualimap_error.log
+	
+Submitted job 12 with external jobid '11331397'.
+
+[Thu Mar 25 10:32:52 2021]
+rule tin_ref:
+    input: /data/kopardevn/GitRepos/RNA-seek/references/hg38_37/gencode.v37.primary_assembly.annotation.gtf
+    output: transcripts.protein_coding_only.bed12
+    jobid: 14
+
+
+	python /data/kopardevn/GitRepos/RNA-seek/references/hg38_37/workflow/scripts/builder/gtf2protein_coding_genes.py /data/kopardevn/GitRepos/RNA-seek/references/hg38_37/gencode.v37.primary_assembly.annotation.gtf > protein_coding_genes.lst
+	gtfToGenePred -genePredExt /data/kopardevn/GitRepos/RNA-seek/references/hg38_37/gencode.v37.primary_assembly.annotation.gtf genes.gtf.genePred
+	genePredToBed genes.gtf.genePred genes.gtf.genePred.bed
+
+	awk -F '\t' -v OFS='\t' '{print $12,$1}' genes.gtf.genePred 		| sort -k1,1n > gene2transcripts
+
+	while read gene; do
+		grep "${gene}" gene2transcripts;
+	done < protein_coding_genes.lst > gene2transcripts.protein_coding_only
+
+	python /data/kopardevn/GitRepos/RNA-seek/references/hg38_37/workflow/scripts/builder/gene2transcripts_add_length.py gene2transcripts.protein_coding_only genes.gtf.genePred.bed 		> gene2transcripts.protein_coding_only.with_len
+
+	sort -k1,1 -k3,3nr gene2transcripts.protein_coding_only.with_len | 		awk -F '\t' '{if (!seen[$1]) {seen[$1]++; print $2}}' > protein_coding_only.txt
+
+	while read transcript; do
+		grep -m1 "${transcript}" genes.gtf.genePred.bed;
+	done < <(awk -F '.' '{print $1}' protein_coding_only.txt) > transcripts.protein_coding_only.bed12
+
+	rm -f "protein_coding_genes.lst" "genes.gtf.genePred" "genes.gtf.genePred.bed" 		"gene2transcripts" "gene2transcripts.protein_coding_only" "protein_coding_only.txt" 		"gene2transcripts.protein_coding_only.with_len" "protein_coding_only.txt"
+	
+Submitted job 14 with external jobid '11331399'.
+
+[Thu Mar 25 10:32:54 2021]
+rule star_rl:
+    input: /data/kopardevn/GitRepos/RNA-seek/references/hg38_37/GRCh38.primary_assembly.genome.fa, /data/kopardevn/GitRepos/RNA-seek/references/hg38_37/gencode.v37.primary_assembly.annotation.gtf
+    output: STAR/2.7.6a/genes-100/SA
+    jobid: 4
+    wildcards: readlength=100
+    threads: 32
+
+
+	# Create Index for read length
+	rl=$((100-1))
+
+	STAR 		--runThreadN 32 		--runMode genomeGenerate 		--genomeDir STAR/2.7.6a/genes-100 		--genomeFastaFiles /data/kopardevn/GitRepos/RNA-seek/references/hg38_37/GRCh38.primary_assembly.genome.fa 		--sjdbGTFfile /data/kopardevn/GitRepos/RNA-seek/references/hg38_37/gencode.v37.primary_assembly.annotation.gtf 		--sjdbOverhang $rl 		--outFileNamePrefix STAR/2.7.6a/build_100_ 		--outTmpDir /lscratch/$SLURM_JOB_ID/tmp_100
+	
+Submitted job 4 with external jobid '11331401'.
+
+[Thu Mar 25 10:32:55 2021]
+rule star_rl:
+    input: /data/kopardevn/GitRepos/RNA-seek/references/hg38_37/GRCh38.primary_assembly.genome.fa, /data/kopardevn/GitRepos/RNA-seek/references/hg38_37/gencode.v37.primary_assembly.annotation.gtf
+    output: STAR/2.7.6a/genes-50/SA
+    jobid: 2
+    wildcards: readlength=50
+    threads: 32
+
+
+	# Create Index for read length
+	rl=$((50-1))
+
+	STAR 		--runThreadN 32 		--runMode genomeGenerate 		--genomeDir STAR/2.7.6a/genes-50 		--genomeFastaFiles /data/kopardevn/GitRepos/RNA-seek/references/hg38_37/GRCh38.primary_assembly.genome.fa 		--sjdbGTFfile /data/kopardevn/GitRepos/RNA-seek/references/hg38_37/gencode.v37.primary_assembly.annotation.gtf 		--sjdbOverhang $rl 		--outFileNamePrefix STAR/2.7.6a/build_50_ 		--outTmpDir /lscratch/$SLURM_JOB_ID/tmp_50
+	
+Submitted job 2 with external jobid '11331403'.
+
+[Thu Mar 25 10:32:56 2021]
+rule star_rl:
+    input: /data/kopardevn/GitRepos/RNA-seek/references/hg38_37/GRCh38.primary_assembly.genome.fa, /data/kopardevn/GitRepos/RNA-seek/references/hg38_37/gencode.v37.primary_assembly.annotation.gtf
+    output: STAR/2.7.6a/genes-150/SA
+    jobid: 6
+    wildcards: readlength=150
+    threads: 32
+
+
+	# Create Index for read length
+	rl=$((150-1))
+
+	STAR 		--runThreadN 32 		--runMode genomeGenerate 		--genomeDir STAR/2.7.6a/genes-150 		--genomeFastaFiles /data/kopardevn/GitRepos/RNA-seek/references/hg38_37/GRCh38.primary_assembly.genome.fa 		--sjdbGTFfile /data/kopardevn/GitRepos/RNA-seek/references/hg38_37/gencode.v37.primary_assembly.annotation.gtf 		--sjdbOverhang $rl 		--outFileNamePrefix STAR/2.7.6a/build_150_ 		--outTmpDir /lscratch/$SLURM_JOB_ID/tmp_150
+	
+Submitted job 6 with external jobid '11331405'.
+
+[Thu Mar 25 10:32:57 2021]
+rule rsem:
+    input: /data/kopardevn/GitRepos/RNA-seek/references/hg38_37/GRCh38.primary_assembly.genome.fa, /data/kopardevn/GitRepos/RNA-seek/references/hg38_37/gencode.v37.primary_assembly.annotation.gtf
+    output: rsemref/hg38.transcripts.ump
+    jobid: 8
+    wildcards: genome=hg38
+    threads: 32
+
+
+	rsem-prepare-reference -p 32 --gtf /data/kopardevn/GitRepos/RNA-seek/references/hg38_37/gencode.v37.primary_assembly.annotation.gtf /data/kopardevn/GitRepos/RNA-seek/references/hg38_37/GRCh38.primary_assembly.genome.fa rsemref/hg38
+	rsem-generate-ngvector rsemref/hg38.transcripts.fa rsemref/hg38.transcripts
+	
+Submitted job 8 with external jobid '11331406'.
+
+[Thu Mar 25 10:32:59 2021]
+rule karyo_coord:
+    input: /data/kopardevn/GitRepos/RNA-seek/references/hg38_37/gencode.v37.primary_assembly.annotation.gtf
+    output: karyoplot_gene_coordinates.txt
+    jobid: 11
+
+
+	python3 /data/kopardevn/GitRepos/RNA-seek/references/hg38_37/workflow/scripts/builder/get_karyoplot_gene_coordinates.py /data/kopardevn/GitRepos/RNA-seek/references/hg38_37/gencode.v37.primary_assembly.annotation.gtf > karyoplot_gene_coordinates.txt
+	
+Submitted job 11 with external jobid '11331407'.
+
+[Thu Mar 25 10:33:00 2021]
+rule karyo_beds:
+    input: /data/kopardevn/GitRepos/RNA-seek/references/hg38_37/gencode.v37.primary_assembly.annotation.gtf
+    output: karyobeds/karyobed.bed
+    jobid: 13
+
+
+	mkdir -p karyobeds && cd karyobeds
+	python3 /data/kopardevn/GitRepos/RNA-seek/references/hg38_37/workflow/scripts/builder/get_karyoplot_beds.py /data/kopardevn/GitRepos/RNA-seek/references/hg38_37/gencode.v37.primary_assembly.annotation.gtf
+	
+Submitted job 13 with external jobid '11331408'.
+[Thu Mar 25 10:34:32 2021]
+Finished job 1.
+1 of 15 steps (7%) done
+[Thu Mar 25 10:35:05 2021]
+Finished job 7.
+2 of 15 steps (13%) done
+[Thu Mar 25 10:35:06 2021]
+Finished job 11.
+3 of 15 steps (20%) done
+[Thu Mar 25 10:35:06 2021]
+Finished job 13.
+4 of 15 steps (27%) done
+[Thu Mar 25 10:36:00 2021]
+Finished job 10.
+5 of 15 steps (33%) done
+[Thu Mar 25 10:38:01 2021]
+Finished job 12.
+6 of 15 steps (40%) done
+[Thu Mar 25 10:44:02 2021]
+Finished job 14.
+7 of 15 steps (47%) done
+[Thu Mar 25 10:45:22 2021]
+Finished job 8.
+8 of 15 steps (53%) done
+[Thu Mar 25 11:06:24 2021]
+Finished job 9.
+9 of 15 steps (60%) done
+[Thu Mar 25 11:09:54 2021]
+Finished job 2.
+10 of 15 steps (67%) done
+[Thu Mar 25 11:11:24 2021]
+Finished job 3.
+11 of 15 steps (73%) done
+[Thu Mar 25 11:11:44 2021]
+Finished job 4.
+12 of 15 steps (80%) done
+[Thu Mar 25 11:12:14 2021]
+Finished job 5.
+13 of 15 steps (87%) done
+[Thu Mar 25 11:12:24 2021]
+Finished job 6.
+14 of 15 steps (93%) done
+
+[Thu Mar 25 11:12:24 2021]
+localrule all:
+    input: hg38_37.json, STAR/2.7.6a/genes-50/SA, STAR/2.7.6a/genes-75/SA, STAR/2.7.6a/genes-100/SA, STAR/2.7.6a/genes-125/SA, STAR/2.7.6a/genes-150/SA, hg38.rRNA_interval_list, rsemref/hg38.transcripts.ump, STAR/2.7.6a/genome/SA, annotate.isoforms.txt, annotate.genes.txt, refFlat.txt, geneinfo.bed, karyoplot_gene_coordinates.txt, qualimap_info.txt, karyobeds/karyobed.bed, transcripts.protein_coding_only.bed12
+    jobid: 0
+
+[Thu Mar 25 11:12:24 2021]
+Finished job 0.
+15 of 15 steps (100%) done
+Complete log: /gpfs/gsfs11/users/kopardevn/GitRepos/RNA-seek/references/hg38_37/.snakemake/log/2021-03-25T102308.787879.snakemake.log
