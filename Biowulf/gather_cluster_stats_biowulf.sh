@@ -10,8 +10,14 @@
 
 function node2runpartition {
 	node=$1
+	node=$(echo $node|awk -F"," '{print $1}')
 	partitions_requested=$2
-	run_partition=$(for p in `echo $partitions_requested|awk '{print $NF}'|tr "," " "`;do if [ "$(freen -N $node|grep $p|awk '{print $1}'|grep $p|wc -l)" == "1" ]; then echo $p;break 1;fi;done)
+	if [ "$partitions_requested" == "" ];then
+	partitions_requested=$(sinfo|awk '{print $1}'|sort|uniq|grep -iv "partition"|sed "s/\*//g"|tr '\n' ' ')
+	else
+	partitions_requested=$(echo $partitions_requested|awk '{print $NF}'|tr "," " ")
+	fi
+	run_partition=$(for p in $partitions_requested;do if [ "$(freen -N $node|grep $p|awk '{print $1}'|grep $p|wc -l)" == "1" ]; then echo $p;break 1;fi;done)
 	if [ "$run_partition" == "" ];then
 		echo "unknown"
 	else
@@ -46,7 +52,7 @@ else
 	rm -f ${jobid}.data
 	st=${jobdataarray["submit_time"]}
 	jobdataarray["human_submit_time"]=$(date -d @$st|sed "s/ /_/g")
-	jobdataarray["alloc_node_partition"]=$(node2runpartition ${jobdataarray["alloc_node"]} ${jobdataarray["partition"]})
+	jobdataarray["alloc_node_partition"]=$(node2runpartition ${jobdataarray["alloc_node"]} "")
 	jobdataarray["run_node_partition"]=$(node2runpartition ${jobdataarray["node_list"]} ${jobdataarray["partition"]})
 fi
 jobdataarray["runtime"]=$(echo ${jobdataarray["queued"]} ${jobdataarray["elapsed"]}|awk '{print $1+$2}')
