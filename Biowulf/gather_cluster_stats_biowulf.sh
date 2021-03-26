@@ -1,5 +1,5 @@
 #!/bin/bash
-## AUTHOR : Vishal N. Koparde, Ph.D., CCBR, NCI
+## AUTHOR ; Vishal N. Koparde, Ph.D., CCBR, NCI
 ## DATE : Feb 2021
 ## This scripts gathers cluster related statistics for jobs run on Biowulf using Snakemake by:
 ##   > extracting "external" jobids from snakemake.log files
@@ -20,6 +20,16 @@ function node2runpartition {
 }
 
 
+function displaytime {
+  local T=$1
+  local D=$((T/60/60/24))
+  local H=$((T/60/60%24))
+  local M=$((T/60%60))
+  local S=$((T%60))
+  (( $D > 0 )) && printf '%d-' $D
+  printf '%02d:%02d:%02d' $H $M $S
+}
+
 function get_jobid_stats {
 jobid=$1
 declare -A jobdataarray
@@ -39,15 +49,23 @@ else
 	jobdataarray["alloc_node_partition"]=$(node2runpartition ${jobdataarray["alloc_node"]} ${jobdataarray["partition"]})
 	jobdataarray["run_node_partition"]=$(node2runpartition ${jobdataarray["node_list"]} ${jobdataarray["partition"]})
 fi
+jobdataarray["runtime"]=$(echo ${jobdataarray["queued"]} ${jobdataarray["elapsed"]}|awk '{print $1+$2}')
+
+#change displaytimes
+jobdataarray["runtime"]=$(displaytime ${jobdataarray["runtime"]})
+jobdataarray["queued"]=$(displaytime ${jobdataarray["queued"]})
+jobdataarray["elapsed"]=$(displaytime ${jobdataarray["elapsed"]})
+jobdataarray["time_limit"]=$(displaytime ${jobdataarray["time_limit"]})
+
 echo -ne "${jobdataarray["submit_time"]}\t"
 echo -ne "${jobdataarray["human_submit_time"]}\t"
-echo -ne "${jobdataarray["jobid"]}:${jobdataarray["state"]}:${jobdataarray["job_name"]}\t"
-echo -ne "${jobdataarray["alloc_node"]}:${jobdataarray["alloc_node_partition"]}:${jobdataarray["node_list"]}:${jobdataarray["run_node_partition"]}\t"
-echo -ne "${jobdataarray["queued"]}:${jobdataarray["elapsed"]}:${jobdataarray["time_limit"]}\t"
-echo -ne "${jobdataarray["avg_cpus"]}:${jobdataarray["max_cpu_used"]}:${jobdataarray["cpus_per_task"]}\t"
-echo -ne "${jobdataarray["avg_mem"]}:${jobdataarray["max_mem_used"]}:${jobdataarray["total_mem"]}\t"
-echo -ne "${jobdataarray["partition"]}:${jobdataarray["qos"]}\t"
-echo -ne "${jobdataarray["username"]}:${jobdataarray["groupname"]}:${jobdataarray["account"]}\t"
+echo -ne "${jobdataarray["jobid"]};${jobdataarray["state"]};${jobdataarray["job_name"]}\t"
+echo -ne "${jobdataarray["alloc_node"]};${jobdataarray["alloc_node_partition"]};${jobdataarray["node_list"]};${jobdataarray["run_node_partition"]}\t"
+echo -ne "${jobdataarray["queued"]};${jobdataarray["elapsed"]};${jobdataarray["runtime"]};${jobdataarray["time_limit"]}\t"
+echo -ne "${jobdataarray["avg_cpus"]};${jobdataarray["max_cpu_used"]};${jobdataarray["cpus_per_task"]}\t"
+echo -ne "${jobdataarray["avg_mem"]};${jobdataarray["max_mem_used"]};${jobdataarray["total_mem"]}\t"
+echo -ne "${jobdataarray["partition"]};${jobdataarray["qos"]}\t"
+echo -ne "${jobdataarray["username"]};${jobdataarray["groupname"]};${jobdataarray["account"]}\t"
 echo -ne "${jobdataarray["work_dir"]}\t"
 echo -ne "${jobdataarray["std_out"]}\t"
 echo -ne "${jobdataarray["std_err"]}\n"
@@ -60,7 +78,7 @@ fi
 
 snakemakelogfile=$1
 grep "with external jobid" $snakemakelogfile | awk '{print $NF}' | sed "s/['.]//g" | sort | uniq > ${snakemakelogfile}.jobids.lst
-echo -ne "##SubmitTime\tHumanSubmitTime\tJobID:JobState:JobName\tAllocNode:AllocNodePartition:RunNode:RunNodePartition\tQueueTime:RunTime:TimeLimit\tAvgCPU:MaxCPU:CPULimit\tAvgMEM:MaxMEM:MEMLimit\tPartition:QOS\tUsername:Group:Account\tWorkdir\tStdOut\tStdErr\n"
+echo -ne "##SubmitTime\tHumanSubmitTime\tJobID;JobState;JobName\tAllocNode;AllocNodePartition;RunNode;RunNodePartition\tQueueTime;RunTime;Q+R;TimeLimit\tAvgCPU;MaxCPU;CPULimit\tAvgMEM;MaxMEM;MEMLimit\tPartition;QOS\tUsername;Group;Account\tWorkdir\tStdOut\tStdErr\n"
 while read jid;do
 	get_jobid_stats $jid
 done < ${snakemakelogfile}.jobids.lst |sort -k1,1n

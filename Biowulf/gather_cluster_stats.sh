@@ -34,19 +34,19 @@ function displaytime {
 
 function get_batchline_variable {
 	variable=$1
-	grep -m1 $1 /dev/shm/${jobid}.sacct.batchline|awk '{print $NF}'
+	grep -m1 "^$1" /dev/shm/${jobid}.sacct.batchline|awk '{print $NF}'
 }
 
 function get_secondline_variable {
 	variable=$1
-	grep -m1 $1 /dev/shm/${jobid}.sacct.secondline|awk '{print $NF}'
+	grep -m1 "^$1" /dev/shm/${jobid}.sacct.secondline|awk '{print $NF}'
 }
 
 function print_jobid_stats {
 jobid=$1
 declare -A jobdataarray
 export SLURM_TIME_FORMAT="%s" # epoch time
-sacct -P -j $jobid --units=G --format="JobID,AveRSS,MaxRSS,ReqMem,NCPUS,AllocCPUS,ReqCPUS,Start,Submit,Elapsed,Timelimit,Account,State,Group,GID,JobName,NodeList,Partition,QOS,ReqTRES,User,UID,WorkDir" > /dev/shm/${jobid}.sacct
+sacct -P -j $jobid --units=G --format="JobID,AveRSS,MaxRSS,ReqMem,NCPUS,AllocCPUS,ReqCPUS,Start,End,Submit,Elapsed,Timelimit,Account,State,Group,GID,JobName,NodeList,Partition,QOS,ReqTRES,User,UID,WorkDir" > /dev/shm/${jobid}.sacct
 nlines=$(cat /dev/shm/${jobid}.sacct|wc -l)
 jobdataarray["jobid"]="$jobid"
 if [ "$nlines" == "2" ];then
@@ -87,13 +87,7 @@ END {
     }
 }' > /dev/shm/${jobid}.sacct.batchline
 #batch line variables	
-	jobdataarray["submit_time"]=$(get_batchline_variable "Submit")
-	jobdataarray["start"]=$(get_batchline_variable "Start")
-	st=${jobdataarray["submit_time"]}
-	jobdataarray["human_submit_time"]=$(date -d @$st|sed "s/ /_/g")
-	jobdataarray["state"]=$(get_batchline_variable "State")
-	qt=$(echo ${jobdataarray["start"]} ${jobdataarray["submit_time"]}|awk '{print $1-$2}')
-	jobdataarray["queued"]=$(displaytime $qt)
+
 	jobdataarray["elapsed"]=$(get_batchline_variable "Elapsed")
 	jobdataarray["reqcpus"]=$(get_batchline_variable "ReqCPUS")
 	jobdataarray["ncpus"]=$(get_batchline_variable "NCPUS")
@@ -103,6 +97,26 @@ END {
 	jobdataarray["req_mem"]=$(get_batchline_variable "ReqMem")
 
 #second line variables
+
+	jobdataarray["submit_time"]=$(get_secondline_variable "Submit")
+	jobdataarray["start"]=$(get_secondline_variable "Start")
+	jobdataarray["end"]=$(get_secondline_variable "End")
+	st=${jobdataarray["submit_time"]}
+	jobdataarray["human_submit_time"]=$(date -d @$st|sed "s/ /_/g")
+	jobdataarray["state"]=$(get_secondline_variable "State")
+	qt=$(echo ${jobdataarray["start"]} ${jobdataarray["submit_time"]}|awk '{print $1-$2}')
+	rt=$(echo ${jobdataarray["end"]} ${jobdataarray["submit_time"]}|awk '{print $1-$2}')
+	# echo "TESTING"
+	# echo jobid:${jobdataarray["jobid"]}
+	# echo submit:${jobdataarray["submit_time"]}
+	# echo start:${jobdataarray["start"]}
+	# echo end:${jobdataarray["end"]}
+	# echo elapsed:${jobdataarray["elapsed"]}
+	# echo jobid:${jobdataarray["jobid"]}
+	# echo "TESTING"
+	# exit
+	jobdataarray["queued"]=$(displaytime $qt)
+	jobdataarray["runtime"]=$(displaytime $rt)
 	jobdataarray["job_name"]=$(get_secondline_variable "JobName")
 	jobdataarray["time_limit"]=$(get_secondline_variable "Timelimit")
 	jobdataarray["node_list"]=$(get_secondline_variable "NodeList")	
@@ -121,7 +135,7 @@ echo -ne "${jobdataarray["submit_time"]}\t"
 echo -ne "${jobdataarray["human_submit_time"]}\t"
 echo -ne "${jobdataarray["jobid"]};${jobdataarray["state"]};${jobdataarray["job_name"]}\t"
 echo -ne "${jobdataarray["node_list"]};${jobdataarray["run_node_partition"]};${jobdataarray["qos"]}\t"
-echo -ne "${jobdataarray["queued"]};${jobdataarray["elapsed"]};${jobdataarray["time_limit"]}\t"
+echo -ne "${jobdataarray["queued"]};${jobdataarray["elapsed"]};${jobdataarray["runtime"]};${jobdataarray["time_limit"]}\t"
 echo -ne "${jobdataarray["reqcpus"]};${jobdataarray["alloccpus"]}\t"
 echo -ne "${jobdataarray["req_mem"]};${jobdataarray["max_mem"]}\t"
 echo -ne "${jobdataarray["username"]};${jobdataarray["uid"]};${jobdataarray["groupname"]};${jobdataarray["gid"]};${jobdataarray["account"]}\t"
@@ -133,7 +147,7 @@ echo -ne "${jobdataarray["workdir"]}\n"
 snakemakelogfile=$1
 externalidslst="/dev/shm/$(basename ${snakemakelogfile}).jobids.lst"
 grep "with external jobid" $snakemakelogfile | awk '{print $NF}' | sed "s/['.]//g" | sort | uniq > $externalidslst
-echo -ne "##SubmitTime\tHumanSubmitTime\tJobID:JobState:JobName\tNode;Partition:QOS\tQueueTime;RunTime;TimeLimit\tReqCPU;AllocCPU\tReqMEM:MaxMem\tUsername:UID:Group:GID:Account\tReqTRES\tWorkdir\n"
+echo -ne "##SubmitTime\tHumanSubmitTime\tJobID:JobState:JobName\tNode;Partition:QOS\tQueueTime;RunTime;Q+R;TimeLimit\tReqCPU;AllocCPU\tReqMEM:MaxMem\tUsername:UID:Group:GID:Account\tReqTRES\tWorkdir\n"
 while read jid;do
 	print_jobid_stats $jid
 done < $externalidslst |sort -k1,1n
