@@ -15,3 +15,4 @@ __pycache__/
 # Other Unwanted Files
 *~
 *.bak
+**/.kop*
