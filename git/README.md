@@ -1,27 +1,20 @@
-<!-- vscode-markdown-toc -->
-	* 1. [List Branches](#ListBranches)
-	* 2. [Create Branch](#CreateBranch)
-	* 3. [Delete Branch](#DeleteBranch)
-	* 4. [View and Set remote](#ViewandSetremote)
-	* 5. [Adding files](#Addingfiles)
-	* 6. [Removing files](#Removingfiles)
-	* 7. [Commiting](#Commiting)
-	* 8. [Pulling](#Pulling)
-	* 9. [Pushing](#Pushing)
-	* 10. [PAT or Personal Access Token](#PATorPersonalAccessToken)
-	* 11. [Reference](#Reference)
 
-<!-- vscode-markdown-toc-config
-	numbering=true
-	autoSave=true
-	/vscode-markdown-toc-config -->
-<!-- /vscode-markdown-toc -->
+
+- [List Branches](#list-branches)
+- [Create Branch](#create-branch)
+- [Delete Branch](#delete-branch)
+- [View and Set remote](#view-and-set-remote)
+- [Adding files](#adding-files)
+- [Removing files](#removing-files)
+- [Commiting](#commiting)
+- [Pulling](#pulling)
+- [Pushing](#pushing)
+- [PAT or Personal Access Token](#pat-or-personal-access-token)
+- [References](#references)
 
 
 
-
-
-###  1. <a name='ListBranches'></a>List Branches
+### List Branches
 
 The command to list all branches in local and remote repositories is:
 
@@ -41,7 +34,7 @@ Show only local branches
 > git branch -a | grep -v remotes
 ```
 
-###  2. <a name='CreateBranch'></a>Create Branch
+### Create Branch
 
 Create and switch to local branch
 
@@ -58,7 +51,7 @@ Move the local branch to remote
 > git push origin newbr1
 ```
 
-###  3. <a name='DeleteBranch'></a>Delete Branch
+### Delete Branch
 
 Delete local branch:
 
@@ -80,7 +73,7 @@ Delete remote branch:
 
 Local and remote branches are distinct git objects, deleting one does not delete the other. You need to delete each explicitly.
 
-###  4. <a name='ViewandSetremote'></a>View and Set remote
+### View and Set remote
 
 View:
 
@@ -94,7 +87,7 @@ Set:
 > git remote add origin "repo URL"
 ```
 
-###  5. <a name='Addingfiles'></a>Adding files
+### Adding files
 
 ```bash
 > git add file1							# adds one file
@@ -104,7 +97,7 @@ Set:
 > git add -all							# add all folders in the curre
 ```
 
-###  6. <a name='Removingfiles'></a>Removing files
+### Removing files
 
 Remove file from git working tree and local file system
 
@@ -125,7 +118,7 @@ Similar commands for removing folders recursively:
 > git rm -r --cached folder1	# rm from git working tree only
 ```
 
-###  7. <a name='Commiting'></a>Commiting
+### Commiting
 
 ```bash
 > git commit -m "commit message"
@@ -149,7 +142,7 @@ Undo last commit: **sort** ... this will undo commit, but keep all the changed f
 > git reset --soft HEAD~1
 ```
 
-###  8. <a name='Pulling'></a>Pulling
+### Pulling
 
 Download content from remote and merge with local files:
 
@@ -163,7 +156,7 @@ OR simply
 
 `origin` is the convention name for the remote repository and `master` is the branch being pulled
 
-###  9. <a name='Pushing'></a>Pushing
+### Pushing
 
 To push the currently checkedout branch to remote repo's `master` branch:
 
@@ -177,11 +170,32 @@ To push multiple (all) branches at the same time
 > git push origin --all
 ```
 
-###  10. <a name='PATorPersonalAccessToken'></a>PAT or Personal Access Token
+### PAT or Personal Access Token
 
-Github will stop letting users log in with simple username/password from Friday the 13th [08/13/21]! You can create PAT easily going to [Setting-->DeveloperSetting-->PAT](https://github.com/settings/tokens)
+Github will stop letting users log in with simple username/password from Friday the 13th [08/13/21]! You can create PAT easily going to [Setting-->DeveloperSetting-->PAT](https://github.com/settings/tokens). Copy this and save it somewhere safe and it cannot be seen again if you leave the page and will have to be regenerated.
+
+Once you have created your token, you can use it two ways:
+
+1. Continue the *old school* ways, i.e., whenever GH asks for password, copy and paste the token instead and you will be good to go!
+2. Automate the whole process so GH does not ask for password at the time of `pull`, `push`, `commit` etc. Here are the steps for this:
+
+	a. ensure that your GH *user.email* and *user.name* as set correctly. You can check the current settings using 
+	```
+	git config -l
+	``` 
+	It should match your GH username/handle and GH email address. If it is NOT, then you can set it using
+	```
+	git config --global user.name "kopardev"
+	git config --global user.email "vishal.koparde@nih.gov"
+	```
+	Next run
+	```
+	git config --global credential.helper cache
+	```
+	The next time you do a `pull`, `push`, `commit` GH will ask for username and password, provide your \<USERNAME\> and \<PAT\>. Done! GH will not ask for any password going forward.
 
 
-###  11. <a name='Reference'></a>Reference
+
+### References
 
 https://www.jquery-az.com/git-commands/
