@@ -160,6 +160,11 @@ To push multiple (all) branches at the same time
 > git push origin --all
 ```
 
+### PAT or Personal Access Token
+
+Github will stop letting users log in with simple username/password from Friday the 13th [08/13/21]! You can create PAT easily going to [Setting-->DeveloperSetting-->PAT](https://github.com/settings/tokens)
+
+
 ### Reference
 
 https://www.jquery-az.com/git-commands/
