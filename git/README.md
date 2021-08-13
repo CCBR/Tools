@@ -172,7 +172,9 @@ To push multiple (all) branches at the same time
 
 ### PAT or Personal Access Token
 
-Github will stop letting users log in with simple username/password from Friday the 13th [08/13/21]! You can create PAT easily going to [Setting-->DeveloperSetting-->PAT](https://github.com/settings/tokens). Copy this and save it somewhere safe and it cannot be seen again if you leave the page and will have to be regenerated.
+Github will stop letting users log in with simple username/password from Friday the 13th [08/13/21]! You can create PAT easily going to [Setting-->DeveloperSetting-->PAT](https://github.com/settings/tokens). Copy this and save it somewhere safe and it cannot be seen again if you leave the page and will have to be regenerated. FYI, most of use will be "ok" with just "**repo**" as the OAuth scope while creating the PAT.
+
+![image-20210813161235424](https://tva1.sinaimg.cn/large/008i3skNgy1gtft3sql0jj60i606q74n02.jpg)
 
 Once you have created your token, you can use it two ways:
 
@@ -182,7 +184,7 @@ Once you have created your token, you can use it two ways:
 	a. ensure that your GH *user.email* and *user.name* as set correctly. You can check the current settings using 
 	```
 	git config -l
-	``` 
+	```
 	It should match your GH username/handle and GH email address. If it is NOT, then you can set it using
 	```
 	git config --global user.name "kopardev"
