@@ -1,10 +1,27 @@
+<!-- vscode-markdown-toc -->
+	* 1. [List Branches](#ListBranches)
+	* 2. [Create Branch](#CreateBranch)
+	* 3. [Delete Branch](#DeleteBranch)
+	* 4. [View and Set remote](#ViewandSetremote)
+	* 5. [Adding files](#Addingfiles)
+	* 6. [Removing files](#Removingfiles)
+	* 7. [Commiting](#Commiting)
+	* 8. [Pulling](#Pulling)
+	* 9. [Pushing](#Pushing)
+	* 10. [PAT or Personal Access Token](#PATorPersonalAccessToken)
+	* 11. [Reference](#Reference)
+
+<!-- vscode-markdown-toc-config
+	numbering=true
+	autoSave=true
+	/vscode-markdown-toc-config -->
+<!-- /vscode-markdown-toc -->
 
 
-[TOC]
 
 
 
-### List Branches
+###  1. <a name='ListBranches'></a>List Branches
 
 The command to list all branches in local and remote repositories is:
 
@@ -24,7 +41,7 @@ Show only local branches
 > git branch -a | grep -v remotes
 ```
 
-### Create Branch
+###  2. <a name='CreateBranch'></a>Create Branch
 
 Create and switch to local branch
 
@@ -41,7 +58,7 @@ Move the local branch to remote
 > git push origin newbr1
 ```
 
-### Delete Branch
+###  3. <a name='DeleteBranch'></a>Delete Branch
 
 Delete local branch:
 
@@ -63,7 +80,7 @@ Delete remote branch:
 
 Local and remote branches are distinct git objects, deleting one does not delete the other. You need to delete each explicitly.
 
-### View and Set remote
+###  4. <a name='ViewandSetremote'></a>View and Set remote
 
 View:
 
@@ -77,7 +94,7 @@ Set:
 > git remote add origin "repo URL"
 ```
 
-### Adding files
+###  5. <a name='Addingfiles'></a>Adding files
 
 ```bash
 > git add file1							# adds one file
@@ -87,7 +104,7 @@ Set:
 > git add -all							# add all folders in the curre
 ```
 
-### Removing files
+###  6. <a name='Removingfiles'></a>Removing files
 
 Remove file from git working tree and local file system
 
@@ -108,7 +125,7 @@ Similar commands for removing folders recursively:
 > git rm -r --cached folder1	# rm from git working tree only
 ```
 
-### Commiting
+###  7. <a name='Commiting'></a>Commiting
 
 ```bash
 > git commit -m "commit message"
@@ -132,7 +149,7 @@ Undo last commit: **sort** ... this will undo commit, but keep all the changed f
 > git reset --soft HEAD~1
 ```
 
-### Pulling
+###  8. <a name='Pulling'></a>Pulling
 
 Download content from remote and merge with local files:
 
@@ -146,7 +163,7 @@ OR simply
 
 `origin` is the convention name for the remote repository and `master` is the branch being pulled
 
-### Pushing
+###  9. <a name='Pushing'></a>Pushing
 
 To push the currently checkedout branch to remote repo's `master` branch:
 
@@ -160,11 +177,11 @@ To push multiple (all) branches at the same time
 > git push origin --all
 ```
 
-### PAT or Personal Access Token
+###  10. <a name='PATorPersonalAccessToken'></a>PAT or Personal Access Token
 
 Github will stop letting users log in with simple username/password from Friday the 13th [08/13/21]! You can create PAT easily going to [Setting-->DeveloperSetting-->PAT](https://github.com/settings/tokens)
 
 
-### Reference
+###  11. <a name='Reference'></a>Reference
 
 https://www.jquery-az.com/git-commands/
