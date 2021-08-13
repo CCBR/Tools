@@ -188,11 +188,13 @@ Once you have created your token, you can use it two ways:
 	git config --global user.name "kopardev"
 	git config --global user.email "vishal.koparde@nih.gov"
 	```
-	Next run
+	b. Next run
 	```
 	git config --global credential.helper cache
 	```
-	The next time you do a `pull`, `push`, `commit` GH will ask for username and password, provide your \<USERNAME\> and \<PAT\>. Done! GH will not ask for any password going forward.
+	c. The next time you do a `pull`, `push`, `commit` GH will ask for username and password, provide your \<USERNAME\> and \<PAT\>. 
+	
+	Done! GH will not ask for any password going forward.
 
 
 
