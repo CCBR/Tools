@@ -8,7 +8,7 @@ USAGE:
     $ hf -h
 Example:
     $ hf -g ZNF365
-    $ hf -gl Wdr53,Zfp365
+    $ hf -l Wdr53,Zfp365
     $ hf -f genelist.txt
 """
 
@@ -79,7 +79,6 @@ def process_args(args,lookup):
     if args.genelistfile:
         with open(args.genelistfile) as f:
             lines = f.readlines()
-        lines = lines.split("\n")
         lines = list(map(lambda x:x.strip()),lines)
         r = process_genelist(lines,lookup)
     return r
