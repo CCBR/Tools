@@ -95,7 +95,7 @@ def read_lookup():
     download = requests.get(url).content
     lookupdf = pd.read_csv(io.StringIO(download.decode('utf-8')),sep="\t")
     lookupdf.columns = ["geneName","homologs"]
-    for index, row in df.iterrows():
+    for index, row in lookupdf.iterrows():
         lookup[row["geneName"]]=row["homologs"]
     return lookup
 
