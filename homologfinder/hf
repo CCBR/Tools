@@ -63,25 +63,25 @@ def collect_args():
     
     return args
 
-def process_genelist(gl):
+def process_genelist(gl,lookup):
     result = []
     for g in gl:
         if g in lookup:
             result.extend(lookup[g].split(","))
     return result
 
-def process_args(args):
+def process_args(args,lookup):
     if args.gene:
-        r = process_genelist([args.gene])
+        r = process_genelist([args.gene],lookup)
     if args.genelist:
         gl = args.genelist
-        r = process_genelist(gl.split(","))
+        r = process_genelist(gl.split(","),lookup)
     if args.genelistfile:
         with open(args.genelistfile) as f:
             lines = f.readlines()
         lines = lines.split("\n")
         lines = list(map(lambda x:x.strip()),lines)
-        r = process_genelist(lines)
+        r = process_genelist(lines,lookup)
     return r
 
 def print_results(result):
@@ -105,7 +105,7 @@ def main():
     # now that args are correct load in the lookup
     lookup = read_lookup()
     # process the arguments
-    result = process_args(args)
+    result = process_args(args,lookup)
     print_results(result)
 
 if __name__ == '__main__':
