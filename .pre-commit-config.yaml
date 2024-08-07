@@ -17,6 +17,10 @@ repos:
     rev: 23.7.0
     hooks:
       - id: black
+  - repo: https://github.com/numpy/numpydoc
+    rev: v1.7.0
+    hooks:
+      - id: numpydoc-validation
   # R formatting
   - repo: https://github.com/lorenzwalthert/precommit
     rev: v0.1.2
