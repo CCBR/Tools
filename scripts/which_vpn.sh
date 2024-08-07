@@ -9,7 +9,7 @@ elif [[ "$HOSTNAME" == "helix.nih.gov" ]]
 then
 	echo "DO NOT RUN THIS ON HELIX! This script is meant for your laptop."
 	exit 1
-elif [[ "$HOSTNAME" =~ cn[0-9]{4}$ ]]
+elif [[ "$HOSTNAME =~ cn[0-9]{4}$ ]]
 then
 	echo "DO NOT RUN THIS ON a BIOWULF interactive node! This script is meant for your laptop"
 	exit 1

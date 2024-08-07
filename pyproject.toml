@@ -1,0 +1,62 @@
+[build-system]
+requires = [
+    "setuptools >= 62.3.0",
+    "wheel >= 0.29.0",
+]
+build-backend = 'setuptools.build_meta'
+
+[project]
+name = 'ccbr_tools'
+dynamic = ['version','readme']
+description = "CCBR CLI Tools"
+authors = [
+    {name = "Kelly Sovacool", email = "kelly.sovacool@nih.gov"},
+    {name = "Vishal Koparde", email = "vishal.koparde@nih.gov"},
+    {name = "Skyler Kuhn"}
+]
+maintainers = [
+    {name = "CCR Collaborative Bioinformatics Resource", email = "ccbr@mail.nih.gov"},
+]
+license = {file = "LICENSE"}
+classifiers = [
+    "Environment :: Console",
+    "Environment :: MacOS X",
+    "Intended Audience :: Science/Research",
+    "License :: OSI Approved :: MIT license",
+    "Natural Language :: English",
+    "Operating System :: POSIX :: Linux",
+    "Operating System :: MacOS :: MacOS X",
+    "Programming Language :: Python :: 3.7",
+    "Programming Language :: Python :: 3.8",
+    "Programming Language :: Python :: 3.9",
+    "Topic :: Scientific/Engineering :: Bio-Informatics",
+]
+requires-python = ">=3.10"
+dependencies = [
+    "Click >= 8.1.3",
+]
+
+[project.optional-dependencies]
+dev = [
+    "black >= 22.0.0",
+    "pre-commit"
+]
+test = [
+    "pytest"
+]
+
+[project.scripts]
+ccbr_tools = "ccbr_tools.__main__:main"
+
+[project.urls]
+Repository = "https://github.com/CCBR/Tools"
+
+[tool.setuptools.package-data]
+"*" = ["LICENSE", "CHANGELOG.md"]
+
+[tool.setuptools.dynamic]
+version = {file = "src/ccbr_tools/VERSION"}
+readme = {file = "README.md"}
+
+[tool.setuptools]
+script-files = ["scripts/*"]
