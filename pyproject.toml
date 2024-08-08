@@ -77,4 +77,16 @@ version = {file = "src/ccbr_tools/VERSION"}
 readme = {file = "README.md"}
 
 [tool.setuptools]
-script-files = ["scripts/*"]
+script-files = [
+    "scripts/add_gene_name_to_count_matrix.R",
+    "scripts/aggregate_data_tables.R",
+    "scripts/argparse.bash",
+    "scripts/extract_value_from_json.py",
+    "scripts/extract_value_from_yaml.py",
+    "scripts/filter_bam_by_readids.py",
+    "scripts/filter_fastq_by_readids_highmem.py",
+    "scripts/filter_fastq_by_readids_highmem_pe.py",
+    "scripts/rawcounts2normalizedcounts_DESeq2.R",
+    "scripts/rawcounts2normalizedcounts_limmavoom.R",
+    "scripts/which_vpn.sh"
+]
