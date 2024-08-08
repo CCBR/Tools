@@ -45,7 +45,8 @@ dev = [
     "pre-commit"
 ]
 test = [
-    "pytest"
+    "pytest",
+    "pytest-cov"
 ]
 
 [project.scripts]

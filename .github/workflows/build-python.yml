@@ -40,7 +40,10 @@ jobs:
           python -m pip install .[dev,test] --upgrade pip
       - name: Test
         run: |
-          python -m pytest
+          python -m pytest --cov
+      - uses: codecov/codecov-action@v4
+        with:
+          token: ${{ secrets.CODECOV_TOKEN }}
 
   build-status: # https://github.com/orgs/community/discussions/4324#discussioncomment-3477871
     runs-on: ubuntu-latest
