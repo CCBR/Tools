@@ -33,6 +33,8 @@ classifiers = [
 ]
 requires-python = ">=3.10"
 dependencies = [
+    "biopython",
+    "pandas",
     "Click >= 8.1.3",
 ]
 
@@ -47,6 +49,12 @@ test = [
 
 [project.scripts]
 ccbr_tools = "ccbr_tools.__main__:main"
+peek = "ccbr_tools.peek:main"
+jobby = "ccbr_tools.jobby:main"
+jobinfo = "ccbr_tools.jobinfo:main"
+intersect = "ccbr_tools.intersect:main"
+hf = "ccbr_tools.hf:main"
+gb2gtf = "ccbr_tools.gb2gtf:main"
 
 [project.urls]
 Repository = "https://github.com/CCBR/Tools"
@@ -81,12 +89,25 @@ script-files = [
     "scripts/add_gene_name_to_count_matrix.R",
     "scripts/aggregate_data_tables.R",
     "scripts/argparse.bash",
+    "scripts/cancel_snakemake_jobs.sh",
+    "scripts/create_hpc_link.sh",
     "scripts/extract_value_from_json.py",
     "scripts/extract_value_from_yaml.py",
     "scripts/filter_bam_by_readids.py",
     "scripts/filter_fastq_by_readids_highmem.py",
     "scripts/filter_fastq_by_readids_highmem_pe.py",
+    "scripts/gather_cluster_stats.sh",
+    "scripts/gather_cluster_stats_biowulf.sh",
+    "scripts/get_buyin_partition_list.bash",
+    "scripts/get_slurm_file_with_error.sh",
+    "scripts/gsea_preranked.sh",
+    "scripts/karyoploter.R",
+    "scripts/make_labels_for_pipeliner.sh",
     "scripts/rawcounts2normalizedcounts_DESeq2.R",
     "scripts/rawcounts2normalizedcounts_limmavoom.R",
+    "scripts/run_jobby_on_nextflow_log",
+    "scripts/run_jobby_on_nextflow_log_full_format",
+    "scripts/run_jobby_on_snakemake_log",
+    "scripts/run_jobby_on_snakemake_log_full_format",
     "scripts/which_vpn.sh"
 ]

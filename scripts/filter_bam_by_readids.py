@@ -1,3 +1,4 @@
+#!/usr/bin/env python
 import pysam
 import sys
 import argparse

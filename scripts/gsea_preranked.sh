@@ -10,7 +10,7 @@ set -e
 
 
 if [ $# -lt 1 ]; then
-  echo 
+  echo
   echo 'Usage:   run_gsea_preranked rankfile gmtfile label'
   echo 'Example: run_gsea_preranked KO_WT.rnk MousePath_GO_gmt.gmt KO_WT.GO'
   echo

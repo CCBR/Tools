@@ -1,4 +1,0 @@
-#!/usr/bin/env bash
-nextflowlog=$1
-SCRIPT_DIR=$( cd -- "$( dirname -- "${BASH_SOURCE[0]}" )" &> /dev/null && pwd )
-${SCRIPT_DIR}/jobby $(awk -F" jobId: " '{print $2}' ${nextflowlog} | awk -F";" '{print $1}' | grep -v "^$" | sort | uniq | tr "\\n" " ")

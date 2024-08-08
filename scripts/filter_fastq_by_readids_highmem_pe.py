@@ -1,3 +1,4 @@
+#!/usr/bin/env python
 import HTSeq
 import sys
 import argparse
