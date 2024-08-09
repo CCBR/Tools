@@ -19,7 +19,6 @@ env:
 jobs:
   build:
     runs-on: ubuntu-latest
-    continue-on-error: true
     strategy:
       fail-fast: false
       matrix:
@@ -33,6 +32,7 @@ jobs:
           python-version: ${{ matrix.python-version }}
       - name: Lint
         uses: psf/black@stable
+        continue-on-error: true
         with:
           options: "--check --verbose"
           use_pyproject: true
