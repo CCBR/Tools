@@ -41,7 +41,7 @@ jobs:
       - name: Test
         if: always()
         run: |
-          python -m pytest --cov src
+          python -m pytest --cov ccbr_tools
       - uses: codecov/codecov-action@v4
         with:
           token: ${{ secrets.CODECOV_TOKEN }}
