@@ -30,16 +30,16 @@ jobs:
         uses: actions/setup-python@v3
         with:
           python-version: ${{ matrix.python-version }}
-      - name: Lint
-        uses: psf/black@stable
-        continue-on-error: true
-        with:
-          options: "--check --verbose"
-          use_pyproject: true
       - name: Install dependencies
         run: |
           python -m pip install .[dev,test] --upgrade pip
+      - name: Lint
+        uses: psf/black@stable
+        with:
+          options: "--check --verbose"
+          use_pyproject: true
       - name: Test
+        if: always()
         run: |
           python -m pytest --cov src
       - uses: codecov/codecov-action@v4
