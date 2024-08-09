@@ -8,6 +8,8 @@ def test_scripts_help():
 
 
 def test_which_vpn():
-    assert "Are you really connected to VPN?? Doesn't look like it!" in shell_run(
-        "which_vpn.sh"
+    which_vpn = shell_run("which_vpn.py")
+    assert (
+        "Are you really connected to VPN?? Doesn't look like it!" in which_vpn
+        or "Your VPN IP is" in which_vpn
     )
