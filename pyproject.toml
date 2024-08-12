@@ -8,7 +8,7 @@ build-backend = 'setuptools.build_meta'
 [project]
 name = 'ccbr_tools'
 dynamic = ['version','readme']
-description = "CCBR CLI Tools"
+description = "Utilities for CCBR Bioinformatics Software"
 authors = [
     {name = "Kelly Sovacool", email = "kelly.sovacool@nih.gov"},
     {name = "Vishal Koparde", email = "vishal.koparde@nih.gov"},
@@ -31,11 +31,13 @@ classifiers = [
     "Programming Language :: Python :: 3.9",
     "Topic :: Scientific/Engineering :: Bio-Informatics",
 ]
-requires-python = ">=3.10"
+requires-python = ">=3.10, <3.12"
 dependencies = [
     "biopython",
+    "cffconvert >= 2.0.0",
     "Click >= 8.1.3",
     "pandas",
+    "pyyaml >= 6.0",
     "requests"
 ]
 
@@ -51,12 +53,12 @@ test = [
 
 [project.scripts]
 ccbr_tools = "ccbr_tools.__main__:main"
-peek = "ccbr_tools.peek:main"
+gb2gtf = "ccbr_tools.gb2gtf:main"
+hf = "ccbr_tools.homologfinder.hf:main"
 jobby = "ccbr_tools.jobby:main"
 jobinfo = "ccbr_tools.jobinfo:main"
 intersect = "ccbr_tools.intersect:main"
-hf = "ccbr_tools.hf:main"
-gb2gtf = "ccbr_tools.gb2gtf:main"
+peek = "ccbr_tools.peek:main"
 
 [project.urls]
 Repository = "https://github.com/CCBR/Tools"
@@ -80,10 +82,10 @@ override_SS05 = [  # override SS05 to allow docstrings starting with these words
 ]
 
 [tool.setuptools.package-data]
-"*" = ["LICENSE", "CHANGELOG.md"]
+"*" = ["LICENSE", "VERSION", "CITATION.cff", "CHANGELOG.md"]
 
 [tool.setuptools.dynamic]
-version = {file = "src/ccbr_tools/VERSION"}
+version = {file = "VERSION"}
 readme = {file = "README.md"}
 
 [tool.setuptools]
