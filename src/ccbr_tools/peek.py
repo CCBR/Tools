@@ -1,12 +1,14 @@
 #!/usr/local/bin/python
 # -*- coding: utf-8 -*-
 from __future__ import print_function
+from pathlib import Path
 import sys
 
 
 def usage():
     """Print usage information and exit program"""
-    print("USAGE: {} <file.tsv> [buffer]\n".format(sys.argv[0]))
+    bin_stem = Path(sys.argv[0]).stem
+    print(f"USAGE: {bin_stem} <file.tsv> [buffer]\n")
     print("Assumptions:\n\tInput file is tab delimited")
     print("\t └── Globbing supported: *.txt\n")
     print("Optional:\n\tbuffer = 40 (default)")
