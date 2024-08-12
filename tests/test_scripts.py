@@ -1,4 +1,4 @@
-from ccbr_tools.util import shell_run
+from ccbr_tools.shell import shell_run
 
 
 def test_scripts_help():
