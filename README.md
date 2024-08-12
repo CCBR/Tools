@@ -90,6 +90,7 @@ included in the package and do no have any unit tests.
 - `run_jobby_on_nextflow_log_full_format`
 - `run_jobby_on_snakemake_log`
 - `run_jobby_on_snakemake_log_full_format`
+- `spooker`
 - `which_vpn.sh`
 
 ## Citation
