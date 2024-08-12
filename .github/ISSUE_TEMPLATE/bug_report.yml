@@ -1,0 +1,45 @@
+name: Bug report
+description: Report something that is broken or incorrect
+labels: bug
+body:
+  - type: markdown
+    attributes:
+      value: |
+        Before you post this issue, please check the documentation:
+
+        <https://ccbr.github.io/CCBR/Tools>
+
+  - type: textarea
+    id: description
+    attributes:
+      label: Description of the bug
+      description: A clear and concise description of what the bug is.
+    validations:
+      required: true
+
+  - type: textarea
+    id: command_used
+    attributes:
+      label: Command used and terminal output
+      description: Steps to reproduce the behaviour. Please paste the code you used
+      render: console
+      placeholder: |
+        $ ccbr_tools ...
+
+        Some output where something broke
+
+  - type: textarea
+    id: files
+    attributes:
+      label: Relevant files
+      description: |
+        Please drag and drop any relevant files here. Create a `.zip` archive if the extension is not allowed.
+
+  - type: textarea
+    id: system
+    attributes:
+      label: System information
+      description: |
+        - Version of CCBR Tools _(eg. 1.0, 1.8.2)_
+        - Python version _(eg. 3.11)_
+        - Environment _(eg. local macOS, biowulf HPC)_
