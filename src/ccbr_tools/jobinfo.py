@@ -227,15 +227,19 @@ def get_jobinfo(args):
     )
     p1_table = p1_table.sort_values(by=["epochtime"])
     p1_table["max_cpu_util"] = p1_table.apply(
-        lambda row: "-"
-        if row["cpu_max"] == "-"
-        else "%.2f" % (float(row["cpu_max"]) * 100 / int(row["cpus"])) + " %",
+        lambda row: (
+            "-"
+            if row["cpu_max"] == "-"
+            else "%.2f" % (float(row["cpu_max"]) * 100 / int(row["cpus"])) + " %"
+        ),
         axis=1,
     )
     p1_table["max_mem_util"] = p1_table.apply(
-        lambda row: "-"
-        if row["mem_max"] == "-"
-        else "%.2f" % (mem2gb(row["mem_max"]) * 100 / mem2gb(row["mem"])) + " %",
+        lambda row: (
+            "-"
+            if row["mem_max"] == "-"
+            else "%.2f" % (mem2gb(row["mem_max"]) * 100 / mem2gb(row["mem"])) + " %"
+        ),
         axis=1,
     )
     p1_table["queued_time_seconds"] = p1_table.apply(
@@ -248,11 +252,17 @@ def get_jobinfo(args):
         lambda row: "%d" % (int(time2sec(row["timelimit"]))), axis=1
     )
     p1_table["time_util"] = p1_table.apply(
-        lambda row: "%.2f"
-        % (float(row["elapsed_time_seconds"]) * 100 / float(row["timelimit_seconds"]))
-        + " %"
-        if float(row["timelimit_seconds"]) != 0
-        else "- %",
+        lambda row: (
+            "%.2f"
+            % (
+                float(row["elapsed_time_seconds"])
+                * 100
+                / float(row["timelimit_seconds"])
+            )
+            + " %"
+            if float(row["timelimit_seconds"]) != 0
+            else "- %"
+        ),
         axis=1,
     )
     if args.output:
