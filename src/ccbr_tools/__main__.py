@@ -65,7 +65,24 @@ def cite(citation_file, output_format):
     print_citation(citation_file=citation_file, output_format=output_format)
 
 
+@click.command()
+@click.option(
+    "--debug",
+    "-d",
+    help="Print the path to the VERSION file",
+    type=bool,
+    default=False,
+    is_flag=True,
+)
+def version(debug):
+    """
+    Print the version of ccbr_tools
+    """
+    print(get_version(debug=debug))
+
+
 cli.add_command(cite)
+cli.add_command(version)
 
 
 def main():

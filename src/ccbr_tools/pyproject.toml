@@ -1,0 +1,118 @@
+[build-system]
+requires = [
+    "setuptools >= 62.3.0",
+    "wheel >= 0.29.0",
+]
+build-backend = 'setuptools.build_meta'
+
+[project]
+name = 'ccbr_tools'
+dynamic = ['version','readme']
+description = "Utilities for CCBR Bioinformatics Software"
+authors = [
+    {name = "Kelly Sovacool", email = "kelly.sovacool@nih.gov"},
+    {name = "Vishal Koparde", email = "vishal.koparde@nih.gov"},
+    {name = "Skyler Kuhn"},
+]
+maintainers = [
+    {name = "CCR Collaborative Bioinformatics Resource", email = "ccbr@mail.nih.gov"},
+]
+license = {file = "LICENSE"}
+classifiers = [
+    "Environment :: Console",
+    "Environment :: MacOS X",
+    "Intended Audience :: Science/Research",
+    "License :: OSI Approved :: MIT license",
+    "Natural Language :: English",
+    "Operating System :: POSIX :: Linux",
+    "Operating System :: MacOS :: MacOS X",
+    "Programming Language :: Python :: 3.7",
+    "Programming Language :: Python :: 3.8",
+    "Programming Language :: Python :: 3.9",
+    "Topic :: Scientific/Engineering :: Bio-Informatics",
+]
+requires-python = ">=3.10, <3.12"
+dependencies = [
+    "biopython",
+    "cffconvert >= 2.0.0",
+    "Click >= 8.1.3",
+    "pandas",
+    "pyyaml >= 6.0",
+    "requests"
+]
+
+[project.optional-dependencies]
+dev = [
+    "black >= 23.10.0",
+    "jupyter",
+    "pre-commit"
+]
+test = [
+    "pytest",
+    "pytest-cov"
+]
+
+[project.scripts]
+ccbr_tools = "ccbr_tools.__main__:main"
+gb2gtf = "ccbr_tools.gb2gtf:main"
+hf = "ccbr_tools.homologfinder.hf:main"
+jobby = "ccbr_tools.jobby:main"
+jobinfo = "ccbr_tools.jobinfo:main"
+intersect = "ccbr_tools.intersect:main"
+peek = "ccbr_tools.peek:main"
+
+[project.urls]
+Repository = "https://github.com/CCBR/Tools"
+
+[tool.numpydoc_validation]
+checks = [
+    "all",   # report on all checks, except the below
+    "EX01",
+    "SA01",
+    "ES01",
+]
+# remember to use single quotes for regex in TOML
+exclude = [  # don't report on objects that match any of these regex
+    '\.undocumented_method$',
+    '\.__repr__$',
+]
+override_SS05 = [  # override SS05 to allow docstrings starting with these words
+    '^Process ',
+    '^Assess ',
+    '^Access ',
+]
+
+[tool.setuptools.package-data]
+"*" = ["LICENSE", "VERSION", "CITATION.cff", "CHANGELOG.md", "pyproject.toml"]
+
+[tool.setuptools.dynamic]
+version = {file = "VERSION"}
+readme = {file = "README.md"}
+
+[tool.setuptools]
+script-files = [
+    "scripts/add_gene_name_to_count_matrix.R",
+    "scripts/aggregate_data_tables.R",
+    "scripts/argparse.bash",
+    "scripts/cancel_snakemake_jobs.sh",
+    "scripts/create_hpc_link.sh",
+    "scripts/extract_value_from_json.py",
+    "scripts/extract_value_from_yaml.py",
+    "scripts/filter_bam_by_readids.py",
+    "scripts/filter_fastq_by_readids_highmem.py",
+    "scripts/filter_fastq_by_readids_highmem_pe.py",
+    "scripts/gather_cluster_stats.sh",
+    "scripts/gather_cluster_stats_biowulf.sh",
+    "scripts/get_buyin_partition_list.bash",
+    "scripts/get_slurm_file_with_error.sh",
+    "scripts/gsea_preranked.sh",
+    "scripts/karyoploter.R",
+    "scripts/make_labels_for_pipeliner.sh",
+    "scripts/rawcounts2normalizedcounts_DESeq2.R",
+    "scripts/rawcounts2normalizedcounts_limmavoom.R",
+    "scripts/run_jobby_on_nextflow_log",
+    "scripts/run_jobby_on_nextflow_log_full_format",
+    "scripts/run_jobby_on_snakemake_log",
+    "scripts/run_jobby_on_snakemake_log_full_format",
+    "scripts/which_vpn.sh"
+]

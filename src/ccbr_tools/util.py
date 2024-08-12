@@ -15,18 +15,19 @@ def repo_base(*paths):
     """Get the absolute path to a file in the repository
     @return abs_path <str>
     """
-    basedir = os.path.dirname(
-        os.path.dirname(os.path.dirname(os.path.realpath(__file__)))
-    )
-    return os.path.join(basedir, *paths)
+    basedir = pathlib.Path(__file__).absolute().parent
+    return basedir.joinpath(*paths)
 
 
-def get_version():
+def get_version(debug=False):
     """Get the current version of the ccbr_tools package
     @param pkg_name <str> : name of the package (default: ccbr_tools)
     @return version <str>
     """
-    with open(repo_base("VERSION"), "r") as infile:
+    version_path = repo_base("VERSION")
+    if debug:
+        print("VERSION file path:", version_path)
+    with open(version_path, "r") as infile:
         return infile.read().strip().lstrip("v")
 
 
