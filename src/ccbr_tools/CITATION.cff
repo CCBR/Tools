@@ -11,6 +11,10 @@ authors:
     affiliation: Advanced Biomedical Computational Science, Frederick National Laboratory for Cancer Research, Frederick, MD 21702, USA
   - family-names: Kuhn
     given-names: Skyler
+  - family-names: Tandon
+    given-names: Mayank
+  - family-names: Huse
+    given-names: Susan
 title: "CCBR Tools: Utilities for CCBR Bioinformatics Software"
 url: https://ccbr.github.io/Tools/
 repository-code: https://github.com/CCBR/Tools

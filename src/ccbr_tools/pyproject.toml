@@ -13,6 +13,8 @@ authors = [
     {name = "Kelly Sovacool", email = "kelly.sovacool@nih.gov"},
     {name = "Vishal Koparde", email = "vishal.koparde@nih.gov"},
     {name = "Skyler Kuhn"},
+    {name = "Mayank Tandon"},
+    {name = "Susan Huse"},
 ]
 maintainers = [
     {name = "CCR Collaborative Bioinformatics Resource", email = "ccbr@mail.nih.gov"},
