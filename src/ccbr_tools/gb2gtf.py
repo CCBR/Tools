@@ -1,7 +1,7 @@
 # download GenBank file from NCBI and then
 # Usage:python gb2gtf.py sequence.gb  > sequence.gtf
 
-import os, sys
+import sys
 from Bio.Seq import Seq
 from Bio.SeqRecord import SeqRecord
 from Bio.SeqFeature import SeqFeature, FeatureLocation
@@ -10,8 +10,23 @@ import Bio
 
 
 def main():
+    if check_args(sys.argv):
+        gb2gtf()
+
+
+def check_args(args):
+    valid_usage = True
+    if len(args) < 2 or "-h" in args or "--help" in args:
+        print("Usage: gb2gtf sequence.gb > sequence.gtf")
+        valid_usage = False
+    return valid_usage
+
+
+def gb2gtf():
+    args = sys.argv
+
     # get all sequence records for the specified genbank file
-    recs = [rec for rec in SeqIO.parse(sys.argv[1], "genbank")]
+    recs = [rec for rec in SeqIO.parse(args[1], "genbank")]
 
     # print the number of sequence records that were extracted
     # print(len(recs))
