@@ -19,7 +19,12 @@ pip install git+https://github.com/CCBR/Tools
 
 ## Usage
 
+```sh
+ccbr_tools --help
+```
+
 ```{python}
+#| echo: false
 !ccbr_tools --help
 ```
 
@@ -40,10 +45,11 @@ Command-line utilities in CCBR Tools.
 print("\n".join([f"  - `{cmd}`" for cmd in ccbr_tools.util.get_project_scripts()]))
 ```
 
+Run a command with `--help` to learn how to use it.
 
 ## External Scripts
 
-There are additional standalone scripts for various common tasks in [scripts/](scripts/).
+Additional standalone scripts for various common tasks in [scripts/](scripts/) are added to the path when this package is installed.
 They are less robust than the CLI Utilities included in the package and do no have any unit tests.
 
 ```{python}
@@ -61,7 +67,8 @@ Please cite this software if you use it in a publication:
 
 ```{python}
 #| echo: false
-!ccbr_tools cite -f apalike
+#| output: asis
+!ccbr_tools cite -f apalike | sed -s 's/^/> /g'
 ```
 
 

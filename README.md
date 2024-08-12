@@ -1,6 +1,6 @@
-# CCBR Tools
-
 <!-- README.md is generated from README.qmd. Please edit that file -->
+
+# CCBR Tools
 
 Utilities for CCBR Bioinformatics Software
 
@@ -9,14 +9,14 @@ Utilities for CCBR Bioinformatics Software
 
 ## Installation
 
-``` sh
+```sh
 pip install git+https://github.com/CCBR/Tools
 ```
 
 ## Usage
 
-``` python
-!ccbr_tools --help
+```sh
+ccbr_tools --help
 ```
 
     Usage: ccbr_tools [OPTIONS] COMMAND [ARGS]...
@@ -42,7 +42,7 @@ pip install git+https://github.com/CCBR/Tools
       jobinfo
       peek
 
-``` python
+```python
 import ccbr_tools.util
 print(ccbr_tools.util.get_version())
 ```
@@ -61,11 +61,14 @@ Command-line utilities in CCBR Tools.
 - `jobinfo`
 - `peek`
 
+Run a command with `--help` to learn how to use it.
+
 ## External Scripts
 
-There are additional standalone scripts for various common tasks in
-[scripts/](scripts/). They are less robust than the CLI Utilities
-included in the package and do no have any unit tests.
+Additional standalone scripts for various common tasks in
+[scripts/](scripts/) are added to the path when this package is
+installed. They are less robust than the CLI Utilities included in the
+package and do no have any unit tests.
 
 - `add_gene_name_to_count_matrix.R`
 - `aggregate_data_tables.R`
@@ -97,7 +100,11 @@ included in the package and do no have any unit tests.
 
 Please cite this software if you use it in a publication:
 
-    Sovacool K., Koparde V., Kuhn S. CCBR Tools: Utilities for CCBR Bioinformatics Software URL: https://ccbr.github.io/Tools/
+sed: illegal option – s usage: sed script \[-Ealnru\] \[-i extension\]
+\[file …\] sed \[-Ealnu\] \[-i extension\] \[-e script\] … \[-f
+script_file\] … \[file …\] Exception ignored in: \<\_io.TextIOWrapper
+name=‘<stdout>’ mode=‘w’ encoding=‘utf-8’\> BrokenPipeError: \[Errno
+32\] Broken pipe
 
 ### Bibtex entry
 
