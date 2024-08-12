@@ -49,6 +49,8 @@ jobs:
           git add .
           git commit -m "ci: 🤖 black formatting" && git push || echo "nothing to commit"
       - uses: quarto-dev/quarto-actions/setup@v2
+        with:
+          version: 1.4.515
       - name: quarto render readme
         run: |
           quarto render README.qmd
