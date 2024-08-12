@@ -114,5 +114,6 @@ script-files = [
     "scripts/run_jobby_on_nextflow_log_full_format",
     "scripts/run_jobby_on_snakemake_log",
     "scripts/run_jobby_on_snakemake_log_full_format",
+    "scripts/spooker",
     "scripts/which_vpn.sh"
 ]
