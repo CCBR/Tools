@@ -100,16 +100,14 @@ package and do no have any unit tests.
 
 Please cite this software if you use it in a publication:
 
-sed: illegal option – s usage: sed script \[-Ealnru\] \[-i extension\]
-\[file …\] sed \[-Ealnu\] \[-i extension\] \[-e script\] … \[-f
-script_file\] … \[file …\] Exception ignored in: \<\_io.TextIOWrapper
-name=‘<stdout>’ mode=‘w’ encoding=‘utf-8’\> BrokenPipeError: \[Errno
-32\] Broken pipe
+> Sovacool K., Koparde V., Kuhn S., Tandon M., Huse S. CCBR Tools:
+> Utilities for CCBR Bioinformatics Software URL:
+> https://ccbr.github.io/Tools/
 
 ### Bibtex entry
 
     @misc{YourReferenceHere,
-    author = {Sovacool, Kelly and Koparde, Vishal and Kuhn, Skyler},
+    author = {Sovacool, Kelly and Koparde, Vishal and Kuhn, Skyler and Tandon, Mayank and Huse, Susan},
     title = {CCBR Tools: Utilities for CCBR Bioinformatics Software},
     url = {https://ccbr.github.io/Tools/}
     }

@@ -68,7 +68,7 @@ Please cite this software if you use it in a publication:
 ```{python}
 #| echo: false
 #| output: asis
-!ccbr_tools cite -f apalike | sed -s 's/^/> /g'
+!ccbr_tools cite -f apalike | sed -E 's/^/> /g'
 ```
 
 
