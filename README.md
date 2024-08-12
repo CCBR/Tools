@@ -1,3 +1,6 @@
+# CLI Utilities
+
+
 <!-- README.md is generated from README.qmd. Please edit that file -->
 
 # CCBR Tools
@@ -9,13 +12,13 @@ Utilities for CCBR Bioinformatics Software
 
 ## Installation
 
-```sh
+``` sh
 pip install git+https://github.com/CCBR/Tools
 ```
 
 ## Usage
 
-```python
+``` python
 !ccbr_tools --help
 ```
 
@@ -30,7 +33,8 @@ pip install git+https://github.com/CCBR/Tools
       -h, --help     Show this message and exit.
 
     Commands:
-      cite  Print the citation in the desired format
+      cite     Print the citation in the desired format
+      version  Print the version of ccbr_tools
 
     All installed tools:
       ccbr_tools
@@ -41,16 +45,14 @@ pip install git+https://github.com/CCBR/Tools
       jobinfo
       peek
 
-```python
+``` python
 import ccbr_tools.util
 print(ccbr_tools.util.get_version())
 ```
 
     0.1.0-dev
 
-## CLI Utilities
-
-Command-line utilities that are part of CCBR Tools.
+Command-line utilities in CCBR Tools.
 
 - `ccbr_tools`
 - `gb2gtf`
@@ -66,30 +68,30 @@ There are additional standalone scripts for various common tasks in
 [scripts/](scripts/). They are less robust than the CLI Utilities
 included in the package and do no have any unit tests.
 
-- `add_gene_name_to_count_matrix`
-- `aggregate_data_tables`
-- `argparse`
-- `cancel_snakemake_jobs`
-- `create_hpc_link`
-- `extract_value_from_json`
-- `extract_value_from_yaml`
-- `filter_bam_by_readids`
-- `filter_fastq_by_readids_highmem`
-- `filter_fastq_by_readids_highmem_pe`
-- `gather_cluster_stats`
-- `gather_cluster_stats_biowulf`
-- `get_buyin_partition_list`
-- `get_slurm_file_with_error`
-- `gsea_preranked`
-- `karyoploter`
-- `make_labels_for_pipeliner`
-- `rawcounts2normalizedcounts_DESeq2`
-- `rawcounts2normalizedcounts_limmavoom`
+- `add_gene_name_to_count_matrix.R`
+- `aggregate_data_tables.R`
+- `argparse.bash`
+- `cancel_snakemake_jobs.sh`
+- `create_hpc_link.sh`
+- `extract_value_from_json.py`
+- `extract_value_from_yaml.py`
+- `filter_bam_by_readids.py`
+- `filter_fastq_by_readids_highmem.py`
+- `filter_fastq_by_readids_highmem_pe.py`
+- `gather_cluster_stats.sh`
+- `gather_cluster_stats_biowulf.sh`
+- `get_buyin_partition_list.bash`
+- `get_slurm_file_with_error.sh`
+- `gsea_preranked.sh`
+- `karyoploter.R`
+- `make_labels_for_pipeliner.sh`
+- `rawcounts2normalizedcounts_DESeq2.R`
+- `rawcounts2normalizedcounts_limmavoom.R`
 - `run_jobby_on_nextflow_log`
 - `run_jobby_on_nextflow_log_full_format`
 - `run_jobby_on_snakemake_log`
 - `run_jobby_on_snakemake_log_full_format`
-- `which_vpn`
+- `which_vpn.sh`
 
 ## Citation
 
