@@ -1,4 +1,5 @@
 """ Miscellaneous utility functions """
+
 import click
 import os
 from cffconvert.cli.create_citation import create_citation
@@ -33,18 +34,12 @@ def get_version(version_file=repo_base("VERSION")):
 
 
 def print_citation(
-    context,
-    param,
-    value,
     citation_file=repo_base("CITATION.cff"),
     output_format="bibtex",
 ):
-    if not value or context.resilient_parsing:
-        return
     citation = create_citation(citation_file, None)
     # click.echo(citation._implementation.cffobj['message'])
     validate_or_write_output(None, output_format, False, citation)
-    context.exit()
 
 
 def msg(err_message):
