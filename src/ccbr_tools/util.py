@@ -2,6 +2,8 @@
 
 import click
 import os
+import importlib.resources
+import importlib.metadata
 from cffconvert.cli.create_citation import create_citation
 from cffconvert.cli.validate_or_write_output import validate_or_write_output
 from time import localtime, strftime
@@ -24,13 +26,12 @@ def repo_base(*paths):
     return os.path.join(basedir, *paths)
 
 
-def get_version(version_file=repo_base("VERSION")):
+def get_version(pkg_name="ccbr_tools"):
     """Get the current version
+    @param pkg_name <str> : name of the package (default: ccbr_tools)
     @return version <str>
     """
-    with open(version_file, "r") as vfile:
-        version = f"v{vfile.read().strip()}"
-    return version
+    importlib.metadata.metadata(pkg_name)["Version"]
 
 
 def print_citation(

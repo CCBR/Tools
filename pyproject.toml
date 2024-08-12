@@ -12,7 +12,7 @@ description = "Utilities for CCBR Bioinformatics Software"
 authors = [
     {name = "Kelly Sovacool", email = "kelly.sovacool@nih.gov"},
     {name = "Vishal Koparde", email = "vishal.koparde@nih.gov"},
-    {name = "Skyler Kuhn"}
+    {name = "Skyler Kuhn"},
 ]
 maintainers = [
     {name = "CCR Collaborative Bioinformatics Resource", email = "ccbr@mail.nih.gov"},
