@@ -1,6 +1,3 @@
-# CLI Utilities
-
-
 <!-- README.md is generated from README.qmd. Please edit that file -->
 
 # CCBR Tools
@@ -12,13 +9,13 @@ Utilities for CCBR Bioinformatics Software
 
 ## Installation
 
-``` sh
+```sh
 pip install git+https://github.com/CCBR/Tools
 ```
 
 ## Usage
 
-``` python
+```python
 !ccbr_tools --help
 ```
 
@@ -45,12 +42,14 @@ pip install git+https://github.com/CCBR/Tools
       jobinfo
       peek
 
-``` python
+```python
 import ccbr_tools.util
 print(ccbr_tools.util.get_version())
 ```
 
     0.1.0-dev
+
+## CLI Utilities
 
 Command-line utilities in CCBR Tools.
 
