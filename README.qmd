@@ -3,6 +3,7 @@ format: gfm
 ---
 
 <!-- README.md is generated from README.qmd. Please edit that file -->
+
 # CCBR Tools
 
 Utilities for CCBR Bioinformatics Software
@@ -28,6 +29,7 @@ import ccbr_tools.util
 print(ccbr_tools.util.get_version())
 ```
 
+
 ## CLI Utilities
 
 Command-line utilities in CCBR Tools.
@@ -37,6 +39,7 @@ Command-line utilities in CCBR Tools.
 #| output: asis
 print("\n".join([f"  - `{cmd}`" for cmd in ccbr_tools.util.get_project_scripts()]))
 ```
+
 
 ## External Scripts
 
@@ -51,6 +54,7 @@ from pathlib import Path
 print('\n'.join([f"  - `{Path(script).name}`" for script in get_pyproject_toml()['tool']['setuptools']['script-files']]))
 ```
 
+
 ## Citation
 
 Please cite this software if you use it in a publication:
@@ -59,6 +63,7 @@ Please cite this software if you use it in a publication:
 #| echo: false
 !ccbr_tools cite -f apalike
 ```
+
 
 ### Bibtex entry
 
