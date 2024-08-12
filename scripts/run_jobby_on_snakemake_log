@@ -1,0 +1,3 @@
+#!/usr/bin/env bash
+snakemakelog=$1
+jobby $(grep --color=never "^Submitted .* with external jobid" $snakemakelog | awk '{{print $NF}}'  | sed "s/['.]//g" | sort | uniq | tr "\\n" " ") |cut -f2,3,18
