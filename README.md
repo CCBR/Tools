@@ -9,11 +9,28 @@ Utilities for CCBR Bioinformatics Software
 
 ## Installation
 
+On biowulf you can access the latest release of `ccbr_tools` by loading
+the ccbrpipeliner module:
+
+```sh
+module load ccbrpipeliner
+```
+
+Outside of biowulf, you can install the package with pip:
+
 ```sh
 pip install git+https://github.com/CCBR/Tools
 ```
 
+Or specify a specific tagged version or branch:
+
+```sh
+pip install git+https://github.com/CCBR/Tools@main
+```
+
 ## Usage
+
+### CLI
 
 ```sh
 ccbr_tools --help
@@ -41,6 +58,8 @@ ccbr_tools --help
       jobby
       jobinfo
       peek
+
+### Python
 
 ```python
 import ccbr_tools.util
