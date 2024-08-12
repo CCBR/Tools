@@ -1,0 +1,68 @@
+---
+format: gfm
+---
+
+<!-- README.md is generated from README.qmd. Please edit that file -->
+# CCBR Tools
+
+Utilities for CCBR Bioinformatics Software
+
+[![build](https://github.com/CCBR/Tools/actions/workflows/build-python.yml/badge.svg)](https://github.com/CCBR/Tools/actions/workflows/build-python.yml)
+[![codecov](https://codecov.io/gh/CCBR/Tools/graph/badge.svg?token=O73NOR65B3)](https://codecov.io/gh/CCBR/Tools)
+
+## Installation
+
+```sh
+pip install git+https://github.com/CCBR/Tools
+```
+
+## Usage
+
+```{python}
+!ccbr_tools --help
+```
+
+
+```{python}
+import ccbr_tools.util
+print(ccbr_tools.util.get_version())
+```
+
+## CLI Utilities
+
+Command-line utilities in CCBR Tools.
+
+```{python}
+#| echo: false
+#| output: asis
+print("\n".join([f"  - `{cmd}`" for cmd in ccbr_tools.util.get_project_scripts()]))
+```
+
+## External Scripts
+
+There are additional standalone scripts for various common tasks in [scripts/](scripts/).
+They are less robust than the CLI Utilities included in the package and do no have any unit tests.
+
+```{python}
+#| echo: false
+#| output: asis
+from ccbr_tools.util import get_pyproject_toml
+from pathlib import Path
+print('\n'.join([f"  - `{Path(script).name}`" for script in get_pyproject_toml()['tool']['setuptools']['script-files']]))
+```
+
+## Citation
+
+Please cite this software if you use it in a publication:
+
+```{python}
+#| echo: false
+!ccbr_tools cite -f apalike
+```
+
+### Bibtex entry
+
+```{python}
+#| echo: false
+!ccbr_tools cite -f bibtex
+```
