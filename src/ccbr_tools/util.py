@@ -1,19 +1,14 @@
 """ Miscellaneous utility functions """
 
-import click
-import os
-import importlib.resources
-import importlib.metadata
 from cffconvert.cli.create_citation import create_citation
 from cffconvert.cli.validate_or_write_output import validate_or_write_output
+import click
+import importlib.resources
+import importlib.metadata
+import os
+import pathlib
 from time import localtime, strftime
-
-
-class OrderedCommands(click.Group):
-    """Preserve the order of subcommands when printing --help"""
-
-    def list_commands(self, ctx: click.Context):
-        return list(self.commands)
+import tomllib
 
 
 def repo_base(*paths):
@@ -26,12 +21,45 @@ def repo_base(*paths):
     return os.path.join(basedir, *paths)
 
 
-def get_version(pkg_name="ccbr_tools"):
-    """Get the current version
+def get_version():
+    """Get the current version of the ccbr_tools package
+    @param pkg_name <str> : name of the package (default: ccbr_tools)
+    @return version <str>
+    """
+    with open(repo_base("VERSION"), "r") as infile:
+        return infile.read().strip().lstrip("v")
+
+
+def get_package_version(pkg_name="ccbr_tools"):
+    """Get the current version of a package from the metadata
     @param pkg_name <str> : name of the package (default: ccbr_tools)
     @return version <str>
     """
     importlib.metadata.metadata(pkg_name)["Version"]
+
+
+def get_pyproject_toml(pkg_name="ccbr_tools"):
+    """Get the contents of the package's pyproject.toml file
+    @param pkg_name <str> : name of the package (default: ccbr_tools)
+    @return pyproject_toml <dict>
+    """
+    with open(repo_base("pyproject.toml"), "rb") as infile:
+        toml_dict = tomllib.load(infile)
+    return toml_dict
+
+
+def get_project_scripts(pkg_name="ccbr_tools"):
+    """
+    Get list of CLI tools in the package
+    """
+    return sorted(get_pyproject_toml(pkg_name=pkg_name)["project"]["scripts"].keys())
+
+
+def get_external_scripts(pkg_name="ccbr_tools"):
+    """
+    Get list of standalone scripts included in the package
+    """
+    list(get_pyproject_toml(pkg_name=pkg_name)["tool"]["setuptools"]["script-files"])
 
 
 def print_citation(

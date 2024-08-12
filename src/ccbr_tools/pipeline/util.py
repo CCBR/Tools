@@ -394,16 +394,3 @@ def check_python_version():
         exit(
             f"{sys.argv[0]} requires Python {'.'.join([str(n) for n in MIN_PYTHON])} or newer"
         )
-
-
-if __name__ == "__main__":
-    # Calculate MD5 checksum of entire file
-    print("{}  {}".format(md5sum(sys.argv[0]), sys.argv[0]))
-    # Calculate MD5 checksum of 512 byte chunk of file,
-    # which is similar to following unix command:
-    # dd if=utils.py bs=512 count=1 2>/dev/null | md5sum
-    print(
-        "{}  {}".format(
-            md5sum(sys.argv[0], first_block_only=True, blocksize=512), sys.argv[0]
-        )
-    )
