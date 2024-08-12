@@ -1,4 +1,4 @@
-from ccbr_tools.util import exec_in_context
+from ccbr_tools.shell import exec_in_context
 
 
 def test_exec():
