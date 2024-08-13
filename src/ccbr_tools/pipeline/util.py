@@ -52,14 +52,16 @@ def get_tmp_dir(tmp_dir, outdir, hpc=get_hpcname()):
     return tmp_dir
 
 
-def get_genomes_list(hpcname=get_hpcname(), error_on_warnings=False):
+def get_genomes_list(repo_base, hpcname=get_hpcname(), error_on_warnings=False):
     """Get list of genome annotations available for the current platform
     @return genomes_list <list>
     """
     return sorted(
         list(
             get_genomes_dict(
-                hpcname=hpcname, error_on_warnings=error_on_warnings
+                repo_base=repo_base,
+                hpcname=hpcname,
+                error_on_warnings=error_on_warnings,
             ).keys()
         )
     )
@@ -118,53 +120,6 @@ def md5sum(filename, first_block_only=False, blocksize=65536):
             buf = fh.read(blocksize)
 
     return hasher.hexdigest()
-
-
-## copied directly from rna-seek
-def check_cache(parser, cache, *args, **kwargs):
-    """Check if provided SINGULARITY_CACHE is valid. Singularity caches cannot be
-    shared across users (and must be owned by the user). Singularity strictly enforces
-    0700 user permission on on the cache directory and will return a non-zero exitcode.
-    @param parser <argparse.ArgumentParser() object>:
-        Argparse parser object
-    @param cache <str>:
-        Singularity cache directory
-    @return cache <str>:
-        If singularity cache dir is valid
-    """
-    if not exists(cache):
-        # Cache directory does not exist on filesystem
-        os.makedirs(cache)
-    elif os.path.isfile(cache):
-        # Cache directory exists as file, raise error
-        parser.error(
-            """\n\t\x1b[6;37;41mFatal: Failed to provided a valid singularity cache!\x1b[0m
-        The provided --singularity-cache already exists on the filesystem as a file.
-        Please run {} again with a different --singularity-cache location.
-        """.format(
-                sys.argv[0]
-            )
-        )
-    elif os.path.isdir(cache):
-        # Provide cache exists as directory
-        # Check that the user owns the child cache directory
-        # May revert to os.getuid() if user id is not sufficient
-        if (
-            exists(os.path.join(cache, "cache"))
-            and os.stat(os.path.join(cache, "cache")).st_uid != os.getuid()
-        ):
-            # User does NOT own the cache directory, raise error
-            parser.error(
-                """\n\t\x1b[6;37;41mFatal: Failed to provided a valid singularity cache!\x1b[0m
-                The provided --singularity-cache already exists on the filesystem with a different owner.
-                Singularity strictly enforces that the cache directory is not shared across users.
-                Please run {} again with a different --singularity-cache location.
-                """.format(
-                    sys.argv[0]
-                )
-            )
-
-    return cache
 
 
 def permissions(parser, path, *args, **kwargs):
@@ -379,10 +334,9 @@ def join_jsons(templates):
     return aggregated
 
 
-def check_python_version():
+def check_python_version(MIN_PYTHON=(3, 11)):
     # version check
     # glob.iglob requires 3.11 for using "include_hidden=True"
-    MIN_PYTHON = (3, 11)
     try:
         assert sys.version_info >= MIN_PYTHON
         print(
@@ -394,3 +348,62 @@ def check_python_version():
         exit(
             f"{sys.argv[0]} requires Python {'.'.join([str(n) for n in MIN_PYTHON])} or newer"
         )
+
+
+def _get_file_mtime(f):
+    timestamp = datetime.fromtimestamp(os.path.getmtime(os.path.abspath(f)))
+    mtime = timestamp.strftime("%y%m%d%H%M%S")
+    return mtime
+
+
+def _cp_r_safe_(
+    source, target, resources=["workflow", "resources", "config"], safe_mode=True
+):
+    """Private function: Given a list paths it will recursively copy each to the
+    target location. If a target path already exists, it will not over-write the
+    existing paths data when `safe_mode` is on.
+    @param resources <list[str]>:
+        List of paths to copy over to target location.
+        Default: ["workflow", "resources", "config"]
+    @params source <str>:
+        Add a prefix PATH to each resource
+    @param target <str>:
+        Target path to copy templates and required resources (aka destination)
+    @param safe_mode <bool>:
+        Only copy the resources to the target path
+        if they do not exist in the target path (default: True)
+    """
+    for resource in resources:
+        destination = os.path.join(target, resource)
+        if os.path.exists(destination) and safe_mode:
+            print(f"🚫 path exists and `safe_mode` is ON, not copying: {destination}")
+        else:
+            # Required resources do not exist, or safe mode is off
+            shutil.copytree(
+                os.path.join(source, resource), destination, dirs_exist_ok=not safe_mode
+            )
+
+
+def _sym_safe_(input_data, target):
+    """Creates re-named symlinks for each FastQ file provided
+    as input. If a symlink already exists, it will not try to create a new symlink.
+    If relative source PATH is provided, it will be converted to an absolute PATH.
+    @param input_data <list[<str>]>:
+        List of input files to symlink to target location
+    @param target <str>:
+        Target path to copy templates and required resources
+    @return input_fastqs list[<str>]:
+        List of renamed input FastQs
+    """
+    input_fastqs = []  # store renamed fastq file names
+    for file in input_data:
+        filename = os.path.basename(file)
+        renamed = os.path.join(target, rename(filename))
+        input_fastqs.append(renamed)
+
+        if not os.path.exists(renamed):
+            # Create a symlink if it does not already exist
+            # Follow source symlinks to resolve any binding issues
+            os.symlink(os.path.abspath(os.path.realpath(file)), renamed)
+
+    return input_fastqs
