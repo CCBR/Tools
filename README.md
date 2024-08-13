@@ -87,7 +87,7 @@ Run a command with `--help` to learn how to use it.
 Additional standalone scripts for various common tasks in
 [scripts/](scripts/) are added to the path when this package is
 installed. They are less robust than the CLI Utilities included in the
-package and do no have any unit tests.
+package and do not have any unit tests.
 
 - `add_gene_name_to_count_matrix.R`
 - `aggregate_data_tables.R`
