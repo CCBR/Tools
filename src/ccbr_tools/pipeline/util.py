@@ -3,7 +3,7 @@
 
 # Python standard library
 from __future__ import print_function
-from shutil import copytree
+import shutil
 import sys
 import hashlib
 import subprocess
