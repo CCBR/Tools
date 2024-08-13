@@ -19,7 +19,7 @@ def repo_base(*paths):
     return basedir.joinpath(*paths)
 
 
-def get_version(debug=False):
+def get_version(debug=False, repo_base=repo_base):
     """Get the current version of the ccbr_tools package
     @param pkg_name <str> : name of the package (default: ccbr_tools)
     @return version <str>
@@ -39,7 +39,7 @@ def get_package_version(pkg_name="ccbr_tools"):
     importlib.metadata.metadata(pkg_name)["Version"]
 
 
-def get_pyproject_toml(pkg_name="ccbr_tools"):
+def get_pyproject_toml(pkg_name="ccbr_tools", repo_base=repo_base):
     """Get the contents of the package's pyproject.toml file
     @param pkg_name <str> : name of the package (default: ccbr_tools)
     @return pyproject_toml <dict>
