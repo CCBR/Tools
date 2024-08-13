@@ -77,7 +77,7 @@ def get_genomes_dict(repo_base, hpcname=get_hpcname(), error_on_warnings=False):
     genomes_dir = repo_base("config", "genomes", hpcname)
     if not os.path.exists(genomes_dir):
         warnings.warn(f"Folder does not exist: {genomes_dir}")
-    search_term = genomes_dir + "/*.json"
+    search_term = f"{genomes_dir}/*.json"
     json_files = glob.glob(search_term)
     if len(json_files) == 0:
         warnings.warn(
