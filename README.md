@@ -115,6 +115,15 @@ package and do not have any unit tests.
 - `spooker`
 - `which_vpn.sh`
 
+
+## Help & Contributing
+
+Come across a **bug**? Open an [issue](https://github.com/CCBR/Tools/issues) and include a minimal reproducible example.
+
+Have a **question**? Ask it in [discussions](https://github.com/CCBR/Tools/discussions).
+
+Want to **contribute** to this project? Check out the [contributing guidelines](.github/CONTRIBUTING.md).
+
 ## Citation
 
 Please cite this software if you use it in a publication:
