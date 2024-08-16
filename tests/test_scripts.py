@@ -12,7 +12,7 @@ def test_which_vpn():
     which_vpn = shell_run("which_vpn.sh")
     hpc = get_hpcname()
     if hpc == "biowulf":
-        assert 'DO NOT RUN THIS ON a BIOWULF interactive node!' in which_vpn
+        assert "DO NOT RUN THIS ON a BIOWULF interactive node!" in which_vpn
     else:
         assert (
             "Are you really connected to VPN?? Doesn't look like it!" in which_vpn
