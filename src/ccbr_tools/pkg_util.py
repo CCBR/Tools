@@ -1,21 +1,32 @@
-""" Miscellaneous utility functions """
+""" Miscellaneous utility functions for the package """
 
 from cffconvert.cli.create_citation import create_citation
 from cffconvert.cli.validate_or_write_output import validate_or_write_output
 import click
 import importlib.resources
 import importlib.metadata
-import os
 import pathlib
 from time import localtime, strftime
 import tomllib
 
 
-def repo_base(*paths):
+class CustomClickGroup(click.Group):
+    def format_epilog(self, ctx, formatter):
+        if self.epilog:
+            formatter.write_paragraph()
+            for line in self.epilog.split("\n"):
+                formatter.write_text(line)
+
+    def list_commands(self, ctx: click.Context):
+        """Preserve the order of subcommands when printing --help"""
+        return list(self.commands)
+
+
+def repo_base(path=__file__, *paths):
     """Get the absolute path to a file in the repository
     @return abs_path <str>
     """
-    basedir = pathlib.Path(__file__).absolute().parent
+    basedir = pathlib.Path(path).absolute().parent
     return basedir.joinpath(*paths)
 
 

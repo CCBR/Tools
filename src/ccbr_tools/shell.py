@@ -3,10 +3,13 @@ import io
 import subprocess
 
 
-def shell_run(command_str):
+def shell_run(command_str, capture_output=True, check=True, shell=True, text=True):
     """Run a shell command and return stdout/stderr"""
-    out = subprocess.run(command_str, capture_output=True, shell=True, text=True)
-    return "\n".join([out.stdout, out.stderr])
+    out = subprocess.run(
+        command_str, capture_output=capture_output, shell=shell, text=text, check=check
+    )
+    if capture_output:
+        return "\n".join([out.stdout, out.stderr])
 
 
 def exec_in_context(func, *args, **kwargs):

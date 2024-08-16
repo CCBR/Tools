@@ -5,19 +5,13 @@ Entry point for CCBR Tools
 import click
 import cffconvert.cli.cli
 
-from .util import get_project_scripts, get_version, print_citation, repo_base
-
-
-class CustomClickGroup(click.Group):
-    def format_epilog(self, ctx, formatter):
-        if self.epilog:
-            formatter.write_paragraph()
-            for line in self.epilog.split("\n"):
-                formatter.write_text(line)
-
-    def list_commands(self, ctx: click.Context):
-        """Preserve the order of subcommands when printing --help"""
-        return list(self.commands)
+from .pkg_util import (
+    get_project_scripts,
+    get_version,
+    print_citation,
+    repo_base,
+    CustomClickGroup,
+)
 
 
 all_commands = "All installed tools:\n" + "\n".join(

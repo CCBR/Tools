@@ -2,15 +2,21 @@
 # -*- coding: UTF-8 -*-
 
 # Python standard library
-from __future__ import print_function
+import collections
+import datetime
 import shutil
 import sys
 import hashlib
-import subprocess
 import json
 import glob
 import os
+import re
+import stat
+import subprocess
 import warnings
+import yaml
+
+from ..pkg_util import repo_base, msg
 
 
 def scontrol_show():
@@ -286,7 +292,7 @@ def safe_copy(source, target, resources=[]):
         destination = os.path.join(target, resource)
         if not exists(destination):
             # Required resources do not exist
-            copytree(os.path.join(source, resource), destination)
+            shutil.copytree(os.path.join(source, resource), destination)
 
 
 def git_commit_hash(repo_path):
@@ -473,3 +479,61 @@ def rename(filename):
         )
 
     return filename
+
+
+def copy_config(config_paths, overwrite=True):
+    msg("Copying default config files to current working directory")
+    for local_config in config_paths:
+        system_config = repo_base(local_config)
+        if os.path.isfile(system_config):
+            shutil.copyfile(system_config, local_config)
+        elif os.path.isdir(system_config):
+            shutil.copytree(system_config, local_config, dirs_exist_ok=overwrite)
+        else:
+            raise FileNotFoundError(f"Cannot copy {system_config} to {local_config}")
+
+
+def read_config_yml(file):
+    with open(file, "r") as stream:
+        _config = yaml.safe_load(stream)
+    return _config
+
+
+def update_config(config, overwrite_config):
+    def _update(d, u):
+        for key, value in u.items():
+            if isinstance(value, collections.abc.Mapping):
+                d[key] = _update(d.get(key, {}), value)
+            else:
+                d[key] = value
+        return d
+
+    _update(config, overwrite_config)
+
+
+def write_config_yml(_config, file):
+    msg(f"Writing runtime config file to {file}")
+    with open(file, "w") as stream:
+        yaml.dump(_config, stream)
+
+
+def chmod_bins_exec(repo_base=repo_base):
+    """Ensure that all files in bin/ are executable.
+
+    It appears that setuptools strips executable permissions from package_data files,
+    yet post-install scripts are not possible with the pyproject.toml format.
+    Without this hack, nextflow processes that call scripts in bin/ fail.
+
+    https://stackoverflow.com/questions/18409296/package-data-files-with-executable-permissions
+    https://github.com/pypa/setuptools/issues/2041
+    https://stackoverflow.com/questions/76320274/post-install-script-for-pyproject-toml-projects
+    """
+    bin_dir = repo_base("bin/")
+    for filename in os.listdir(bin_dir):
+        bin_path = os.path.join(bin_dir, filename)
+        if os.path.isfile(bin_path):
+            file_stat = os.stat(bin_path)
+            # below is equivalent to `chmod +x`
+            os.chmod(
+                bin_path, file_stat.st_mode | stat.S_IXUSR | stat.S_IXGRP | stat.S_IXOTH
+            )
