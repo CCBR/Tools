@@ -10,19 +10,6 @@ from time import localtime, strftime
 import tomllib
 
 
-"""
-A custom subclass of `click.Group` that provides additional functionality.
-
-Attributes:
-    epilog (str): The epilog text to be displayed in the help message.
-
-Methods:
-    format_epilog(ctx, formatter): Formats the epilog text and writes it to the formatter.
-    list_commands(ctx): Returns a list of subcommands in the order they were added.
-
-"""
-
-
 class CustomClickGroup(click.Group):
     def format_epilog(self, ctx, formatter):
         if self.epilog:
