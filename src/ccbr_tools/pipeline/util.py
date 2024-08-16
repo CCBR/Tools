@@ -481,7 +481,7 @@ def rename(filename):
     return filename
 
 
-def copy_config(config_paths, overwrite=True):
+def copy_config(config_paths, overwrite=True, repo_base=repo_base):
     msg("Copying default config files to current working directory")
     for local_config in config_paths:
         system_config = repo_base(local_config)
