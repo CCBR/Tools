@@ -62,8 +62,8 @@ ccbr_tools --help
 ### Python
 
 ```python
-import ccbr_tools.util
-print(ccbr_tools.util.get_version())
+import ccbr_tools.pkg_util
+print(ccbr_tools.pkg_util.get_version())
 ```
 
     0.1.0-dev
@@ -114,15 +114,6 @@ package and do not have any unit tests.
 - `run_jobby_on_snakemake_log_full_format`
 - `spooker`
 - `which_vpn.sh`
-
-
-## Help & Contributing
-
-Come across a **bug**? Open an [issue](https://github.com/CCBR/Tools/issues) and include a minimal reproducible example.
-
-Have a **question**? Ask it in [discussions](https://github.com/CCBR/Tools/discussions).
-
-Want to **contribute** to this project? Check out the [contributing guidelines](.github/CONTRIBUTING.md).
 
 ## Citation
 

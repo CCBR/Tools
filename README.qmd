@@ -47,8 +47,8 @@ ccbr_tools --help
 ### Python
 
 ```{python}
-import ccbr_tools.util
-print(ccbr_tools.util.get_version())
+import ccbr_tools.pkg_util
+print(ccbr_tools.pkg_util.get_version())
 ```
 
 
@@ -59,7 +59,7 @@ Command-line utilities in CCBR Tools.
 ```{python}
 #| echo: false
 #| output: asis
-print("\n".join([f"  - `{cmd}`" for cmd in ccbr_tools.util.get_project_scripts()]))
+print("\n".join([f"  - `{cmd}`" for cmd in ccbr_tools.pkg_util.get_project_scripts()]))
 ```
 
 Run a command with `--help` to learn how to use it.
@@ -72,7 +72,7 @@ They are less robust than the CLI Utilities included in the package and do not h
 ```{python}
 #| echo: false
 #| output: asis
-from ccbr_tools.util import get_pyproject_toml
+from ccbr_tools.pkg_util import get_pyproject_toml
 from pathlib import Path
 print('\n'.join([f"  - `{Path(script).name}`" for script in get_pyproject_toml()['tool']['setuptools']['script-files']]))
 ```
