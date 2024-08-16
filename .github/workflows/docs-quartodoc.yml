@@ -30,9 +30,9 @@ jobs:
       - name: build docs
         working-directory: docs
         run: |
-          	python -m quartodoc build --verbose
-            python -m quartodoc interlinks
-            quarto render
+          python -m quartodoc build --verbose
+          python -m quartodoc interlinks
+          quarto render
       - name: save docs
         uses: actions/upload-artifact@v3
         with:
