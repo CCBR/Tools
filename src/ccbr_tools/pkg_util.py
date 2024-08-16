@@ -22,7 +22,7 @@ class CustomClickGroup(click.Group):
         return list(self.commands)
 
 
-def repo_base(path=__file__, *paths):
+def repo_base(*paths):
     """
     Get the absolute path to a file in the repository
 
@@ -33,7 +33,7 @@ def repo_base(path=__file__, *paths):
     Returns:
         str: The absolute path to the file in the repository.
     """
-    basedir = pathlib.Path(path).absolute().parent
+    basedir = pathlib.Path(__file__).absolute().parent
     return basedir.joinpath(*paths)
 
 
