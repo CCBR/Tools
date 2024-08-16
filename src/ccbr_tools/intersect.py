@@ -57,23 +57,27 @@ def intersect(fileDict, file2, joinindex, header):
 
 
 def main():
+    usage_str = "USAGE:\nintersect filename1 filename2 f1ColumnIndex F2ColumnIndex\n\t--Ex. intersect file1 file2 0 0"
     # Join on column count starts at 0
-    header = 0
-    if "--header" in sys.argv:
-        header = 1
-    try:
-        file1 = sys.argv[1]
-        file2 = sys.argv[2]
-        f1index = int(sys.argv[3])
-        f2index = int(sys.argv[4])
+    if "--help" in sys.argv or "-h" in sys.argv:
+        print(usage_str)
+    else:
+        header = 0
+        if "--header" in sys.argv:
+            header = 1
+        try:
+            file1 = sys.argv[1]
+            file2 = sys.argv[2]
+            f1index = int(sys.argv[3])
+            f2index = int(sys.argv[4])
 
-    except IndexError:
-        exit(
-            "INCORRECT USGAE:\nintersect filename1 filename2 f1ColumnIndex F2ColumnIndex\n\t--Ex. intersect file1 file2 0 0"
-        )
+        except IndexError:
+            exit(
+                "INCORRECT USAGE:\nintersect filename1 filename2 f1ColumnIndex F2ColumnIndex\n\t--Ex. intersect file1 file2 0 0"
+            )
 
-    indexedFile1 = indexFile(file1, f1index, header)
-    intersect(indexedFile1, file2, f2index, header)
+        indexedFile1 = indexFile(file1, f1index, header)
+        intersect(indexedFile1, file2, f2index, header)
 
 
 if __name__ == "__main__":
