@@ -17,7 +17,7 @@ as our collaboration process.
 Follow the steps below for detailed instructions on contributing changes to
 CCBR Tools.
 
-![GitHub Flow diagram](./img/GitHub-Flow_bg-white.png)
+![GitHub Flow diagram](https://raw.githubusercontent.com/CCBR/CCBR_NextflowTemplate/48eb57ececfac68136f1daec129c4e32025f387a/.github/img/GitHub-Flow_bg-white.png)
 
 ### Clone the repo
 
@@ -200,7 +200,7 @@ Once your branch is ready, create a PR on GitHub:
 
 Select the branch you just pushed:
 
-![Create a new PR from your branch](./img/new-PR.png)
+![Create a new PR from your branch](https://raw.githubusercontent.com/CCBR/CCBR_NextflowTemplate/48eb57ececfac68136f1daec129c4e32025f387a/.github/img/new-PR.png)
 
 Edit the PR title and description.
 The title should briefly describe the change.
@@ -210,7 +210,7 @@ Be sure to fill out the checklist, checking off items as you complete them or
 striking through any irrelevant items.
 When you're ready, click 'Create pull request' to open it.
 
-![Open the PR after editing the title and description](./img/create-PR.png)
+![Open the PR after editing the title and description](https://raw.githubusercontent.com/CCBR/CCBR_NextflowTemplate/48eb57ececfac68136f1daec129c4e32025f387a/.github/img/create-PR.png)
 
 Optionally, you can mark the PR as a draft if you're not yet ready for it to
 be reviewed, then change it later when you're ready.
