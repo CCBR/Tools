@@ -1,0 +1,37 @@
+# see: https://github.com/rstudio/vetiver-python/blob/main/docs/_quarto.yml
+project:
+  type: website
+  output-dir: _site
+
+website:
+  title: "CCBR Tools"
+  sidebar:
+    - id: reference
+      contents: "_sidebar.yml"
+
+quartodoc:
+  package: ccbr_tools
+  parser: google
+  sidebar: _sidebar.yml
+  sections:
+    - title: Modules
+      contents:
+        - jobby
+        - peek
+        - pipeline
+        - pkg_util
+        - shell
+
+metadata-files:
+  - _sidebar.yml
+
+filters:
+  - interlinks
+
+interlinks:
+  sources: {}
+
+format:
+  html:
+    theme:
+      - flatly
