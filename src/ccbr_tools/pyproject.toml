@@ -55,7 +55,7 @@ test = [
 ]
 docs = [
     "quartodoc",
-    "griffe >= 1.0.0"
+    "griffe == 0.32.3"
 ]
 
 [project.scripts]
