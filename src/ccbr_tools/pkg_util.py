@@ -27,25 +27,25 @@ def repo_base(*paths):
     Get the absolute path to a file in the repository
 
     Args:
-        path (str, optional): The path to the file. Defaults to __file__.
         *paths (str): Additional paths to join with the base path.
 
     Returns:
-        str: The absolute path to the file in the repository.
+        path (str): The absolute path to the file in the repository.
     """
     basedir = pathlib.Path(__file__).absolute().parent
     return basedir.joinpath(*paths)
 
 
-def get_version(debug=False, repo_base=repo_base):
+def get_version(repo_base=repo_base, debug=False):
     """
     Get the current version of the ccbr_tools package.
 
     Args:
-        pkg_name (str): Name of the package (default: ccbr_tools).
+        repo_base (function): A function that returns the base path of the repository.
+        debug (bool): Print the path to the VERSION file (default: False).
 
     Returns:
-        str: The version of the package.
+        version (str): The version of the package.
     """
     version_path = repo_base("VERSION")
     if debug:
@@ -62,7 +62,7 @@ def get_package_version(pkg_name="ccbr_tools"):
         pkg_name (str): Name of the package (default: ccbr_tools).
 
     Returns:
-        str: The version of the package.
+        version (str): The version of the package.
     """
     importlib.metadata.metadata(pkg_name)["Version"]
 
@@ -75,7 +75,7 @@ def get_pyproject_toml(pkg_name="ccbr_tools", repo_base=repo_base):
         pkg_name (str): Name of the package (default: ccbr_tools).
 
     Returns:
-        dict: The contents of the pyproject.toml file.
+        pyproject (dict): The contents of the pyproject.toml file.
     """
     with open(repo_base("pyproject.toml"), "rb") as infile:
         toml_dict = tomllib.load(infile)
@@ -90,7 +90,7 @@ def get_project_scripts(pkg_name="ccbr_tools"):
         pkg_name (str): The name of the package. Defaults to "ccbr_tools".
 
     Returns:
-        list: A sorted list of CLI tool names.
+        tools (list): A sorted list of CLI tool names.
     """
     return sorted(get_pyproject_toml(pkg_name=pkg_name)["project"]["scripts"].keys())
 
@@ -98,8 +98,16 @@ def get_project_scripts(pkg_name="ccbr_tools"):
 def get_external_scripts(pkg_name="ccbr_tools"):
     """
     Get list of standalone scripts included in the package
+
+    Args:
+        pkg_name (str): The name of the package. Defaults to "ccbr_tools".
+
+    Returns:
+        scripts (list): A list of standalone scripts included in the package.
     """
-    list(get_pyproject_toml(pkg_name=pkg_name)["tool"]["setuptools"]["script-files"])
+    return list(
+        get_pyproject_toml(pkg_name=pkg_name)["tool"]["setuptools"]["script-files"]
+    )
 
 
 def print_citation(citation_file=repo_base("CITATION.cff"), output_format="bibtex"):
@@ -109,9 +117,6 @@ def print_citation(citation_file=repo_base("CITATION.cff"), output_format="bibte
     Args:
         citation_file (str): The path to the citation file.
         output_format (str): The desired output format for the citation.
-
-    Returns:
-        None
     """
     citation = create_citation(citation_file, None)
     # click.echo(citation._implementation.cffobj['message'])
@@ -121,6 +126,7 @@ def print_citation(citation_file=repo_base("CITATION.cff"), output_format="bibte
 def msg(err_message):
     """
     Prints the error message with a timestamp.
+
     Args:
         err_message (str): The error message to be printed.
     Returns:
@@ -133,6 +139,7 @@ def msg(err_message):
 def msg_box(splash, errmsg=None):
     """
     Displays a message box with a given splash message.
+
     Args:
         splash (str): The splash message to be displayed.
         errmsg (str, optional): An error message to be displayed below the splash message. Defaults to None.

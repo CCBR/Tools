@@ -17,7 +17,23 @@ def run_nextflow(
         },
     },
 ):
-    """Run a Nextflow workflow"""
+    """
+    Run a Nextflow workflow
+
+    Args:
+        nextfile_path (str, optional): Path to the Nextflow file. Defaults to None.
+        merge_config (str, optional): Merge configuration. Defaults to None.
+        threads (int, optional): Number of threads. Defaults to None.
+        nextflow_args (list, optional): Additional Nextflow arguments. Defaults to None.
+        mode (str, optional): Execution mode. Defaults to "local".
+        hpc_options (dict, optional): HPC options. Defaults to {"biowulf": {"profile": "biowulf", "slurm": "assets/slurm_header_biowulf.sh"}, "fnlcr": {"profile": "frce", "slurm": "assets/slurm_header_frce.sh"}}.
+
+    Raises:
+        ValueError: If mode is 'slurm' but no HPC environment was detected.
+
+    Returns:
+        None
+    """
     nextflow_command = ["nextflow", "run", nextfile_path]
 
     hpc = get_hpcname()

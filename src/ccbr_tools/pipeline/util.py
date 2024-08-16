@@ -20,8 +20,11 @@ from ..pkg_util import repo_base, msg
 
 
 def scontrol_show():
-    """Run scontrol show config and parse the output as a dictionary
-    @return scontrol_dict <dict>:
+    """
+    Run scontrol show config and parse the output as a dictionary
+
+    Returns:
+        scontrol_dict <dict>:
     """
     scontrol_dict = dict()
     scontrol_out = subprocess.run(
@@ -36,8 +39,11 @@ def scontrol_show():
 
 
 def get_hpcname():
-    """Get the HPC name (biowulf, frce, or an empty string)
-    @return hpcname <str>
+    """
+    Get the HPC name using scontrol
+
+    Returns:
+        hpcname (str): The HPC name  (biowulf, frce, or an empty string)
     """
     scontrol_out = scontrol_show()
     hpc = scontrol_out["ClusterName"] if "ClusterName" in scontrol_out.keys() else ""
@@ -47,7 +53,16 @@ def get_hpcname():
 
 
 def get_tmp_dir(tmp_dir, outdir, hpc=get_hpcname()):
-    """Get default temporary directory for biowulf and frce. Allow user override."""
+    """
+    Get default temporary directory for biowulf and frce. Allow user override.
+
+    Args:
+        tmp_dir (str): User-defined temporary directory path. If provided, this path will be used as the temporary directory.
+        outdir (str): Output directory path.
+        hpc (str, optional): HPC name. Defaults to the value returned by get_hpcname().
+    Returns:
+        tmp_dir (str): The default temporary directory path based on the HPC name and user-defined path.
+    """
     if not tmp_dir:
         if hpc == "biowulf":
             tmp_dir = "/lscratch/$SLURM_JOBID"
@@ -59,8 +74,15 @@ def get_tmp_dir(tmp_dir, outdir, hpc=get_hpcname()):
 
 
 def get_genomes_list(repo_base, hpcname=get_hpcname(), error_on_warnings=False):
-    """Get list of genome annotations available for the current platform
-    @return genomes_list <list>
+    """
+    Get list of genome annotations available for the current platform
+
+    Args:
+        repo_base (str): The base directory of the repository
+        hpcname (str, optional): The name of the HPC. Defaults to the value returned by get_hpcname().
+        error_on_warnings (bool, optional): Whether to raise an error on warnings. Defaults to False.
+    Returns:
+        genomes (list): A sorted list of genome annotations available for the current platform
     """
     return sorted(
         list(
@@ -74,9 +96,15 @@ def get_genomes_list(repo_base, hpcname=get_hpcname(), error_on_warnings=False):
 
 
 def get_genomes_dict(repo_base, hpcname=get_hpcname(), error_on_warnings=False):
-    """Get dictionary of genome annotation versions and the paths to the corresponding JSON files
-    @repo_base: function for getting the base directory of the repository
-    @return genomes_dict <dict> { genome_name: json_file_path }
+    """
+    Get dictionary of genome annotation versions and the paths to the corresponding JSON files.
+
+    Args:
+        repo_base (function): Function for getting the base directory of the repository.
+        hpcname (str, optional): Name of the HPC. Defaults to the value returned by get_hpcname().
+        error_on_warnings (bool, optional): Flag to indicate whether to raise warnings as errors. Defaults to False.
+    Returns:
+        genomes_dict (dict): A dictionary containing genome names as keys and corresponding JSON file paths as values.  { genome_name: json_file_path }
     """
     if error_on_warnings:
         warnings.filterwarnings("error")

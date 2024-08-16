@@ -90,6 +90,7 @@ Run the tests with `python -m pytest`.
 
 If you have added a new feature or changed the API of an existing feature,
 you will likely need to update the documentation in `docs/`.
+If the changes are in `src/`, you may need to update the docstrings -- we use [Google Style for Python code](https://google.github.io/styleguide/pyguide.html).
 
 ### Commit and push your changes
 
