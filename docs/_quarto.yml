@@ -8,6 +8,20 @@ website:
   sidebar:
     - id: reference
       contents: "_sidebar.yml"
+  navbar:
+    left:
+      - text: Home
+        href: index.md
+      - text: Reference
+        href: reference/index.qmd
+    right:
+      - text: Changelog
+        href: CHANGELOG.md
+      - text: Contributing
+        href: CONTRIBUTING.md
+      - icon: github
+        href: https://github.com/CCBR/Tools
+        aria-label: CCBR/Tools GitHub
 
 quartodoc:
   package: ccbr_tools
@@ -34,4 +48,5 @@ interlinks:
 format:
   html:
     theme:
-      - flatly
+      light: flatly
+      dark: darkly
