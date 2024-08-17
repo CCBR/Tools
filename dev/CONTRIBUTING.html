@@ -106,7 +106,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 
 </head>
 
-<body class="nav-fixed fullcontent">
+<body class="nav-fixed">
 
 <div id="quarto-search-results"></div>
   <header id="quarto-header" class="headroom fixed-top">
@@ -158,7 +158,30 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article page-navbar">
 <!-- sidebar -->
 <!-- margin-sidebar -->
-    
+    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
+        <nav id="TOC" role="doc-toc" class="toc-active">
+    <h2 id="toc-title">On this page</h2>
+   
+  <ul>
+  <li><a href="#contributing-to-ccbr-tools" id="toc-contributing-to-ccbr-tools" class="nav-link active" data-scroll-target="#contributing-to-ccbr-tools">Contributing to CCBR Tools</a>
+  <ul class="collapse">
+  <li><a href="#proposing-changes-with-issues" id="toc-proposing-changes-with-issues" class="nav-link" data-scroll-target="#proposing-changes-with-issues">Proposing changes with issues</a></li>
+  <li><a href="#pull-request-process" id="toc-pull-request-process" class="nav-link" data-scroll-target="#pull-request-process">Pull request process</a>
+  <ul class="collapse">
+  <li><a href="#clone-the-repo" id="toc-clone-the-repo" class="nav-link" data-scroll-target="#clone-the-repo">Clone the repo</a></li>
+  <li><a href="#if-this-is-your-first-time-cloning-the-repo-you-may-need-to-install-dependencies" id="toc-if-this-is-your-first-time-cloning-the-repo-you-may-need-to-install-dependencies" class="nav-link" data-scroll-target="#if-this-is-your-first-time-cloning-the-repo-you-may-need-to-install-dependencies">If this is your first time cloning the repo, you may need to install dependencies</a></li>
+  <li><a href="#create-a-branch" id="toc-create-a-branch" class="nav-link" data-scroll-target="#create-a-branch">Create a branch</a></li>
+  <li><a href="#make-your-changes" id="toc-make-your-changes" class="nav-link" data-scroll-target="#make-your-changes">Make your changes</a></li>
+  <li><a href="#commit-and-push-your-changes" id="toc-commit-and-push-your-changes" class="nav-link" data-scroll-target="#commit-and-push-your-changes">Commit and push your changes</a></li>
+  <li><a href="#create-the-pr" id="toc-create-the-pr" class="nav-link" data-scroll-target="#create-the-pr">Create the PR</a></li>
+  <li><a href="#wait-for-a-maintainer-to-review-your-pr" id="toc-wait-for-a-maintainer-to-review-your-pr" class="nav-link" data-scroll-target="#wait-for-a-maintainer-to-review-your-pr">Wait for a maintainer to review your PR</a></li>
+  <li><a href="#after-your-pr-has-been-merged" id="toc-after-your-pr-has-been-merged" class="nav-link" data-scroll-target="#after-your-pr-has-been-merged">After your PR has been merged</a></li>
+  </ul></li>
+  <li><a href="#helpful-links-for-more-information" id="toc-helpful-links-for-more-information" class="nav-link" data-scroll-target="#helpful-links-for-more-information">Helpful links for more information</a></li>
+  </ul></li>
+  </ul>
+<div class="toc-actions"><ul><li><a href="https://github.com/CCBR/Tools/edit/main/CONTRIBUTING.md" class="toc-action"><i class="bi bi-github"></i>Edit this page</a></li><li><a href="https://github.com/CCBR/Tools/issues/new" class="toc-action"><i class="bi empty"></i>Report an issue</a></li></ul></div></nav>
+    </div>
 <!-- main -->
 <main class="content" id="quarto-document-content">
 
@@ -537,7 +560,7 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
   }
     var localhostRegex = new RegExp(/^(?:http|https):\/\/localhost\:?[0-9]*\//);
     var mailtoRegex = new RegExp(/^mailto:/);
-      var filterRegex = new RegExp('/' + window.location.host + '/');
+      var filterRegex = new RegExp("https:\/\/ccbr\.github\.io\/Tools");
     var isInternal = (href) => {
         return filterRegex.test(href) || localhostRegex.test(href) || mailtoRegex.test(href);
     }
@@ -866,6 +889,19 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
 });
 </script>
 </div> <!-- /content -->
+<footer class="footer">
+  <div class="nav-footer">
+    <div class="nav-footer-left">
+<p>Created by the <a href="https://github.com/CCBR">CCR Collaborative Bioinformatics Resource</a></p>
+</div>   
+    <div class="nav-footer-center">
+      &nbsp;
+    <div class="toc-actions d-sm-block d-md-none"><ul><li><a href="https://github.com/CCBR/Tools/edit/main/CONTRIBUTING.md" class="toc-action"><i class="bi bi-github"></i>Edit this page</a></li><li><a href="https://github.com/CCBR/Tools/issues/new" class="toc-action"><i class="bi empty"></i>Report an issue</a></li></ul></div></div>
+    <div class="nav-footer-right">
+      &nbsp;
+    </div>
+  </div>
+</footer>
 
 
 

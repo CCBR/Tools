@@ -72,7 +72,7 @@ ul.task-list li input[type="checkbox"] {
 
 </head>
 
-<body class="nav-sidebar floating nav-fixed fullcontent">
+<body class="nav-sidebar floating nav-fixed">
 
 <div id="quarto-search-results"></div>
   <header id="quarto-header" class="headroom fixed-top">
@@ -188,7 +188,43 @@ ul.task-list li input[type="checkbox"] {
 </nav>
 <div id="quarto-sidebar-glass" class="quarto-sidebar-collapse-item" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item"></div>
 <!-- margin-sidebar -->
-    
+    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
+        <nav id="TOC" role="doc-toc" class="toc-active">
+    <h2 id="toc-title">On this page</h2>
+   
+  <ul>
+  <li><a href="#ccbr_tools.jobby" id="toc-ccbr_tools.jobby" class="nav-link active" data-scroll-target="#ccbr_tools.jobby">jobby</a>
+  <ul class="collapse">
+  <li><a href="#about" id="toc-about" class="nav-link" data-scroll-target="#about">About</a></li>
+  <li><a href="#requires" id="toc-requires" class="nav-link" data-scroll-target="#requires">Requires</a></li>
+  <li><a href="#disclaimer" id="toc-disclaimer" class="nav-link" data-scroll-target="#disclaimer">Disclaimer</a></li>
+  <li><a href="#usage" id="toc-usage" class="nav-link" data-scroll-target="#usage">Usage</a></li>
+  <li><a href="#example" id="toc-example" class="nav-link" data-scroll-target="#example">Example</a></li>
+  <li><a href="#classes" id="toc-classes" class="nav-link" data-scroll-target="#classes">Classes</a>
+  <ul class="collapse">
+  <li><a href="#ccbr_tools.jobby.Colors" id="toc-ccbr_tools.jobby.Colors" class="nav-link" data-scroll-target="#ccbr_tools.jobby.Colors">Colors</a></li>
+  </ul></li>
+  <li><a href="#functions" id="toc-functions" class="nav-link" data-scroll-target="#functions">Functions</a>
+  <ul class="collapse">
+  <li><a href="#ccbr_tools.jobby.add_missing" id="toc-ccbr_tools.jobby.add_missing" class="nav-link" data-scroll-target="#ccbr_tools.jobby.add_missing">add_missing</a></li>
+  <li><a href="#ccbr_tools.jobby.convert_size" id="toc-ccbr_tools.jobby.convert_size" class="nav-link" data-scroll-target="#ccbr_tools.jobby.convert_size">convert_size</a></li>
+  <li><a href="#ccbr_tools.jobby.dashboard_cli" id="toc-ccbr_tools.jobby.dashboard_cli" class="nav-link" data-scroll-target="#ccbr_tools.jobby.dashboard_cli">dashboard_cli</a></li>
+  <li><a href="#ccbr_tools.jobby.err" id="toc-ccbr_tools.jobby.err" class="nav-link" data-scroll-target="#ccbr_tools.jobby.err">err</a></li>
+  <li><a href="#ccbr_tools.jobby.fatal" id="toc-ccbr_tools.jobby.fatal" class="nav-link" data-scroll-target="#ccbr_tools.jobby.fatal">fatal</a></li>
+  <li><a href="#ccbr_tools.jobby.get_toolkit" id="toc-ccbr_tools.jobby.get_toolkit" class="nav-link" data-scroll-target="#ccbr_tools.jobby.get_toolkit">get_toolkit</a></li>
+  <li><a href="#ccbr_tools.jobby.jobby" id="toc-ccbr_tools.jobby.jobby" class="nav-link" data-scroll-target="#ccbr_tools.jobby.jobby">jobby</a></li>
+  <li><a href="#ccbr_tools.jobby.parsed_arguments" id="toc-ccbr_tools.jobby.parsed_arguments" class="nav-link" data-scroll-target="#ccbr_tools.jobby.parsed_arguments">parsed_arguments</a></li>
+  <li><a href="#ccbr_tools.jobby.sacct" id="toc-ccbr_tools.jobby.sacct" class="nav-link" data-scroll-target="#ccbr_tools.jobby.sacct">sacct</a></li>
+  <li><a href="#ccbr_tools.jobby.sge" id="toc-ccbr_tools.jobby.sge" class="nav-link" data-scroll-target="#ccbr_tools.jobby.sge">sge</a></li>
+  <li><a href="#ccbr_tools.jobby.slurm" id="toc-ccbr_tools.jobby.slurm" class="nav-link" data-scroll-target="#ccbr_tools.jobby.slurm">slurm</a></li>
+  <li><a href="#ccbr_tools.jobby.to_bytes" id="toc-ccbr_tools.jobby.to_bytes" class="nav-link" data-scroll-target="#ccbr_tools.jobby.to_bytes">to_bytes</a></li>
+  <li><a href="#ccbr_tools.jobby.uge" id="toc-ccbr_tools.jobby.uge" class="nav-link" data-scroll-target="#ccbr_tools.jobby.uge">uge</a></li>
+  <li><a href="#ccbr_tools.jobby.which" id="toc-ccbr_tools.jobby.which" class="nav-link" data-scroll-target="#ccbr_tools.jobby.which">which</a></li>
+  </ul></li>
+  </ul></li>
+  </ul>
+<div class="toc-actions"><ul><li><a href="https://github.com/CCBR/Tools/edit/main/reference/jobby.qmd" class="toc-action"><i class="bi bi-github"></i>Edit this page</a></li><li><a href="https://github.com/CCBR/Tools/issues/new" class="toc-action"><i class="bi empty"></i>Report an issue</a></li></ul></div></nav>
+    </div>
 <!-- main -->
 <main class="content" id="quarto-document-content">
 
@@ -645,7 +681,7 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
   }
     var localhostRegex = new RegExp(/^(?:http|https):\/\/localhost\:?[0-9]*\//);
     var mailtoRegex = new RegExp(/^mailto:/);
-      var filterRegex = new RegExp('/' + window.location.host + '/');
+      var filterRegex = new RegExp("https:\/\/ccbr\.github\.io\/Tools");
     var isInternal = (href) => {
         return filterRegex.test(href) || localhostRegex.test(href) || mailtoRegex.test(href);
     }
@@ -974,6 +1010,19 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
 });
 </script>
 </div> <!-- /content -->
+<footer class="footer">
+  <div class="nav-footer">
+    <div class="nav-footer-left">
+<p>Created by the <a href="https://github.com/CCBR">CCR Collaborative Bioinformatics Resource</a></p>
+</div>   
+    <div class="nav-footer-center">
+      &nbsp;
+    <div class="toc-actions d-sm-block d-md-none"><ul><li><a href="https://github.com/CCBR/Tools/edit/main/reference/jobby.qmd" class="toc-action"><i class="bi bi-github"></i>Edit this page</a></li><li><a href="https://github.com/CCBR/Tools/issues/new" class="toc-action"><i class="bi empty"></i>Report an issue</a></li></ul></div></div>
+    <div class="nav-footer-right">
+      &nbsp;
+    </div>
+  </div>
+</footer>
 
 
 

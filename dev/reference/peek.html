@@ -72,7 +72,7 @@ ul.task-list li input[type="checkbox"] {
 
 </head>
 
-<body class="nav-sidebar floating nav-fixed fullcontent">
+<body class="nav-sidebar floating nav-fixed">
 
 <div id="quarto-search-results"></div>
   <header id="quarto-header" class="headroom fixed-top">
@@ -188,7 +188,26 @@ ul.task-list li input[type="checkbox"] {
 </nav>
 <div id="quarto-sidebar-glass" class="quarto-sidebar-collapse-item" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item"></div>
 <!-- margin-sidebar -->
-    
+    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
+        <nav id="TOC" role="doc-toc" class="toc-active">
+    <h2 id="toc-title">On this page</h2>
+   
+  <ul>
+  <li><a href="#ccbr_tools.peek" id="toc-ccbr_tools.peek" class="nav-link active" data-scroll-target="#ccbr_tools.peek">peek</a>
+  <ul class="collapse">
+  <li><a href="#functions" id="toc-functions" class="nav-link" data-scroll-target="#functions">Functions</a>
+  <ul class="collapse">
+  <li><a href="#ccbr_tools.peek.justify" id="toc-ccbr_tools.peek.justify" class="nav-link" data-scroll-target="#ccbr_tools.peek.justify">justify</a></li>
+  <li><a href="#ccbr_tools.peek.max_string" id="toc-ccbr_tools.peek.max_string" class="nav-link" data-scroll-target="#ccbr_tools.peek.max_string">max_string</a></li>
+  <li><a href="#ccbr_tools.peek.pargs" id="toc-ccbr_tools.peek.pargs" class="nav-link" data-scroll-target="#ccbr_tools.peek.pargs">pargs</a></li>
+  <li><a href="#ccbr_tools.peek.pprint" id="toc-ccbr_tools.peek.pprint" class="nav-link" data-scroll-target="#ccbr_tools.peek.pprint">pprint</a></li>
+  <li><a href="#ccbr_tools.peek.print_header" id="toc-ccbr_tools.peek.print_header" class="nav-link" data-scroll-target="#ccbr_tools.peek.print_header">print_header</a></li>
+  <li><a href="#ccbr_tools.peek.usage" id="toc-ccbr_tools.peek.usage" class="nav-link" data-scroll-target="#ccbr_tools.peek.usage">usage</a></li>
+  </ul></li>
+  </ul></li>
+  </ul>
+<div class="toc-actions"><ul><li><a href="https://github.com/CCBR/Tools/edit/main/reference/peek.qmd" class="toc-action"><i class="bi bi-github"></i>Edit this page</a></li><li><a href="https://github.com/CCBR/Tools/issues/new" class="toc-action"><i class="bi empty"></i>Report an issue</a></li></ul></div></nav>
+    </div>
 <!-- main -->
 <main class="content" id="quarto-document-content">
 
@@ -506,7 +525,7 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
   }
     var localhostRegex = new RegExp(/^(?:http|https):\/\/localhost\:?[0-9]*\//);
     var mailtoRegex = new RegExp(/^mailto:/);
-      var filterRegex = new RegExp('/' + window.location.host + '/');
+      var filterRegex = new RegExp("https:\/\/ccbr\.github\.io\/Tools");
     var isInternal = (href) => {
         return filterRegex.test(href) || localhostRegex.test(href) || mailtoRegex.test(href);
     }
@@ -835,6 +854,19 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
 });
 </script>
 </div> <!-- /content -->
+<footer class="footer">
+  <div class="nav-footer">
+    <div class="nav-footer-left">
+<p>Created by the <a href="https://github.com/CCBR">CCR Collaborative Bioinformatics Resource</a></p>
+</div>   
+    <div class="nav-footer-center">
+      &nbsp;
+    <div class="toc-actions d-sm-block d-md-none"><ul><li><a href="https://github.com/CCBR/Tools/edit/main/reference/peek.qmd" class="toc-action"><i class="bi bi-github"></i>Edit this page</a></li><li><a href="https://github.com/CCBR/Tools/issues/new" class="toc-action"><i class="bi empty"></i>Report an issue</a></li></ul></div></div>
+    <div class="nav-footer-right">
+      &nbsp;
+    </div>
+  </div>
+</footer>
 
 
 
