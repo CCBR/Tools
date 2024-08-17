@@ -5,6 +5,9 @@ project:
 
 website:
   title: "CCBR Tools"
+  site-url: https://ccbr.github.io/Tools
+  repo-url: https://github.com/CCBR/Tools
+  repo-actions: [edit, issue]
   sidebar:
     - id: reference
       contents: "_sidebar.yml"
@@ -22,6 +25,10 @@ website:
       - icon: github
         href: https://github.com/CCBR/Tools
         aria-label: CCBR/Tools GitHub
+  page-footer:
+    left: |
+      Created by the
+      [CCR Collaborative Bioinformatics Resource](https://github.com/CCBR)
 
 quartodoc:
   package: ccbr_tools
@@ -50,3 +57,4 @@ format:
     theme:
       light: flatly
       dark: darkly
+    toc: true
