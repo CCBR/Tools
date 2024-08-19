@@ -8,31 +8,24 @@ Functions:
     Run a Nextflow workflow.
 """
 
-from ..pkg_util import repo_base, msg_box, use_template
+from ..pkg_util import msg_box, use_template
 from ..shell import shell_run
-from .util import get_hpcname
+from .hpc import get_hpc
 
 
 def run(
-    nextfile_path=None,
-    nextflow_args=None,
+    nextfile_path,
+    nextflow_args=[],
     mode="local",
     pipeline_name=None,
     debug=False,
-    hpc_options={
-        "biowulf": {"profile": "biowulf", "slurm": "slurm_nxf_biowulf.sh"},
-        "fnlcr": {
-            "profile": "frce",
-            "slurm": "slurm_nxf_frce.sh",
-        },
-    },
 ):
     """
     Run a Nextflow workflow
 
     Args:
-        nextfile_path (str, optional): Path to the Nextflow file. Defaults to None.
-        nextflow_args (list, optional): Additional Nextflow arguments. Defaults to None.
+        nextfile_path (str, optional): Path to the Nextflow file.
+        nextflow_args (list, optional): Additional Nextflow arguments. Defaults to an empty list.
         mode (str, optional): Execution mode. Defaults to "local".
         hpc_options (dict, optional): HPC options. Defaults to {"biowulf": {"profile": "biowulf", "slurm": "assets/slurm_header_biowulf.sh"}, "fnlcr": {"profile": "frce", "slurm": "assets/slurm_header_frce.sh"}}.
 
@@ -44,7 +37,7 @@ def run(
     """
     nextflow_command = ["nextflow", "run", nextfile_path]
 
-    hpc = get_hpcname()
+    hpc = get_hpc()
     if mode == "slurm" and not hpc:
         raise ValueError("mode is 'slurm' but no HPC environment was detected")
     # add any additional Nextflow commands
@@ -65,7 +58,7 @@ def run(
     if mode == "slurm":
         profiles.add("slurm")
     if hpc:
-        profiles.add(hpc_options[hpc]["profile"])
+        profiles.add(hpc.name)
     if (
         profiles
     ):  # only add to the profiles if there are any. there are none when champagne is run on GitHub Actions.
@@ -79,23 +72,22 @@ def run(
     if mode == "slurm":
         slurm_filename = "submit_slurm.sh"
         use_template(
-            hpc_options[hpc]["slurm"],
-            output_filepath="submit_slurm.sh",
+            hpc.slurm_script["nxf"],
+            output_filepath=slurm_filename,
             PIPELINE=pipeline_name if pipeline_name else "CCBR_nxf",
             RUN_COMMAND=nextflow_command,
         )
-        with open(slurm_filename, "w") as sbatch_file:
-            with open(repo_base(hpc_options[hpc]["slurm"]), "r") as template:
-                sbatch_file.writelines(template.readlines())
-            sbatch_file.write(nextflow_command)
         run_command = f"sbatch {slurm_filename}"
         msg_box("Slurm batch job", errmsg=run_command)
     elif mode == "local":
         if hpc:
-            nextflow_command = f'bash -c "module load nextflow && {nextflow_command}"'
+            nextflow_command = (
+                f'bash -c "module load {hpc.modules} && {nextflow_command}"'
+            )
         run_command = nextflow_command
     else:
         raise ValueError(f"mode {mode} not recognized")
 
     # Run Nextflow
-    shell_run(run_command, capture_output=False)
+    if not debug:
+        shell_run(run_command, capture_output=False)
