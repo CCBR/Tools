@@ -1,19 +1,29 @@
-from ..pkg_util import repo_base, msg_box
+"""
+Module: nextflow
+
+This module provides functions for running Nextflow workflows in local and HPC environments.
+
+Functions:
+- run(nextfile_path=None, nextflow_args=None, mode="local", pipeline_name=None, debug=False, hpc_options={})
+    Run a Nextflow workflow.
+"""
+
+from ..pkg_util import repo_base, msg_box, use_template
 from ..shell import shell_run
 from .util import get_hpcname
 
 
-def run_nextflow(
+def run(
     nextfile_path=None,
-    merge_config=None,
-    threads=None,
     nextflow_args=None,
     mode="local",
+    pipeline_name=None,
+    debug=False,
     hpc_options={
-        "biowulf": {"profile": "biowulf", "slurm": "assets/slurm_header_biowulf.sh"},
+        "biowulf": {"profile": "biowulf", "slurm": "slurm_nxf_biowulf.sh"},
         "fnlcr": {
             "profile": "frce",
-            "slurm": "assets/slurm_header_frce.sh",
+            "slurm": "slurm_nxf_frce.sh",
         },
     },
 ):
@@ -22,8 +32,6 @@ def run_nextflow(
 
     Args:
         nextfile_path (str, optional): Path to the Nextflow file. Defaults to None.
-        merge_config (str, optional): Merge configuration. Defaults to None.
-        threads (int, optional): Number of threads. Defaults to None.
         nextflow_args (list, optional): Additional Nextflow arguments. Defaults to None.
         mode (str, optional): Execution mode. Defaults to "local".
         hpc_options (dict, optional): HPC options. Defaults to {"biowulf": {"profile": "biowulf", "slurm": "assets/slurm_header_biowulf.sh"}, "fnlcr": {"profile": "frce", "slurm": "assets/slurm_header_frce.sh"}}.
@@ -70,6 +78,12 @@ def run_nextflow(
 
     if mode == "slurm":
         slurm_filename = "submit_slurm.sh"
+        use_template(
+            hpc_options[hpc]["slurm"],
+            output_filepath="submit_slurm.sh",
+            PIPELINE=pipeline_name if pipeline_name else "CCBR_nxf",
+            RUN_COMMAND=nextflow_command,
+        )
         with open(slurm_filename, "w") as sbatch_file:
             with open(repo_base(hpc_options[hpc]["slurm"]), "r") as template:
                 sbatch_file.writelines(template.readlines())
@@ -82,5 +96,6 @@ def run_nextflow(
         run_command = nextflow_command
     else:
         raise ValueError(f"mode {mode} not recognized")
+
     # Run Nextflow
     shell_run(run_command, capture_output=False)
