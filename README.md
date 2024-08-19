@@ -1,6 +1,6 @@
-<!-- README.md is generated from README.qmd. Please edit that file -->
-
 # CCBR Tools
+
+<!-- README.md is generated from README.qmd. Please edit that file -->
 
 Utilities for CCBR Bioinformatics Software
 
@@ -13,19 +13,19 @@ Utilities for CCBR Bioinformatics Software
 On biowulf you can access the latest release of `ccbr_tools` by loading
 the ccbrpipeliner module:
 
-```sh
+``` sh
 module load ccbrpipeliner
 ```
 
 Outside of biowulf, you can install the package with pip:
 
-```sh
+``` sh
 pip install git+https://github.com/CCBR/Tools
 ```
 
 Or specify a specific tagged version or branch:
 
-```sh
+``` sh
 pip install git+https://github.com/CCBR/Tools@main
 ```
 
@@ -33,7 +33,7 @@ pip install git+https://github.com/CCBR/Tools@main
 
 ### CLI
 
-```sh
+``` sh
 ccbr_tools --help
 ```
 
@@ -62,7 +62,7 @@ ccbr_tools --help
 
 ### Python
 
-```python
+``` python
 import ccbr_tools.pkg_util
 print(ccbr_tools.pkg_util.get_version())
 ```
