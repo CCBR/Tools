@@ -40,7 +40,7 @@ class FRCE(Cluster):
         self.env_vars = "\n".join(
             (
                 self.env_vars,
-                f"export PATH=${{PATH}}:/mnt/projects/CCBR-Pipelines/bin",
+                "export PATH=${PATH}:/mnt/projects/CCBR-Pipelines/bin",
             )
         )
 

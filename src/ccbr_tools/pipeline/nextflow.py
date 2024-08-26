@@ -76,7 +76,12 @@ def run(
             "submit_slurm.sh",
             PIPELINE=pipeline_name if pipeline_name else "CCBR_nxf",
             MODULES=hpc.modules,
-            ENV_VARS=hpc.env_vars,
+            ENV_VARS="\n".join(
+                (
+                    hpc.env_vars,
+                    f"export SINGULARITY_CACHEDIR={get_singularity_cachedir()}",
+                )
+            ),  # TODO allow user override of singularity cache dir with CLI
             RUN_COMMAND=nextflow_command,
         )
         run_command = f"sbatch {slurm_filename}"
