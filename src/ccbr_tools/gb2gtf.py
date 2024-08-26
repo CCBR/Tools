@@ -4,6 +4,7 @@ Module for converting GenBank files to GTF format.
 Usage:
     python gb2gtf.py sequence.gb > sequence.gtf
 """
+
 # download GenBank file from NCBI and then
 # Usage:python gb2gtf.py sequence.gb  > sequence.gtf
 

@@ -7,6 +7,7 @@ Example:
     >>> shell_run("invalid_command")
     '/bin/sh: invalid_command: command not found\n'
 """
+
 import contextlib
 import io
 import subprocess
