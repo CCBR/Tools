@@ -20,9 +20,9 @@ url: https://ccbr.github.io/Tools/
 repository-code: https://github.com/CCBR/Tools
 license: MIT
 type: software
-#identifiers:
-#  - description: "Archived snapshots of all versions"
-#    type: doi
-#    value: # TODO add all-versions DOI from Zenodo here
+identifiers:
+  - description: "Archived snapshots of all versions"
+    type: doi
+    value: "10.5281/zenodo.13377166"
 version: v0.1.0
 date-released: "2024-08-26"
