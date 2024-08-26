@@ -30,7 +30,7 @@ pip install git+https://github.com/CCBR/Tools
 Or specify a specific tagged version or branch:
 
 ```sh
-pip install git+https://github.com/CCBR/Tools@main
+pip install git+https://github.com/CCBR/Tools@v0.1.0
 ```
 
 ## Usage

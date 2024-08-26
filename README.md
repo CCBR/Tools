@@ -27,7 +27,7 @@ pip install git+https://github.com/CCBR/Tools
 Or specify a specific tagged version or branch:
 
 ```sh
-pip install git+https://github.com/CCBR/Tools@main
+pip install git+https://github.com/CCBR/Tools@v0.1.0
 ```
 
 ## Usage
@@ -68,7 +68,7 @@ import ccbr_tools.pkg_util
 print(ccbr_tools.pkg_util.get_version())
 ```
 
-    0.1.0-dev
+    0.1.1-dev
 
 ## CLI Utilities
 
@@ -121,14 +121,17 @@ package and do not have any unit tests.
 
 Please cite this software if you use it in a publication:
 
-> Sovacool K., Koparde V., Kuhn S., Tandon M., Huse S. CCBR Tools:
-> Utilities for CCBR Bioinformatics Software URL:
-> https://ccbr.github.io/Tools/
+> Sovacool K., Koparde V., Kuhn S., Tandon M., Huse S. (2024). CCBR
+> Tools: Utilities for CCBR Bioinformatics Software (version v0.1.0).
+> DOI: 10.5281/zenodo.13377166 URL: https://ccbr.github.io/Tools/
 
 ### Bibtex entry
 
     @misc{YourReferenceHere,
     author = {Sovacool, Kelly and Koparde, Vishal and Kuhn, Skyler and Tandon, Mayank and Huse, Susan},
+    doi = {10.5281/zenodo.13377166},
+    month = {8},
     title = {CCBR Tools: Utilities for CCBR Bioinformatics Software},
-    url = {https://ccbr.github.io/Tools/}
+    url = {https://ccbr.github.io/Tools/},
+    year = {2024}
     }
