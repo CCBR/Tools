@@ -734,9 +734,90 @@ ul.task-list li input[type="checkbox"] {
 <section id="ccbr_tools.pkg_util.use_template" class="level3">
 <h3 class="anchored" data-anchor-id="ccbr_tools.pkg_util.use_template">use_template</h3>
 <p><code>pkg_util.use_template(template_name, output_filepath=None, **kwargs)</code></p>
-<p>Uses a template, formats variables, and writes it to a file. Args: template_name (str): The name of the template to use. output_filepath (str, optional): The filepath to save the output file. If not provided, it will be written to <code>template_name</code> in the current working directory. **kwargs: Keyword arguments to fill in the template variables. Returns: None Raises: FileNotFoundError: If the template file is not found. IOError: If there is an error writing the output file. Examples: use_template(“slurm_nxf_biowulf.sh”, output_filepath=“submit_slurm.sh”, PIPELINE=“CCBR_nxf”, RUN_COMMAND=“nextflow run main.nf -stub”)</p>
+<p>Uses a template, formats variables, and writes it to a file.</p>
+<section id="parameters-10" class="level4">
+<h4 class="anchored" data-anchor-id="parameters-10">Parameters</h4>
+<table class="caption-top table">
+<colgroup>
+<col style="width: 11%">
+<col style="width: 4%">
+<col style="width: 76%">
+<col style="width: 7%">
+</colgroup>
+<thead>
+<tr class="header">
+<th>Name</th>
+<th>Type</th>
+<th>Description</th>
+<th>Default</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td><code>template_name</code></td>
+<td>str</td>
+<td>The name of the template to use.</td>
+<td><em>required</em></td>
+</tr>
+<tr class="even">
+<td><code>output_filepath</code></td>
+<td>str</td>
+<td>The filepath to save the output file. If not provided, it will be written to <code>template_name</code> in the current working directory.</td>
+<td><code>None</code></td>
+</tr>
+<tr class="odd">
+<td><code>**kwargs</code></td>
+<td></td>
+<td>Keyword arguments to fill in the template variables.</td>
+<td><code>{}</code></td>
+</tr>
+</tbody>
+</table>
+</section>
+<section id="returns-7" class="level4">
+<h4 class="anchored" data-anchor-id="returns-7">Returns</h4>
+<table class="caption-top table">
+<thead>
+<tr class="header">
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td></td>
+<td>None</td>
+</tr>
+</tbody>
+</table>
+</section>
+<section id="raises" class="level4">
+<h4 class="anchored" data-anchor-id="raises">Raises</h4>
+<table class="caption-top table">
+<thead>
+<tr class="header">
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>FileNotFoundError</td>
+<td>If the template file is not found.</td>
+</tr>
+<tr class="even">
+<td>IOError</td>
+<td>If there is an error writing the output file.</td>
+</tr>
+</tbody>
+</table>
+</section>
+<section id="examples" class="level4">
+<h4 class="anchored" data-anchor-id="examples">Examples</h4>
+<p>use_template(“slurm_nxf_biowulf.sh”, output_filepath=“submit_slurm.sh”, PIPELINE=“CCBR_nxf”, RUN_COMMAND=“nextflow run main.nf -stub”)</p>
 
 
+</section>
 </section>
 </section>
 </section>

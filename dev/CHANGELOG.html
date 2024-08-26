@@ -129,7 +129,11 @@ ul.task-list li input[type="checkbox"] {
     <h2 id="toc-title">On this page</h2>
    
   <ul>
-  <li><a href="#tools-development-version" id="toc-tools-development-version" class="nav-link active" data-scroll-target="#tools-development-version">Tools development version</a></li>
+  <li><a href="#tools-0.1.0" id="toc-tools-0.1.0" class="nav-link active" data-scroll-target="#tools-0.1.0">Tools 0.1.0</a>
+  <ul class="collapse">
+  <li><a href="#cli-utilities" id="toc-cli-utilities" class="nav-link" data-scroll-target="#cli-utilities">CLI Utilities</a></li>
+  <li><a href="#external-scripts" id="toc-external-scripts" class="nav-link" data-scroll-target="#external-scripts">External Scripts</a></li>
+  </ul></li>
   <li><a href="#tools-0.0.1" id="toc-tools-0.0.1" class="nav-link" data-scroll-target="#tools-0.0.1">Tools 0.0.1</a></li>
   </ul>
 <div class="toc-actions"><ul><li><a href="https://github.com/CCBR/Tools/edit/main/CHANGELOG.md" class="toc-action"><i class="bi bi-github"></i>Edit this page</a></li><li><a href="https://github.com/CCBR/Tools/issues/new" class="toc-action"><i class="bi empty"></i>Report an issue</a></li></ul></div></nav>
@@ -140,8 +144,55 @@ ul.task-list li input[type="checkbox"] {
 
 
 
-<section id="tools-development-version" class="level2">
-<h2 class="anchored" data-anchor-id="tools-development-version">Tools development version</h2>
+<section id="tools-0.1.0" class="level2">
+<h2 class="anchored" data-anchor-id="tools-0.1.0">Tools 0.1.0</h2>
+<p>The Tools repository is now restructured as a Python package. All previous python scripts which included command line utilities have been moved to <code>src/</code>, and all other scripts have been moved to <code>scripts/</code>. In both cases, they are available in the path when the package is installed.</p>
+<p>Functions which were part of both XAVIER and RENEE are available for re-use in other bioinformatics pipelines for tasks such as determining the HPC environment, retrieving available genome annotations, and printing citation and version information. Explore the <code>ccbr_tools</code> reference documentation for more information: <a href="https://ccbr.github.io/Tools/latest/reference/" class="uri">https://ccbr.github.io/Tools/latest/reference/</a></p>
+<section id="cli-utilities" class="level3">
+<h3 class="anchored" data-anchor-id="cli-utilities">CLI Utilities</h3>
+<p>Command-line utilities in CCBR Tools.</p>
+<ul>
+<li><code>ccbr_tools</code></li>
+<li><code>gb2gtf</code></li>
+<li><code>hf</code></li>
+<li><code>intersect</code></li>
+<li><code>jobby</code></li>
+<li><code>jobinfo</code></li>
+<li><code>peek</code></li>
+</ul>
+<p>Run a command with <code>--help</code> to learn how to use it.</p>
+</section>
+<section id="external-scripts" class="level3">
+<h3 class="anchored" data-anchor-id="external-scripts">External Scripts</h3>
+<p>Additional standalone scripts for various common tasks in <a href="scripts/">scripts/</a> are added to the path when this package is installed. They are less robust than the CLI Utilities included in the package and do not have any unit tests.</p>
+<ul>
+<li><code>add_gene_name_to_count_matrix.R</code></li>
+<li><code>aggregate_data_tables.R</code></li>
+<li><code>argparse.bash</code></li>
+<li><code>cancel_snakemake_jobs.sh</code></li>
+<li><code>create_hpc_link.sh</code></li>
+<li><code>extract_value_from_json.py</code></li>
+<li><code>extract_value_from_yaml.py</code></li>
+<li><code>filter_bam_by_readids.py</code></li>
+<li><code>filter_fastq_by_readids_highmem.py</code></li>
+<li><code>filter_fastq_by_readids_highmem_pe.py</code></li>
+<li><code>gather_cluster_stats.sh</code></li>
+<li><code>gather_cluster_stats_biowulf.sh</code></li>
+<li><code>get_buyin_partition_list.bash</code></li>
+<li><code>get_slurm_file_with_error.sh</code></li>
+<li><code>gsea_preranked.sh</code></li>
+<li><code>karyoploter.R</code></li>
+<li><code>make_labels_for_pipeliner.sh</code></li>
+<li><code>rawcounts2normalizedcounts_DESeq2.R</code></li>
+<li><code>rawcounts2normalizedcounts_limmavoom.R</code></li>
+<li><code>run_jobby_on_nextflow_log</code></li>
+<li><code>run_jobby_on_nextflow_log_full_format</code></li>
+<li><code>run_jobby_on_snakemake_log</code></li>
+<li><code>run_jobby_on_snakemake_log_full_format</code></li>
+<li><code>spooker</code></li>
+<li><code>which_vpn.sh</code></li>
+</ul>
+</section>
 </section>
 <section id="tools-0.0.1" class="level2">
 <h2 class="anchored" data-anchor-id="tools-0.0.1">Tools 0.0.1</h2>
