@@ -187,11 +187,11 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 
 
 
+<!-- README.md is generated from README.qmd. Please edit that file -->
 <section id="ccbr-tools" class="level1">
 <h1>CCBR Tools</h1>
-<!-- README.md is generated from README.qmd. Please edit that file -->
 <p>Utilities for CCBR Bioinformatics Software</p>
-<p><a href="https://github.com/CCBR/Tools/actions/workflows/build-python.yml"><img src="https://github.com/CCBR/Tools/actions/workflows/build-python.yml/badge.svg" class="img-fluid" alt="build"></a> <a href="https://github.com/CCBR/Tools/actions/workflows/docs-quartodoc.yml"><img src="https://github.com/CCBR/Tools/actions/workflows/docs-quartodoc.yml/badge.svg" class="img-fluid" alt="docs"></a> <a href="https://codecov.io/gh/CCBR/Tools"><img src="https://codecov.io/gh/CCBR/Tools/graph/badge.svg?token=O73NOR65B3" class="img-fluid" alt="codecov"></a></p>
+<p><a href="https://github.com/CCBR/Tools/actions/workflows/build-python.yml"><img src="https://github.com/CCBR/Tools/actions/workflows/build-python.yml/badge.svg" class="img-fluid" alt="build"></a> <a href="https://github.com/CCBR/Tools/actions/workflows/docs-quartodoc.yml"><img src="https://github.com/CCBR/Tools/actions/workflows/docs-quartodoc.yml/badge.svg" class="img-fluid" alt="docs"></a> <a href="https://codecov.io/gh/CCBR/Tools"><img src="https://codecov.io/gh/CCBR/Tools/graph/badge.svg?token=O73NOR65B3" class="img-fluid" alt="codecov"></a> <a href="https://doi.org/10.5281/zenodo.13377166"><img src="https://zenodo.org/badge/DOI/10.5281/zenodo.13377166.svg" class="img-fluid" alt="DOI"></a></p>
 <section id="installation" class="level2">
 <h2 class="anchored" data-anchor-id="installation">Installation</h2>
 <p>On biowulf you can access the latest release of <code>ccbr_tools</code> by loading the ccbrpipeliner module:</p>
@@ -199,7 +199,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <p>Outside of biowulf, you can install the package with pip:</p>
 <div class="sourceCode" id="cb2"><pre class="sourceCode sh code-with-copy"><code class="sourceCode bash"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="ex">pip</span> install git+https://github.com/CCBR/Tools</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <p>Or specify a specific tagged version or branch:</p>
-<div class="sourceCode" id="cb3"><pre class="sourceCode sh code-with-copy"><code class="sourceCode bash"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="ex">pip</span> install git+https://github.com/CCBR/Tools@main</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb3"><pre class="sourceCode sh code-with-copy"><code class="sourceCode bash"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="ex">pip</span> install git+https://github.com/CCBR/Tools@v0.1.0</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </section>
 <section id="usage" class="level2">
 <h2 class="anchored" data-anchor-id="usage">Usage</h2>
@@ -233,7 +233,7 @@ All installed tools:
 <h3 class="anchored" data-anchor-id="python">Python</h3>
 <div class="sourceCode" id="cb6"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> ccbr_tools.pkg_util</span>
 <span id="cb6-2"><a href="#cb6-2" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(ccbr_tools.pkg_util.get_version())</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<pre><code>0.1.0-dev</code></pre>
+<pre><code>0.1.1-dev</code></pre>
 </section>
 </section>
 <section id="cli-utilities" class="level2">
@@ -285,14 +285,17 @@ All installed tools:
 <h2 class="anchored" data-anchor-id="citation">Citation</h2>
 <p>Please cite this software if you use it in a publication:</p>
 <blockquote class="blockquote">
-<p>Sovacool K., Koparde V., Kuhn S., Tandon M., Huse S. CCBR Tools: Utilities for CCBR Bioinformatics Software URL: https://ccbr.github.io/Tools/</p>
+<p>Sovacool K., Koparde V., Kuhn S., Tandon M., Huse S. (2024). CCBR Tools: Utilities for CCBR Bioinformatics Software (version v0.1.0). DOI: 10.5281/zenodo.13377166 URL: https://ccbr.github.io/Tools/</p>
 </blockquote>
 <section id="bibtex-entry" class="level3">
 <h3 class="anchored" data-anchor-id="bibtex-entry">Bibtex entry</h3>
 <pre><code>@misc{YourReferenceHere,
 author = {Sovacool, Kelly and Koparde, Vishal and Kuhn, Skyler and Tandon, Mayank and Huse, Susan},
+doi = {10.5281/zenodo.13377166},
+month = {8},
 title = {CCBR Tools: Utilities for CCBR Bioinformatics Software},
-url = {https://ccbr.github.io/Tools/}
+url = {https://ccbr.github.io/Tools/},
+year = {2024}
 }</code></pre>
 
 
