@@ -1,31 +1,32 @@
-# CCBR Tools
-
 <!-- README.md is generated from README.qmd. Please edit that file -->
+
+# CCBR Tools
 
 Utilities for CCBR Bioinformatics Software
 
 [![build](https://github.com/CCBR/Tools/actions/workflows/build-python.yml/badge.svg)](https://github.com/CCBR/Tools/actions/workflows/build-python.yml)
 [![docs](https://github.com/CCBR/Tools/actions/workflows/docs-quartodoc.yml/badge.svg)](https://github.com/CCBR/Tools/actions/workflows/docs-quartodoc.yml)
 [![codecov](https://codecov.io/gh/CCBR/Tools/graph/badge.svg?token=O73NOR65B3)](https://codecov.io/gh/CCBR/Tools)
+[![DOI](https://zenodo.org/badge/DOI/10.5281/zenodo.13377166.svg)](https://doi.org/10.5281/zenodo.13377166)
 
 ## Installation
 
 On biowulf you can access the latest release of `ccbr_tools` by loading
 the ccbrpipeliner module:
 
-``` sh
+```sh
 module load ccbrpipeliner
 ```
 
 Outside of biowulf, you can install the package with pip:
 
-``` sh
+```sh
 pip install git+https://github.com/CCBR/Tools
 ```
 
 Or specify a specific tagged version or branch:
 
-``` sh
+```sh
 pip install git+https://github.com/CCBR/Tools@main
 ```
 
@@ -33,7 +34,7 @@ pip install git+https://github.com/CCBR/Tools@main
 
 ### CLI
 
-``` sh
+```sh
 ccbr_tools --help
 ```
 
@@ -62,7 +63,7 @@ ccbr_tools --help
 
 ### Python
 
-``` python
+```python
 import ccbr_tools.pkg_util
 print(ccbr_tools.pkg_util.get_version())
 ```
