@@ -6,6 +6,6 @@ def test_read_template():
     assert all(
         [
             template_str.startswith("#!/usr/bin/env bash"),
-            template_str.endswith("{RUN_COMMAND}"),
+            template_str.endswith("{RUN_COMMAND}\n"),
         ]
     )
