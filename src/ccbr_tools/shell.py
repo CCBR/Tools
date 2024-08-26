@@ -1,3 +1,12 @@
+"""
+Utility functions for shell command execution.
+
+Example:
+    >>> shell_run("echo Hello, World!")
+    'Hello, World!\n'
+    >>> shell_run("invalid_command")
+    '/bin/sh: invalid_command: command not found\n'
+"""
 import contextlib
 import io
 import subprocess

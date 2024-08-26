@@ -1,11 +1,11 @@
-#!/usr/local/bin/python
-###################################################################
-# Skyler Kuhn
-# intersect
-# Find the intersect of the two files
-# Returns the inner join
-# USAGE: intersect file1 file2
-###################################################################
+"""
+Find the intersect of two files, returns the inner join
+
+Original author: Skyler Kuhn (@skchronicles)
+
+Usage:
+    intersect file1 file2
+"""
 from __future__ import print_function
 import sys
 

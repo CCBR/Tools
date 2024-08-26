@@ -1,6 +1,6 @@
-#!/usr/bin/env python3
-
 """
+Get HPC usage metadata for a list of slurm jobids on biowulf
+
 About:
     This wrapper script works only on BIOWULF!
     This script usage the "dashboard_cli" utility on biowulf to get HPC usage metadata
@@ -8,8 +8,10 @@ About:
     line or extracted from a snakemake.log file. Using snakemake.log file option together
     with --failonly option lists path to the STDERR files for failed jobs. This can be
     very useful to debug failed Snakemake workflows.
+
 USAGE:
     $ jobinfo -h
+
 Example:
     $ jobinfo -j 123456,7891011
     $ jobinfo -s /path/to/snakemake.log

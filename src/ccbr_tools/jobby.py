@@ -1,9 +1,6 @@
-#!/usr/bin/env python3
-# Thanks @skchronicles
-# source: https://raw.githubusercontent.com/OpenOmics/mr-seek/2ecbbb2628b7102bf2cc23bc946858de2e09929f/workflow/scripts/jobby
-# -*- coding: UTF-8 -*-
-
 """
+Display job information for past slurm job IDs
+
 ABOUT:
     `jobby` will take your past jobs and display their job information.
     Why? We have pipelines running on several different clusters and
@@ -12,6 +9,10 @@ ABOUT:
     target system, `jobby` will attempt to determine the best method for
     getting job information to return to the user in a standardized
     format and unified cli.
+
+    Many thanks to the original author: Skyler Kuhn (@skchronicles)
+
+    Original source: https://raw.githubusercontent.com/OpenOmics/mr-seek/2ecbbb2628b7102bf2cc23bc946858de2e09929f/workflow/scripts/jobby
 
 REQUIRES:
   - python>=3.5

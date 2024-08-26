@@ -1,5 +1,9 @@
-#!/usr/local/bin/python
-# -*- coding: utf-8 -*-
+"""
+Take a peek at tab-delimited files
+
+Usage:
+    peek <file.tsv> [buffer]
+"""
 from __future__ import print_function
 from pathlib import Path
 import sys
