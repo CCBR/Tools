@@ -1,3 +1,4 @@
 include CITATION.cff
 include VERSION
 include pyproject.toml
+include src/ccbr_tools/templates/*

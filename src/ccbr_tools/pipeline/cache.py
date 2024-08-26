@@ -3,11 +3,13 @@ import os
 import sys
 
 
-def get_singularity_cachedir(output_dir, cache_dir=None):
+def get_singularity_cachedir(output_dir=None, cache_dir=None):
     """Returns the singularity cache directory.
     If no user-provided cache directory is provided,
     the default singularity cache is in the output directory.
     """
+    if not output_dir:
+        output_dir = os.getcwd()
     if not cache_dir:
         cache_dir = os.path.join(output_dir, ".singularity")
     return cache_dir
