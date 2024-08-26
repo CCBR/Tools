@@ -11,6 +11,7 @@ Functions:
 from ..pkg_util import msg_box, use_template
 from ..shell import shell_run
 from .hpc import get_hpc
+from .cache import get_singularity_cachedir
 
 
 def run(
@@ -72,18 +73,17 @@ def run(
     if mode == "slurm":
         slurm_filename = "submit_slurm.sh"
         use_template(
-            hpc.slurm_script["nxf"],
-            output_filepath=slurm_filename,
+            "submit_slurm.sh",
             PIPELINE=pipeline_name if pipeline_name else "CCBR_nxf",
+            MODULES=hpc.modules,
+            ENV_VARS=hpc.env_vars,
             RUN_COMMAND=nextflow_command,
         )
         run_command = f"sbatch {slurm_filename}"
         msg_box("Slurm batch job", errmsg=run_command)
     elif mode == "local":
         if hpc:
-            nextflow_command = (
-                f'bash -c "module load {hpc.modules} && {nextflow_command}"'
-            )
+            nextflow_command = f'bash -c "module load {hpc.modules} && {hpc.env_vars} && {nextflow_command}"'
         run_command = nextflow_command
     else:
         raise ValueError(f"mode {mode} not recognized")

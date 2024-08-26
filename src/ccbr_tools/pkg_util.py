@@ -174,7 +174,7 @@ def read_template(template_name):
 
 def use_template(template_name, output_filepath=None, **kwargs):
     """
-    Uses a template, formats variables, and write it to a file.
+    Uses a template, formats variables, and writes it to a file.
     Args:
         template_name (str): The name of the template to use.
         output_filepath (str, optional): The filepath to save the output file. If not provided, it will be written to `template_name` in the current working directory.

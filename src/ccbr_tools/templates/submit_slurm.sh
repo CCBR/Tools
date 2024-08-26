@@ -8,7 +8,8 @@
 #SBATCH --output "log/slurm_%j.log"
 #SBATCH --output "log/slurm_%j.log"
 
-module load ccbrpipeliner nextflow
-NXF_SINGULARITY_CACHEDIR=/data/CCBR_Pipeliner/SIFS
+module load {MODULES}
+
+{ENV_VARS}
 
 {RUN_COMMAND}
