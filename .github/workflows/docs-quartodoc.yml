@@ -70,3 +70,4 @@ jobs:
           rm -if latest
           ln -s ${{ github.ref_name }} latest
           ls -la
+          git commit latest -m 'chore: link latest docs to ${{ github.ref_name }}' && git push || echo 'no changes to commit'
