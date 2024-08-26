@@ -26,6 +26,11 @@ jobs:
           python -m pip install -e .[docs]
       - name: Set up Quarto
         uses: quarto-dev/quarto-actions/setup@v2
+      - name: git config
+        shell: bash
+        run: |
+          git config --local user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git config --local user.name "41898282+github-actions[bot]"
       - name: build docs
         working-directory: docs
         run: |
@@ -70,4 +75,5 @@ jobs:
           rm -if latest
           ln -s ${{ github.ref_name }} latest
           ls -la
-          git commit latest -m 'chore: link latest docs to ${{ github.ref_name }}' && git push || echo 'no changes to commit'
+          git add latest
+          git commit -m 'chore: link latest docs to ${{ github.ref_name }}' && git push || echo 'no changes to commit'
