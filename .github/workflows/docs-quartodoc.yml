@@ -67,6 +67,6 @@ jobs:
       - name: create symlink stable to new version
         if: github.ref_type == 'tag' && startswith(github.ref, 'refs/tags/v')
         run: |
-          rm latest
+          rm -if latest
           ln -s ${{ github.ref_name }} latest
           ls -la
