@@ -31,7 +31,10 @@ def shell_run(command_str, capture_output=True, check=True, shell=True, text=Tru
         command_str, capture_output=capture_output, shell=shell, text=text, check=check
     )
     if capture_output:
-        return concat_newline(out.stdout, out.stderr)
+        return_val = concat_newline(out.stdout, out.stderr)
+    else:
+        return_val = ""
+    return return_val
 
 
 def exec_in_context(func: callable, *args: str, **kwargs: str):
