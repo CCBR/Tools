@@ -31,7 +31,10 @@ def shell_run(command_str, capture_output=True, check=True, shell=True, text=Tru
         command_str, capture_output=capture_output, shell=shell, text=text, check=check
     )
     if capture_output:
-        return "\n".join([out.stdout, out.stderr])
+        return_val = concat_newline(out.stdout, out.stderr)
+    else:
+        return_val = ""
+    return return_val
 
 
 def exec_in_context(func: callable, *args: str, **kwargs: str):
@@ -42,6 +45,7 @@ def exec_in_context(func: callable, *args: str, **kwargs: str):
         func (func): The function to be executed.
         *args: Variable length argument list to be passed to the function.
         **kwargs: Arbitrary keyword arguments to be passed to the function.
+
     Returns:
         str: The combined output from both stdout and stderr.
     """
@@ -50,5 +54,18 @@ def exec_in_context(func: callable, *args: str, **kwargs: str):
         contextlib.redirect_stderr(io.StringIO()) as err_f,
     ):
         func(*args, **kwargs)
-        out_combined = "\n".join([out_f.getvalue(), err_f.getvalue()])
+        out_combined = concat_newline(out_f.getvalue(), err_f.getvalue())
     return out_combined
+
+
+def concat_newline(*args: str):
+    """
+    Concatenates strings with a newline character between non-empty arguments
+
+    Args:
+        *args: Variable length argument list of strings to be concatenated.
+
+    Returns:
+        str: The concatenated string with newline characters between each non-empty argument.
+    """
+    return "\n".join([arg for arg in args if arg])
