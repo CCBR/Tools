@@ -1,17 +1,10 @@
 [
   {
-    "objectID": "CHANGELOG.html",
-    "href": "CHANGELOG.html",
+    "objectID": "CHANGELOG.html#tools-0.1.1",
+    "href": "CHANGELOG.html#tools-0.1.1",
     "title": "CCBR Tools",
-    "section": "",
-    "text": "fix: don’t add extra newline to command stdout/stderr for shell_run() and exec_in_context(). (#10, @kelly-sovacool)"
-  },
-  {
-    "objectID": "CHANGELOG.html#tools-development-version",
-    "href": "CHANGELOG.html#tools-development-version",
-    "title": "CCBR Tools",
-    "section": "",
-    "text": "fix: don’t add extra newline to command stdout/stderr for shell_run() and exec_in_context(). (#10, @kelly-sovacool)"
+    "section": "Tools 0.1.1",
+    "text": "Tools 0.1.1\n\nfix: don’t add extra newline to command stdout/stderr for shell_run() and exec_in_context(). (#10, @kelly-sovacool)"
   },
   {
     "objectID": "CHANGELOG.html#tools-0.1.0",
