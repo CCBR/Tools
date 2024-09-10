@@ -1,5 +1,7 @@
 ## Tools development version
 
+## Tools 0.1.1
+
 - fix: don't add extra newline to command stdout/stderr for `shell_run()` and `exec_in_context()`. (#10, @kelly-sovacool)
 
 ## Tools 0.1.0
