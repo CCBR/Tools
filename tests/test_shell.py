@@ -14,5 +14,6 @@ def test_concat_newline():
         [
             concat_newline("hello", "world") == "hello\nworld",
             concat_newline("goodbye", "") == "goodbye",
+            concat_newline() == "",
         ]
     )
