@@ -25,5 +25,5 @@ def test_hpc_frce():
 
 
 def test_hpc_none():
-    hpc = get_hpc(debug="")
+    hpc = get_hpc(debug=" ")
     assert not any([hpc, hpc.name, *hpc.modules.values(), hpc.singularity_sif_dir])
