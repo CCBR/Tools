@@ -21,11 +21,35 @@
     "text": "Tools 0.0.1\nThis tag marks the repository state from before refactoring it as a python package."
   },
   {
+    "objectID": "reference/intersect.html",
+    "href": "reference/intersect.html",
+    "title": "intersect",
+    "section": "",
+    "text": "intersect\nFind the intersect of two files, returns the inner join\nOriginal author: Skyler Kuhn (@skchronicles)\n\n\nintersect file1 file2",
+    "crumbs": [
+      "Reference",
+      "Modules",
+      "intersect"
+    ]
+  },
+  {
+    "objectID": "reference/intersect.html#usage",
+    "href": "reference/intersect.html#usage",
+    "title": "intersect",
+    "section": "",
+    "text": "intersect file1 file2",
+    "crumbs": [
+      "Reference",
+      "Modules",
+      "intersect"
+    ]
+  },
+  {
     "objectID": "reference/index.html",
     "href": "reference/index.html",
     "title": "Function reference",
     "section": "",
-    "text": "jobby\nDisplay job information for past slurm job IDs\n\n\npeek\nTake a peek at tab-delimited files\n\n\npipeline\nHelpers for bioinformatics pipelines\n\n\npkg_util\nMiscellaneous utility functions for the package\n\n\nshell\nUtility functions for shell command execution.",
+    "text": "gb2gtf\nModule for converting GenBank files to GTF format.\n\n\nhomologfinder\nhf or HomologFinder finds homologs in human and mouse.\n\n\nintersect\nFind the intersect of two files, returns the inner join\n\n\njobby\nDisplay job information for past slurm job IDs\n\n\njobinfo\nGet HPC usage metadata for a list of slurm jobids on biowulf\n\n\npeek\nTake a peek at tab-delimited files\n\n\npipeline\nHelpers for bioinformatics pipelines\n\n\npkg_util\nMiscellaneous utility functions for the package\n\n\nshell\nUtility functions for shell command execution.\n\n\ntemplates\nTemplate files for CCBR Tools.",
     "crumbs": [
       "Reference",
       "Function reference"
@@ -36,10 +60,22 @@
     "href": "reference/index.html#modules",
     "title": "Function reference",
     "section": "",
-    "text": "jobby\nDisplay job information for past slurm job IDs\n\n\npeek\nTake a peek at tab-delimited files\n\n\npipeline\nHelpers for bioinformatics pipelines\n\n\npkg_util\nMiscellaneous utility functions for the package\n\n\nshell\nUtility functions for shell command execution.",
+    "text": "gb2gtf\nModule for converting GenBank files to GTF format.\n\n\nhomologfinder\nhf or HomologFinder finds homologs in human and mouse.\n\n\nintersect\nFind the intersect of two files, returns the inner join\n\n\njobby\nDisplay job information for past slurm job IDs\n\n\njobinfo\nGet HPC usage metadata for a list of slurm jobids on biowulf\n\n\npeek\nTake a peek at tab-delimited files\n\n\npipeline\nHelpers for bioinformatics pipelines\n\n\npkg_util\nMiscellaneous utility functions for the package\n\n\nshell\nUtility functions for shell command execution.\n\n\ntemplates\nTemplate files for CCBR Tools.",
     "crumbs": [
       "Reference",
       "Function reference"
+    ]
+  },
+  {
+    "objectID": "reference/pipeline.html",
+    "href": "reference/pipeline.html",
+    "title": "pipeline",
+    "section": "",
+    "text": "pipeline\npipeline\nHelpers for bioinformatics pipelines",
+    "crumbs": [
+      "Reference",
+      "Modules",
+      "pipeline"
     ]
   },
   {
@@ -175,6 +211,66 @@
     ]
   },
   {
+    "objectID": "reference/jobinfo.html",
+    "href": "reference/jobinfo.html",
+    "title": "jobinfo",
+    "section": "",
+    "text": "jobinfo\nGet HPC usage metadata for a list of slurm jobids on biowulf\n\n\nThis wrapper script works only on BIOWULF! This script usage the “dashboard_cli” utility on biowulf to get HPC usage metadata for a list of slurm jobids. These slurm jobids can be either provided at command line or extracted from a snakemake.log file. Using snakemake.log file option together with –failonly option lists path to the STDERR files for failed jobs. This can be very useful to debug failed Snakemake workflows.\n\n\n\n$ jobinfo -h\n\n\n\n$ jobinfo -j 123456,7891011 $ jobinfo -s /path/to/snakemake.log $ jobinfo -j 123456,7891011 -o /path/to/report.tsv $ jobinfo -s /path/to/snakemake.log –failonly\n\n\n\n\n\n\nName\nDescription\n\n\n\n\ncheck_help\ncheck if usage needs to be printed\n\n\nexit_w_msg\nGracefully exit with proper message\n\n\n\n\n\njobinfo.check_help(parser)\ncheck if usage needs to be printed\n\n\n\njobinfo.exit_w_msg(message)\nGracefully exit with proper message",
+    "crumbs": [
+      "Reference",
+      "Modules",
+      "jobinfo"
+    ]
+  },
+  {
+    "objectID": "reference/jobinfo.html#about",
+    "href": "reference/jobinfo.html#about",
+    "title": "jobinfo",
+    "section": "",
+    "text": "This wrapper script works only on BIOWULF! This script usage the “dashboard_cli” utility on biowulf to get HPC usage metadata for a list of slurm jobids. These slurm jobids can be either provided at command line or extracted from a snakemake.log file. Using snakemake.log file option together with –failonly option lists path to the STDERR files for failed jobs. This can be very useful to debug failed Snakemake workflows.",
+    "crumbs": [
+      "Reference",
+      "Modules",
+      "jobinfo"
+    ]
+  },
+  {
+    "objectID": "reference/jobinfo.html#usage",
+    "href": "reference/jobinfo.html#usage",
+    "title": "jobinfo",
+    "section": "",
+    "text": "$ jobinfo -h",
+    "crumbs": [
+      "Reference",
+      "Modules",
+      "jobinfo"
+    ]
+  },
+  {
+    "objectID": "reference/jobinfo.html#example",
+    "href": "reference/jobinfo.html#example",
+    "title": "jobinfo",
+    "section": "",
+    "text": "$ jobinfo -j 123456,7891011 $ jobinfo -s /path/to/snakemake.log $ jobinfo -j 123456,7891011 -o /path/to/report.tsv $ jobinfo -s /path/to/snakemake.log –failonly",
+    "crumbs": [
+      "Reference",
+      "Modules",
+      "jobinfo"
+    ]
+  },
+  {
+    "objectID": "reference/jobinfo.html#functions",
+    "href": "reference/jobinfo.html#functions",
+    "title": "jobinfo",
+    "section": "",
+    "text": "Name\nDescription\n\n\n\n\ncheck_help\ncheck if usage needs to be printed\n\n\nexit_w_msg\nGracefully exit with proper message\n\n\n\n\n\njobinfo.check_help(parser)\ncheck if usage needs to be printed\n\n\n\njobinfo.exit_w_msg(message)\nGracefully exit with proper message",
+    "crumbs": [
+      "Reference",
+      "Modules",
+      "jobinfo"
+    ]
+  },
+  {
     "objectID": "index.html",
     "href": "index.html",
     "title": "CCBR Tools",
@@ -277,15 +373,75 @@
     ]
   },
   {
-    "objectID": "reference/pipeline.html",
-    "href": "reference/pipeline.html",
-    "title": "pipeline",
+    "objectID": "reference/homologfinder.html",
+    "href": "reference/homologfinder.html",
+    "title": "homologfinder",
     "section": "",
-    "text": "pipeline\npipeline\nHelpers for bioinformatics pipelines",
+    "text": "homologfinder\nhomologfinder\nhf or HomologFinder finds homologs in human and mouse.",
     "crumbs": [
       "Reference",
       "Modules",
-      "pipeline"
+      "homologfinder"
+    ]
+  },
+  {
+    "objectID": "reference/templates.html",
+    "href": "reference/templates.html",
+    "title": "templates",
+    "section": "",
+    "text": "templates\nTemplate files for CCBR Tools.\n\n\n\nccbr_tools.templates.submit_slurm.sh\n\n\n\n\n\n\n\nName\nDescription\n\n\n\n\nread_template\nRead a template file\n\n\nuse_template\nUses a template, formats variables, and writes it to a file.\n\n\n\n\n\ntemplates.read_template(template_name)\nRead a template file\n\n\n\n\n\nName\nType\nDescription\nDefault\n\n\n\n\ntemplate_name\nstr\nName of the template file\nrequired\n\n\n\n\n\n\n\n\n\nType\nDescription\n\n\n\n\nstr\nContents of the template file\n\n\n\n\n\n\n\ntemplates.use_template(template_name, output_filepath=None, **kwargs)\nUses a template, formats variables, and writes it to a file.\n\n\n\n\n\n\n\n\n\n\n\nName\nType\nDescription\nDefault\n\n\n\n\ntemplate_name\nstr\nThe name of the template to use.\nrequired\n\n\noutput_filepath\nstr\nThe filepath to save the output file. If not provided, it will be written to template_name in the current working directory.\nNone\n\n\n**kwargs\n\nKeyword arguments to fill in the template variables.\n{}\n\n\n\n\n\n\n\n\n\nType\nDescription\n\n\n\n\n\nNone\n\n\n\n\n\n\n\n\n\nType\nDescription\n\n\n\n\nFileNotFoundError\nIf the template file is not found.\n\n\nIOError\nIf there is an error writing the output file.\n\n\n\n\n\n\nuse_template(“submit_slurm.sh”, output_filepath=“./submit_slurm.sh”, PIPELINE=“CCBR_nxf”, MODULES=“ccbrpipeliner nextflow”, ENV_VARS=““, RUN_COMMAND=”nextflow run main.nf -stub”)",
+    "crumbs": [
+      "Reference",
+      "Modules",
+      "templates"
+    ]
+  },
+  {
+    "objectID": "reference/templates.html#templates",
+    "href": "reference/templates.html#templates",
+    "title": "templates",
+    "section": "",
+    "text": "ccbr_tools.templates.submit_slurm.sh",
+    "crumbs": [
+      "Reference",
+      "Modules",
+      "templates"
+    ]
+  },
+  {
+    "objectID": "reference/templates.html#functions",
+    "href": "reference/templates.html#functions",
+    "title": "templates",
+    "section": "",
+    "text": "Name\nDescription\n\n\n\n\nread_template\nRead a template file\n\n\nuse_template\nUses a template, formats variables, and writes it to a file.\n\n\n\n\n\ntemplates.read_template(template_name)\nRead a template file\n\n\n\n\n\nName\nType\nDescription\nDefault\n\n\n\n\ntemplate_name\nstr\nName of the template file\nrequired\n\n\n\n\n\n\n\n\n\nType\nDescription\n\n\n\n\nstr\nContents of the template file\n\n\n\n\n\n\n\ntemplates.use_template(template_name, output_filepath=None, **kwargs)\nUses a template, formats variables, and writes it to a file.\n\n\n\n\n\n\n\n\n\n\n\nName\nType\nDescription\nDefault\n\n\n\n\ntemplate_name\nstr\nThe name of the template to use.\nrequired\n\n\noutput_filepath\nstr\nThe filepath to save the output file. If not provided, it will be written to template_name in the current working directory.\nNone\n\n\n**kwargs\n\nKeyword arguments to fill in the template variables.\n{}\n\n\n\n\n\n\n\n\n\nType\nDescription\n\n\n\n\n\nNone\n\n\n\n\n\n\n\n\n\nType\nDescription\n\n\n\n\nFileNotFoundError\nIf the template file is not found.\n\n\nIOError\nIf there is an error writing the output file.\n\n\n\n\n\n\nuse_template(“submit_slurm.sh”, output_filepath=“./submit_slurm.sh”, PIPELINE=“CCBR_nxf”, MODULES=“ccbrpipeliner nextflow”, ENV_VARS=““, RUN_COMMAND=”nextflow run main.nf -stub”)",
+    "crumbs": [
+      "Reference",
+      "Modules",
+      "templates"
+    ]
+  },
+  {
+    "objectID": "reference/gb2gtf.html",
+    "href": "reference/gb2gtf.html",
+    "title": "gb2gtf",
+    "section": "",
+    "text": "gb2gtf\nModule for converting GenBank files to GTF format.\n\n\npython gb2gtf.py sequence.gb &gt; sequence.gtf",
+    "crumbs": [
+      "Reference",
+      "Modules",
+      "gb2gtf"
+    ]
+  },
+  {
+    "objectID": "reference/gb2gtf.html#usage",
+    "href": "reference/gb2gtf.html#usage",
+    "title": "gb2gtf",
+    "section": "",
+    "text": "python gb2gtf.py sequence.gb &gt; sequence.gtf",
+    "crumbs": [
+      "Reference",
+      "Modules",
+      "gb2gtf"
     ]
   },
   {
