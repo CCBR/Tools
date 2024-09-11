@@ -1,11 +1,10 @@
-#!/usr/bin/env python3
-# -*- coding: utf-8 -*-
 """
-Created on Mon Aug  6 11:07:30 2018
-
 ncbr_huse.py
     Set of functions supporting the FNL NCBR work
 
+Author: Susan Huse
+
+Created on Mon Aug  6 11:07:30 2018
 """
 
 __author__ = "Susan Huse"

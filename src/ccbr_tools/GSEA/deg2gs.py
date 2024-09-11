@@ -1,14 +1,12 @@
-#!/usr/bin/env python
-
 """
+deg2gs.py
+    Reads a rnaseq pipeliner *_DEG_all_genes.txt file
+    and outputs a prioritized list of Ensembl gene IDs for ToppFun
+
 Susan Huse
 NIAID Center for Biological Research
 Frederick National Laboratory for Cancer Research
 Leidos Biomedical
-
-deg2gs.py
-    Reads a rnaseq pipeliner *_DEG_all_genes.txt file
-    and outputs a prioritized list of Ensembl gene IDs for ToppFun
 
 v 1.0 - initial code version.
 v 1.1 - updated for new column headers in pipeliner limma_DEG_all_genes.txt

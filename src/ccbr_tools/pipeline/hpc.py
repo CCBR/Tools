@@ -1,3 +1,15 @@
+"""
+This module defines classes for working with different HPC clusters.
+
+Classes:
+    Cluster: Parent class for HPC clusters, which evaluates to None.
+    Biowulf: Represents the Biowulf HPC cluster.
+    FRCE: Represents the FRCE HPC cluster.
+
+Functions:
+    get_hpc: Returns an instance of the appropriate HPC cluster based on the current environment.
+"""
+
 from .util import get_hpcname
 from .cache import get_singularity_cachedir
 

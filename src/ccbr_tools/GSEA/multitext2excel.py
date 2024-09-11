@@ -1,6 +1,7 @@
-#!/usr/bin/env python3
-# -*- coding: utf-8 -*-
 """
+multitext2excel.py
+    Reads a list of files to import as separate tabs in Excel
+
 Created on Mon Aug  6 14:59:13 2018
 
 Susan Huse
@@ -8,13 +9,10 @@ NIAID Center for Biological Research
 Frederick National Laboratory for Cancer Research
 Leidos Biomedical
 
-multitext2excel.py
-    Reads a list of files to import as separate tabs in Excel
-
 v 1.0 - initial code version.
 v 1.1 - updated to include first splitter markowitzte@nih.gov
-
 """
+
 __author__ = "Susan Huse"
 __date__ = "August 6, 2018"
 __version__ = "1.1"
