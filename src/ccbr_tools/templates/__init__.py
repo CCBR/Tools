@@ -42,7 +42,7 @@ def use_template(template_name, output_filepath=None, **kwargs):
         IOError: If there is an error writing the output file.
 
     Examples:
-        use_template("slurm_nxf_biowulf.sh", output_filepath="submit_slurm.sh", PIPELINE="CCBR_nxf", RUN_COMMAND="nextflow run main.nf -stub")
+        use_template("submit_slurm.sh", output_filepath="./submit_slurm.sh", PIPELINE="CCBR_nxf", MODULES="ccbrpipeliner nextflow", ENV_VARS="", RUN_COMMAND="nextflow run main.nf -stub")
     """
     template_str = read_template(template_name)
     if not output_filepath:
