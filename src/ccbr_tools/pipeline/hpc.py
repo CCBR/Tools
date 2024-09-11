@@ -1,13 +1,8 @@
 """
-This module defines classes for working with different HPC clusters.
+Classes for working with different HPC clusters.
 
-Classes:
-    Cluster: Parent class for HPC clusters, which evaluates to None.
-    Biowulf: Represents the Biowulf HPC cluster.
-    FRCE: Represents the FRCE HPC cluster.
-
-Functions:
-    get_hpc: Returns an instance of the appropriate HPC cluster based on the current environment.
+Use [](`ccbr_tools.pipeline.hpc.get_hpc`) to retrieve an HPC Cluster instance,
+which contains default attributes for supported clusters.
 """
 
 from .util import get_hpcname
@@ -15,6 +10,17 @@ from .cache import get_singularity_cachedir
 
 
 class Cluster:
+    """
+    Base class for an HPC cluster - evaluates to None
+
+    Attributes:
+        name (str): The name of the cluster.
+        modules (dict): A dictionary containing the modules installed on the cluster.
+            The keys are the module names and the values are the corresponding versions.
+        singularity_sif_dir (str): The directory where Singularity SIF files are stored.
+        env_vars (str): A string representing the environment variables to be set on the cluster.
+    """
+
     def __init__(self):
         self.name = None
         self.modules = {"nxf": None, "smk": None}
@@ -33,6 +39,16 @@ class Cluster:
 
 
 class Biowulf(Cluster):
+    """
+    The Biowulf cluster -- child of [](`ccbr_tools.pipeline.hpc.Cluster`)
+
+    Attributes:
+        name (str): The name of the cluster.
+        modules (dict): A dictionary mapping module names to their corresponding commands.
+        singularity_sif_dir (str): The directory path for Singularity SIF files.
+        env_vars (str): A string representing the environment variables to be set on the cluster.
+    """
+
     def __init__(self):
         super().__init__()
         self.name = "biowulf"
@@ -44,6 +60,16 @@ class Biowulf(Cluster):
 
 
 class FRCE(Cluster):
+    """
+    The FRCE cluster -- child of [](`ccbr_tools.pipeline.hpc.Cluster`)
+
+    Attributes:
+        name (str): The name of the cluster.
+        modules (dict): A dictionary mapping module names to their corresponding commands.
+        singularity_sif_dir (str): The directory path for Singularity SIF files.
+        env_vars (str): A string representing the environment variables to be set on the cluster.
+    """
+
     def __init__(self):
         super().__init__()
         self.name = "frce"
@@ -58,6 +84,21 @@ class FRCE(Cluster):
 
 
 def get_hpc(debug=False):
+    """
+    Returns an instance of the High-Performance Computing (HPC) cluster based on the specified HPC name.
+
+    If the HPC is not known or supported, an instance of the base `Cluster` class is returned.
+
+    Args:
+        debug (bool, optional): If True, uses `debug` as the HPC name. Defaults to False.
+
+    Returns:
+        cluster (Cluster): An instance of the HPC cluster.
+
+    Examples:
+        >>> get_hpc()
+        >>> get_hpc(debug=True)
+    """
     hpc_options = {"biowulf": Biowulf, "frce": FRCE}
     hpc_name = get_hpcname() if not debug else debug
     return hpc_options.get(hpc_name, Cluster)()

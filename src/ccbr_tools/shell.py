@@ -47,7 +47,7 @@ def exec_in_context(func: callable, *args: str, **kwargs: str):
         **kwargs: Arbitrary keyword arguments to be passed to the function.
 
     Returns:
-        str: The combined output from both stdout and stderr.
+        out (str): The combined output from both stdout and stderr.
     """
     with (
         contextlib.redirect_stdout(io.StringIO()) as out_f,
@@ -66,6 +66,6 @@ def concat_newline(*args: str):
         *args: Variable length argument list of strings to be concatenated.
 
     Returns:
-        str: The concatenated string with newline characters between each non-empty argument.
+        string (str): The concatenated string with newline characters between each non-empty argument.
     """
     return "\n".join([arg for arg in args if arg])

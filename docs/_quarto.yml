@@ -33,20 +33,30 @@ website:
 quartodoc:
   package: ccbr_tools
   parser: google
+  render_interlinks: true
   sidebar: _sidebar.yml
+  title: "API Reference"
   sections:
     - title: Modules
       contents:
-        - gb2gtf
-        - homologfinder
-        - intersect
         - jobby
-        - jobinfo
         - peek
-        - pipeline
+        - pipeline.cache
+        - pipeline.hpc
+        - pipeline.nextflow
+        - pipeline.util
         - pkg_util
         - shell
         - templates
+    - title: Legacy tools
+      contents:
+        - GSEA.deg2gs
+        - GSEA.multitext2excel
+        - GSEA.ncbr_huse
+        - gb2gtf
+        - homologfinder.hf
+        - intersect
+        - jobinfo
 
 metadata-files:
   - _sidebar.yml

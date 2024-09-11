@@ -1,3 +1,6 @@
+"""
+Functions for singularity cache management
+"""
 import json
 import os
 import sys
@@ -95,7 +98,7 @@ def check_cache(parser, cache, *args, **kwargs):
         # Check that the user owns the child cache directory
         # May revert to os.getuid() if user id is not sufficient
         if (
-            exists(os.path.join(cache, "cache"))
+            os.path.exists(os.path.join(cache, "cache"))
             and os.stat(os.path.join(cache, "cache")).st_uid != os.getuid()
         ):
             # User does NOT own the cache directory, raise error

@@ -1,15 +1,22 @@
 #!/usr/bin/env python3
 
 """
+Finds homologs in human and mouse.
+
 About:
     hf or HomologFinder finds homologs in human and mouse.
     if the input gene or genelist is human, then it returns mouse homolog(s) and vice versa
-USAGE:
+
+Usage:
     $ hf -h
-Example:
+
+Examples:
     $ hf -g ZNF365
+
     $ hf -l Wdr53,Zfp365
+
     $ hf -f genelist.txt
+
 """
 
 __version__ = "v1.0.0"

@@ -1,6 +1,5 @@
 """
-ncbr_huse.py
-    Set of functions supporting the FNL NCBR work
+Set of functions supporting the FNL NCBR work
 
 Author: Susan Huse
 

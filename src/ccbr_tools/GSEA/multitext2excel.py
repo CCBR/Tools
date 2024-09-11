@@ -1,6 +1,5 @@
 """
-multitext2excel.py
-    Reads a list of files to import as separate tabs in Excel
+Reads a list of files to import as separate tabs in Excel
 
 Created on Mon Aug  6 14:59:13 2018
 

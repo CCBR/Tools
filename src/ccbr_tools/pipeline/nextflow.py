@@ -1,7 +1,5 @@
 """
-Module: nextflow
-
-This module provides functions for running Nextflow workflows in local and HPC environments.
+Run Nextflow workflows in local and HPC environments.
 
 Functions:
 - run(nextfile_path=None, nextflow_args=None, mode="local", pipeline_name=None, debug=False, hpc_options={})
@@ -29,13 +27,9 @@ def run(
         nextfile_path (str, optional): Path to the Nextflow file.
         nextflow_args (list, optional): Additional Nextflow arguments. Defaults to an empty list.
         mode (str, optional): Execution mode. Defaults to "local".
-        hpc_options (dict, optional): HPC options. Defaults to {"biowulf": {"profile": "biowulf", "slurm": "assets/slurm_header_biowulf.sh"}, "fnlcr": {"profile": "frce", "slurm": "assets/slurm_header_frce.sh"}}.
 
     Raises:
         ValueError: If mode is 'slurm' but no HPC environment was detected.
-
-    Returns:
-        None
     """
     nextflow_command = ["nextflow", "run", nextfile_path]
 

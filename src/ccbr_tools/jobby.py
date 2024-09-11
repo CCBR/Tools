@@ -10,9 +10,9 @@ ABOUT:
     getting job information to return to the user in a standardized
     format and unified cli.
 
-    Many thanks to the original author: Skyler Kuhn (@skchronicles)
+    Many thanks to the original author: Skyler Kuhn ([@skchronicles](https://github.com/skchronicles))
 
-    Original source: https://raw.githubusercontent.com/OpenOmics/mr-seek/2ecbbb2628b7102bf2cc23bc946858de2e09929f/workflow/scripts/jobby
+    Original source: [OpenOmics/mr-seek](https://raw.githubusercontent.com/OpenOmics/mr-seek/2ecbbb2628b7102bf2cc23bc946858de2e09929f/workflow/scripts/jobby)
 
 REQUIRES:
   - python>=3.5

@@ -25,17 +25,14 @@ def read_template(template_name):
         return template_file.read()
 
 
-def use_template(template_name, output_filepath=None, **kwargs):
+def use_template(template_name, output_filepath=None, **kwargs: str):
     """
     Uses a template, formats variables, and writes it to a file.
 
     Args:
         template_name (str): The name of the template to use.
         output_filepath (str, optional): The filepath to save the output file. If not provided, it will be written to `template_name` in the current working directory.
-        **kwargs: Keyword arguments to fill in the template variables.
-
-    Returns:
-        None
+        **kwargs (str, optional): Keyword arguments to fill in the template variables.
 
     Raises:
         FileNotFoundError: If the template file is not found.
