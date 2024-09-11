@@ -7,7 +7,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 
-<title>homologfinder – CCBR Tools</title>
+<title>pipeline.nextflow – CCBR Tools</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -124,7 +124,7 @@ ul.task-list li input[type="checkbox"] {
       <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" role="button" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
         <i class="bi bi-layout-text-sidebar-reverse"></i>
       </button>
-        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../reference/gb2gtf.html">Modules</a></li><li class="breadcrumb-item"><a href="../reference/homologfinder.html">homologfinder</a></li></ol></nav>
+        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../reference/jobby.html">Modules</a></li><li class="breadcrumb-item"><a href="../reference/pipeline.nextflow.html">pipeline.nextflow</a></li></ol></nav>
         <a class="flex-grow-1" role="navigation" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
         </a>
     </div>
@@ -139,7 +139,7 @@ ul.task-list li input[type="checkbox"] {
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="../reference/index.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">Function reference</span></a>
+ <span class="menu-text">API Reference</span></a>
   </div>
 </li>
         <li class="sidebar-item sidebar-item-section">
@@ -153,32 +153,8 @@ ul.task-list li input[type="checkbox"] {
       <ul id="quarto-sidebar-section-1" class="collapse list-unstyled sidebar-section depth1 show">  
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../reference/gb2gtf.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">gb2gtf</span></a>
-  </div>
-</li>
-          <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="../reference/homologfinder.html" class="sidebar-item-text sidebar-link active">
- <span class="menu-text">homologfinder</span></a>
-  </div>
-</li>
-          <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="../reference/intersect.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">intersect</span></a>
-  </div>
-</li>
-          <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
   <a href="../reference/jobby.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">jobby</span></a>
-  </div>
-</li>
-          <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="../reference/jobinfo.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">jobinfo</span></a>
   </div>
 </li>
           <li class="sidebar-item">
@@ -189,8 +165,26 @@ ul.task-list li input[type="checkbox"] {
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../reference/pipeline.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">pipeline</span></a>
+  <a href="../reference/pipeline.cache.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">pipeline.cache</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../reference/pipeline.hpc.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">pipeline.hpc</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../reference/pipeline.nextflow.html" class="sidebar-item-text sidebar-link active">
+ <span class="menu-text">pipeline.nextflow</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../reference/pipeline.util.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">pipeline.util</span></a>
   </div>
 </li>
           <li class="sidebar-item">
@@ -213,6 +207,59 @@ ul.task-list li input[type="checkbox"] {
 </li>
       </ul>
   </li>
+        <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-2" role="navigation" aria-expanded="true">
+ <span class="menu-text">Legacy tools</span></a>
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-2" role="navigation" aria-expanded="true" aria-label="Toggle section">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-2" class="collapse list-unstyled sidebar-section depth1 show">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../reference/GSEA.deg2gs.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">GSEA.deg2gs</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../reference/GSEA.multitext2excel.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">GSEA.multitext2excel</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../reference/GSEA.ncbr_huse.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">GSEA.ncbr_huse</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../reference/gb2gtf.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">gb2gtf</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../reference/homologfinder.hf.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">homologfinder.hf</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../reference/intersect.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">intersect</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../reference/jobinfo.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">jobinfo</span></a>
+  </div>
+</li>
+      </ul>
+  </li>
     </ul>
     </div>
 </nav>
@@ -223,9 +270,15 @@ ul.task-list li input[type="checkbox"] {
     <h2 id="toc-title">On this page</h2>
    
   <ul>
-  <li><a href="#ccbr_tools.homologfinder" id="toc-ccbr_tools.homologfinder" class="nav-link active" data-scroll-target="#ccbr_tools.homologfinder">homologfinder</a></li>
+  <li><a href="#ccbr_tools.pipeline.nextflow" id="toc-ccbr_tools.pipeline.nextflow" class="nav-link active" data-scroll-target="#ccbr_tools.pipeline.nextflow">pipeline.nextflow</a>
+  <ul class="collapse">
+  <li><a href="#functions" id="toc-functions" class="nav-link" data-scroll-target="#functions">Functions</a>
+  <ul class="collapse">
+  <li><a href="#ccbr_tools.pipeline.nextflow.run" id="toc-ccbr_tools.pipeline.nextflow.run" class="nav-link" data-scroll-target="#ccbr_tools.pipeline.nextflow.run">run</a></li>
+  </ul></li>
+  </ul></li>
   </ul>
-<div class="toc-actions"><ul><li><a href="https://github.com/CCBR/Tools/edit/main/reference/homologfinder.qmd" class="toc-action"><i class="bi bi-github"></i>Edit this page</a></li><li><a href="https://github.com/CCBR/Tools/issues/new" class="toc-action"><i class="bi empty"></i>Report an issue</a></li></ul></div></nav>
+<div class="toc-actions"><ul><li><a href="https://github.com/CCBR/Tools/edit/main/reference/pipeline.nextflow.qmd" class="toc-action"><i class="bi bi-github"></i>Edit this page</a></li><li><a href="https://github.com/CCBR/Tools/issues/new" class="toc-action"><i class="bi empty"></i>Report an issue</a></li></ul></div></nav>
     </div>
 <!-- main -->
 <main class="content" id="quarto-document-content">
@@ -233,12 +286,97 @@ ul.task-list li input[type="checkbox"] {
 
 
 
-<section id="ccbr_tools.homologfinder" class="level1">
-<h1>homologfinder</h1>
-<p><code>homologfinder</code></p>
-<p>hf or HomologFinder finds homologs in human and mouse.</p>
+<section id="ccbr_tools.pipeline.nextflow" class="level1">
+<h1>pipeline.nextflow</h1>
+<p><code>pipeline.nextflow</code></p>
+<p>Run Nextflow workflows in local and HPC environments.</p>
+<ul>
+<li>run(nextfile_path=None, nextflow_args=None, mode=“local”, pipeline_name=None, debug=False, hpc_options={}) Run a Nextflow workflow.</li>
+</ul>
+<section id="functions" class="level2">
+<h2 class="anchored" data-anchor-id="functions">Functions</h2>
+<table class="caption-top table">
+<thead>
+<tr class="header">
+<th>Name</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td><a href="#ccbr_tools.pipeline.nextflow.run">run</a></td>
+<td>Run a Nextflow workflow</td>
+</tr>
+</tbody>
+</table>
+<section id="ccbr_tools.pipeline.nextflow.run" class="level3">
+<h3 class="anchored" data-anchor-id="ccbr_tools.pipeline.nextflow.run">run</h3>
+<p><code>pipeline.nextflow.run(nextfile_path, nextflow_args=[], mode='local', pipeline_name=None, debug=False)</code></p>
+<p>Run a Nextflow workflow</p>
+<section id="parameters" class="level4">
+<h4 class="anchored" data-anchor-id="parameters">Parameters</h4>
+<table class="caption-top table">
+<colgroup>
+<col style="width: 16%">
+<col style="width: 15%">
+<col style="width: 56%">
+<col style="width: 11%">
+</colgroup>
+<thead>
+<tr class="header">
+<th>Name</th>
+<th>Type</th>
+<th>Description</th>
+<th>Default</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td><code>nextfile_path</code></td>
+<td><code>str</code></td>
+<td>Path to the Nextflow file.</td>
+<td><em>required</em></td>
+</tr>
+<tr class="even">
+<td><code>nextflow_args</code></td>
+<td><code>list</code></td>
+<td>Additional Nextflow arguments. Defaults to an empty list.</td>
+<td><code>[]</code></td>
+</tr>
+<tr class="odd">
+<td><code>mode</code></td>
+<td><code>str</code></td>
+<td>Execution mode. Defaults to “local”.</td>
+<td><code>'local'</code></td>
+</tr>
+</tbody>
+</table>
+</section>
+<section id="raises" class="level4">
+<h4 class="anchored" data-anchor-id="raises">Raises</h4>
+<table class="caption-top table">
+<colgroup>
+<col style="width: 32%">
+<col style="width: 67%">
+</colgroup>
+<thead>
+<tr class="header">
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td><code>ValueError</code></td>
+<td>If mode is ‘slurm’ but no HPC environment was detected.</td>
+</tr>
+</tbody>
+</table>
 
 
+</section>
+</section>
+</section>
 </section>
 
 </main> <!-- /main -->
@@ -814,7 +952,7 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
 </div>   
     <div class="nav-footer-center">
       &nbsp;
-    <div class="toc-actions d-sm-block d-md-none"><ul><li><a href="https://github.com/CCBR/Tools/edit/main/reference/homologfinder.qmd" class="toc-action"><i class="bi bi-github"></i>Edit this page</a></li><li><a href="https://github.com/CCBR/Tools/issues/new" class="toc-action"><i class="bi empty"></i>Report an issue</a></li></ul></div></div>
+    <div class="toc-actions d-sm-block d-md-none"><ul><li><a href="https://github.com/CCBR/Tools/edit/main/reference/pipeline.nextflow.qmd" class="toc-action"><i class="bi bi-github"></i>Edit this page</a></li><li><a href="https://github.com/CCBR/Tools/issues/new" class="toc-action"><i class="bi empty"></i>Report an issue</a></li></ul></div></div>
     <div class="nav-footer-right">
       &nbsp;
     </div>

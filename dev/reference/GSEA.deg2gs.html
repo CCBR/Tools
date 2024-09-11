@@ -7,7 +7,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 
-<title>templates – CCBR Tools</title>
+<title>gsea.deg2gs – CCBR Tools</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -124,7 +124,7 @@ ul.task-list li input[type="checkbox"] {
       <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" role="button" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
         <i class="bi bi-layout-text-sidebar-reverse"></i>
       </button>
-        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../reference/jobby.html">Modules</a></li><li class="breadcrumb-item"><a href="../reference/templates.html">templates</a></li></ol></nav>
+        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../reference/GSEA.deg2gs.html">Legacy tools</a></li><li class="breadcrumb-item"><a href="../reference/GSEA.deg2gs.html">GSEA.deg2gs</a></li></ol></nav>
         <a class="flex-grow-1" role="navigation" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
         </a>
     </div>
@@ -201,7 +201,7 @@ ul.task-list li input[type="checkbox"] {
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../reference/templates.html" class="sidebar-item-text sidebar-link active">
+  <a href="../reference/templates.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">templates</span></a>
   </div>
 </li>
@@ -218,7 +218,7 @@ ul.task-list li input[type="checkbox"] {
       <ul id="quarto-sidebar-section-2" class="collapse list-unstyled sidebar-section depth1 show">  
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../reference/GSEA.deg2gs.html" class="sidebar-item-text sidebar-link">
+  <a href="../reference/GSEA.deg2gs.html" class="sidebar-item-text sidebar-link active">
  <span class="menu-text">GSEA.deg2gs</span></a>
   </div>
 </li>
@@ -270,17 +270,9 @@ ul.task-list li input[type="checkbox"] {
     <h2 id="toc-title">On this page</h2>
    
   <ul>
-  <li><a href="#ccbr_tools.templates" id="toc-ccbr_tools.templates" class="nav-link active" data-scroll-target="#ccbr_tools.templates">templates</a>
-  <ul class="collapse">
-  <li><a href="#templates" id="toc-templates" class="nav-link" data-scroll-target="#templates">Templates</a></li>
-  <li><a href="#functions" id="toc-functions" class="nav-link" data-scroll-target="#functions">Functions</a>
-  <ul class="collapse">
-  <li><a href="#ccbr_tools.templates.read_template" id="toc-ccbr_tools.templates.read_template" class="nav-link" data-scroll-target="#ccbr_tools.templates.read_template">read_template</a></li>
-  <li><a href="#ccbr_tools.templates.use_template" id="toc-ccbr_tools.templates.use_template" class="nav-link" data-scroll-target="#ccbr_tools.templates.use_template">use_template</a></li>
-  </ul></li>
-  </ul></li>
+  <li><a href="#ccbr_tools.GSEA.deg2gs" id="toc-ccbr_tools.GSEA.deg2gs" class="nav-link active" data-scroll-target="#ccbr_tools.GSEA.deg2gs">GSEA.deg2gs</a></li>
   </ul>
-<div class="toc-actions"><ul><li><a href="https://github.com/CCBR/Tools/edit/main/reference/templates.qmd" class="toc-action"><i class="bi bi-github"></i>Edit this page</a></li><li><a href="https://github.com/CCBR/Tools/issues/new" class="toc-action"><i class="bi empty"></i>Report an issue</a></li></ul></div></nav>
+<div class="toc-actions"><ul><li><a href="https://github.com/CCBR/Tools/edit/main/reference/GSEA.deg2gs.qmd" class="toc-action"><i class="bi bi-github"></i>Edit this page</a></li><li><a href="https://github.com/CCBR/Tools/issues/new" class="toc-action"><i class="bi empty"></i>Report an issue</a></li></ul></div></nav>
     </div>
 <!-- main -->
 <main class="content" id="quarto-document-content">
@@ -288,161 +280,21 @@ ul.task-list li input[type="checkbox"] {
 
 
 
-<section id="ccbr_tools.templates" class="level1">
-<h1>templates</h1>
-<p><code>templates</code></p>
-<p>Template files for CCBR Tools.</p>
-<section id="templates" class="level2">
-<h2 class="anchored" data-anchor-id="templates">Templates</h2>
+<section id="ccbr_tools.GSEA.deg2gs" class="level1">
+<h1>GSEA.deg2gs</h1>
+<p><code>GSEA.deg2gs</code></p>
+<p>Reads a rnaseq pipeliner *_DEG_all_genes.txt file and outputs a prioritized list of Ensembl gene IDs for ToppFun</p>
+<p>Author: Susan Huse</p>
+<p>NIAID Center for Biological Research</p>
+<p>Frederick National Laboratory for Cancer Research</p>
+<p>Leidos Biomedical</p>
 <ul>
-<li><code>ccbr_tools.templates.submit_slurm.sh</code></li>
+<li>v 1.0 - initial code version.</li>
+<li>v 1.1 - updated for new column headers in pipeliner limma_DEG_all_genes.txt</li>
+<li>v 1.2 - top2Excel format is now csv rather than tab-delimited</li>
 </ul>
-</section>
-<section id="functions" class="level2">
-<h2 class="anchored" data-anchor-id="functions">Functions</h2>
-<table class="caption-top table">
-<thead>
-<tr class="header">
-<th>Name</th>
-<th>Description</th>
-</tr>
-</thead>
-<tbody>
-<tr class="odd">
-<td><a href="#ccbr_tools.templates.read_template">read_template</a></td>
-<td>Read a template file</td>
-</tr>
-<tr class="even">
-<td><a href="#ccbr_tools.templates.use_template">use_template</a></td>
-<td>Uses a template, formats variables, and writes it to a file.</td>
-</tr>
-</tbody>
-</table>
-<section id="ccbr_tools.templates.read_template" class="level3">
-<h3 class="anchored" data-anchor-id="ccbr_tools.templates.read_template">read_template</h3>
-<p><code>templates.read_template(template_name)</code></p>
-<p>Read a template file</p>
-<section id="parameters" class="level4">
-<h4 class="anchored" data-anchor-id="parameters">Parameters</h4>
-<table class="caption-top table">
-<colgroup>
-<col style="width: 24%">
-<col style="width: 20%">
-<col style="width: 38%">
-<col style="width: 17%">
-</colgroup>
-<thead>
-<tr class="header">
-<th>Name</th>
-<th>Type</th>
-<th>Description</th>
-<th>Default</th>
-</tr>
-</thead>
-<tbody>
-<tr class="odd">
-<td><code>template_name</code></td>
-<td><code>str</code></td>
-<td>Name of the template file</td>
-<td><em>required</em></td>
-</tr>
-</tbody>
-</table>
-</section>
-<section id="returns" class="level4">
-<h4 class="anchored" data-anchor-id="returns">Returns</h4>
-<table class="caption-top table">
-<thead>
-<tr class="header">
-<th>Type</th>
-<th>Description</th>
-</tr>
-</thead>
-<tbody>
-<tr class="odd">
-<td><code>str</code></td>
-<td>Contents of the template file</td>
-</tr>
-</tbody>
-</table>
-</section>
-</section>
-<section id="ccbr_tools.templates.use_template" class="level3">
-<h3 class="anchored" data-anchor-id="ccbr_tools.templates.use_template">use_template</h3>
-<p><code>templates.use_template(template_name, output_filepath=None, **kwargs)</code></p>
-<p>Uses a template, formats variables, and writes it to a file.</p>
-<section id="parameters-1" class="level4">
-<h4 class="anchored" data-anchor-id="parameters-1">Parameters</h4>
-<table class="caption-top table">
-<colgroup>
-<col style="width: 10%">
-<col style="width: 8%">
-<col style="width: 73%">
-<col style="width: 6%">
-</colgroup>
-<thead>
-<tr class="header">
-<th>Name</th>
-<th>Type</th>
-<th>Description</th>
-<th>Default</th>
-</tr>
-</thead>
-<tbody>
-<tr class="odd">
-<td><code>template_name</code></td>
-<td><code>str</code></td>
-<td>The name of the template to use.</td>
-<td><em>required</em></td>
-</tr>
-<tr class="even">
-<td><code>output_filepath</code></td>
-<td><code>str</code></td>
-<td>The filepath to save the output file. If not provided, it will be written to <code>template_name</code> in the current working directory.</td>
-<td><code>None</code></td>
-</tr>
-<tr class="odd">
-<td><code>**kwargs</code></td>
-<td><code>str</code></td>
-<td>Keyword arguments to fill in the template variables.</td>
-<td><code>{}</code></td>
-</tr>
-</tbody>
-</table>
-</section>
-<section id="raises" class="level4">
-<h4 class="anchored" data-anchor-id="raises">Raises</h4>
-<table class="caption-top table">
-<colgroup>
-<col style="width: 47%">
-<col style="width: 52%">
-</colgroup>
-<thead>
-<tr class="header">
-<th>Type</th>
-<th>Description</th>
-</tr>
-</thead>
-<tbody>
-<tr class="odd">
-<td><code>FileNotFoundError</code></td>
-<td>If the template file is not found.</td>
-</tr>
-<tr class="even">
-<td><code>IOError</code></td>
-<td>If there is an error writing the output file.</td>
-</tr>
-</tbody>
-</table>
-</section>
-<section id="examples" class="level4">
-<h4 class="anchored" data-anchor-id="examples">Examples</h4>
-<p>use_template(“submit_slurm.sh”, output_filepath=“./submit_slurm.sh”, PIPELINE=“CCBR_nxf”, MODULES=“ccbrpipeliner nextflow”, ENV_VARS=““, RUN_COMMAND=”nextflow run main.nf -stub”)</p>
 
 
-</section>
-</section>
-</section>
 </section>
 
 </main> <!-- /main -->
@@ -1018,7 +870,7 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
 </div>   
     <div class="nav-footer-center">
       &nbsp;
-    <div class="toc-actions d-sm-block d-md-none"><ul><li><a href="https://github.com/CCBR/Tools/edit/main/reference/templates.qmd" class="toc-action"><i class="bi bi-github"></i>Edit this page</a></li><li><a href="https://github.com/CCBR/Tools/issues/new" class="toc-action"><i class="bi empty"></i>Report an issue</a></li></ul></div></div>
+    <div class="toc-actions d-sm-block d-md-none"><ul><li><a href="https://github.com/CCBR/Tools/edit/main/reference/GSEA.deg2gs.qmd" class="toc-action"><i class="bi bi-github"></i>Edit this page</a></li><li><a href="https://github.com/CCBR/Tools/issues/new" class="toc-action"><i class="bi empty"></i>Report an issue</a></li></ul></div></div>
     <div class="nav-footer-right">
       &nbsp;
     </div>

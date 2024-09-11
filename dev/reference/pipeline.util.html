@@ -7,7 +7,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 
-<title>templates – CCBR Tools</title>
+<title>pipeline.util – CCBR Tools</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -124,7 +124,7 @@ ul.task-list li input[type="checkbox"] {
       <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" role="button" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
         <i class="bi bi-layout-text-sidebar-reverse"></i>
       </button>
-        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../reference/jobby.html">Modules</a></li><li class="breadcrumb-item"><a href="../reference/templates.html">templates</a></li></ol></nav>
+        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../reference/jobby.html">Modules</a></li><li class="breadcrumb-item"><a href="../reference/pipeline.util.html">pipeline.util</a></li></ol></nav>
         <a class="flex-grow-1" role="navigation" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
         </a>
     </div>
@@ -183,7 +183,7 @@ ul.task-list li input[type="checkbox"] {
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../reference/pipeline.util.html" class="sidebar-item-text sidebar-link">
+  <a href="../reference/pipeline.util.html" class="sidebar-item-text sidebar-link active">
  <span class="menu-text">pipeline.util</span></a>
   </div>
 </li>
@@ -201,7 +201,7 @@ ul.task-list li input[type="checkbox"] {
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../reference/templates.html" class="sidebar-item-text sidebar-link active">
+  <a href="../reference/templates.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">templates</span></a>
   </div>
 </li>
@@ -270,17 +270,33 @@ ul.task-list li input[type="checkbox"] {
     <h2 id="toc-title">On this page</h2>
    
   <ul>
-  <li><a href="#ccbr_tools.templates" id="toc-ccbr_tools.templates" class="nav-link active" data-scroll-target="#ccbr_tools.templates">templates</a>
+  <li><a href="#ccbr_tools.pipeline.util" id="toc-ccbr_tools.pipeline.util" class="nav-link active" data-scroll-target="#ccbr_tools.pipeline.util">pipeline.util</a>
   <ul class="collapse">
-  <li><a href="#templates" id="toc-templates" class="nav-link" data-scroll-target="#templates">Templates</a></li>
   <li><a href="#functions" id="toc-functions" class="nav-link" data-scroll-target="#functions">Functions</a>
   <ul class="collapse">
-  <li><a href="#ccbr_tools.templates.read_template" id="toc-ccbr_tools.templates.read_template" class="nav-link" data-scroll-target="#ccbr_tools.templates.read_template">read_template</a></li>
-  <li><a href="#ccbr_tools.templates.use_template" id="toc-ccbr_tools.templates.use_template" class="nav-link" data-scroll-target="#ccbr_tools.templates.use_template">use_template</a></li>
+  <li><a href="#ccbr_tools.pipeline.util.chmod_bins_exec" id="toc-ccbr_tools.pipeline.util.chmod_bins_exec" class="nav-link" data-scroll-target="#ccbr_tools.pipeline.util.chmod_bins_exec">chmod_bins_exec</a></li>
+  <li><a href="#ccbr_tools.pipeline.util.err" id="toc-ccbr_tools.pipeline.util.err" class="nav-link" data-scroll-target="#ccbr_tools.pipeline.util.err">err</a></li>
+  <li><a href="#ccbr_tools.pipeline.util.exists" id="toc-ccbr_tools.pipeline.util.exists" class="nav-link" data-scroll-target="#ccbr_tools.pipeline.util.exists">exists</a></li>
+  <li><a href="#ccbr_tools.pipeline.util.fatal" id="toc-ccbr_tools.pipeline.util.fatal" class="nav-link" data-scroll-target="#ccbr_tools.pipeline.util.fatal">fatal</a></li>
+  <li><a href="#ccbr_tools.pipeline.util.get_genomes_dict" id="toc-ccbr_tools.pipeline.util.get_genomes_dict" class="nav-link" data-scroll-target="#ccbr_tools.pipeline.util.get_genomes_dict">get_genomes_dict</a></li>
+  <li><a href="#ccbr_tools.pipeline.util.get_genomes_list" id="toc-ccbr_tools.pipeline.util.get_genomes_list" class="nav-link" data-scroll-target="#ccbr_tools.pipeline.util.get_genomes_list">get_genomes_list</a></li>
+  <li><a href="#ccbr_tools.pipeline.util.get_hpcname" id="toc-ccbr_tools.pipeline.util.get_hpcname" class="nav-link" data-scroll-target="#ccbr_tools.pipeline.util.get_hpcname">get_hpcname</a></li>
+  <li><a href="#ccbr_tools.pipeline.util.get_tmp_dir" id="toc-ccbr_tools.pipeline.util.get_tmp_dir" class="nav-link" data-scroll-target="#ccbr_tools.pipeline.util.get_tmp_dir">get_tmp_dir</a></li>
+  <li><a href="#ccbr_tools.pipeline.util.git_commit_hash" id="toc-ccbr_tools.pipeline.util.git_commit_hash" class="nav-link" data-scroll-target="#ccbr_tools.pipeline.util.git_commit_hash">git_commit_hash</a></li>
+  <li><a href="#ccbr_tools.pipeline.util.join_jsons" id="toc-ccbr_tools.pipeline.util.join_jsons" class="nav-link" data-scroll-target="#ccbr_tools.pipeline.util.join_jsons">join_jsons</a></li>
+  <li><a href="#ccbr_tools.pipeline.util.ln" id="toc-ccbr_tools.pipeline.util.ln" class="nav-link" data-scroll-target="#ccbr_tools.pipeline.util.ln">ln</a></li>
+  <li><a href="#ccbr_tools.pipeline.util.md5sum" id="toc-ccbr_tools.pipeline.util.md5sum" class="nav-link" data-scroll-target="#ccbr_tools.pipeline.util.md5sum">md5sum</a></li>
+  <li><a href="#ccbr_tools.pipeline.util.permissions" id="toc-ccbr_tools.pipeline.util.permissions" class="nav-link" data-scroll-target="#ccbr_tools.pipeline.util.permissions">permissions</a></li>
+  <li><a href="#ccbr_tools.pipeline.util.rename" id="toc-ccbr_tools.pipeline.util.rename" class="nav-link" data-scroll-target="#ccbr_tools.pipeline.util.rename">rename</a></li>
+  <li><a href="#ccbr_tools.pipeline.util.require" id="toc-ccbr_tools.pipeline.util.require" class="nav-link" data-scroll-target="#ccbr_tools.pipeline.util.require">require</a></li>
+  <li><a href="#ccbr_tools.pipeline.util.safe_copy" id="toc-ccbr_tools.pipeline.util.safe_copy" class="nav-link" data-scroll-target="#ccbr_tools.pipeline.util.safe_copy">safe_copy</a></li>
+  <li><a href="#ccbr_tools.pipeline.util.scontrol_show" id="toc-ccbr_tools.pipeline.util.scontrol_show" class="nav-link" data-scroll-target="#ccbr_tools.pipeline.util.scontrol_show">scontrol_show</a></li>
+  <li><a href="#ccbr_tools.pipeline.util.standard_input" id="toc-ccbr_tools.pipeline.util.standard_input" class="nav-link" data-scroll-target="#ccbr_tools.pipeline.util.standard_input">standard_input</a></li>
+  <li><a href="#ccbr_tools.pipeline.util.which" id="toc-ccbr_tools.pipeline.util.which" class="nav-link" data-scroll-target="#ccbr_tools.pipeline.util.which">which</a></li>
   </ul></li>
   </ul></li>
   </ul>
-<div class="toc-actions"><ul><li><a href="https://github.com/CCBR/Tools/edit/main/reference/templates.qmd" class="toc-action"><i class="bi bi-github"></i>Edit this page</a></li><li><a href="https://github.com/CCBR/Tools/issues/new" class="toc-action"><i class="bi empty"></i>Report an issue</a></li></ul></div></nav>
+<div class="toc-actions"><ul><li><a href="https://github.com/CCBR/Tools/edit/main/reference/pipeline.util.qmd" class="toc-action"><i class="bi bi-github"></i>Edit this page</a></li><li><a href="https://github.com/CCBR/Tools/issues/new" class="toc-action"><i class="bi empty"></i>Report an issue</a></li></ul></div></nav>
     </div>
 <!-- main -->
 <main class="content" id="quarto-document-content">
@@ -288,16 +304,10 @@ ul.task-list li input[type="checkbox"] {
 
 
 
-<section id="ccbr_tools.templates" class="level1">
-<h1>templates</h1>
-<p><code>templates</code></p>
-<p>Template files for CCBR Tools.</p>
-<section id="templates" class="level2">
-<h2 class="anchored" data-anchor-id="templates">Templates</h2>
-<ul>
-<li><code>ccbr_tools.templates.submit_slurm.sh</code></li>
-</ul>
-</section>
+<section id="ccbr_tools.pipeline.util" class="level1">
+<h1>pipeline.util</h1>
+<p><code>pipeline.util</code></p>
+<p>Pipeline utility functions</p>
 <section id="functions" class="level2">
 <h2 class="anchored" data-anchor-id="functions">Functions</h2>
 <table class="caption-top table">
@@ -309,27 +319,117 @@ ul.task-list li input[type="checkbox"] {
 </thead>
 <tbody>
 <tr class="odd">
-<td><a href="#ccbr_tools.templates.read_template">read_template</a></td>
-<td>Read a template file</td>
+<td><a href="#ccbr_tools.pipeline.util.chmod_bins_exec">chmod_bins_exec</a></td>
+<td>Ensure that all files in bin/ are executable.</td>
 </tr>
 <tr class="even">
-<td><a href="#ccbr_tools.templates.use_template">use_template</a></td>
-<td>Uses a template, formats variables, and writes it to a file.</td>
+<td><a href="#ccbr_tools.pipeline.util.err">err</a></td>
+<td>Prints any provided args to standard error.</td>
+</tr>
+<tr class="odd">
+<td><a href="#ccbr_tools.pipeline.util.exists">exists</a></td>
+<td>Checks if file exists on the local filesystem.</td>
+</tr>
+<tr class="even">
+<td><a href="#ccbr_tools.pipeline.util.fatal">fatal</a></td>
+<td>Prints any provided args to standard error</td>
+</tr>
+<tr class="odd">
+<td><a href="#ccbr_tools.pipeline.util.get_genomes_dict">get_genomes_dict</a></td>
+<td>Get dictionary of genome annotation versions and the paths to the corresponding JSON files.</td>
+</tr>
+<tr class="even">
+<td><a href="#ccbr_tools.pipeline.util.get_genomes_list">get_genomes_list</a></td>
+<td>Get list of genome annotations available for the current platform</td>
+</tr>
+<tr class="odd">
+<td><a href="#ccbr_tools.pipeline.util.get_hpcname">get_hpcname</a></td>
+<td>Get the HPC name using scontrol</td>
+</tr>
+<tr class="even">
+<td><a href="#ccbr_tools.pipeline.util.get_tmp_dir">get_tmp_dir</a></td>
+<td>Get default temporary directory for biowulf and frce. Allow user override.</td>
+</tr>
+<tr class="odd">
+<td><a href="#ccbr_tools.pipeline.util.git_commit_hash">git_commit_hash</a></td>
+<td>Gets the git commit hash of the RNA-seek repo.</td>
+</tr>
+<tr class="even">
+<td><a href="#ccbr_tools.pipeline.util.join_jsons">join_jsons</a></td>
+<td>Joins multiple JSON files to into one data structure</td>
+</tr>
+<tr class="odd">
+<td><a href="#ccbr_tools.pipeline.util.ln">ln</a></td>
+<td>Creates symlinks for files to an output directory.</td>
+</tr>
+<tr class="even">
+<td><a href="#ccbr_tools.pipeline.util.md5sum">md5sum</a></td>
+<td>Gets md5checksum of a file in memory-safe manner.</td>
+</tr>
+<tr class="odd">
+<td><a href="#ccbr_tools.pipeline.util.permissions">permissions</a></td>
+<td>Checks permissions using os.access() to see the user is authorized to access</td>
+</tr>
+<tr class="even">
+<td><a href="#ccbr_tools.pipeline.util.rename">rename</a></td>
+<td>Dynamically renames FastQ file to have one of the following extensions: <em>.R1.fastq.gz, </em>.R2.fastq.gz</td>
+</tr>
+<tr class="odd">
+<td><a href="#ccbr_tools.pipeline.util.require">require</a></td>
+<td>Enforces an executable is in $PATH</td>
+</tr>
+<tr class="even">
+<td><a href="#ccbr_tools.pipeline.util.safe_copy">safe_copy</a></td>
+<td>Private function: Given a list paths it will recursively copy each to the</td>
+</tr>
+<tr class="odd">
+<td><a href="#ccbr_tools.pipeline.util.scontrol_show">scontrol_show</a></td>
+<td>Run <code>scontrol show config</code> and parse the output as a dictionary</td>
+</tr>
+<tr class="even">
+<td><a href="#ccbr_tools.pipeline.util.standard_input">standard_input</a></td>
+<td>Checks for standard input when provided or permissions using permissions().</td>
+</tr>
+<tr class="odd">
+<td><a href="#ccbr_tools.pipeline.util.which">which</a></td>
+<td>Checks if an executable is in $PATH</td>
 </tr>
 </tbody>
 </table>
-<section id="ccbr_tools.templates.read_template" class="level3">
-<h3 class="anchored" data-anchor-id="ccbr_tools.templates.read_template">read_template</h3>
-<p><code>templates.read_template(template_name)</code></p>
-<p>Read a template file</p>
+<section id="ccbr_tools.pipeline.util.chmod_bins_exec" class="level3">
+<h3 class="anchored" data-anchor-id="ccbr_tools.pipeline.util.chmod_bins_exec">chmod_bins_exec</h3>
+<p><code>pipeline.util.chmod_bins_exec(repo_base=repo_base)</code></p>
+<p>Ensure that all files in bin/ are executable.</p>
+<p>It appears that setuptools strips executable permissions from package_data files, yet post-install scripts are not possible with the pyproject.toml format. Without this hack, nextflow processes that call scripts in bin/ fail.</p>
+<p>https://stackoverflow.com/questions/18409296/package-data-files-with-executable-permissions https://github.com/pypa/setuptools/issues/2041 https://stackoverflow.com/questions/76320274/post-install-script-for-pyproject-toml-projects</p>
+</section>
+<section id="ccbr_tools.pipeline.util.err" class="level3">
+<h3 class="anchored" data-anchor-id="ccbr_tools.pipeline.util.err">err</h3>
+<p><code>pipeline.util.err(*message, **kwargs)</code></p>
+<p>Prints any provided args to standard error. kwargs can be provided to modify print functions behavior. <span class="citation" data-cites="param">@param</span> message <any>: Values printed to standard error <span class="citation" data-cites="params">@params</span> kwargs &lt;print()&gt; Key words to modify print function behavior</any></p>
+</section>
+<section id="ccbr_tools.pipeline.util.exists" class="level3">
+<h3 class="anchored" data-anchor-id="ccbr_tools.pipeline.util.exists">exists</h3>
+<p><code>pipeline.util.exists(testpath)</code></p>
+<p>Checks if file exists on the local filesystem. <span class="citation" data-cites="param">@param</span> parser &lt;argparse.ArgumentParser() object&gt;: argparse parser object <span class="citation" data-cites="param">@param</span> testpath <str>: Name of file/directory to check <span class="citation" data-cites="return">@return</span> does_exist <boolean>: True when file/directory exists, False when file/directory does not exist</boolean></str></p>
+</section>
+<section id="ccbr_tools.pipeline.util.fatal" class="level3">
+<h3 class="anchored" data-anchor-id="ccbr_tools.pipeline.util.fatal">fatal</h3>
+<p><code>pipeline.util.fatal(*message, **kwargs)</code></p>
+<p>Prints any provided args to standard error and exits with an exit code of 1. <span class="citation" data-cites="param">@param</span> message <any>: Values printed to standard error <span class="citation" data-cites="params">@params</span> kwargs &lt;print()&gt; Key words to modify print function behavior</any></p>
+</section>
+<section id="ccbr_tools.pipeline.util.get_genomes_dict" class="level3">
+<h3 class="anchored" data-anchor-id="ccbr_tools.pipeline.util.get_genomes_dict">get_genomes_dict</h3>
+<p><code>pipeline.util.get_genomes_dict(repo_base, hpcname=get_hpcname(), error_on_warnings=False)</code></p>
+<p>Get dictionary of genome annotation versions and the paths to the corresponding JSON files.</p>
 <section id="parameters" class="level4">
 <h4 class="anchored" data-anchor-id="parameters">Parameters</h4>
 <table class="caption-top table">
 <colgroup>
-<col style="width: 24%">
-<col style="width: 20%">
-<col style="width: 38%">
+<col style="width: 15%">
 <col style="width: 17%">
+<col style="width: 54%">
+<col style="width: 12%">
 </colgroup>
 <thead>
 <tr class="header">
@@ -341,14 +441,77 @@ ul.task-list li input[type="checkbox"] {
 </thead>
 <tbody>
 <tr class="odd">
-<td><code>template_name</code></td>
-<td><code>str</code></td>
-<td>Name of the template file</td>
+<td><code>repo_base</code></td>
+<td><code>function</code></td>
+<td>Function for getting the base directory of the repository.</td>
 <td><em>required</em></td>
+</tr>
+<tr class="even">
+<td><code>hpcname</code></td>
+<td><code>str</code></td>
+<td>Name of the HPC. Defaults to the value returned by get_hpcname().</td>
+<td><code>get_hpcname()</code></td>
+</tr>
+<tr class="odd">
+<td><code>error_on_warnings</code></td>
+<td><code>bool</code></td>
+<td>Flag to indicate whether to raise warnings as errors. Defaults to False.</td>
+<td><code>False</code></td>
 </tr>
 </tbody>
 </table>
+<p>Returns: genomes_dict (dict): A dictionary containing genome names as keys and corresponding JSON file paths as values. { genome_name: json_file_path }</p>
 </section>
+</section>
+<section id="ccbr_tools.pipeline.util.get_genomes_list" class="level3">
+<h3 class="anchored" data-anchor-id="ccbr_tools.pipeline.util.get_genomes_list">get_genomes_list</h3>
+<p><code>pipeline.util.get_genomes_list(repo_base, hpcname=get_hpcname(), error_on_warnings=False)</code></p>
+<p>Get list of genome annotations available for the current platform</p>
+<section id="parameters-1" class="level4">
+<h4 class="anchored" data-anchor-id="parameters-1">Parameters</h4>
+<table class="caption-top table">
+<colgroup>
+<col style="width: 16%">
+<col style="width: 12%">
+<col style="width: 56%">
+<col style="width: 13%">
+</colgroup>
+<thead>
+<tr class="header">
+<th>Name</th>
+<th>Type</th>
+<th>Description</th>
+<th>Default</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td><code>repo_base</code></td>
+<td><code>str</code></td>
+<td>The base directory of the repository</td>
+<td><em>required</em></td>
+</tr>
+<tr class="even">
+<td><code>hpcname</code></td>
+<td><code>str</code></td>
+<td>The name of the HPC. Defaults to the value returned by get_hpcname().</td>
+<td><code>get_hpcname()</code></td>
+</tr>
+<tr class="odd">
+<td><code>error_on_warnings</code></td>
+<td><code>bool</code></td>
+<td>Whether to raise an error on warnings. Defaults to False.</td>
+<td><code>False</code></td>
+</tr>
+</tbody>
+</table>
+<p>Returns: genomes (list): A sorted list of genome annotations available for the current platform</p>
+</section>
+</section>
+<section id="ccbr_tools.pipeline.util.get_hpcname" class="level3">
+<h3 class="anchored" data-anchor-id="ccbr_tools.pipeline.util.get_hpcname">get_hpcname</h3>
+<p><code>pipeline.util.get_hpcname()</code></p>
+<p>Get the HPC name using scontrol</p>
 <section id="returns" class="level4">
 <h4 class="anchored" data-anchor-id="returns">Returns</h4>
 <table class="caption-top table">
@@ -361,24 +524,24 @@ ul.task-list li input[type="checkbox"] {
 <tbody>
 <tr class="odd">
 <td><code>str</code></td>
-<td>Contents of the template file</td>
+<td>The HPC name (biowulf, frce, or an empty string)</td>
 </tr>
 </tbody>
 </table>
 </section>
 </section>
-<section id="ccbr_tools.templates.use_template" class="level3">
-<h3 class="anchored" data-anchor-id="ccbr_tools.templates.use_template">use_template</h3>
-<p><code>templates.use_template(template_name, output_filepath=None, **kwargs)</code></p>
-<p>Uses a template, formats variables, and writes it to a file.</p>
-<section id="parameters-1" class="level4">
-<h4 class="anchored" data-anchor-id="parameters-1">Parameters</h4>
+<section id="ccbr_tools.pipeline.util.get_tmp_dir" class="level3">
+<h3 class="anchored" data-anchor-id="ccbr_tools.pipeline.util.get_tmp_dir">get_tmp_dir</h3>
+<p><code>pipeline.util.get_tmp_dir(tmp_dir, outdir, hpc=get_hpcname())</code></p>
+<p>Get default temporary directory for biowulf and frce. Allow user override.</p>
+<section id="parameters-2" class="level4">
+<h4 class="anchored" data-anchor-id="parameters-2">Parameters</h4>
 <table class="caption-top table">
 <colgroup>
-<col style="width: 10%">
-<col style="width: 8%">
-<col style="width: 73%">
-<col style="width: 6%">
+<col style="width: 7%">
+<col style="width: 9%">
+<col style="width: 71%">
+<col style="width: 11%">
 </colgroup>
 <thead>
 <tr class="header">
@@ -390,32 +553,78 @@ ul.task-list li input[type="checkbox"] {
 </thead>
 <tbody>
 <tr class="odd">
-<td><code>template_name</code></td>
+<td><code>tmp_dir</code></td>
 <td><code>str</code></td>
-<td>The name of the template to use.</td>
+<td>User-defined temporary directory path. If provided, this path will be used as the temporary directory.</td>
 <td><em>required</em></td>
 </tr>
 <tr class="even">
-<td><code>output_filepath</code></td>
+<td><code>outdir</code></td>
 <td><code>str</code></td>
-<td>The filepath to save the output file. If not provided, it will be written to <code>template_name</code> in the current working directory.</td>
-<td><code>None</code></td>
+<td>Output directory path.</td>
+<td><em>required</em></td>
 </tr>
 <tr class="odd">
-<td><code>**kwargs</code></td>
+<td><code>hpc</code></td>
 <td><code>str</code></td>
-<td>Keyword arguments to fill in the template variables.</td>
-<td><code>{}</code></td>
+<td>HPC name. Defaults to the value returned by get_hpcname().</td>
+<td><code>get_hpcname()</code></td>
 </tr>
 </tbody>
 </table>
+<p>Returns: tmp_dir (str): The default temporary directory path based on the HPC name and user-defined path.</p>
 </section>
-<section id="raises" class="level4">
-<h4 class="anchored" data-anchor-id="raises">Raises</h4>
+</section>
+<section id="ccbr_tools.pipeline.util.git_commit_hash" class="level3">
+<h3 class="anchored" data-anchor-id="ccbr_tools.pipeline.util.git_commit_hash">git_commit_hash</h3>
+<p><code>pipeline.util.git_commit_hash(repo_path)</code></p>
+<p>Gets the git commit hash of the RNA-seek repo. <span class="citation" data-cites="param">@param</span> repo_path <str>: Path to RNA-seek git repo <span class="citation" data-cites="return">@return</span> githash <str>: Latest git commit hash</str></str></p>
+</section>
+<section id="ccbr_tools.pipeline.util.join_jsons" class="level3">
+<h3 class="anchored" data-anchor-id="ccbr_tools.pipeline.util.join_jsons">join_jsons</h3>
+<p><code>pipeline.util.join_jsons(templates)</code></p>
+<p>Joins multiple JSON files to into one data structure Used to join multiple template JSON files to create a global config dictionary. <span class="citation" data-cites="params">@params</span> templates &lt;list[str]&gt;: List of template JSON files to join together <span class="citation" data-cites="return">@return</span> aggregated <dict>: Dictionary containing the contents of all the input JSON files</dict></p>
+</section>
+<section id="ccbr_tools.pipeline.util.ln" class="level3">
+<h3 class="anchored" data-anchor-id="ccbr_tools.pipeline.util.ln">ln</h3>
+<p><code>pipeline.util.ln(files, outdir)</code></p>
+<p>Creates symlinks for files to an output directory. <span class="citation" data-cites="param">@param</span> files list[<str>]: List of filenames <span class="citation" data-cites="param">@param</span> outdir <str>: Destination or output directory to create symlinks</str></str></p>
+</section>
+<section id="ccbr_tools.pipeline.util.md5sum" class="level3">
+<h3 class="anchored" data-anchor-id="ccbr_tools.pipeline.util.md5sum">md5sum</h3>
+<p><code>pipeline.util.md5sum(filename, first_block_only=False, blocksize=65536)</code></p>
+<p>Gets md5checksum of a file in memory-safe manner. The file is read in blocks/chunks defined by the blocksize parameter. This is a safer option to reading the entire file into memory if the file is very large. <span class="citation" data-cites="param">@param</span> filename <str>: Input file on local filesystem to find md5 checksum <span class="citation" data-cites="param">@param</span> first_block_only <bool>: Calculate md5 checksum of the first block/chunk only <span class="citation" data-cites="param">@param</span> blocksize <int>: Blocksize of reading N chunks of data to reduce memory profile <span class="citation" data-cites="return">@return</span> hasher.hexdigest() <str>: MD5 checksum of the file’s contents</str></int></bool></str></p>
+</section>
+<section id="ccbr_tools.pipeline.util.permissions" class="level3">
+<h3 class="anchored" data-anchor-id="ccbr_tools.pipeline.util.permissions">permissions</h3>
+<p><code>pipeline.util.permissions(parser, path, *args, **kwargs)</code></p>
+<p>Checks permissions using os.access() to see the user is authorized to access a file/directory. Checks for existence, readability, writability and executability via: os.F_OK (tests existence), os.R_OK (tests read), os.W_OK (tests write), os.X_OK (tests exec). <span class="citation" data-cites="param">@param</span> parser &lt;argparse.ArgumentParser() object&gt;: Argparse parser object <span class="citation" data-cites="param">@param</span> path <str>: Name of path to check <span class="citation" data-cites="return">@return</span> path <str>: Returns abs path if it exists and permissions are correct</str></str></p>
+</section>
+<section id="ccbr_tools.pipeline.util.rename" class="level3">
+<h3 class="anchored" data-anchor-id="ccbr_tools.pipeline.util.rename">rename</h3>
+<p><code>pipeline.util.rename(filename)</code></p>
+<p>Dynamically renames FastQ file to have one of the following extensions: <em>.R1.fastq.gz, </em>.R2.fastq.gz To automatically rename the fastq files, a few assumptions are made. If the extension of the FastQ file cannot be inferred, an exception is raised telling the user to fix the filename of the fastq files. <span class="citation" data-cites="param">@param</span> filename <str>: Original name of file to be renamed <span class="citation" data-cites="return">@return</span> filename <str>: A renamed FastQ filename</str></str></p>
+</section>
+<section id="ccbr_tools.pipeline.util.require" class="level3">
+<h3 class="anchored" data-anchor-id="ccbr_tools.pipeline.util.require">require</h3>
+<p><code>pipeline.util.require(cmds, suggestions, path=None)</code></p>
+<p>Enforces an executable is in $PATH <span class="citation" data-cites="param">@param</span> cmds list[<str>]: List of executable names to check <span class="citation" data-cites="param">@param</span> suggestions list[<str>]: Name of module to suggest loading for a given index in param cmd. <span class="citation" data-cites="param">@param</span> path list[<str>]]: Optional list of PATHs to check [default: $PATH]</str></str></str></p>
+</section>
+<section id="ccbr_tools.pipeline.util.safe_copy" class="level3">
+<h3 class="anchored" data-anchor-id="ccbr_tools.pipeline.util.safe_copy">safe_copy</h3>
+<p><code>pipeline.util.safe_copy(source, target, resources=[])</code></p>
+<p>Private function: Given a list paths it will recursively copy each to the target location. If a target path already exists, it will NOT over-write the existing paths data. <span class="citation" data-cites="param">@param</span> resources &lt;list[str]&gt;: List of paths to copy over to target location <span class="citation" data-cites="params">@params</span> source <str>: Add a prefix PATH to each resource <span class="citation" data-cites="param">@param</span> target <str>: Target path to copy templates and required resources</str></str></p>
+</section>
+<section id="ccbr_tools.pipeline.util.scontrol_show" class="level3">
+<h3 class="anchored" data-anchor-id="ccbr_tools.pipeline.util.scontrol_show">scontrol_show</h3>
+<p><code>pipeline.util.scontrol_show()</code></p>
+<p>Run <code>scontrol show config</code> and parse the output as a dictionary</p>
+<section id="returns-1" class="level4">
+<h4 class="anchored" data-anchor-id="returns-1">Returns</h4>
 <table class="caption-top table">
 <colgroup>
-<col style="width: 47%">
-<col style="width: 52%">
+<col style="width: 21%">
+<col style="width: 78%">
 </colgroup>
 <thead>
 <tr class="header">
@@ -425,22 +634,24 @@ ul.task-list li input[type="checkbox"] {
 </thead>
 <tbody>
 <tr class="odd">
-<td><code>FileNotFoundError</code></td>
-<td>If the template file is not found.</td>
-</tr>
-<tr class="even">
-<td><code>IOError</code></td>
-<td>If there is an error writing the output file.</td>
+<td><code>dict</code></td>
+<td>dictionary containing the output of <code>scontrol show config</code></td>
 </tr>
 </tbody>
 </table>
 </section>
-<section id="examples" class="level4">
-<h4 class="anchored" data-anchor-id="examples">Examples</h4>
-<p>use_template(“submit_slurm.sh”, output_filepath=“./submit_slurm.sh”, PIPELINE=“CCBR_nxf”, MODULES=“ccbrpipeliner nextflow”, ENV_VARS=““, RUN_COMMAND=”nextflow run main.nf -stub”)</p>
-
-
 </section>
+<section id="ccbr_tools.pipeline.util.standard_input" class="level3">
+<h3 class="anchored" data-anchor-id="ccbr_tools.pipeline.util.standard_input">standard_input</h3>
+<p><code>pipeline.util.standard_input(parser, path, *args, **kwargs)</code></p>
+<p>Checks for standard input when provided or permissions using permissions(). <span class="citation" data-cites="param">@param</span> parser &lt;argparse.ArgumentParser() object&gt;: Argparse parser object <span class="citation" data-cites="param">@param</span> path <str>: Name of path to check <span class="citation" data-cites="return">@return</span> path <str>: If path exists and user can read from location</str></str></p>
+</section>
+<section id="ccbr_tools.pipeline.util.which" class="level3">
+<h3 class="anchored" data-anchor-id="ccbr_tools.pipeline.util.which">which</h3>
+<p><code>pipeline.util.which(cmd, path=None)</code></p>
+<p>Checks if an executable is in $PATH <span class="citation" data-cites="param">@param</span> cmd <str>: Name of executable to check <span class="citation" data-cites="param">@param</span> path <list>: Optional list of PATHs to check [default: $PATH] <span class="citation" data-cites="return">@return</span> <boolean>: True if exe in PATH, False if not in PATH</boolean></list></str></p>
+
+
 </section>
 </section>
 </section>
@@ -1018,7 +1229,7 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
 </div>   
     <div class="nav-footer-center">
       &nbsp;
-    <div class="toc-actions d-sm-block d-md-none"><ul><li><a href="https://github.com/CCBR/Tools/edit/main/reference/templates.qmd" class="toc-action"><i class="bi bi-github"></i>Edit this page</a></li><li><a href="https://github.com/CCBR/Tools/issues/new" class="toc-action"><i class="bi empty"></i>Report an issue</a></li></ul></div></div>
+    <div class="toc-actions d-sm-block d-md-none"><ul><li><a href="https://github.com/CCBR/Tools/edit/main/reference/pipeline.util.qmd" class="toc-action"><i class="bi bi-github"></i>Edit this page</a></li><li><a href="https://github.com/CCBR/Tools/issues/new" class="toc-action"><i class="bi empty"></i>Report an issue</a></li></ul></div></div>
     <div class="nav-footer-right">
       &nbsp;
     </div>
