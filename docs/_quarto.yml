@@ -37,11 +37,16 @@ quartodoc:
   sections:
     - title: Modules
       contents:
+        - gb2gtf
+        - homologfinder
+        - intersect
         - jobby
+        - jobinfo
         - peek
         - pipeline
         - pkg_util
         - shell
+        - templates
 
 metadata-files:
   - _sidebar.yml
