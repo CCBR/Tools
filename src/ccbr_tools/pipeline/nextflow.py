@@ -8,7 +8,8 @@ Functions:
     Run a Nextflow workflow.
 """
 
-from ..pkg_util import msg_box, use_template
+from ..pkg_util import msg_box
+from ..templates import use_template
 from ..shell import shell_run
 from .hpc import get_hpc
 from .cache import get_singularity_cachedir
