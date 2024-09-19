@@ -1,6 +1,7 @@
 """
 Functions for singularity cache management
 """
+
 import json
 import os
 import sys
