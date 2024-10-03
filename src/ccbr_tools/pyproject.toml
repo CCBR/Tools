@@ -55,6 +55,7 @@ test = [
 ]
 docs = [
     "quartodoc >= v0.7.6",
+    "ccbr_actions@git+https://github.com/CCBR/actions@v0.1"
 ]
 
 [project.scripts]
