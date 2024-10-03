@@ -1,6 +1,7 @@
 """
 Pipeline utility functions
 """
+
 import collections
 import datetime
 import shutil
