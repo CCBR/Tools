@@ -54,7 +54,7 @@ test = [
     "pytest-cov"
 ]
 docs = [
-    "quartodoc >= v0.7.6",
+    "quartodoc >= v0.7.6"
 ]
 
 [project.scripts]
