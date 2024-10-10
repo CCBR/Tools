@@ -27,16 +27,15 @@ jobs:
           python -m pip install --upgrade pip
           python -m pip install ccbr_actions@git+https://github.com/CCBR/actions
       - name: set major & minor version
-        if: github.ref_type == 'tag' && startswith(github.ref, 'refs/tags/v')
         id: version
         shell: python {0}
         run: |
           from ccbr_actions.versions import get_major_minor_version
           from ccbr_actions.actions import set_output
           if '${{ github.ref_type }}' == 'tag' and '${{ github.ref }}'.startswith('refs/tags/v'):
-            version = 'dev'
-          else:
             version = get_major_minor_version("${{ github.ref_name }}".lstrip("v"))
+          else:
+            version = 'dev'
           set_output('VERSION_SHORT', version)
 
   docs:
