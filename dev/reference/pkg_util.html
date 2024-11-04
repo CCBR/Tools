@@ -20,6 +20,40 @@ ul.task-list li input[type="checkbox"] {
   margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
   vertical-align: middle;
 }
+/* CSS for syntax highlighting */
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+div.sourceCode { margin: 1em 0; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { display: inline-block; text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+  }
+pre.numberSource { margin-left: 3em;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
 </style>
 
 
@@ -348,15 +382,15 @@ ul.task-list li input[type="checkbox"] {
 </table>
 <section id="ccbr_tools.pkg_util.get_external_scripts" class="level3">
 <h3 class="anchored" data-anchor-id="ccbr_tools.pkg_util.get_external_scripts">get_external_scripts</h3>
-<p><code>pkg_util.get_external_scripts(pkg_name='ccbr_tools')</code></p>
+<div class="sourceCode" id="cb1"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a>pkg_util.get_external_scripts(pkg_name<span class="op">=</span><span class="st">'ccbr_tools'</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <p>Get list of standalone scripts included in the package</p>
-<section id="parameters" class="level4">
-<h4 class="anchored" data-anchor-id="parameters">Parameters</h4>
+<section id="parameters" class="level4 doc-section doc-section-parameters">
+<h4 class="doc-section doc-section-parameters anchored" data-anchor-id="parameters">Parameters</h4>
 <table class="caption-top table">
 <colgroup>
-<col style="width: 12%">
-<col style="width: 14%">
-<col style="width: 55%">
+<col style="width: 10%">
+<col style="width: 15%">
+<col style="width: 56%">
 <col style="width: 17%">
 </colgroup>
 <thead>
@@ -369,7 +403,7 @@ ul.task-list li input[type="checkbox"] {
 </thead>
 <tbody>
 <tr class="odd">
-<td><code>pkg_name</code></td>
+<td>pkg_name</td>
 <td><code>str</code></td>
 <td>The name of the package. Defaults to “ccbr_tools”.</td>
 <td><code>'ccbr_tools'</code></td>
@@ -377,21 +411,24 @@ ul.task-list li input[type="checkbox"] {
 </tbody>
 </table>
 </section>
-<section id="returns" class="level4">
-<h4 class="anchored" data-anchor-id="returns">Returns</h4>
+<section id="returns" class="level4 doc-section doc-section-returns">
+<h4 class="doc-section doc-section-returns anchored" data-anchor-id="returns">Returns</h4>
 <table class="caption-top table">
 <colgroup>
-<col style="width: 22%">
-<col style="width: 77%">
+<col style="width: 11%">
+<col style="width: 20%">
+<col style="width: 68%">
 </colgroup>
 <thead>
 <tr class="header">
+<th>Name</th>
 <th>Type</th>
 <th>Description</th>
 </tr>
 </thead>
 <tbody>
 <tr class="odd">
+<td>scripts</td>
 <td><code>list</code></td>
 <td>A list of standalone scripts included in the package.</td>
 </tr>
@@ -401,16 +438,16 @@ ul.task-list li input[type="checkbox"] {
 </section>
 <section id="ccbr_tools.pkg_util.get_package_version" class="level3">
 <h3 class="anchored" data-anchor-id="ccbr_tools.pkg_util.get_package_version">get_package_version</h3>
-<p><code>pkg_util.get_package_version(pkg_name='ccbr_tools')</code></p>
+<div class="sourceCode" id="cb2"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a>pkg_util.get_package_version(pkg_name<span class="op">=</span><span class="st">'ccbr_tools'</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <p>Get the current version of a package from the metadata.</p>
-<section id="parameters-1" class="level4">
-<h4 class="anchored" data-anchor-id="parameters-1">Parameters</h4>
+<section id="parameters-1" class="level4 doc-section doc-section-parameters">
+<h4 class="doc-section doc-section-parameters anchored" data-anchor-id="parameters-1">Parameters</h4>
 <table class="caption-top table">
 <colgroup>
-<col style="width: 13%">
+<col style="width: 11%">
 <col style="width: 16%">
-<col style="width: 51%">
-<col style="width: 18%">
+<col style="width: 52%">
+<col style="width: 19%">
 </colgroup>
 <thead>
 <tr class="header">
@@ -422,7 +459,7 @@ ul.task-list li input[type="checkbox"] {
 </thead>
 <tbody>
 <tr class="odd">
-<td><code>pkg_name</code></td>
+<td>pkg_name</td>
 <td><code>str</code></td>
 <td>Name of the package (default: ccbr_tools).</td>
 <td><code>'ccbr_tools'</code></td>
@@ -430,17 +467,19 @@ ul.task-list li input[type="checkbox"] {
 </tbody>
 </table>
 </section>
-<section id="returns-1" class="level4">
-<h4 class="anchored" data-anchor-id="returns-1">Returns</h4>
+<section id="returns-1" class="level4 doc-section doc-section-returns">
+<h4 class="doc-section doc-section-returns anchored" data-anchor-id="returns-1">Returns</h4>
 <table class="caption-top table">
 <thead>
 <tr class="header">
+<th>Name</th>
 <th>Type</th>
 <th>Description</th>
 </tr>
 </thead>
 <tbody>
 <tr class="odd">
+<td>version</td>
 <td><code>str</code></td>
 <td>The version of the package.</td>
 </tr>
@@ -450,15 +489,15 @@ ul.task-list li input[type="checkbox"] {
 </section>
 <section id="ccbr_tools.pkg_util.get_project_scripts" class="level3">
 <h3 class="anchored" data-anchor-id="ccbr_tools.pkg_util.get_project_scripts">get_project_scripts</h3>
-<p><code>pkg_util.get_project_scripts(pkg_name='ccbr_tools')</code></p>
+<div class="sourceCode" id="cb3"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a>pkg_util.get_project_scripts(pkg_name<span class="op">=</span><span class="st">'ccbr_tools'</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <p>Get a list of CLI tools in the package.</p>
-<section id="parameters-2" class="level4">
-<h4 class="anchored" data-anchor-id="parameters-2">Parameters</h4>
+<section id="parameters-2" class="level4 doc-section doc-section-parameters">
+<h4 class="doc-section doc-section-parameters anchored" data-anchor-id="parameters-2">Parameters</h4>
 <table class="caption-top table">
 <colgroup>
-<col style="width: 12%">
-<col style="width: 14%">
-<col style="width: 55%">
+<col style="width: 10%">
+<col style="width: 15%">
+<col style="width: 56%">
 <col style="width: 17%">
 </colgroup>
 <thead>
@@ -471,7 +510,7 @@ ul.task-list li input[type="checkbox"] {
 </thead>
 <tbody>
 <tr class="odd">
-<td><code>pkg_name</code></td>
+<td>pkg_name</td>
 <td><code>str</code></td>
 <td>The name of the package. Defaults to “ccbr_tools”.</td>
 <td><code>'ccbr_tools'</code></td>
@@ -479,17 +518,19 @@ ul.task-list li input[type="checkbox"] {
 </tbody>
 </table>
 </section>
-<section id="returns-2" class="level4">
-<h4 class="anchored" data-anchor-id="returns-2">Returns</h4>
+<section id="returns-2" class="level4 doc-section doc-section-returns">
+<h4 class="doc-section doc-section-returns anchored" data-anchor-id="returns-2">Returns</h4>
 <table class="caption-top table">
 <thead>
 <tr class="header">
+<th>Name</th>
 <th>Type</th>
 <th>Description</th>
 </tr>
 </thead>
 <tbody>
 <tr class="odd">
+<td>tools</td>
 <td><code>list</code></td>
 <td>A sorted list of CLI tool names.</td>
 </tr>
@@ -499,16 +540,16 @@ ul.task-list li input[type="checkbox"] {
 </section>
 <section id="ccbr_tools.pkg_util.get_pyproject_toml" class="level3">
 <h3 class="anchored" data-anchor-id="ccbr_tools.pkg_util.get_pyproject_toml">get_pyproject_toml</h3>
-<p><code>pkg_util.get_pyproject_toml(pkg_name='ccbr_tools', repo_base=repo_base)</code></p>
+<div class="sourceCode" id="cb4"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a>pkg_util.get_pyproject_toml(pkg_name<span class="op">=</span><span class="st">'ccbr_tools'</span>, repo_base<span class="op">=</span>repo_base)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <p>Get the contents of the package’s pyproject.toml file.</p>
-<section id="parameters-3" class="level4">
-<h4 class="anchored" data-anchor-id="parameters-3">Parameters</h4>
+<section id="parameters-3" class="level4 doc-section doc-section-parameters">
+<h4 class="doc-section doc-section-parameters anchored" data-anchor-id="parameters-3">Parameters</h4>
 <table class="caption-top table">
 <colgroup>
-<col style="width: 13%">
+<col style="width: 11%">
 <col style="width: 16%">
-<col style="width: 51%">
-<col style="width: 18%">
+<col style="width: 52%">
+<col style="width: 19%">
 </colgroup>
 <thead>
 <tr class="header">
@@ -520,7 +561,7 @@ ul.task-list li input[type="checkbox"] {
 </thead>
 <tbody>
 <tr class="odd">
-<td><code>pkg_name</code></td>
+<td>pkg_name</td>
 <td><code>str</code></td>
 <td>Name of the package (default: ccbr_tools).</td>
 <td><code>'ccbr_tools'</code></td>
@@ -528,17 +569,24 @@ ul.task-list li input[type="checkbox"] {
 </tbody>
 </table>
 </section>
-<section id="returns-3" class="level4">
-<h4 class="anchored" data-anchor-id="returns-3">Returns</h4>
+<section id="returns-3" class="level4 doc-section doc-section-returns">
+<h4 class="doc-section doc-section-returns anchored" data-anchor-id="returns-3">Returns</h4>
 <table class="caption-top table">
+<colgroup>
+<col style="width: 15%">
+<col style="width: 23%">
+<col style="width: 60%">
+</colgroup>
 <thead>
 <tr class="header">
+<th>Name</th>
 <th>Type</th>
 <th>Description</th>
 </tr>
 </thead>
 <tbody>
 <tr class="odd">
+<td>pyproject</td>
 <td><code>dict</code></td>
 <td>The contents of the pyproject.toml file.</td>
 </tr>
@@ -548,15 +596,15 @@ ul.task-list li input[type="checkbox"] {
 </section>
 <section id="ccbr_tools.pkg_util.get_version" class="level3">
 <h3 class="anchored" data-anchor-id="ccbr_tools.pkg_util.get_version">get_version</h3>
-<p><code>pkg_util.get_version(repo_base=repo_base, debug=False)</code></p>
+<div class="sourceCode" id="cb5"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a>pkg_util.get_version(repo_base<span class="op">=</span>repo_base, debug<span class="op">=</span><span class="va">False</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <p>Get the current version of the ccbr_tools package.</p>
-<section id="parameters-4" class="level4">
-<h4 class="anchored" data-anchor-id="parameters-4">Parameters</h4>
+<section id="parameters-4" class="level4 doc-section doc-section-parameters">
+<h4 class="doc-section doc-section-parameters anchored" data-anchor-id="parameters-4">Parameters</h4>
 <table class="caption-top table">
 <colgroup>
-<col style="width: 12%">
+<col style="width: 10%">
 <col style="width: 22%">
-<col style="width: 53%">
+<col style="width: 54%">
 <col style="width: 12%">
 </colgroup>
 <thead>
@@ -569,13 +617,13 @@ ul.task-list li input[type="checkbox"] {
 </thead>
 <tbody>
 <tr class="odd">
-<td><code>repo_base</code></td>
+<td>repo_base</td>
 <td><code>function</code></td>
 <td>A function that returns the base path of the repository.</td>
 <td><code>repo_base</code></td>
 </tr>
 <tr class="even">
-<td><code>debug</code></td>
+<td>debug</td>
 <td><code>bool</code></td>
 <td>Print the path to the VERSION file (default: False).</td>
 <td><code>False</code></td>
@@ -583,17 +631,19 @@ ul.task-list li input[type="checkbox"] {
 </tbody>
 </table>
 </section>
-<section id="returns-4" class="level4">
-<h4 class="anchored" data-anchor-id="returns-4">Returns</h4>
+<section id="returns-4" class="level4 doc-section doc-section-returns">
+<h4 class="doc-section doc-section-returns anchored" data-anchor-id="returns-4">Returns</h4>
 <table class="caption-top table">
 <thead>
 <tr class="header">
+<th>Name</th>
 <th>Type</th>
 <th>Description</th>
 </tr>
 </thead>
 <tbody>
 <tr class="odd">
+<td>version</td>
 <td><code>str</code></td>
 <td>The version of the package.</td>
 </tr>
@@ -603,15 +653,15 @@ ul.task-list li input[type="checkbox"] {
 </section>
 <section id="ccbr_tools.pkg_util.msg" class="level3">
 <h3 class="anchored" data-anchor-id="ccbr_tools.pkg_util.msg">msg</h3>
-<p><code>pkg_util.msg(err_message)</code></p>
+<div class="sourceCode" id="cb6"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a>pkg_util.msg(err_message)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <p>Prints the error message with a timestamp.</p>
-<section id="parameters-5" class="level4">
-<h4 class="anchored" data-anchor-id="parameters-5">Parameters</h4>
+<section id="parameters-5" class="level4 doc-section doc-section-parameters">
+<h4 class="doc-section doc-section-parameters anchored" data-anchor-id="parameters-5">Parameters</h4>
 <table class="caption-top table">
 <colgroup>
-<col style="width: 20%">
-<col style="width: 18%">
-<col style="width: 45%">
+<col style="width: 17%">
+<col style="width: 19%">
+<col style="width: 46%">
 <col style="width: 16%">
 </colgroup>
 <thead>
@@ -624,7 +674,7 @@ ul.task-list li input[type="checkbox"] {
 </thead>
 <tbody>
 <tr class="odd">
-<td><code>err_message</code></td>
+<td>err_message</td>
 <td><code>str</code></td>
 <td>The error message to be printed.</td>
 <td><em>required</em></td>
@@ -636,15 +686,15 @@ ul.task-list li input[type="checkbox"] {
 </section>
 <section id="ccbr_tools.pkg_util.msg_box" class="level3">
 <h3 class="anchored" data-anchor-id="ccbr_tools.pkg_util.msg_box">msg_box</h3>
-<p><code>pkg_util.msg_box(splash, errmsg=None)</code></p>
+<div class="sourceCode" id="cb7"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a>pkg_util.msg_box(splash, errmsg<span class="op">=</span><span class="va">None</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <p>Displays a message box with a given splash message.</p>
-<section id="parameters-6" class="level4">
-<h4 class="anchored" data-anchor-id="parameters-6">Parameters</h4>
+<section id="parameters-6" class="level4 doc-section doc-section-parameters">
+<h4 class="doc-section doc-section-parameters anchored" data-anchor-id="parameters-6">Parameters</h4>
 <table class="caption-top table">
 <colgroup>
-<col style="width: 8%">
+<col style="width: 7%">
 <col style="width: 12%">
-<col style="width: 68%">
+<col style="width: 69%">
 <col style="width: 10%">
 </colgroup>
 <thead>
@@ -657,13 +707,13 @@ ul.task-list li input[type="checkbox"] {
 </thead>
 <tbody>
 <tr class="odd">
-<td><code>splash</code></td>
+<td>splash</td>
 <td><code>str</code></td>
 <td>The splash message to be displayed.</td>
 <td><em>required</em></td>
 </tr>
 <tr class="even">
-<td><code>errmsg</code></td>
+<td>errmsg</td>
 <td><code>str</code></td>
 <td>An error message to be displayed below the splash message. Defaults to None.</td>
 <td><code>None</code></td>
@@ -674,16 +724,19 @@ ul.task-list li input[type="checkbox"] {
 </section>
 <section id="ccbr_tools.pkg_util.print_citation" class="level3">
 <h3 class="anchored" data-anchor-id="ccbr_tools.pkg_util.print_citation">print_citation</h3>
-<p><code>pkg_util.print_citation(citation_file=repo_base('CITATION.cff'), output_format='bibtex')</code></p>
+<div class="sourceCode" id="cb8"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a>pkg_util.print_citation(</span>
+<span id="cb8-2"><a href="#cb8-2" aria-hidden="true" tabindex="-1"></a>    citation_file<span class="op">=</span>repo_base(<span class="st">'CITATION.cff'</span>)</span>
+<span id="cb8-3"><a href="#cb8-3" aria-hidden="true" tabindex="-1"></a>    output_format<span class="op">=</span><span class="st">'bibtex'</span></span>
+<span id="cb8-4"><a href="#cb8-4" aria-hidden="true" tabindex="-1"></a>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <p>Prints the citation for the given citation file in the specified output format.</p>
-<section id="parameters-7" class="level4">
-<h4 class="anchored" data-anchor-id="parameters-7">Parameters</h4>
+<section id="parameters-7" class="level4 doc-section doc-section-parameters">
+<h4 class="doc-section doc-section-parameters anchored" data-anchor-id="parameters-7">Parameters</h4>
 <table class="caption-top table">
 <colgroup>
-<col style="width: 16%">
+<col style="width: 14%">
 <col style="width: 13%">
-<col style="width: 42%">
-<col style="width: 27%">
+<col style="width: 43%">
+<col style="width: 28%">
 </colgroup>
 <thead>
 <tr class="header">
@@ -695,13 +748,13 @@ ul.task-list li input[type="checkbox"] {
 </thead>
 <tbody>
 <tr class="odd">
-<td><code>citation_file</code></td>
+<td>citation_file</td>
 <td><code>str</code></td>
 <td>The path to the citation file.</td>
 <td><code>repo_base('CITATION.cff')</code></td>
 </tr>
 <tr class="even">
-<td><code>output_format</code></td>
+<td>output_format</td>
 <td><code>str</code></td>
 <td>The desired output format for the citation.</td>
 <td><code>'bibtex'</code></td>
@@ -712,15 +765,15 @@ ul.task-list li input[type="checkbox"] {
 </section>
 <section id="ccbr_tools.pkg_util.repo_base" class="level3">
 <h3 class="anchored" data-anchor-id="ccbr_tools.pkg_util.repo_base">repo_base</h3>
-<p><code>pkg_util.repo_base(*paths)</code></p>
+<div class="sourceCode" id="cb9"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a>pkg_util.repo_base(<span class="op">*</span>paths)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <p>Get the absolute path to a file in the repository</p>
-<section id="parameters-8" class="level4">
-<h4 class="anchored" data-anchor-id="parameters-8">Parameters</h4>
+<section id="parameters-8" class="level4 doc-section doc-section-parameters">
+<h4 class="doc-section doc-section-parameters anchored" data-anchor-id="parameters-8">Parameters</h4>
 <table class="caption-top table">
 <colgroup>
-<col style="width: 12%">
+<col style="width: 10%">
 <col style="width: 17%">
-<col style="width: 56%">
+<col style="width: 58%">
 <col style="width: 13%">
 </colgroup>
 <thead>
@@ -733,7 +786,7 @@ ul.task-list li input[type="checkbox"] {
 </thead>
 <tbody>
 <tr class="odd">
-<td><code>*paths</code></td>
+<td>*paths</td>
 <td><code>str</code></td>
 <td>Additional paths to join with the base path.</td>
 <td><code>()</code></td>
@@ -741,17 +794,24 @@ ul.task-list li input[type="checkbox"] {
 </tbody>
 </table>
 </section>
-<section id="returns-5" class="level4">
-<h4 class="anchored" data-anchor-id="returns-5">Returns</h4>
+<section id="returns-5" class="level4 doc-section doc-section-returns">
+<h4 class="doc-section doc-section-returns anchored" data-anchor-id="returns-5">Returns</h4>
 <table class="caption-top table">
+<colgroup>
+<col style="width: 11%">
+<col style="width: 19%">
+<col style="width: 69%">
+</colgroup>
 <thead>
 <tr class="header">
+<th>Name</th>
 <th>Type</th>
 <th>Description</th>
 </tr>
 </thead>
 <tbody>
 <tr class="odd">
+<td>path</td>
 <td><code>str</code></td>
 <td>The absolute path to the file in the repository.</td>
 </tr>
