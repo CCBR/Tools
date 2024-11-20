@@ -20,6 +20,40 @@ ul.task-list li input[type="checkbox"] {
   margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
   vertical-align: middle;
 }
+/* CSS for syntax highlighting */
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+div.sourceCode { margin: 1em 0; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { display: inline-block; text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+  }
+pre.numberSource { margin-left: 3em;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
 </style>
 
 
@@ -398,37 +432,41 @@ ul.task-list li input[type="checkbox"] {
 </table>
 <section id="ccbr_tools.pipeline.util.chmod_bins_exec" class="level3">
 <h3 class="anchored" data-anchor-id="ccbr_tools.pipeline.util.chmod_bins_exec">chmod_bins_exec</h3>
-<p><code>pipeline.util.chmod_bins_exec(repo_base=repo_base)</code></p>
+<div class="sourceCode" id="cb1"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a>pipeline.util.chmod_bins_exec(repo_base<span class="op">=</span>repo_base)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <p>Ensure that all files in bin/ are executable.</p>
 <p>It appears that setuptools strips executable permissions from package_data files, yet post-install scripts are not possible with the pyproject.toml format. Without this hack, nextflow processes that call scripts in bin/ fail.</p>
 <p>https://stackoverflow.com/questions/18409296/package-data-files-with-executable-permissions https://github.com/pypa/setuptools/issues/2041 https://stackoverflow.com/questions/76320274/post-install-script-for-pyproject-toml-projects</p>
 </section>
 <section id="ccbr_tools.pipeline.util.err" class="level3">
 <h3 class="anchored" data-anchor-id="ccbr_tools.pipeline.util.err">err</h3>
-<p><code>pipeline.util.err(*message, **kwargs)</code></p>
+<div class="sourceCode" id="cb2"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a>pipeline.util.err(<span class="op">*</span>message, <span class="op">**</span>kwargs)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <p>Prints any provided args to standard error. kwargs can be provided to modify print functions behavior. <span class="citation" data-cites="param">@param</span> message <any>: Values printed to standard error <span class="citation" data-cites="params">@params</span> kwargs &lt;print()&gt; Key words to modify print function behavior</any></p>
 </section>
 <section id="ccbr_tools.pipeline.util.exists" class="level3">
 <h3 class="anchored" data-anchor-id="ccbr_tools.pipeline.util.exists">exists</h3>
-<p><code>pipeline.util.exists(testpath)</code></p>
+<div class="sourceCode" id="cb3"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a>pipeline.util.exists(testpath)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <p>Checks if file exists on the local filesystem. <span class="citation" data-cites="param">@param</span> parser &lt;argparse.ArgumentParser() object&gt;: argparse parser object <span class="citation" data-cites="param">@param</span> testpath <str>: Name of file/directory to check <span class="citation" data-cites="return">@return</span> does_exist <boolean>: True when file/directory exists, False when file/directory does not exist</boolean></str></p>
 </section>
 <section id="ccbr_tools.pipeline.util.fatal" class="level3">
 <h3 class="anchored" data-anchor-id="ccbr_tools.pipeline.util.fatal">fatal</h3>
-<p><code>pipeline.util.fatal(*message, **kwargs)</code></p>
+<div class="sourceCode" id="cb4"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a>pipeline.util.fatal(<span class="op">*</span>message, <span class="op">**</span>kwargs)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <p>Prints any provided args to standard error and exits with an exit code of 1. <span class="citation" data-cites="param">@param</span> message <any>: Values printed to standard error <span class="citation" data-cites="params">@params</span> kwargs &lt;print()&gt; Key words to modify print function behavior</any></p>
 </section>
 <section id="ccbr_tools.pipeline.util.get_genomes_dict" class="level3">
 <h3 class="anchored" data-anchor-id="ccbr_tools.pipeline.util.get_genomes_dict">get_genomes_dict</h3>
-<p><code>pipeline.util.get_genomes_dict(repo_base, hpcname=get_hpcname(), error_on_warnings=False)</code></p>
+<div class="sourceCode" id="cb5"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a>pipeline.util.get_genomes_dict(</span>
+<span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a>    repo_base,</span>
+<span id="cb5-3"><a href="#cb5-3" aria-hidden="true" tabindex="-1"></a>    hpcname<span class="op">=</span>get_hpcname(),</span>
+<span id="cb5-4"><a href="#cb5-4" aria-hidden="true" tabindex="-1"></a>    error_on_warnings<span class="op">=</span><span class="va">False</span>,</span>
+<span id="cb5-5"><a href="#cb5-5" aria-hidden="true" tabindex="-1"></a>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <p>Get dictionary of genome annotation versions and the paths to the corresponding JSON files.</p>
-<section id="parameters" class="level4">
-<h4 class="anchored" data-anchor-id="parameters">Parameters</h4>
+<section id="parameters" class="level4 doc-section doc-section-parameters">
+<h4 class="doc-section doc-section-parameters anchored" data-anchor-id="parameters">Parameters</h4>
 <table class="caption-top table">
 <colgroup>
-<col style="width: 15%">
+<col style="width: 14%">
 <col style="width: 17%">
-<col style="width: 54%">
+<col style="width: 55%">
 <col style="width: 12%">
 </colgroup>
 <thead>
@@ -441,19 +479,19 @@ ul.task-list li input[type="checkbox"] {
 </thead>
 <tbody>
 <tr class="odd">
-<td><code>repo_base</code></td>
+<td>repo_base</td>
 <td><code>function</code></td>
 <td>Function for getting the base directory of the repository.</td>
 <td><em>required</em></td>
 </tr>
 <tr class="even">
-<td><code>hpcname</code></td>
+<td>hpcname</td>
 <td><code>str</code></td>
 <td>Name of the HPC. Defaults to the value returned by get_hpcname().</td>
 <td><code>get_hpcname()</code></td>
 </tr>
 <tr class="odd">
-<td><code>error_on_warnings</code></td>
+<td>error_on_warnings</td>
 <td><code>bool</code></td>
 <td>Flag to indicate whether to raise warnings as errors. Defaults to False.</td>
 <td><code>False</code></td>
@@ -465,15 +503,19 @@ ul.task-list li input[type="checkbox"] {
 </section>
 <section id="ccbr_tools.pipeline.util.get_genomes_list" class="level3">
 <h3 class="anchored" data-anchor-id="ccbr_tools.pipeline.util.get_genomes_list">get_genomes_list</h3>
-<p><code>pipeline.util.get_genomes_list(repo_base, hpcname=get_hpcname(), error_on_warnings=False)</code></p>
+<div class="sourceCode" id="cb6"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a>pipeline.util.get_genomes_list(</span>
+<span id="cb6-2"><a href="#cb6-2" aria-hidden="true" tabindex="-1"></a>    repo_base,</span>
+<span id="cb6-3"><a href="#cb6-3" aria-hidden="true" tabindex="-1"></a>    hpcname<span class="op">=</span>get_hpcname(),</span>
+<span id="cb6-4"><a href="#cb6-4" aria-hidden="true" tabindex="-1"></a>    error_on_warnings<span class="op">=</span><span class="va">False</span>,</span>
+<span id="cb6-5"><a href="#cb6-5" aria-hidden="true" tabindex="-1"></a>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <p>Get list of genome annotations available for the current platform</p>
-<section id="parameters-1" class="level4">
-<h4 class="anchored" data-anchor-id="parameters-1">Parameters</h4>
+<section id="parameters-1" class="level4 doc-section doc-section-parameters">
+<h4 class="doc-section doc-section-parameters anchored" data-anchor-id="parameters-1">Parameters</h4>
 <table class="caption-top table">
 <colgroup>
-<col style="width: 16%">
-<col style="width: 12%">
-<col style="width: 56%">
+<col style="width: 15%">
+<col style="width: 13%">
+<col style="width: 57%">
 <col style="width: 13%">
 </colgroup>
 <thead>
@@ -486,19 +528,19 @@ ul.task-list li input[type="checkbox"] {
 </thead>
 <tbody>
 <tr class="odd">
-<td><code>repo_base</code></td>
+<td>repo_base</td>
 <td><code>str</code></td>
 <td>The base directory of the repository</td>
 <td><em>required</em></td>
 </tr>
 <tr class="even">
-<td><code>hpcname</code></td>
+<td>hpcname</td>
 <td><code>str</code></td>
 <td>The name of the HPC. Defaults to the value returned by get_hpcname().</td>
 <td><code>get_hpcname()</code></td>
 </tr>
 <tr class="odd">
-<td><code>error_on_warnings</code></td>
+<td>error_on_warnings</td>
 <td><code>bool</code></td>
 <td>Whether to raise an error on warnings. Defaults to False.</td>
 <td><code>False</code></td>
@@ -510,19 +552,26 @@ ul.task-list li input[type="checkbox"] {
 </section>
 <section id="ccbr_tools.pipeline.util.get_hpcname" class="level3">
 <h3 class="anchored" data-anchor-id="ccbr_tools.pipeline.util.get_hpcname">get_hpcname</h3>
-<p><code>pipeline.util.get_hpcname()</code></p>
+<div class="sourceCode" id="cb7"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a>pipeline.util.get_hpcname()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <p>Get the HPC name using scontrol</p>
-<section id="returns" class="level4">
-<h4 class="anchored" data-anchor-id="returns">Returns</h4>
+<section id="returns" class="level4 doc-section doc-section-returns">
+<h4 class="doc-section doc-section-returns anchored" data-anchor-id="returns">Returns</h4>
 <table class="caption-top table">
+<colgroup>
+<col style="width: 12%">
+<col style="width: 18%">
+<col style="width: 68%">
+</colgroup>
 <thead>
 <tr class="header">
+<th>Name</th>
 <th>Type</th>
 <th>Description</th>
 </tr>
 </thead>
 <tbody>
 <tr class="odd">
+<td>hpcname</td>
 <td><code>str</code></td>
 <td>The HPC name (biowulf, frce, or an empty string)</td>
 </tr>
@@ -532,15 +581,15 @@ ul.task-list li input[type="checkbox"] {
 </section>
 <section id="ccbr_tools.pipeline.util.get_tmp_dir" class="level3">
 <h3 class="anchored" data-anchor-id="ccbr_tools.pipeline.util.get_tmp_dir">get_tmp_dir</h3>
-<p><code>pipeline.util.get_tmp_dir(tmp_dir, outdir, hpc=get_hpcname())</code></p>
+<div class="sourceCode" id="cb8"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a>pipeline.util.get_tmp_dir(tmp_dir, outdir, hpc<span class="op">=</span>get_hpcname())</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <p>Get default temporary directory for biowulf and frce. Allow user override.</p>
-<section id="parameters-2" class="level4">
-<h4 class="anchored" data-anchor-id="parameters-2">Parameters</h4>
+<section id="parameters-2" class="level4 doc-section doc-section-parameters">
+<h4 class="doc-section doc-section-parameters anchored" data-anchor-id="parameters-2">Parameters</h4>
 <table class="caption-top table">
 <colgroup>
-<col style="width: 7%">
+<col style="width: 6%">
 <col style="width: 9%">
-<col style="width: 71%">
+<col style="width: 72%">
 <col style="width: 11%">
 </colgroup>
 <thead>
@@ -553,19 +602,19 @@ ul.task-list li input[type="checkbox"] {
 </thead>
 <tbody>
 <tr class="odd">
-<td><code>tmp_dir</code></td>
+<td>tmp_dir</td>
 <td><code>str</code></td>
 <td>User-defined temporary directory path. If provided, this path will be used as the temporary directory.</td>
 <td><em>required</em></td>
 </tr>
 <tr class="even">
-<td><code>outdir</code></td>
+<td>outdir</td>
 <td><code>str</code></td>
 <td>Output directory path.</td>
 <td><em>required</em></td>
 </tr>
 <tr class="odd">
-<td><code>hpc</code></td>
+<td>hpc</td>
 <td><code>str</code></td>
 <td>HPC name. Defaults to the value returned by get_hpcname().</td>
 <td><code>get_hpcname()</code></td>
@@ -577,63 +626,66 @@ ul.task-list li input[type="checkbox"] {
 </section>
 <section id="ccbr_tools.pipeline.util.git_commit_hash" class="level3">
 <h3 class="anchored" data-anchor-id="ccbr_tools.pipeline.util.git_commit_hash">git_commit_hash</h3>
-<p><code>pipeline.util.git_commit_hash(repo_path)</code></p>
+<div class="sourceCode" id="cb9"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a>pipeline.util.git_commit_hash(repo_path)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <p>Gets the git commit hash of the RNA-seek repo. <span class="citation" data-cites="param">@param</span> repo_path <str>: Path to RNA-seek git repo <span class="citation" data-cites="return">@return</span> githash <str>: Latest git commit hash</str></str></p>
 </section>
 <section id="ccbr_tools.pipeline.util.join_jsons" class="level3">
 <h3 class="anchored" data-anchor-id="ccbr_tools.pipeline.util.join_jsons">join_jsons</h3>
-<p><code>pipeline.util.join_jsons(templates)</code></p>
+<div class="sourceCode" id="cb10"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a>pipeline.util.join_jsons(templates)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <p>Joins multiple JSON files to into one data structure Used to join multiple template JSON files to create a global config dictionary. <span class="citation" data-cites="params">@params</span> templates &lt;list[str]&gt;: List of template JSON files to join together <span class="citation" data-cites="return">@return</span> aggregated <dict>: Dictionary containing the contents of all the input JSON files</dict></p>
 </section>
 <section id="ccbr_tools.pipeline.util.ln" class="level3">
 <h3 class="anchored" data-anchor-id="ccbr_tools.pipeline.util.ln">ln</h3>
-<p><code>pipeline.util.ln(files, outdir)</code></p>
+<div class="sourceCode" id="cb11"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a>pipeline.util.ln(files, outdir)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <p>Creates symlinks for files to an output directory. <span class="citation" data-cites="param">@param</span> files list[<str>]: List of filenames <span class="citation" data-cites="param">@param</span> outdir <str>: Destination or output directory to create symlinks</str></str></p>
 </section>
 <section id="ccbr_tools.pipeline.util.md5sum" class="level3">
 <h3 class="anchored" data-anchor-id="ccbr_tools.pipeline.util.md5sum">md5sum</h3>
-<p><code>pipeline.util.md5sum(filename, first_block_only=False, blocksize=65536)</code></p>
+<div class="sourceCode" id="cb12"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb12-1"><a href="#cb12-1" aria-hidden="true" tabindex="-1"></a>pipeline.util.md5sum(filename, first_block_only<span class="op">=</span><span class="va">False</span>, blocksize<span class="op">=</span><span class="dv">65536</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <p>Gets md5checksum of a file in memory-safe manner. The file is read in blocks/chunks defined by the blocksize parameter. This is a safer option to reading the entire file into memory if the file is very large. <span class="citation" data-cites="param">@param</span> filename <str>: Input file on local filesystem to find md5 checksum <span class="citation" data-cites="param">@param</span> first_block_only <bool>: Calculate md5 checksum of the first block/chunk only <span class="citation" data-cites="param">@param</span> blocksize <int>: Blocksize of reading N chunks of data to reduce memory profile <span class="citation" data-cites="return">@return</span> hasher.hexdigest() <str>: MD5 checksum of the file’s contents</str></int></bool></str></p>
 </section>
 <section id="ccbr_tools.pipeline.util.permissions" class="level3">
 <h3 class="anchored" data-anchor-id="ccbr_tools.pipeline.util.permissions">permissions</h3>
-<p><code>pipeline.util.permissions(parser, path, *args, **kwargs)</code></p>
+<div class="sourceCode" id="cb13"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb13-1"><a href="#cb13-1" aria-hidden="true" tabindex="-1"></a>pipeline.util.permissions(parser, path, <span class="op">*</span>args, <span class="op">**</span>kwargs)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <p>Checks permissions using os.access() to see the user is authorized to access a file/directory. Checks for existence, readability, writability and executability via: os.F_OK (tests existence), os.R_OK (tests read), os.W_OK (tests write), os.X_OK (tests exec). <span class="citation" data-cites="param">@param</span> parser &lt;argparse.ArgumentParser() object&gt;: Argparse parser object <span class="citation" data-cites="param">@param</span> path <str>: Name of path to check <span class="citation" data-cites="return">@return</span> path <str>: Returns abs path if it exists and permissions are correct</str></str></p>
 </section>
 <section id="ccbr_tools.pipeline.util.rename" class="level3">
 <h3 class="anchored" data-anchor-id="ccbr_tools.pipeline.util.rename">rename</h3>
-<p><code>pipeline.util.rename(filename)</code></p>
+<div class="sourceCode" id="cb14"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb14-1"><a href="#cb14-1" aria-hidden="true" tabindex="-1"></a>pipeline.util.rename(filename)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <p>Dynamically renames FastQ file to have one of the following extensions: <em>.R1.fastq.gz, </em>.R2.fastq.gz To automatically rename the fastq files, a few assumptions are made. If the extension of the FastQ file cannot be inferred, an exception is raised telling the user to fix the filename of the fastq files. <span class="citation" data-cites="param">@param</span> filename <str>: Original name of file to be renamed <span class="citation" data-cites="return">@return</span> filename <str>: A renamed FastQ filename</str></str></p>
 </section>
 <section id="ccbr_tools.pipeline.util.require" class="level3">
 <h3 class="anchored" data-anchor-id="ccbr_tools.pipeline.util.require">require</h3>
-<p><code>pipeline.util.require(cmds, suggestions, path=None)</code></p>
+<div class="sourceCode" id="cb15"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb15-1"><a href="#cb15-1" aria-hidden="true" tabindex="-1"></a>pipeline.util.require(cmds, suggestions, path<span class="op">=</span><span class="va">None</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <p>Enforces an executable is in $PATH <span class="citation" data-cites="param">@param</span> cmds list[<str>]: List of executable names to check <span class="citation" data-cites="param">@param</span> suggestions list[<str>]: Name of module to suggest loading for a given index in param cmd. <span class="citation" data-cites="param">@param</span> path list[<str>]]: Optional list of PATHs to check [default: $PATH]</str></str></str></p>
 </section>
 <section id="ccbr_tools.pipeline.util.safe_copy" class="level3">
 <h3 class="anchored" data-anchor-id="ccbr_tools.pipeline.util.safe_copy">safe_copy</h3>
-<p><code>pipeline.util.safe_copy(source, target, resources=[])</code></p>
+<div class="sourceCode" id="cb16"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb16-1"><a href="#cb16-1" aria-hidden="true" tabindex="-1"></a>pipeline.util.safe_copy(source, target, resources<span class="op">=</span>[])</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <p>Private function: Given a list paths it will recursively copy each to the target location. If a target path already exists, it will NOT over-write the existing paths data. <span class="citation" data-cites="param">@param</span> resources &lt;list[str]&gt;: List of paths to copy over to target location <span class="citation" data-cites="params">@params</span> source <str>: Add a prefix PATH to each resource <span class="citation" data-cites="param">@param</span> target <str>: Target path to copy templates and required resources</str></str></p>
 </section>
 <section id="ccbr_tools.pipeline.util.scontrol_show" class="level3">
 <h3 class="anchored" data-anchor-id="ccbr_tools.pipeline.util.scontrol_show">scontrol_show</h3>
-<p><code>pipeline.util.scontrol_show()</code></p>
+<div class="sourceCode" id="cb17"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb17-1"><a href="#cb17-1" aria-hidden="true" tabindex="-1"></a>pipeline.util.scontrol_show()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <p>Run <code>scontrol show config</code> and parse the output as a dictionary</p>
-<section id="returns-1" class="level4">
-<h4 class="anchored" data-anchor-id="returns-1">Returns</h4>
+<section id="returns-1" class="level4 doc-section doc-section-returns">
+<h4 class="doc-section doc-section-returns anchored" data-anchor-id="returns-1">Returns</h4>
 <table class="caption-top table">
 <colgroup>
-<col style="width: 21%">
-<col style="width: 78%">
+<col style="width: 16%">
+<col style="width: 17%">
+<col style="width: 65%">
 </colgroup>
 <thead>
 <tr class="header">
+<th>Name</th>
 <th>Type</th>
 <th>Description</th>
 </tr>
 </thead>
 <tbody>
 <tr class="odd">
+<td>scontrol_dict</td>
 <td><code>dict</code></td>
 <td>dictionary containing the output of <code>scontrol show config</code></td>
 </tr>
@@ -643,12 +695,12 @@ ul.task-list li input[type="checkbox"] {
 </section>
 <section id="ccbr_tools.pipeline.util.standard_input" class="level3">
 <h3 class="anchored" data-anchor-id="ccbr_tools.pipeline.util.standard_input">standard_input</h3>
-<p><code>pipeline.util.standard_input(parser, path, *args, **kwargs)</code></p>
+<div class="sourceCode" id="cb18"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb18-1"><a href="#cb18-1" aria-hidden="true" tabindex="-1"></a>pipeline.util.standard_input(parser, path, <span class="op">*</span>args, <span class="op">**</span>kwargs)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <p>Checks for standard input when provided or permissions using permissions(). <span class="citation" data-cites="param">@param</span> parser &lt;argparse.ArgumentParser() object&gt;: Argparse parser object <span class="citation" data-cites="param">@param</span> path <str>: Name of path to check <span class="citation" data-cites="return">@return</span> path <str>: If path exists and user can read from location</str></str></p>
 </section>
 <section id="ccbr_tools.pipeline.util.which" class="level3">
 <h3 class="anchored" data-anchor-id="ccbr_tools.pipeline.util.which">which</h3>
-<p><code>pipeline.util.which(cmd, path=None)</code></p>
+<div class="sourceCode" id="cb19"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb19-1"><a href="#cb19-1" aria-hidden="true" tabindex="-1"></a>pipeline.util.which(cmd, path<span class="op">=</span><span class="va">None</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <p>Checks if an executable is in $PATH <span class="citation" data-cites="param">@param</span> cmd <str>: Name of executable to check <span class="citation" data-cites="param">@param</span> path <list>: Optional list of PATHs to check [default: $PATH] <span class="citation" data-cites="return">@return</span> <boolean>: True if exe in PATH, False if not in PATH</boolean></list></str></p>
 
 

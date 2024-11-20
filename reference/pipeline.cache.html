@@ -20,6 +20,40 @@ ul.task-list li input[type="checkbox"] {
   margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
   vertical-align: middle;
 }
+/* CSS for syntax highlighting */
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+div.sourceCode { margin: 1em 0; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { display: inline-block; text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+  }
+pre.numberSource { margin-left: 3em;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
 </style>
 
 
@@ -318,17 +352,17 @@ ul.task-list li input[type="checkbox"] {
 </table>
 <section id="ccbr_tools.pipeline.cache.check_cache" class="level3">
 <h3 class="anchored" data-anchor-id="ccbr_tools.pipeline.cache.check_cache">check_cache</h3>
-<p><code>pipeline.cache.check_cache(parser, cache, *args, **kwargs)</code></p>
+<div class="sourceCode" id="cb1"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a>pipeline.cache.check_cache(parser, cache, <span class="op">*</span>args, <span class="op">**</span>kwargs)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <p>Check if provided SINGULARITY_CACHE is valid. Singularity caches cannot be shared across users (and must be owned by the user). Singularity strictly enforces 0700 user permission on on the cache directory and will return a non-zero exitcode. <span class="citation" data-cites="param">@param</span> parser &lt;argparse.ArgumentParser() object&gt;: Argparse parser object <span class="citation" data-cites="param">@param</span> cache <str>: Singularity cache directory <span class="citation" data-cites="return">@return</span> cache <str>: If singularity cache dir is valid</str></str></p>
 </section>
 <section id="ccbr_tools.pipeline.cache.get_singularity_cachedir" class="level3">
 <h3 class="anchored" data-anchor-id="ccbr_tools.pipeline.cache.get_singularity_cachedir">get_singularity_cachedir</h3>
-<p><code>pipeline.cache.get_singularity_cachedir(output_dir=None, cache_dir=None)</code></p>
+<div class="sourceCode" id="cb2"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a>pipeline.cache.get_singularity_cachedir(output_dir<span class="op">=</span><span class="va">None</span>, cache_dir<span class="op">=</span><span class="va">None</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <p>Returns the singularity cache directory. If no user-provided cache directory is provided, the default singularity cache is in the output directory.</p>
 </section>
 <section id="ccbr_tools.pipeline.cache.image_cache" class="level3">
 <h3 class="anchored" data-anchor-id="ccbr_tools.pipeline.cache.image_cache">image_cache</h3>
-<p><code>pipeline.cache.image_cache(sub_args, config)</code></p>
+<div class="sourceCode" id="cb3"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a>pipeline.cache.image_cache(sub_args, config)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <p>Adds Docker Image URIs, or SIF paths to config if singularity cache option is provided. If singularity cache option is provided and a local SIF does not exist, a warning is displayed and the image will be pulled from URI in ‘config/containers/images.json’. <span class="citation" data-cites="param">@param</span> sub_args &lt;parser.parse_args() object&gt;: Parsed arguments for run sub-command <span class="citation" data-cites="params">@params</span> config <file>: Docker Image config file <span class="citation" data-cites="return">@return</span> config <dict>: Updated config dictionary containing user information (username and home directory)</dict></file></p>
 
 

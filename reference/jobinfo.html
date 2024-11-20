@@ -20,6 +20,40 @@ ul.task-list li input[type="checkbox"] {
   margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
   vertical-align: middle;
 }
+/* CSS for syntax highlighting */
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+div.sourceCode { margin: 1em 0; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { display: inline-block; text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+  }
+pre.numberSource { margin-left: 3em;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
 </style>
 
 
@@ -273,7 +307,7 @@ ul.task-list li input[type="checkbox"] {
   <li><a href="#ccbr_tools.jobinfo" id="toc-ccbr_tools.jobinfo" class="nav-link active" data-scroll-target="#ccbr_tools.jobinfo">jobinfo</a>
   <ul class="collapse">
   <li><a href="#about" id="toc-about" class="nav-link" data-scroll-target="#about">About</a></li>
-  <li><a href="#usage" id="toc-usage" class="nav-link" data-scroll-target="#usage">Usage</a></li>
+  <li><a href="#usage" id="toc-usage" class="nav-link" data-scroll-target="#usage">USAGE</a></li>
   <li><a href="#example" id="toc-example" class="nav-link" data-scroll-target="#example">Example</a></li>
   <li><a href="#functions" id="toc-functions" class="nav-link" data-scroll-target="#functions">Functions</a>
   <ul class="collapse">
@@ -294,16 +328,16 @@ ul.task-list li input[type="checkbox"] {
 <h1>jobinfo</h1>
 <p><code>jobinfo</code></p>
 <p>Get HPC usage metadata for a list of slurm jobids on biowulf</p>
-<section id="about" class="level2">
-<h2 class="anchored" data-anchor-id="about">About</h2>
+<section id="about" class="level2 doc-section doc-section-about">
+<h2 class="doc-section doc-section-about anchored" data-anchor-id="about">About</h2>
 <p>This wrapper script works only on BIOWULF! This script usage the “dashboard_cli” utility on biowulf to get HPC usage metadata for a list of slurm jobids. These slurm jobids can be either provided at command line or extracted from a snakemake.log file. Using snakemake.log file option together with –failonly option lists path to the STDERR files for failed jobs. This can be very useful to debug failed Snakemake workflows.</p>
 </section>
-<section id="usage" class="level2">
-<h2 class="anchored" data-anchor-id="usage">Usage</h2>
+<section id="usage" class="level2 doc-section doc-section-usage">
+<h2 class="doc-section doc-section-usage anchored" data-anchor-id="usage">USAGE</h2>
 <p>$ jobinfo -h</p>
 </section>
-<section id="example" class="level2">
-<h2 class="anchored" data-anchor-id="example">Example</h2>
+<section id="example" class="level2 doc-section doc-section-example">
+<h2 class="doc-section doc-section-example anchored" data-anchor-id="example">Example</h2>
 <p>$ jobinfo -j 123456,7891011 $ jobinfo -s /path/to/snakemake.log $ jobinfo -j 123456,7891011 -o /path/to/report.tsv $ jobinfo -s /path/to/snakemake.log –failonly</p>
 </section>
 <section id="functions" class="level2">
@@ -328,12 +362,12 @@ ul.task-list li input[type="checkbox"] {
 </table>
 <section id="ccbr_tools.jobinfo.check_help" class="level3">
 <h3 class="anchored" data-anchor-id="ccbr_tools.jobinfo.check_help">check_help</h3>
-<p><code>jobinfo.check_help(parser)</code></p>
+<div class="sourceCode" id="cb1"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a>jobinfo.check_help(parser)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <p>check if usage needs to be printed</p>
 </section>
 <section id="ccbr_tools.jobinfo.exit_w_msg" class="level3">
 <h3 class="anchored" data-anchor-id="ccbr_tools.jobinfo.exit_w_msg">exit_w_msg</h3>
-<p><code>jobinfo.exit_w_msg(message)</code></p>
+<div class="sourceCode" id="cb2"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a>jobinfo.exit_w_msg(message)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <p>Gracefully exit with proper message</p>
 
 
