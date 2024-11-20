@@ -35,7 +35,7 @@ jobs:
           if '${{ github.ref_type }}' == 'tag' and '${{ github.ref }}'.startswith('refs/tags/v'):
             version = get_major_minor_version("${{ github.ref_name }}".lstrip("v"))
           else:
-            version = 'dev'
+            version = './'
           set_output('VERSION_SHORT', version)
 
   docs:
@@ -93,6 +93,7 @@ jobs:
       - name: create symlink stable to new version
         if: github.ref_type == 'tag' && startswith(github.ref, 'refs/tags/v')
         run: |
+          git switch gh-pages
           rm -if latest
           ln -s ${{ needs.version.outputs.version }} latest
           ls -la
