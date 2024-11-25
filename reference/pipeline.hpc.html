@@ -315,6 +315,9 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   <li><a href="#functions" id="toc-functions" class="nav-link" data-scroll-target="#functions">Functions</a>
   <ul class="collapse">
   <li><a href="#ccbr_tools.pipeline.hpc.get_hpc" id="toc-ccbr_tools.pipeline.hpc.get_hpc" class="nav-link" data-scroll-target="#ccbr_tools.pipeline.hpc.get_hpc">get_hpc</a></li>
+  <li><a href="#ccbr_tools.pipeline.hpc.get_hpcname" id="toc-ccbr_tools.pipeline.hpc.get_hpcname" class="nav-link" data-scroll-target="#ccbr_tools.pipeline.hpc.get_hpcname">get_hpcname</a></li>
+  <li><a href="#ccbr_tools.pipeline.hpc.is_loaded" id="toc-ccbr_tools.pipeline.hpc.is_loaded" class="nav-link" data-scroll-target="#ccbr_tools.pipeline.hpc.is_loaded">is_loaded</a></li>
+  <li><a href="#ccbr_tools.pipeline.hpc.scontrol_show" id="toc-ccbr_tools.pipeline.hpc.scontrol_show" class="nav-link" data-scroll-target="#ccbr_tools.pipeline.hpc.scontrol_show">scontrol_show</a></li>
   </ul></li>
   </ul></li>
   </ul>
@@ -502,6 +505,18 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <td><a href="#ccbr_tools.pipeline.hpc.get_hpc">get_hpc</a></td>
 <td>Returns an instance of the High-Performance Computing (HPC) cluster based on the specified HPC name.</td>
 </tr>
+<tr class="even">
+<td><a href="#ccbr_tools.pipeline.hpc.get_hpcname">get_hpcname</a></td>
+<td>Get the HPC name using scontrol</td>
+</tr>
+<tr class="odd">
+<td><a href="#ccbr_tools.pipeline.hpc.is_loaded">is_loaded</a></td>
+<td>Check whether the ccbrpipeliner module is loaded</td>
+</tr>
+<tr class="even">
+<td><a href="#ccbr_tools.pipeline.hpc.scontrol_show">scontrol_show</a></td>
+<td>Run <code>scontrol show config</code> and parse the output as a dictionary</td>
+</tr>
 </tbody>
 </table>
 <section id="ccbr_tools.pipeline.hpc.get_hpc" class="level3">
@@ -559,6 +574,93 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <h4 class="doc-section doc-section-examples anchored" data-anchor-id="examples">Examples</h4>
 <div class="sourceCode" id="cb5"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="op">&gt;&gt;&gt;</span> get_hpc()</span>
 <span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a><span class="op">&gt;&gt;&gt;</span> get_hpc(debug<span class="op">=</span><span class="va">True</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</section>
+</section>
+<section id="ccbr_tools.pipeline.hpc.get_hpcname" class="level3">
+<h3 class="anchored" data-anchor-id="ccbr_tools.pipeline.hpc.get_hpcname">get_hpcname</h3>
+<div class="sourceCode" id="cb6"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a>pipeline.hpc.get_hpcname()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p>Get the HPC name using scontrol</p>
+<section id="returns-1" class="level4 doc-section doc-section-returns">
+<h4 class="doc-section doc-section-returns anchored" data-anchor-id="returns-1">Returns</h4>
+<table class="caption-top table">
+<colgroup>
+<col style="width: 12%">
+<col style="width: 18%">
+<col style="width: 68%">
+</colgroup>
+<thead>
+<tr class="header">
+<th>Name</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>hpcname</td>
+<td><code>str</code></td>
+<td>The HPC name (biowulf, frce, or an empty string)</td>
+</tr>
+</tbody>
+</table>
+</section>
+</section>
+<section id="ccbr_tools.pipeline.hpc.is_loaded" class="level3">
+<h3 class="anchored" data-anchor-id="ccbr_tools.pipeline.hpc.is_loaded">is_loaded</h3>
+<div class="sourceCode" id="cb7"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a>pipeline.hpc.is_loaded(module<span class="op">=</span><span class="st">'ccbrpipeliner'</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p>Check whether the ccbrpipeliner module is loaded</p>
+<section id="returns-2" class="level4 doc-section doc-section-returns">
+<h4 class="doc-section doc-section-returns anchored" data-anchor-id="returns-2">Returns</h4>
+<table class="caption-top table">
+<colgroup>
+<col style="width: 14%">
+<col style="width: 21%">
+<col style="width: 63%">
+</colgroup>
+<thead>
+<tr class="header">
+<th>Name</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>is_loaded</td>
+<td><code>bool</code></td>
+<td>True if the module is loaded, False otherwise</td>
+</tr>
+</tbody>
+</table>
+</section>
+</section>
+<section id="ccbr_tools.pipeline.hpc.scontrol_show" class="level3">
+<h3 class="anchored" data-anchor-id="ccbr_tools.pipeline.hpc.scontrol_show">scontrol_show</h3>
+<div class="sourceCode" id="cb8"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a>pipeline.hpc.scontrol_show()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p>Run <code>scontrol show config</code> and parse the output as a dictionary</p>
+<section id="returns-3" class="level4 doc-section doc-section-returns">
+<h4 class="doc-section doc-section-returns anchored" data-anchor-id="returns-3">Returns</h4>
+<table class="caption-top table">
+<colgroup>
+<col style="width: 16%">
+<col style="width: 17%">
+<col style="width: 65%">
+</colgroup>
+<thead>
+<tr class="header">
+<th>Name</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>scontrol_dict</td>
+<td><code>dict</code></td>
+<td>dictionary containing the output of <code>scontrol show config</code></td>
+</tr>
+</tbody>
+</table>
 
 
 </section>
