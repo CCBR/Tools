@@ -32,4 +32,4 @@ def test_hpc_none():
 
 
 if __name__ == "__main__":
-    print(subprocess.run("bash -c 'module list'", shell=True))
+    print(get_hpc(debug="biowulf"))

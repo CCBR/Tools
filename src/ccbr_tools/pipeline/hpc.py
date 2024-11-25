@@ -152,5 +152,5 @@ def is_loaded(module="ccbrpipeliner"):
     Returns:
         is_loaded (bool): True if the module is loaded, False otherwise
     """
-    output = shell_run("bash -c 'module list'")
+    output = shell_run("bash -c 'module list'", check=False)
     return module in output
