@@ -34,6 +34,7 @@ def run(
     nextflow_command = ["nextflow", "run", nextfile_path]
 
     hpc = get_hpc()
+    print("HPC", hpc.name)
     if mode == "slurm" and not hpc:
         raise ValueError("mode is 'slurm' but no HPC environment was detected")
     # add any additional Nextflow commands
@@ -60,10 +61,8 @@ def run(
     ):  # only add to the profiles if there are any. there are none when champagne is run on GitHub Actions.
         args_dict["-profile"] = ",".join(sorted(profiles))
     nextflow_command += list(f"{k} {v}" for k, v in args_dict.items())
-
-    # Print nextflow command
+    # turn command into a string
     nextflow_command = " ".join(str(nf) for nf in nextflow_command)
-    msg_box("Nextflow command", errmsg=nextflow_command)
 
     if mode == "slurm":
         slurm_filename = "submit_slurm.sh"
@@ -83,11 +82,13 @@ def run(
         msg_box("Slurm batch job", errmsg=run_command)
     elif mode == "local":
         if hpc:
-            nextflow_command = f'bash -c "module load {hpc.modules} && {hpc.env_vars} && {nextflow_command}"'
+            hpc_modules = hpc.modules["nxf"]
+            nextflow_command = f'bash -c "module load {hpc_modules} && {hpc.env_vars} && {nextflow_command}"'
         run_command = nextflow_command
     else:
         raise ValueError(f"mode {mode} not recognized")
 
     # Run Nextflow
+    msg_box("Nextflow command", errmsg=nextflow_command)
     if not debug:
         shell_run(run_command, capture_output=False)
