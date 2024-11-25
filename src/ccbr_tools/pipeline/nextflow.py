@@ -19,6 +19,7 @@ def run(
     mode="local",
     pipeline_name=None,
     debug=False,
+    hpc=get_hpc(),
 ):
     """
     Run a Nextflow workflow
@@ -33,7 +34,6 @@ def run(
     """
     nextflow_command = ["nextflow", "run", nextfile_path]
 
-    hpc = get_hpc()
     if mode == "slurm" and not hpc:
         raise ValueError("mode is 'slurm' but no HPC environment was detected")
     # add any additional Nextflow commands

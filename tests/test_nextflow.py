@@ -1,6 +1,8 @@
 from ccbr_tools.pipeline.nextflow import run
-from ccbr_tools.pipeline.hpc import get_hpc
+from ccbr_tools.pipeline.hpc import get_hpc, Biowulf, FRCE
 from ccbr_tools.shell import exec_in_context
+
+import tempfile
 
 
 def test_nextflow_basic():
@@ -9,7 +11,23 @@ def test_nextflow_basic():
 
 
 def test_nextflow_hpc():
-    hpc = get_hpc()
-    if hpc.name == "biowulf" or hpc.name == "frce":
-        output = exec_in_context(run, "CCBR/CHAMPAGNE", debug=True)
-        assert "module load" in output
+    assert all(
+        [
+            "module load"
+            in exec_in_context(run, "CCBR/CHAMPAGNE", debug=True, hpc=Biowulf()),
+            "module load"
+            in exec_in_context(run, "CCBR/CHAMPAGNE", debug=True, hpc=FRCE()),
+        ]
+    )
+
+
+def test_nextflow_slurm():
+    assert "sbatch submit_slurm.sh" in exec_in_context(
+        run, "CCBR/CHAMPAGNE", debug=True, hpc=Biowulf(), mode="slurm"
+    )
+
+
+if __name__ == "__main__":
+    print(
+        exec_in_context(run, "CCBR/CHAMPAGNE", debug=True, hpc=Biowulf(), mode="slurm")
+    )
