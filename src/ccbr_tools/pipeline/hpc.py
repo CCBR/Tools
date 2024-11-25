@@ -135,7 +135,7 @@ def scontrol_show():
     """
     scontrol_dict = dict()
     scontrol_out = shell_run(
-        "scontrol show config", shell=True, capture_output=True, text=True
+        "scontrol show config", shell=True, capture_output=True, text=True, check=False
     )
     if len(scontrol_out) > 0:
         for line in scontrol_out.split("\n"):
