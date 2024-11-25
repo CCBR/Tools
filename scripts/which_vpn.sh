@@ -1,5 +1,6 @@
-#!/bin/bash
+#!/usr/bin/env bash
 # trying to find out which VPN you are connected to??
+set -euo pipefail
 
 if [[ "$HOSTNAME" == "biowulf.nih.gov" ]]
 then
