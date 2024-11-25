@@ -1,4 +1,6 @@
 from ccbr_tools.pipeline.hpc import get_hpc
+from ccbr_tools.shell import shell_run
+import subprocess
 
 
 def test_hpc_biowulf():
@@ -29,4 +31,5 @@ def test_hpc_none():
     assert not any([hpc, hpc.name, *hpc.modules.values(), hpc.singularity_sif_dir])
 
 
-print(get_hpc())
+if __name__ == "__main__":
+    print(subprocess.run("bash -c 'module list'", shell=True))

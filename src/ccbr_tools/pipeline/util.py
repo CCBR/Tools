@@ -17,39 +17,7 @@ import warnings
 import yaml
 
 from ..pkg_util import repo_base, msg
-
-
-def scontrol_show():
-    """
-    Run `scontrol show config` and parse the output as a dictionary
-
-    Returns:
-        scontrol_dict (dict): dictionary containing the output of `scontrol show config`
-    """
-    scontrol_dict = dict()
-    scontrol_out = subprocess.run(
-        "scontrol show config", shell=True, capture_output=True, text=True
-    ).stdout
-    if len(scontrol_out) > 0:
-        for line in scontrol_out.split("\n"):
-            line_split = line.split("=")
-            if len(line_split) > 1:
-                scontrol_dict[line_split[0].strip()] = line_split[1].strip()
-    return scontrol_dict
-
-
-def get_hpcname():
-    """
-    Get the HPC name using scontrol
-
-    Returns:
-        hpcname (str): The HPC name  (biowulf, frce, or an empty string)
-    """
-    scontrol_out = scontrol_show()
-    hpc = scontrol_out["ClusterName"] if "ClusterName" in scontrol_out.keys() else ""
-    if hpc == "fnlcr":
-        hpc = "frce"
-    return hpc
+from .hpc import get_hpcname
 
 
 def get_tmp_dir(tmp_dir, outdir, hpc=get_hpcname()):

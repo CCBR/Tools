@@ -34,7 +34,6 @@ def run(
     nextflow_command = ["nextflow", "run", nextfile_path]
 
     hpc = get_hpc()
-    print("HPC", hpc.name)
     if mode == "slurm" and not hpc:
         raise ValueError("mode is 'slurm' but no HPC environment was detected")
     # add any additional Nextflow commands
