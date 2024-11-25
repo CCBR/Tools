@@ -5,8 +5,8 @@ Use [](`ccbr_tools.pipeline.hpc.get_hpc`) to retrieve an HPC Cluster instance,
 which contains default attributes for supported clusters.
 """
 
-from .util import get_hpcname
 from .cache import get_singularity_cachedir
+from ..shell import shell_run
 
 
 class Cluster:
@@ -53,8 +53,16 @@ class Biowulf(Cluster):
         super().__init__()
         self.name = "biowulf"
         self.modules = {
-            "nxf": "ccbrpipeliner nextflow",
-            "smk": "ccbrpipeliner snakemake/7 singularity",
+            "nxf": (
+                "nextflow" + ""
+                if is_loaded(module="ccbrpipeliner")
+                else " ccbrpipeliner"
+            ),
+            "smk": (
+                "snakemake/7 singularity" + ""
+                if is_loaded(module="ccbrpipeliner")
+                else " ccbrpipeliner"
+            ),
         }
         self.singularity_sif_dir = "/data/CCBR_Pipeliner/SIFs"
 
@@ -102,3 +110,47 @@ def get_hpc(debug=False):
     hpc_options = {"biowulf": Biowulf, "frce": FRCE}
     hpc_name = get_hpcname() if not debug else debug
     return hpc_options.get(hpc_name, Cluster)()
+
+
+def get_hpcname():
+    """
+    Get the HPC name using scontrol
+
+    Returns:
+        hpcname (str): The HPC name  (biowulf, frce, or an empty string)
+    """
+    scontrol_out = scontrol_show()
+    hpc = scontrol_out["ClusterName"] if "ClusterName" in scontrol_out.keys() else ""
+    if hpc == "fnlcr":
+        hpc = "frce"
+    return hpc
+
+
+def scontrol_show():
+    """
+    Run `scontrol show config` and parse the output as a dictionary
+
+    Returns:
+        scontrol_dict (dict): dictionary containing the output of `scontrol show config`
+    """
+    scontrol_dict = dict()
+    scontrol_out = shell_run(
+        "scontrol show config", shell=True, capture_output=True, text=True, check=False
+    )
+    if len(scontrol_out) > 0:
+        for line in scontrol_out.split("\n"):
+            line_split = line.split("=")
+            if len(line_split) > 1:
+                scontrol_dict[line_split[0].strip()] = line_split[1].strip()
+    return scontrol_dict
+
+
+def is_loaded(module="ccbrpipeliner"):
+    """
+    Check whether the ccbrpipeliner module is loaded
+
+    Returns:
+        is_loaded (bool): True if the module is loaded, False otherwise
+    """
+    output = shell_run("bash -c 'module list'", check=False)
+    return module in output

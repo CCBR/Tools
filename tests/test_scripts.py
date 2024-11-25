@@ -1,5 +1,6 @@
+import pytest
 from ccbr_tools.shell import shell_run
-from ccbr_tools.pipeline.util import get_hpcname
+from ccbr_tools.pipeline.hpc import get_hpcname
 
 
 def test_scripts_help():
@@ -9,7 +10,7 @@ def test_scripts_help():
 
 
 def test_which_vpn():
-    which_vpn = shell_run("which_vpn.sh")
+    which_vpn = shell_run("which_vpn.sh", check=False)
     hpc = get_hpcname()
     if hpc == "biowulf":
         assert "DO NOT RUN THIS ON a BIOWULF interactive node!" in which_vpn
