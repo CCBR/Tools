@@ -308,14 +308,14 @@
     "href": "CHANGELOG.html",
     "title": "CCBR Tools",
     "section": "",
-    "text": "use major & minor version for docs website subdirectories. (#15, @kelly-sovacool)\nFig bug where nextflow.run() did not import the correct HPC modules. (#20, @kelly-sovacool)"
+    "text": "use major & minor version for docs website subdirectories. (#15, @kelly-sovacool)\nfig bug where nextflow.run() did not import the correct HPC modules. (#20, @kelly-sovacool)\nfix bug in _get_file_mtime(). (#21, @kelly-sovacool)"
   },
   {
     "objectID": "CHANGELOG.html#tools-development-version",
     "href": "CHANGELOG.html#tools-development-version",
     "title": "CCBR Tools",
     "section": "",
-    "text": "use major & minor version for docs website subdirectories. (#15, @kelly-sovacool)\nFig bug where nextflow.run() did not import the correct HPC modules. (#20, @kelly-sovacool)"
+    "text": "use major & minor version for docs website subdirectories. (#15, @kelly-sovacool)\nfig bug where nextflow.run() did not import the correct HPC modules. (#20, @kelly-sovacool)\nfix bug in _get_file_mtime(). (#21, @kelly-sovacool)"
   },
   {
     "objectID": "CHANGELOG.html#tools-0.1.1",
