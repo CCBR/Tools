@@ -1,4 +1,4 @@
-## Tools development version
+## Tools 0.1.2
 
 - use major & minor version for docs website subdirectories. (#15, @kelly-sovacool)
 - fig bug where `nextflow.run()` did not import the correct HPC modules. (#20, @kelly-sovacool)
