@@ -353,7 +353,7 @@ def check_python_version(MIN_PYTHON=(3, 11)):
 
 
 def _get_file_mtime(f):
-    timestamp = datetime.fromtimestamp(os.path.getmtime(os.path.abspath(f)))
+    timestamp = datetime.datetime.fromtimestamp(os.path.getmtime(os.path.abspath(f)))
     mtime = timestamp.strftime("%y%m%d%H%M%S")
     return mtime
 
