@@ -1,12 +1,12 @@
 ## Tools development version
 
+- fix shared SIF cache directory spelling for biowulf. (#23, @kelly-sovacool)
+
 ## Tools 0.1.2
 
 - use major & minor version for docs website subdirectories. (#15, @kelly-sovacool)
 - fig bug where `nextflow.run()` did not import the correct HPC modules. (#20, @kelly-sovacool)
 - fix bug in `_get_file_mtime()`. (#21, @kelly-sovacool)
-- fix shared SIF cache directory spelling for biowulf. (#23, @kelly-sovacool)
-
 
 ## Tools 0.1.1
 
