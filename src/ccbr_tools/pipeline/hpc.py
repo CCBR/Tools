@@ -5,7 +5,7 @@ Use [](`ccbr_tools.pipeline.hpc.get_hpc`) to retrieve an HPC Cluster instance,
 which contains default attributes for supported clusters.
 """
 
-from .cache import get_singularity_cachedir
+from .cache import get_singularity_cachedir, get_sif_cache_dir
 from ..shell import shell_run
 
 
@@ -27,15 +27,21 @@ class Cluster:
         self.env_vars = "\n".join(
             (f"export SINGULARITY_CACHEDIR={get_singularity_cachedir()}",)
         )
-        self.singularity_sif_dir = None
 
     def __repr__(self):
-        return f"{self.__class__}({self.__dict__})"
+        dict_with_props = dict(
+            self.__dict__, singularity_sif_dir=self.singularity_sif_dir
+        )
+        return f"{self.__class__}({dict_with_props})"
 
     def __bool__(self):
         return bool(self.name)
 
     __nonzero__ = __bool__
+
+    @property
+    def singularity_sif_dir(self):
+        return get_sif_cache_dir(hpc=self.name)
 
 
 class Biowulf(Cluster):
@@ -64,7 +70,6 @@ class Biowulf(Cluster):
                 else " ccbrpipeliner"
             ),
         }
-        self.singularity_sif_dir = "/data/CCBR_Pipeliner/SIFs"
 
 
 class FRCE(Cluster):
@@ -82,7 +87,6 @@ class FRCE(Cluster):
         super().__init__()
         self.name = "frce"
         self.modules = {"nxf": "nextflow", "smk": "snakemake/7 singularity"}
-        self.singularity_sif_dir = "/mnt/projects/CCBR-Pipelines/SIFs"
         self.env_vars = "\n".join(
             (
                 self.env_vars,
