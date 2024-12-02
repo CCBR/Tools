@@ -1,4 +1,4 @@
-## Tools development version
+## Tools 0.1.3
 
 - fix shared SIF cache directory spelling for biowulf. (#23, @kelly-sovacool)
 
