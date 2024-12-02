@@ -68,7 +68,7 @@ import ccbr_tools.pkg_util
 print(ccbr_tools.pkg_util.get_version())
 ```
 
-    0.1.1-dev
+    0.1.2-dev
 
 ## CLI Utilities
 
@@ -122,7 +122,7 @@ package and do not have any unit tests.
 Please cite this software if you use it in a publication:
 
 > Sovacool K., Koparde V., Kuhn S., Tandon M., Huse S. (2024). CCBR
-> Tools: Utilities for CCBR Bioinformatics Software (version v0.1.0).
+> Tools: Utilities for CCBR Bioinformatics Software (version v0.1.2).
 > DOI: 10.5281/zenodo.13377166 URL: https://ccbr.github.io/Tools/
 
 ### Bibtex entry
@@ -130,7 +130,7 @@ Please cite this software if you use it in a publication:
     @misc{YourReferenceHere,
     author = {Sovacool, Kelly and Koparde, Vishal and Kuhn, Skyler and Tandon, Mayank and Huse, Susan},
     doi = {10.5281/zenodo.13377166},
-    month = {8},
+    month = {11},
     title = {CCBR Tools: Utilities for CCBR Bioinformatics Software},
     url = {https://ccbr.github.io/Tools/},
     year = {2024}

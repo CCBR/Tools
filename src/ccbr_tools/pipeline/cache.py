@@ -20,9 +20,9 @@ def get_singularity_cachedir(output_dir=None, cache_dir=None):
 
 
 def get_sif_cache_dir(hpc=None):
-    sif_dir = None
+    sif_dir = ""
     if hpc == "biowulf":
-        sif_dir = "/data/CCBR_Pipeliner/SIFS"
+        sif_dir = "/data/CCBR_Pipeliner/SIFs"
     elif hpc == "frce":
         sif_dir = "/mnt/projects/CCBR-Pipelines/SIFs"
     return sif_dir
