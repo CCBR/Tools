@@ -10,6 +10,9 @@ def test_hpc_biowulf():
             hpc,
             hpc.name == "biowulf",
             hpc.singularity_sif_dir == "/data/CCBR_Pipeliner/SIFs",
+            hpc.__repr__().startswith(
+                "<class 'ccbr_tools.pipeline.hpc.Biowulf'>({'name': 'biowulf'"
+            ),
         ]
     )
 
@@ -32,4 +35,4 @@ def test_hpc_none():
 
 
 if __name__ == "__main__":
-    print(get_hpc(debug="biowulf"))
+    print(get_hpc(debug="biowulf").__repr__())
