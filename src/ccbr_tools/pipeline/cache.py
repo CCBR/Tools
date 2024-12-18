@@ -8,9 +8,20 @@ import sys
 
 
 def get_singularity_cachedir(output_dir=None, cache_dir=None):
-    """Returns the singularity cache directory.
+    """
+    Returns the singularity cache directory.
     If no user-provided cache directory is provided,
     the default singularity cache is in the output directory.
+
+    Args:
+        output_dir (str, optional): The directory where the output is stored.
+            Defaults to the current working directory if not provided.
+        cache_dir (str, optional): The directory where the singularity cache
+            is stored. Defaults to a hidden ".singularity" directory within
+            the output directory if not provided.
+
+    Returns:
+        str: The path to the singularity cache directory.
     """
     if not output_dir:
         output_dir = os.getcwd()
@@ -20,6 +31,18 @@ def get_singularity_cachedir(output_dir=None, cache_dir=None):
 
 
 def get_sif_cache_dir(hpc=None):
+    """
+    Get the directory path for SIF cache based on the HPC environment.
+
+    Args:
+        hpc (str, optional): The name of the HPC environment.
+                             Supported values are "biowulf" and "frce".
+                             Defaults to None.
+
+    Returns:
+        str: The directory path for the SIF cache. Returns an empty string
+             if the HPC environment is not recognized.
+    """
     sif_dir = ""
     if hpc == "biowulf":
         sif_dir = "/data/CCBR_Pipeliner/SIFs"
@@ -29,15 +52,18 @@ def get_sif_cache_dir(hpc=None):
 
 
 def image_cache(sub_args, config):
-    """Adds Docker Image URIs, or SIF paths to config if singularity cache option is provided.
+    """
+    Adds Docker Image URIs, or SIF paths to config if singularity cache option is provided.
+
     If singularity cache option is provided and a local SIF does not exist, a warning is
     displayed and the image will be pulled from URI in 'config/containers/images.json'.
-    @param sub_args <parser.parse_args() object>:
-        Parsed arguments for run sub-command
-    @params config <file>:
-        Docker Image config file
-    @return config <dict>:
-         Updated config dictionary containing user information (username and home directory)
+
+    Args:
+        sub_args (argparse.Namespace): Parsed arguments for run sub-command.
+        config (dict): Docker Image config dictionary.
+
+    Returns:
+        dict: Updated config dictionary containing user information (username and home directory).
     """
     images = os.path.join(sub_args.output, "config", "containers", "images.json")
 
@@ -71,17 +97,19 @@ def image_cache(sub_args, config):
 
 ## copied directly from rna-seek
 def check_cache(parser, cache, *args, **kwargs):
-    """Check if provided SINGULARITY_CACHE is valid. Singularity caches cannot be
-    shared across users (and must be owned by the user). Singularity strictly enforces
-    0700 user permission on on the cache directory and will return a non-zero exitcode.
-    @param parser <argparse.ArgumentParser() object>:
-        Argparse parser object
-    @param cache <str>:
-        Singularity cache directory
-    @return cache <str>:
-        If singularity cache dir is valid
     """
-    if not exists(cache):
+    Check if provided SINGULARITY_CACHE is valid. Singularity caches cannot be
+    shared across users (and must be owned by the user). Singularity strictly enforces
+    0700 user permission on the cache directory and will return a non-zero exit code.
+
+    Args:
+        parser (argparse.ArgumentParser): Argparse parser object.
+        cache (str): Singularity cache directory.
+
+    Returns:
+        str: If singularity cache directory is valid.
+    """
+    if not os.path.exists(cache):
         # Cache directory does not exist on filesystem
         os.makedirs(cache)
     elif os.path.isfile(cache):
