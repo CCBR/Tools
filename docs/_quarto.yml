@@ -15,9 +15,9 @@ website:
     left:
       - text: Home
         href: index.md
-      - text: Reference
-        href: reference/index.qmd
     right:
+      - text: API
+        href: reference/index.qmd
       - text: Changelog
         href: CHANGELOG.md
       - text: Contributing
