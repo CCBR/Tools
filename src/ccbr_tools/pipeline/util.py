@@ -94,17 +94,18 @@ def get_genomes_dict(repo_base, hpcname=get_hpcname(), error_on_warnings=False):
 
 
 def md5sum(filename, first_block_only=False, blocksize=65536):
-    """Gets md5checksum of a file in memory-safe manner.
+    """
+    Gets md5checksum of a file in memory-safe manner.
     The file is read in blocks/chunks defined by the blocksize parameter. This is
     a safer option to reading the entire file into memory if the file is very large.
-    @param filename <str>:
-        Input file on local filesystem to find md5 checksum
-    @param first_block_only <bool>:
-        Calculate md5 checksum of the first block/chunk only
-    @param blocksize <int>:
-        Blocksize of reading N chunks of data to reduce memory profile
-    @return hasher.hexdigest() <str>:
-        MD5 checksum of the file's contents
+
+    Args:
+        filename (str): Input file on local filesystem to find md5 checksum.
+        first_block_only (bool): Calculate md5 checksum of the first block/chunk only.
+        blocksize (int): Blocksize of reading N chunks of data to reduce memory profile.
+
+    Returns:
+        str: MD5 checksum of the file's contents.
     """
     hasher = hashlib.md5()
     with open(filename, "rb") as fh:
@@ -125,15 +126,17 @@ def md5sum(filename, first_block_only=False, blocksize=65536):
 
 
 def permissions(parser, path, *args, **kwargs):
-    """Checks permissions using os.access() to see the user is authorized to access
-    a file/directory. Checks for existence, readability, writability and executability via:
+    """
+    Checks permissions using os.access() to see if the user is authorized to access
+    a file/directory. Checks for existence, readability, writability, and executability via:
     os.F_OK (tests existence), os.R_OK (tests read), os.W_OK (tests write), os.X_OK (tests exec).
-    @param parser <argparse.ArgumentParser() object>:
-        Argparse parser object
-    @param path <str>:
-        Name of path to check
-    @return path <str>:
-        Returns abs path if it exists and permissions are correct
+
+    Args:
+        parser (argparse.ArgumentParser): Argparse parser object.
+        path (str): Name of the path to check.
+
+    Returns:
+        str: Returns absolute path if it exists and permissions are correct.
     """
     if not exists(path):
         parser.error(
@@ -148,13 +151,15 @@ def permissions(parser, path, *args, **kwargs):
 
 
 def standard_input(parser, path, *args, **kwargs):
-    """Checks for standard input when provided or permissions using permissions().
-    @param parser <argparse.ArgumentParser() object>:
-        Argparse parser object
-    @param path <str>:
-        Name of path to check
-    @return path <str>:
-        If path exists and user can read from location
+    """
+    Checks for standard input when provided or permissions using permissions().
+
+    Args:
+        parser (argparse.ArgumentParser): Argparse parser object.
+        path (str): Name of the path to check.
+
+    Returns:
+        str: If path exists and user can read from location.
     """
     # Checks for standard input
     if not sys.stdin.isatty():
@@ -170,13 +175,15 @@ def standard_input(parser, path, *args, **kwargs):
 
 
 def exists(testpath):
-    """Checks if file exists on the local filesystem.
-    @param parser <argparse.ArgumentParser() object>:
-        argparse parser object
-    @param testpath <str>:
-        Name of file/directory to check
-    @return does_exist <boolean>:
-        True when file/directory exists, False when file/directory does not exist
+    """
+    Checks if file exists on the local filesystem.
+
+    Args:
+        parser (argparse.ArgumentParser): Argparse parser object.
+        testpath (str): Name of file/directory to check.
+
+    Returns:
+        bool: True when file/directory exists, False when file/directory does not exist.
     """
     does_exist = True
     if not os.path.exists(testpath):
@@ -186,11 +193,12 @@ def exists(testpath):
 
 
 def ln(files, outdir):
-    """Creates symlinks for files to an output directory.
-    @param files list[<str>]:
-        List of filenames
-    @param outdir <str>:
-        Destination or output directory to create symlinks
+    """
+    Creates symlinks for files to an output directory.
+
+    Args:
+        files (list[str]): List of filenames.
+        outdir (str): Destination or output directory to create symlinks.
     """
     # Create symlinks for each file in the output directory
     for file in files:
@@ -200,13 +208,14 @@ def ln(files, outdir):
 
 
 def which(cmd, path=None):
-    """Checks if an executable is in $PATH
-    @param cmd <str>:
-        Name of executable to check
-    @param path <list>:
-        Optional list of PATHs to check [default: $PATH]
-    @return <boolean>:
-        True if exe in PATH, False if not in PATH
+    """
+    Checks if an executable is in $PATH
+
+    Args:
+        cmd (str): Name of the executable to check.
+        path (list, optional): Optional list of PATHs to check. Defaults to $PATH.
+    Returns:
+        bool: True if the executable is in PATH, False otherwise.
     """
     if path is None:
         path = os.environ["PATH"].split(os.pathsep)
@@ -221,38 +230,39 @@ def which(cmd, path=None):
 
 
 def err(*message, **kwargs):
-    """Prints any provided args to standard error.
-    kwargs can be provided to modify print functions
+    """
+    Prints any provided args to standard error.
+    kwargs can be provided to modify print function's
     behavior.
-    @param message <any>:
-        Values printed to standard error
-    @params kwargs <print()>
-        Key words to modify print function behavior
+
+    Args:
+        message (any): Values printed to standard error.
+        kwargs (dict): Key words to modify print function behavior.
     """
     print(*message, file=sys.stderr, **kwargs)
 
 
 def fatal(*message, **kwargs):
-    """Prints any provided args to standard error
+    """
+    Prints any provided args to standard error
     and exits with an exit code of 1.
-    @param message <any>:
-        Values printed to standard error
-    @params kwargs <print()>
-        Key words to modify print function behavior
+
+    Args:
+        message (any): Values printed to standard error.
+        kwargs (dict): Key words to modify print function behavior.
     """
     err(*message, **kwargs)
     sys.exit(1)
 
 
 def require(cmds, suggestions, path=None):
-    """Enforces an executable is in $PATH
-    @param cmds list[<str>]:
-        List of executable names to check
-    @param suggestions list[<str>]:
-        Name of module to suggest loading for a given index
-        in param cmd.
-    @param path list[<str>]]:
-        Optional list of PATHs to check [default: $PATH]
+    """
+    Enforces an executable is in $PATH
+
+    Args:
+        cmds (list[str]): List of executable names to check.
+        suggestions (list[str]): Name of module to suggest loading for a given index in cmds.
+        path (list[str], optional): Optional list of PATHs to check. Defaults to $PATH.
     """
     error = False
     for i in range(len(cmds)):
@@ -273,15 +283,15 @@ def require(cmds, suggestions, path=None):
 
 
 def safe_copy(source, target, resources=[]):
-    """Private function: Given a list paths it will recursively copy each to the
+    """
+    Private function: Given a list paths it will recursively copy each to the
     target location. If a target path already exists, it will NOT over-write the
     existing paths data.
-    @param resources <list[str]>:
-        List of paths to copy over to target location
-    @params source <str>:
-        Add a prefix PATH to each resource
-    @param target <str>:
-        Target path to copy templates and required resources
+
+    Args:
+        resources (list[str]): List of paths to copy over to target location.
+        source (str): Add a prefix PATH to each resource.
+        target (str): Target path to copy templates and required resources.
     """
 
     for resource in resources:
@@ -292,11 +302,14 @@ def safe_copy(source, target, resources=[]):
 
 
 def git_commit_hash(repo_path):
-    """Gets the git commit hash of the RNA-seek repo.
-    @param repo_path <str>:
-        Path to RNA-seek git repo
-    @return githash <str>:
-        Latest git commit hash
+    """
+    Gets the git commit hash of the RNA-seek repo.
+
+    Args:
+        repo_path (str): Path to RNA-seek git repo.
+
+    Returns:
+        str: Latest git commit hash.
     """
     try:
         githash = (
@@ -318,12 +331,15 @@ def git_commit_hash(repo_path):
 
 
 def join_jsons(templates):
-    """Joins multiple JSON files to into one data structure
+    """
+    Joins multiple JSON files into one data structure.
     Used to join multiple template JSON files to create a global config dictionary.
-    @params templates <list[str]>:
-        List of template JSON files to join together
-    @return aggregated <dict>:
-        Dictionary containing the contents of all the input JSON files
+
+    Args:
+        templates (list[str]): List of template JSON files to join together.
+
+    Returns:
+        dict: Dictionary containing the contents of all the input JSON files.
     """
     # Get absolute PATH to templates in rna-seek git repo
     repo_path = os.path.dirname(os.path.abspath(__file__))
@@ -337,6 +353,12 @@ def join_jsons(templates):
 
 
 def check_python_version(MIN_PYTHON=(3, 11)):
+    """
+    Check if the current Python version meets the minimum required version.
+
+    Args:
+        MIN_PYTHON (tuple): Minimum required Python version as a tuple (major, minor).
+    """
     # version check
     # glob.iglob requires 3.11 for using "include_hidden=True"
     try:
@@ -353,6 +375,14 @@ def check_python_version(MIN_PYTHON=(3, 11)):
 
 
 def _get_file_mtime(f):
+    """Get the modification time of a file.
+
+    Args:
+        f (str): Path to the file.
+
+    Returns:
+        str: Modification time of the file in the format 'yymmddHHMMSS'.
+    """
     timestamp = datetime.datetime.fromtimestamp(os.path.getmtime(os.path.abspath(f)))
     mtime = timestamp.strftime("%y%m%d%H%M%S")
     return mtime
@@ -361,19 +391,18 @@ def _get_file_mtime(f):
 def _cp_r_safe_(
     source, target, resources=["workflow", "resources", "config"], safe_mode=True
 ):
-    """Private function: Given a list paths it will recursively copy each to the
+    """
+    Private function: Given a list paths it will recursively copy each to the
     target location. If a target path already exists, it will not over-write the
     existing paths data when `safe_mode` is on.
-    @param resources <list[str]>:
-        List of paths to copy over to target location.
-        Default: ["workflow", "resources", "config"]
-    @params source <str>:
-        Add a prefix PATH to each resource
-    @param target <str>:
-        Target path to copy templates and required resources (aka destination)
-    @param safe_mode <bool>:
-        Only copy the resources to the target path
-        if they do not exist in the target path (default: True)
+
+    Args:
+        resources (list[str]): List of paths to copy over to target location.
+            Default: ["workflow", "resources", "config"]
+        source (str): Add a prefix PATH to each resource.
+        target (str): Target path to copy templates and required resources (aka destination).
+        safe_mode (bool): Only copy the resources to the target path
+            if they do not exist in the target path (default: True).
     """
     for resource in resources:
         destination = os.path.join(target, resource)
@@ -387,15 +416,16 @@ def _cp_r_safe_(
 
 
 def _sym_safe_(input_data, target):
-    """Creates re-named symlinks for each FastQ file provided
-    as input. If a symlink already exists, it will not try to create a new symlink.
-    If relative source PATH is provided, it will be converted to an absolute PATH.
-    @param input_data <list[<str>]>:
-        List of input files to symlink to target location
-    @param target <str>:
-        Target path to copy templates and required resources
-    @return input_fastqs list[<str>]:
-        List of renamed input FastQs
+    """
+    Creates re-named symlinks for each FastQ file provided as input. If a symlink already exists, it will not try to create a new symlink.
+    If a relative source PATH is provided, it will be converted to an absolute PATH.
+
+    Args:
+        input_data (list[str]): List of input files to symlink to target location.
+        target (str): Target path to copy templates and required resources.
+
+    Returns:
+        list[str]: List of renamed input FastQs.
     """
     input_fastqs = []  # store renamed fastq file names
     for file in input_data:
@@ -412,14 +442,17 @@ def _sym_safe_(input_data, target):
 
 
 def rename(filename):
-    """Dynamically renames FastQ file to have one of the following extensions: *.R1.fastq.gz, *.R2.fastq.gz
+    """
+    Dynamically renames FastQ file to have one of the following extensions: *.R1.fastq.gz, *.R2.fastq.gz
     To automatically rename the fastq files, a few assumptions are made. If the extension of the
     FastQ file cannot be inferred, an exception is raised telling the user to fix the filename
     of the fastq files.
-    @param filename <str>:
-        Original name of file to be renamed
-    @return filename <str>:
-        A renamed FastQ filename
+
+    Args:
+        filename (str): Original name of file to be renamed.
+
+    Returns:
+        str: A renamed FastQ filename.
     """
     # Covers common extensions from SF, SRA, EBI, TCGA, and external sequencing providers
     # key = regex to match string and value = how it will be renamed
@@ -478,6 +511,14 @@ def rename(filename):
 
 
 def copy_config(config_paths, overwrite=True, repo_base=repo_base):
+    """
+    Copy default config files to the current working directory.
+
+    Args:
+        config_paths (list[str]): List of configuration paths to copy.
+        overwrite (bool): Whether to overwrite existing files. Defaults to True.
+        repo_base (function): Function to get the base directory of the repository.
+    """
     msg("Copying default config files to current working directory")
     for local_config in config_paths:
         system_config = repo_base(local_config)
@@ -490,6 +531,15 @@ def copy_config(config_paths, overwrite=True, repo_base=repo_base):
 
 
 def read_config_yml(file):
+    """
+    Reads a YAML configuration file and returns its contents as a dictionary.
+
+    Args:
+        file (str): The path to the YAML file to be read.
+
+    Returns:
+        dict: The contents of the YAML file as a dictionary.
+    """
     with open(file, "r") as stream:
         _config = yaml.safe_load(stream)
     return _config
@@ -508,21 +558,30 @@ def update_config(config, overwrite_config):
 
 
 def write_config_yml(_config, file):
+    """
+    Writes a configuration dictionary to a YAML file.
+
+    Args:
+        _config (dict): The configuration dictionary to write to the file.
+        file (str): The path to the file where the configuration will be written.
+    """
     msg(f"Writing runtime config file to {file}")
     with open(file, "w") as stream:
         yaml.dump(_config, stream)
 
 
 def chmod_bins_exec(repo_base=repo_base):
-    """Ensure that all files in bin/ are executable.
+    """
+    Ensure that all files in bin/ are executable.
 
     It appears that setuptools strips executable permissions from package_data files,
     yet post-install scripts are not possible with the pyproject.toml format.
     Without this hack, nextflow processes that call scripts in bin/ fail.
 
-    https://stackoverflow.com/questions/18409296/package-data-files-with-executable-permissions
-    https://github.com/pypa/setuptools/issues/2041
-    https://stackoverflow.com/questions/76320274/post-install-script-for-pyproject-toml-projects
+    See Also:
+        https://stackoverflow.com/questions/18409296/package-data-files-with-executable-permissions
+        https://github.com/pypa/setuptools/issues/2041
+        https://stackoverflow.com/questions/76320274/post-install-script-for-pyproject-toml-projects
     """
     bin_dir = repo_base("bin/")
     for filename in os.listdir(bin_dir):
