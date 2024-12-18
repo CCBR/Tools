@@ -28,10 +28,10 @@ Otherwise, you will first need to
 the repo and clone your fork. You only need to do this step once.
 
 ```sh
-git clone https://github.com/CCBR/tools
+git clone https://github.com/CCBR/Tools
 ```
 
-> Cloning into 'tools'... <br>
+> Cloning into 'Tools'... <br>
 > remote: Enumerating objects: 1136, done. <br>
 > remote: Counting objects: 100% (463/463), done. <br>
 > remote: Compressing objects: 100% (357/357), done. <br>
@@ -90,7 +90,9 @@ Run the tests with `python -m pytest`.
 
 If you have added a new feature or changed the API of an existing feature,
 you will likely need to update the documentation in `docs/`.
-If the changes are in `src/`, you may need to update the docstrings -- we use [Google Style for Python code](https://google.github.io/styleguide/pyguide.html).
+If your changes are in `src/`, you may need to update the docstrings as well.
+All functions and classes should have docstrings that follow the
+[Google format](https://sphinxcontrib-napoleon.readthedocs.io/en/latest/example_google.html).
 
 ### Commit and push your changes
 
