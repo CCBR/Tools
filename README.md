@@ -11,8 +11,8 @@ Utilities for CCBR Bioinformatics Software
 
 ## Installation
 
-On biowulf you can access the latest release of `ccbr_tools` by loading
-the ccbrpipeliner module:
+On [biowulf](https://hpc.nih.gov/) you can access the latest release of
+`ccbr_tools` by loading the ccbrpipeliner module:
 
 ``` sh
 module load ccbrpipeliner
@@ -24,7 +24,7 @@ Outside of biowulf, you can install the package with pip:
 pip install git+https://github.com/CCBR/Tools
 ```
 
-Or specify a specific tagged version or branch:
+Or specify any tagged version or branch:
 
 ``` sh
 pip install git+https://github.com/CCBR/Tools@v0.1.0
@@ -68,7 +68,10 @@ import ccbr_tools.pkg_util
 print(ccbr_tools.pkg_util.get_version())
 ```
 
-    0.1.2-dev
+    0.1.3-dev
+
+View the API reference for more information:
+<https://ccbr.github.io/Tools/reference/>
 
 ## CLI Utilities
 
@@ -122,7 +125,7 @@ package and do not have any unit tests.
 Please cite this software if you use it in a publication:
 
 > Sovacool K., Koparde V., Kuhn S., Tandon M., Huse S. (2024). CCBR
-> Tools: Utilities for CCBR Bioinformatics Software (version v0.1.2).
+> Tools: Utilities for CCBR Bioinformatics Software (version v0.1.3).
 > DOI: 10.5281/zenodo.13377166 URL: https://ccbr.github.io/Tools/
 
 ### Bibtex entry
@@ -130,7 +133,7 @@ Please cite this software if you use it in a publication:
     @misc{YourReferenceHere,
     author = {Sovacool, Kelly and Koparde, Vishal and Kuhn, Skyler and Tandon, Mayank and Huse, Susan},
     doi = {10.5281/zenodo.13377166},
-    month = {11},
+    month = {12},
     title = {CCBR Tools: Utilities for CCBR Bioinformatics Software},
     url = {https://ccbr.github.io/Tools/},
     year = {2024}
