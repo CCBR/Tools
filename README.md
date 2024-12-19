@@ -49,8 +49,9 @@ ccbr_tools --help
       -h, --help     Show this message and exit.
 
     Commands:
-      cite     Print the citation in the desired format
-      version  Print the version of ccbr_tools
+      send-email  Send an email
+      cite        Print the citation in the desired format
+      version     Print the version of ccbr_tools
 
     All installed tools:
       ccbr_tools
