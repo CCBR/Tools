@@ -12,6 +12,7 @@ from .pkg_util import (
     repo_base,
     CustomClickGroup,
 )
+from .send_email import send_email_msg
 
 
 all_commands = "All installed tools:\n" + "\n".join(
@@ -75,6 +76,64 @@ def version(debug):
     print(get_version(debug=debug))
 
 
+@click.command()
+@click.argument(
+    "to_address",
+    type=str,
+    default="${USER}@hpc.nih.gov",
+    required=False,
+)
+@click.argument(
+    "text",
+    type=str,
+    default=None,
+    required=False,
+)
+@click.option(
+    "--subject",
+    "-s",
+    type=str,
+    default="test email from python",
+    required=False,
+    help="The subject line of the email",
+)
+@click.option(
+    "--attach-html",
+    "-a",
+    type=click.Path(exists=True),
+    default=None,
+    required=False,
+    help="The file path to the HTML attachment",
+)
+@click.option(
+    "--from-addr",
+    "-r",
+    type=str,
+    default="${USER}@hpc.nih.gov",
+    required=False,
+    help="The email address of the sender",
+)
+@click.option(
+    "--debug",
+    "-d",
+    help="Return the Email Message object without sending the email",
+    type=bool,
+    default=False,
+    is_flag=True,
+)
+def send_email(to_address, text, subject, attach_html, from_addr, debug):
+    """
+    Send an email
+
+    \b
+    Arguments:
+        to_address    The email address of the recipient
+        text          The plain text content of the email
+    """
+    send_email_msg(to_address, text, subject, attach_html, from_addr, debug)
+
+
+cli.add_command(send_email)
 cli.add_command(cite)
 cli.add_command(version)
 
