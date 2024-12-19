@@ -49,7 +49,7 @@ ccbr_tools --help
       -h, --help     Show this message and exit.
 
     Commands:
-      send-email  Send an email
+      send-email  Send an email (works on biowulf)
       cite        Print the citation in the desired format
       version     Print the version of ccbr_tools
 
