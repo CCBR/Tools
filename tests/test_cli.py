@@ -50,3 +50,9 @@ def test_help_intersect():
 
 def test_help_peek():
     assert "USAGE: peek <file.tsv> [buffer]" in shell_run("peek -h")
+
+
+def test_help_send_email():
+    assert "Usage: ccbr_tools send-email [OPTIONS] [TO_ADDRESS] [TEXT]" in shell_run(
+        "ccbr_tools send-email -h"
+    )
