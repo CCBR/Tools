@@ -73,8 +73,8 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <link href="../site_libs/quarto-html/quarto-syntax-highlighting-dark-d166b450ba5a8e9f7a0ab969bf6592c1.css" rel="prefetch" class="quarto-color-scheme quarto-color-alternate" id="quarto-text-highlighting-styles">
 <script src="../site_libs/bootstrap/bootstrap.min.js"></script>
 <link href="../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
-<link href="../site_libs/bootstrap/bootstrap-41afc036f4045670d8a63ab41900e02e.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme" id="quarto-bootstrap" data-mode="light">
-<link href="../site_libs/bootstrap/bootstrap-dark-a040cd6abc73b98b2f4c673569425434.min.css" rel="prefetch" append-hash="true" class="quarto-color-scheme quarto-color-alternate" id="quarto-bootstrap" data-mode="dark">
+<link href="../site_libs/bootstrap/bootstrap-04dd6a5ca28aac96903e51a8fbffbcaa.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme" id="quarto-bootstrap" data-mode="light">
+<link href="../site_libs/bootstrap/bootstrap-dark-b3883a83b6cdceb4314f965facc5c958.min.css" rel="prefetch" append-hash="true" class="quarto-color-scheme quarto-color-alternate" id="quarto-bootstrap" data-mode="dark">
 <script id="quarto-search-options" type="application/json">{
   "location": "navbar",
   "copy-button": false,
@@ -127,12 +127,12 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
     <a class="nav-link" href="../index.html"> 
 <span class="menu-text">Home</span></a>
   </li>  
-  <li class="nav-item">
-    <a class="nav-link active" href="../reference/index.html" aria-current="page"> 
-<span class="menu-text">Reference</span></a>
-  </li>  
 </ul>
             <ul class="navbar-nav navbar-nav-scroll ms-auto">
+  <li class="nav-item">
+    <a class="nav-link active" href="../reference/index.html" aria-current="page"> 
+<span class="menu-text">API</span></a>
+  </li>  
   <li class="nav-item">
     <a class="nav-link" href="../CHANGELOG.html"> 
 <span class="menu-text">Changelog</span></a>
@@ -308,7 +308,9 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   <ul class="collapse">
   <li><a href="#functions" id="toc-functions" class="nav-link" data-scroll-target="#functions">Functions</a>
   <ul class="collapse">
+  <li><a href="#ccbr_tools.pipeline.util.check_python_version" id="toc-ccbr_tools.pipeline.util.check_python_version" class="nav-link" data-scroll-target="#ccbr_tools.pipeline.util.check_python_version">check_python_version</a></li>
   <li><a href="#ccbr_tools.pipeline.util.chmod_bins_exec" id="toc-ccbr_tools.pipeline.util.chmod_bins_exec" class="nav-link" data-scroll-target="#ccbr_tools.pipeline.util.chmod_bins_exec">chmod_bins_exec</a></li>
+  <li><a href="#ccbr_tools.pipeline.util.copy_config" id="toc-ccbr_tools.pipeline.util.copy_config" class="nav-link" data-scroll-target="#ccbr_tools.pipeline.util.copy_config">copy_config</a></li>
   <li><a href="#ccbr_tools.pipeline.util.err" id="toc-ccbr_tools.pipeline.util.err" class="nav-link" data-scroll-target="#ccbr_tools.pipeline.util.err">err</a></li>
   <li><a href="#ccbr_tools.pipeline.util.exists" id="toc-ccbr_tools.pipeline.util.exists" class="nav-link" data-scroll-target="#ccbr_tools.pipeline.util.exists">exists</a></li>
   <li><a href="#ccbr_tools.pipeline.util.fatal" id="toc-ccbr_tools.pipeline.util.fatal" class="nav-link" data-scroll-target="#ccbr_tools.pipeline.util.fatal">fatal</a></li>
@@ -320,11 +322,13 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   <li><a href="#ccbr_tools.pipeline.util.ln" id="toc-ccbr_tools.pipeline.util.ln" class="nav-link" data-scroll-target="#ccbr_tools.pipeline.util.ln">ln</a></li>
   <li><a href="#ccbr_tools.pipeline.util.md5sum" id="toc-ccbr_tools.pipeline.util.md5sum" class="nav-link" data-scroll-target="#ccbr_tools.pipeline.util.md5sum">md5sum</a></li>
   <li><a href="#ccbr_tools.pipeline.util.permissions" id="toc-ccbr_tools.pipeline.util.permissions" class="nav-link" data-scroll-target="#ccbr_tools.pipeline.util.permissions">permissions</a></li>
+  <li><a href="#ccbr_tools.pipeline.util.read_config_yml" id="toc-ccbr_tools.pipeline.util.read_config_yml" class="nav-link" data-scroll-target="#ccbr_tools.pipeline.util.read_config_yml">read_config_yml</a></li>
   <li><a href="#ccbr_tools.pipeline.util.rename" id="toc-ccbr_tools.pipeline.util.rename" class="nav-link" data-scroll-target="#ccbr_tools.pipeline.util.rename">rename</a></li>
   <li><a href="#ccbr_tools.pipeline.util.require" id="toc-ccbr_tools.pipeline.util.require" class="nav-link" data-scroll-target="#ccbr_tools.pipeline.util.require">require</a></li>
   <li><a href="#ccbr_tools.pipeline.util.safe_copy" id="toc-ccbr_tools.pipeline.util.safe_copy" class="nav-link" data-scroll-target="#ccbr_tools.pipeline.util.safe_copy">safe_copy</a></li>
   <li><a href="#ccbr_tools.pipeline.util.standard_input" id="toc-ccbr_tools.pipeline.util.standard_input" class="nav-link" data-scroll-target="#ccbr_tools.pipeline.util.standard_input">standard_input</a></li>
   <li><a href="#ccbr_tools.pipeline.util.which" id="toc-ccbr_tools.pipeline.util.which" class="nav-link" data-scroll-target="#ccbr_tools.pipeline.util.which">which</a></li>
+  <li><a href="#ccbr_tools.pipeline.util.write_config_yml" id="toc-ccbr_tools.pipeline.util.write_config_yml" class="nav-link" data-scroll-target="#ccbr_tools.pipeline.util.write_config_yml">write_config_yml</a></li>
   </ul></li>
   </ul></li>
   </ul>
@@ -351,8 +355,16 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </thead>
 <tbody>
 <tr class="odd">
+<td><a href="#ccbr_tools.pipeline.util.check_python_version">check_python_version</a></td>
+<td>Check if the current Python version meets the minimum required version.</td>
+</tr>
+<tr class="even">
 <td><a href="#ccbr_tools.pipeline.util.chmod_bins_exec">chmod_bins_exec</a></td>
 <td>Ensure that all files in bin/ are executable.</td>
+</tr>
+<tr class="odd">
+<td><a href="#ccbr_tools.pipeline.util.copy_config">copy_config</a></td>
+<td>Copy default config files to the current working directory.</td>
 </tr>
 <tr class="even">
 <td><a href="#ccbr_tools.pipeline.util.err">err</a></td>
@@ -384,7 +396,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </tr>
 <tr class="odd">
 <td><a href="#ccbr_tools.pipeline.util.join_jsons">join_jsons</a></td>
-<td>Joins multiple JSON files to into one data structure</td>
+<td>Joins multiple JSON files into one data structure.</td>
 </tr>
 <tr class="even">
 <td><a href="#ccbr_tools.pipeline.util.ln">ln</a></td>
@@ -396,69 +408,243 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </tr>
 <tr class="even">
 <td><a href="#ccbr_tools.pipeline.util.permissions">permissions</a></td>
-<td>Checks permissions using os.access() to see the user is authorized to access</td>
+<td>Checks permissions using os.access() to see if the user is authorized to access</td>
 </tr>
 <tr class="odd">
+<td><a href="#ccbr_tools.pipeline.util.read_config_yml">read_config_yml</a></td>
+<td>Reads a YAML configuration file and returns its contents as a dictionary.</td>
+</tr>
+<tr class="even">
 <td><a href="#ccbr_tools.pipeline.util.rename">rename</a></td>
 <td>Dynamically renames FastQ file to have one of the following extensions: <em>.R1.fastq.gz, </em>.R2.fastq.gz</td>
 </tr>
-<tr class="even">
+<tr class="odd">
 <td><a href="#ccbr_tools.pipeline.util.require">require</a></td>
 <td>Enforces an executable is in $PATH</td>
 </tr>
-<tr class="odd">
+<tr class="even">
 <td><a href="#ccbr_tools.pipeline.util.safe_copy">safe_copy</a></td>
 <td>Private function: Given a list paths it will recursively copy each to the</td>
 </tr>
-<tr class="even">
+<tr class="odd">
 <td><a href="#ccbr_tools.pipeline.util.standard_input">standard_input</a></td>
 <td>Checks for standard input when provided or permissions using permissions().</td>
 </tr>
-<tr class="odd">
+<tr class="even">
 <td><a href="#ccbr_tools.pipeline.util.which">which</a></td>
 <td>Checks if an executable is in $PATH</td>
 </tr>
+<tr class="odd">
+<td><a href="#ccbr_tools.pipeline.util.write_config_yml">write_config_yml</a></td>
+<td>Writes a configuration dictionary to a YAML file.</td>
+</tr>
 </tbody>
 </table>
-<section id="ccbr_tools.pipeline.util.chmod_bins_exec" class="level3">
-<h3 class="anchored" data-anchor-id="ccbr_tools.pipeline.util.chmod_bins_exec">chmod_bins_exec</h3>
-<div class="sourceCode" id="cb1"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a>pipeline.util.chmod_bins_exec(repo_base<span class="op">=</span>repo_base)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<p>Ensure that all files in bin/ are executable.</p>
-<p>It appears that setuptools strips executable permissions from package_data files, yet post-install scripts are not possible with the pyproject.toml format. Without this hack, nextflow processes that call scripts in bin/ fail.</p>
-<p>https://stackoverflow.com/questions/18409296/package-data-files-with-executable-permissions https://github.com/pypa/setuptools/issues/2041 https://stackoverflow.com/questions/76320274/post-install-script-for-pyproject-toml-projects</p>
-</section>
-<section id="ccbr_tools.pipeline.util.err" class="level3">
-<h3 class="anchored" data-anchor-id="ccbr_tools.pipeline.util.err">err</h3>
-<div class="sourceCode" id="cb2"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a>pipeline.util.err(<span class="op">*</span>message, <span class="op">**</span>kwargs)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<p>Prints any provided args to standard error. kwargs can be provided to modify print functions behavior. <span class="citation" data-cites="param">@param</span> message <any>: Values printed to standard error <span class="citation" data-cites="params">@params</span> kwargs &lt;print()&gt; Key words to modify print function behavior</any></p>
-</section>
-<section id="ccbr_tools.pipeline.util.exists" class="level3">
-<h3 class="anchored" data-anchor-id="ccbr_tools.pipeline.util.exists">exists</h3>
-<div class="sourceCode" id="cb3"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a>pipeline.util.exists(testpath)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<p>Checks if file exists on the local filesystem. <span class="citation" data-cites="param">@param</span> parser &lt;argparse.ArgumentParser() object&gt;: argparse parser object <span class="citation" data-cites="param">@param</span> testpath <str>: Name of file/directory to check <span class="citation" data-cites="return">@return</span> does_exist <boolean>: True when file/directory exists, False when file/directory does not exist</boolean></str></p>
-</section>
-<section id="ccbr_tools.pipeline.util.fatal" class="level3">
-<h3 class="anchored" data-anchor-id="ccbr_tools.pipeline.util.fatal">fatal</h3>
-<div class="sourceCode" id="cb4"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a>pipeline.util.fatal(<span class="op">*</span>message, <span class="op">**</span>kwargs)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<p>Prints any provided args to standard error and exits with an exit code of 1. <span class="citation" data-cites="param">@param</span> message <any>: Values printed to standard error <span class="citation" data-cites="params">@params</span> kwargs &lt;print()&gt; Key words to modify print function behavior</any></p>
-</section>
-<section id="ccbr_tools.pipeline.util.get_genomes_dict" class="level3">
-<h3 class="anchored" data-anchor-id="ccbr_tools.pipeline.util.get_genomes_dict">get_genomes_dict</h3>
-<div class="sourceCode" id="cb5"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a>pipeline.util.get_genomes_dict(</span>
-<span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a>    repo_base,</span>
-<span id="cb5-3"><a href="#cb5-3" aria-hidden="true" tabindex="-1"></a>    hpcname<span class="op">=</span>get_hpcname(),</span>
-<span id="cb5-4"><a href="#cb5-4" aria-hidden="true" tabindex="-1"></a>    error_on_warnings<span class="op">=</span><span class="va">False</span>,</span>
-<span id="cb5-5"><a href="#cb5-5" aria-hidden="true" tabindex="-1"></a>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<p>Get dictionary of genome annotation versions and the paths to the corresponding JSON files.</p>
+<section id="ccbr_tools.pipeline.util.check_python_version" class="level3">
+<h3 class="anchored" data-anchor-id="ccbr_tools.pipeline.util.check_python_version">check_python_version</h3>
+<div class="sourceCode" id="cb1"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a>pipeline.util.check_python_version(MIN_PYTHON<span class="op">=</span>(<span class="dv">3</span>, <span class="dv">11</span>))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p>Check if the current Python version meets the minimum required version.</p>
 <section id="parameters" class="level4 doc-section doc-section-parameters">
 <h4 class="doc-section doc-section-parameters anchored" data-anchor-id="parameters">Parameters</h4>
 <table class="caption-top table">
+<thead>
+<tr class="header">
+<th>Name</th>
+<th>Type</th>
+<th>Description</th>
+<th>Default</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>MIN_PYTHON</td>
+<td><a href="https://docs.python.org/3/library/stdtypes.html#tuple">tuple</a></td>
+<td>Minimum required Python version as a tuple (major, minor).</td>
+<td><code>(3, 11)</code></td>
+</tr>
+</tbody>
+</table>
+</section>
+</section>
+<section id="ccbr_tools.pipeline.util.chmod_bins_exec" class="level3">
+<h3 class="anchored" data-anchor-id="ccbr_tools.pipeline.util.chmod_bins_exec">chmod_bins_exec</h3>
+<div class="sourceCode" id="cb2"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a>pipeline.util.chmod_bins_exec(repo_base<span class="op">=</span>repo_base)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p>Ensure that all files in bin/ are executable.</p>
+<p>It appears that setuptools strips executable permissions from package_data files, yet post-install scripts are not possible with the pyproject.toml format. Without this hack, nextflow processes that call scripts in bin/ fail.</p>
+<section id="see-also" class="level4 doc-section doc-section-see-also">
+<h4 class="doc-section doc-section-see-also anchored" data-anchor-id="see-also">See Also</h4>
+<p>https://stackoverflow.com/questions/18409296/package-data-files-with-executable-permissions https://github.com/pypa/setuptools/issues/2041 https://stackoverflow.com/questions/76320274/post-install-script-for-pyproject-toml-projects</p>
+</section>
+</section>
+<section id="ccbr_tools.pipeline.util.copy_config" class="level3">
+<h3 class="anchored" data-anchor-id="ccbr_tools.pipeline.util.copy_config">copy_config</h3>
+<div class="sourceCode" id="cb3"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a>pipeline.util.copy_config(config_paths, overwrite<span class="op">=</span><span class="va">True</span>, repo_base<span class="op">=</span>repo_base)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p>Copy default config files to the current working directory.</p>
+<section id="parameters-1" class="level4 doc-section doc-section-parameters">
+<h4 class="doc-section doc-section-parameters anchored" data-anchor-id="parameters-1">Parameters</h4>
+<table class="caption-top table">
+<thead>
+<tr class="header">
+<th>Name</th>
+<th>Type</th>
+<th>Description</th>
+<th>Default</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>config_paths</td>
+<td><a href="https://docs.python.org/3/library/stdtypes.html#list">list</a>[<a href="https://docs.python.org/3/library/stdtypes.html#str">str</a>]</td>
+<td>List of configuration paths to copy.</td>
+<td><em>required</em></td>
+</tr>
+<tr class="even">
+<td>overwrite</td>
+<td><a href="https://docs.python.org/3/library/functions.html#bool">bool</a></td>
+<td>Whether to overwrite existing files. Defaults to True.</td>
+<td><code>True</code></td>
+</tr>
+<tr class="odd">
+<td>repo_base</td>
+<td><code>function</code></td>
+<td>Function to get the base directory of the repository.</td>
+<td><code>repo_base</code></td>
+</tr>
+</tbody>
+</table>
+</section>
+</section>
+<section id="ccbr_tools.pipeline.util.err" class="level3">
+<h3 class="anchored" data-anchor-id="ccbr_tools.pipeline.util.err">err</h3>
+<div class="sourceCode" id="cb4"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a>pipeline.util.err(<span class="op">*</span>message, <span class="op">**</span>kwargs)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p>Prints any provided args to standard error. kwargs can be provided to modify print function’s behavior.</p>
+<section id="parameters-2" class="level4 doc-section doc-section-parameters">
+<h4 class="doc-section doc-section-parameters anchored" data-anchor-id="parameters-2">Parameters</h4>
+<table class="caption-top table">
+<thead>
+<tr class="header">
+<th>Name</th>
+<th>Type</th>
+<th>Description</th>
+<th>Default</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>message</td>
+<td><a href="https://docs.python.org/3/library/functions.html#any">any</a></td>
+<td>Values printed to standard error.</td>
+<td><code>()</code></td>
+</tr>
+<tr class="even">
+<td>kwargs</td>
+<td><a href="https://docs.python.org/3/library/stdtypes.html#dict">dict</a></td>
+<td>Key words to modify print function behavior.</td>
+<td><code>{}</code></td>
+</tr>
+</tbody>
+</table>
+</section>
+</section>
+<section id="ccbr_tools.pipeline.util.exists" class="level3">
+<h3 class="anchored" data-anchor-id="ccbr_tools.pipeline.util.exists">exists</h3>
+<div class="sourceCode" id="cb5"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a>pipeline.util.exists(testpath)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p>Checks if file exists on the local filesystem.</p>
+<section id="parameters-3" class="level4 doc-section doc-section-parameters">
+<h4 class="doc-section doc-section-parameters anchored" data-anchor-id="parameters-3">Parameters</h4>
+<table class="caption-top table">
+<thead>
+<tr class="header">
+<th>Name</th>
+<th>Type</th>
+<th>Description</th>
+<th>Default</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>parser</td>
+<td><a href="https://docs.python.org/3/library/argparse.html#module-argparse">argparse</a>.<a href="https://docs.python.org/3/library/argparse.html#argparse.ArgumentParser">ArgumentParser</a></td>
+<td>Argparse parser object.</td>
+<td><em>required</em></td>
+</tr>
+<tr class="even">
+<td>testpath</td>
+<td><a href="https://docs.python.org/3/library/stdtypes.html#str">str</a></td>
+<td>Name of file/directory to check.</td>
+<td><em>required</em></td>
+</tr>
+</tbody>
+</table>
+</section>
+<section id="returns" class="level4 doc-section doc-section-returns">
+<h4 class="doc-section doc-section-returns anchored" data-anchor-id="returns">Returns</h4>
+<table class="caption-top table">
 <colgroup>
-<col style="width: 14%">
-<col style="width: 17%">
-<col style="width: 55%">
-<col style="width: 12%">
+<col style="width: 8%">
+<col style="width: 8%">
+<col style="width: 82%">
 </colgroup>
+<thead>
+<tr class="header">
+<th>Name</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>bool</td>
+<td></td>
+<td>True when file/directory exists, False when file/directory does not exist.</td>
+</tr>
+</tbody>
+</table>
+</section>
+</section>
+<section id="ccbr_tools.pipeline.util.fatal" class="level3">
+<h3 class="anchored" data-anchor-id="ccbr_tools.pipeline.util.fatal">fatal</h3>
+<div class="sourceCode" id="cb6"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a>pipeline.util.fatal(<span class="op">*</span>message, <span class="op">**</span>kwargs)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p>Prints any provided args to standard error and exits with an exit code of 1.</p>
+<section id="parameters-4" class="level4 doc-section doc-section-parameters">
+<h4 class="doc-section doc-section-parameters anchored" data-anchor-id="parameters-4">Parameters</h4>
+<table class="caption-top table">
+<thead>
+<tr class="header">
+<th>Name</th>
+<th>Type</th>
+<th>Description</th>
+<th>Default</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>message</td>
+<td><a href="https://docs.python.org/3/library/functions.html#any">any</a></td>
+<td>Values printed to standard error.</td>
+<td><code>()</code></td>
+</tr>
+<tr class="even">
+<td>kwargs</td>
+<td><a href="https://docs.python.org/3/library/stdtypes.html#dict">dict</a></td>
+<td>Key words to modify print function behavior.</td>
+<td><code>{}</code></td>
+</tr>
+</tbody>
+</table>
+</section>
+</section>
+<section id="ccbr_tools.pipeline.util.get_genomes_dict" class="level3">
+<h3 class="anchored" data-anchor-id="ccbr_tools.pipeline.util.get_genomes_dict">get_genomes_dict</h3>
+<div class="sourceCode" id="cb7"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a>pipeline.util.get_genomes_dict(</span>
+<span id="cb7-2"><a href="#cb7-2" aria-hidden="true" tabindex="-1"></a>    repo_base,</span>
+<span id="cb7-3"><a href="#cb7-3" aria-hidden="true" tabindex="-1"></a>    hpcname<span class="op">=</span>get_hpcname(),</span>
+<span id="cb7-4"><a href="#cb7-4" aria-hidden="true" tabindex="-1"></a>    error_on_warnings<span class="op">=</span><span class="va">False</span>,</span>
+<span id="cb7-5"><a href="#cb7-5" aria-hidden="true" tabindex="-1"></a>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p>Get dictionary of genome annotation versions and the paths to the corresponding JSON files.</p>
+<section id="parameters-5" class="level4 doc-section doc-section-parameters">
+<h4 class="doc-section doc-section-parameters anchored" data-anchor-id="parameters-5">Parameters</h4>
+<table class="caption-top table">
 <thead>
 <tr class="header">
 <th>Name</th>
@@ -476,13 +662,13 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </tr>
 <tr class="even">
 <td>hpcname</td>
-<td><code>str</code></td>
+<td><a href="https://docs.python.org/3/library/stdtypes.html#str">str</a></td>
 <td>Name of the HPC. Defaults to the value returned by get_hpcname().</td>
 <td><code>get_hpcname()</code></td>
 </tr>
 <tr class="odd">
 <td>error_on_warnings</td>
-<td><code>bool</code></td>
+<td><a href="https://docs.python.org/3/library/functions.html#bool">bool</a></td>
 <td>Flag to indicate whether to raise warnings as errors. Defaults to False.</td>
 <td><code>False</code></td>
 </tr>
@@ -493,21 +679,15 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </section>
 <section id="ccbr_tools.pipeline.util.get_genomes_list" class="level3">
 <h3 class="anchored" data-anchor-id="ccbr_tools.pipeline.util.get_genomes_list">get_genomes_list</h3>
-<div class="sourceCode" id="cb6"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a>pipeline.util.get_genomes_list(</span>
-<span id="cb6-2"><a href="#cb6-2" aria-hidden="true" tabindex="-1"></a>    repo_base,</span>
-<span id="cb6-3"><a href="#cb6-3" aria-hidden="true" tabindex="-1"></a>    hpcname<span class="op">=</span>get_hpcname(),</span>
-<span id="cb6-4"><a href="#cb6-4" aria-hidden="true" tabindex="-1"></a>    error_on_warnings<span class="op">=</span><span class="va">False</span>,</span>
-<span id="cb6-5"><a href="#cb6-5" aria-hidden="true" tabindex="-1"></a>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb8"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a>pipeline.util.get_genomes_list(</span>
+<span id="cb8-2"><a href="#cb8-2" aria-hidden="true" tabindex="-1"></a>    repo_base,</span>
+<span id="cb8-3"><a href="#cb8-3" aria-hidden="true" tabindex="-1"></a>    hpcname<span class="op">=</span>get_hpcname(),</span>
+<span id="cb8-4"><a href="#cb8-4" aria-hidden="true" tabindex="-1"></a>    error_on_warnings<span class="op">=</span><span class="va">False</span>,</span>
+<span id="cb8-5"><a href="#cb8-5" aria-hidden="true" tabindex="-1"></a>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <p>Get list of genome annotations available for the current platform</p>
-<section id="parameters-1" class="level4 doc-section doc-section-parameters">
-<h4 class="doc-section doc-section-parameters anchored" data-anchor-id="parameters-1">Parameters</h4>
+<section id="parameters-6" class="level4 doc-section doc-section-parameters">
+<h4 class="doc-section doc-section-parameters anchored" data-anchor-id="parameters-6">Parameters</h4>
 <table class="caption-top table">
-<colgroup>
-<col style="width: 15%">
-<col style="width: 13%">
-<col style="width: 57%">
-<col style="width: 13%">
-</colgroup>
 <thead>
 <tr class="header">
 <th>Name</th>
@@ -519,19 +699,19 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <tbody>
 <tr class="odd">
 <td>repo_base</td>
-<td><code>str</code></td>
+<td><a href="https://docs.python.org/3/library/stdtypes.html#str">str</a></td>
 <td>The base directory of the repository</td>
 <td><em>required</em></td>
 </tr>
 <tr class="even">
 <td>hpcname</td>
-<td><code>str</code></td>
+<td><a href="https://docs.python.org/3/library/stdtypes.html#str">str</a></td>
 <td>The name of the HPC. Defaults to the value returned by get_hpcname().</td>
 <td><code>get_hpcname()</code></td>
 </tr>
 <tr class="odd">
 <td>error_on_warnings</td>
-<td><code>bool</code></td>
+<td><a href="https://docs.python.org/3/library/functions.html#bool">bool</a></td>
 <td>Whether to raise an error on warnings. Defaults to False.</td>
 <td><code>False</code></td>
 </tr>
@@ -542,17 +722,11 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </section>
 <section id="ccbr_tools.pipeline.util.get_tmp_dir" class="level3">
 <h3 class="anchored" data-anchor-id="ccbr_tools.pipeline.util.get_tmp_dir">get_tmp_dir</h3>
-<div class="sourceCode" id="cb7"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a>pipeline.util.get_tmp_dir(tmp_dir, outdir, hpc<span class="op">=</span>get_hpcname())</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb9"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a>pipeline.util.get_tmp_dir(tmp_dir, outdir, hpc<span class="op">=</span>get_hpcname())</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <p>Get default temporary directory for biowulf and frce. Allow user override.</p>
-<section id="parameters-2" class="level4 doc-section doc-section-parameters">
-<h4 class="doc-section doc-section-parameters anchored" data-anchor-id="parameters-2">Parameters</h4>
+<section id="parameters-7" class="level4 doc-section doc-section-parameters">
+<h4 class="doc-section doc-section-parameters anchored" data-anchor-id="parameters-7">Parameters</h4>
 <table class="caption-top table">
-<colgroup>
-<col style="width: 6%">
-<col style="width: 9%">
-<col style="width: 72%">
-<col style="width: 11%">
-</colgroup>
 <thead>
 <tr class="header">
 <th>Name</th>
@@ -564,19 +738,19 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <tbody>
 <tr class="odd">
 <td>tmp_dir</td>
-<td><code>str</code></td>
+<td><a href="https://docs.python.org/3/library/stdtypes.html#str">str</a></td>
 <td>User-defined temporary directory path. If provided, this path will be used as the temporary directory.</td>
 <td><em>required</em></td>
 </tr>
 <tr class="even">
 <td>outdir</td>
-<td><code>str</code></td>
+<td><a href="https://docs.python.org/3/library/stdtypes.html#str">str</a></td>
 <td>Output directory path.</td>
 <td><em>required</em></td>
 </tr>
 <tr class="odd">
 <td>hpc</td>
-<td><code>str</code></td>
+<td><a href="https://docs.python.org/3/library/stdtypes.html#str">str</a></td>
 <td>HPC name. Defaults to the value returned by get_hpcname().</td>
 <td><code>get_hpcname()</code></td>
 </tr>
@@ -587,55 +761,527 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </section>
 <section id="ccbr_tools.pipeline.util.git_commit_hash" class="level3">
 <h3 class="anchored" data-anchor-id="ccbr_tools.pipeline.util.git_commit_hash">git_commit_hash</h3>
-<div class="sourceCode" id="cb8"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a>pipeline.util.git_commit_hash(repo_path)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<p>Gets the git commit hash of the RNA-seek repo. <span class="citation" data-cites="param">@param</span> repo_path <str>: Path to RNA-seek git repo <span class="citation" data-cites="return">@return</span> githash <str>: Latest git commit hash</str></str></p>
+<div class="sourceCode" id="cb10"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a>pipeline.util.git_commit_hash(repo_path)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p>Gets the git commit hash of the RNA-seek repo.</p>
+<section id="parameters-8" class="level4 doc-section doc-section-parameters">
+<h4 class="doc-section doc-section-parameters anchored" data-anchor-id="parameters-8">Parameters</h4>
+<table class="caption-top table">
+<thead>
+<tr class="header">
+<th>Name</th>
+<th>Type</th>
+<th>Description</th>
+<th>Default</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>repo_path</td>
+<td><a href="https://docs.python.org/3/library/stdtypes.html#str">str</a></td>
+<td>Path to RNA-seek git repo.</td>
+<td><em>required</em></td>
+</tr>
+</tbody>
+</table>
+</section>
+<section id="returns-1" class="level4 doc-section doc-section-returns">
+<h4 class="doc-section doc-section-returns anchored" data-anchor-id="returns-1">Returns</h4>
+<table class="caption-top table">
+<thead>
+<tr class="header">
+<th>Name</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>str</td>
+<td></td>
+<td>Latest git commit hash.</td>
+</tr>
+</tbody>
+</table>
+</section>
 </section>
 <section id="ccbr_tools.pipeline.util.join_jsons" class="level3">
 <h3 class="anchored" data-anchor-id="ccbr_tools.pipeline.util.join_jsons">join_jsons</h3>
-<div class="sourceCode" id="cb9"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a>pipeline.util.join_jsons(templates)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<p>Joins multiple JSON files to into one data structure Used to join multiple template JSON files to create a global config dictionary. <span class="citation" data-cites="params">@params</span> templates &lt;list[str]&gt;: List of template JSON files to join together <span class="citation" data-cites="return">@return</span> aggregated <dict>: Dictionary containing the contents of all the input JSON files</dict></p>
+<div class="sourceCode" id="cb11"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a>pipeline.util.join_jsons(templates)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p>Joins multiple JSON files into one data structure. Used to join multiple template JSON files to create a global config dictionary.</p>
+<section id="parameters-9" class="level4 doc-section doc-section-parameters">
+<h4 class="doc-section doc-section-parameters anchored" data-anchor-id="parameters-9">Parameters</h4>
+<table class="caption-top table">
+<thead>
+<tr class="header">
+<th>Name</th>
+<th>Type</th>
+<th>Description</th>
+<th>Default</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>templates</td>
+<td><a href="https://docs.python.org/3/library/stdtypes.html#list">list</a>[<a href="https://docs.python.org/3/library/stdtypes.html#str">str</a>]</td>
+<td>List of template JSON files to join together.</td>
+<td><em>required</em></td>
+</tr>
+</tbody>
+</table>
+</section>
+<section id="returns-2" class="level4 doc-section doc-section-returns">
+<h4 class="doc-section doc-section-returns anchored" data-anchor-id="returns-2">Returns</h4>
+<table class="caption-top table">
+<colgroup>
+<col style="width: 9%">
+<col style="width: 9%">
+<col style="width: 80%">
+</colgroup>
+<thead>
+<tr class="header">
+<th>Name</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>dict</td>
+<td></td>
+<td>Dictionary containing the contents of all the input JSON files.</td>
+</tr>
+</tbody>
+</table>
+</section>
 </section>
 <section id="ccbr_tools.pipeline.util.ln" class="level3">
 <h3 class="anchored" data-anchor-id="ccbr_tools.pipeline.util.ln">ln</h3>
-<div class="sourceCode" id="cb10"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a>pipeline.util.ln(files, outdir)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<p>Creates symlinks for files to an output directory. <span class="citation" data-cites="param">@param</span> files list[<str>]: List of filenames <span class="citation" data-cites="param">@param</span> outdir <str>: Destination or output directory to create symlinks</str></str></p>
+<div class="sourceCode" id="cb12"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb12-1"><a href="#cb12-1" aria-hidden="true" tabindex="-1"></a>pipeline.util.ln(files, outdir)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p>Creates symlinks for files to an output directory.</p>
+<section id="parameters-10" class="level4 doc-section doc-section-parameters">
+<h4 class="doc-section doc-section-parameters anchored" data-anchor-id="parameters-10">Parameters</h4>
+<table class="caption-top table">
+<thead>
+<tr class="header">
+<th>Name</th>
+<th>Type</th>
+<th>Description</th>
+<th>Default</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>files</td>
+<td><a href="https://docs.python.org/3/library/stdtypes.html#list">list</a>[<a href="https://docs.python.org/3/library/stdtypes.html#str">str</a>]</td>
+<td>List of filenames.</td>
+<td><em>required</em></td>
+</tr>
+<tr class="even">
+<td>outdir</td>
+<td><a href="https://docs.python.org/3/library/stdtypes.html#str">str</a></td>
+<td>Destination or output directory to create symlinks.</td>
+<td><em>required</em></td>
+</tr>
+</tbody>
+</table>
+</section>
 </section>
 <section id="ccbr_tools.pipeline.util.md5sum" class="level3">
 <h3 class="anchored" data-anchor-id="ccbr_tools.pipeline.util.md5sum">md5sum</h3>
-<div class="sourceCode" id="cb11"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a>pipeline.util.md5sum(filename, first_block_only<span class="op">=</span><span class="va">False</span>, blocksize<span class="op">=</span><span class="dv">65536</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<p>Gets md5checksum of a file in memory-safe manner. The file is read in blocks/chunks defined by the blocksize parameter. This is a safer option to reading the entire file into memory if the file is very large. <span class="citation" data-cites="param">@param</span> filename <str>: Input file on local filesystem to find md5 checksum <span class="citation" data-cites="param">@param</span> first_block_only <bool>: Calculate md5 checksum of the first block/chunk only <span class="citation" data-cites="param">@param</span> blocksize <int>: Blocksize of reading N chunks of data to reduce memory profile <span class="citation" data-cites="return">@return</span> hasher.hexdigest() <str>: MD5 checksum of the file’s contents</str></int></bool></str></p>
+<div class="sourceCode" id="cb13"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb13-1"><a href="#cb13-1" aria-hidden="true" tabindex="-1"></a>pipeline.util.md5sum(filename, first_block_only<span class="op">=</span><span class="va">False</span>, blocksize<span class="op">=</span><span class="dv">65536</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p>Gets md5checksum of a file in memory-safe manner. The file is read in blocks/chunks defined by the blocksize parameter. This is a safer option to reading the entire file into memory if the file is very large.</p>
+<section id="parameters-11" class="level4 doc-section doc-section-parameters">
+<h4 class="doc-section doc-section-parameters anchored" data-anchor-id="parameters-11">Parameters</h4>
+<table class="caption-top table">
+<thead>
+<tr class="header">
+<th>Name</th>
+<th>Type</th>
+<th>Description</th>
+<th>Default</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>filename</td>
+<td><a href="https://docs.python.org/3/library/stdtypes.html#str">str</a></td>
+<td>Input file on local filesystem to find md5 checksum.</td>
+<td><em>required</em></td>
+</tr>
+<tr class="even">
+<td>first_block_only</td>
+<td><a href="https://docs.python.org/3/library/functions.html#bool">bool</a></td>
+<td>Calculate md5 checksum of the first block/chunk only.</td>
+<td><code>False</code></td>
+</tr>
+<tr class="odd">
+<td>blocksize</td>
+<td><a href="https://docs.python.org/3/library/functions.html#int">int</a></td>
+<td>Blocksize of reading N chunks of data to reduce memory profile.</td>
+<td><code>65536</code></td>
+</tr>
+</tbody>
+</table>
+</section>
+<section id="returns-3" class="level4 doc-section doc-section-returns">
+<h4 class="doc-section doc-section-returns anchored" data-anchor-id="returns-3">Returns</h4>
+<table class="caption-top table">
+<thead>
+<tr class="header">
+<th>Name</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>str</td>
+<td></td>
+<td>MD5 checksum of the file’s contents.</td>
+</tr>
+</tbody>
+</table>
+</section>
 </section>
 <section id="ccbr_tools.pipeline.util.permissions" class="level3">
 <h3 class="anchored" data-anchor-id="ccbr_tools.pipeline.util.permissions">permissions</h3>
-<div class="sourceCode" id="cb12"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb12-1"><a href="#cb12-1" aria-hidden="true" tabindex="-1"></a>pipeline.util.permissions(parser, path, <span class="op">*</span>args, <span class="op">**</span>kwargs)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<p>Checks permissions using os.access() to see the user is authorized to access a file/directory. Checks for existence, readability, writability and executability via: os.F_OK (tests existence), os.R_OK (tests read), os.W_OK (tests write), os.X_OK (tests exec). <span class="citation" data-cites="param">@param</span> parser &lt;argparse.ArgumentParser() object&gt;: Argparse parser object <span class="citation" data-cites="param">@param</span> path <str>: Name of path to check <span class="citation" data-cites="return">@return</span> path <str>: Returns abs path if it exists and permissions are correct</str></str></p>
+<div class="sourceCode" id="cb14"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb14-1"><a href="#cb14-1" aria-hidden="true" tabindex="-1"></a>pipeline.util.permissions(parser, path, <span class="op">*</span>args, <span class="op">**</span>kwargs)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p>Checks permissions using os.access() to see if the user is authorized to access a file/directory. Checks for existence, readability, writability, and executability via: os.F_OK (tests existence), os.R_OK (tests read), os.W_OK (tests write), os.X_OK (tests exec).</p>
+<section id="parameters-12" class="level4 doc-section doc-section-parameters">
+<h4 class="doc-section doc-section-parameters anchored" data-anchor-id="parameters-12">Parameters</h4>
+<table class="caption-top table">
+<thead>
+<tr class="header">
+<th>Name</th>
+<th>Type</th>
+<th>Description</th>
+<th>Default</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>parser</td>
+<td><a href="https://docs.python.org/3/library/argparse.html#module-argparse">argparse</a>.<a href="https://docs.python.org/3/library/argparse.html#argparse.ArgumentParser">ArgumentParser</a></td>
+<td>Argparse parser object.</td>
+<td><em>required</em></td>
+</tr>
+<tr class="even">
+<td>path</td>
+<td><a href="https://docs.python.org/3/library/stdtypes.html#str">str</a></td>
+<td>Name of the path to check.</td>
+<td><em>required</em></td>
+</tr>
+</tbody>
+</table>
+</section>
+<section id="returns-4" class="level4 doc-section doc-section-returns">
+<h4 class="doc-section doc-section-returns anchored" data-anchor-id="returns-4">Returns</h4>
+<table class="caption-top table">
+<colgroup>
+<col style="width: 9%">
+<col style="width: 9%">
+<col style="width: 80%">
+</colgroup>
+<thead>
+<tr class="header">
+<th>Name</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>str</td>
+<td></td>
+<td>Returns absolute path if it exists and permissions are correct.</td>
+</tr>
+</tbody>
+</table>
+</section>
+</section>
+<section id="ccbr_tools.pipeline.util.read_config_yml" class="level3">
+<h3 class="anchored" data-anchor-id="ccbr_tools.pipeline.util.read_config_yml">read_config_yml</h3>
+<div class="sourceCode" id="cb15"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb15-1"><a href="#cb15-1" aria-hidden="true" tabindex="-1"></a>pipeline.util.read_config_yml(<span class="bu">file</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p>Reads a YAML configuration file and returns its contents as a dictionary.</p>
+<section id="parameters-13" class="level4 doc-section doc-section-parameters">
+<h4 class="doc-section doc-section-parameters anchored" data-anchor-id="parameters-13">Parameters</h4>
+<table class="caption-top table">
+<thead>
+<tr class="header">
+<th>Name</th>
+<th>Type</th>
+<th>Description</th>
+<th>Default</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>file</td>
+<td><a href="https://docs.python.org/3/library/stdtypes.html#str">str</a></td>
+<td>The path to the YAML file to be read.</td>
+<td><em>required</em></td>
+</tr>
+</tbody>
+</table>
+</section>
+<section id="returns-5" class="level4 doc-section doc-section-returns">
+<h4 class="doc-section doc-section-returns anchored" data-anchor-id="returns-5">Returns</h4>
+<table class="caption-top table">
+<thead>
+<tr class="header">
+<th>Name</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>dict</td>
+<td></td>
+<td>The contents of the YAML file as a dictionary.</td>
+</tr>
+</tbody>
+</table>
+</section>
 </section>
 <section id="ccbr_tools.pipeline.util.rename" class="level3">
 <h3 class="anchored" data-anchor-id="ccbr_tools.pipeline.util.rename">rename</h3>
-<div class="sourceCode" id="cb13"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb13-1"><a href="#cb13-1" aria-hidden="true" tabindex="-1"></a>pipeline.util.rename(filename)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<p>Dynamically renames FastQ file to have one of the following extensions: <em>.R1.fastq.gz, </em>.R2.fastq.gz To automatically rename the fastq files, a few assumptions are made. If the extension of the FastQ file cannot be inferred, an exception is raised telling the user to fix the filename of the fastq files. <span class="citation" data-cites="param">@param</span> filename <str>: Original name of file to be renamed <span class="citation" data-cites="return">@return</span> filename <str>: A renamed FastQ filename</str></str></p>
+<div class="sourceCode" id="cb16"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb16-1"><a href="#cb16-1" aria-hidden="true" tabindex="-1"></a>pipeline.util.rename(filename)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p>Dynamically renames FastQ file to have one of the following extensions: <em>.R1.fastq.gz, </em>.R2.fastq.gz To automatically rename the fastq files, a few assumptions are made. If the extension of the FastQ file cannot be inferred, an exception is raised telling the user to fix the filename of the fastq files.</p>
+<section id="parameters-14" class="level4 doc-section doc-section-parameters">
+<h4 class="doc-section doc-section-parameters anchored" data-anchor-id="parameters-14">Parameters</h4>
+<table class="caption-top table">
+<thead>
+<tr class="header">
+<th>Name</th>
+<th>Type</th>
+<th>Description</th>
+<th>Default</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>filename</td>
+<td><a href="https://docs.python.org/3/library/stdtypes.html#str">str</a></td>
+<td>Original name of file to be renamed.</td>
+<td><em>required</em></td>
+</tr>
+</tbody>
+</table>
+</section>
+<section id="returns-6" class="level4 doc-section doc-section-returns">
+<h4 class="doc-section doc-section-returns anchored" data-anchor-id="returns-6">Returns</h4>
+<table class="caption-top table">
+<thead>
+<tr class="header">
+<th>Name</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>str</td>
+<td></td>
+<td>A renamed FastQ filename.</td>
+</tr>
+</tbody>
+</table>
+</section>
 </section>
 <section id="ccbr_tools.pipeline.util.require" class="level3">
 <h3 class="anchored" data-anchor-id="ccbr_tools.pipeline.util.require">require</h3>
-<div class="sourceCode" id="cb14"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb14-1"><a href="#cb14-1" aria-hidden="true" tabindex="-1"></a>pipeline.util.require(cmds, suggestions, path<span class="op">=</span><span class="va">None</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<p>Enforces an executable is in $PATH <span class="citation" data-cites="param">@param</span> cmds list[<str>]: List of executable names to check <span class="citation" data-cites="param">@param</span> suggestions list[<str>]: Name of module to suggest loading for a given index in param cmd. <span class="citation" data-cites="param">@param</span> path list[<str>]]: Optional list of PATHs to check [default: $PATH]</str></str></str></p>
+<div class="sourceCode" id="cb17"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb17-1"><a href="#cb17-1" aria-hidden="true" tabindex="-1"></a>pipeline.util.require(cmds, suggestions, path<span class="op">=</span><span class="va">None</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p>Enforces an executable is in $PATH</p>
+<section id="parameters-15" class="level4 doc-section doc-section-parameters">
+<h4 class="doc-section doc-section-parameters anchored" data-anchor-id="parameters-15">Parameters</h4>
+<table class="caption-top table">
+<thead>
+<tr class="header">
+<th>Name</th>
+<th>Type</th>
+<th>Description</th>
+<th>Default</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>cmds</td>
+<td><a href="https://docs.python.org/3/library/stdtypes.html#list">list</a>[<a href="https://docs.python.org/3/library/stdtypes.html#str">str</a>]</td>
+<td>List of executable names to check.</td>
+<td><em>required</em></td>
+</tr>
+<tr class="even">
+<td>suggestions</td>
+<td><a href="https://docs.python.org/3/library/stdtypes.html#list">list</a>[<a href="https://docs.python.org/3/library/stdtypes.html#str">str</a>]</td>
+<td>Name of module to suggest loading for a given index in cmds.</td>
+<td><em>required</em></td>
+</tr>
+<tr class="odd">
+<td>path</td>
+<td><a href="https://docs.python.org/3/library/stdtypes.html#list">list</a>[<a href="https://docs.python.org/3/library/stdtypes.html#str">str</a>]</td>
+<td>Optional list of PATHs to check. Defaults to $PATH.</td>
+<td><code>None</code></td>
+</tr>
+</tbody>
+</table>
+</section>
 </section>
 <section id="ccbr_tools.pipeline.util.safe_copy" class="level3">
 <h3 class="anchored" data-anchor-id="ccbr_tools.pipeline.util.safe_copy">safe_copy</h3>
-<div class="sourceCode" id="cb15"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb15-1"><a href="#cb15-1" aria-hidden="true" tabindex="-1"></a>pipeline.util.safe_copy(source, target, resources<span class="op">=</span>[])</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<p>Private function: Given a list paths it will recursively copy each to the target location. If a target path already exists, it will NOT over-write the existing paths data. <span class="citation" data-cites="param">@param</span> resources &lt;list[str]&gt;: List of paths to copy over to target location <span class="citation" data-cites="params">@params</span> source <str>: Add a prefix PATH to each resource <span class="citation" data-cites="param">@param</span> target <str>: Target path to copy templates and required resources</str></str></p>
+<div class="sourceCode" id="cb18"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb18-1"><a href="#cb18-1" aria-hidden="true" tabindex="-1"></a>pipeline.util.safe_copy(source, target, resources<span class="op">=</span>[])</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p>Private function: Given a list paths it will recursively copy each to the target location. If a target path already exists, it will NOT over-write the existing paths data.</p>
+<section id="parameters-16" class="level4 doc-section doc-section-parameters">
+<h4 class="doc-section doc-section-parameters anchored" data-anchor-id="parameters-16">Parameters</h4>
+<table class="caption-top table">
+<thead>
+<tr class="header">
+<th>Name</th>
+<th>Type</th>
+<th>Description</th>
+<th>Default</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>resources</td>
+<td><a href="https://docs.python.org/3/library/stdtypes.html#list">list</a>[<a href="https://docs.python.org/3/library/stdtypes.html#str">str</a>]</td>
+<td>List of paths to copy over to target location.</td>
+<td><code>[]</code></td>
+</tr>
+<tr class="even">
+<td>source</td>
+<td><a href="https://docs.python.org/3/library/stdtypes.html#str">str</a></td>
+<td>Add a prefix PATH to each resource.</td>
+<td><em>required</em></td>
+</tr>
+<tr class="odd">
+<td>target</td>
+<td><a href="https://docs.python.org/3/library/stdtypes.html#str">str</a></td>
+<td>Target path to copy templates and required resources.</td>
+<td><em>required</em></td>
+</tr>
+</tbody>
+</table>
+</section>
 </section>
 <section id="ccbr_tools.pipeline.util.standard_input" class="level3">
 <h3 class="anchored" data-anchor-id="ccbr_tools.pipeline.util.standard_input">standard_input</h3>
-<div class="sourceCode" id="cb16"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb16-1"><a href="#cb16-1" aria-hidden="true" tabindex="-1"></a>pipeline.util.standard_input(parser, path, <span class="op">*</span>args, <span class="op">**</span>kwargs)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<p>Checks for standard input when provided or permissions using permissions(). <span class="citation" data-cites="param">@param</span> parser &lt;argparse.ArgumentParser() object&gt;: Argparse parser object <span class="citation" data-cites="param">@param</span> path <str>: Name of path to check <span class="citation" data-cites="return">@return</span> path <str>: If path exists and user can read from location</str></str></p>
+<div class="sourceCode" id="cb19"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb19-1"><a href="#cb19-1" aria-hidden="true" tabindex="-1"></a>pipeline.util.standard_input(parser, path, <span class="op">*</span>args, <span class="op">**</span>kwargs)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p>Checks for standard input when provided or permissions using permissions().</p>
+<section id="parameters-17" class="level4 doc-section doc-section-parameters">
+<h4 class="doc-section doc-section-parameters anchored" data-anchor-id="parameters-17">Parameters</h4>
+<table class="caption-top table">
+<thead>
+<tr class="header">
+<th>Name</th>
+<th>Type</th>
+<th>Description</th>
+<th>Default</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>parser</td>
+<td><a href="https://docs.python.org/3/library/argparse.html#module-argparse">argparse</a>.<a href="https://docs.python.org/3/library/argparse.html#argparse.ArgumentParser">ArgumentParser</a></td>
+<td>Argparse parser object.</td>
+<td><em>required</em></td>
+</tr>
+<tr class="even">
+<td>path</td>
+<td><a href="https://docs.python.org/3/library/stdtypes.html#str">str</a></td>
+<td>Name of the path to check.</td>
+<td><em>required</em></td>
+</tr>
+</tbody>
+</table>
+</section>
+<section id="returns-7" class="level4 doc-section doc-section-returns">
+<h4 class="doc-section doc-section-returns anchored" data-anchor-id="returns-7">Returns</h4>
+<table class="caption-top table">
+<thead>
+<tr class="header">
+<th>Name</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>str</td>
+<td></td>
+<td>If path exists and user can read from location.</td>
+</tr>
+</tbody>
+</table>
+</section>
 </section>
 <section id="ccbr_tools.pipeline.util.which" class="level3">
 <h3 class="anchored" data-anchor-id="ccbr_tools.pipeline.util.which">which</h3>
-<div class="sourceCode" id="cb17"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb17-1"><a href="#cb17-1" aria-hidden="true" tabindex="-1"></a>pipeline.util.which(cmd, path<span class="op">=</span><span class="va">None</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<p>Checks if an executable is in $PATH <span class="citation" data-cites="param">@param</span> cmd <str>: Name of executable to check <span class="citation" data-cites="param">@param</span> path <list>: Optional list of PATHs to check [default: $PATH] <span class="citation" data-cites="return">@return</span> <boolean>: True if exe in PATH, False if not in PATH</boolean></list></str></p>
+<div class="sourceCode" id="cb20"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb20-1"><a href="#cb20-1" aria-hidden="true" tabindex="-1"></a>pipeline.util.which(cmd, path<span class="op">=</span><span class="va">None</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p>Checks if an executable is in $PATH</p>
+<section id="parameters-18" class="level4 doc-section doc-section-parameters">
+<h4 class="doc-section doc-section-parameters anchored" data-anchor-id="parameters-18">Parameters</h4>
+<table class="caption-top table">
+<thead>
+<tr class="header">
+<th>Name</th>
+<th>Type</th>
+<th>Description</th>
+<th>Default</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>cmd</td>
+<td><a href="https://docs.python.org/3/library/stdtypes.html#str">str</a></td>
+<td>Name of the executable to check.</td>
+<td><em>required</em></td>
+</tr>
+<tr class="even">
+<td>path</td>
+<td><a href="https://docs.python.org/3/library/stdtypes.html#list">list</a></td>
+<td>Optional list of PATHs to check. Defaults to $PATH.</td>
+<td><code>None</code></td>
+</tr>
+</tbody>
+</table>
+<p>Returns: bool: True if the executable is in PATH, False otherwise.</p>
+</section>
+</section>
+<section id="ccbr_tools.pipeline.util.write_config_yml" class="level3">
+<h3 class="anchored" data-anchor-id="ccbr_tools.pipeline.util.write_config_yml">write_config_yml</h3>
+<div class="sourceCode" id="cb21"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb21-1"><a href="#cb21-1" aria-hidden="true" tabindex="-1"></a>pipeline.util.write_config_yml(_config, <span class="bu">file</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p>Writes a configuration dictionary to a YAML file.</p>
+<section id="parameters-19" class="level4 doc-section doc-section-parameters">
+<h4 class="doc-section doc-section-parameters anchored" data-anchor-id="parameters-19">Parameters</h4>
+<table class="caption-top table">
+<thead>
+<tr class="header">
+<th>Name</th>
+<th>Type</th>
+<th>Description</th>
+<th>Default</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>_config</td>
+<td><a href="https://docs.python.org/3/library/stdtypes.html#dict">dict</a></td>
+<td>The configuration dictionary to write to the file.</td>
+<td><em>required</em></td>
+</tr>
+<tr class="even">
+<td>file</td>
+<td><a href="https://docs.python.org/3/library/stdtypes.html#str">str</a></td>
+<td>The path to the file where the configuration will be written.</td>
+<td><em>required</em></td>
+</tr>
+</tbody>
+</table>
 
 
+</section>
 </section>
 </section>
 </section>

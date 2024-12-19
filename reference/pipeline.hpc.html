@@ -73,8 +73,8 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <link href="../site_libs/quarto-html/quarto-syntax-highlighting-dark-d166b450ba5a8e9f7a0ab969bf6592c1.css" rel="prefetch" class="quarto-color-scheme quarto-color-alternate" id="quarto-text-highlighting-styles">
 <script src="../site_libs/bootstrap/bootstrap.min.js"></script>
 <link href="../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
-<link href="../site_libs/bootstrap/bootstrap-41afc036f4045670d8a63ab41900e02e.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme" id="quarto-bootstrap" data-mode="light">
-<link href="../site_libs/bootstrap/bootstrap-dark-a040cd6abc73b98b2f4c673569425434.min.css" rel="prefetch" append-hash="true" class="quarto-color-scheme quarto-color-alternate" id="quarto-bootstrap" data-mode="dark">
+<link href="../site_libs/bootstrap/bootstrap-04dd6a5ca28aac96903e51a8fbffbcaa.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme" id="quarto-bootstrap" data-mode="light">
+<link href="../site_libs/bootstrap/bootstrap-dark-b3883a83b6cdceb4314f965facc5c958.min.css" rel="prefetch" append-hash="true" class="quarto-color-scheme quarto-color-alternate" id="quarto-bootstrap" data-mode="dark">
 <script id="quarto-search-options" type="application/json">{
   "location": "navbar",
   "copy-button": false,
@@ -127,12 +127,12 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
     <a class="nav-link" href="../index.html"> 
 <span class="menu-text">Home</span></a>
   </li>  
-  <li class="nav-item">
-    <a class="nav-link active" href="../reference/index.html" aria-current="page"> 
-<span class="menu-text">Reference</span></a>
-  </li>  
 </ul>
             <ul class="navbar-nav navbar-nav-scroll ms-auto">
+  <li class="nav-item">
+    <a class="nav-link active" href="../reference/index.html" aria-current="page"> 
+<span class="menu-text">API</span></a>
+  </li>  
   <li class="nav-item">
     <a class="nav-link" href="../CHANGELOG.html"> 
 <span class="menu-text">Changelog</span></a>
@@ -333,7 +333,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <h1>pipeline.hpc</h1>
 <p><code>pipeline.hpc</code></p>
 <p>Classes for working with different HPC clusters.</p>
-<p>Use <a href="../reference/pipeline.hpc.html#ccbr_tools.pipeline.hpc.get_hpc"><code>ccbr_tools.pipeline.hpc.get_hpc</code></a> to retrieve an HPC Cluster instance, which contains default attributes for supported clusters.</p>
+<p>Use <a href="../reference/pipeline.hpc.html#ccbr_tools.pipeline.hpc.get_hpc"><code>get_hpc</code></a> to retrieve an HPC Cluster instance, which contains default attributes for supported clusters.</p>
 <section id="classes" class="level2">
 <h2 class="anchored" data-anchor-id="classes">Classes</h2>
 <table class="caption-top table">
@@ -346,7 +346,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <tbody>
 <tr class="odd">
 <td><a href="#ccbr_tools.pipeline.hpc.Biowulf">Biowulf</a></td>
-<td>The Biowulf cluster – child of <a href="../reference/pipeline.hpc.html#ccbr_tools.pipeline.hpc.Cluster"><code>ccbr_tools.pipeline.hpc.Cluster</code></a></td>
+<td>The Biowulf cluster – child of <a href="../reference/pipeline.hpc.html#ccbr_tools.pipeline.hpc.Cluster"><code>Cluster</code></a></td>
 </tr>
 <tr class="even">
 <td><a href="#ccbr_tools.pipeline.hpc.Cluster">Cluster</a></td>
@@ -354,22 +354,17 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </tr>
 <tr class="odd">
 <td><a href="#ccbr_tools.pipeline.hpc.FRCE">FRCE</a></td>
-<td>The FRCE cluster – child of <a href="../reference/pipeline.hpc.html#ccbr_tools.pipeline.hpc.Cluster"><code>ccbr_tools.pipeline.hpc.Cluster</code></a></td>
+<td>The FRCE cluster – child of <a href="../reference/pipeline.hpc.html#ccbr_tools.pipeline.hpc.Cluster"><code>Cluster</code></a></td>
 </tr>
 </tbody>
 </table>
 <section id="ccbr_tools.pipeline.hpc.Biowulf" class="level3">
 <h3 class="anchored" data-anchor-id="ccbr_tools.pipeline.hpc.Biowulf">Biowulf</h3>
 <div class="sourceCode" id="cb1"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a>pipeline.hpc.Biowulf(<span class="va">self</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<p>The Biowulf cluster – child of <a href="../reference/pipeline.hpc.html#ccbr_tools.pipeline.hpc.Cluster"><code>ccbr_tools.pipeline.hpc.Cluster</code></a></p>
+<p>The Biowulf cluster – child of <a href="../reference/pipeline.hpc.html#ccbr_tools.pipeline.hpc.Cluster"><code>Cluster</code></a></p>
 <section id="attributes" class="level4 doc-section doc-section-attributes">
 <h4 class="doc-section doc-section-attributes anchored" data-anchor-id="attributes">Attributes</h4>
 <table class="caption-top table">
-<colgroup>
-<col style="width: 18%">
-<col style="width: 14%">
-<col style="width: 66%">
-</colgroup>
 <thead>
 <tr class="header">
 <th>Name</th>
@@ -380,22 +375,22 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <tbody>
 <tr class="odd">
 <td>name</td>
-<td><code>str</code></td>
+<td><a href="https://docs.python.org/3/library/stdtypes.html#str">str</a></td>
 <td>The name of the cluster.</td>
 </tr>
 <tr class="even">
 <td>modules</td>
-<td><code>dict</code></td>
+<td><a href="https://docs.python.org/3/library/stdtypes.html#dict">dict</a></td>
 <td>A dictionary mapping module names to their corresponding commands.</td>
 </tr>
 <tr class="odd">
 <td>singularity_sif_dir</td>
-<td><code>str</code></td>
+<td><a href="https://docs.python.org/3/library/stdtypes.html#str">str</a></td>
 <td>The directory path for Singularity SIF files.</td>
 </tr>
 <tr class="even">
 <td>env_vars</td>
-<td><code>str</code></td>
+<td><a href="https://docs.python.org/3/library/stdtypes.html#str">str</a></td>
 <td>A string representing the environment variables to be set on the cluster.</td>
 </tr>
 </tbody>
@@ -409,11 +404,6 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <section id="attributes-1" class="level4 doc-section doc-section-attributes">
 <h4 class="doc-section doc-section-attributes anchored" data-anchor-id="attributes-1">Attributes</h4>
 <table class="caption-top table">
-<colgroup>
-<col style="width: 11%">
-<col style="width: 9%">
-<col style="width: 79%">
-</colgroup>
 <thead>
 <tr class="header">
 <th>Name</th>
@@ -424,22 +414,22 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <tbody>
 <tr class="odd">
 <td>name</td>
-<td><code>str</code></td>
+<td><a href="https://docs.python.org/3/library/stdtypes.html#str">str</a></td>
 <td>The name of the cluster.</td>
 </tr>
 <tr class="even">
 <td>modules</td>
-<td><code>dict</code></td>
+<td><a href="https://docs.python.org/3/library/stdtypes.html#dict">dict</a></td>
 <td>A dictionary containing the modules installed on the cluster. The keys are the module names and the values are the corresponding versions.</td>
 </tr>
 <tr class="odd">
 <td>singularity_sif_dir</td>
-<td><code>str</code></td>
+<td><a href="https://docs.python.org/3/library/stdtypes.html#str">str</a></td>
 <td>The directory where Singularity SIF files are stored.</td>
 </tr>
 <tr class="even">
 <td>env_vars</td>
-<td><code>str</code></td>
+<td><a href="https://docs.python.org/3/library/stdtypes.html#str">str</a></td>
 <td>A string representing the environment variables to be set on the cluster.</td>
 </tr>
 </tbody>
@@ -449,15 +439,10 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <section id="ccbr_tools.pipeline.hpc.FRCE" class="level3">
 <h3 class="anchored" data-anchor-id="ccbr_tools.pipeline.hpc.FRCE">FRCE</h3>
 <div class="sourceCode" id="cb3"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a>pipeline.hpc.FRCE(<span class="va">self</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<p>The FRCE cluster – child of <a href="../reference/pipeline.hpc.html#ccbr_tools.pipeline.hpc.Cluster"><code>ccbr_tools.pipeline.hpc.Cluster</code></a></p>
+<p>The FRCE cluster – child of <a href="../reference/pipeline.hpc.html#ccbr_tools.pipeline.hpc.Cluster"><code>Cluster</code></a></p>
 <section id="attributes-2" class="level4 doc-section doc-section-attributes">
 <h4 class="doc-section doc-section-attributes anchored" data-anchor-id="attributes-2">Attributes</h4>
 <table class="caption-top table">
-<colgroup>
-<col style="width: 18%">
-<col style="width: 14%">
-<col style="width: 66%">
-</colgroup>
 <thead>
 <tr class="header">
 <th>Name</th>
@@ -468,22 +453,22 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <tbody>
 <tr class="odd">
 <td>name</td>
-<td><code>str</code></td>
+<td><a href="https://docs.python.org/3/library/stdtypes.html#str">str</a></td>
 <td>The name of the cluster.</td>
 </tr>
 <tr class="even">
 <td>modules</td>
-<td><code>dict</code></td>
+<td><a href="https://docs.python.org/3/library/stdtypes.html#dict">dict</a></td>
 <td>A dictionary mapping module names to their corresponding commands.</td>
 </tr>
 <tr class="odd">
 <td>singularity_sif_dir</td>
-<td><code>str</code></td>
+<td><a href="https://docs.python.org/3/library/stdtypes.html#str">str</a></td>
 <td>The directory path for Singularity SIF files.</td>
 </tr>
 <tr class="even">
 <td>env_vars</td>
-<td><code>str</code></td>
+<td><a href="https://docs.python.org/3/library/stdtypes.html#str">str</a></td>
 <td>A string representing the environment variables to be set on the cluster.</td>
 </tr>
 </tbody>
@@ -527,12 +512,6 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <section id="parameters" class="level4 doc-section doc-section-parameters">
 <h4 class="doc-section doc-section-parameters anchored" data-anchor-id="parameters">Parameters</h4>
 <table class="caption-top table">
-<colgroup>
-<col style="width: 8%">
-<col style="width: 17%">
-<col style="width: 62%">
-<col style="width: 11%">
-</colgroup>
 <thead>
 <tr class="header">
 <th>Name</th>
@@ -544,7 +523,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <tbody>
 <tr class="odd">
 <td>debug</td>
-<td><code>bool</code></td>
+<td><a href="https://docs.python.org/3/library/functions.html#bool">bool</a></td>
 <td>If True, uses <code>debug</code> as the HPC name. Defaults to False.</td>
 <td><code>False</code></td>
 </tr>
@@ -583,11 +562,6 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <section id="returns-1" class="level4 doc-section doc-section-returns">
 <h4 class="doc-section doc-section-returns anchored" data-anchor-id="returns-1">Returns</h4>
 <table class="caption-top table">
-<colgroup>
-<col style="width: 12%">
-<col style="width: 18%">
-<col style="width: 68%">
-</colgroup>
 <thead>
 <tr class="header">
 <th>Name</th>
@@ -598,7 +572,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <tbody>
 <tr class="odd">
 <td>hpcname</td>
-<td><code>str</code></td>
+<td><a href="https://docs.python.org/3/library/stdtypes.html#str">str</a></td>
 <td>The HPC name (biowulf, frce, or an empty string)</td>
 </tr>
 </tbody>
@@ -612,11 +586,6 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <section id="returns-2" class="level4 doc-section doc-section-returns">
 <h4 class="doc-section doc-section-returns anchored" data-anchor-id="returns-2">Returns</h4>
 <table class="caption-top table">
-<colgroup>
-<col style="width: 14%">
-<col style="width: 21%">
-<col style="width: 63%">
-</colgroup>
 <thead>
 <tr class="header">
 <th>Name</th>
@@ -627,7 +596,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <tbody>
 <tr class="odd">
 <td>is_loaded</td>
-<td><code>bool</code></td>
+<td><a href="https://docs.python.org/3/library/functions.html#bool">bool</a></td>
 <td>True if the module is loaded, False otherwise</td>
 </tr>
 </tbody>
@@ -641,11 +610,6 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <section id="returns-3" class="level4 doc-section doc-section-returns">
 <h4 class="doc-section doc-section-returns anchored" data-anchor-id="returns-3">Returns</h4>
 <table class="caption-top table">
-<colgroup>
-<col style="width: 16%">
-<col style="width: 17%">
-<col style="width: 65%">
-</colgroup>
 <thead>
 <tr class="header">
 <th>Name</th>
@@ -656,7 +620,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <tbody>
 <tr class="odd">
 <td>scontrol_dict</td>
-<td><code>dict</code></td>
+<td><a href="https://docs.python.org/3/library/stdtypes.html#dict">dict</a></td>
 <td>dictionary containing the output of <code>scontrol show config</code></td>
 </tr>
 </tbody>

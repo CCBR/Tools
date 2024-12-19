@@ -73,8 +73,8 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <link href="../site_libs/quarto-html/quarto-syntax-highlighting-dark-d166b450ba5a8e9f7a0ab969bf6592c1.css" rel="prefetch" class="quarto-color-scheme quarto-color-alternate" id="quarto-text-highlighting-styles">
 <script src="../site_libs/bootstrap/bootstrap.min.js"></script>
 <link href="../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
-<link href="../site_libs/bootstrap/bootstrap-41afc036f4045670d8a63ab41900e02e.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme" id="quarto-bootstrap" data-mode="light">
-<link href="../site_libs/bootstrap/bootstrap-dark-a040cd6abc73b98b2f4c673569425434.min.css" rel="prefetch" append-hash="true" class="quarto-color-scheme quarto-color-alternate" id="quarto-bootstrap" data-mode="dark">
+<link href="../site_libs/bootstrap/bootstrap-04dd6a5ca28aac96903e51a8fbffbcaa.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme" id="quarto-bootstrap" data-mode="light">
+<link href="../site_libs/bootstrap/bootstrap-dark-b3883a83b6cdceb4314f965facc5c958.min.css" rel="prefetch" append-hash="true" class="quarto-color-scheme quarto-color-alternate" id="quarto-bootstrap" data-mode="dark">
 <script id="quarto-search-options" type="application/json">{
   "location": "navbar",
   "copy-button": false,
@@ -127,12 +127,12 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
     <a class="nav-link" href="../index.html"> 
 <span class="menu-text">Home</span></a>
   </li>  
-  <li class="nav-item">
-    <a class="nav-link active" href="../reference/index.html" aria-current="page"> 
-<span class="menu-text">Reference</span></a>
-  </li>  
 </ul>
             <ul class="navbar-nav navbar-nav-scroll ms-auto">
+  <li class="nav-item">
+    <a class="nav-link active" href="../reference/index.html" aria-current="page"> 
+<span class="menu-text">API</span></a>
+  </li>  
   <li class="nav-item">
     <a class="nav-link" href="../CHANGELOG.html"> 
 <span class="menu-text">Changelog</span></a>
@@ -359,12 +359,6 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <section id="parameters" class="level4 doc-section doc-section-parameters">
 <h4 class="doc-section doc-section-parameters anchored" data-anchor-id="parameters">Parameters</h4>
 <table class="caption-top table">
-<colgroup>
-<col style="width: 22%">
-<col style="width: 20%">
-<col style="width: 39%">
-<col style="width: 17%">
-</colgroup>
 <thead>
 <tr class="header">
 <th>Name</th>
@@ -376,7 +370,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <tbody>
 <tr class="odd">
 <td>template_name</td>
-<td><code>str</code></td>
+<td><a href="https://docs.python.org/3/library/stdtypes.html#str">str</a></td>
 <td>Name of the template file</td>
 <td><em>required</em></td>
 </tr>
@@ -396,7 +390,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <tbody>
 <tr class="odd">
 <td>template</td>
-<td><code>str</code></td>
+<td><a href="https://docs.python.org/3/library/stdtypes.html#str">str</a></td>
 <td>Contents of the template file</td>
 </tr>
 </tbody>
@@ -410,12 +404,6 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <section id="parameters-1" class="level4 doc-section doc-section-parameters">
 <h4 class="doc-section doc-section-parameters anchored" data-anchor-id="parameters-1">Parameters</h4>
 <table class="caption-top table">
-<colgroup>
-<col style="width: 9%">
-<col style="width: 8%">
-<col style="width: 74%">
-<col style="width: 7%">
-</colgroup>
 <thead>
 <tr class="header">
 <th>Name</th>
@@ -427,19 +415,19 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <tbody>
 <tr class="odd">
 <td>template_name</td>
-<td><code>str</code></td>
+<td><a href="https://docs.python.org/3/library/stdtypes.html#str">str</a></td>
 <td>The name of the template to use.</td>
 <td><em>required</em></td>
 </tr>
 <tr class="even">
 <td>output_filepath</td>
-<td><code>str</code></td>
+<td><a href="https://docs.python.org/3/library/stdtypes.html#str">str</a></td>
 <td>The filepath to save the output file. If not provided, it will be written to <code>template_name</code> in the current working directory.</td>
 <td><code>None</code></td>
 </tr>
 <tr class="odd">
 <td>**kwargs</td>
-<td><code>str</code></td>
+<td><a href="https://docs.python.org/3/library/stdtypes.html#str">str</a></td>
 <td>Keyword arguments to fill in the template variables.</td>
 <td><code>{}</code></td>
 </tr>
@@ -449,11 +437,6 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <section id="raises" class="level4 doc-section doc-section-raises">
 <h4 class="doc-section doc-section-raises anchored" data-anchor-id="raises">Raises</h4>
 <table class="caption-top table">
-<colgroup>
-<col style="width: 8%">
-<col style="width: 43%">
-<col style="width: 48%">
-</colgroup>
 <thead>
 <tr class="header">
 <th>Name</th>
@@ -464,12 +447,12 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <tbody>
 <tr class="odd">
 <td></td>
-<td><code>FileNotFoundError</code></td>
+<td><a href="https://docs.python.org/3/library/exceptions.html#FileNotFoundError">FileNotFoundError</a></td>
 <td>If the template file is not found.</td>
 </tr>
 <tr class="even">
 <td></td>
-<td><code>IOError</code></td>
+<td><a href="https://docs.python.org/3/library/exceptions.html#IOError">IOError</a></td>
 <td>If there is an error writing the output file.</td>
 </tr>
 </tbody>

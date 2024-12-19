@@ -73,8 +73,8 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <link href="site_libs/quarto-html/quarto-syntax-highlighting-dark-d166b450ba5a8e9f7a0ab969bf6592c1.css" rel="prefetch" class="quarto-color-scheme quarto-color-alternate" id="quarto-text-highlighting-styles">
 <script src="site_libs/bootstrap/bootstrap.min.js"></script>
 <link href="site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
-<link href="site_libs/bootstrap/bootstrap-41afc036f4045670d8a63ab41900e02e.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme" id="quarto-bootstrap" data-mode="light">
-<link href="site_libs/bootstrap/bootstrap-dark-a040cd6abc73b98b2f4c673569425434.min.css" rel="prefetch" append-hash="true" class="quarto-color-scheme quarto-color-alternate" id="quarto-bootstrap" data-mode="dark">
+<link href="site_libs/bootstrap/bootstrap-04dd6a5ca28aac96903e51a8fbffbcaa.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme" id="quarto-bootstrap" data-mode="light">
+<link href="site_libs/bootstrap/bootstrap-dark-b3883a83b6cdceb4314f965facc5c958.min.css" rel="prefetch" append-hash="true" class="quarto-color-scheme quarto-color-alternate" id="quarto-bootstrap" data-mode="dark">
 <script id="quarto-search-options" type="application/json">{
   "location": "navbar",
   "copy-button": false,
@@ -127,12 +127,12 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
     <a class="nav-link active" href="./index.html" aria-current="page"> 
 <span class="menu-text">Home</span></a>
   </li>  
-  <li class="nav-item">
-    <a class="nav-link" href="./reference/index.html"> 
-<span class="menu-text">Reference</span></a>
-  </li>  
 </ul>
             <ul class="navbar-nav navbar-nav-scroll ms-auto">
+  <li class="nav-item">
+    <a class="nav-link" href="./reference/index.html"> 
+<span class="menu-text">API</span></a>
+  </li>  
   <li class="nav-item">
     <a class="nav-link" href="./CHANGELOG.html"> 
 <span class="menu-text">Changelog</span></a>
@@ -194,11 +194,11 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <p><a href="https://github.com/CCBR/Tools/actions/workflows/build-python.yml"><img src="https://github.com/CCBR/Tools/actions/workflows/build-python.yml/badge.svg" class="img-fluid" alt="build"></a> <a href="https://github.com/CCBR/Tools/actions/workflows/docs-quartodoc.yml"><img src="https://github.com/CCBR/Tools/actions/workflows/docs-quartodoc.yml/badge.svg" class="img-fluid" alt="docs"></a> <a href="https://codecov.io/gh/CCBR/Tools"><img src="https://codecov.io/gh/CCBR/Tools/graph/badge.svg?token=O73NOR65B3" class="img-fluid" alt="codecov"></a> <a href="https://doi.org/10.5281/zenodo.13377166"><img src="https://zenodo.org/badge/DOI/10.5281/zenodo.13377166.svg" class="img-fluid" alt="DOI"></a></p>
 <section id="installation" class="level2">
 <h2 class="anchored" data-anchor-id="installation">Installation</h2>
-<p>On biowulf you can access the latest release of <code>ccbr_tools</code> by loading the ccbrpipeliner module:</p>
+<p>On <a href="https://hpc.nih.gov/">biowulf</a> you can access the latest release of <code>ccbr_tools</code> by loading the ccbrpipeliner module:</p>
 <div class="sourceCode" id="cb1"><pre class="sourceCode sh code-with-copy"><code class="sourceCode bash"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="ex">module</span> load ccbrpipeliner</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <p>Outside of biowulf, you can install the package with pip:</p>
 <div class="sourceCode" id="cb2"><pre class="sourceCode sh code-with-copy"><code class="sourceCode bash"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="ex">pip</span> install git+https://github.com/CCBR/Tools</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<p>Or specify a specific tagged version or branch:</p>
+<p>Or specify any tagged version or branch:</p>
 <div class="sourceCode" id="cb3"><pre class="sourceCode sh code-with-copy"><code class="sourceCode bash"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="ex">pip</span> install git+https://github.com/CCBR/Tools@v0.1.0</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </section>
 <section id="usage" class="level2">
@@ -233,7 +233,8 @@ All installed tools:
 <h3 class="anchored" data-anchor-id="python">Python</h3>
 <div class="sourceCode" id="cb6"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> ccbr_tools.pkg_util</span>
 <span id="cb6-2"><a href="#cb6-2" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(ccbr_tools.pkg_util.get_version())</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<pre><code>0.1.2-dev</code></pre>
+<pre><code>0.1.3-dev</code></pre>
+<p>View the API reference for more information: <a href="https://ccbr.github.io/Tools/reference/" class="uri">https://ccbr.github.io/Tools/reference/</a></p>
 </section>
 </section>
 <section id="cli-utilities" class="level2">
@@ -285,14 +286,14 @@ All installed tools:
 <h2 class="anchored" data-anchor-id="citation">Citation</h2>
 <p>Please cite this software if you use it in a publication:</p>
 <blockquote class="blockquote">
-<p>Sovacool K., Koparde V., Kuhn S., Tandon M., Huse S. (2024). CCBR Tools: Utilities for CCBR Bioinformatics Software (version v0.1.2). DOI: 10.5281/zenodo.13377166 URL: https://ccbr.github.io/Tools/</p>
+<p>Sovacool K., Koparde V., Kuhn S., Tandon M., Huse S. (2024). CCBR Tools: Utilities for CCBR Bioinformatics Software (version v0.1.3). DOI: 10.5281/zenodo.13377166 URL: https://ccbr.github.io/Tools/</p>
 </blockquote>
 <section id="bibtex-entry" class="level3">
 <h3 class="anchored" data-anchor-id="bibtex-entry">Bibtex entry</h3>
 <pre><code>@misc{YourReferenceHere,
 author = {Sovacool, Kelly and Koparde, Vishal and Kuhn, Skyler and Tandon, Mayank and Huse, Susan},
 doi = {10.5281/zenodo.13377166},
-month = {11},
+month = {12},
 title = {CCBR Tools: Utilities for CCBR Bioinformatics Software},
 url = {https://ccbr.github.io/Tools/},
 year = {2024}

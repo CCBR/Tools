@@ -73,8 +73,8 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <link href="site_libs/quarto-html/quarto-syntax-highlighting-dark-d166b450ba5a8e9f7a0ab969bf6592c1.css" rel="prefetch" class="quarto-color-scheme quarto-color-alternate" id="quarto-text-highlighting-styles">
 <script src="site_libs/bootstrap/bootstrap.min.js"></script>
 <link href="site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
-<link href="site_libs/bootstrap/bootstrap-41afc036f4045670d8a63ab41900e02e.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme" id="quarto-bootstrap" data-mode="light">
-<link href="site_libs/bootstrap/bootstrap-dark-a040cd6abc73b98b2f4c673569425434.min.css" rel="prefetch" append-hash="true" class="quarto-color-scheme quarto-color-alternate" id="quarto-bootstrap" data-mode="dark">
+<link href="site_libs/bootstrap/bootstrap-04dd6a5ca28aac96903e51a8fbffbcaa.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme" id="quarto-bootstrap" data-mode="light">
+<link href="site_libs/bootstrap/bootstrap-dark-b3883a83b6cdceb4314f965facc5c958.min.css" rel="prefetch" append-hash="true" class="quarto-color-scheme quarto-color-alternate" id="quarto-bootstrap" data-mode="dark">
 <script id="quarto-search-options" type="application/json">{
   "location": "navbar",
   "copy-button": false,
@@ -127,12 +127,12 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
     <a class="nav-link" href="./index.html"> 
 <span class="menu-text">Home</span></a>
   </li>  
-  <li class="nav-item">
-    <a class="nav-link" href="./reference/index.html"> 
-<span class="menu-text">Reference</span></a>
-  </li>  
 </ul>
             <ul class="navbar-nav navbar-nav-scroll ms-auto">
+  <li class="nav-item">
+    <a class="nav-link" href="./reference/index.html"> 
+<span class="menu-text">API</span></a>
+  </li>  
   <li class="nav-item">
     <a class="nav-link" href="./CHANGELOG.html"> 
 <span class="menu-text">Changelog</span></a>
@@ -207,9 +207,9 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <section id="clone-the-repo" class="level3">
 <h3 class="anchored" data-anchor-id="clone-the-repo">Clone the repo</h3>
 <p>If you are a member of <a href="https://github.com/CCBR">CCBR</a>, you can clone this repository to your computer or development environment. Otherwise, you will first need to <a href="https://docs.github.com/en/pull-requests/collaborating-with-pull-requests/working-with-forks/fork-a-repo">fork</a> the repo and clone your fork. You only need to do this step once.</p>
-<div class="sourceCode" id="cb1"><pre class="sourceCode sh code-with-copy"><code class="sourceCode bash"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="fu">git</span> clone https://github.com/CCBR/tools</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb1"><pre class="sourceCode sh code-with-copy"><code class="sourceCode bash"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="fu">git</span> clone https://github.com/CCBR/Tools</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <blockquote class="blockquote">
-<p>Cloning into ‘tools’… <br> remote: Enumerating objects: 1136, done. <br> remote: Counting objects: 100% (463/463), done. <br> remote: Compressing objects: 100% (357/357), done. <br> remote: Total 1136 (delta 149), reused 332 (delta 103), pack-reused 673 <br> Receiving objects: 100% (1136/1136), 11.01 MiB | 9.76 MiB/s, done. <br> Resolving deltas: 100% (530/530), done. <br></p>
+<p>Cloning into ‘Tools’… <br> remote: Enumerating objects: 1136, done. <br> remote: Counting objects: 100% (463/463), done. <br> remote: Compressing objects: 100% (357/357), done. <br> remote: Total 1136 (delta 149), reused 332 (delta 103), pack-reused 673 <br> Receiving objects: 100% (1136/1136), 11.01 MiB | 9.76 MiB/s, done. <br> Resolving deltas: 100% (530/530), done. <br></p>
 </blockquote>
 <div class="sourceCode" id="cb2"><pre class="sourceCode sh code-with-copy"><code class="sourceCode bash"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="bu">cd</span> tools</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </section>
@@ -242,7 +242,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </section>
 <section id="document" class="level4">
 <h4 class="anchored" data-anchor-id="document">document</h4>
-<p>If you have added a new feature or changed the API of an existing feature, you will likely need to update the documentation in <code>docs/</code>. If the changes are in <code>src/</code>, you may need to update the docstrings – we use <a href="https://google.github.io/styleguide/pyguide.html">Google Style for Python code</a>.</p>
+<p>If you have added a new feature or changed the API of an existing feature, you will likely need to update the documentation in <code>docs/</code>. If your changes are in <code>src/</code>, you may need to update the docstrings as well. All functions and classes should have docstrings that follow the <a href="https://sphinxcontrib-napoleon.readthedocs.io/en/latest/example_google.html">Google format</a>.</p>
 </section>
 </section>
 <section id="commit-and-push-your-changes" class="level3">

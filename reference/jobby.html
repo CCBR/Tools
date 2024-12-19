@@ -73,8 +73,8 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <link href="../site_libs/quarto-html/quarto-syntax-highlighting-dark-d166b450ba5a8e9f7a0ab969bf6592c1.css" rel="prefetch" class="quarto-color-scheme quarto-color-alternate" id="quarto-text-highlighting-styles">
 <script src="../site_libs/bootstrap/bootstrap.min.js"></script>
 <link href="../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
-<link href="../site_libs/bootstrap/bootstrap-41afc036f4045670d8a63ab41900e02e.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme" id="quarto-bootstrap" data-mode="light">
-<link href="../site_libs/bootstrap/bootstrap-dark-a040cd6abc73b98b2f4c673569425434.min.css" rel="prefetch" append-hash="true" class="quarto-color-scheme quarto-color-alternate" id="quarto-bootstrap" data-mode="dark">
+<link href="../site_libs/bootstrap/bootstrap-04dd6a5ca28aac96903e51a8fbffbcaa.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme" id="quarto-bootstrap" data-mode="light">
+<link href="../site_libs/bootstrap/bootstrap-dark-b3883a83b6cdceb4314f965facc5c958.min.css" rel="prefetch" append-hash="true" class="quarto-color-scheme quarto-color-alternate" id="quarto-bootstrap" data-mode="dark">
 <script id="quarto-search-options" type="application/json">{
   "location": "navbar",
   "copy-button": false,
@@ -127,12 +127,12 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
     <a class="nav-link" href="../index.html"> 
 <span class="menu-text">Home</span></a>
   </li>  
-  <li class="nav-item">
-    <a class="nav-link active" href="../reference/index.html" aria-current="page"> 
-<span class="menu-text">Reference</span></a>
-  </li>  
 </ul>
             <ul class="navbar-nav navbar-nav-scroll ms-auto">
+  <li class="nav-item">
+    <a class="nav-link active" href="../reference/index.html" aria-current="page"> 
+<span class="menu-text">API</span></a>
+  </li>  
   <li class="nav-item">
     <a class="nav-link" href="../CHANGELOG.html"> 
 <span class="menu-text">Changelog</span></a>
@@ -442,7 +442,7 @@ in any work or product based on this material.</code></pre>
 </tr>
 <tr class="even">
 <td><a href="#ccbr_tools.jobby.get_toolkit">get_toolkit</a></td>
-<td>Finds the best suited tool from a list of</td>
+<td>Finds the best suited tool from a list of possible choices. Assumes tool list is already</td>
 </tr>
 <tr class="odd">
 <td><a href="#ccbr_tools.jobby.jobby">jobby</a></td>
@@ -474,19 +474,124 @@ in any work or product based on this material.</code></pre>
 </tr>
 <tr class="even">
 <td><a href="#ccbr_tools.jobby.which">which</a></td>
-<td>Checks if an executable is in $PATH</td>
+<td>Checks if an executable is in $PATH.</td>
 </tr>
 </tbody>
 </table>
 <section id="ccbr_tools.jobby.add_missing" class="level3">
 <h3 class="anchored" data-anchor-id="ccbr_tools.jobby.add_missing">add_missing</h3>
 <div class="sourceCode" id="cb3"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a>jobby.add_missing(linelist, insertion_dict)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<p>Adds missing information to a list. This can be used to add missing job information fields to the results of job querying tool. <span class="citation" data-cites="param">@param</span> linelist list[<str>]: List containing job information for each field of interest <span class="citation" data-cites="param">@param</span> insertion_dict dict[<int>] = str Dictionary used to insert missing information to a given index, where the keys are indices of the <code>linelist</code> and the values are information to add. Please note that the indices should be zero based. Note that multiple consecutive values should be inserted at once as a list, see example below: Example: add_missing([0,1,2,3,4], {3:[‘+’,‘++’], 1:‘-’, 4:‘@’}) &gt;&gt; [0, ‘-’, 1, 2, ‘+’, ‘++’, 3, ‘@’, 4]</int></str></p>
+<p>Adds missing information to a list. This can be used to add missing job information fields to the results of job querying tool.</p>
+<section id="parameters" class="level4 doc-section doc-section-parameters">
+<h4 class="doc-section doc-section-parameters anchored" data-anchor-id="parameters">Parameters</h4>
+<table class="caption-top table">
+<thead>
+<tr class="header">
+<th>Name</th>
+<th>Type</th>
+<th>Description</th>
+<th>Default</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>linelist</td>
+<td><a href="https://docs.python.org/3/library/stdtypes.html#list">list</a>[<a href="https://docs.python.org/3/library/stdtypes.html#str">str</a>]</td>
+<td>List containing job information for each field of interest.</td>
+<td><em>required</em></td>
+</tr>
+<tr class="even">
+<td>insertion_dict</td>
+<td><a href="https://docs.python.org/3/library/stdtypes.html#dict">dict</a>[<a href="https://docs.python.org/3/library/functions.html#int">int</a>, <code>Union</code>[<a href="https://docs.python.org/3/library/stdtypes.html#str">str</a>, <a href="https://docs.python.org/3/library/stdtypes.html#list">list</a>[<a href="https://docs.python.org/3/library/stdtypes.html#str">str</a>]]]</td>
+<td>Dictionary used to insert missing information to a given index, where the keys are indices of the <code>linelist</code> and the values are information to add. The indices should be zero-based. Multiple consecutive values should be inserted at once as a list.</td>
+<td><em>required</em></td>
+</tr>
+</tbody>
+</table>
+</section>
+<section id="returns" class="level4 doc-section doc-section-returns">
+<h4 class="doc-section doc-section-returns anchored" data-anchor-id="returns">Returns</h4>
+<table class="caption-top table">
+<colgroup>
+<col style="width: 9%">
+<col style="width: 9%">
+<col style="width: 80%">
+</colgroup>
+<thead>
+<tr class="header">
+<th>Name</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td></td>
+<td></td>
+<td>list[str]: The updated list with the missing information added.</td>
+</tr>
+</tbody>
+</table>
+</section>
+<section id="example-1" class="level4 doc-section doc-section-example">
+<h4 class="doc-section doc-section-example anchored" data-anchor-id="example-1">Example</h4>
+<p>add_missing([0,1,2,3,4], {3:[‘+’,‘++’], 1:‘-’, 4:‘@’}) &gt;&gt; [0, ‘-’, 1, 2, ‘+’, ‘++’, 3, ‘@’, 4]</p>
+</section>
 </section>
 <section id="ccbr_tools.jobby.convert_size" class="level3">
 <h3 class="anchored" data-anchor-id="ccbr_tools.jobby.convert_size">convert_size</h3>
 <div class="sourceCode" id="cb4"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a>jobby.convert_size(size_bytes)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <p>Converts bytes to a human readable format.</p>
+<section id="parameters-1" class="level4 doc-section doc-section-parameters">
+<h4 class="doc-section doc-section-parameters anchored" data-anchor-id="parameters-1">Parameters</h4>
+<table class="caption-top table">
+<thead>
+<tr class="header">
+<th>Name</th>
+<th>Type</th>
+<th>Description</th>
+<th>Default</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>size_bytes</td>
+<td><a href="https://docs.python.org/3/library/functions.html#int">int</a></td>
+<td>Size in bytes to convert.</td>
+<td><em>required</em></td>
+</tr>
+</tbody>
+</table>
+</section>
+<section id="returns-1" class="level4 doc-section doc-section-returns">
+<h4 class="doc-section doc-section-returns anchored" data-anchor-id="returns-1">Returns</h4>
+<table class="caption-top table">
+<thead>
+<tr class="header">
+<th>Name</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>str</td>
+<td></td>
+<td>Human readable size in the format ‘X.YZUNIT’.</td>
+</tr>
+</tbody>
+</table>
+</section>
+<section id="example-2" class="level4 doc-section doc-section-example">
+<h4 class="doc-section doc-section-example anchored" data-anchor-id="example-2">Example</h4>
+<blockquote class="blockquote">
+<blockquote class="blockquote">
+<blockquote class="blockquote">
+<p>convert_size(1024) ‘1.0KiB’</p>
+</blockquote>
+</blockquote>
+</blockquote>
+</section>
 </section>
 <section id="ccbr_tools.jobby.dashboard_cli" class="level3">
 <h3 class="anchored" data-anchor-id="ccbr_tools.jobby.dashboard_cli">dashboard_cli</h3>
@@ -495,31 +600,275 @@ in any work or product based on this material.</code></pre>
 –joblist 12345679,12345680<br>
 –fields FIELD,FIELD,FIELD<br>
 –tab –archive</p>
+<section id="parameters-2" class="level4 doc-section doc-section-parameters">
+<h4 class="doc-section doc-section-parameters anchored" data-anchor-id="parameters-2">Parameters</h4>
+<table class="caption-top table">
+<thead>
+<tr class="header">
+<th>Name</th>
+<th>Type</th>
+<th>Description</th>
+<th>Default</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>jobs</td>
+<td><a href="https://docs.python.org/3/library/stdtypes.html#list">list</a></td>
+<td>List of job identifiers.</td>
+<td><em>required</em></td>
+</tr>
+<tr class="even">
+<td>threads</td>
+<td><a href="https://docs.python.org/3/library/functions.html#int">int</a></td>
+<td>Number of threads to use.</td>
+<td><code>1</code></td>
+</tr>
+<tr class="odd">
+<td>tmp_dir</td>
+<td><a href="https://docs.python.org/3/library/stdtypes.html#str">str</a></td>
+<td>Temporary directory to use.</td>
+<td><code>None</code></td>
+</tr>
+</tbody>
+</table>
+</section>
+<section id="returns-2" class="level4 doc-section doc-section-returns">
+<h4 class="doc-section doc-section-returns anchored" data-anchor-id="returns-2">Returns</h4>
+<table class="caption-top table">
+<thead>
+<tr class="header">
+<th>Name</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td></td>
+<td></td>
+<td>None</td>
+</tr>
+</tbody>
+</table>
+</section>
 </section>
 <section id="ccbr_tools.jobby.err" class="level3">
 <h3 class="anchored" data-anchor-id="ccbr_tools.jobby.err">err</h3>
 <div class="sourceCode" id="cb6"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a>jobby.err(<span class="op">*</span>message, <span class="op">**</span>kwargs)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<p>Prints any provided args to standard error. kwargs can be provided to modify print functions behavior. <span class="citation" data-cites="param">@param</span> message <any>: Values printed to standard error <span class="citation" data-cites="params">@params</span> kwargs &lt;print()&gt; Key words to modify print function behavior</any></p>
+<p>Prints any provided args to standard error. kwargs can be provided to modify print function’s behavior.</p>
+<section id="parameters-3" class="level4 doc-section doc-section-parameters">
+<h4 class="doc-section doc-section-parameters anchored" data-anchor-id="parameters-3">Parameters</h4>
+<table class="caption-top table">
+<colgroup>
+<col style="width: 13%">
+<col style="width: 10%">
+<col style="width: 61%">
+<col style="width: 14%">
+</colgroup>
+<thead>
+<tr class="header">
+<th>Name</th>
+<th>Type</th>
+<th>Description</th>
+<th>Default</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>*message</td>
+<td></td>
+<td>Values printed to standard error.</td>
+<td><code>()</code></td>
+</tr>
+<tr class="even">
+<td>**kwargs</td>
+<td></td>
+<td>Key words to modify print function behavior.</td>
+<td><code>{}</code></td>
+</tr>
+</tbody>
+</table>
+</section>
 </section>
 <section id="ccbr_tools.jobby.fatal" class="level3">
 <h3 class="anchored" data-anchor-id="ccbr_tools.jobby.fatal">fatal</h3>
 <div class="sourceCode" id="cb7"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a>jobby.fatal(<span class="op">*</span>message, <span class="op">**</span>kwargs)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<p>Prints any provided args to standard error and exits with an exit code of 1. <span class="citation" data-cites="param">@param</span> message <any>: Values printed to standard error <span class="citation" data-cites="params">@params</span> kwargs &lt;print()&gt; Key words to modify print function behavior</any></p>
+<p>Prints any provided args to standard error and exits with an exit code of 1.</p>
+<section id="parameters-4" class="level4 doc-section doc-section-parameters">
+<h4 class="doc-section doc-section-parameters anchored" data-anchor-id="parameters-4">Parameters</h4>
+<table class="caption-top table">
+<colgroup>
+<col style="width: 13%">
+<col style="width: 10%">
+<col style="width: 61%">
+<col style="width: 14%">
+</colgroup>
+<thead>
+<tr class="header">
+<th>Name</th>
+<th>Type</th>
+<th>Description</th>
+<th>Default</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>*message</td>
+<td></td>
+<td>Values printed to standard error.</td>
+<td><code>()</code></td>
+</tr>
+<tr class="even">
+<td>**kwargs</td>
+<td></td>
+<td>Key words to modify print function behavior.</td>
+<td><code>{}</code></td>
+</tr>
+</tbody>
+</table>
+</section>
 </section>
 <section id="ccbr_tools.jobby.get_toolkit" class="level3">
 <h3 class="anchored" data-anchor-id="ccbr_tools.jobby.get_toolkit">get_toolkit</h3>
 <div class="sourceCode" id="cb8"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a>jobby.get_toolkit(tool_list)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<p>Finds the best suited tool from a list of possible choices. Assumes tool list is already ordered from the best to worst choice. The first tool found in a user’s $PATH is returned. <span class="citation" data-cites="param">@param</span> tool_list list[<str>]: List of ordered tools to find <span class="citation" data-cites="returns">@returns</span> best_choice <str>: First tool found in tool_list</str></str></p>
+<p>Finds the best suited tool from a list of possible choices. Assumes tool list is already ordered from the best to worst choice. The first tool found in a user’s $PATH is returned.</p>
+<section id="parameters-5" class="level4 doc-section doc-section-parameters">
+<h4 class="doc-section doc-section-parameters anchored" data-anchor-id="parameters-5">Parameters</h4>
+<table class="caption-top table">
+<thead>
+<tr class="header">
+<th>Name</th>
+<th>Type</th>
+<th>Description</th>
+<th>Default</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>tool_list</td>
+<td><a href="https://docs.python.org/3/library/stdtypes.html#list">list</a>[<a href="https://docs.python.org/3/library/stdtypes.html#str">str</a>]</td>
+<td>List of ordered tools to find.</td>
+<td><em>required</em></td>
+</tr>
+</tbody>
+</table>
+</section>
+<section id="returns-3" class="level4 doc-section doc-section-returns">
+<h4 class="doc-section doc-section-returns anchored" data-anchor-id="returns-3">Returns</h4>
+<table class="caption-top table">
+<thead>
+<tr class="header">
+<th>Name</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>str</td>
+<td></td>
+<td>First tool found in tool_list.</td>
+</tr>
+</tbody>
+</table>
+</section>
+<section id="raises" class="level4 doc-section doc-section-raises">
+<h4 class="doc-section doc-section-raises anchored" data-anchor-id="raises">Raises</h4>
+<table class="caption-top table">
+<thead>
+<tr class="header">
+<th>Name</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td></td>
+<td><a href="https://docs.python.org/3/library/exceptions.html#SystemExit">SystemExit</a></td>
+<td>If no tools are found in the user’s $PATH.</td>
+</tr>
+</tbody>
+</table>
+</section>
 </section>
 <section id="ccbr_tools.jobby.jobby" class="level3">
 <h3 class="anchored" data-anchor-id="ccbr_tools.jobby.jobby">jobby</h3>
 <div class="sourceCode" id="cb9"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a>jobby.jobby(args)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<p>Wrapper to each supported job scheduler: slurm, etc. Each scheduler has a custom handler to most effectively get and parse job information. <span class="citation" data-cites="param">@param</span> sub_args &lt;parser.parse_args() object&gt;: Parsed command-line arguments <span class="citation" data-cites="return">@return</span> None</p>
+<p>Wrapper to each supported job scheduler: slurm, etc. Each scheduler has a custom handler to most effectively get and parse job information.</p>
+<section id="parameters-6" class="level4 doc-section doc-section-parameters">
+<h4 class="doc-section doc-section-parameters anchored" data-anchor-id="parameters-6">Parameters</h4>
+<table class="caption-top table">
+<thead>
+<tr class="header">
+<th>Name</th>
+<th>Type</th>
+<th>Description</th>
+<th>Default</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>sub_args</td>
+<td><a href="https://docs.python.org/3/library/argparse.html#module-argparse">argparse</a>.<a href="https://docs.python.org/3/library/argparse.html#argparse.Namespace">Namespace</a></td>
+<td>Parsed command-line arguments.</td>
+<td><em>required</em></td>
+</tr>
+</tbody>
+</table>
+</section>
+<section id="returns-4" class="level4 doc-section doc-section-returns">
+<h4 class="doc-section doc-section-returns anchored" data-anchor-id="returns-4">Returns</h4>
+<table class="caption-top table">
+<thead>
+<tr class="header">
+<th>Name</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td></td>
+<td></td>
+<td>None</td>
+</tr>
+</tbody>
+</table>
+</section>
 </section>
 <section id="ccbr_tools.jobby.parsed_arguments" class="level3">
 <h3 class="anchored" data-anchor-id="ccbr_tools.jobby.parsed_arguments">parsed_arguments</h3>
 <div class="sourceCode" id="cb10"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a>jobby.parsed_arguments(name, description)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<p>Parses user-provided command-line arguments. This requires argparse and textwrap packages. To create custom help formatting a text wrapped docstring is used to create the help message for required options. As so, the help message for require options must be suppressed. If a new required argument is added to the cli, it must be updated in the usage statement docstring below. <span class="citation" data-cites="param">@param</span> name <str>: Name of the pipeline or command-line tool <span class="citation" data-cites="param">@param</span> description <str>: Short description of pipeline or command-line tool</str></str></p>
+<p>Parses user-provided command-line arguments. This requires argparse and textwrap packages. To create custom help formatting a text wrapped docstring is used to create the help message for required options. As so, the help message for require options must be suppressed. If a new required argument is added to the cli, it must be updated in the usage statement docstring below.</p>
+<section id="parameters-7" class="level4 doc-section doc-section-parameters">
+<h4 class="doc-section doc-section-parameters anchored" data-anchor-id="parameters-7">Parameters</h4>
+<table class="caption-top table">
+<thead>
+<tr class="header">
+<th>Name</th>
+<th>Type</th>
+<th>Description</th>
+<th>Default</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>name</td>
+<td><a href="https://docs.python.org/3/library/stdtypes.html#str">str</a></td>
+<td>Name of the pipeline or command-line tool.</td>
+<td><em>required</em></td>
+</tr>
+<tr class="even">
+<td>description</td>
+<td><a href="https://docs.python.org/3/library/stdtypes.html#str">str</a></td>
+<td>Short description of pipeline or command-line tool.</td>
+<td><em>required</em></td>
+</tr>
+</tbody>
+</table>
+</section>
 </section>
 <section id="ccbr_tools.jobby.sacct" class="level3">
 <h3 class="anchored" data-anchor-id="ccbr_tools.jobby.sacct">sacct</h3>
@@ -527,33 +876,342 @@ in any work or product based on this material.</code></pre>
 <p>Generic tool to get SLURM job information. <code>sacct</code> should be available on all SLURM clusters. The <code>dashboard_cli</code> is prioritized over using <code>sacct</code> due to perform reasons; however, this method will be portable across different SLURM clusters. To get maximum memory usage for a job, we will need to parse the MaxRSS field from the <code>$SLURM_JOBID.batch</code> lines. Returns job information for the following fields: jobid jobname state partition reqtres alloccpus reqmem maxrss timelimit reserved start end elapsed nodelist user workdir To get maximum memory usage for a job, we will need to parse the MaxRSS fields from the <code>$SLURM_JOBID.batch</code> lines. Runs command: $ sacct -j 12345679,12345680<br>
 –fields FIELD,FIELD,FIELD<br>
 -P –delimiter $’ ’</p>
+<section id="parameters-8" class="level4 doc-section doc-section-parameters">
+<h4 class="doc-section doc-section-parameters anchored" data-anchor-id="parameters-8">Parameters</h4>
+<table class="caption-top table">
+<thead>
+<tr class="header">
+<th>Name</th>
+<th>Type</th>
+<th>Description</th>
+<th>Default</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>jobs</td>
+<td><a href="https://docs.python.org/3/library/stdtypes.html#list">list</a></td>
+<td>List of job identifiers.</td>
+<td><em>required</em></td>
+</tr>
+<tr class="even">
+<td>threads</td>
+<td><a href="https://docs.python.org/3/library/functions.html#int">int</a></td>
+<td>Number of threads to use.</td>
+<td><code>1</code></td>
+</tr>
+<tr class="odd">
+<td>tmp_dir</td>
+<td><a href="https://docs.python.org/3/library/stdtypes.html#str">str</a></td>
+<td>Temporary directory to use.</td>
+<td><code>None</code></td>
+</tr>
+</tbody>
+</table>
+</section>
+<section id="returns-5" class="level4 doc-section doc-section-returns">
+<h4 class="doc-section doc-section-returns anchored" data-anchor-id="returns-5">Returns</h4>
+<table class="caption-top table">
+<thead>
+<tr class="header">
+<th>Name</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td></td>
+<td></td>
+<td>None</td>
+</tr>
+</tbody>
+</table>
+</section>
 </section>
 <section id="ccbr_tools.jobby.sge" class="level3">
 <h3 class="anchored" data-anchor-id="ccbr_tools.jobby.sge">sge</h3>
 <div class="sourceCode" id="cb12"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb12-1"><a href="#cb12-1" aria-hidden="true" tabindex="-1"></a>jobby.sge(jobs, threads, tmp_dir)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<p>Displays SGE job information to standard output. <span class="citation" data-cites="param">@param</span> sub_args &lt;parser.parse_args() object&gt;: Parsed command-line arguments <span class="citation" data-cites="return">@return</span> None</p>
+<p>Displays SGE job information to standard output.</p>
+<section id="parameters-9" class="level4 doc-section doc-section-parameters">
+<h4 class="doc-section doc-section-parameters anchored" data-anchor-id="parameters-9">Parameters</h4>
+<table class="caption-top table">
+<thead>
+<tr class="header">
+<th>Name</th>
+<th>Type</th>
+<th>Description</th>
+<th>Default</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>jobs</td>
+<td><a href="https://docs.python.org/3/library/stdtypes.html#list">list</a></td>
+<td>List of job objects to be processed.</td>
+<td><em>required</em></td>
+</tr>
+<tr class="even">
+<td>threads</td>
+<td><a href="https://docs.python.org/3/library/functions.html#int">int</a></td>
+<td>Number of threads to be used.</td>
+<td><em>required</em></td>
+</tr>
+<tr class="odd">
+<td>tmp_dir</td>
+<td><a href="https://docs.python.org/3/library/stdtypes.html#str">str</a></td>
+<td>Temporary directory for job processing.</td>
+<td><em>required</em></td>
+</tr>
+</tbody>
+</table>
+</section>
+<section id="returns-6" class="level4 doc-section doc-section-returns">
+<h4 class="doc-section doc-section-returns anchored" data-anchor-id="returns-6">Returns</h4>
+<table class="caption-top table">
+<thead>
+<tr class="header">
+<th>Name</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td></td>
+<td></td>
+<td>None</td>
+</tr>
+</tbody>
+</table>
+</section>
 </section>
 <section id="ccbr_tools.jobby.slurm" class="level3">
 <h3 class="anchored" data-anchor-id="ccbr_tools.jobby.slurm">slurm</h3>
 <div class="sourceCode" id="cb13"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb13-1"><a href="#cb13-1" aria-hidden="true" tabindex="-1"></a>jobby.slurm(jobs, threads, tmp_dir)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<p>Displays SLURM job information to standard output. <span class="citation" data-cites="param">@param</span> sub_args &lt;parser.parse_args() object&gt;: Parsed command-line arguments <span class="citation" data-cites="return">@return</span> None</p>
+<p>Displays SLURM job information to standard output.</p>
+<section id="parameters-10" class="level4 doc-section doc-section-parameters">
+<h4 class="doc-section doc-section-parameters anchored" data-anchor-id="parameters-10">Parameters</h4>
+<table class="caption-top table">
+<thead>
+<tr class="header">
+<th>Name</th>
+<th>Type</th>
+<th>Description</th>
+<th>Default</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>jobs</td>
+<td><a href="https://docs.python.org/3/library/stdtypes.html#list">list</a></td>
+<td>List of job identifiers.</td>
+<td><em>required</em></td>
+</tr>
+<tr class="even">
+<td>threads</td>
+<td><a href="https://docs.python.org/3/library/functions.html#int">int</a></td>
+<td>Number of threads to use.</td>
+<td><em>required</em></td>
+</tr>
+<tr class="odd">
+<td>tmp_dir</td>
+<td><a href="https://docs.python.org/3/library/stdtypes.html#str">str</a></td>
+<td>Temporary directory to use.</td>
+<td><em>required</em></td>
+</tr>
+</tbody>
+</table>
+</section>
+<section id="returns-7" class="level4 doc-section doc-section-returns">
+<h4 class="doc-section doc-section-returns anchored" data-anchor-id="returns-7">Returns</h4>
+<table class="caption-top table">
+<thead>
+<tr class="header">
+<th>Name</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td></td>
+<td></td>
+<td>None</td>
+</tr>
+</tbody>
+</table>
+</section>
 </section>
 <section id="ccbr_tools.jobby.to_bytes" class="level3">
 <h3 class="anchored" data-anchor-id="ccbr_tools.jobby.to_bytes">to_bytes</h3>
 <div class="sourceCode" id="cb14"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb14-1"><a href="#cb14-1" aria-hidden="true" tabindex="-1"></a>jobby.to_bytes(size)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <p>Convert a human readable size unit into bytes. Returns None if cannot convert/parse provided size.</p>
+<section id="parameters-11" class="level4 doc-section doc-section-parameters">
+<h4 class="doc-section doc-section-parameters anchored" data-anchor-id="parameters-11">Parameters</h4>
+<table class="caption-top table">
+<thead>
+<tr class="header">
+<th>Name</th>
+<th>Type</th>
+<th>Description</th>
+<th>Default</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>size</td>
+<td><a href="https://docs.python.org/3/library/stdtypes.html#str">str</a></td>
+<td>Human readable size unit to convert.</td>
+<td><em>required</em></td>
+</tr>
+</tbody>
+</table>
+</section>
+<section id="returns-8" class="level4 doc-section doc-section-returns">
+<h4 class="doc-section doc-section-returns anchored" data-anchor-id="returns-8">Returns</h4>
+<table class="caption-top table">
+<thead>
+<tr class="header">
+<th>Name</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>int</td>
+<td></td>
+<td>Size in bytes.</td>
+</tr>
+</tbody>
+</table>
+</section>
+<section id="example-3" class="level4 doc-section doc-section-example">
+<h4 class="doc-section doc-section-example anchored" data-anchor-id="example-3">Example</h4>
+<blockquote class="blockquote">
+<blockquote class="blockquote">
+<blockquote class="blockquote">
+<p>to_bytes(‘1.0KiB’) 1024</p>
+</blockquote>
+</blockquote>
+</blockquote>
+</section>
 </section>
 <section id="ccbr_tools.jobby.uge" class="level3">
 <h3 class="anchored" data-anchor-id="ccbr_tools.jobby.uge">uge</h3>
 <div class="sourceCode" id="cb15"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb15-1"><a href="#cb15-1" aria-hidden="true" tabindex="-1"></a>jobby.uge(jobs, threads, tmp_dir)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<p>Displays UGE job information to standard output. <span class="citation" data-cites="param">@param</span> sub_args &lt;parser.parse_args() object&gt;: Parsed command-line arguments <span class="citation" data-cites="return">@return</span> None</p>
+<p>Displays UGE job information to standard output.</p>
+<section id="parameters-12" class="level4 doc-section doc-section-parameters">
+<h4 class="doc-section doc-section-parameters anchored" data-anchor-id="parameters-12">Parameters</h4>
+<table class="caption-top table">
+<thead>
+<tr class="header">
+<th>Name</th>
+<th>Type</th>
+<th>Description</th>
+<th>Default</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>jobs</td>
+<td><a href="https://docs.python.org/3/library/stdtypes.html#list">list</a></td>
+<td>A list of job identifiers.</td>
+<td><em>required</em></td>
+</tr>
+<tr class="even">
+<td>threads</td>
+<td><a href="https://docs.python.org/3/library/functions.html#int">int</a></td>
+<td>The number of threads to use.</td>
+<td><em>required</em></td>
+</tr>
+<tr class="odd">
+<td>tmp_dir</td>
+<td><a href="https://docs.python.org/3/library/stdtypes.html#str">str</a></td>
+<td>The temporary directory to use.</td>
+<td><em>required</em></td>
+</tr>
+</tbody>
+</table>
+</section>
+<section id="returns-9" class="level4 doc-section doc-section-returns">
+<h4 class="doc-section doc-section-returns anchored" data-anchor-id="returns-9">Returns</h4>
+<table class="caption-top table">
+<thead>
+<tr class="header">
+<th>Name</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td></td>
+<td></td>
+<td>None</td>
+</tr>
+</tbody>
+</table>
+</section>
 </section>
 <section id="ccbr_tools.jobby.which" class="level3">
 <h3 class="anchored" data-anchor-id="ccbr_tools.jobby.which">which</h3>
 <div class="sourceCode" id="cb16"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb16-1"><a href="#cb16-1" aria-hidden="true" tabindex="-1"></a>jobby.which(cmd, path<span class="op">=</span><span class="va">None</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<p>Checks if an executable is in $PATH <span class="citation" data-cites="param">@param</span> cmd <str>: Name of executable to check <span class="citation" data-cites="param">@param</span> path <list>: Optional list of PATHs to check [default: $PATH] <span class="citation" data-cites="return">@return</span> <boolean>: True if exe in PATH, False if not in PATH</boolean></list></str></p>
+<p>Checks if an executable is in $PATH.</p>
+<section id="parameters-13" class="level4 doc-section doc-section-parameters">
+<h4 class="doc-section doc-section-parameters anchored" data-anchor-id="parameters-13">Parameters</h4>
+<table class="caption-top table">
+<thead>
+<tr class="header">
+<th>Name</th>
+<th>Type</th>
+<th>Description</th>
+<th>Default</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>cmd</td>
+<td><a href="https://docs.python.org/3/library/stdtypes.html#str">str</a></td>
+<td>Name of the executable to check.</td>
+<td><em>required</em></td>
+</tr>
+<tr class="even">
+<td>path</td>
+<td><a href="https://docs.python.org/3/library/stdtypes.html#list">list</a></td>
+<td>Optional list of PATHs to check. Defaults to $PATH.</td>
+<td><code>None</code></td>
+</tr>
+</tbody>
+</table>
+</section>
+<section id="returns-10" class="level4 doc-section doc-section-returns">
+<h4 class="doc-section doc-section-returns anchored" data-anchor-id="returns-10">Returns</h4>
+<table class="caption-top table">
+<colgroup>
+<col style="width: 11%">
+<col style="width: 11%">
+<col style="width: 76%">
+</colgroup>
+<thead>
+<tr class="header">
+<th>Name</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>bool</td>
+<td></td>
+<td>True if the executable is in PATH, False otherwise.</td>
+</tr>
+</tbody>
+</table>
 
 
+</section>
 </section>
 </section>
 </section>
