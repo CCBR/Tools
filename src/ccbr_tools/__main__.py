@@ -123,7 +123,7 @@ def version(debug):
 )
 def send_email(to_address, text, subject, attach_html, from_addr, debug):
     """
-    Send an email
+    Send an email (works on biowulf)
 
     \b
     Arguments:
