@@ -2,8 +2,12 @@ from ccbr_tools.shell import shell_run
 from ccbr_tools.pipeline.hpc import get_hpcname
 
 
-def test_version():
+def test_version_flag():
     assert "ccbr_tools, version " in shell_run("ccbr_tools -v")
+
+
+def test_version_cmd():
+    assert "VERSION file path" in shell_run("ccbr_tools version --debug")
 
 
 def test_help():
@@ -50,6 +54,10 @@ def test_help_intersect():
 
 def test_help_peek():
     assert "USAGE: peek <file.tsv> [buffer]" in shell_run("peek -h")
+
+
+def test_send_email():
+    assert "" == shell_run("ccbr_tools send-email -d")
 
 
 def test_help_send_email():
