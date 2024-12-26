@@ -49,7 +49,7 @@ def get_user_info(user_login):
     return get_url_json(url)
 
 
-def get_contrib_html(contrib):
+def get_contrib_html(contrib, img_attr="{width=100px height=100px}"):
     """
     Generates HTML for a GitHub contributor's profile image and link.
 
@@ -66,4 +66,4 @@ def get_contrib_html(contrib):
     user_name = user_info["name"] if user_info["name"] else user_login
     avatar_url = contrib["avatar_url"]
     profile_url = contrib["html_url"]
-    return f"[![{user_name}]({avatar_url})]({profile_url}){{width=80px height=80px}}\n"
+    return f"[![{user_name}]({avatar_url})]({profile_url}){img_attr}\n"
