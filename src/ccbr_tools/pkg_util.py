@@ -164,9 +164,10 @@ def get_url_json(url):
         dict: The JSON data retrieved from the URL if the request is successful, otherwise an empty dictionary.
     """
     r = requests.get(url)
-    if r.status_code != 200:
-        raise requests.HTTPError(
+    if r.status_code == 200:
+        data = r.json()
+    else:
+        raise ConnectionError(
             f"Failed to fetch data from {url}. Request failed with status code {r.status_code}."
         )
-    data = r.json() if r.status_code == 200 else dict()
     return data
