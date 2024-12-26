@@ -1,0 +1,17 @@
+---
+title: Contributors
+---
+
+::: {layout-ncol=4}
+
+```{python}
+#| echo: false
+#| output: asis
+from ccbr_tools.github import print_contributor_images
+print_contributor_images(repo = 'Tools', org = 'CCBR')
+```
+
+:::
+
+
+View the [contributors graph on GitHub](https://github.com/CCBR/Tools/graphs/contributors) for more details.
