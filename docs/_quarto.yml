@@ -39,6 +39,7 @@ quartodoc:
   sections:
     - title: Modules
       contents:
+        - github
         - jobby
         - peek
         - pipeline.cache
