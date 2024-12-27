@@ -9,26 +9,33 @@ website:
   repo-url: https://github.com/CCBR/Tools
   repo-actions: [edit, issue]
   sidebar:
-    - id: reference
-      style: docked
-      contents: "_sidebar.yml"
     - id: docs
       title: Docs
       style: docked
       contents:
-        - text: API Reference
-          href: reference/index.qmd
-        - text: Changelog
-          href: CHANGELOG.md
-        - text: Contributing
-          href: CONTRIBUTING.md
-        - href: contributors.qmd
+        - text: Home
+          href: index.qmd
+        - section: Usage
+          contents:
+            - href: cli.qmd
+            - href: scripts.qmd
+            - text: Python API reference
+              href: reference/index.qmd
+              contents: "_sidebar.yml"
+        - section: Project information
+          contents:
+            - text: Citation
+              href: cite.qmd
+            - text: Contributing
+              href: CONTRIBUTING.md
+            - href: contributors.qmd
+            - text: License
+              href: LICENSE.md
+            - text: Changelog
+              href: CHANGELOG.md
 
   navbar:
     search: true
-    left:
-      - text: Home
-        href: index.md
     right:
       - sidebar:docs
       - icon: github
@@ -57,6 +64,7 @@ quartodoc:
         - pipeline.nextflow
         - pipeline.util
         - pkg_util
+        - send_email
         - shell
         - templates
     - title: Legacy tools
@@ -83,6 +91,11 @@ interlinks:
     #   url: https://ccbr.github.io/actions/reference
     # ccbr_tools:
     #   url: https://ccbr.github.io/Tools/reference
+
+execute:
+  freeze: auto
+  eval: true
+  echo: true
 
 format:
   html:

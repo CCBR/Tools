@@ -31,7 +31,7 @@ def cli():
     Utilities for CCBR Bioinformatics Software
 
     For more options, run:
-    tool_name [command] --help
+    ccbr_tools [command] --help
 
     """
     pass

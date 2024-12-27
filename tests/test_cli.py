@@ -35,15 +35,10 @@ def test_help_jobby():
 
 
 def test_help_jobinfo():
-    hpc = get_hpcname()
     jobinfo_help = shell_run("jobinfo -h")
-    if hpc != "biowulf":
-        assert "This script only works on BIOWULF!" in jobinfo_help
-    else:
-        assert (
-            "Get slurm job information using slurm job id or snakemake.log file"
-            in jobinfo_help
-        )
+    assert (
+        "Get HPC usage metadata for a list of slurm jobids on biowulf" in jobinfo_help
+    )
 
 
 def test_help_intersect():
