@@ -35,7 +35,7 @@ other bioinformatics pipelines for tasks such as determining the HPC
 environment, retrieving available genome annotations, and printing citation and
 version information.
 Explore the `ccbr_tools` reference documentation for more information:
-<https://ccbr.github.io/Tools/latest/reference/>
+<https://ccbr.github.io/Tools/reference/>
 
 ### CLI Utilities
 
