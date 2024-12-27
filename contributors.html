@@ -7,7 +7,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 
-<title>changelog – CCBR Tools</title>
+<title>Contributors – CCBR Tools</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -135,7 +135,7 @@ ul.task-list li input[type="checkbox"] {
       <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" role="button" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
         <i class="bi bi-layout-text-sidebar-reverse"></i>
       </button>
-        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./CHANGELOG.html">Changelog</a></li></ol></nav>
+        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./contributors.html">Contributors</a></li></ol></nav>
         <a class="flex-grow-1" role="navigation" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
         </a>
     </div>
@@ -155,7 +155,7 @@ ul.task-list li input[type="checkbox"] {
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./CHANGELOG.html" class="sidebar-item-text sidebar-link active">
+  <a href="./CHANGELOG.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Changelog</span></a>
   </div>
 </li>
@@ -167,7 +167,7 @@ ul.task-list li input[type="checkbox"] {
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./contributors.html" class="sidebar-item-text sidebar-link">
+  <a href="./contributors.html" class="sidebar-item-text sidebar-link active">
  <span class="menu-text">Contributors</span></a>
   </div>
 </li>
@@ -176,119 +176,91 @@ ul.task-list li input[type="checkbox"] {
 </nav>
 <div id="quarto-sidebar-glass" class="quarto-sidebar-collapse-item" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item"></div>
 <!-- margin-sidebar -->
-    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
-        <nav id="TOC" role="doc-toc" class="toc-active">
-    <h2 id="toc-title">On this page</h2>
-   
-  <ul>
-  <li><a href="#tools-development-version" id="toc-tools-development-version" class="nav-link active" data-scroll-target="#tools-development-version">Tools development version</a></li>
-  <li><a href="#tools-0.1.3" id="toc-tools-0.1.3" class="nav-link" data-scroll-target="#tools-0.1.3">Tools 0.1.3</a></li>
-  <li><a href="#tools-0.1.2" id="toc-tools-0.1.2" class="nav-link" data-scroll-target="#tools-0.1.2">Tools 0.1.2</a></li>
-  <li><a href="#tools-0.1.1" id="toc-tools-0.1.1" class="nav-link" data-scroll-target="#tools-0.1.1">Tools 0.1.1</a></li>
-  <li><a href="#tools-0.1.0" id="toc-tools-0.1.0" class="nav-link" data-scroll-target="#tools-0.1.0">Tools 0.1.0</a>
-  <ul class="collapse">
-  <li><a href="#cli-utilities" id="toc-cli-utilities" class="nav-link" data-scroll-target="#cli-utilities">CLI Utilities</a></li>
-  <li><a href="#external-scripts" id="toc-external-scripts" class="nav-link" data-scroll-target="#external-scripts">External Scripts</a></li>
-  </ul></li>
-  <li><a href="#tools-0.0.1" id="toc-tools-0.0.1" class="nav-link" data-scroll-target="#tools-0.0.1">Tools 0.0.1</a></li>
-  </ul>
-<div class="toc-actions"><ul><li><a href="https://github.com/CCBR/Tools/edit/main/CHANGELOG.md" class="toc-action"><i class="bi bi-github"></i>Edit this page</a></li><li><a href="https://github.com/CCBR/Tools/issues/new" class="toc-action"><i class="bi empty"></i>Report an issue</a></li></ul></div></nav>
+    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar zindex-bottom">
+        
     </div>
 <!-- main -->
-<main class="content" id="quarto-document-content"><header id="title-block-header" class="quarto-title-block"></header>
+<main class="content" id="quarto-document-content">
+
+<header id="title-block-header" class="quarto-title-block default">
+<div class="quarto-title">
+<h1 class="title">Contributors</h1>
+</div>
 
 
 
+<div class="quarto-title-meta">
 
-<section id="tools-development-version" class="level2">
-<h2 class="anchored" data-anchor-id="tools-development-version">Tools development version</h2>
-<ul>
-<li>new command <code>ccbr_tools send-email</code> for sending emails from the command line. (#26, <span class="citation" data-cites="kelly-sovacool">@kelly-sovacool</span>)
-<ul>
-<li>With new helper function: <code>send_email.send_email_msg()</code>.</li>
-<li>Works when run from biowulf.</li>
-</ul></li>
-<li>minor documentation improvements. (#25, <span class="citation" data-cites="kelly-sovacool">@kelly-sovacool</span>)</li>
-<li>new functions for creating a contributors page for documentation websites: <code>github.print_contributor_images()</code>. (#27, <span class="citation" data-cites="kelly-sovacool">@kelly-sovacool</span>)</li>
-</ul>
-</section>
-<section id="tools-0.1.3" class="level2">
-<h2 class="anchored" data-anchor-id="tools-0.1.3">Tools 0.1.3</h2>
-<ul>
-<li>fix shared SIF cache directory spelling for biowulf. (#23, <span class="citation" data-cites="kelly-sovacool">@kelly-sovacool</span>)</li>
-</ul>
-</section>
-<section id="tools-0.1.2" class="level2">
-<h2 class="anchored" data-anchor-id="tools-0.1.2">Tools 0.1.2</h2>
-<ul>
-<li>use major &amp; minor version for docs website subdirectories. (#15, <span class="citation" data-cites="kelly-sovacool">@kelly-sovacool</span>)</li>
-<li>fig bug where <code>nextflow.run()</code> did not import the correct HPC modules. (#20, <span class="citation" data-cites="kelly-sovacool">@kelly-sovacool</span>)</li>
-<li>fix bug in <code>_get_file_mtime()</code>. (#21, <span class="citation" data-cites="kelly-sovacool">@kelly-sovacool</span>)</li>
-</ul>
-</section>
-<section id="tools-0.1.1" class="level2">
-<h2 class="anchored" data-anchor-id="tools-0.1.1">Tools 0.1.1</h2>
-<ul>
-<li>fix: don’t add extra newline to command stdout/stderr for <code>shell_run()</code> and <code>exec_in_context()</code>. (#10, <span class="citation" data-cites="kelly-sovacool">@kelly-sovacool</span>)</li>
-<li>minor docuemntation improvements. (#12, <span class="citation" data-cites="kelly-sovacool">@kelly-sovacool</span>)</li>
-</ul>
-</section>
-<section id="tools-0.1.0" class="level2">
-<h2 class="anchored" data-anchor-id="tools-0.1.0">Tools 0.1.0</h2>
-<p>The Tools repository is now restructured as a Python package. All previous python scripts which included command line utilities have been moved to <code>src/</code>, and all other scripts have been moved to <code>scripts/</code>. In both cases, they are available in the path when the package is installed.</p>
-<p>Functions which were part of both XAVIER and RENEE are available for re-use in other bioinformatics pipelines for tasks such as determining the HPC environment, retrieving available genome annotations, and printing citation and version information. Explore the <code>ccbr_tools</code> reference documentation for more information: <a href="https://ccbr.github.io/Tools/latest/reference/" class="uri">https://ccbr.github.io/Tools/latest/reference/</a></p>
-<section id="cli-utilities" class="level3">
-<h3 class="anchored" data-anchor-id="cli-utilities">CLI Utilities</h3>
-<p>Command-line utilities in CCBR Tools.</p>
-<ul>
-<li><code>ccbr_tools</code></li>
-<li><code>gb2gtf</code></li>
-<li><code>hf</code></li>
-<li><code>intersect</code></li>
-<li><code>jobby</code></li>
-<li><code>jobinfo</code></li>
-<li><code>peek</code></li>
-</ul>
-<p>Run a command with <code>--help</code> to learn how to use it.</p>
-</section>
-<section id="external-scripts" class="level3">
-<h3 class="anchored" data-anchor-id="external-scripts">External Scripts</h3>
-<p>Additional standalone scripts for various common tasks in <a href="scripts/">scripts/</a> are added to the path when this package is installed. They are less robust than the CLI Utilities included in the package and do not have any unit tests.</p>
-<ul>
-<li><code>add_gene_name_to_count_matrix.R</code></li>
-<li><code>aggregate_data_tables.R</code></li>
-<li><code>argparse.bash</code></li>
-<li><code>cancel_snakemake_jobs.sh</code></li>
-<li><code>create_hpc_link.sh</code></li>
-<li><code>extract_value_from_json.py</code></li>
-<li><code>extract_value_from_yaml.py</code></li>
-<li><code>filter_bam_by_readids.py</code></li>
-<li><code>filter_fastq_by_readids_highmem.py</code></li>
-<li><code>filter_fastq_by_readids_highmem_pe.py</code></li>
-<li><code>gather_cluster_stats.sh</code></li>
-<li><code>gather_cluster_stats_biowulf.sh</code></li>
-<li><code>get_buyin_partition_list.bash</code></li>
-<li><code>get_slurm_file_with_error.sh</code></li>
-<li><code>gsea_preranked.sh</code></li>
-<li><code>karyoploter.R</code></li>
-<li><code>make_labels_for_pipeliner.sh</code></li>
-<li><code>rawcounts2normalizedcounts_DESeq2.R</code></li>
-<li><code>rawcounts2normalizedcounts_limmavoom.R</code></li>
-<li><code>run_jobby_on_nextflow_log</code></li>
-<li><code>run_jobby_on_nextflow_log_full_format</code></li>
-<li><code>run_jobby_on_snakemake_log</code></li>
-<li><code>run_jobby_on_snakemake_log_full_format</code></li>
-<li><code>spooker</code></li>
-<li><code>which_vpn.sh</code></li>
-</ul>
-</section>
-</section>
-<section id="tools-0.0.1" class="level2">
-<h2 class="anchored" data-anchor-id="tools-0.0.1">Tools 0.0.1</h2>
-<p>This tag marks the repository state from before refactoring it as a python package.</p>
+    
+  
+    
+  </div>
+  
 
 
-</section>
+</header>
+
+
+<div>
+
+</div>
+<div class="quarto-layout-panel" data-layout-ncol="4">
+<div class="quarto-layout-row">
+<div class="quarto-layout-cell" style="flex-basis: 25.0%;justify-content: flex-start;">
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><a href="https://github.com/kelly-sovacool" width="100px" height="100px"><img src="https://avatars.githubusercontent.com/u/17768269?v=4.png" class="img-fluid figure-img" alt="Kelly Sovacool, PhD"></a></p>
+<figcaption>Kelly Sovacool, PhD</figcaption>
+</figure>
+</div>
+</div>
+<div class="quarto-layout-cell" style="flex-basis: 25.0%;justify-content: flex-start;">
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><a href="https://github.com/kopardev" width="100px" height="100px"><img src="https://avatars.githubusercontent.com/u/1882209?v=4.png" class="img-fluid figure-img" alt="Vishal Koparde, PhD"></a></p>
+<figcaption>Vishal Koparde, PhD</figcaption>
+</figure>
+</div>
+</div>
+<div class="quarto-layout-cell" style="flex-basis: 25.0%;justify-content: flex-start;">
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><a href="https://github.com/apps/github-actions" width="100px" height="100px"><img src="https://avatars.githubusercontent.com/in/15368?v=4.png" class="img-fluid figure-img" alt="github-actions[bot]"></a></p>
+<figcaption>github-actions[bot]</figcaption>
+</figure>
+</div>
+</div>
+<div class="quarto-layout-cell" style="flex-basis: 25.0%;justify-content: flex-start;">
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><a href="https://github.com/skchronicles" width="100px" height="100px"><img src="https://avatars.githubusercontent.com/u/18038345?v=4.png" class="img-fluid figure-img" alt="Skyler Kuhn"></a></p>
+<figcaption>Skyler Kuhn</figcaption>
+</figure>
+</div>
+</div>
+</div>
+<div class="quarto-layout-row">
+<div class="quarto-layout-cell" style="flex-basis: 25.0%;justify-content: flex-start;">
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><a href="https://github.com/susanhuse" width="100px" height="100px"><img src="https://avatars.githubusercontent.com/u/41964031?v=4.png" class="img-fluid figure-img" alt="Susan Huse"></a></p>
+<figcaption>Susan Huse</figcaption>
+</figure>
+</div>
+</div>
+<div class="quarto-layout-cell" style="flex-basis: 25.0%;justify-content: flex-start;">
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><a href="https://github.com/mtandon09" width="100px" height="100px"><img src="https://avatars.githubusercontent.com/u/13066570?v=4.png" class="img-fluid figure-img" alt="Mayank Tandon"></a></p>
+<figcaption>Mayank Tandon</figcaption>
+</figure>
+</div>
+</div>
+</div>
+</div>
+<p>View the <a href="https://github.com/CCBR/Tools/graphs/contributors">contributors graph on GitHub</a> for more details.</p>
+
+
 
 </main> <!-- /main -->
 <script id="quarto-html-after-body" type="application/javascript">
@@ -860,7 +832,7 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
 </div>   
     <div class="nav-footer-center">
       &nbsp;
-    <div class="toc-actions d-sm-block d-md-none"><ul><li><a href="https://github.com/CCBR/Tools/edit/main/CHANGELOG.md" class="toc-action"><i class="bi bi-github"></i>Edit this page</a></li><li><a href="https://github.com/CCBR/Tools/issues/new" class="toc-action"><i class="bi empty"></i>Report an issue</a></li></ul></div></div>
+    <div class="toc-actions"><ul><li><a href="https://github.com/CCBR/Tools/edit/main/contributors.qmd" class="toc-action"><i class="bi bi-github"></i>Edit this page</a></li><li><a href="https://github.com/CCBR/Tools/issues/new" class="toc-action"><i class="bi empty"></i>Report an issue</a></li></ul></div></div>
     <div class="nav-footer-right">
       &nbsp;
     </div>
