@@ -106,7 +106,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 
 </head>
 
-<body class="nav-fixed">
+<body class="nav-sidebar docked nav-fixed">
 
 <div id="quarto-search-results"></div>
   <header id="quarto-header" class="headroom fixed-top">
@@ -122,12 +122,6 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   <span class="navbar-toggler-icon"></span>
 </button>
           <div class="collapse navbar-collapse" id="navbarCollapse">
-            <ul class="navbar-nav navbar-nav-scroll me-auto">
-  <li class="nav-item">
-    <a class="nav-link active" href="./index.html" aria-current="page"> 
-<span class="menu-text">Home</span></a>
-  </li>  
-</ul>
             <ul class="navbar-nav navbar-nav-scroll ms-auto">
   <li class="nav-item dropdown ">
     <a class="nav-link dropdown-toggle" href="#" id="nav-menu-docs" role="link" data-bs-toggle="dropdown" aria-expanded="false">
@@ -135,12 +129,24 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
     </a>
     <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="nav-menu-docs">    
         <li>
-    <a class="dropdown-item" href="./reference/index.html">
- <span class="dropdown-text">API Reference</span></a>
+    <a class="dropdown-item" href="./index.html">
+ <span class="dropdown-text">Home</span></a>
+  </li>  
+        <li><hr class="dropdown-divider"></li>
+        <li class="dropdown-header">Usage</li>
+        <li>
+    <a class="dropdown-item" href="./cli.html">
+ <span class="dropdown-text">Command line interface</span></a>
   </li>  
         <li>
-    <a class="dropdown-item" href="./CHANGELOG.html">
- <span class="dropdown-text">Changelog</span></a>
+    <a class="dropdown-item" href="./scripts.html">
+ <span class="dropdown-text">External scripts</span></a>
+  </li>  
+        <li><hr class="dropdown-divider"></li>
+        <li class="dropdown-header">Project information</li>
+        <li>
+    <a class="dropdown-item" href="./cite.html">
+ <span class="dropdown-text">Citation</span></a>
   </li>  
         <li>
     <a class="dropdown-item" href="./CONTRIBUTING.html">
@@ -149,6 +155,14 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
         <li>
     <a class="dropdown-item" href="./contributors.html">
  <span class="dropdown-text">Contributors</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="./LICENSE.html">
+ <span class="dropdown-text">License</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="./CHANGELOG.html">
+ <span class="dropdown-text">Changelog</span></a>
   </li>  
     </ul>
   </li>
@@ -164,33 +178,123 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </div>
       </div> <!-- /container-fluid -->
     </nav>
+  <nav class="quarto-secondary-nav">
+    <div class="container-fluid d-flex">
+      <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" role="button" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
+        <i class="bi bi-layout-text-sidebar-reverse"></i>
+      </button>
+        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./index.html">Home</a></li></ol></nav>
+        <a class="flex-grow-1" role="navigation" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
+        </a>
+    </div>
+  </nav>
 </header>
 <!-- content -->
 <div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article page-navbar">
 <!-- sidebar -->
+  <nav id="quarto-sidebar" class="sidebar collapse collapse-horizontal quarto-sidebar-collapse-item sidebar-navigation docked overflow-auto">
+    <div class="sidebar-menu-container"> 
+    <ul class="list-unstyled mt-1">
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./index.html" class="sidebar-item-text sidebar-link active">
+ <span class="menu-text">Home</span></a>
+  </div>
+</li>
+        <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-1" role="navigation" aria-expanded="true">
+ <span class="menu-text">Usage</span></a>
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-1" role="navigation" aria-expanded="true" aria-label="Toggle section">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-1" class="collapse list-unstyled sidebar-section depth1 show">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./cli.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Command line interface</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./scripts.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">External scripts</span></a>
+  </div>
+</li>
+          <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a href="./reference/index.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Python API reference</span></a>
+          <a class="sidebar-item-toggle text-start collapsed" data-bs-toggle="collapse" data-bs-target="#" role="navigation" aria-expanded="false" aria-label="Toggle section">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="" class="collapse list-unstyled sidebar-section depth2 ">  
+      </ul>
+  </li>
+      </ul>
+  </li>
+        <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-2" role="navigation" aria-expanded="true">
+ <span class="menu-text">Project information</span></a>
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-2" role="navigation" aria-expanded="true" aria-label="Toggle section">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-2" class="collapse list-unstyled sidebar-section depth1 show">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./cite.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Citation</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./CONTRIBUTING.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Contributing</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./contributors.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Contributors</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./LICENSE.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">License</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./CHANGELOG.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Changelog</span></a>
+  </div>
+</li>
+      </ul>
+  </li>
+    </ul>
+    </div>
+</nav>
+<div id="quarto-sidebar-glass" class="quarto-sidebar-collapse-item" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item"></div>
 <!-- margin-sidebar -->
     <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
         <nav id="TOC" role="doc-toc" class="toc-active">
     <h2 id="toc-title">On this page</h2>
    
   <ul>
-  <li><a href="#ccbr-tools" id="toc-ccbr-tools" class="nav-link active" data-scroll-target="#ccbr-tools">CCBR Tools</a>
-  <ul class="collapse">
-  <li><a href="#installation" id="toc-installation" class="nav-link" data-scroll-target="#installation">Installation</a></li>
-  <li><a href="#usage" id="toc-usage" class="nav-link" data-scroll-target="#usage">Usage</a>
+  <li><a href="#installation" id="toc-installation" class="nav-link active" data-scroll-target="#installation">Installation</a></li>
+  <li><a href="#basic-usage" id="toc-basic-usage" class="nav-link" data-scroll-target="#basic-usage">Basic usage</a>
   <ul class="collapse">
   <li><a href="#cli" id="toc-cli" class="nav-link" data-scroll-target="#cli">CLI</a></li>
   <li><a href="#python" id="toc-python" class="nav-link" data-scroll-target="#python">Python</a></li>
   </ul></li>
-  <li><a href="#cli-utilities" id="toc-cli-utilities" class="nav-link" data-scroll-target="#cli-utilities">CLI Utilities</a></li>
-  <li><a href="#external-scripts" id="toc-external-scripts" class="nav-link" data-scroll-target="#external-scripts">External Scripts</a></li>
-  <li><a href="#citation" id="toc-citation" class="nav-link" data-scroll-target="#citation">Citation</a>
-  <ul class="collapse">
-  <li><a href="#bibtex-entry" id="toc-bibtex-entry" class="nav-link" data-scroll-target="#bibtex-entry">Bibtex entry</a></li>
-  </ul></li>
-  </ul></li>
+  <li><a href="#help-contributing" id="toc-help-contributing" class="nav-link" data-scroll-target="#help-contributing">Help &amp; Contributing</a></li>
   </ul>
-<div class="toc-actions"><ul><li><a href="https://github.com/CCBR/Tools/edit/main/index.md" class="toc-action"><i class="bi bi-github"></i>Edit this page</a></li><li><a href="https://github.com/CCBR/Tools/issues/new" class="toc-action"><i class="bi empty"></i>Report an issue</a></li></ul></div></nav>
+<div class="toc-actions"><ul><li><a href="https://github.com/CCBR/Tools/edit/main/index.qmd" class="toc-action"><i class="bi bi-github"></i>Edit this page</a></li><li><a href="https://github.com/CCBR/Tools/issues/new" class="toc-action"><i class="bi empty"></i>Report an issue</a></li></ul></div></nav>
     </div>
 <!-- main -->
 <main class="content" id="quarto-document-content"><header id="title-block-header" class="quarto-title-block"></header>
@@ -198,9 +302,6 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 
 
 
-<section id="ccbr-tools" class="level1">
-<h1>CCBR Tools</h1>
-<!-- README.md is generated from README.qmd. Please edit that file -->
 <p>Utilities for CCBR Bioinformatics Software</p>
 <p><a href="https://github.com/CCBR/Tools/actions/workflows/build-python.yml"><img src="https://github.com/CCBR/Tools/actions/workflows/build-python.yml/badge.svg" class="img-fluid" alt="build"></a> <a href="https://github.com/CCBR/Tools/actions/workflows/docs-quartodoc.yml"><img src="https://github.com/CCBR/Tools/actions/workflows/docs-quartodoc.yml/badge.svg" class="img-fluid" alt="docs"></a> <a href="https://codecov.io/gh/CCBR/Tools"><img src="https://codecov.io/gh/CCBR/Tools/graph/badge.svg?token=O73NOR65B3" class="img-fluid" alt="codecov"></a> <a href="https://doi.org/10.5281/zenodo.13377166"><img src="https://zenodo.org/badge/DOI/10.5281/zenodo.13377166.svg" class="img-fluid" alt="DOI"></a></p>
 <section id="installation" class="level2">
@@ -212,16 +313,18 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <p>Or specify any tagged version or branch:</p>
 <div class="sourceCode" id="cb3"><pre class="sourceCode sh code-with-copy"><code class="sourceCode bash"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="ex">pip</span> install git+https://github.com/CCBR/Tools@v0.1.0</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </section>
-<section id="usage" class="level2">
-<h2 class="anchored" data-anchor-id="usage">Usage</h2>
+<section id="basic-usage" class="level2">
+<h2 class="anchored" data-anchor-id="basic-usage">Basic usage</h2>
 <section id="cli" class="level3">
 <h3 class="anchored" data-anchor-id="cli">CLI</h3>
 <div class="sourceCode" id="cb4"><pre class="sourceCode sh code-with-copy"><code class="sourceCode bash"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="ex">ccbr_tools</span> <span class="at">--help</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div id="d9874316" class="cell" data-execution_count="1">
+<div class="cell-output cell-output-stdout">
 <pre><code>Usage: ccbr_tools [OPTIONS] COMMAND [ARGS]...
 
   Utilities for CCBR Bioinformatics Software
 
-  For more options, run: tool_name [command] --help
+  For more options, run: ccbr_tools [command] --help
 
 Options:
   -v, --version  Show the version and exit.
@@ -240,80 +343,28 @@ All installed tools:
   jobby
   jobinfo
   peek</code></pre>
+</div>
+</div>
 </section>
 <section id="python" class="level3">
 <h3 class="anchored" data-anchor-id="python">Python</h3>
-<div class="sourceCode" id="cb6"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> ccbr_tools.pkg_util</span>
+<div id="bdb7280f" class="cell" data-execution_count="2">
+<div class="sourceCode cell-code" id="cb6"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> ccbr_tools.pkg_util</span>
 <span id="cb6-2"><a href="#cb6-2" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(ccbr_tools.pkg_util.get_version())</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
 <pre><code>0.1.3-dev</code></pre>
+</div>
+</div>
 <p>View the API reference for more information: <a href="https://ccbr.github.io/Tools/reference/" class="uri">https://ccbr.github.io/Tools/reference/</a></p>
 </section>
 </section>
-<section id="cli-utilities" class="level2">
-<h2 class="anchored" data-anchor-id="cli-utilities">CLI Utilities</h2>
-<p>Command-line utilities in CCBR Tools.</p>
-<ul>
-<li><code>ccbr_tools</code></li>
-<li><code>gb2gtf</code></li>
-<li><code>hf</code></li>
-<li><code>intersect</code></li>
-<li><code>jobby</code></li>
-<li><code>jobinfo</code></li>
-<li><code>peek</code></li>
-</ul>
-<p>Run a command with <code>--help</code> to learn how to use it.</p>
-</section>
-<section id="external-scripts" class="level2">
-<h2 class="anchored" data-anchor-id="external-scripts">External Scripts</h2>
-<p>Additional standalone scripts for various common tasks in <a href="scripts/">scripts/</a> are added to the path when this package is installed. They are less robust than the CLI Utilities included in the package and do not have any unit tests.</p>
-<ul>
-<li><code>add_gene_name_to_count_matrix.R</code></li>
-<li><code>aggregate_data_tables.R</code></li>
-<li><code>argparse.bash</code></li>
-<li><code>cancel_snakemake_jobs.sh</code></li>
-<li><code>create_hpc_link.sh</code></li>
-<li><code>extract_value_from_json.py</code></li>
-<li><code>extract_value_from_yaml.py</code></li>
-<li><code>filter_bam_by_readids.py</code></li>
-<li><code>filter_fastq_by_readids_highmem.py</code></li>
-<li><code>filter_fastq_by_readids_highmem_pe.py</code></li>
-<li><code>gather_cluster_stats.sh</code></li>
-<li><code>gather_cluster_stats_biowulf.sh</code></li>
-<li><code>get_buyin_partition_list.bash</code></li>
-<li><code>get_slurm_file_with_error.sh</code></li>
-<li><code>gsea_preranked.sh</code></li>
-<li><code>karyoploter.R</code></li>
-<li><code>make_labels_for_pipeliner.sh</code></li>
-<li><code>rawcounts2normalizedcounts_DESeq2.R</code></li>
-<li><code>rawcounts2normalizedcounts_limmavoom.R</code></li>
-<li><code>run_jobby_on_nextflow_log</code></li>
-<li><code>run_jobby_on_nextflow_log_full_format</code></li>
-<li><code>run_jobby_on_snakemake_log</code></li>
-<li><code>run_jobby_on_snakemake_log_full_format</code></li>
-<li><code>spooker</code></li>
-<li><code>which_vpn.sh</code></li>
-</ul>
-</section>
-<section id="citation" class="level2">
-<h2 class="anchored" data-anchor-id="citation">Citation</h2>
-<p>Please cite this software if you use it in a publication:</p>
-<blockquote class="blockquote">
-<p>Sovacool K., Koparde V., Kuhn S., Tandon M., Huse S. (2024). CCBR Tools: Utilities for CCBR Bioinformatics Software (version v0.1.3). DOI: 10.5281/zenodo.13377166 URL: https://ccbr.github.io/Tools/</p>
-</blockquote>
-<section id="bibtex-entry" class="level3">
-<h3 class="anchored" data-anchor-id="bibtex-entry">Bibtex entry</h3>
-<pre><code>@misc{YourReferenceHere,
-author = {Sovacool, Kelly and Koparde, Vishal and Kuhn, Skyler and Tandon, Mayank and Huse, Susan},
-doi = {10.5281/zenodo.13377166},
-month = {12},
-title = {CCBR Tools: Utilities for CCBR Bioinformatics Software},
-url = {https://ccbr.github.io/Tools/},
-year = {2024}
-}</code></pre>
+<section id="help-contributing" class="level2">
+<h2 class="anchored" data-anchor-id="help-contributing">Help &amp; Contributing</h2>
+<p>Come across a <strong>bug</strong>? Open an <a href="https://github.com/CCBR/Tools/issues">issue</a> and include a minimal reproducible example.</p>
+<p>Have a <strong>question</strong>? Ask it in <a href="https://github.com/CCBR/Tools/discussions">discussions</a>.</p>
+<p>Want to <strong>contribute</strong> to this project? Check out the <a href="https://CCBR.github.io/Tools/CONTRIBUTING">contributing guidelines</a>.</p>
 
 
-</section>
-</section>
 </section>
 
 </main> <!-- /main -->
@@ -886,7 +937,7 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
 </div>   
     <div class="nav-footer-center">
       &nbsp;
-    <div class="toc-actions d-sm-block d-md-none"><ul><li><a href="https://github.com/CCBR/Tools/edit/main/index.md" class="toc-action"><i class="bi bi-github"></i>Edit this page</a></li><li><a href="https://github.com/CCBR/Tools/issues/new" class="toc-action"><i class="bi empty"></i>Report an issue</a></li></ul></div></div>
+    <div class="toc-actions d-sm-block d-md-none"><ul><li><a href="https://github.com/CCBR/Tools/edit/main/index.qmd" class="toc-action"><i class="bi bi-github"></i>Edit this page</a></li><li><a href="https://github.com/CCBR/Tools/issues/new" class="toc-action"><i class="bi empty"></i>Report an issue</a></li></ul></div></div>
     <div class="nav-footer-right">
       &nbsp;
     </div>

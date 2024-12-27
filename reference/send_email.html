@@ -7,7 +7,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 
-<title>pipeline.cache – CCBR Tools</title>
+<title>send_email – CCBR Tools</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -103,6 +103,35 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   }
 }</script>
 
+  <script src="https://cdnjs.cloudflare.com/polyfill/v3/polyfill.min.js?features=es6"></script>
+  <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml-full.js" type="text/javascript"></script>
+
+<script type="text/javascript">
+const typesetMath = (el) => {
+  if (window.MathJax) {
+    // MathJax Typeset
+    window.MathJax.typeset([el]);
+  } else if (window.katex) {
+    // KaTeX Render
+    var mathElements = el.getElementsByClassName("math");
+    var macros = [];
+    for (var i = 0; i < mathElements.length; i++) {
+      var texText = mathElements[i].firstChild;
+      if (mathElements[i].tagName == "SPAN") {
+        window.katex.render(texText.data, mathElements[i], {
+          displayMode: mathElements[i].classList.contains('display'),
+          throwOnError: false,
+          macros: macros,
+          fleqn: false
+        });
+      }
+    }
+  }
+}
+window.Quarto = {
+  typesetMath
+};
+</script>
 
 </head>
 
@@ -183,7 +212,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
       <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" role="button" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
         <i class="bi bi-layout-text-sidebar-reverse"></i>
       </button>
-        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../reference/github.html">Modules</a></li><li class="breadcrumb-item"><a href="../reference/pipeline.cache.html">pipeline.cache</a></li></ol></nav>
+        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../reference/github.html">Modules</a></li><li class="breadcrumb-item"><a href="../reference/send_email.html">send_email</a></li></ol></nav>
         <a class="flex-grow-1" role="navigation" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
         </a>
     </div>
@@ -230,7 +259,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../reference/pipeline.cache.html" class="sidebar-item-text sidebar-link active">
+  <a href="../reference/pipeline.cache.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">pipeline.cache</span></a>
   </div>
 </li>
@@ -260,7 +289,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../reference/send_email.html" class="sidebar-item-text sidebar-link">
+  <a href="../reference/send_email.html" class="sidebar-item-text sidebar-link active">
  <span class="menu-text">send_email</span></a>
   </div>
 </li>
@@ -341,29 +370,27 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
     <h2 id="toc-title">On this page</h2>
    
   <ul>
-  <li><a href="#ccbr_tools.pipeline.cache" id="toc-ccbr_tools.pipeline.cache" class="nav-link active" data-scroll-target="#ccbr_tools.pipeline.cache">pipeline.cache</a>
+  <li><a href="#ccbr_tools.send_email" id="toc-ccbr_tools.send_email" class="nav-link active" data-scroll-target="#ccbr_tools.send_email">send_email</a>
   <ul class="collapse">
   <li><a href="#functions" id="toc-functions" class="nav-link" data-scroll-target="#functions">Functions</a>
   <ul class="collapse">
-  <li><a href="#ccbr_tools.pipeline.cache.check_cache" id="toc-ccbr_tools.pipeline.cache.check_cache" class="nav-link" data-scroll-target="#ccbr_tools.pipeline.cache.check_cache">check_cache</a></li>
-  <li><a href="#ccbr_tools.pipeline.cache.get_sif_cache_dir" id="toc-ccbr_tools.pipeline.cache.get_sif_cache_dir" class="nav-link" data-scroll-target="#ccbr_tools.pipeline.cache.get_sif_cache_dir">get_sif_cache_dir</a></li>
-  <li><a href="#ccbr_tools.pipeline.cache.get_singularity_cachedir" id="toc-ccbr_tools.pipeline.cache.get_singularity_cachedir" class="nav-link" data-scroll-target="#ccbr_tools.pipeline.cache.get_singularity_cachedir">get_singularity_cachedir</a></li>
-  <li><a href="#ccbr_tools.pipeline.cache.image_cache" id="toc-ccbr_tools.pipeline.cache.image_cache" class="nav-link" data-scroll-target="#ccbr_tools.pipeline.cache.image_cache">image_cache</a></li>
+  <li><a href="#ccbr_tools.send_email.send_email_msg" id="toc-ccbr_tools.send_email.send_email_msg" class="nav-link" data-scroll-target="#ccbr_tools.send_email.send_email_msg">send_email_msg</a></li>
   </ul></li>
   </ul></li>
   </ul>
-<div class="toc-actions"><ul><li><a href="https://github.com/CCBR/Tools/edit/main/reference/pipeline.cache.qmd" class="toc-action"><i class="bi bi-github"></i>Edit this page</a></li><li><a href="https://github.com/CCBR/Tools/issues/new" class="toc-action"><i class="bi empty"></i>Report an issue</a></li></ul></div></nav>
+<div class="toc-actions"><ul><li><a href="https://github.com/CCBR/Tools/edit/main/reference/send_email.qmd" class="toc-action"><i class="bi bi-github"></i>Edit this page</a></li><li><a href="https://github.com/CCBR/Tools/issues/new" class="toc-action"><i class="bi empty"></i>Report an issue</a></li></ul></div></nav>
     </div>
 <!-- main -->
-<main class="content" id="quarto-document-content"><header id="title-block-header" class="quarto-title-block"><nav class="quarto-page-breadcrumbs quarto-title-breadcrumbs d-none d-lg-block" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../reference/github.html">Modules</a></li><li class="breadcrumb-item"><a href="../reference/pipeline.cache.html">pipeline.cache</a></li></ol></nav></header>
+<main class="content" id="quarto-document-content"><header id="title-block-header" class="quarto-title-block"><nav class="quarto-page-breadcrumbs quarto-title-breadcrumbs d-none d-lg-block" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../reference/github.html">Modules</a></li><li class="breadcrumb-item"><a href="../reference/send_email.html">send_email</a></li></ol></nav></header>
 
 
 
 
-<section id="ccbr_tools.pipeline.cache" class="level1">
-<h1>pipeline.cache</h1>
-<p><code>pipeline.cache</code></p>
-<p>Functions for singularity cache management</p>
+<section id="ccbr_tools.send_email" class="level1">
+<h1>send_email</h1>
+<p><code>send_email</code></p>
+<p>Send an email with an attachment</p>
+<p>Intended to run from biowulf</p>
 <section id="functions" class="level2">
 <h2 class="anchored" data-anchor-id="functions">Functions</h2>
 <table class="caption-top table">
@@ -375,27 +402,22 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </thead>
 <tbody>
 <tr class="odd">
-<td><a href="#ccbr_tools.pipeline.cache.check_cache">check_cache</a></td>
-<td>Check if provided SINGULARITY_CACHE is valid. Singularity caches cannot be</td>
-</tr>
-<tr class="even">
-<td><a href="#ccbr_tools.pipeline.cache.get_sif_cache_dir">get_sif_cache_dir</a></td>
-<td>Get the directory path for SIF cache based on the HPC environment.</td>
-</tr>
-<tr class="odd">
-<td><a href="#ccbr_tools.pipeline.cache.get_singularity_cachedir">get_singularity_cachedir</a></td>
-<td>Returns the singularity cache directory.</td>
-</tr>
-<tr class="even">
-<td><a href="#ccbr_tools.pipeline.cache.image_cache">image_cache</a></td>
-<td>Adds Docker Image URIs, or SIF paths to config if singularity cache option is provided.</td>
+<td><a href="#ccbr_tools.send_email.send_email_msg">send_email_msg</a></td>
+<td>Sends an email with an optional message &amp; HTML attachment.</td>
 </tr>
 </tbody>
 </table>
-<section id="ccbr_tools.pipeline.cache.check_cache" class="level3">
-<h3 class="anchored" data-anchor-id="ccbr_tools.pipeline.cache.check_cache">check_cache</h3>
-<div class="sourceCode" id="cb1"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a>pipeline.cache.check_cache(parser, cache, <span class="op">*</span>args, <span class="op">**</span>kwargs)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<p>Check if provided SINGULARITY_CACHE is valid. Singularity caches cannot be shared across users (and must be owned by the user). Singularity strictly enforces 0700 user permission on the cache directory and will return a non-zero exit code.</p>
+<section id="ccbr_tools.send_email.send_email_msg" class="level3">
+<h3 class="anchored" data-anchor-id="ccbr_tools.send_email.send_email_msg">send_email_msg</h3>
+<div class="sourceCode" id="cb1"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a>send_email.send_email_msg(</span>
+<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a>    to_address<span class="op">=</span><span class="st">'$</span><span class="sc">{USER}</span><span class="st">@hpc.nih.gov'</span>,</span>
+<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a>    text<span class="op">=</span><span class="st">'This is an automated email'</span>,</span>
+<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a>    subject<span class="op">=</span><span class="st">'test email from python'</span>,</span>
+<span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a>    attach_html<span class="op">=</span><span class="va">None</span>,</span>
+<span id="cb1-6"><a href="#cb1-6" aria-hidden="true" tabindex="-1"></a>    from_addr<span class="op">=</span><span class="st">'$</span><span class="sc">{USER}</span><span class="st">@hpc.nih.gov'</span>,</span>
+<span id="cb1-7"><a href="#cb1-7" aria-hidden="true" tabindex="-1"></a>    debug<span class="op">=</span><span class="va">False</span>,</span>
+<span id="cb1-8"><a href="#cb1-8" aria-hidden="true" tabindex="-1"></a>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p>Sends an email with an optional message &amp; HTML attachment.</p>
 <section id="parameters" class="level4 doc-section doc-section-parameters">
 <h4 class="doc-section doc-section-parameters anchored" data-anchor-id="parameters">Parameters</h4>
 <table class="caption-top table">
@@ -409,193 +431,34 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </thead>
 <tbody>
 <tr class="odd">
-<td>parser</td>
-<td><a href="https://docs.python.org/3/library/argparse.html#module-argparse">argparse</a>.<a href="https://docs.python.org/3/library/argparse.html#argparse.ArgumentParser">ArgumentParser</a></td>
-<td>Argparse parser object.</td>
-<td><em>required</em></td>
+<td>to_address</td>
+<td><a href="https://docs.python.org/3/library/stdtypes.html#str">str</a></td>
+<td>The email address of the recipient. Defaults to “<span class="math inline">\({USER}@hpc.nih.gov". | `'\)</span>{USER}<span class="citation" data-cites="hpc.nih.gov">@hpc.nih.gov</span>‘<code>| | text        | [str](</code>str<code>) | The plain text content of the email. Defaults to None.                 |</code>’This is an automated email’<code>| | subject     | [str](</code>str<code>) | The subject line of the email. Defaults to "test email from python".   |</code>‘test email from python’<code>| | attach_html | [str](</code>str<code>) | The file path to the HTML attachment. Defaults to None.                |</code>None<code>| | from_addr   | [str](</code>str<code>) | The email address of the sender. Defaults to "${USER}@hpc.nih.gov".    |</code>‘${USER}<span class="citation" data-cites="hpc.nih.gov">@hpc.nih.gov</span>’`</td>
+<td></td>
+</tr>
+</tbody>
+</table>
+</section>
+<section id="raises" class="level4 doc-section doc-section-raises">
+<h4 class="doc-section doc-section-raises anchored" data-anchor-id="raises">Raises</h4>
+<table class="caption-top table">
+<thead>
+<tr class="header">
+<th>Name</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td></td>
+<td><a href="https://docs.python.org/3/library/exceptions.html#FileNotFoundError">FileNotFoundError</a></td>
+<td>If the HTML attachment file does not exist.</td>
 </tr>
 <tr class="even">
-<td>cache</td>
-<td><a href="https://docs.python.org/3/library/stdtypes.html#str">str</a></td>
-<td>Singularity cache directory.</td>
-<td><em>required</em></td>
-</tr>
-</tbody>
-</table>
-</section>
-<section id="returns" class="level4 doc-section doc-section-returns">
-<h4 class="doc-section doc-section-returns anchored" data-anchor-id="returns">Returns</h4>
-<table class="caption-top table">
-<thead>
-<tr class="header">
-<th>Name</th>
-<th>Type</th>
-<th>Description</th>
-</tr>
-</thead>
-<tbody>
-<tr class="odd">
-<td>str</td>
 <td></td>
-<td>If singularity cache directory is valid.</td>
-</tr>
-</tbody>
-</table>
-</section>
-</section>
-<section id="ccbr_tools.pipeline.cache.get_sif_cache_dir" class="level3">
-<h3 class="anchored" data-anchor-id="ccbr_tools.pipeline.cache.get_sif_cache_dir">get_sif_cache_dir</h3>
-<div class="sourceCode" id="cb2"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a>pipeline.cache.get_sif_cache_dir(hpc<span class="op">=</span><span class="va">None</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<p>Get the directory path for SIF cache based on the HPC environment.</p>
-<section id="parameters-1" class="level4 doc-section doc-section-parameters">
-<h4 class="doc-section doc-section-parameters anchored" data-anchor-id="parameters-1">Parameters</h4>
-<table class="caption-top table">
-<thead>
-<tr class="header">
-<th>Name</th>
-<th>Type</th>
-<th>Description</th>
-<th>Default</th>
-</tr>
-</thead>
-<tbody>
-<tr class="odd">
-<td>hpc</td>
-<td><a href="https://docs.python.org/3/library/stdtypes.html#str">str</a></td>
-<td>The name of the HPC environment. Supported values are “biowulf” and “frce”. Defaults to None.</td>
-<td><code>None</code></td>
-</tr>
-</tbody>
-</table>
-</section>
-<section id="returns-1" class="level4 doc-section doc-section-returns">
-<h4 class="doc-section doc-section-returns anchored" data-anchor-id="returns-1">Returns</h4>
-<table class="caption-top table">
-<colgroup>
-<col style="width: 6%">
-<col style="width: 6%">
-<col style="width: 86%">
-</colgroup>
-<thead>
-<tr class="header">
-<th>Name</th>
-<th>Type</th>
-<th>Description</th>
-</tr>
-</thead>
-<tbody>
-<tr class="odd">
-<td>str</td>
-<td></td>
-<td>The directory path for the SIF cache. Returns an empty string if the HPC environment is not recognized.</td>
-</tr>
-</tbody>
-</table>
-</section>
-</section>
-<section id="ccbr_tools.pipeline.cache.get_singularity_cachedir" class="level3">
-<h3 class="anchored" data-anchor-id="ccbr_tools.pipeline.cache.get_singularity_cachedir">get_singularity_cachedir</h3>
-<div class="sourceCode" id="cb3"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a>pipeline.cache.get_singularity_cachedir(output_dir<span class="op">=</span><span class="va">None</span>, cache_dir<span class="op">=</span><span class="va">None</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<p>Returns the singularity cache directory. If no user-provided cache directory is provided, the default singularity cache is in the output directory.</p>
-<section id="parameters-2" class="level4 doc-section doc-section-parameters">
-<h4 class="doc-section doc-section-parameters anchored" data-anchor-id="parameters-2">Parameters</h4>
-<table class="caption-top table">
-<thead>
-<tr class="header">
-<th>Name</th>
-<th>Type</th>
-<th>Description</th>
-<th>Default</th>
-</tr>
-</thead>
-<tbody>
-<tr class="odd">
-<td>output_dir</td>
-<td><a href="https://docs.python.org/3/library/stdtypes.html#str">str</a></td>
-<td>The directory where the output is stored. Defaults to the current working directory if not provided.</td>
-<td><code>None</code></td>
-</tr>
-<tr class="even">
-<td>cache_dir</td>
-<td><a href="https://docs.python.org/3/library/stdtypes.html#str">str</a></td>
-<td>The directory where the singularity cache is stored. Defaults to a hidden “.singularity” directory within the output directory if not provided.</td>
-<td><code>None</code></td>
-</tr>
-</tbody>
-</table>
-</section>
-<section id="returns-2" class="level4 doc-section doc-section-returns">
-<h4 class="doc-section doc-section-returns anchored" data-anchor-id="returns-2">Returns</h4>
-<table class="caption-top table">
-<thead>
-<tr class="header">
-<th>Name</th>
-<th>Type</th>
-<th>Description</th>
-</tr>
-</thead>
-<tbody>
-<tr class="odd">
-<td>str</td>
-<td></td>
-<td>The path to the singularity cache directory.</td>
-</tr>
-</tbody>
-</table>
-</section>
-</section>
-<section id="ccbr_tools.pipeline.cache.image_cache" class="level3">
-<h3 class="anchored" data-anchor-id="ccbr_tools.pipeline.cache.image_cache">image_cache</h3>
-<div class="sourceCode" id="cb4"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a>pipeline.cache.image_cache(sub_args, config)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<p>Adds Docker Image URIs, or SIF paths to config if singularity cache option is provided.</p>
-<p>If singularity cache option is provided and a local SIF does not exist, a warning is displayed and the image will be pulled from URI in ‘config/containers/images.json’.</p>
-<section id="parameters-3" class="level4 doc-section doc-section-parameters">
-<h4 class="doc-section doc-section-parameters anchored" data-anchor-id="parameters-3">Parameters</h4>
-<table class="caption-top table">
-<thead>
-<tr class="header">
-<th>Name</th>
-<th>Type</th>
-<th>Description</th>
-<th>Default</th>
-</tr>
-</thead>
-<tbody>
-<tr class="odd">
-<td>sub_args</td>
-<td><a href="https://docs.python.org/3/library/argparse.html#module-argparse">argparse</a>.<a href="https://docs.python.org/3/library/argparse.html#argparse.Namespace">Namespace</a></td>
-<td>Parsed arguments for run sub-command.</td>
-<td><em>required</em></td>
-</tr>
-<tr class="even">
-<td>config</td>
-<td><a href="https://docs.python.org/3/library/stdtypes.html#dict">dict</a></td>
-<td>Docker Image config dictionary.</td>
-<td><em>required</em></td>
-</tr>
-</tbody>
-</table>
-</section>
-<section id="returns-3" class="level4 doc-section doc-section-returns">
-<h4 class="doc-section doc-section-returns anchored" data-anchor-id="returns-3">Returns</h4>
-<table class="caption-top table">
-<colgroup>
-<col style="width: 7%">
-<col style="width: 7%">
-<col style="width: 84%">
-</colgroup>
-<thead>
-<tr class="header">
-<th>Name</th>
-<th>Type</th>
-<th>Description</th>
-</tr>
-</thead>
-<tbody>
-<tr class="odd">
-<td>dict</td>
-<td></td>
-<td>Updated config dictionary containing user information (username and home directory).</td>
+<td><a href="https://docs.python.org/3/library/smtplib.html#module-smtplib">smtplib</a>.<a href="https://docs.python.org/3/library/smtplib.html#smtplib.SMTPException">SMTPException</a></td>
+<td>If there is an error sending the email.</td>
 </tr>
 </tbody>
 </table>
@@ -1176,7 +1039,7 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
 </div>   
     <div class="nav-footer-center">
       &nbsp;
-    <div class="toc-actions d-sm-block d-md-none"><ul><li><a href="https://github.com/CCBR/Tools/edit/main/reference/pipeline.cache.qmd" class="toc-action"><i class="bi bi-github"></i>Edit this page</a></li><li><a href="https://github.com/CCBR/Tools/issues/new" class="toc-action"><i class="bi empty"></i>Report an issue</a></li></ul></div></div>
+    <div class="toc-actions d-sm-block d-md-none"><ul><li><a href="https://github.com/CCBR/Tools/edit/main/reference/send_email.qmd" class="toc-action"><i class="bi bi-github"></i>Edit this page</a></li><li><a href="https://github.com/CCBR/Tools/issues/new" class="toc-action"><i class="bi empty"></i>Report an issue</a></li></ul></div></div>
     <div class="nav-footer-right">
       &nbsp;
     </div>

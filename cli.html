@@ -7,7 +7,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 
-<title>pipeline.cache – CCBR Tools</title>
+<title>Command line interface – CCBR Tools</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -20,61 +20,27 @@ ul.task-list li input[type="checkbox"] {
   margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
   vertical-align: middle;
 }
-/* CSS for syntax highlighting */
-pre > code.sourceCode { white-space: pre; position: relative; }
-pre > code.sourceCode > span { line-height: 1.25; }
-pre > code.sourceCode > span:empty { height: 1.2em; }
-.sourceCode { overflow: visible; }
-code.sourceCode > span { color: inherit; text-decoration: inherit; }
-div.sourceCode { margin: 1em 0; }
-pre.sourceCode { margin: 0; }
-@media screen {
-div.sourceCode { overflow: auto; }
-}
-@media print {
-pre > code.sourceCode { white-space: pre-wrap; }
-pre > code.sourceCode > span { display: inline-block; text-indent: -5em; padding-left: 5em; }
-}
-pre.numberSource code
-  { counter-reset: source-line 0; }
-pre.numberSource code > span
-  { position: relative; left: -4em; counter-increment: source-line; }
-pre.numberSource code > span > a:first-child::before
-  { content: counter(source-line);
-    position: relative; left: -1em; text-align: right; vertical-align: baseline;
-    border: none; display: inline-block;
-    -webkit-touch-callout: none; -webkit-user-select: none;
-    -khtml-user-select: none; -moz-user-select: none;
-    -ms-user-select: none; user-select: none;
-    padding: 0 4px; width: 4em;
-  }
-pre.numberSource { margin-left: 3em;  padding-left: 4px; }
-div.sourceCode
-  {   }
-@media screen {
-pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
-}
 </style>
 
 
-<script src="../site_libs/quarto-nav/quarto-nav.js"></script>
-<script src="../site_libs/quarto-nav/headroom.min.js"></script>
-<script src="../site_libs/clipboard/clipboard.min.js"></script>
-<script src="../site_libs/quarto-search/autocomplete.umd.js"></script>
-<script src="../site_libs/quarto-search/fuse.min.js"></script>
-<script src="../site_libs/quarto-search/quarto-search.js"></script>
-<meta name="quarto:offset" content="../">
-<script src="../site_libs/quarto-html/quarto.js"></script>
-<script src="../site_libs/quarto-html/popper.min.js"></script>
-<script src="../site_libs/quarto-html/tippy.umd.min.js"></script>
-<script src="../site_libs/quarto-html/anchor.min.js"></script>
-<link href="../site_libs/quarto-html/tippy.css" rel="stylesheet">
-<link href="../site_libs/quarto-html/quarto-syntax-highlighting-e26003cea8cd680ca0c55a263523d882.css" rel="stylesheet" class="quarto-color-scheme" id="quarto-text-highlighting-styles">
-<link href="../site_libs/quarto-html/quarto-syntax-highlighting-dark-d166b450ba5a8e9f7a0ab969bf6592c1.css" rel="prefetch" class="quarto-color-scheme quarto-color-alternate" id="quarto-text-highlighting-styles">
-<script src="../site_libs/bootstrap/bootstrap.min.js"></script>
-<link href="../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
-<link href="../site_libs/bootstrap/bootstrap-6c40ed3430fa5f31e6fbc0b8598a3ef8.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme" id="quarto-bootstrap" data-mode="light">
-<link href="../site_libs/bootstrap/bootstrap-dark-1de5c4262cdefdb2b0852314e1a3ccc6.min.css" rel="prefetch" append-hash="true" class="quarto-color-scheme quarto-color-alternate" id="quarto-bootstrap" data-mode="dark">
+<script src="site_libs/quarto-nav/quarto-nav.js"></script>
+<script src="site_libs/quarto-nav/headroom.min.js"></script>
+<script src="site_libs/clipboard/clipboard.min.js"></script>
+<script src="site_libs/quarto-search/autocomplete.umd.js"></script>
+<script src="site_libs/quarto-search/fuse.min.js"></script>
+<script src="site_libs/quarto-search/quarto-search.js"></script>
+<meta name="quarto:offset" content="./">
+<script src="site_libs/quarto-html/quarto.js"></script>
+<script src="site_libs/quarto-html/popper.min.js"></script>
+<script src="site_libs/quarto-html/tippy.umd.min.js"></script>
+<script src="site_libs/quarto-html/anchor.min.js"></script>
+<link href="site_libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="site_libs/quarto-html/quarto-syntax-highlighting-e26003cea8cd680ca0c55a263523d882.css" rel="stylesheet" class="quarto-color-scheme" id="quarto-text-highlighting-styles">
+<link href="site_libs/quarto-html/quarto-syntax-highlighting-dark-d166b450ba5a8e9f7a0ab969bf6592c1.css" rel="prefetch" class="quarto-color-scheme quarto-color-alternate" id="quarto-text-highlighting-styles">
+<script src="site_libs/bootstrap/bootstrap.min.js"></script>
+<link href="site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+<link href="site_libs/bootstrap/bootstrap-6c40ed3430fa5f31e6fbc0b8598a3ef8.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme" id="quarto-bootstrap" data-mode="light">
+<link href="site_libs/bootstrap/bootstrap-dark-1de5c4262cdefdb2b0852314e1a3ccc6.min.css" rel="prefetch" append-hash="true" class="quarto-color-scheme quarto-color-alternate" id="quarto-bootstrap" data-mode="dark">
 <script id="quarto-search-options" type="application/json">{
   "location": "navbar",
   "copy-button": false,
@@ -113,7 +79,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
     <nav class="navbar navbar-expand-lg " data-bs-theme="dark">
       <div class="navbar-container container-fluid">
       <div class="navbar-brand-container mx-auto">
-    <a class="navbar-brand" href="../index.html">
+    <a class="navbar-brand" href="./index.html">
     <span class="navbar-title">CCBR Tools</span>
     </a>
   </div>
@@ -129,39 +95,39 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
     </a>
     <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="nav-menu-docs">    
         <li>
-    <a class="dropdown-item" href="../index.html">
+    <a class="dropdown-item" href="./index.html">
  <span class="dropdown-text">Home</span></a>
   </li>  
         <li><hr class="dropdown-divider"></li>
         <li class="dropdown-header">Usage</li>
         <li>
-    <a class="dropdown-item" href="../cli.html">
+    <a class="dropdown-item" href="./cli.html">
  <span class="dropdown-text">Command line interface</span></a>
   </li>  
         <li>
-    <a class="dropdown-item" href="../scripts.html">
+    <a class="dropdown-item" href="./scripts.html">
  <span class="dropdown-text">External scripts</span></a>
   </li>  
         <li><hr class="dropdown-divider"></li>
         <li class="dropdown-header">Project information</li>
         <li>
-    <a class="dropdown-item" href="../cite.html">
+    <a class="dropdown-item" href="./cite.html">
  <span class="dropdown-text">Citation</span></a>
   </li>  
         <li>
-    <a class="dropdown-item" href="../CONTRIBUTING.html">
+    <a class="dropdown-item" href="./CONTRIBUTING.html">
  <span class="dropdown-text">Contributing</span></a>
   </li>  
         <li>
-    <a class="dropdown-item" href="../contributors.html">
+    <a class="dropdown-item" href="./contributors.html">
  <span class="dropdown-text">Contributors</span></a>
   </li>  
         <li>
-    <a class="dropdown-item" href="../LICENSE.html">
+    <a class="dropdown-item" href="./LICENSE.html">
  <span class="dropdown-text">License</span></a>
   </li>  
         <li>
-    <a class="dropdown-item" href="../CHANGELOG.html">
+    <a class="dropdown-item" href="./CHANGELOG.html">
  <span class="dropdown-text">Changelog</span></a>
   </li>  
     </ul>
@@ -183,7 +149,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
       <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" role="button" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
         <i class="bi bi-layout-text-sidebar-reverse"></i>
       </button>
-        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../reference/github.html">Modules</a></li><li class="breadcrumb-item"><a href="../reference/pipeline.cache.html">pipeline.cache</a></li></ol></nav>
+        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./cli.html">Usage</a></li><li class="breadcrumb-item"><a href="./cli.html">Command line interface</a></li></ol></nav>
         <a class="flex-grow-1" role="navigation" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
         </a>
     </div>
@@ -197,14 +163,14 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
     <ul class="list-unstyled mt-1">
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../reference/index.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">API Reference</span></a>
+  <a href="./index.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Home</span></a>
   </div>
 </li>
         <li class="sidebar-item sidebar-item-section">
       <div class="sidebar-item-container"> 
             <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-1" role="navigation" aria-expanded="true">
- <span class="menu-text">Modules</span></a>
+ <span class="menu-text">Usage</span></a>
           <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-1" role="navigation" aria-expanded="true" aria-label="Toggle section">
             <i class="bi bi-chevron-right ms-2"></i>
           </a> 
@@ -212,76 +178,33 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
       <ul id="quarto-sidebar-section-1" class="collapse list-unstyled sidebar-section depth1 show">  
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../reference/github.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">github</span></a>
+  <a href="./cli.html" class="sidebar-item-text sidebar-link active">
+ <span class="menu-text">Command line interface</span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../reference/jobby.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">jobby</span></a>
+  <a href="./scripts.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">External scripts</span></a>
   </div>
 </li>
-          <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="../reference/peek.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">peek</span></a>
-  </div>
-</li>
-          <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="../reference/pipeline.cache.html" class="sidebar-item-text sidebar-link active">
- <span class="menu-text">pipeline.cache</span></a>
-  </div>
-</li>
-          <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="../reference/pipeline.hpc.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">pipeline.hpc</span></a>
-  </div>
-</li>
-          <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="../reference/pipeline.nextflow.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">pipeline.nextflow</span></a>
-  </div>
-</li>
-          <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="../reference/pipeline.util.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">pipeline.util</span></a>
-  </div>
-</li>
-          <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="../reference/pkg_util.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">pkg_util</span></a>
-  </div>
-</li>
-          <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="../reference/send_email.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">send_email</span></a>
-  </div>
-</li>
-          <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="../reference/shell.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">shell</span></a>
-  </div>
-</li>
-          <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="../reference/templates.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">templates</span></a>
-  </div>
-</li>
+          <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a href="./reference/index.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Python API reference</span></a>
+          <a class="sidebar-item-toggle text-start collapsed" data-bs-toggle="collapse" data-bs-target="#" role="navigation" aria-expanded="false" aria-label="Toggle section">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="" class="collapse list-unstyled sidebar-section depth2 ">  
+      </ul>
+  </li>
       </ul>
   </li>
         <li class="sidebar-item sidebar-item-section">
       <div class="sidebar-item-container"> 
             <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-2" role="navigation" aria-expanded="true">
- <span class="menu-text">Legacy tools</span></a>
+ <span class="menu-text">Project information</span></a>
           <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-2" role="navigation" aria-expanded="true" aria-label="Toggle section">
             <i class="bi bi-chevron-right ms-2"></i>
           </a> 
@@ -289,44 +212,32 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
       <ul id="quarto-sidebar-section-2" class="collapse list-unstyled sidebar-section depth1 show">  
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../reference/GSEA.deg2gs.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">GSEA.deg2gs</span></a>
+  <a href="./cite.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Citation</span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../reference/GSEA.multitext2excel.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">GSEA.multitext2excel</span></a>
+  <a href="./CONTRIBUTING.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Contributing</span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../reference/GSEA.ncbr_huse.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">GSEA.ncbr_huse</span></a>
+  <a href="./contributors.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Contributors</span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../reference/gb2gtf.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">gb2gtf</span></a>
+  <a href="./LICENSE.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">License</span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../reference/homologfinder.hf.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">homologfinder.hf</span></a>
-  </div>
-</li>
-          <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="../reference/intersect.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">intersect</span></a>
-  </div>
-</li>
-          <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="../reference/jobinfo.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">jobinfo</span></a>
+  <a href="./CHANGELOG.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Changelog</span></a>
   </div>
 </li>
       </ul>
@@ -341,268 +252,294 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
     <h2 id="toc-title">On this page</h2>
    
   <ul>
-  <li><a href="#ccbr_tools.pipeline.cache" id="toc-ccbr_tools.pipeline.cache" class="nav-link active" data-scroll-target="#ccbr_tools.pipeline.cache">pipeline.cache</a>
+  <li><a href="#main-cli" id="toc-main-cli" class="nav-link active" data-scroll-target="#main-cli">Main CLI</a>
   <ul class="collapse">
-  <li><a href="#functions" id="toc-functions" class="nav-link" data-scroll-target="#functions">Functions</a>
-  <ul class="collapse">
-  <li><a href="#ccbr_tools.pipeline.cache.check_cache" id="toc-ccbr_tools.pipeline.cache.check_cache" class="nav-link" data-scroll-target="#ccbr_tools.pipeline.cache.check_cache">check_cache</a></li>
-  <li><a href="#ccbr_tools.pipeline.cache.get_sif_cache_dir" id="toc-ccbr_tools.pipeline.cache.get_sif_cache_dir" class="nav-link" data-scroll-target="#ccbr_tools.pipeline.cache.get_sif_cache_dir">get_sif_cache_dir</a></li>
-  <li><a href="#ccbr_tools.pipeline.cache.get_singularity_cachedir" id="toc-ccbr_tools.pipeline.cache.get_singularity_cachedir" class="nav-link" data-scroll-target="#ccbr_tools.pipeline.cache.get_singularity_cachedir">get_singularity_cachedir</a></li>
-  <li><a href="#ccbr_tools.pipeline.cache.image_cache" id="toc-ccbr_tools.pipeline.cache.image_cache" class="nav-link" data-scroll-target="#ccbr_tools.pipeline.cache.image_cache">image_cache</a></li>
+  <li><a href="#cite" id="toc-cite" class="nav-link" data-scroll-target="#cite">cite</a></li>
+  <li><a href="#send-email" id="toc-send-email" class="nav-link" data-scroll-target="#send-email">send-email</a></li>
+  <li><a href="#version" id="toc-version" class="nav-link" data-scroll-target="#version">version</a></li>
   </ul></li>
+  <li><a href="#additional-utilities" id="toc-additional-utilities" class="nav-link" data-scroll-target="#additional-utilities">Additional utilities</a>
+  <ul class="collapse">
+  <li><a href="#gb2gtf" id="toc-gb2gtf" class="nav-link" data-scroll-target="#gb2gtf">gb2gtf</a></li>
+  <li><a href="#hf" id="toc-hf" class="nav-link" data-scroll-target="#hf">hf</a></li>
+  <li><a href="#intersect" id="toc-intersect" class="nav-link" data-scroll-target="#intersect">intersect</a></li>
+  <li><a href="#jobby" id="toc-jobby" class="nav-link" data-scroll-target="#jobby">jobby</a></li>
+  <li><a href="#jobinfo" id="toc-jobinfo" class="nav-link" data-scroll-target="#jobinfo">jobinfo</a></li>
+  <li><a href="#peek" id="toc-peek" class="nav-link" data-scroll-target="#peek">peek</a></li>
   </ul></li>
   </ul>
-<div class="toc-actions"><ul><li><a href="https://github.com/CCBR/Tools/edit/main/reference/pipeline.cache.qmd" class="toc-action"><i class="bi bi-github"></i>Edit this page</a></li><li><a href="https://github.com/CCBR/Tools/issues/new" class="toc-action"><i class="bi empty"></i>Report an issue</a></li></ul></div></nav>
+<div class="toc-actions"><ul><li><a href="https://github.com/CCBR/Tools/edit/main/cli.qmd" class="toc-action"><i class="bi bi-github"></i>Edit this page</a></li><li><a href="https://github.com/CCBR/Tools/issues/new" class="toc-action"><i class="bi empty"></i>Report an issue</a></li></ul></div></nav>
     </div>
 <!-- main -->
-<main class="content" id="quarto-document-content"><header id="title-block-header" class="quarto-title-block"><nav class="quarto-page-breadcrumbs quarto-title-breadcrumbs d-none d-lg-block" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../reference/github.html">Modules</a></li><li class="breadcrumb-item"><a href="../reference/pipeline.cache.html">pipeline.cache</a></li></ol></nav></header>
+<main class="content" id="quarto-document-content">
+
+<header id="title-block-header" class="quarto-title-block default"><nav class="quarto-page-breadcrumbs quarto-title-breadcrumbs d-none d-lg-block" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./cli.html">Usage</a></li><li class="breadcrumb-item"><a href="./cli.html">Command line interface</a></li></ol></nav>
+<div class="quarto-title">
+<h1 class="title">Command line interface</h1>
+<p class="subtitle lead">CLI utilities in CCBR Tools</p>
+</div>
 
 
 
+<div class="quarto-title-meta">
 
-<section id="ccbr_tools.pipeline.cache" class="level1">
-<h1>pipeline.cache</h1>
-<p><code>pipeline.cache</code></p>
-<p>Functions for singularity cache management</p>
-<section id="functions" class="level2">
-<h2 class="anchored" data-anchor-id="functions">Functions</h2>
-<table class="caption-top table">
-<thead>
-<tr class="header">
-<th>Name</th>
-<th>Description</th>
-</tr>
-</thead>
-<tbody>
-<tr class="odd">
-<td><a href="#ccbr_tools.pipeline.cache.check_cache">check_cache</a></td>
-<td>Check if provided SINGULARITY_CACHE is valid. Singularity caches cannot be</td>
-</tr>
-<tr class="even">
-<td><a href="#ccbr_tools.pipeline.cache.get_sif_cache_dir">get_sif_cache_dir</a></td>
-<td>Get the directory path for SIF cache based on the HPC environment.</td>
-</tr>
-<tr class="odd">
-<td><a href="#ccbr_tools.pipeline.cache.get_singularity_cachedir">get_singularity_cachedir</a></td>
-<td>Returns the singularity cache directory.</td>
-</tr>
-<tr class="even">
-<td><a href="#ccbr_tools.pipeline.cache.image_cache">image_cache</a></td>
-<td>Adds Docker Image URIs, or SIF paths to config if singularity cache option is provided.</td>
-</tr>
-</tbody>
-</table>
-<section id="ccbr_tools.pipeline.cache.check_cache" class="level3">
-<h3 class="anchored" data-anchor-id="ccbr_tools.pipeline.cache.check_cache">check_cache</h3>
-<div class="sourceCode" id="cb1"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a>pipeline.cache.check_cache(parser, cache, <span class="op">*</span>args, <span class="op">**</span>kwargs)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<p>Check if provided SINGULARITY_CACHE is valid. Singularity caches cannot be shared across users (and must be owned by the user). Singularity strictly enforces 0700 user permission on the cache directory and will return a non-zero exit code.</p>
-<section id="parameters" class="level4 doc-section doc-section-parameters">
-<h4 class="doc-section doc-section-parameters anchored" data-anchor-id="parameters">Parameters</h4>
-<table class="caption-top table">
-<thead>
-<tr class="header">
-<th>Name</th>
-<th>Type</th>
-<th>Description</th>
-<th>Default</th>
-</tr>
-</thead>
-<tbody>
-<tr class="odd">
-<td>parser</td>
-<td><a href="https://docs.python.org/3/library/argparse.html#module-argparse">argparse</a>.<a href="https://docs.python.org/3/library/argparse.html#argparse.ArgumentParser">ArgumentParser</a></td>
-<td>Argparse parser object.</td>
-<td><em>required</em></td>
-</tr>
-<tr class="even">
-<td>cache</td>
-<td><a href="https://docs.python.org/3/library/stdtypes.html#str">str</a></td>
-<td>Singularity cache directory.</td>
-<td><em>required</em></td>
-</tr>
-</tbody>
-</table>
-</section>
-<section id="returns" class="level4 doc-section doc-section-returns">
-<h4 class="doc-section doc-section-returns anchored" data-anchor-id="returns">Returns</h4>
-<table class="caption-top table">
-<thead>
-<tr class="header">
-<th>Name</th>
-<th>Type</th>
-<th>Description</th>
-</tr>
-</thead>
-<tbody>
-<tr class="odd">
-<td>str</td>
-<td></td>
-<td>If singularity cache directory is valid.</td>
-</tr>
-</tbody>
-</table>
-</section>
-</section>
-<section id="ccbr_tools.pipeline.cache.get_sif_cache_dir" class="level3">
-<h3 class="anchored" data-anchor-id="ccbr_tools.pipeline.cache.get_sif_cache_dir">get_sif_cache_dir</h3>
-<div class="sourceCode" id="cb2"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a>pipeline.cache.get_sif_cache_dir(hpc<span class="op">=</span><span class="va">None</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<p>Get the directory path for SIF cache based on the HPC environment.</p>
-<section id="parameters-1" class="level4 doc-section doc-section-parameters">
-<h4 class="doc-section doc-section-parameters anchored" data-anchor-id="parameters-1">Parameters</h4>
-<table class="caption-top table">
-<thead>
-<tr class="header">
-<th>Name</th>
-<th>Type</th>
-<th>Description</th>
-<th>Default</th>
-</tr>
-</thead>
-<tbody>
-<tr class="odd">
-<td>hpc</td>
-<td><a href="https://docs.python.org/3/library/stdtypes.html#str">str</a></td>
-<td>The name of the HPC environment. Supported values are “biowulf” and “frce”. Defaults to None.</td>
-<td><code>None</code></td>
-</tr>
-</tbody>
-</table>
-</section>
-<section id="returns-1" class="level4 doc-section doc-section-returns">
-<h4 class="doc-section doc-section-returns anchored" data-anchor-id="returns-1">Returns</h4>
-<table class="caption-top table">
-<colgroup>
-<col style="width: 6%">
-<col style="width: 6%">
-<col style="width: 86%">
-</colgroup>
-<thead>
-<tr class="header">
-<th>Name</th>
-<th>Type</th>
-<th>Description</th>
-</tr>
-</thead>
-<tbody>
-<tr class="odd">
-<td>str</td>
-<td></td>
-<td>The directory path for the SIF cache. Returns an empty string if the HPC environment is not recognized.</td>
-</tr>
-</tbody>
-</table>
-</section>
-</section>
-<section id="ccbr_tools.pipeline.cache.get_singularity_cachedir" class="level3">
-<h3 class="anchored" data-anchor-id="ccbr_tools.pipeline.cache.get_singularity_cachedir">get_singularity_cachedir</h3>
-<div class="sourceCode" id="cb3"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a>pipeline.cache.get_singularity_cachedir(output_dir<span class="op">=</span><span class="va">None</span>, cache_dir<span class="op">=</span><span class="va">None</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<p>Returns the singularity cache directory. If no user-provided cache directory is provided, the default singularity cache is in the output directory.</p>
-<section id="parameters-2" class="level4 doc-section doc-section-parameters">
-<h4 class="doc-section doc-section-parameters anchored" data-anchor-id="parameters-2">Parameters</h4>
-<table class="caption-top table">
-<thead>
-<tr class="header">
-<th>Name</th>
-<th>Type</th>
-<th>Description</th>
-<th>Default</th>
-</tr>
-</thead>
-<tbody>
-<tr class="odd">
-<td>output_dir</td>
-<td><a href="https://docs.python.org/3/library/stdtypes.html#str">str</a></td>
-<td>The directory where the output is stored. Defaults to the current working directory if not provided.</td>
-<td><code>None</code></td>
-</tr>
-<tr class="even">
-<td>cache_dir</td>
-<td><a href="https://docs.python.org/3/library/stdtypes.html#str">str</a></td>
-<td>The directory where the singularity cache is stored. Defaults to a hidden “.singularity” directory within the output directory if not provided.</td>
-<td><code>None</code></td>
-</tr>
-</tbody>
-</table>
-</section>
-<section id="returns-2" class="level4 doc-section doc-section-returns">
-<h4 class="doc-section doc-section-returns anchored" data-anchor-id="returns-2">Returns</h4>
-<table class="caption-top table">
-<thead>
-<tr class="header">
-<th>Name</th>
-<th>Type</th>
-<th>Description</th>
-</tr>
-</thead>
-<tbody>
-<tr class="odd">
-<td>str</td>
-<td></td>
-<td>The path to the singularity cache directory.</td>
-</tr>
-</tbody>
-</table>
-</section>
-</section>
-<section id="ccbr_tools.pipeline.cache.image_cache" class="level3">
-<h3 class="anchored" data-anchor-id="ccbr_tools.pipeline.cache.image_cache">image_cache</h3>
-<div class="sourceCode" id="cb4"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a>pipeline.cache.image_cache(sub_args, config)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<p>Adds Docker Image URIs, or SIF paths to config if singularity cache option is provided.</p>
-<p>If singularity cache option is provided and a local SIF does not exist, a warning is displayed and the image will be pulled from URI in ‘config/containers/images.json’.</p>
-<section id="parameters-3" class="level4 doc-section doc-section-parameters">
-<h4 class="doc-section doc-section-parameters anchored" data-anchor-id="parameters-3">Parameters</h4>
-<table class="caption-top table">
-<thead>
-<tr class="header">
-<th>Name</th>
-<th>Type</th>
-<th>Description</th>
-<th>Default</th>
-</tr>
-</thead>
-<tbody>
-<tr class="odd">
-<td>sub_args</td>
-<td><a href="https://docs.python.org/3/library/argparse.html#module-argparse">argparse</a>.<a href="https://docs.python.org/3/library/argparse.html#argparse.Namespace">Namespace</a></td>
-<td>Parsed arguments for run sub-command.</td>
-<td><em>required</em></td>
-</tr>
-<tr class="even">
-<td>config</td>
-<td><a href="https://docs.python.org/3/library/stdtypes.html#dict">dict</a></td>
-<td>Docker Image config dictionary.</td>
-<td><em>required</em></td>
-</tr>
-</tbody>
-</table>
-</section>
-<section id="returns-3" class="level4 doc-section doc-section-returns">
-<h4 class="doc-section doc-section-returns anchored" data-anchor-id="returns-3">Returns</h4>
-<table class="caption-top table">
-<colgroup>
-<col style="width: 7%">
-<col style="width: 7%">
-<col style="width: 84%">
-</colgroup>
-<thead>
-<tr class="header">
-<th>Name</th>
-<th>Type</th>
-<th>Description</th>
-</tr>
-</thead>
-<tbody>
-<tr class="odd">
-<td>dict</td>
-<td></td>
-<td>Updated config dictionary containing user information (username and home directory).</td>
-</tr>
-</tbody>
-</table>
+    
+  
+    
+  </div>
+  
 
 
+</header>
+
+
+<section id="main-cli" class="level2">
+<h2 class="anchored" data-anchor-id="main-cli">Main CLI</h2>
+<pre><code>Usage: ccbr_tools [OPTIONS] COMMAND [ARGS]...
+
+  Utilities for CCBR Bioinformatics Software
+
+  For more options, run: ccbr_tools [command] --help
+
+Options:
+  -v, --version  Show the version and exit.
+  -h, --help     Show this message and exit.
+
+Commands:
+  send-email  Send an email (works on biowulf)
+  cite        Print the citation in the desired format
+  version     Print the version of ccbr_tools
+
+All installed tools:
+  ccbr_tools
+  gb2gtf
+  hf
+  intersect
+  jobby
+  jobinfo
+  peek
+</code></pre>
+<section id="cite" class="level3">
+<h3 class="anchored" data-anchor-id="cite">cite</h3>
+<pre><code>Usage: ccbr_tools cite [OPTIONS] CITATION_FILE
+
+  Print the citation in the desired format
+
+  citation_file : Path to a file in Citation File Format (CFF) [default: the
+  CFF for ccbr_tools]
+
+Options:
+  -f, --output-format [apalike|bibtex|cff|codemeta|endnote|ris|schema.org|zenodo]
+                                  Output format for the citation
+  -h, --help                      Show this message and exit.
+</code></pre>
+</section>
+<section id="send-email" class="level3">
+<h3 class="anchored" data-anchor-id="send-email">send-email</h3>
+<pre><code>Usage: ccbr_tools send-email [OPTIONS] [TO_ADDRESS] [TEXT]
+
+  Send an email (works on biowulf)
+
+  Arguments:
+      to_address    The email address of the recipient
+      text          The plain text content of the email
+
+Options:
+  -s, --subject TEXT      The subject line of the email
+  -a, --attach-html PATH  The file path to the HTML attachment
+  -r, --from-addr TEXT    The email address of the sender
+  -d, --debug             Return the Email Message object without sending the
+                          email
+  -h, --help              Show this message and exit.
+</code></pre>
+</section>
+<section id="version" class="level3">
+<h3 class="anchored" data-anchor-id="version">version</h3>
+<pre><code>Usage: ccbr_tools version [OPTIONS]
+
+  Print the version of ccbr_tools
+
+Options:
+  -d, --debug  Print the path to the VERSION file
+  -h, --help   Show this message and exit.
+</code></pre>
 </section>
 </section>
+<section id="additional-utilities" class="level2">
+<h2 class="anchored" data-anchor-id="additional-utilities">Additional utilities</h2>
+<section id="gb2gtf" class="level3">
+<h3 class="anchored" data-anchor-id="gb2gtf">gb2gtf</h3>
+<pre><code>Usage: gb2gtf sequence.gb &gt; sequence.gtf
+</code></pre>
+</section>
+<section id="hf" class="level3">
+<h3 class="anchored" data-anchor-id="hf">hf</h3>
+<pre><code>
+Finds homologs in human and mouse.
+
+About:
+    hf or HomologFinder finds homologs in human and mouse.
+    if the input gene or genelist is human, then it returns mouse homolog(s) and vice versa
+
+Usage:
+    $ hf -h
+
+Examples:
+    $ hf -g ZNF365
+
+    $ hf -l Wdr53,Zfp365
+
+    $ hf -f genelist.txt
+
+
+usage: hf [-h] [-v] [-g GENE] [-l GENELIST] [-f GENELISTFILE]
+
+Get Human2Mouse (or Mouse2Human) homolog gene or genelist
+
+options:
+  -h, --help            show this help message and exit
+  -v, --version         show program's version number and exit
+  -g GENE, --gene GENE  single gene name
+  -l GENELIST, --genelist GENELIST
+                        comma separated gene list
+  -f GENELISTFILE, --genelistfile GENELISTFILE
+                        genelist in file (one gene per line)
+</code></pre>
+</section>
+<section id="intersect" class="level3">
+<h3 class="anchored" data-anchor-id="intersect">intersect</h3>
+<pre><code>USAGE:
+intersect filename1 filename2 f1ColumnIndex F2ColumnIndex
+    --Ex. intersect file1 file2 0 0
+</code></pre>
+</section>
+<section id="jobby" class="level3">
+<h3 class="anchored" data-anchor-id="jobby">jobby</h3>
+<pre><code>[1m[40m[96mjobby[0m: [1mWill take your job(s)... and display their information![0m
+
+[1m[4mSynopsis:[0m
+  $ jobby [--version] [--help] \
+        [--scheduler {slurm | ...}] \
+        [--threads THREADS] [--tmp-dir TMP_DIR] \
+        &lt;JOB_ID [JOB_ID ...]&gt;
+
+[1m[4mDescription:[0m
+  jobby will take your past jobs and display their job information
+in a standardized format. Why???! We have pipelines running on several
+different clusters (using different job schedulers). jobby centralizes
+and abstracts the process of querying different job schedulers within
+a unified command-line interface.
+
+  For each supported scheduler, jobby will determine the best method
+on a given target system for getting job information to return to the
+user in a common output format.
+
+[1m[4mRequired Positional Arguments:[0m
+  &lt;JOB_ID [JOB_ID ...]&gt;
+                       Identiers of past jobs. One or more JOB_IDs
+                       can be provided. Multiple JOB_IDs should be
+                       separated by a space. Information for each
+                       of the JOB_IDs will be displayed to standard
+                       output. Please see example section below for
+                       more information.
+
+[1m[4mOptions:[0m
+  -s,--scheduler {slurm | ...}
+                        @Default: slurm
+                        Job scheduler. Defines the job scheduler
+                        of the target system. Additional support
+                        for more schedulers coming soon!
+                          @Example: --scheduler slurm
+  -n, --threads THREADS
+                        @Default: 1
+                        Number of threads to query the scheduler
+                        in parallel.
+                          @Example: --threads: 8
+  -t, --tmp-dir TMP_DIR
+                        @Default: /tmp/
+                        Temporary directory. Path on the filesystem
+                        for writing temporary output files. Ideally,
+                        this path should point to a dedicated space
+                        on the filesystem for writing tmp files. If
+                        you need to inject a variable into this path
+                        that should NOT be expanded, please quote the
+                        options value in single quotes. The default
+                        location of this option is set to the system
+                        default via the $TMPDIR environment variable.
+                          @Example: --tmp-dir '/scratch/$USER/'
+
+  -h, --help            Shows help and usage information and exits.
+                          @Example: --help
+
+  -v, --version         Displays version information and exits.
+                          @Example: --version
+
+[1m[4mExample:[0m
+# Please avoid running jobby
+# on a cluster's head node!
+./jobby -s slurm  -n 4 18627542 13627516 58627597 48627666
+
+[1m[4mVersion:[0m
+  v0.2.0
+</code></pre>
+</section>
+<section id="jobinfo" class="level3">
+<h3 class="anchored" data-anchor-id="jobinfo">jobinfo</h3>
+<pre><code>
+Get HPC usage metadata for a list of slurm jobids on biowulf
+
+About:
+    This wrapper script works only on BIOWULF!
+    This script usage the "dashboard_cli" utility on biowulf to get HPC usage metadata
+    for a list of slurm jobids. These slurm jobids can be either provided at command
+    line or extracted from a snakemake.log file. Using snakemake.log file option together
+    with --failonly option lists path to the STDERR files for failed jobs. This can be
+    very useful to debug failed Snakemake workflows.
+
+USAGE:
+    $ jobinfo -h
+
+Example:
+    $ jobinfo -j 123456,7891011
+    $ jobinfo -s /path/to/snakemake.log
+    $ jobinfo -j 123456,7891011 -o /path/to/report.tsv
+    $ jobinfo -s /path/to/snakemake.log --failonly
+
+usage: jobinfo [-h] [-v] [-j JOBLIST] [-s SNAKEMAKELOG] [-o OUTPUT] [-f]
+
+Get slurm job information using slurm job id or snakemake.log file
+
+options:
+  -h, --help            show this help message and exit
+  -v, --version         show program's version number and exit
+  -j JOBLIST, --joblist JOBLIST
+                        comma separated list of jobids. Cannot be used
+                        together with -s option.
+  -s SNAKEMAKELOG, --snakemakelog SNAKEMAKELOG
+                        snakemake.log file. Slurm jobids are extracted from
+                        here. Cannot be used together with -j option.
+  -o OUTPUT, --output OUTPUT
+                        Path to output file. All jobs (all states) and all
+                        columns are reported in output file.
+  -f, --failonly        output FAILED jobs only (onscreen). Path to the STDERR
+                        files for failed jobs. All jobs are reported with -o
+                        option.
+</code></pre>
+</section>
+<section id="peek" class="level3">
+<h3 class="anchored" data-anchor-id="peek">peek</h3>
+<pre><code>USAGE: peek &lt;file.tsv&gt; [buffer]
+
+Assumptions:
+    Input file is tab delimited
+     └── Globbing supported: *.txt
+
+Optional:
+    buffer = 40 (default)
+     └── Changing buffer will increase/decrease output justification
+</code></pre>
+
+
 </section>
 </section>
 
@@ -1176,7 +1113,7 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
 </div>   
     <div class="nav-footer-center">
       &nbsp;
-    <div class="toc-actions d-sm-block d-md-none"><ul><li><a href="https://github.com/CCBR/Tools/edit/main/reference/pipeline.cache.qmd" class="toc-action"><i class="bi bi-github"></i>Edit this page</a></li><li><a href="https://github.com/CCBR/Tools/issues/new" class="toc-action"><i class="bi empty"></i>Report an issue</a></li></ul></div></div>
+    <div class="toc-actions d-sm-block d-md-none"><ul><li><a href="https://github.com/CCBR/Tools/edit/main/cli.qmd" class="toc-action"><i class="bi bi-github"></i>Edit this page</a></li><li><a href="https://github.com/CCBR/Tools/issues/new" class="toc-action"><i class="bi empty"></i>Report an issue</a></li></ul></div></div>
     <div class="nav-footer-right">
       &nbsp;
     </div>
