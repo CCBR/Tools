@@ -1,9 +1,10 @@
 ## Tools development version
 
-- New command `ccbr_tools send-email` for sending emails from the command line. (#26, @kelly-sovacool)
+- new command `ccbr_tools send-email` for sending emails from the command line. (#26, @kelly-sovacool)
   - With new helper function: `send_email.send_email_msg()`.
   - Works when run from biowulf.
 - minor documentation improvements. (#25, @kelly-sovacool)
+- new functions for creating a contributors page for documentation websites: `github.print_contributor_images()`. (#27, @kelly-sovacool)
 
 ## Tools 0.1.3
 

@@ -9,6 +9,13 @@ on:
   release:
     types: [published]
 
+env:
+  GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+
+permissions:
+  contents: read
+  pull-requests: read
+  issues: read
 jobs:
   version:
     runs-on: ubuntu-latest

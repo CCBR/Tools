@@ -10,21 +10,31 @@ website:
   repo-actions: [edit, issue]
   sidebar:
     - id: reference
+      style: docked
       contents: "_sidebar.yml"
+    - id: docs
+      title: Docs
+      style: docked
+      contents:
+        - text: API Reference
+          href: reference/index.qmd
+        - text: Changelog
+          href: CHANGELOG.md
+        - text: Contributing
+          href: CONTRIBUTING.md
+        - href: contributors.qmd
+
   navbar:
+    search: true
     left:
       - text: Home
         href: index.md
     right:
-      - text: API
-        href: reference/index.qmd
-      - text: Changelog
-        href: CHANGELOG.md
-      - text: Contributing
-        href: CONTRIBUTING.md
+      - sidebar:docs
       - icon: github
         href: https://github.com/CCBR/Tools
         aria-label: CCBR/Tools GitHub
+
   page-footer:
     left: |
       Created by the
@@ -39,6 +49,7 @@ quartodoc:
   sections:
     - title: Modules
       contents:
+        - github
         - jobby
         - peek
         - pipeline.cache
