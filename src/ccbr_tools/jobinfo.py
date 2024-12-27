@@ -306,10 +306,10 @@ def print2screen(t, args):
 
 
 def main():
-    # check host
-    check_host()
     # collect all arguments
     args = collect_args()
+    # check host
+    check_host()
     # query dashboard_cli to get details as a pandas table
     t = get_jobinfo(args)
     # filter table, print to screen and write to output file
