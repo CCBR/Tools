@@ -1,0 +1,14 @@
+---
+title: "External scripts"
+---
+
+Additional standalone scripts for various common tasks are added to the path when this package is installed.
+They are less robust than the [CLI Utilities](cli) included in the package and do not have any unit tests.
+
+```{python}
+#| echo: false
+#| output: asis
+from ccbr_tools.pkg_util import get_pyproject_toml
+from pathlib import Path
+print('\n'.join([f"  - [`{Path(script).name}`](https://github.com/CCBR/Tools/tree/main/{script})" for script in get_pyproject_toml()['tool']['setuptools']['script-files']]))
+```

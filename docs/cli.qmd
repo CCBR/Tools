@@ -1,0 +1,36 @@
+---
+title: Command line interface
+subtitle: CLI utilities in CCBR Tools
+---
+
+## Main CLI
+
+```{python}
+#| echo: false
+#| output: asis
+from ccbr_tools.shell import shell_run
+print("```")
+print(shell_run("ccbr_tools --help"))
+print("```", end = '\n\n')
+
+for cmd in ('cite', 'send-email', 'version'):
+    print(f"### {cmd}", end = '\n\n')
+    print("```")
+    print(shell_run(f"ccbr_tools {cmd} --help"))
+    print("```", end = '\n\n')
+
+```
+
+## Additional utilities
+
+```{python}
+#| echo: false
+#| output: asis
+from ccbr_tools.pkg_util import get_project_scripts
+for cmd in get_project_scripts():
+    if cmd != 'ccbr_tools':
+        print(f"### {cmd}", end = '\n\n')
+        print("```")
+        print(shell_run(f"{cmd} --help"))
+        print("```", end = '\n\n')
+```

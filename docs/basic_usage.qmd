@@ -1,0 +1,21 @@
+
+### CLI
+
+```sh
+ccbr_tools --help
+```
+
+```{python}
+#| echo: false
+!ccbr_tools --help
+```
+
+### Python
+
+```{python}
+import ccbr_tools.pkg_util
+print(ccbr_tools.pkg_util.get_version())
+```
+
+View the API reference for more information:
+<https://ccbr.github.io/Tools/reference/>

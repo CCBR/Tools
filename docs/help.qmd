@@ -1,0 +1,10 @@
+
+Come across a **bug**? Open an
+[issue](https://github.com/CCBR/Tools/issues) and include a minimal
+reproducible example.
+
+Have a **question**? Ask it in
+[discussions](https://github.com/CCBR/Tools/discussions).
+
+Want to **contribute** to this project? Check out the [contributing
+guidelines](https://CCBR.github.io/Tools/CONTRIBUTING).
