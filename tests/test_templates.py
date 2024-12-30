@@ -79,3 +79,9 @@ def test_use_quarto_ext():
         ]
         os.chdir(current_wd)
     assert all(assertions)
+
+
+def test_use_quarto_ext_error():
+    with pytest.raises(FileNotFoundError) as exc_info:
+        use_quarto_ext("not_a_real_extension")
+        assert str(exc_info.value) == "not_a_real_extension does not exist"

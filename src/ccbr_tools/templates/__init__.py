@@ -2,12 +2,13 @@
 Template files for CCBR Tools.
 
 Templates:
-    - `~ccbr_tools.templates.submit_slurm.sh`
+    - `submit_slurm.sh` -- slurm submission script template
 
-Quarto extensions
-    - `~ccbr_tools.templates._extensions.fnl`
+Quarto extensions:
+    - `fnl` -- html format with FNL branding
 """
 
+import glob
 import importlib.resources
 import pathlib
 import shutil
@@ -53,6 +54,12 @@ def use_template(template_name, output_filepath=None, **kwargs: str):
         outfile.write(template_str.format(**kwargs))
 
 
+def get_quarto_extensions():
+    ext_dir = importlib.resources.files(__package__) / "_extensions"
+    quarto_extensions = ext_dir.glob("*/_extension.yml")
+    return [ext.parent.name for ext in quarto_extensions]
+
+
 def use_quarto_ext(ext_name):
     """
     Use a Quarto extension
@@ -63,10 +70,14 @@ def use_quarto_ext(ext_name):
     Examples:
         >>> use_quarto_ext("fnl")
     """
-    template_files = importlib.resources.files(__package__)
-    ext_dir = pathlib.Path("_extensions")
-    if not ext_dir.exists():
-        ext_dir.mkdir()
-    template_dir = template_files / "_extensions" / ext_name
-    shutil.copytree(template_dir, ext_dir / ext_name, dirs_exist_ok=True)
-    print(f"Copied {ext_name} to {ext_dir}")
+    ext_dir = importlib.resources.files(__package__) / "_extensions"
+    template_dir = ext_dir / ext_name
+    if not template_dir.exists():
+        raise FileNotFoundError(
+            f"{ext_name} does not exist. Available extensions: {', '.join(get_quarto_extensions())}"
+        )
+    out_dir = pathlib.Path("_extensions")
+    if not out_dir.exists():
+        out_dir.mkdir()
+    shutil.copytree(template_dir, out_dir / ext_name, dirs_exist_ok=True)
+    print(f"Copied {ext_name} to {out_dir}")
