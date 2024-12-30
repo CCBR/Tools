@@ -58,19 +58,20 @@ quartodoc:
   sidebar: _sidebar.yml
   title: "API Reference"
   sections:
-    - title: Modules
+    - title: Main modules
       contents:
         - github
-        - jobby
-        - peek
+        - pkg_util
+        - pipeline
+        - send_email
+        - shell
+        - templates
+    - title: Pipeline utilities
+      contents:
         - pipeline.cache
         - pipeline.hpc
         - pipeline.nextflow
         - pipeline.util
-        - pkg_util
-        - send_email
-        - shell
-        - templates
     - title: Legacy tools
       contents:
         - GSEA.deg2gs
@@ -80,6 +81,8 @@ quartodoc:
         - homologfinder.hf
         - intersect
         - jobinfo
+        - jobby
+        - peek
 
 metadata-files:
   - _sidebar.yml
