@@ -111,6 +111,7 @@ script-files = [
     "scripts/gather_cluster_stats_biowulf.sh",
     "scripts/get_buyin_partition_list.bash",
     "scripts/get_slurm_file_with_error.sh",
+    "scripts/github_milestones.sh",
     "scripts/gsea_preranked.sh",
     "scripts/karyoploter.R",
     "scripts/make_labels_for_pipeliner.sh",
