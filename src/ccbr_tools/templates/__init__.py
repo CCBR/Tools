@@ -1,14 +1,34 @@
 """
 Template files for CCBR Tools.
 
-Templates:
-    - `submit_slurm.sh` -- slurm submission script template
+### Templates
 
-Quarto extensions:
-    - `fnl` -- html format with FNL branding
+- `submit_slurm.sh` -- slurm submission script template
+
+### Quarto extensions
+
+#### fnl
+
+Quarto HTML format with FNL branding guidelines
+
+First run `ccbr_tools quarto-add fnl`, then modify your `_quarto.yml` file with the following:
+
+```yaml
+website:
+...
+page-footer:
+    background: black
+    foreground: white
+    left: |
+    [![](/_extensions/fnl/fnl-logo-dark.png){height=70px}](https://frederick.cancer.gov/research/science-areas/bioinformatics-and-computational-science/advanced-biomedical-computational-science)
+    center: |
+    Created by the
+    [CCR Collaborative Bioinformatics Resource](https://github.com/CCBR)
+
+format: fnl-html
+```
 """
 
-import glob
 import importlib.resources
 import pathlib
 import shutil
@@ -23,6 +43,9 @@ def read_template(template_name):
 
     Returns:
         template (str): Contents of the template file
+
+    Examples:
+        >>> read_template("submit_slurm.sh")
     """
 
     template_files = importlib.resources.files(__package__)
@@ -45,7 +68,7 @@ def use_template(template_name, output_filepath=None, **kwargs: str):
         IOError: If there is an error writing the output file.
 
     Examples:
-        use_template("submit_slurm.sh", output_filepath="./submit_slurm.sh", PIPELINE="CCBR_nxf", MODULES="ccbrpipeliner nextflow", ENV_VARS="", RUN_COMMAND="nextflow run main.nf -stub")
+       >>> use_template("submit_slurm.sh", output_filepath="./submit_slurm.sh", PIPELINE="CCBR_nxf", MODULES="ccbrpipeliner nextflow", ENV_VARS="", RUN_COMMAND="nextflow run main.nf -stub")
     """
     template_str = read_template(template_name)
     if not output_filepath:
@@ -55,6 +78,18 @@ def use_template(template_name, output_filepath=None, **kwargs: str):
 
 
 def get_quarto_extensions():
+    """
+    List quarto extensions in this package
+
+    Returns:
+        extensions (list): List of quarto extension names to use with [](`~ccbr_tools.templates.use_quarto_ext`)
+
+    Examples:
+        ```{python}
+        from ccbr_tools.templates import get_quarto_extensions
+        get_quarto_extensions()
+        ```
+    """
     ext_dir = importlib.resources.files(__package__) / "_extensions"
     quarto_extensions = ext_dir.glob("*/_extension.yml")
     return [ext.parent.name for ext in quarto_extensions]
