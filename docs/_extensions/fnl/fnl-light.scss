@@ -1,0 +1,41 @@
+/*-- scss:defaults --*/
+
+// branding guidelines
+// https://nih.sharepoint.com/:b:/r/sites/NCI-Fred/Communications/Shared%20Documents/Branding%20guidelines%20LIVE.pdf?csf=1&web=1&e=e9PrVO
+
+// primary colors
+$black: #000000;
+$white: #ffffff;
+$lime: #7cc349;
+$teal: #296b7f;
+
+//secondary colors
+$teal-light: #4e9db5;
+$teal-dark: #19424e;
+$almost-black: #03191f;
+$lime-light: #b1ee85;
+$lime-dark: #528230;
+$orange: #ecba4c;
+
+// set colors
+$primary: $teal-dark;
+$secondary: $lime;
+$success: $lime-dark;
+$warning: $orange;
+$info: $teal-light;
+
+$link-color: $teal;
+
+$footer-bg: $black;
+$footer-fg: $white;
+
+$code-color: $lime-dark;
+
+$callout-color-tip: $lime-dark;
+$callout-color-note: $teal-light;
+$callout-color-caution: $orange;
+$callout-color-warning: $orange;
+
+// font
+$font-family-sans-serif: "Roboto", sans-serif;
+$font-family-monospace: "Roboto Mono", monospace;

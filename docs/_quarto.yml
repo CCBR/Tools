@@ -43,7 +43,11 @@ website:
         aria-label: CCBR/Tools GitHub
 
   page-footer:
+    background: black
+    foreground: white
     left: |
+      [![](/_extensions/fnl/fnl-logo-dark.png){height=70px}](https://frederick.cancer.gov/research/science-areas/bioinformatics-and-computational-science/advanced-biomedical-computational-science)
+    center: |
       Created by the
       [CCR Collaborative Bioinformatics Resource](https://github.com/CCBR)
 
@@ -54,19 +58,20 @@ quartodoc:
   sidebar: _sidebar.yml
   title: "API Reference"
   sections:
-    - title: Modules
+    - title: Main modules
       contents:
         - github
-        - jobby
-        - peek
+        - pkg_util
+        - pipeline
+        - send_email
+        - shell
+        - templates
+    - title: Pipeline utilities
+      contents:
         - pipeline.cache
         - pipeline.hpc
         - pipeline.nextflow
         - pipeline.util
-        - pkg_util
-        - send_email
-        - shell
-        - templates
     - title: Legacy tools
       contents:
         - GSEA.deg2gs
@@ -76,6 +81,8 @@ quartodoc:
         - homologfinder.hf
         - intersect
         - jobinfo
+        - jobby
+        - peek
 
 metadata-files:
   - _sidebar.yml
@@ -97,9 +104,4 @@ execute:
   eval: true
   echo: true
 
-format:
-  html:
-    theme:
-      light: flatly
-      dark: darkly
-    toc: true
+format: fnl-html

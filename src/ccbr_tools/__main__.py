@@ -13,6 +13,7 @@ from .pkg_util import (
     CustomClickGroup,
 )
 from .send_email import send_email_msg
+from .templates import use_quarto_ext, get_quarto_extensions
 
 
 all_commands = "All installed tools:\n" + "\n".join(
@@ -133,7 +134,30 @@ def send_email(to_address, text, subject, attach_html, from_addr, debug):
     send_email_msg(to_address, text, subject, attach_html, from_addr, debug)
 
 
+@click.command(epilog=f"Available extensions: {', '.join(get_quarto_extensions())}")
+@click.argument(
+    "ext_name",
+    type=str,
+    required=True,
+)
+def quarto_add(ext_name):
+    """
+    Add a quarto extension
+
+    \b
+    Arguments:
+        ext_name    The name of the extension in ccbr_tools
+
+    \b
+    Examples:
+        ccbr_tools quarto-add fnl
+
+    """
+    use_quarto_ext(ext_name)
+
+
 cli.add_command(send_email)
+cli.add_command(quarto_add)
 cli.add_command(cite)
 cli.add_command(version)
 
