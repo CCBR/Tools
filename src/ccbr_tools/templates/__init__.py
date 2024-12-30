@@ -7,6 +7,7 @@ Templates:
 Quarto extensions
     - `~ccbr_tools.templates._extensions.fnl`
 """
+
 import importlib.resources
 import pathlib
 import shutil
