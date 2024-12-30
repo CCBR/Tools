@@ -35,12 +35,12 @@ ul.task-list li input[type="checkbox"] {
 <script src="../site_libs/quarto-html/tippy.umd.min.js"></script>
 <script src="../site_libs/quarto-html/anchor.min.js"></script>
 <link href="../site_libs/quarto-html/tippy.css" rel="stylesheet">
-<link href="../site_libs/quarto-html/quarto-syntax-highlighting-e26003cea8cd680ca0c55a263523d882.css" rel="stylesheet" class="quarto-color-scheme" id="quarto-text-highlighting-styles">
-<link href="../site_libs/quarto-html/quarto-syntax-highlighting-dark-d166b450ba5a8e9f7a0ab969bf6592c1.css" rel="prefetch" class="quarto-color-scheme quarto-color-alternate" id="quarto-text-highlighting-styles">
+<link href="../site_libs/quarto-html/quarto-syntax-highlighting-0f678b7eab269e1f93ad2a885b46ecea.css" rel="stylesheet" class="quarto-color-scheme" id="quarto-text-highlighting-styles">
+<link href="../site_libs/quarto-html/quarto-syntax-highlighting-dark-b8f2631c081afeae376df51fffb043a0.css" rel="stylesheet" class="quarto-color-scheme quarto-color-alternate" id="quarto-text-highlighting-styles">
 <script src="../site_libs/bootstrap/bootstrap.min.js"></script>
 <link href="../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
-<link href="../site_libs/bootstrap/bootstrap-6c40ed3430fa5f31e6fbc0b8598a3ef8.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme" id="quarto-bootstrap" data-mode="light">
-<link href="../site_libs/bootstrap/bootstrap-dark-1de5c4262cdefdb2b0852314e1a3ccc6.min.css" rel="prefetch" append-hash="true" class="quarto-color-scheme quarto-color-alternate" id="quarto-bootstrap" data-mode="dark">
+<link href="../site_libs/bootstrap/bootstrap-366387a5e6539dbf8a3d4b89ba3e9f20.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme" id="quarto-bootstrap" data-mode="light">
+<link href="../site_libs/bootstrap/bootstrap-dark-7b12a1bae88c612ba6c33107dff2fe55.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme quarto-color-alternate" id="quarto-bootstrap" data-mode="dark">
 <script id="quarto-search-options" type="application/json">{
   "location": "navbar",
   "copy-button": false,
@@ -254,7 +254,8 @@ ul.task-list li input[type="checkbox"] {
   <ul>
   <li><a href="#api-reference" id="toc-api-reference" class="nav-link active" data-scroll-target="#api-reference">API Reference</a>
   <ul class="collapse">
-  <li><a href="#modules" id="toc-modules" class="nav-link" data-scroll-target="#modules">Modules</a></li>
+  <li><a href="#main-modules" id="toc-main-modules" class="nav-link" data-scroll-target="#main-modules">Main modules</a></li>
+  <li><a href="#pipeline-utilities" id="toc-pipeline-utilities" class="nav-link" data-scroll-target="#pipeline-utilities">Pipeline utilities</a></li>
   <li><a href="#legacy-tools" id="toc-legacy-tools" class="nav-link" data-scroll-target="#legacy-tools">Legacy tools</a></li>
   </ul></li>
   </ul>
@@ -268,53 +269,56 @@ ul.task-list li input[type="checkbox"] {
 
 <section id="api-reference" class="level1 doc doc-index">
 <h1 class="doc doc-index">API Reference</h1>
-<section id="modules" class="level2">
-<h2 class="anchored" data-anchor-id="modules">Modules</h2>
+<section id="main-modules" class="level2">
+<h2 class="anchored" data-anchor-id="main-modules">Main modules</h2>
 <table class="caption-top table">
 <tbody>
 <tr class="odd">
 <td><a href="../reference/github.html#ccbr_tools.github">github</a></td>
-<td>GitHub-related helper functions</td>
-</tr>
-<tr class="even">
-<td><a href="../reference/jobby.html#ccbr_tools.jobby">jobby</a></td>
-<td>Display job information for past slurm job IDs</td>
-</tr>
-<tr class="odd">
-<td><a href="../reference/peek.html#ccbr_tools.peek">peek</a></td>
-<td>Take a peek at tab-delimited files</td>
-</tr>
-<tr class="even">
-<td><a href="../reference/pipeline.cache.html#ccbr_tools.pipeline.cache">pipeline.cache</a></td>
-<td>Functions for singularity cache management</td>
-</tr>
-<tr class="odd">
-<td><a href="../reference/pipeline.hpc.html#ccbr_tools.pipeline.hpc">pipeline.hpc</a></td>
-<td>Classes for working with different HPC clusters.</td>
-</tr>
-<tr class="even">
-<td><a href="../reference/pipeline.nextflow.html#ccbr_tools.pipeline.nextflow">pipeline.nextflow</a></td>
-<td>Run Nextflow workflows in local and HPC environments.</td>
-</tr>
-<tr class="odd">
-<td><a href="../reference/pipeline.util.html#ccbr_tools.pipeline.util">pipeline.util</a></td>
-<td>Pipeline utility functions</td>
+<td>GitHub helper functions</td>
 </tr>
 <tr class="even">
 <td><a href="../reference/pkg_util.html#ccbr_tools.pkg_util">pkg_util</a></td>
 <td>Miscellaneous utility functions for the package</td>
 </tr>
 <tr class="odd">
+<td><a href="../reference/pipeline.html#ccbr_tools.pipeline">pipeline</a></td>
+<td>Helpers for bioinformatics pipelines</td>
+</tr>
+<tr class="even">
 <td><a href="../reference/send_email.html#ccbr_tools.send_email">send_email</a></td>
 <td>Send an email with an attachment</td>
 </tr>
-<tr class="even">
+<tr class="odd">
 <td><a href="../reference/shell.html#ccbr_tools.shell">shell</a></td>
 <td>Utility functions for shell command execution.</td>
 </tr>
-<tr class="odd">
+<tr class="even">
 <td><a href="../reference/templates.html#ccbr_tools.templates">templates</a></td>
 <td>Template files for CCBR Tools.</td>
+</tr>
+</tbody>
+</table>
+</section>
+<section id="pipeline-utilities" class="level2">
+<h2 class="anchored" data-anchor-id="pipeline-utilities">Pipeline utilities</h2>
+<table class="caption-top table">
+<tbody>
+<tr class="odd">
+<td><a href="../reference/pipeline.cache.html#ccbr_tools.pipeline.cache">pipeline.cache</a></td>
+<td>Functions for singularity cache management</td>
+</tr>
+<tr class="even">
+<td><a href="../reference/pipeline.hpc.html#ccbr_tools.pipeline.hpc">pipeline.hpc</a></td>
+<td>Classes for working with different HPC clusters.</td>
+</tr>
+<tr class="odd">
+<td><a href="../reference/pipeline.nextflow.html#ccbr_tools.pipeline.nextflow">pipeline.nextflow</a></td>
+<td>Run Nextflow workflows in local and HPC environments.</td>
+</tr>
+<tr class="even">
+<td><a href="../reference/pipeline.util.html#ccbr_tools.pipeline.util">pipeline.util</a></td>
+<td>Pipeline utility functions</td>
 </tr>
 </tbody>
 </table>
@@ -350,6 +354,14 @@ ul.task-list li input[type="checkbox"] {
 <tr class="odd">
 <td><a href="../reference/jobinfo.html#ccbr_tools.jobinfo">jobinfo</a></td>
 <td>Get HPC usage metadata for a list of slurm jobids on biowulf</td>
+</tr>
+<tr class="even">
+<td><a href="../reference/jobby.html#ccbr_tools.jobby">jobby</a></td>
+<td>Display job information for past slurm job IDs</td>
+</tr>
+<tr class="odd">
+<td><a href="../reference/peek.html#ccbr_tools.peek">peek</a></td>
+<td>Take a peek at tab-delimited files</td>
 </tr>
 </tbody>
 </table>
@@ -495,7 +507,7 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
       return localAlternateSentinel;
     }
   }
-  const darkModeDefault = false;
+  const darkModeDefault = true;
   let localAlternateSentinel = darkModeDefault ? 'alternate' : 'default';
   // Dark / light mode switch
   window.quartoToggleColorScheme = () => {
@@ -924,11 +936,11 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
 <footer class="footer">
   <div class="nav-footer">
     <div class="nav-footer-left">
-<p>Created by the <a href="https://github.com/CCBR">CCR Collaborative Bioinformatics Resource</a></p>
+<p><a href="https://frederick.cancer.gov/research/science-areas/bioinformatics-and-computational-science/advanced-biomedical-computational-science"><img src="../site_libs/quarto-contrib/quarto-project/fnl/fnl-logo-dark.png" height="70"></a></p>
 </div>   
     <div class="nav-footer-center">
-      &nbsp;
-    <div class="toc-actions d-sm-block d-md-none"><ul><li><a href="https://github.com/CCBR/Tools/edit/main/reference/index.qmd" class="toc-action"><i class="bi bi-github"></i>Edit this page</a></li><li><a href="https://github.com/CCBR/Tools/issues/new" class="toc-action"><i class="bi empty"></i>Report an issue</a></li></ul></div></div>
+<p>Created by the <a href="https://github.com/CCBR">CCR Collaborative Bioinformatics Resource</a></p>
+<div class="toc-actions d-sm-block d-md-none"><ul><li><a href="https://github.com/CCBR/Tools/edit/main/reference/index.qmd" class="toc-action"><i class="bi bi-github"></i>Edit this page</a></li><li><a href="https://github.com/CCBR/Tools/issues/new" class="toc-action"><i class="bi empty"></i>Report an issue</a></li></ul></div></div>
     <div class="nav-footer-right">
       &nbsp;
     </div>

@@ -7,7 +7,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 
-<title>gsea.ncbr_huse – CCBR Tools</title>
+<title>pipeline – CCBR Tools</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -149,7 +149,7 @@ ul.task-list li input[type="checkbox"] {
       <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" role="button" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
         <i class="bi bi-layout-text-sidebar-reverse"></i>
       </button>
-        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../reference/GSEA.deg2gs.html">Legacy tools</a></li><li class="breadcrumb-item"><a href="../reference/GSEA.ncbr_huse.html">GSEA.ncbr_huse</a></li></ol></nav>
+        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../reference/github.html">Main modules</a></li><li class="breadcrumb-item"><a href="../reference/pipeline.html">pipeline</a></li></ol></nav>
         <a class="flex-grow-1" role="navigation" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
         </a>
     </div>
@@ -190,7 +190,7 @@ ul.task-list li input[type="checkbox"] {
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../reference/pipeline.html" class="sidebar-item-text sidebar-link">
+  <a href="../reference/pipeline.html" class="sidebar-item-text sidebar-link active">
  <span class="menu-text">pipeline</span></a>
   </div>
 </li>
@@ -272,7 +272,7 @@ ul.task-list li input[type="checkbox"] {
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../reference/GSEA.ncbr_huse.html" class="sidebar-item-text sidebar-link active">
+  <a href="../reference/GSEA.ncbr_huse.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">GSEA.ncbr_huse</span></a>
   </div>
 </li>
@@ -324,22 +324,26 @@ ul.task-list li input[type="checkbox"] {
     <h2 id="toc-title">On this page</h2>
    
   <ul>
-  <li><a href="#ccbr_tools.GSEA.ncbr_huse" id="toc-ccbr_tools.GSEA.ncbr_huse" class="nav-link active" data-scroll-target="#ccbr_tools.GSEA.ncbr_huse">GSEA.ncbr_huse</a></li>
+  <li><a href="#ccbr_tools.pipeline" id="toc-ccbr_tools.pipeline" class="nav-link active" data-scroll-target="#ccbr_tools.pipeline">pipeline</a></li>
   </ul>
-<div class="toc-actions"><ul><li><a href="https://github.com/CCBR/Tools/edit/main/reference/GSEA.ncbr_huse.qmd" class="toc-action"><i class="bi bi-github"></i>Edit this page</a></li><li><a href="https://github.com/CCBR/Tools/issues/new" class="toc-action"><i class="bi empty"></i>Report an issue</a></li></ul></div></nav>
+<div class="toc-actions"><ul><li><a href="https://github.com/CCBR/Tools/edit/main/reference/pipeline.qmd" class="toc-action"><i class="bi bi-github"></i>Edit this page</a></li><li><a href="https://github.com/CCBR/Tools/issues/new" class="toc-action"><i class="bi empty"></i>Report an issue</a></li></ul></div></nav>
     </div>
 <!-- main -->
-<main class="content" id="quarto-document-content"><header id="title-block-header" class="quarto-title-block"><nav class="quarto-page-breadcrumbs quarto-title-breadcrumbs d-none d-lg-block" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../reference/GSEA.deg2gs.html">Legacy tools</a></li><li class="breadcrumb-item"><a href="../reference/GSEA.ncbr_huse.html">GSEA.ncbr_huse</a></li></ol></nav></header>
+<main class="content" id="quarto-document-content"><header id="title-block-header" class="quarto-title-block"><nav class="quarto-page-breadcrumbs quarto-title-breadcrumbs d-none d-lg-block" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../reference/github.html">Main modules</a></li><li class="breadcrumb-item"><a href="../reference/pipeline.html">pipeline</a></li></ol></nav></header>
 
 
 
 
-<section id="ccbr_tools.GSEA.ncbr_huse" class="level1">
-<h1>GSEA.ncbr_huse</h1>
-<p><code>GSEA.ncbr_huse</code></p>
-<p>Set of functions supporting the FNL NCBR work</p>
-<p>Author: Susan Huse</p>
-<p>Created on Mon Aug 6 11:07:30 2018</p>
+<section id="ccbr_tools.pipeline" class="level1">
+<h1>pipeline</h1>
+<p><code>pipeline</code></p>
+<p>Helpers for bioinformatics pipelines</p>
+<ul>
+<li><a href="../reference/pipeline.cache.html#ccbr_tools.pipeline.cache"><code>cache</code></a></li>
+<li><a href="../reference/pipeline.hpc.html#ccbr_tools.pipeline.hpc"><code>hpc</code></a></li>
+<li><a href="../reference/pipeline.nextflow.html#ccbr_tools.pipeline.nextflow"><code>nextflow</code></a></li>
+<li><a href="../reference/pipeline.util.html#ccbr_tools.pipeline.util"><code>util</code></a></li>
+</ul>
 
 
 </section>
@@ -914,7 +918,7 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
 </div>   
     <div class="nav-footer-center">
 <p>Created by the <a href="https://github.com/CCBR">CCR Collaborative Bioinformatics Resource</a></p>
-<div class="toc-actions d-sm-block d-md-none"><ul><li><a href="https://github.com/CCBR/Tools/edit/main/reference/GSEA.ncbr_huse.qmd" class="toc-action"><i class="bi bi-github"></i>Edit this page</a></li><li><a href="https://github.com/CCBR/Tools/issues/new" class="toc-action"><i class="bi empty"></i>Report an issue</a></li></ul></div></div>
+<div class="toc-actions d-sm-block d-md-none"><ul><li><a href="https://github.com/CCBR/Tools/edit/main/reference/pipeline.qmd" class="toc-action"><i class="bi bi-github"></i>Edit this page</a></li><li><a href="https://github.com/CCBR/Tools/issues/new" class="toc-action"><i class="bi empty"></i>Report an issue</a></li></ul></div></div>
     <div class="nav-footer-right">
       &nbsp;
     </div>
