@@ -68,5 +68,5 @@ def use_quarto_ext(ext_name):
     if not ext_dir.exists():
         ext_dir.mkdir()
     template_dir = template_files / "_extensions" / ext_name
-    shutil.copytree(template_dir, ext_dir / ext_name)
+    shutil.copytree(template_dir, ext_dir / ext_name, dirs_exist_ok=True)
     print(f"Copied {ext_name} to {ext_dir}")
