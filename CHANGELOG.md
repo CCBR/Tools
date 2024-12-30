@@ -4,6 +4,7 @@
   - With new helper function: `send_email.send_email_msg()`.
   - Works when run from biowulf.
 - new functions for creating a contributors page for documentation websites: `github.print_contributor_images()`. (#27, @kelly-sovacool)
+- new script from [`CCBR/TaskManagement`](https://github.com/CCBR/TaskManagement/tree/103c73d41858d400fba95ed2130d7d5653f243e0/scripts): `github_milestones.sh`. (#29, @kelly-sovacool)
 - documentation improvements:
   - fix docstrings rendering -- use Google style. (#25, @kelly-sovacool)
   - overhaul navigation structure of docs website. (#28, @kelly-sovacool)
