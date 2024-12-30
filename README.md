@@ -112,6 +112,7 @@ package and do not have any unit tests.
 - [`gather_cluster_stats_biowulf.sh`](scripts/gather_cluster_stats_biowulf.sh)
 - [`get_buyin_partition_list.bash`](scripts/get_buyin_partition_list.bash)
 - [`get_slurm_file_with_error.sh`](scripts/get_slurm_file_with_error.sh)
+- [`github_milestones.sh`](scripts/github_milestones.sh)
 - [`gsea_preranked.sh`](scripts/gsea_preranked.sh)
 - [`karyoploter.R`](scripts/karyoploter.R)
 - [`make_labels_for_pipeliner.sh`](scripts/make_labels_for_pipeliner.sh)
