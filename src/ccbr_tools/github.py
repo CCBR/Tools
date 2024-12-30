@@ -1,12 +1,12 @@
 """
-GitHub-related helper functions
+GitHub helper functions
 
 Contributor related functions:
 
-    - [~ccbr_tools.github.print_contributor_images] - Print contributor profile images for HTML web pages
-    - [~ccbr_tools.github.get_repo_contributors] - Get a list of contributors to a GitHub repository
-    - [~ccbr_tools.github.get_user_info] - Get profile information about a GitHub user
-    - [~ccbr_tools.github.get_contrib_html] - Generates HTML for a GitHub contributor's profile image and link
+- [](`~ccbr_tools.github.print_contributor_images`) - Print contributor profile images for HTML web pages
+- [](`~ccbr_tools.github.get_repo_contributors`) - Get a list of contributors to a GitHub repository
+- [](`~ccbr_tools.github.get_user_info`) - Get profile information about a GitHub user
+- [](`~ccbr_tools.github.get_contrib_html`) - Generates HTML for a GitHub contributor's profile image and link
 """
 
 from .pkg_util import get_url_json
