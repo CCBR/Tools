@@ -5,7 +5,7 @@
 Utilities for CCBR Bioinformatics Software
 
 [![build](https://github.com/CCBR/Tools/actions/workflows/build-python.yml/badge.svg)](https://github.com/CCBR/Tools/actions/workflows/build-python.yml)
-[![docs](https://github.com/CCBR/Tools/actions/workflows/docs-quartodoc.yml/badge.svg)](https://github.com/CCBR/Tools/actions/workflows/docs-quartodoc.yml)
+[![docs](https://github.com/CCBR/Tools/actions/workflows/docs-quartodoc.yml/badge.svg)](https://ccbr.github.io/Tools)
 [![codecov](https://codecov.io/gh/CCBR/Tools/graph/badge.svg?token=O73NOR65B3)](https://codecov.io/gh/CCBR/Tools)
 [![DOI](https://zenodo.org/badge/DOI/10.5281/zenodo.13377166.svg)](https://doi.org/10.5281/zenodo.13377166)
 
@@ -17,19 +17,19 @@ View the website for more detailed documentation:
 On [biowulf](https://hpc.nih.gov/) you can access the latest release of
 `ccbr_tools` by loading the ccbrpipeliner module:
 
-``` sh
+```sh
 module load ccbrpipeliner
 ```
 
 Outside of biowulf, you can install the package with pip:
 
-``` sh
+```sh
 pip install git+https://github.com/CCBR/Tools
 ```
 
 Or specify any tagged version or branch:
 
-``` sh
+```sh
 pip install git+https://github.com/CCBR/Tools@v0.1.0
 ```
 
@@ -37,7 +37,7 @@ pip install git+https://github.com/CCBR/Tools@v0.1.0
 
 ### CLI
 
-``` sh
+```sh
 ccbr_tools --help
 ```
 
@@ -68,7 +68,7 @@ ccbr_tools --help
 
 ### Python
 
-``` python
+```python
 import ccbr_tools.pkg_util
 print(ccbr_tools.pkg_util.get_version())
 ```
@@ -148,7 +148,7 @@ Please cite this software if you use it in a publication:
 
 ### Bibtex entry
 
-``` bibtex
+```bibtex
 @misc{YourReferenceHere,
 author = {Sovacool, Kelly and Koparde, Vishal and Kuhn, Skyler and Tandon, Mayank and Huse, Susan},
 doi = {10.5281/zenodo.13377166},
