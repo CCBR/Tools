@@ -43,7 +43,11 @@ website:
         aria-label: CCBR/Tools GitHub
 
   page-footer:
+    background: black
+    foreground: white
     left: |
+      [![](/img/fnl-logo-dark.png){height=70px}](https://frederick.cancer.gov/research/science-areas/bioinformatics-and-computational-science/advanced-biomedical-computational-science)
+    center: |
       Created by the
       [CCR Collaborative Bioinformatics Resource](https://github.com/CCBR)
 
@@ -100,6 +104,6 @@ execute:
 format:
   html:
     theme:
-      light: flatly
-      dark: darkly
+      dark: [darkly, themes/fnl-dark.scss]
+      light: [flatly, themes/fnl-light.scss]
     toc: true
