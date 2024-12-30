@@ -9,3 +9,4 @@ contributes:
         dark: [darkly, fnl-dark.scss]
         light: [flatly, fnl-light.scss]
       toc: true
+      code-fold: show

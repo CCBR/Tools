@@ -1,15 +1,16 @@
+// override select variables from fnl-light.scss
 /*-- scss:defaults --*/
 
-// colors
+// branding guidelines
 // https://nih.sharepoint.com/:b:/r/sites/NCI-Fred/Communications/Shared%20Documents/Branding%20guidelines%20LIVE.pdf?csf=1&web=1&e=e9PrVO
 
-// primary
+// primary colors
 $black: #000000;
 $white: #ffffff;
 $lime: #7cc349;
 $teal: #296b7f;
 
-//secondary
+//secondary colors
 $teal-light: #4e9db5;
 $teal-dark: #19424e;
 $almost-black: #03191f;
@@ -27,11 +28,9 @@ $link-color: $lime;
 
 $navbar-bg: $teal-dark;
 $navbar-hl: $lime-light;
-
 $footer-bg: $black;
 $footer-fg: $white;
 $footer-hl: $lime-light;
-
 $sidebar-hl: $lime-light;
 
 $code-block-bg-alpha: -0.8;
@@ -39,6 +38,11 @@ $code-bg-alpha: -0.8;
 $code-alpha: 0.9;
 $code-bg: $teal-dark;
 $code-color: $orange;
+
+$callout-color-tip: $lime;
+$callout-color-note: $teal-light;
+$callout-color-caution: $orange;
+$callout-color-warning: $orange;
 
 // font
 $font-family-sans-serif: "Roboto", sans-serif;
