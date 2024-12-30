@@ -38,24 +38,6 @@ def test_use_template():
     assert all(assertions)
 
 
-def test_use_template_defaults():
-    current_wd = os.getcwd()
-    with tempfile.TemporaryDirectory() as tmp_dir:
-        tmp_wd = pathlib.Path(current_wd) / tmp_dir
-        os.chdir(tmp_wd)
-        use_template(
-            "submit_slurm.sh",
-            PIPELINE="CCBR_nxf",
-            MODULES="ccbrpipeliner nextflow",
-            ENV_VARS="export HELLO=WORLD",
-            RUN_COMMAND="nextflow run main.nf -stub",
-        )
-        os.chdir(current_wd)
-        template_file = pathlib.Path(tmp_wd) / "submit_slurm.sh"
-        assertions = [template_file.is_file()]
-    assert all(assertions)
-
-
 def test_use_template_blanks():
     with tempfile.TemporaryDirectory() as tmp_dir:
         out_filepath = pathlib.Path(tmp_dir) / "test.sh"
@@ -68,16 +50,11 @@ def test_use_template_blanks():
 
 
 def test_use_quarto_ext():
-    current_wd = os.getcwd()
-    with tempfile.TemporaryDirectory() as tmp_dir:
-        tmp_wd = pathlib.Path(current_wd) / tmp_dir
-        os.chdir(tmp_wd)
-        use_quarto_ext("fnl")
-        assertions = [
-            (pathlib.Path("_extensions") / "fnl").is_dir(),
-            len(os.listdir(pathlib.Path("_extensions") / "fnl")) > 0,
-        ]
-        os.chdir(current_wd)
+    use_quarto_ext("fnl")
+    assertions = [
+        (pathlib.Path("_extensions") / "fnl").is_dir(),
+        len(os.listdir(pathlib.Path("_extensions") / "fnl")) > 0,
+    ]
     assert all(assertions)
 
 

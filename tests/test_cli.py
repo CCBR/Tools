@@ -1,7 +1,5 @@
 from ccbr_tools.shell import shell_run
-from ccbr_tools.pipeline.hpc import get_hpcname
 
-import tempfile
 import os
 import pathlib
 
@@ -66,14 +64,9 @@ def test_help_send_email():
 
 
 def test_quarto_add():
-    with tempfile.TemporaryDirectory() as tmp_dir:
-        current_wd = os.getcwd()
-        tmp_wd = pathlib.Path(current_wd) / tmp_dir
-        os.chdir(tmp_wd)
-        shell_run("ccbr_tools quarto-add fnl")
-        assertions = [
-            (pathlib.Path("_extensions") / "fnl").is_dir(),
-            len(os.listdir(pathlib.Path("_extensions") / "fnl")) > 0,
-        ]
-        os.chdir(current_wd)
+    shell_run("ccbr_tools quarto-add fnl")
+    assertions = [
+        (pathlib.Path("_extensions") / "fnl").is_dir(),
+        len(os.listdir(pathlib.Path("_extensions") / "fnl")) > 0,
+    ]
     assert all(assertions)
