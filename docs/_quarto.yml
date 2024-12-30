@@ -8,6 +8,10 @@ website:
   site-url: https://ccbr.github.io/Tools
   repo-url: https://github.com/CCBR/Tools
   repo-actions: [edit, issue]
+  search:
+    location: navbar
+    type: textbox
+  page-navigation: true
   sidebar:
     - id: docs
       title: Docs
@@ -35,7 +39,6 @@ website:
               href: CHANGELOG.md
 
   navbar:
-    search: true
     right:
       - sidebar:docs
       - icon: github
