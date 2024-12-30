@@ -144,8 +144,13 @@ def quarto_add(ext_name):
     """
     Add a quarto extension
 
+    \b
     Arguments:
         ext_name    The name of the extension in ccbr_tools
+
+    \b
+    Examples:
+        ccbr_tools quarto-add fnl
     """
     use_quarto_ext(ext_name)
 
