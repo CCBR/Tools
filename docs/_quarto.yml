@@ -46,7 +46,7 @@ website:
     background: black
     foreground: white
     left: |
-      [![](/img/fnl-logo-dark.png){height=70px}](https://frederick.cancer.gov/research/science-areas/bioinformatics-and-computational-science/advanced-biomedical-computational-science)
+      [![](/_extensions/fnl/fnl-logo-dark.png){height=70px}](https://frederick.cancer.gov/research/science-areas/bioinformatics-and-computational-science/advanced-biomedical-computational-science)
     center: |
       Created by the
       [CCR Collaborative Bioinformatics Resource](https://github.com/CCBR)
@@ -101,9 +101,4 @@ execute:
   eval: true
   echo: true
 
-format:
-  html:
-    theme:
-      dark: [darkly, themes/fnl-dark.scss]
-      light: [flatly, themes/fnl-light.scss]
-    toc: true
+format: fnl-html

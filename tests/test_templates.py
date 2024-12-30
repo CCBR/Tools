@@ -3,7 +3,7 @@ import pathlib
 import pytest
 import tempfile
 
-from ccbr_tools.templates import read_template, use_template
+from ccbr_tools.templates import read_template, use_template, use_quarto_ext
 
 
 def test_read_template():
@@ -65,3 +65,17 @@ def test_use_template_blanks():
                 output_filepath=out_filepath,
             )
             assert str(exc_info.value) == "KeyError: 'MODULES'"
+
+
+def test_use_quarto_ext():
+    with tempfile.TemporaryDirectory() as tmp_dir:
+        current_wd = os.getcwd()
+        tmp_wd = pathlib.Path(current_wd) / tmp_dir
+        os.chdir(tmp_wd)
+        use_quarto_ext("fnl")
+        assertions = [
+            pathlib.Path("_extensions/fnl").is_dir(),
+            pathlib.Path("_extensions/fnl/_extension.yml").is_file(),
+        ]
+        os.chdir(current_wd)
+    assert all(assertions)
