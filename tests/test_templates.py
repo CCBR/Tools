@@ -39,8 +39,8 @@ def test_use_template():
 
 
 def test_use_template_defaults():
+    current_wd = os.getcwd()
     with tempfile.TemporaryDirectory() as tmp_dir:
-        current_wd = os.getcwd()
         tmp_wd = pathlib.Path(current_wd) / tmp_dir
         os.chdir(tmp_wd)
         use_template(
@@ -68,8 +68,8 @@ def test_use_template_blanks():
 
 
 def test_use_quarto_ext():
+    current_wd = os.getcwd()
     with tempfile.TemporaryDirectory() as tmp_dir:
-        current_wd = os.getcwd()
         tmp_wd = pathlib.Path(current_wd) / tmp_dir
         os.chdir(tmp_wd)
         use_quarto_ext("fnl")

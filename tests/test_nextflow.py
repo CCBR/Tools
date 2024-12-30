@@ -1,8 +1,6 @@
 from ccbr_tools.pipeline.nextflow import run
-from ccbr_tools.pipeline.hpc import get_hpc, Biowulf, FRCE
+from ccbr_tools.pipeline.hpc import Biowulf, FRCE
 from ccbr_tools.shell import exec_in_context
-
-import tempfile
 
 
 def test_nextflow_basic():
