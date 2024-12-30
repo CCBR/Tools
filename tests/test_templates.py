@@ -84,4 +84,4 @@ def test_use_quarto_ext():
 def test_use_quarto_ext_error():
     with pytest.raises(FileNotFoundError) as exc_info:
         use_quarto_ext("not_a_real_extension")
-        assert str(exc_info.value) == "not_a_real_extension does not exist"
+    assert str(exc_info.value).startswith("not_a_real_extension does not exist")
