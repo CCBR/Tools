@@ -2,6 +2,7 @@ from ccbr_tools.shell import shell_run
 
 import os
 import pathlib
+import tempfile
 
 
 def test_version_flag():
@@ -64,9 +65,13 @@ def test_help_send_email():
 
 
 def test_quarto_add():
-    shell_run("ccbr_tools quarto-add fnl")
-    assertions = [
-        (pathlib.Path("_extensions") / "fnl").is_dir(),
-        len(os.listdir(pathlib.Path("_extensions") / "fnl")) > 0,
-    ]
+    with tempfile.TemporaryDirectory() as tmp_dir:
+        current_wd = os.getcwd()
+        os.chdir(tmp_dir)
+        shell_run("ccbr_tools quarto-add fnl")
+        assertions = [
+            (pathlib.Path("_extensions") / "fnl").is_dir(),
+            len(os.listdir(pathlib.Path("_extensions") / "fnl")) > 0,
+        ]
+        os.chdir(current_wd)
     assert all(assertions)
