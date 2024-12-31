@@ -1,4 +1,5 @@
 import argparse
+import os
 import pathlib
 
 from ccbr_tools.pipeline.util import (
@@ -43,7 +44,7 @@ def test_md5sum():
 
 
 def test_permissions():
-    abspath = permissions(argparse.ArgumentParser(), "tests/data/file.txt", 700)
+    abspath = permissions(argparse.ArgumentParser(), "tests/data/file.txt", os.R_OK)
     assert abspath.endswith("tests/data/file.txt")
 
 
