@@ -50,11 +50,15 @@ def test_use_template_blanks():
 
 
 def test_use_quarto_ext():
-    use_quarto_ext("fnl")
-    assertions = [
-        (pathlib.Path("_extensions") / "fnl").is_dir(),
-        len(os.listdir(pathlib.Path("_extensions") / "fnl")) > 0,
-    ]
+    with tempfile.TemporaryDirectory() as tmp_dir:
+        current_wd = os.getcwd()
+        os.chdir(tmp_dir)
+        use_quarto_ext("fnl")
+        assertions = [
+            (pathlib.Path("_extensions") / "fnl").is_dir(),
+            len(os.listdir(pathlib.Path("_extensions") / "fnl")) > 0,
+        ]
+        os.chdir(current_wd)
     assert all(assertions)
 
 
