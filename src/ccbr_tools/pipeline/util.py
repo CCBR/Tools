@@ -185,11 +185,7 @@ def exists(testpath):
     Returns:
         bool: True when file/directory exists, False when file/directory does not exist.
     """
-    does_exist = True
-    if not os.path.exists(testpath):
-        does_exist = False  # File or directory does not exist on the filesystem
-
-    return does_exist
+    return os.path.exists(testpath)
 
 
 def ln(files, outdir):
