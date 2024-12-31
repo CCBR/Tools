@@ -1,0 +1,10 @@
+AF165912.1	RefSeq	gene	0	4637	.	+	.	gene_name "CCT"; gene_id "CCT";
+AF165912.1	RefSeq	transcript	1712	4309	.	+	.	gene_name "CCT"; gene_id "CCT"; transcript_id "CCT"; transcript_name "CCT";
+AF165912.1	RefSeq	exon	1712	1891	.	+	.	gene_name "CCT"; gene_id "CCT"; transcript_id "CCT"; transcript_name "CCT"; exon_number 1;
+AF165912.1	RefSeq	exon	2321	2438	.	+	.	gene_name "CCT"; gene_id "CCT"; transcript_id "CCT"; transcript_name "CCT"; exon_number 2;
+AF165912.1	RefSeq	exon	2537	2633	.	+	.	gene_name "CCT"; gene_id "CCT"; transcript_id "CCT"; transcript_name "CCT"; exon_number 3;
+AF165912.1	RefSeq	exon	2800	2843	.	+	.	gene_name "CCT"; gene_id "CCT"; transcript_id "CCT"; transcript_name "CCT"; exon_number 4;
+AF165912.1	RefSeq	exon	2917	3073	.	+	.	gene_name "CCT"; gene_id "CCT"; transcript_id "CCT"; transcript_name "CCT"; exon_number 5;
+AF165912.1	RefSeq	exon	3166	3247	.	+	.	gene_name "CCT"; gene_id "CCT"; transcript_id "CCT"; transcript_name "CCT"; exon_number 6;
+AF165912.1	RefSeq	exon	3873	3972	.	+	.	gene_name "CCT"; gene_id "CCT"; transcript_id "CCT"; transcript_name "CCT"; exon_number 7;
+AF165912.1	RefSeq	exon	4081	4309	.	+	.	gene_name "CCT"; gene_id "CCT"; transcript_id "CCT"; transcript_name "CCT"; exon_number 8;
