@@ -1,11 +1,5 @@
 """
 Utility functions for shell command execution.
-
-Example:
-    >>> shell_run("echo Hello, World!")
-    'Hello, World!\n'
-    >>> shell_run("invalid_command")
-    '/bin/sh: invalid_command: command not found\n'
 """
 
 import contextlib
@@ -26,6 +20,12 @@ def shell_run(command_str, capture_output=True, check=True, shell=True, text=Tru
 
     Returns:
         out (str): The combined stdout and stderr of the command, separated by a newline character.
+
+    Examples:
+        >>> shell_run("echo Hello, World!")
+        'Hello, World!\n'
+        >>> shell_run("invalid_command")
+        '/bin/sh: invalid_command: command not found\n'
     """
     out = subprocess.run(
         command_str, capture_output=capture_output, shell=shell, text=text, check=check
@@ -48,6 +48,10 @@ def exec_in_context(func: callable, *args: str, **kwargs: str):
 
     Returns:
         out (str): The combined output from both stdout and stderr.
+
+    Examples:
+        >>> exec_in_context(print, "Hello, World!")
+        'Hello, World!\n'
     """
     with (
         contextlib.redirect_stdout(io.StringIO()) as out_f,

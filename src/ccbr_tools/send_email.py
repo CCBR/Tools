@@ -21,11 +21,11 @@ def send_email_msg(
     Sends an email with an optional message & HTML attachment.
 
     Args:
-        to_address (str): The email address of the recipient. Defaults to "${USER}@hpc.nih.gov".
-        text (str, optional): The plain text content of the email. Defaults to None.
-        subject (str): The subject line of the email. Defaults to "test email from python".
-        attach_html (str, optional): The file path to the HTML attachment. Defaults to None.
-        from_addr (str): The email address of the sender. Defaults to "${USER}@hpc.nih.gov".
+        to_address (str): The email address of the recipient.
+        text (str, optional): The plain text content of the email.
+        subject (str): The subject line of the email.
+        attach_html (str, optional): The file path to the HTML attachment.
+        from_addr (str): The email address of the sender.
 
     Raises:
         FileNotFoundError: If the HTML attachment file does not exist.
