@@ -324,7 +324,7 @@ def sge(jobs, threads, tmp_dir):
         None
     """
     # NOTE: add later for SGE cluster
-    pass
+    raise NotImplementedError("SGE cluster support is not yet implemented!")
 
 
 def uge(jobs, threads, tmp_dir):
@@ -340,7 +340,7 @@ def uge(jobs, threads, tmp_dir):
         None
     """
     # NOTE: add later for LOCUS cluster
-    pass
+    raise NotImplementedError("UGE cluster support is not yet implemented!")
 
 
 def dashboard_cli(jobs, threads=1, tmp_dir=None):
