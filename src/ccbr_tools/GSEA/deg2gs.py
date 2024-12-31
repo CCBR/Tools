@@ -28,7 +28,7 @@ import pandas as pd
 
 import argparse
 from argparse import RawTextHelpFormatter
-from ncbr_huse import send_update
+from .ncbr_huse import send_update
 
 
 ####################################

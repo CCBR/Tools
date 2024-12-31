@@ -30,7 +30,7 @@ import glob
 
 import argparse
 from argparse import RawTextHelpFormatter
-from ncbr_huse import (
+from .ncbr_huse import (
     run_cmd,
     run_os_cmd,
     un_gzip,
