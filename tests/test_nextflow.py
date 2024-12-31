@@ -1,3 +1,7 @@
+import os
+import pathlib
+import tempfile
+
 from ccbr_tools.pipeline.nextflow import run
 from ccbr_tools.pipeline.hpc import Biowulf, FRCE
 from ccbr_tools.shell import exec_in_context
@@ -20,12 +24,25 @@ def test_nextflow_hpc():
 
 
 def test_nextflow_slurm():
-    assert "sbatch submit_slurm.sh" in exec_in_context(
-        run, "CCBR/CHAMPAGNE", debug=True, hpc=Biowulf(), mode="slurm"
-    )
+    with tempfile.TemporaryDirectory() as tmp_dir:
+        current_wd = os.getcwd()
+        os.chdir(tmp_dir)
+        out = exec_in_context(
+            run, "CCBR/CHAMPAGNE", debug=True, hpc=Biowulf(), mode="slurm"
+        )
+        with open(pathlib.Path(tmp_dir) / "submit_slurm.sh", "r") as slurm_file:
+            slurm_txt = slurm_file.read()
+
+        os.chdir(current_wd)
+        assert all(
+            [
+                "sbatch submit_slurm.sh" in out,
+                "nextflow run CCBR/CHAMPAGNE" in slurm_txt,
+                "module load nextflow ccbrpipeliner" in slurm_txt,
+                '#SBATCH -J "CCBR/CHAMPAGNE"' in slurm_txt,
+            ]
+        )
 
 
 if __name__ == "__main__":
-    print(
-        exec_in_context(run, "CCBR/CHAMPAGNE", debug=True, hpc=Biowulf(), mode="slurm")
-    )
+    test_nextflow_slurm()
