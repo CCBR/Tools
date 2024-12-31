@@ -18,7 +18,7 @@ import Bio
 
 def main():
     if check_args(sys.argv):
-        gb2gtf()
+        gb2gtf(sys.argv)
 
 
 def check_args(args):
@@ -29,9 +29,7 @@ def check_args(args):
     return valid_usage
 
 
-def gb2gtf():
-    args = sys.argv
-
+def gb2gtf(args):
     # get all sequence records for the specified genbank file
     recs = [rec for rec in SeqIO.parse(args[1], "genbank")]
 
@@ -54,7 +52,7 @@ def gb2gtf():
             l = feat.location
             start = l.start
             end = l.end
-            if feat.strand == 1:
+            if feat.location.strand == 1:
                 strand = "+"
             else:
                 strand = "-"
