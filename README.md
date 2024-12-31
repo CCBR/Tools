@@ -73,7 +73,7 @@ import ccbr_tools.pkg_util
 print(ccbr_tools.pkg_util.get_version())
 ```
 
-    0.1.3-dev
+    0.1.3-dev-1
 
 View the API reference for more information:
 <https://ccbr.github.io/Tools/reference/>
