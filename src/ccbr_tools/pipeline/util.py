@@ -128,8 +128,7 @@ def md5sum(filename, first_block_only=False, blocksize=65536):
 def permissions(parser, path, *args, **kwargs):
     """
     Checks permissions using os.access() to see if the user is authorized to access
-    a file/directory. Checks for existence, readability, writability, and executability via:
-    os.F_OK (tests existence), os.R_OK (tests read), os.W_OK (tests write), os.X_OK (tests exec).
+    a file/directory. *args & **kwargs are passed to os.access().
 
     Args:
         parser (argparse.ArgumentParser): Argparse parser object.
