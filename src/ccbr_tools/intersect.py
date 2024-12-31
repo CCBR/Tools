@@ -57,7 +57,7 @@ def intersect(fileDict, file2, joinindex, header):
     fh2.close()
 
 
-def main(args):
+def run_intersect(args):
     usage_str = "USAGE:\nintersect filename1 filename2 f1ColumnIndex F2ColumnIndex\n\t--Ex. intersect file1 file2 0 0"
     # Join on column count starts at 0
     if "--help" in args or "-h" in args:
@@ -81,5 +81,9 @@ def main(args):
         intersect(indexedFile1, file2, f2index, header)
 
 
+def main():
+    run_intersect(sys.argv)
+
+
 if __name__ == "__main__":
-    main(sys.argv)
+    main()
