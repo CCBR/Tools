@@ -24,10 +24,9 @@ __author__ = "Vishal Koparde"
 __email__ = "vishal.koparde@nih.gov"
 
 import argparse
-import io
+import importlib.resources
 import pandas as pd
 import pathlib
-import requests
 import sys
 
 
@@ -124,7 +123,9 @@ def print_results(result):
 
 def read_lookup():
     lookup = dict()
-    lookup_filepath = pathlib.Path(__file__).parent / "human_mouse_homolog_lookup.txt"
+    lookup_filepath = (
+        importlib.resources.files(__package__) / "human_mouse_homolog_lookup.txt"
+    )
     lookupdf = pd.read_csv(lookup_filepath, sep="\t")
     lookupdf.columns = ["geneName", "homologs"]
     for index, row in lookupdf.iterrows():
@@ -133,7 +134,7 @@ def read_lookup():
 
 
 def create_homolog_table(
-    rpt_file=(pathlib.Path(__file__).parent / "HOM_MouseHumanSequence.rpt"),
+    rpt_file=importlib.resources.files(__package__) / "HOM_MouseHumanSequence.rpt",
 ):
     cols = ["DB Class Key", "Common Organism Name", "Symbol"]
     df = pd.read_csv(rpt_file, usecols=cols, sep="\t")
