@@ -88,7 +88,7 @@ override_SS05 = [  # override SS05 to allow docstrings starting with these words
 ]
 
 [tool.setuptools.package-data]
-"*" = ["LICENSE", "VERSION", "CITATION.cff", "CHANGELOG.md", "pyproject.toml"]
+"*" = ["LICENSE", "VERSION", "CITATION.cff", "CHANGELOG.md", "pyproject.toml", "src/ccbr_tools/homologfinder/*.*"]
 "ccbr_tools.templates" = ["src/ccbr_tools/templates/*"]
 "ccbr_tools.extensions" = ["src/ccbr_tools/_extensions/**"]
 
