@@ -107,7 +107,7 @@ def use_quarto_ext(ext_name):
     """
     ext_dir = importlib.resources.files(__package__) / "_extensions"
     template_dir = ext_dir / ext_name
-    if not template_dir.exists():
+    if not template_dir.exists() and not (template_dir / "_extension.yml").is_file():
         raise FileNotFoundError(
             f"{ext_name} does not exist. Available extensions: {', '.join(get_quarto_extensions())}"
         )

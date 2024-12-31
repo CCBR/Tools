@@ -56,7 +56,8 @@ def test_use_quarto_ext():
         use_quarto_ext("fnl")
         assertions = [
             (pathlib.Path("_extensions") / "fnl").is_dir(),
-            len(os.listdir(pathlib.Path("_extensions") / "fnl")) > 0,
+            len(os.listdir(pathlib.Path("_extensions") / "fnl")) > 1,
+            (pathlib.Path("_extensions") / "fnl" / "_extension.yml").is_file(),
         ]
         os.chdir(current_wd)
     assert all(assertions)
