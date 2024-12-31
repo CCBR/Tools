@@ -43,7 +43,7 @@ def test_md5sum():
 
 
 def test_permissions():
-    abspath = permissions(argparse.Namespace(), "tests/data/file.txt", 700)
+    abspath = permissions(argparse.ArgumentParser(), "tests/data/file.txt", 700)
     assert abspath.endswith("tests/data/file.txt")
 
 
