@@ -37,5 +37,6 @@ $callout-color-caution: $orange;
 $callout-color-warning: $orange;
 
 // font
-$font-family-sans-serif: "Roboto", sans-serif;
-$font-family-monospace: "Roboto Mono", monospace;
+$font-family-sans-serif: "Roboto", Helvetica, "Source Sans Pro", sans-serif;
+$font-family-monospace: "Roboto Mono", "Andale Mono" "Source Code Pro",
+  monospace;
