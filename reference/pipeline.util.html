@@ -1001,7 +1001,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <section id="ccbr_tools.pipeline.util.permissions" class="level3">
 <h3 class="anchored" data-anchor-id="ccbr_tools.pipeline.util.permissions">permissions</h3>
 <div class="sourceCode" id="cb14"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb14-1"><a href="#cb14-1" aria-hidden="true" tabindex="-1"></a>pipeline.util.permissions(parser, path, <span class="op">*</span>args, <span class="op">**</span>kwargs)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<p>Checks permissions using os.access() to see if the user is authorized to access a file/directory. Checks for existence, readability, writability, and executability via: os.F_OK (tests existence), os.R_OK (tests read), os.W_OK (tests write), os.X_OK (tests exec).</p>
+<p>Checks permissions using os.access() to see if the user is authorized to access a file/directory. *args &amp; **kwargs are passed to os.access().</p>
 <section id="parameters-12" class="level4 doc-section doc-section-parameters">
 <h4 class="doc-section doc-section-parameters anchored" data-anchor-id="parameters-12">Parameters</h4>
 <table class="caption-top table">

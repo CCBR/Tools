@@ -361,7 +361,6 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   <ul>
   <li><a href="#ccbr_tools.shell" id="toc-ccbr_tools.shell" class="nav-link active" data-scroll-target="#ccbr_tools.shell">shell</a>
   <ul class="collapse">
-  <li><a href="#example" id="toc-example" class="nav-link" data-scroll-target="#example">Example</a></li>
   <li><a href="#functions" id="toc-functions" class="nav-link" data-scroll-target="#functions">Functions</a>
   <ul class="collapse">
   <li><a href="#ccbr_tools.shell.concat_newline" id="toc-ccbr_tools.shell.concat_newline" class="nav-link" data-scroll-target="#ccbr_tools.shell.concat_newline">concat_newline</a></li>
@@ -382,17 +381,6 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <h1>shell</h1>
 <p><code>shell</code></p>
 <p>Utility functions for shell command execution.</p>
-<section id="example" class="level2 doc-section doc-section-example">
-<h2 class="doc-section doc-section-example anchored" data-anchor-id="example">Example</h2>
-<blockquote class="blockquote">
-<blockquote class="blockquote">
-<blockquote class="blockquote">
-<p>shell_run(“echo Hello, World!”) ’Hello, World!</p>
-</blockquote>
-</blockquote>
-</blockquote>
-<p>’ &gt;&gt;&gt; shell_run(“invalid_command”) ‘/bin/sh: invalid_command: command not found’</p>
-</section>
 <section id="functions" class="level2">
 <h2 class="anchored" data-anchor-id="functions">Functions</h2>
 <table class="caption-top table">
@@ -465,136 +453,48 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <section id="ccbr_tools.shell.exec_in_context" class="level3">
 <h3 class="anchored" data-anchor-id="ccbr_tools.shell.exec_in_context">exec_in_context</h3>
 <div class="sourceCode" id="cb2"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a>shell.exec_in_context(func, <span class="op">*</span>args, <span class="op">**</span>kwargs)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<p>Executes a function in a context manager and captures the output from stdout and stderr.</p>
-<section id="parameters-1" class="level4 doc-section doc-section-parameters">
-<h4 class="doc-section doc-section-parameters anchored" data-anchor-id="parameters-1">Parameters</h4>
-<table class="caption-top table">
-<thead>
-<tr class="header">
-<th>Name</th>
-<th>Type</th>
-<th>Description</th>
-<th>Default</th>
-</tr>
-</thead>
-<tbody>
-<tr class="odd">
-<td>func</td>
-<td><code>func</code></td>
-<td>The function to be executed.</td>
-<td><em>required</em></td>
-</tr>
-<tr class="even">
-<td>*args</td>
-<td><a href="https://docs.python.org/3/library/stdtypes.html#str">str</a></td>
-<td>Variable length argument list to be passed to the function.</td>
-<td><code>()</code></td>
-</tr>
-<tr class="odd">
-<td>**kwargs</td>
-<td><a href="https://docs.python.org/3/library/stdtypes.html#str">str</a></td>
-<td>Arbitrary keyword arguments to be passed to the function.</td>
-<td><code>{}</code></td>
-</tr>
-</tbody>
-</table>
-</section>
-<section id="returns-1" class="level4 doc-section doc-section-returns">
-<h4 class="doc-section doc-section-returns anchored" data-anchor-id="returns-1">Returns</h4>
-<table class="caption-top table">
-<thead>
-<tr class="header">
-<th>Name</th>
-<th>Type</th>
-<th>Description</th>
-</tr>
-</thead>
-<tbody>
-<tr class="odd">
-<td>out</td>
-<td><a href="https://docs.python.org/3/library/stdtypes.html#str">str</a></td>
-<td>The combined output from both stdout and stderr.</td>
-</tr>
-</tbody>
-</table>
-</section>
+<pre><code>Executes a function in a context manager and captures the output from stdout and stderr.
+
+Args:
+    func (func): The function to be executed.
+    *args: Variable length argument list to be passed to the function.
+    **kwargs: Arbitrary keyword arguments to be passed to the function.
+
+Returns:
+    out (str): The combined output from both stdout and stderr.
+
+Examples:
+    &gt;&gt;&gt; exec_in_context(print, "Hello, World!")
+    'Hello, World!</code></pre>
+<p>’</p>
 </section>
 <section id="ccbr_tools.shell.shell_run" class="level3">
 <h3 class="anchored" data-anchor-id="ccbr_tools.shell.shell_run">shell_run</h3>
-<div class="sourceCode" id="cb3"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a>shell.shell_run(</span>
-<span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a>    command_str,</span>
-<span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a>    capture_output<span class="op">=</span><span class="va">True</span>,</span>
-<span id="cb3-4"><a href="#cb3-4" aria-hidden="true" tabindex="-1"></a>    check<span class="op">=</span><span class="va">True</span>,</span>
-<span id="cb3-5"><a href="#cb3-5" aria-hidden="true" tabindex="-1"></a>    shell<span class="op">=</span><span class="va">True</span>,</span>
-<span id="cb3-6"><a href="#cb3-6" aria-hidden="true" tabindex="-1"></a>    text<span class="op">=</span><span class="va">True</span>,</span>
-<span id="cb3-7"><a href="#cb3-7" aria-hidden="true" tabindex="-1"></a>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<p>Run a shell command and return stdout/stderr</p>
-<section id="parameters-2" class="level4 doc-section doc-section-parameters">
-<h4 class="doc-section doc-section-parameters anchored" data-anchor-id="parameters-2">Parameters</h4>
-<table class="caption-top table">
-<thead>
-<tr class="header">
-<th>Name</th>
-<th>Type</th>
-<th>Description</th>
-<th>Default</th>
-</tr>
-</thead>
-<tbody>
-<tr class="odd">
-<td>command_str</td>
-<td><a href="https://docs.python.org/3/library/stdtypes.html#str">str</a></td>
-<td>The shell command to be executed.</td>
-<td><em>required</em></td>
-</tr>
-<tr class="even">
-<td>capture_output</td>
-<td><a href="https://docs.python.org/3/library/functions.html#bool">bool</a></td>
-<td>Whether to capture the command’s output. Defaults to True.</td>
-<td><code>True</code></td>
-</tr>
-<tr class="odd">
-<td>check</td>
-<td><a href="https://docs.python.org/3/library/functions.html#bool">bool</a></td>
-<td>Whether to raise an exception if the command returns a non-zero exit status. Defaults to True.</td>
-<td><code>True</code></td>
-</tr>
-<tr class="even">
-<td>shell</td>
-<td><a href="https://docs.python.org/3/library/functions.html#bool">bool</a></td>
-<td>Whether to run the command through the shell. Defaults to True.</td>
-<td><code>True</code></td>
-</tr>
-<tr class="odd">
-<td>text</td>
-<td><a href="https://docs.python.org/3/library/functions.html#bool">bool</a></td>
-<td>Whether to treat the command’s input/output as text. Defaults to True.</td>
-<td><code>True</code></td>
-</tr>
-</tbody>
-</table>
-</section>
-<section id="returns-2" class="level4 doc-section doc-section-returns">
-<h4 class="doc-section doc-section-returns anchored" data-anchor-id="returns-2">Returns</h4>
-<table class="caption-top table">
-<thead>
-<tr class="header">
-<th>Name</th>
-<th>Type</th>
-<th>Description</th>
-</tr>
-</thead>
-<tbody>
-<tr class="odd">
-<td>out</td>
-<td><a href="https://docs.python.org/3/library/stdtypes.html#str">str</a></td>
-<td>The combined stdout and stderr of the command, separated by a newline character.</td>
-</tr>
-</tbody>
-</table>
+<div class="sourceCode" id="cb4"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a>shell.shell_run(</span>
+<span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a>    command_str,</span>
+<span id="cb4-3"><a href="#cb4-3" aria-hidden="true" tabindex="-1"></a>    capture_output<span class="op">=</span><span class="va">True</span>,</span>
+<span id="cb4-4"><a href="#cb4-4" aria-hidden="true" tabindex="-1"></a>    check<span class="op">=</span><span class="va">True</span>,</span>
+<span id="cb4-5"><a href="#cb4-5" aria-hidden="true" tabindex="-1"></a>    shell<span class="op">=</span><span class="va">True</span>,</span>
+<span id="cb4-6"><a href="#cb4-6" aria-hidden="true" tabindex="-1"></a>    text<span class="op">=</span><span class="va">True</span>,</span>
+<span id="cb4-7"><a href="#cb4-7" aria-hidden="true" tabindex="-1"></a>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<pre><code>Run a shell command and return stdout/stderr
+
+Args:
+    command_str (str): The shell command to be executed.
+    capture_output (bool, optional): Whether to capture the command's output. Defaults to True.
+    check (bool, optional): Whether to raise an exception if the command returns a non-zero exit status. Defaults to True.
+    shell (bool, optional): Whether to run the command through the shell. Defaults to True.
+    text (bool, optional): Whether to treat the command's input/output as text. Defaults to True.
+
+Returns:
+    out (str): The combined stdout and stderr of the command, separated by a newline character.
+
+Examples:
+    &gt;&gt;&gt; shell_run("echo Hello, World!")
+    'Hello, World!</code></pre>
+<p>’ &gt;&gt;&gt; shell_run(“invalid_command”) ‘/bin/sh: invalid_command: command not found’</p>
 
 
-</section>
 </section>
 </section>
 </section>

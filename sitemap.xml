@@ -2,130 +2,130 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <url>
     <loc>https://ccbr.github.io/Tools/basic_usage.html</loc>
-    <lastmod>2024-12-31T20:42:47.576Z</lastmod>
+    <lastmod>2025-01-02T18:52:32.621Z</lastmod>
   </url>
   <url>
     <loc>https://ccbr.github.io/Tools/scripts.html</loc>
-    <lastmod>2024-12-31T20:42:47.576Z</lastmod>
+    <lastmod>2025-01-02T18:52:32.621Z</lastmod>
   </url>
   <url>
     <loc>https://ccbr.github.io/Tools/LICENSE.html</loc>
-    <lastmod>2024-12-31T20:42:47.574Z</lastmod>
+    <lastmod>2025-01-02T18:52:32.619Z</lastmod>
   </url>
   <url>
     <loc>https://ccbr.github.io/Tools/cli.html</loc>
-    <lastmod>2024-12-31T20:42:47.576Z</lastmod>
+    <lastmod>2025-01-02T18:52:32.621Z</lastmod>
   </url>
   <url>
     <loc>https://ccbr.github.io/Tools/contributors.html</loc>
-    <lastmod>2024-12-31T20:42:47.576Z</lastmod>
+    <lastmod>2025-01-02T18:52:32.621Z</lastmod>
   </url>
   <url>
     <loc>https://ccbr.github.io/Tools/CONTRIBUTING.html</loc>
-    <lastmod>2024-12-31T20:42:47.574Z</lastmod>
+    <lastmod>2025-01-02T18:52:32.619Z</lastmod>
   </url>
   <url>
     <loc>https://ccbr.github.io/Tools/reference/pipeline.util.html</loc>
-    <lastmod>2024-12-31T20:43:38.682Z</lastmod>
+    <lastmod>2025-01-02T18:53:11.061Z</lastmod>
   </url>
   <url>
     <loc>https://ccbr.github.io/Tools/reference/homologfinder.hf.html</loc>
-    <lastmod>2024-12-31T20:43:38.699Z</lastmod>
+    <lastmod>2025-01-02T18:53:11.078Z</lastmod>
   </url>
   <url>
     <loc>https://ccbr.github.io/Tools/reference/intersect.html</loc>
-    <lastmod>2024-12-31T20:43:38.701Z</lastmod>
+    <lastmod>2025-01-02T18:53:11.080Z</lastmod>
   </url>
   <url>
     <loc>https://ccbr.github.io/Tools/reference/index.html</loc>
-    <lastmod>2024-12-31T20:43:38.423Z</lastmod>
+    <lastmod>2025-01-02T18:53:10.810Z</lastmod>
   </url>
   <url>
     <loc>https://ccbr.github.io/Tools/reference/pipeline.hpc.html</loc>
-    <lastmod>2024-12-31T20:43:38.587Z</lastmod>
+    <lastmod>2025-01-02T18:53:10.967Z</lastmod>
   </url>
   <url>
     <loc>https://ccbr.github.io/Tools/reference/pipeline.nextflow.html</loc>
-    <lastmod>2024-12-31T20:43:38.595Z</lastmod>
+    <lastmod>2025-01-02T18:53:10.974Z</lastmod>
   </url>
   <url>
     <loc>https://ccbr.github.io/Tools/reference/GSEA.multitext2excel.html</loc>
-    <lastmod>2024-12-31T20:43:38.686Z</lastmod>
+    <lastmod>2025-01-02T18:53:11.065Z</lastmod>
   </url>
   <url>
     <loc>https://ccbr.github.io/Tools/reference/pipeline.cache.html</loc>
-    <lastmod>2024-12-31T20:43:38.560Z</lastmod>
+    <lastmod>2025-01-02T18:53:10.940Z</lastmod>
   </url>
   <url>
     <loc>https://ccbr.github.io/Tools/reference/pkg_util.html</loc>
-    <lastmod>2024-12-31T20:43:38.494Z</lastmod>
+    <lastmod>2025-01-02T18:53:10.880Z</lastmod>
   </url>
   <url>
     <loc>https://ccbr.github.io/Tools/reference/jobby.html</loc>
-    <lastmod>2024-12-31T20:43:38.776Z</lastmod>
+    <lastmod>2025-01-02T18:53:11.154Z</lastmod>
   </url>
   <url>
     <loc>https://ccbr.github.io/Tools/cite.html</loc>
-    <lastmod>2024-12-31T20:42:47.576Z</lastmod>
+    <lastmod>2025-01-02T18:52:32.621Z</lastmod>
   </url>
   <url>
     <loc>https://ccbr.github.io/Tools/reference/GSEA.ncbr_huse.html</loc>
-    <lastmod>2024-12-31T20:43:38.688Z</lastmod>
+    <lastmod>2025-01-02T18:53:11.066Z</lastmod>
   </url>
   <url>
     <loc>https://ccbr.github.io/Tools/reference/gb2gtf.html</loc>
-    <lastmod>2024-12-31T20:43:38.690Z</lastmod>
+    <lastmod>2025-01-02T18:53:11.068Z</lastmod>
   </url>
   <url>
     <loc>https://ccbr.github.io/Tools/reference/GSEA.deg2gs.html</loc>
-    <lastmod>2024-12-31T20:43:38.684Z</lastmod>
+    <lastmod>2025-01-02T18:53:11.063Z</lastmod>
   </url>
   <url>
     <loc>https://ccbr.github.io/Tools/reference/jobinfo.html</loc>
-    <lastmod>2024-12-31T20:43:38.708Z</lastmod>
+    <lastmod>2025-01-02T18:53:11.087Z</lastmod>
   </url>
   <url>
     <loc>https://ccbr.github.io/Tools/reference/peek.html</loc>
-    <lastmod>2024-12-31T20:43:38.793Z</lastmod>
+    <lastmod>2025-01-02T18:53:11.171Z</lastmod>
   </url>
   <url>
     <loc>https://ccbr.github.io/Tools/reference/github.html</loc>
-    <lastmod>2024-12-31T20:43:38.455Z</lastmod>
+    <lastmod>2025-01-02T18:53:10.841Z</lastmod>
   </url>
   <url>
     <loc>https://ccbr.github.io/Tools/reference/shell.html</loc>
-    <lastmod>2024-12-31T20:43:38.522Z</lastmod>
+    <lastmod>2025-01-02T18:53:10.902Z</lastmod>
   </url>
   <url>
     <loc>https://ccbr.github.io/Tools/reference/templates.html</loc>
-    <lastmod>2024-12-31T20:43:38.540Z</lastmod>
+    <lastmod>2025-01-02T18:53:10.920Z</lastmod>
   </url>
   <url>
     <loc>https://ccbr.github.io/Tools/reference/send_email.html</loc>
-    <lastmod>2024-12-31T20:43:38.505Z</lastmod>
+    <lastmod>2025-01-02T18:53:10.890Z</lastmod>
   </url>
   <url>
     <loc>https://ccbr.github.io/Tools/reference/pipeline.html</loc>
-    <lastmod>2024-12-31T20:43:38.496Z</lastmod>
+    <lastmod>2025-01-02T18:53:10.882Z</lastmod>
   </url>
   <url>
     <loc>https://ccbr.github.io/Tools/help.html</loc>
-    <lastmod>2024-12-31T20:42:47.576Z</lastmod>
+    <lastmod>2025-01-02T18:52:32.621Z</lastmod>
   </url>
   <url>
     <loc>https://ccbr.github.io/Tools/badges.html</loc>
-    <lastmod>2024-12-31T20:42:47.576Z</lastmod>
+    <lastmod>2025-01-02T18:52:32.620Z</lastmod>
   </url>
   <url>
     <loc>https://ccbr.github.io/Tools/install.html</loc>
-    <lastmod>2024-12-31T20:42:47.576Z</lastmod>
+    <lastmod>2025-01-02T18:52:32.621Z</lastmod>
   </url>
   <url>
     <loc>https://ccbr.github.io/Tools/index.html</loc>
-    <lastmod>2024-12-31T20:42:47.576Z</lastmod>
+    <lastmod>2025-01-02T18:52:32.621Z</lastmod>
   </url>
   <url>
     <loc>https://ccbr.github.io/Tools/CHANGELOG.html</loc>
-    <lastmod>2024-12-31T20:42:47.574Z</lastmod>
+    <lastmod>2025-01-02T18:52:32.619Z</lastmod>
   </url>
 </urlset>
