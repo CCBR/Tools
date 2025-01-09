@@ -2,7 +2,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
 
 <meta charset="utf-8">
-<meta name="generator" content="quarto-1.6.39">
+<meta name="generator" content="quarto-1.6.40">
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
@@ -37,8 +37,8 @@ ul.task-list li input[type="checkbox"] {
 <script src="site_libs/quarto-html/tippy.umd.min.js"></script>
 <script src="site_libs/quarto-html/anchor.min.js"></script>
 <link href="site_libs/quarto-html/tippy.css" rel="stylesheet">
-<link href="site_libs/quarto-html/quarto-syntax-highlighting-38a461fcd19f875b30a0b907f0f7ff37.css" rel="stylesheet" class="quarto-color-scheme" id="quarto-text-highlighting-styles">
-<link href="site_libs/quarto-html/quarto-syntax-highlighting-dark-f8ca20df0b55895868642e0cfc08f082.css" rel="stylesheet" class="quarto-color-scheme quarto-color-alternate" id="quarto-text-highlighting-styles">
+<link href="site_libs/quarto-html/quarto-syntax-highlighting-510bd4bf211586983decf47525bf92af.css" rel="stylesheet" class="quarto-color-scheme" id="quarto-text-highlighting-styles">
+<link href="site_libs/quarto-html/quarto-syntax-highlighting-dark-e572c160e7ab6f7a77f4e86240fd5af9.css" rel="stylesheet" class="quarto-color-scheme quarto-color-alternate" id="quarto-text-highlighting-styles">
 <script src="site_libs/bootstrap/bootstrap.min.js"></script>
 <link href="site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
 <link href="site_libs/bootstrap/bootstrap-43e5e928e5f9e61ac7a6965b0ba7131d.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme" id="quarto-bootstrap" data-mode="light">
@@ -255,8 +255,9 @@ ul.task-list li input[type="checkbox"] {
   <ul>
   <li><a href="#main-cli" id="toc-main-cli" class="nav-link active" data-scroll-target="#main-cli">Main CLI</a>
   <ul class="collapse">
-  <li><a href="#cite" id="toc-cite" class="nav-link" data-scroll-target="#cite">cite</a></li>
   <li><a href="#send-email" id="toc-send-email" class="nav-link" data-scroll-target="#send-email">send-email</a></li>
+  <li><a href="#quarto-add" id="toc-quarto-add" class="nav-link" data-scroll-target="#quarto-add">quarto-add</a></li>
+  <li><a href="#cite" id="toc-cite" class="nav-link" data-scroll-target="#cite">cite</a></li>
   <li><a href="#version" id="toc-version" class="nav-link" data-scroll-target="#version">version</a></li>
   </ul></li>
   <li><a href="#additional-utilities" id="toc-additional-utilities" class="nav-link" data-scroll-target="#additional-utilities">Additional utilities</a>
@@ -302,6 +303,8 @@ ul.task-list li input[type="checkbox"] {
 
   For more options, run: ccbr_tools [command] --help
 
+  https://ccbr.github.io/Tools/
+
 Options:
   -v, --version  Show the version and exit.
   -h, --help     Show this message and exit.
@@ -321,21 +324,6 @@ All installed tools:
   jobinfo
   peek
 </code></pre>
-<section id="cite" class="level3">
-<h3 class="anchored" data-anchor-id="cite">cite</h3>
-<pre><code>Usage: ccbr_tools cite [OPTIONS] CITATION_FILE
-
-  Print the citation in the desired format
-
-  citation_file : Path to a file in Citation File Format (CFF) [default: the
-  CFF for ccbr_tools]
-
-Options:
-  -f, --output-format [apalike|bibtex|cff|codemeta|endnote|ris|schema.org|zenodo]
-                                  Output format for the citation
-  -h, --help                      Show this message and exit.
-</code></pre>
-</section>
 <section id="send-email" class="level3">
 <h3 class="anchored" data-anchor-id="send-email">send-email</h3>
 <pre><code>Usage: ccbr_tools send-email [OPTIONS] [TO_ADDRESS] [TEXT]
@@ -355,6 +343,39 @@ Options:
   -h, --help              Show this message and exit.
 </code></pre>
 </section>
+<section id="quarto-add" class="level3">
+<h3 class="anchored" data-anchor-id="quarto-add">quarto-add</h3>
+<pre><code>Usage: ccbr_tools quarto-add [OPTIONS] EXT_NAME
+
+  Add a quarto extension
+
+  Arguments:
+      ext_name    The name of the extension in ccbr_tools
+
+  Examples:
+      ccbr_tools quarto-add fnl
+
+Options:
+  -h, --help  Show this message and exit.
+
+  Available extensions: fnl
+</code></pre>
+</section>
+<section id="cite" class="level3">
+<h3 class="anchored" data-anchor-id="cite">cite</h3>
+<pre><code>Usage: ccbr_tools cite [OPTIONS] CITATION_FILE
+
+  Print the citation in the desired format
+
+  citation_file : Path to a file in Citation File Format (CFF) [default: the
+  CFF for ccbr_tools]
+
+Options:
+  -f, --output-format [apalike|bibtex|cff|codemeta|endnote|ris|schema.org|zenodo]
+                                  Output format for the citation
+  -h, --help                      Show this message and exit.
+</code></pre>
+</section>
 <section id="version" class="level3">
 <h3 class="anchored" data-anchor-id="version">version</h3>
 <pre><code>Usage: ccbr_tools version [OPTIONS]
@@ -371,7 +392,10 @@ Options:
 <h2 class="anchored" data-anchor-id="additional-utilities">Additional utilities</h2>
 <section id="gb2gtf" class="level3">
 <h3 class="anchored" data-anchor-id="gb2gtf">gb2gtf</h3>
-<pre><code>Usage: gb2gtf sequence.gb &gt; sequence.gtf
+<pre><code>Convert GenBank files to GTF format.
+
+Usage: gb2gtf sequence.gb &gt; sequence.gtf
+
 </code></pre>
 </section>
 <section id="hf" class="level3">
@@ -417,15 +441,15 @@ intersect filename1 filename2 f1ColumnIndex F2ColumnIndex
 </section>
 <section id="jobby" class="level3">
 <h3 class="anchored" data-anchor-id="jobby">jobby</h3>
-<pre><code>[1m[40m[96mjobby[0m: [1mWill take your job(s)... and display their information![0m
+<pre><code>jobby: Will take your job(s)... and display their information!
 
-[1m[4mSynopsis:[0m
+Synopsis:
   $ jobby [--version] [--help] \
         [--scheduler {slurm | ...}] \
         [--threads THREADS] [--tmp-dir TMP_DIR] \
         &lt;JOB_ID [JOB_ID ...]&gt;
 
-[1m[4mDescription:[0m
+Description:
   jobby will take your past jobs and display their job information
 in a standardized format. Why???! We have pipelines running on several
 different clusters (using different job schedulers). jobby centralizes
@@ -436,7 +460,7 @@ a unified command-line interface.
 on a given target system for getting job information to return to the
 user in a common output format.
 
-[1m[4mRequired Positional Arguments:[0m
+Required Positional Arguments:
   &lt;JOB_ID [JOB_ID ...]&gt;
                        Identiers of past jobs. One or more JOB_IDs
                        can be provided. Multiple JOB_IDs should be
@@ -445,7 +469,7 @@ user in a common output format.
                        output. Please see example section below for
                        more information.
 
-[1m[4mOptions:[0m
+Options:
   -s,--scheduler {slurm | ...}
                         @Default: slurm
                         Job scheduler. Defines the job scheduler
@@ -476,12 +500,12 @@ user in a common output format.
   -v, --version         Displays version information and exits.
                           @Example: --version
 
-[1m[4mExample:[0m
+Example:
 # Please avoid running jobby
 # on a cluster's head node!
 ./jobby -s slurm  -n 4 18627542 13627516 58627597 48627666
 
-[1m[4mVersion:[0m
+Version:
   v0.2.0
 </code></pre>
 </section>
