@@ -12,6 +12,7 @@
   - fix docstrings rendering -- use Google style. (#25, @kelly-sovacool)
   - overhaul navigation structure of docs website. (#28, @kelly-sovacool)
   - style the website to follow FNL branding guidelines. (#30, @kelly-sovacool)
+  - miscellaneous minor improvements. (#32, @kelly-sovacool)
 - bug fixes:
   - include data files in package installation for `homologfinder`. (#31, @kelly-sovacool)
 
