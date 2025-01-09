@@ -9,11 +9,16 @@ subtitle: CLI utilities in CCBR Tools
 #| echo: false
 #| output: asis
 from ccbr_tools.shell import shell_run
+help_msg = shell_run("ccbr_tools --help")
 print("```")
-print(shell_run("ccbr_tools --help"))
+print(help_msg)
 print("```", end = '\n\n')
 
-for cmd in ('cite', 'send-email', 'version'):
+# get list of ccbr_tools commands from the help message
+help_lst = help_msg.split('\n\n')
+commands_idx = [idx for idx,ele in enumerate(help_lst) if ele.startswith('Commands:')][0]
+commands = [cmd.split()[0] for cmd in help_lst[commands_idx].split('\n')[1:]]
+for cmd in commands:
     print(f"### {cmd}", end = '\n\n')
     print("```")
     print(shell_run(f"ccbr_tools {cmd} --help"))
