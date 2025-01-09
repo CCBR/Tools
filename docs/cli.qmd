@@ -31,11 +31,19 @@ for cmd in commands:
 ```{python}
 #| echo: false
 #| output: asis
+import re
 from ccbr_tools.pkg_util import get_project_scripts
+
+# https://stackoverflow.com/a/14693789/5787827
+ansi_escape = re.compile(r'\x1B(?:[@-Z\\-_]|\[[0-?]*[ -/]*[@-~])')
+
 for cmd in get_project_scripts():
     if cmd != 'ccbr_tools':
         print(f"### {cmd}", end = '\n\n')
         print("```")
-        print(shell_run(f"{cmd} --help"))
+        help_msg = shell_run(f"{cmd} --help")
+        if cmd == 'jobby':
+            help_msg = ansi_escape.sub('', help_msg)
+        print(help_msg)
         print("```", end = '\n\n')
 ```
