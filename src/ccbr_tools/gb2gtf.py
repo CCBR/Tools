@@ -21,10 +21,16 @@ def main():
         gb2gtf(sys.argv)
 
 
+usage_msg = """Convert GenBank files to GTF format.
+
+Usage: gb2gtf sequence.gb > sequence.gtf
+"""
+
+
 def check_args(args):
     valid_usage = True
     if len(args) < 2 or "-h" in args or "--help" in args:
-        print("Usage: gb2gtf sequence.gb > sequence.gtf")
+        print(usage_msg)
         valid_usage = False
     return valid_usage
 

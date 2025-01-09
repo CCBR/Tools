@@ -47,6 +47,8 @@ ccbr_tools --help
 
       For more options, run: ccbr_tools [command] --help
 
+      https://ccbr.github.io/Tools/
+
     Options:
       -v, --version  Show the version and exit.
       -h, --help     Show this message and exit.

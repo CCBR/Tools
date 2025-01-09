@@ -16,7 +16,7 @@ from .send_email import send_email_msg
 from .templates import use_quarto_ext, get_quarto_extensions
 
 
-all_commands = "All installed tools:\n" + "\n".join(
+all_scripts = "All installed tools:\n" + "\n".join(
     [f"  {cmd}" for cmd in get_project_scripts()]
 )
 
@@ -24,7 +24,7 @@ all_commands = "All installed tools:\n" + "\n".join(
 @click.group(
     cls=CustomClickGroup,
     context_settings=dict(help_option_names=["-h", "--help"]),
-    epilog=all_commands,
+    epilog=all_scripts,
 )
 @click.version_option(get_version(), "-v", "--version", is_flag=True)
 def cli():
@@ -34,6 +34,7 @@ def cli():
     For more options, run:
     ccbr_tools [command] --help
 
+    https://ccbr.github.io/Tools/
     """
     pass
 
