@@ -21,7 +21,7 @@ ip=$(ifconfig -a|grep "inet 10."|awk '{print $2}')
 
 if [[ "$ip" == "" ]]
 then
-	echo "Are you really connected to VPN?? Doesn't look like it!"
+	echo 'Are you really connected to VPN?? Does not look like it!'
 	exit 1
 fi
 
