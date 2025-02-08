@@ -121,7 +121,8 @@ if [[ $ISBIOWULF == true || $ISFRCE == true ]];then
             fi
         fi
         echo "$SCRIPTBASENAME: spook is now in PATH:$SPOOK"
-        SPOOK_COPY2DIR="/scratch/ccbrpipeliner"
+        #SPOOK_COPY2DIR="/scratch/ccbrpipeliner"
+        SPOOK_COPY2DIR="/data/CCBR_Pipeliner/userdata_staging"
     fi
     if [[ $ISFRCE == true ]];then
         SPOOK_COPY2DIR="/mnt/projects/CCBR-Pipelines/pipelines/userdata/ccbrpipeliner"
