@@ -1,4 +1,4 @@
-## Tools development version
+## Tools 0.2.0
 
 - new commands:
   - `ccbr_tools send-email` for sending emails from the command line. (#26, @kelly-sovacool)
