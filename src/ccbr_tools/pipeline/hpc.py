@@ -1,7 +1,7 @@
 """
 Classes for working with different HPC clusters.
 
-Use [](`ccbr_tools.pipeline.hpc.get_hpc`) to retrieve an HPC Cluster instance,
+Use [](`~ccbr_tools.pipeline.hpc.get_hpc`) to retrieve an HPC Cluster instance,
 which contains default attributes for supported clusters.
 """
 
@@ -46,7 +46,7 @@ class Cluster:
 
 class Biowulf(Cluster):
     """
-    The Biowulf cluster -- child of [](`ccbr_tools.pipeline.hpc.Cluster`)
+    The Biowulf cluster -- child of [](`~ccbr_tools.pipeline.hpc.Cluster`)
 
     Attributes:
         name (str): The name of the cluster.
@@ -59,22 +59,25 @@ class Biowulf(Cluster):
         super().__init__()
         self.name = "biowulf"
         self.modules = {
-            "nxf": (
-                "nextflow" + ""
-                if is_loaded(module="ccbrpipeliner")
-                else " ccbrpipeliner"
+            "nxf": " ".join(
+                [
+                    "nextflow",
+                    "" if is_loaded(module="ccbrpipeliner") else "ccbrpipeliner",
+                ]
             ),
-            "smk": (
-                "snakemake/7 singularity" + ""
-                if is_loaded(module="ccbrpipeliner")
-                else " ccbrpipeliner"
+            "smk": " ".join(
+                [
+                    "snakemake/7",
+                    "singularity",
+                    "" if is_loaded(module="ccbrpipeliner") else " ccbrpipeliner",
+                ]
             ),
         }
 
 
 class FRCE(Cluster):
     """
-    The FRCE cluster -- child of [](`ccbr_tools.pipeline.hpc.Cluster`)
+    The FRCE cluster -- child of [](`~ccbr_tools.pipeline.hpc.Cluster`)
 
     Attributes:
         name (str): The name of the cluster.

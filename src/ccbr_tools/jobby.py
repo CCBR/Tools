@@ -99,13 +99,15 @@ class Colors:
 
 # Helper Functions
 def which(cmd, path=None):
-    """Checks if an executable is in $PATH
-    @param cmd <str>:
-        Name of executable to check
-    @param path <list>:
-        Optional list of PATHs to check [default: $PATH]
-    @return <boolean>:
-        True if exe in PATH, False if not in PATH
+    """
+    Checks if an executable is in $PATH.
+
+    Args:
+        cmd (str): Name of the executable to check.
+        path (list, optional): Optional list of PATHs to check. Defaults to $PATH.
+
+    Returns:
+        bool: True if the executable is in PATH, False otherwise.
     """
     if path is None:
         path = os.environ["PATH"].split(os.pathsep)
@@ -121,38 +123,43 @@ def which(cmd, path=None):
 
 
 def err(*message, **kwargs):
-    """Prints any provided args to standard error.
-    kwargs can be provided to modify print functions
-    behavior.
-    @param message <any>:
-        Values printed to standard error
-    @params kwargs <print()>
-        Key words to modify print function behavior
+    """
+    Prints any provided args to standard error.
+    kwargs can be provided to modify print function's behavior.
+
+    Args:
+        *message: Values printed to standard error.
+        **kwargs: Key words to modify print function behavior.
     """
     print(*message, file=sys.stderr, **kwargs)
 
 
 def fatal(*message, **kwargs):
-    """Prints any provided args to standard error
+    """
+    Prints any provided args to standard error
     and exits with an exit code of 1.
-    @param message <any>:
-        Values printed to standard error
-    @params kwargs <print()>
-        Key words to modify print function behavior
+
+    Args:
+        *message: Values printed to standard error.
+        **kwargs: Key words to modify print function behavior.
     """
     err(*message, **kwargs)
     sys.exit(1)
 
 
 def get_toolkit(tool_list):
-    """Finds the best suited tool from a list of
-    possible choices. Assumes tool list is already
-    ordered from the best to worst choice. The first
-    tool found in a user's $PATH is returned.
-    @param tool_list list[<str>]:
-        List of ordered tools to find
-    @returns best_choice <str>:
-        First tool found in tool_list
+    """
+    Finds the best suited tool from a list of possible choices. Assumes tool list is already
+    ordered from the best to worst choice. The first tool found in a user's $PATH is returned.
+
+    Args:
+        tool_list (list[str]): List of ordered tools to find.
+
+    Returns:
+        str: First tool found in tool_list.
+
+    Raises:
+        SystemExit: If no tools are found in the user's $PATH.
     """
     best_choice = None
     for exe in tool_list:
@@ -173,17 +180,21 @@ def get_toolkit(tool_list):
 
 
 def add_missing(linelist, insertion_dict):
-    """Adds missing information to a list. This can be used
+    """
+    Adds missing information to a list. This can be used
     to add missing job information fields to the results of
     job querying tool.
-    @param linelist list[<str>]:
-        List containing job information for each field of interest
-    @param insertion_dict dict[<int>] = str
-        Dictionary used to insert missing information to a given
-        index, where the keys are indices of the `linelist` and the
-        values are information to add. Please note that the indices
-        should be zero based. Note that multiple consecutive values
-        should be inserted at once as a list, see example below:
+
+    Args:
+        linelist (list[str]): List containing job information for each field of interest.
+        insertion_dict (dict[int, Union[str, list[str]]]): Dictionary used to insert missing information
+            to a given index, where the keys are indices of the `linelist` and the values are information
+            to add. The indices should be zero-based. Multiple consecutive values should be inserted at
+            once as a list.
+
+    Returns:
+        list[str]: The updated list with the missing information added.
+
     Example:
         add_missing([0,1,2,3,4], {3:['+','++'], 1:'-', 4:'@'})
         >> [0, '-', 1, 2, '+', '++', 3, '@', 4]
@@ -211,7 +222,19 @@ def add_missing(linelist, insertion_dict):
 
 
 def convert_size(size_bytes):
-    """Converts bytes to a human readable format."""
+    """
+    Converts bytes to a human readable format.
+
+    Args:
+        size_bytes (int): Size in bytes to convert.
+
+    Returns:
+        str: Human readable size in the format 'X.YZUNIT'.
+
+    Example:
+        >>> convert_size(1024)
+        '1.0KiB'
+    """
     # Sizes range from B to YiB,
     # warning larger sizes storage
     # may results in blackhole
@@ -225,8 +248,20 @@ def convert_size(size_bytes):
 
 
 def to_bytes(size):
-    """Convert a human readable size unit into bytes.
-    Returns None if cannot convert/parse provided size."""
+    """
+    Convert a human readable size unit into bytes.
+    Returns None if cannot convert/parse provided size.
+
+    Args:
+        size (str): Human readable size unit to convert.
+
+    Returns:
+        int: Size in bytes.
+
+    Example:
+        >>> to_bytes('1.0KiB')
+        1024
+    """
     size2bytes = {
         "b": 1,
         "bytes": 1,
@@ -277,27 +312,40 @@ def to_bytes(size):
 # Core logic for getting
 # job information
 def sge(jobs, threads, tmp_dir):
-    """Displays SGE job information to standard output.
-    @param sub_args <parser.parse_args() object>:
-        Parsed command-line arguments
-    @return None
+    """
+    Displays SGE job information to standard output.
+
+    Args:
+        jobs (list): List of job objects to be processed.
+        threads (int): Number of threads to be used.
+        tmp_dir (str): Temporary directory for job processing.
+
+    Returns:
+        None
     """
     # NOTE: add later for SGE cluster
-    pass
+    raise NotImplementedError("SGE cluster support is not yet implemented!")
 
 
 def uge(jobs, threads, tmp_dir):
-    """Displays UGE job information to standard output.
-    @param sub_args <parser.parse_args() object>:
-        Parsed command-line arguments
-    @return None
+    """
+    Displays UGE job information to standard output.
+
+    Args:
+        jobs (list): A list of job identifiers.
+        threads (int): The number of threads to use.
+        tmp_dir (str): The temporary directory to use.
+
+    Returns:
+        None
     """
     # NOTE: add later for LOCUS cluster
-    pass
+    raise NotImplementedError("UGE cluster support is not yet implemented!")
 
 
 def dashboard_cli(jobs, threads=1, tmp_dir=None):
-    """Biowulf-specific tool to get SLURM job information.
+    """
+    Biowulf-specific tool to get SLURM job information.
     HPC staff recommend using this over the default slurm
     `sacct` command for performance reasons. By default,
     the `dashboard_cli` returns information for the following
@@ -311,6 +359,14 @@ def dashboard_cli(jobs, threads=1, tmp_dir=None):
             --joblist 12345679,12345680 \\
             --fields FIELD,FIELD,FIELD \\
             --tab --archive
+
+    Args:
+        jobs (list): List of job identifiers.
+        threads (int): Number of threads to use.
+        tmp_dir (str): Temporary directory to use.
+
+    Returns:
+        None
     """
     fields = [
         "jobid",
@@ -361,7 +417,8 @@ def dashboard_cli(jobs, threads=1, tmp_dir=None):
 
 
 def sacct(jobs, threads=1, tmp_dir=None):
-    """Generic tool to get SLURM job information.
+    """
+    Generic tool to get SLURM job information.
     `sacct` should be available on all SLURM clusters.
     The `dashboard_cli` is prioritized over using `sacct`
     due to perform reasons; however, this method will be
@@ -379,6 +436,14 @@ def sacct(jobs, threads=1, tmp_dir=None):
         $  sacct -j 12345679,12345680 \\
             --fields FIELD,FIELD,FIELD \\
             -P --delimiter $'\t'
+
+    Args:
+        jobs (list): List of job identifiers.
+        threads (int): Number of threads to use.
+        tmp_dir (str): Temporary directory to use.
+
+    Returns:
+        None
     """
     header = [
         "jobid",
@@ -495,10 +560,16 @@ def sacct(jobs, threads=1, tmp_dir=None):
 
 
 def slurm(jobs, threads, tmp_dir):
-    """Displays SLURM job information to standard output.
-    @param sub_args <parser.parse_args() object>:
-        Parsed command-line arguments
-    @return None
+    """
+    Displays SLURM job information to standard output.
+
+    Args:
+        jobs (list): List of job identifiers.
+        threads (int): Number of threads to use.
+        tmp_dir (str): Temporary directory to use.
+
+    Returns:
+        None
     """
     # Try to use the following tools in this
     # order to get job information!
@@ -517,9 +588,12 @@ def jobby(args):
     Wrapper to each supported job scheduler: slurm, etc.
     Each scheduler has a custom handler to most effectively
     get and parse job information.
-    @param sub_args <parser.parse_args() object>:
-        Parsed command-line arguments
-    @return None
+
+    Args:
+        sub_args (argparse.Namespace): Parsed command-line arguments.
+
+    Returns:
+        None
     """
     # Get command line options
     abstract_handler = None
@@ -544,16 +618,17 @@ def jobby(args):
 
 # Parse command-line arguments
 def parsed_arguments(name, description):
-    """Parses user-provided command-line arguments. This requires
+    """
+    Parses user-provided command-line arguments. This requires
     argparse and textwrap packages. To create custom help formatting
     a text wrapped docstring is used to create the help message for
     required options. As so, the help message for require options
     must be suppressed. If a new required argument is added to the
     cli, it must be updated in the usage statement docstring below.
-    @param name <str>:
-        Name of the pipeline or command-line tool
-    @param description <str>:
-        Short description of pipeline or command-line tool
+
+    Args:
+        name (str): Name of the pipeline or command-line tool.
+        description (str): Short description of pipeline or command-line tool.
     """
     # Add styled name and description
     c = Colors

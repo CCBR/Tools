@@ -1,3 +1,21 @@
+## Tools 0.2.0
+
+- new commands:
+  - `ccbr_tools send-email` for sending emails from the command line. (#26, @kelly-sovacool)
+    - With new helper function: `send_email.send_email_msg()`.
+    - Works when run from biowulf.
+  - `ccbr_tools quarto-add` to add quarto extensions from this package. (#30, @kelly-sovacool)
+    - Includes new format `fnl` for our documentation websites.
+- new functions for creating a contributors page for documentation websites: `github.print_contributor_images()`. (#27, @kelly-sovacool)
+- new script from [`CCBR/TaskManagement`](https://github.com/CCBR/TaskManagement/tree/103c73d41858d400fba95ed2130d7d5653f243e0/scripts): `github_milestones.sh`. (#29, @kelly-sovacool)
+- documentation improvements:
+  - fix docstrings rendering -- use Google style. (#25, @kelly-sovacool)
+  - overhaul navigation structure of docs website. (#28, @kelly-sovacool)
+  - style the website to follow FNL branding guidelines. (#30, @kelly-sovacool)
+  - miscellaneous minor improvements. (#32, @kelly-sovacool)
+- bug fixes:
+  - include data files in package installation for `homologfinder`. (#31, @kelly-sovacool)
+
 ## Tools 0.1.4
 
 - fix copy location for spook. (@kopardev)
@@ -29,7 +47,7 @@ other bioinformatics pipelines for tasks such as determining the HPC
 environment, retrieving available genome annotations, and printing citation and
 version information.
 Explore the `ccbr_tools` reference documentation for more information:
-<https://ccbr.github.io/Tools/latest/reference/>
+<https://ccbr.github.io/Tools/reference/>
 
 ### CLI Utilities
 

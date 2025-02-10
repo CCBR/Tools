@@ -2,3 +2,6 @@ include CITATION.cff
 include VERSION
 include pyproject.toml
 include src/ccbr_tools/templates/*
+recursive-include src/ccbr_tools/templates/_extensions/ *
+include src/ccbr_tools/homologfinder/*.rpt
+include src/ccbr_tools/homologfinder/*.txt

@@ -8,25 +8,49 @@ website:
   site-url: https://ccbr.github.io/Tools
   repo-url: https://github.com/CCBR/Tools
   repo-actions: [edit, issue]
+  search:
+    location: navbar
+    type: textbox
+  page-navigation: true
   sidebar:
-    - id: reference
-      contents: "_sidebar.yml"
+    - id: docs
+      title: Docs
+      style: docked
+      contents:
+        - text: Home
+          href: index.qmd
+        - section: Usage
+          contents:
+            - href: cli.qmd
+            - href: scripts.qmd
+            - text: Python API reference
+              href: reference/index.qmd
+              contents: "_sidebar.yml"
+        - section: Project information
+          contents:
+            - text: Citation
+              href: cite.qmd
+            - text: Contributing
+              href: CONTRIBUTING.md
+            - href: contributors.qmd
+            - text: License
+              href: LICENSE.md
+            - text: Changelog
+              href: CHANGELOG.md
+
   navbar:
-    left:
-      - text: Home
-        href: index.md
-      - text: Reference
-        href: reference/index.qmd
     right:
-      - text: Changelog
-        href: CHANGELOG.md
-      - text: Contributing
-        href: CONTRIBUTING.md
+      - sidebar:docs
       - icon: github
         href: https://github.com/CCBR/Tools
         aria-label: CCBR/Tools GitHub
+
   page-footer:
+    background: black
+    foreground: white
     left: |
+      [![](/_extensions/fnl/fnl-logo-dark.png){height=70px}](https://frederick.cancer.gov/research/science-areas/bioinformatics-and-computational-science/advanced-biomedical-computational-science)
+    center: |
       Created by the
       [CCR Collaborative Bioinformatics Resource](https://github.com/CCBR)
 
@@ -37,17 +61,20 @@ quartodoc:
   sidebar: _sidebar.yml
   title: "API Reference"
   sections:
-    - title: Modules
+    - title: Main modules
       contents:
-        - jobby
-        - peek
+        - github
+        - pkg_util
+        - pipeline
+        - send_email
+        - shell
+        - templates
+    - title: Pipeline utilities
+      contents:
         - pipeline.cache
         - pipeline.hpc
         - pipeline.nextflow
         - pipeline.util
-        - pkg_util
-        - shell
-        - templates
     - title: Legacy tools
       contents:
         - GSEA.deg2gs
@@ -57,6 +84,8 @@ quartodoc:
         - homologfinder.hf
         - intersect
         - jobinfo
+        - jobby
+        - peek
 
 metadata-files:
   - _sidebar.yml
@@ -65,11 +94,17 @@ filters:
   - interlinks
 
 interlinks:
-  sources: {}
+  sources:
+    python:
+      url: https://docs.python.org/3/
+    # ccbr_actions:
+    #   url: https://ccbr.github.io/actions/reference
+    # ccbr_tools:
+    #   url: https://ccbr.github.io/Tools/reference
 
-format:
-  html:
-    theme:
-      light: flatly
-      dark: darkly
-    toc: true
+execute:
+  freeze: auto
+  eval: true
+  echo: true
+
+format: fnl-html

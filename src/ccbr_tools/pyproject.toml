@@ -46,7 +46,6 @@ dependencies = [
 [project.optional-dependencies]
 dev = [
     "black >= 23.10.0",
-    "jupyter",
     "pre-commit"
 ]
 test = [
@@ -54,7 +53,8 @@ test = [
     "pytest-cov"
 ]
 docs = [
-    "quartodoc >= v0.7.6"
+    "quartodoc >= v0.7.6",
+    "jupyter"
 ]
 
 [project.scripts]
@@ -90,6 +90,8 @@ override_SS05 = [  # override SS05 to allow docstrings starting with these words
 [tool.setuptools.package-data]
 "*" = ["LICENSE", "VERSION", "CITATION.cff", "CHANGELOG.md", "pyproject.toml"]
 "ccbr_tools.templates" = ["src/ccbr_tools/templates/*"]
+"ccbr_tools.extensions" = ["src/ccbr_tools/_extensions/**"]
+"ccbr_tools.homologfinder" = ["src/ccbr_tools/homologfinder/*.rpt","src/ccbr_tools/homologfinder/*.txt"]
 
 [tool.setuptools.dynamic]
 version = {file = "VERSION"}
@@ -111,6 +113,7 @@ script-files = [
     "scripts/gather_cluster_stats_biowulf.sh",
     "scripts/get_buyin_partition_list.bash",
     "scripts/get_slurm_file_with_error.sh",
+    "scripts/github_milestones.sh",
     "scripts/gsea_preranked.sh",
     "scripts/karyoploter.R",
     "scripts/make_labels_for_pipeliner.sh",

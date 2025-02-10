@@ -8,10 +8,9 @@ import click
 import importlib.resources
 import importlib.metadata
 import pathlib
+import requests
 from time import localtime, strftime
 import tomllib
-
-from . import templates
 
 
 class CustomClickGroup(click.Group):
@@ -153,3 +152,22 @@ def msg_box(splash, errmsg=None):
     msg(("-" * (len(splash) + 4)))
     if errmsg:
         click.echo("\n" + errmsg, err=True)
+
+
+def get_url_json(url):
+    """Fetches JSON data from a given URL.
+
+    Args:
+        url (str): The URL to fetch the JSON data from.
+
+    Returns:
+        dict: The JSON data retrieved from the URL if the request is successful, otherwise an empty dictionary.
+    """
+    r = requests.get(url)
+    if r.status_code == 200:
+        data = r.json()
+    else:
+        raise ConnectionError(
+            f"Failed to fetch data from {url}. Request failed with status code {r.status_code}."
+        )
+    return data

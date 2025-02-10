@@ -25,13 +25,16 @@ def run(
     Run a Nextflow workflow
 
     Args:
-        nextfile_path (str, optional): Path to the Nextflow file.
+        nextfile_path (str): Path to the Nextflow file.
         nextflow_args (list, optional): Additional Nextflow arguments. Defaults to an empty list.
         mode (str, optional): Execution mode. Defaults to "local".
 
     Raises:
         ValueError: If mode is 'slurm' but no HPC environment was detected.
     """
+    if not pipeline_name:
+        pipeline_name = "CCBR-nxf" if nextfile_path.endswith(".nf") else nextfile_path
+
     nextflow_command = ["nextflow", "run", nextfile_path]
 
     if mode == "slurm" and not hpc:
@@ -67,12 +70,12 @@ def run(
         slurm_filename = "submit_slurm.sh"
         use_template(
             "submit_slurm.sh",
-            PIPELINE=pipeline_name if pipeline_name else "CCBR_nxf",
-            MODULES=hpc.modules,
+            PIPELINE=pipeline_name,
+            MODULES=hpc.modules["nxf"],
             ENV_VARS="\n".join(
                 (
                     hpc.env_vars,
-                    f"export SINGULARITY_CACHEDIR={get_singularity_cachedir()}",
+                    # f"export SINGULARITY_CACHEDIR={get_singularity_cachedir()}",
                 )
             ),  # TODO allow user override of singularity cache dir with CLI
             RUN_COMMAND=nextflow_command,

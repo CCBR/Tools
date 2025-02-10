@@ -12,9 +12,11 @@ from .pkg_util import (
     repo_base,
     CustomClickGroup,
 )
+from .send_email import send_email_msg
+from .templates import use_quarto_ext, get_quarto_extensions
 
 
-all_commands = "All installed tools:\n" + "\n".join(
+all_scripts = "All installed tools:\n" + "\n".join(
     [f"  {cmd}" for cmd in get_project_scripts()]
 )
 
@@ -22,7 +24,7 @@ all_commands = "All installed tools:\n" + "\n".join(
 @click.group(
     cls=CustomClickGroup,
     context_settings=dict(help_option_names=["-h", "--help"]),
-    epilog=all_commands,
+    epilog=all_scripts,
 )
 @click.version_option(get_version(), "-v", "--version", is_flag=True)
 def cli():
@@ -30,8 +32,9 @@ def cli():
     Utilities for CCBR Bioinformatics Software
 
     For more options, run:
-    tool_name [command] --help
+    ccbr_tools [command] --help
 
+    https://ccbr.github.io/Tools/
     """
     pass
 
@@ -75,6 +78,87 @@ def version(debug):
     print(get_version(debug=debug))
 
 
+@click.command()
+@click.argument(
+    "to_address",
+    type=str,
+    default="${USER}@hpc.nih.gov",
+    required=False,
+)
+@click.argument(
+    "text",
+    type=str,
+    default=None,
+    required=False,
+)
+@click.option(
+    "--subject",
+    "-s",
+    type=str,
+    default="test email from python",
+    required=False,
+    help="The subject line of the email",
+)
+@click.option(
+    "--attach-html",
+    "-a",
+    type=click.Path(exists=True),
+    default=None,
+    required=False,
+    help="The file path to the HTML attachment",
+)
+@click.option(
+    "--from-addr",
+    "-r",
+    type=str,
+    default="${USER}@hpc.nih.gov",
+    required=False,
+    help="The email address of the sender",
+)
+@click.option(
+    "--debug",
+    "-d",
+    help="Return the Email Message object without sending the email",
+    type=bool,
+    default=False,
+    is_flag=True,
+)
+def send_email(to_address, text, subject, attach_html, from_addr, debug):
+    """
+    Send an email (works on biowulf)
+
+    \b
+    Arguments:
+        to_address    The email address of the recipient
+        text          The plain text content of the email
+    """
+    send_email_msg(to_address, text, subject, attach_html, from_addr, debug)
+
+
+@click.command(epilog=f"Available extensions: {', '.join(get_quarto_extensions())}")
+@click.argument(
+    "ext_name",
+    type=str,
+    required=True,
+)
+def quarto_add(ext_name):
+    """
+    Add a quarto extension
+
+    \b
+    Arguments:
+        ext_name    The name of the extension in ccbr_tools
+
+    \b
+    Examples:
+        ccbr_tools quarto-add fnl
+
+    """
+    use_quarto_ext(ext_name)
+
+
+cli.add_command(send_email)
+cli.add_command(quarto_add)
 cli.add_command(cite)
 cli.add_command(version)
 

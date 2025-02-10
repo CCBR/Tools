@@ -1,18 +1,21 @@
-# CCBR Tools
+# CCBR Tools 🛠️
 
 <!-- README.md is generated from README.qmd. Please edit that file -->
 
 Utilities for CCBR Bioinformatics Software
 
 [![build](https://github.com/CCBR/Tools/actions/workflows/build-python.yml/badge.svg)](https://github.com/CCBR/Tools/actions/workflows/build-python.yml)
-[![docs](https://github.com/CCBR/Tools/actions/workflows/docs-quartodoc.yml/badge.svg)](https://github.com/CCBR/Tools/actions/workflows/docs-quartodoc.yml)
+[![docs](https://github.com/CCBR/Tools/actions/workflows/docs-quartodoc.yml/badge.svg)](https://ccbr.github.io/Tools)
 [![codecov](https://codecov.io/gh/CCBR/Tools/graph/badge.svg?token=O73NOR65B3)](https://codecov.io/gh/CCBR/Tools)
 [![DOI](https://zenodo.org/badge/DOI/10.5281/zenodo.13377166.svg)](https://doi.org/10.5281/zenodo.13377166)
 
+View the website for more detailed documentation:
+<https://CCBR.github.io/Tools>
+
 ## Installation
 
-On biowulf you can access the latest release of `ccbr_tools` by loading
-the ccbrpipeliner module:
+On [biowulf](https://hpc.nih.gov/) you can access the latest release of
+`ccbr_tools` by loading the ccbrpipeliner module:
 
 ``` sh
 module load ccbrpipeliner
@@ -24,13 +27,13 @@ Outside of biowulf, you can install the package with pip:
 pip install git+https://github.com/CCBR/Tools
 ```
 
-Or specify a specific tagged version or branch:
+Or specify any tagged version or branch:
 
 ``` sh
 pip install git+https://github.com/CCBR/Tools@v0.1.0
 ```
 
-## Usage
+## Basic usage
 
 ### CLI
 
@@ -42,15 +45,19 @@ ccbr_tools --help
 
       Utilities for CCBR Bioinformatics Software
 
-      For more options, run: tool_name [command] --help
+      For more options, run: ccbr_tools [command] --help
+
+      https://ccbr.github.io/Tools/
 
     Options:
       -v, --version  Show the version and exit.
       -h, --help     Show this message and exit.
 
     Commands:
-      cite     Print the citation in the desired format
-      version  Print the version of ccbr_tools
+      send-email  Send an email (works on biowulf)
+      quarto-add  Add a quarto extension
+      cite        Print the citation in the desired format
+      version     Print the version of ccbr_tools
 
     All installed tools:
       ccbr_tools
@@ -68,7 +75,10 @@ import ccbr_tools.pkg_util
 print(ccbr_tools.pkg_util.get_version())
 ```
 
-    0.1.2-dev
+    0.1.3-dev-1
+
+View the API reference for more information:
+<https://ccbr.github.io/Tools/reference/>
 
 ## CLI Utilities
 
@@ -91,47 +101,62 @@ Additional standalone scripts for various common tasks in
 installed. They are less robust than the CLI Utilities included in the
 package and do not have any unit tests.
 
-- `add_gene_name_to_count_matrix.R`
-- `aggregate_data_tables.R`
-- `argparse.bash`
-- `cancel_snakemake_jobs.sh`
-- `create_hpc_link.sh`
-- `extract_value_from_json.py`
-- `extract_value_from_yaml.py`
-- `filter_bam_by_readids.py`
-- `filter_fastq_by_readids_highmem.py`
-- `filter_fastq_by_readids_highmem_pe.py`
-- `gather_cluster_stats.sh`
-- `gather_cluster_stats_biowulf.sh`
-- `get_buyin_partition_list.bash`
-- `get_slurm_file_with_error.sh`
-- `gsea_preranked.sh`
-- `karyoploter.R`
-- `make_labels_for_pipeliner.sh`
-- `rawcounts2normalizedcounts_DESeq2.R`
-- `rawcounts2normalizedcounts_limmavoom.R`
-- `run_jobby_on_nextflow_log`
-- `run_jobby_on_nextflow_log_full_format`
-- `run_jobby_on_snakemake_log`
-- `run_jobby_on_snakemake_log_full_format`
-- `spooker`
-- `which_vpn.sh`
+- [`add_gene_name_to_count_matrix.R`](scripts/add_gene_name_to_count_matrix.R)
+- [`aggregate_data_tables.R`](scripts/aggregate_data_tables.R)
+- [`argparse.bash`](scripts/argparse.bash)
+- [`cancel_snakemake_jobs.sh`](scripts/cancel_snakemake_jobs.sh)
+- [`create_hpc_link.sh`](scripts/create_hpc_link.sh)
+- [`extract_value_from_json.py`](scripts/extract_value_from_json.py)
+- [`extract_value_from_yaml.py`](scripts/extract_value_from_yaml.py)
+- [`filter_bam_by_readids.py`](scripts/filter_bam_by_readids.py)
+- [`filter_fastq_by_readids_highmem.py`](scripts/filter_fastq_by_readids_highmem.py)
+- [`filter_fastq_by_readids_highmem_pe.py`](scripts/filter_fastq_by_readids_highmem_pe.py)
+- [`gather_cluster_stats.sh`](scripts/gather_cluster_stats.sh)
+- [`gather_cluster_stats_biowulf.sh`](scripts/gather_cluster_stats_biowulf.sh)
+- [`get_buyin_partition_list.bash`](scripts/get_buyin_partition_list.bash)
+- [`get_slurm_file_with_error.sh`](scripts/get_slurm_file_with_error.sh)
+- [`github_milestones.sh`](scripts/github_milestones.sh)
+- [`gsea_preranked.sh`](scripts/gsea_preranked.sh)
+- [`karyoploter.R`](scripts/karyoploter.R)
+- [`make_labels_for_pipeliner.sh`](scripts/make_labels_for_pipeliner.sh)
+- [`rawcounts2normalizedcounts_DESeq2.R`](scripts/rawcounts2normalizedcounts_DESeq2.R)
+- [`rawcounts2normalizedcounts_limmavoom.R`](scripts/rawcounts2normalizedcounts_limmavoom.R)
+- [`run_jobby_on_nextflow_log`](scripts/run_jobby_on_nextflow_log)
+- [`run_jobby_on_nextflow_log_full_format`](scripts/run_jobby_on_nextflow_log_full_format)
+- [`run_jobby_on_snakemake_log`](scripts/run_jobby_on_snakemake_log)
+- [`run_jobby_on_snakemake_log_full_format`](scripts/run_jobby_on_snakemake_log_full_format)
+- [`spooker`](scripts/spooker)
+- [`which_vpn.sh`](scripts/which_vpn.sh)
+
+## Help & Contributing
+
+Come across a **bug**? Open an
+[issue](https://github.com/CCBR/Tools/issues) and include a minimal
+reproducible example.
+
+Have a **question**? Ask it in
+[discussions](https://github.com/CCBR/Tools/discussions).
+
+Want to **contribute** to this project? Check out the [contributing
+guidelines](https://CCBR.github.io/Tools/CONTRIBUTING).
 
 ## Citation
 
 Please cite this software if you use it in a publication:
 
 > Sovacool K., Koparde V., Kuhn S., Tandon M., Huse S. (2024). CCBR
-> Tools: Utilities for CCBR Bioinformatics Software (version v0.1.2).
+> Tools: Utilities for CCBR Bioinformatics Software (version v0.1.3).
 > DOI: 10.5281/zenodo.13377166 URL: https://ccbr.github.io/Tools/
 
 ### Bibtex entry
 
-    @misc{YourReferenceHere,
-    author = {Sovacool, Kelly and Koparde, Vishal and Kuhn, Skyler and Tandon, Mayank and Huse, Susan},
-    doi = {10.5281/zenodo.13377166},
-    month = {11},
-    title = {CCBR Tools: Utilities for CCBR Bioinformatics Software},
-    url = {https://ccbr.github.io/Tools/},
-    year = {2024}
-    }
+``` bibtex
+@misc{YourReferenceHere,
+author = {Sovacool, Kelly and Koparde, Vishal and Kuhn, Skyler and Tandon, Mayank and Huse, Susan},
+doi = {10.5281/zenodo.13377166},
+month = {12},
+title = {CCBR Tools: Utilities for CCBR Bioinformatics Software},
+url = {https://ccbr.github.io/Tools/},
+year = {2024}
+}
+```

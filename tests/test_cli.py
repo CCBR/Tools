@@ -1,9 +1,16 @@
 from ccbr_tools.shell import shell_run
-from ccbr_tools.pipeline.hpc import get_hpcname
+
+import os
+import pathlib
+import tempfile
 
 
-def test_version():
+def test_version_flag():
     assert "ccbr_tools, version " in shell_run("ccbr_tools -v")
+
+
+def test_version_cmd():
+    assert "VERSION file path" in shell_run("ccbr_tools version --debug")
 
 
 def test_help():
@@ -31,15 +38,10 @@ def test_help_jobby():
 
 
 def test_help_jobinfo():
-    hpc = get_hpcname()
     jobinfo_help = shell_run("jobinfo -h")
-    if hpc != "biowulf":
-        assert "This script only works on BIOWULF!" in jobinfo_help
-    else:
-        assert (
-            "Get slurm job information using slurm job id or snakemake.log file"
-            in jobinfo_help
-        )
+    assert (
+        "Get HPC usage metadata for a list of slurm jobids on biowulf" in jobinfo_help
+    )
 
 
 def test_help_intersect():
@@ -50,3 +52,26 @@ def test_help_intersect():
 
 def test_help_peek():
     assert "USAGE: peek <file.tsv> [buffer]" in shell_run("peek -h")
+
+
+def test_send_email():
+    assert "" == shell_run("ccbr_tools send-email -d")
+
+
+def test_help_send_email():
+    assert "Usage: ccbr_tools send-email [OPTIONS] [TO_ADDRESS] [TEXT]" in shell_run(
+        "ccbr_tools send-email -h"
+    )
+
+
+def test_quarto_add():
+    with tempfile.TemporaryDirectory() as tmp_dir:
+        current_wd = os.getcwd()
+        os.chdir(tmp_dir)
+        shell_run("ccbr_tools quarto-add fnl")
+        assertions = [
+            (pathlib.Path("_extensions") / "fnl").is_dir(),
+            len(os.listdir(pathlib.Path("_extensions") / "fnl")) > 0,
+        ]
+        os.chdir(current_wd)
+    assert all(assertions)

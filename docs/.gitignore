@@ -1,1 +1,8 @@
 /.quarto/
+/_site/
+/reference/
+/_sidebar.yml
+/objects.json
+/_freeze/
+/site_libs/
+/_inv/

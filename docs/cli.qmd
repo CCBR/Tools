@@ -1,0 +1,49 @@
+---
+title: Command line interface
+subtitle: CLI utilities in CCBR Tools
+---
+
+## Main CLI
+
+```{python}
+#| echo: false
+#| output: asis
+from ccbr_tools.shell import shell_run
+help_msg = shell_run("ccbr_tools --help")
+print("```")
+print(help_msg)
+print("```", end = '\n\n')
+
+# get list of ccbr_tools commands from the help message
+help_lst = help_msg.split('\n\n')
+commands_idx = [idx for idx,ele in enumerate(help_lst) if ele.startswith('Commands:')][0]
+commands = [cmd.split()[0] for cmd in help_lst[commands_idx].split('\n')[1:]]
+for cmd in commands:
+    print(f"### {cmd}", end = '\n\n')
+    print("```")
+    print(shell_run(f"ccbr_tools {cmd} --help"))
+    print("```", end = '\n\n')
+
+```
+
+## Additional utilities
+
+```{python}
+#| echo: false
+#| output: asis
+import re
+from ccbr_tools.pkg_util import get_project_scripts
+
+# https://stackoverflow.com/a/14693789/5787827
+ansi_escape = re.compile(r'\x1B(?:[@-Z\\-_]|\[[0-?]*[ -/]*[@-~])')
+
+for cmd in get_project_scripts():
+    if cmd != 'ccbr_tools':
+        print(f"### {cmd}", end = '\n\n')
+        print("```")
+        help_msg = shell_run(f"{cmd} --help")
+        if cmd == 'jobby':
+            help_msg = ansi_escape.sub('', help_msg)
+        print(help_msg)
+        print("```", end = '\n\n')
+```

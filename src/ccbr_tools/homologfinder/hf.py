@@ -24,9 +24,9 @@ __author__ = "Vishal Koparde"
 __email__ = "vishal.koparde@nih.gov"
 
 import argparse
-import io
+import importlib.resources
 import pandas as pd
-import requests
+import pathlib
 import sys
 
 
@@ -123,17 +123,19 @@ def print_results(result):
 
 def read_lookup():
     lookup = dict()
-    # read in lookup table from github
-    url = "https://raw.githubusercontent.com/CCBR/Tools/master/homologfinder/human_mouse_homolog_lookup.txt"
-    download = requests.get(url).content
-    lookupdf = pd.read_csv(io.StringIO(download.decode("utf-8")), sep="\t")
+    lookup_filepath = (
+        importlib.resources.files(__package__) / "human_mouse_homolog_lookup.txt"
+    )
+    lookupdf = pd.read_csv(lookup_filepath, sep="\t")
     lookupdf.columns = ["geneName", "homologs"]
     for index, row in lookupdf.iterrows():
         lookup[row["geneName"]] = row["homologs"]
     return lookup
 
 
-def create_homolog_table(rpt_file="HOM_MouseHumanSequence.rpt"):
+def create_homolog_table(
+    rpt_file=importlib.resources.files(__package__) / "HOM_MouseHumanSequence.rpt",
+):
     cols = ["DB Class Key", "Common Organism Name", "Symbol"]
     df = pd.read_csv(rpt_file, usecols=cols, sep="\t")
     # human-mouse homologs file --> HOM_MouseHumanSequence.rpt
@@ -163,14 +165,14 @@ def create_homolog_table(rpt_file="HOM_MouseHumanSequence.rpt"):
         print(k, ",".join(v), sep="\t")
 
 
+def hf(args):
+    return process_args(args, read_lookup())
+
+
 def main():
-    # collect all arguments
     args = collect_args()
-    # now that args are correct load in the lookup
-    lookup = read_lookup()
-    # process the arguments
-    result = process_args(args, lookup)
-    print_results(result)
+    results = hf(args)
+    print_results(results)
 
 
 if __name__ == "__main__":
