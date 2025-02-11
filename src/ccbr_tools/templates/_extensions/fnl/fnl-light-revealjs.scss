@@ -1,0 +1,151 @@
+/*-- scss:defaults --*/
+
+// branding guidelines
+// https://nih.sharepoint.com/:b:/r/sites/NCI-Fred/Communications/Shared%20Documents/Branding%20guidelines%20LIVE.pdf?csf=1&web=1&e=e9PrVO
+
+// primary colors
+$black: #000000;
+$white: #ffffff;
+$lime: #7cc349;
+$teal: #296b7f;
+
+//secondary colors
+$teal-light: #4e9db5;
+$teal-dark: #19424e;
+$almost-black: #03191f;
+$lime-light: #b1ee85;
+$lime-dark: #528230;
+$orange: #ecba4c;
+
+// set colors
+$primary: $teal-dark;
+$secondary: $lime;
+$success: $lime-dark;
+$warning: $orange;
+$info: $teal-light;
+
+$link-color: $teal;
+
+$footer-bg: $black;
+$footer-fg: $white;
+
+$code-color: $lime-dark;
+
+$callout-color-tip: $lime-dark;
+$callout-color-note: $teal-light;
+$callout-color-caution: $orange;
+$callout-color-warning: $orange;
+
+// font
+$font-family-sans-serif: "Roboto", Helvetica, "Source Sans Pro", sans-serif;
+$font-family-monospace: "Roboto Mono", "Andale Mono" "Source Code Pro",
+  monospace;
+
+$presentation-font-size-root: 32px;
+$presentation-heading-color: $teal;
+$body-color: $black;
+
+/*-- scss:rules --*/
+
+.reveal .slide blockquote {
+  border-left: 3px solid $teal !important;
+  padding-left: 0.5em !important;
+}
+
+.reveal .slide-logo {
+  bottom: 10px !important;
+  right: 20px !important;
+  height: 65px !important;
+  width: auto !important;
+  max-width: unset !important;
+  max-height: unset !important;
+  position: fixed;
+}
+
+.reveal .subtitle {
+  color: $presentation-heading-color !important;
+  font-size: $presentation-h3-font-size !important;
+}
+/* can't figure out how to override author class?
+.reveal .author {
+  color: $body-color !important;
+}
+*/
+.reveal .date {
+  color: $body-color !important;
+}
+
+.small-text {
+  font-size: small !important;
+}
+
+.smaller-text {
+  font-size: smaller !important;
+}
+
+.x-small-text {
+  font-size: x-small !important;
+}
+
+.medium-text {
+  font-size: medium !important;
+}
+
+.large-text {
+  font-size: large !important;
+}
+
+.color-muted {
+  color: $text-muted !important;
+}
+
+.big-center {
+  font-size: 60px !important;
+  color: $lime-dark !important;
+  text-align: center !important;
+  vertical-align: middle !important;
+  padding: 200px 0;
+}
+
+.align-center {
+  text-align: center !important;
+}
+
+.align-right {
+  text-align: right !important;
+}
+
+.big-middle {
+  font-size: xxx-large !important;
+  color: $lime-dark !important;
+  vertical-align: middle !important;
+  padding: 70px !important;
+}
+
+.frame-box {
+  border: 3px solid $lime-dark !important;
+  border-radius: 5px !important;
+  padding: 0.5em !important;
+}
+
+.filled-box {
+  border: 5px solid $lime-dark !important;
+  border-radius: 5px !important;
+  padding: 1px !important;
+  background: $lime-dark !important;
+  color: $white !important;
+}
+
+.black-frame {
+  border: 2px solid $black !important;
+  border-radius: 2px !important;
+}
+.narrow-frame {
+  border: 1.5px solid !important;
+  border-radius: 2px !important;
+  //padding: 0.5px !important;
+  text-align: center !important;
+  font-size: large !important;
+  background: #cccccc !important;
+  color: $body-color !important;
+}
