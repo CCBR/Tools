@@ -1,0 +1,23 @@
+extra_css:
+  - stylesheets/extra.css
+theme:
+  name: material
+  custom_dir: docs/custom-overrides
+  features:
+    - header.autohide
+    - navigation.tabs
+    - navigation.top
+    - navigation.tracking
+  font:
+    text: Roboto
+  logo: images/fnl-logo-light.png
+  logo_dark: images/fnl-logo-dark.png
+  palette:
+    - scheme: fnldark
+      toggle:
+        icon: material/toggle-switch
+        name: Switch to light mode
+    - scheme: fnl
+      toggle:
+        icon: material/toggle-switch-off-outline
+        name: Switch to dark mode
