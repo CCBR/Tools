@@ -1,0 +1,31 @@
+template:
+  bootstrap: 5
+  bslib:
+    bootswatch: yeti
+    primary: "#296b7f"
+    secondary: "#7cc349"
+    base_font: { google: "Roboto" }
+    heading_font: { google: "Roboto" }
+    code_font: { google: "Roboto Mono" }
+    border-radius: 0
+    btn-border-radius: 3px
+    grid-gutter-width: 3rem
+    pkgdown-nav-height: 78px
+footer:
+  structure:
+    left: [logo, developed_by]
+  components:
+    logo: '<a href="https://frederick.cancer.gov/research/science-areas/bioinformatics-and-computational-science/advanced-biomedical-computational-science"><img src="https://raw.githubusercontent.com/CCBR/Tools/2118f5ed5997cb679e45937a859c183131905899/src/ccbr_tools/templates/_extensions/fnl/fnl-logo-dark.png" alt="FNLCR logo" class="img-fluid" style="max-width: 120px; margin-right: 20px;"></a>'
+
+development:
+  mode: auto
+authors:
+  Kelly Sovacool:
+    href: "https://github.com/kelly-sovacool"
+  Vishal Koparde:
+    href: "https://github.com/kopardev"
+  CCR Collaborative Bioinformatics Resource:
+    href: "https://github.com/CCBR"
+  footer:
+    roles: [cph, fnd]
+    text: "Created by the"
