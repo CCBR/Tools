@@ -3,11 +3,6 @@ extra_css:
 theme:
   name: material
   custom_dir: docs/custom-overrides
-  features:
-    - header.autohide
-    - navigation.tabs
-    - navigation.top
-    - navigation.tracking
   font:
     text: Roboto
   logo: images/fnl-logo-light.png
