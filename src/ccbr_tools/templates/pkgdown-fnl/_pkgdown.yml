@@ -13,9 +13,7 @@ template:
     pkgdown-nav-height: 78px
 footer:
   structure:
-    left: [logo, developed_by]
-  components:
-    logo: '<a href="https://frederick.cancer.gov/research/science-areas/bioinformatics-and-computational-science/advanced-biomedical-computational-science"><img src="https://raw.githubusercontent.com/CCBR/Tools/2118f5ed5997cb679e45937a859c183131905899/src/ccbr_tools/templates/_extensions/fnl/fnl-logo-dark.png" alt="FNLCR logo" class="img-fluid" style="max-width: 120px; margin-right: 20px;"></a>'
+    left: [developed_by]
 
 development:
   mode: auto

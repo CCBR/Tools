@@ -5,8 +5,6 @@ theme:
   custom_dir: docs/custom-overrides
   font:
     text: Roboto
-  logo: images/fnl-logo-light.png
-  logo_dark: images/fnl-logo-dark.png
   palette:
     - scheme: fnldark
       toggle:
