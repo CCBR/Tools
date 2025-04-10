@@ -1,5 +1,7 @@
 ## Tools development version
 
+- Output ccbrpipeliner module version in spooker metadata. (#43, @kelly-sovacool)
+
 ## Tools 0.2.2
 
 - fix bug where spooker failed when more than 2 arguments were passed. (#41, @kelly-sovacool)

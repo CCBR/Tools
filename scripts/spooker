@@ -53,7 +53,7 @@ fi
 DT=$(date +%y%m%d%H%M%S)
 archivefile="${PIPELINE_OUTDIR}/${DT}.tar.gz"
 treefile="${PIPELINE_OUTDIR}/${DT}.tree.json"
-metadata="${PIPELINE_OUTDIR}/${DT}.json" # TODO this should actually have .yml extension
+metadata="${PIPELINE_OUTDIR}/${DT}.yml"
 
 SCONTROL=$(type -P scontrol)
 if [[ "$SCONTROL" == "" ]];then
