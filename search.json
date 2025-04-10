@@ -333,7 +333,7 @@
     "href": "CHANGELOG.html",
     "title": "CCBR Tools",
     "section": "",
-    "text": "Bump cffconvert version for compatibility with nf-schema. (#38, @kelly-sovacool)",
+    "text": "spooker update: accept pipeline version as an optional third positional argument. (#39, @kelly-sovacool)\nBump cffconvert version for compatibility with nf-schema. (#38, @kelly-sovacool)",
     "crumbs": [
       "Project information",
       "Changelog"
@@ -344,7 +344,7 @@
     "href": "CHANGELOG.html#tools-development-version",
     "title": "CCBR Tools",
     "section": "",
-    "text": "Bump cffconvert version for compatibility with nf-schema. (#38, @kelly-sovacool)",
+    "text": "spooker update: accept pipeline version as an optional third positional argument. (#39, @kelly-sovacool)\nBump cffconvert version for compatibility with nf-schema. (#38, @kelly-sovacool)",
     "crumbs": [
       "Project information",
       "Changelog"
