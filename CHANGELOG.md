@@ -1,5 +1,7 @@
 ## Tools development version
 
+## Tools 0.2.1
+
 - spooker update: accept pipeline version as an optional third positional argument. (#39, @kelly-sovacool)
 - Bump cffconvert version for compatibility with nf-schema. (#38, @kelly-sovacool)
 
