@@ -1,5 +1,7 @@
 ## Tools development version
 
+- fix bug where spooker failed when more than 2 arguments were passed. (#41, @kelly-sovacool)
+
 ## Tools 0.2.1
 
 - spooker update: accept pipeline version as an optional third positional argument. (#39, @kelly-sovacool)
