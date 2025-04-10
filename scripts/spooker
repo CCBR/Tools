@@ -36,17 +36,20 @@ fi
 set -o pipefail
 PIPELINE_OUTDIR=$1
 PIPELINE_NAME=$2
+PIPELINE_VERSION=$3
+if [ ${#PIPELINE_VERSION} -eq 0 ]; then
+    PIPELINE_VERSION="UNKNOWN"
+fi
 
 PIPELINE_OUTDIR_SIZE=$(du -bs $PIPELINE_OUTDIR | awk '{print $1}')
 PIPELINE_NAME_UPPER=$(echo "$PIPELINE_NAME" | tr '[:lower:]' '[:upper:]')
 PIPELINE_NAME_LOWER=$(echo "$PIPELINE_NAME" | tr '[:upper:]' '[:lower:]')
-PIPELINE_PATH=$(which $PIPELINE_NAME_LOWER)
-PIPELINE_VERSION=$($PIPELINE_NAME_LOWER --version 2>/dev/null | tail -n1 | awk '{print $NF}' || echo "UNKNOWN")
+PIPELINE_PATH=$(which $PIPELINE_NAME_LOWER) # TODO this is not guaranteed to be correct
 
 DT=$(date +%y%m%d%H%M%S)
 archivefile="${PIPELINE_OUTDIR}/${DT}.tar.gz"
 treefile="${PIPELINE_OUTDIR}/${DT}.tree.json"
-metadata="${PIPELINE_OUTDIR}/${DT}.json"
+metadata="${PIPELINE_OUTDIR}/${DT}.json" # TODO this should actually have .yml extension
 
 SCONTROL=$(type -P scontrol)
 if [[ "$SCONTROL" == "" ]];then
