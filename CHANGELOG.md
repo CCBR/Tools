@@ -1,5 +1,7 @@
 ## Tools development version
 
+- Bump cffconvert version for compatibility with nf-schema. (#38, @kelly-sovacool)
+
 ## Tools 0.2.0
 
 - new commands:
