@@ -329,6 +329,28 @@
     "text": "Come across a bug? Open an issue and include a minimal reproducible example.\nHave a question? Ask it in discussions.\nWant to contribute to this project? Check out the contributing guidelines."
   },
   {
+    "objectID": "CHANGELOG.html",
+    "href": "CHANGELOG.html",
+    "title": "CCBR Tools",
+    "section": "",
+    "text": "fix bug where spooker failed when more than 2 arguments were passed. (#41, @kelly-sovacool)",
+    "crumbs": [
+      "Project information",
+      "Changelog"
+    ]
+  },
+  {
+    "objectID": "CHANGELOG.html#tools-development-version",
+    "href": "CHANGELOG.html#tools-development-version",
+    "title": "CCBR Tools",
+    "section": "",
+    "text": "fix bug where spooker failed when more than 2 arguments were passed. (#41, @kelly-sovacool)",
+    "crumbs": [
+      "Project information",
+      "Changelog"
+    ]
+  },
+  {
     "objectID": "CHANGELOG.html#tools-0.2.1",
     "href": "CHANGELOG.html#tools-0.2.1",
     "title": "CCBR Tools",
