@@ -1,5 +1,7 @@
 ## Tools development version
 
+- spooker update: accept pipeline version as an optional third positional argument. (#39, @kelly-sovacool)
+
 ## Tools 0.2.0
 
 - new commands:
