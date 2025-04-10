@@ -315,7 +315,7 @@
     "href": "cite.html",
     "title": "CCBR Tools",
     "section": "",
-    "text": "Please cite this software if you use it in a publication:\n\nSovacool K., Koparde V., Kuhn S., Tandon M., Huse S. (2025). CCBR Tools: Utilities for CCBR Bioinformatics Software (version v0.2.0). DOI: 10.5281/zenodo.13377166 URL: https://ccbr.github.io/Tools/\n\n\nBibtex entry\n@misc{YourReferenceHere,\nauthor = {Sovacool, Kelly and Koparde, Vishal and Kuhn, Skyler and Tandon, Mayank and Huse, Susan},\ndoi = {10.5281/zenodo.13377166},\nmonth = {2},\ntitle = {CCBR Tools: Utilities for CCBR Bioinformatics Software},\nurl = {https://ccbr.github.io/Tools/},\nyear = {2025}\n}",
+    "text": "Please cite this software if you use it in a publication:\n\nSovacool K., Koparde V., Kuhn S., Tandon M., and Huse S. (2025). CCBR Tools: Utilities for CCBR Bioinformatics Software (version v0.2.0). DOI: 10.5281/zenodo.13377166 URL: https://ccbr.github.io/Tools/\n\n\nBibtex entry\n@misc{YourReferenceHere,\nauthor = {Sovacool, Kelly and Koparde, Vishal and Kuhn, Skyler and Tandon, Mayank and Huse, Susan},\ndoi = {10.5281/zenodo.13377166},\nmonth = {2},\ntitle = {CCBR Tools: Utilities for CCBR Bioinformatics Software},\nurl = {https://ccbr.github.io/Tools/},\nyear = {2025}\n}",
     "crumbs": [
       "Project information",
       "Citation"
@@ -327,6 +327,28 @@
     "title": "CCBR Tools",
     "section": "",
     "text": "Come across a bug? Open an issue and include a minimal reproducible example.\nHave a question? Ask it in discussions.\nWant to contribute to this project? Check out the contributing guidelines."
+  },
+  {
+    "objectID": "CHANGELOG.html",
+    "href": "CHANGELOG.html",
+    "title": "CCBR Tools",
+    "section": "",
+    "text": "Bump cffconvert version for compatibility with nf-schema. (#38, @kelly-sovacool)",
+    "crumbs": [
+      "Project information",
+      "Changelog"
+    ]
+  },
+  {
+    "objectID": "CHANGELOG.html#tools-development-version",
+    "href": "CHANGELOG.html#tools-development-version",
+    "title": "CCBR Tools",
+    "section": "",
+    "text": "Bump cffconvert version for compatibility with nf-schema. (#38, @kelly-sovacool)",
+    "crumbs": [
+      "Project information",
+      "Changelog"
+    ]
   },
   {
     "objectID": "CHANGELOG.html#tools-0.2.0",
