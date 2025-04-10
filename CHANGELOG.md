@@ -1,14 +1,15 @@
 ## Tools development version
 
 - Output ccbrpipeliner module version in spooker metadata. (#43, @kelly-sovacool)
+- Spooker now correctly outputs metadata as a yaml file. (#43, @kelly-sovacool)
 
 ## Tools 0.2.2
 
-- fix bug where spooker failed when more than 2 arguments were passed. (#41, @kelly-sovacool)
+- Fix bug where spooker failed when more than 2 arguments were passed. (#41, @kelly-sovacool)
 
 ## Tools 0.2.1
 
-- spooker update: accept pipeline version as an optional third positional argument. (#39, @kelly-sovacool)
+- Spooker update: accept pipeline version as an optional third positional argument. (#39, @kelly-sovacool)
 - Bump cffconvert version for compatibility with nf-schema. (#38, @kelly-sovacool)
 
 ## Tools 0.2.0
