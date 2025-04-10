@@ -26,10 +26,11 @@ SCRIPTNAME="$0"
 SCRIPTBASENAME=$(basename $SCRIPTNAME)
 
 # 2 arguments are required ... PIPELINE_OUTDIR and PIPELINE_NAME
-if [[ "$#" != "2" ]];then
-    echo "$SCRIPTBASENAME FAILED!: ERROR: 2 arguments expected!"
-    echo "$SCRIPTBASENAME FAILED!: ERROR: Argument 1: pipeline outdir"
-    echo "$SCRIPTBASENAME FAILED!: ERROR: Argument 2: pipeline name"
+if [[ "$#" -lt "2" ]];then
+    echo "$SCRIPTBASENAME FAILED!: ERROR: at least 2 arguments expected!"
+    echo "    Argument 1: pipeline outdir"
+    echo "    Argument 2: pipeline name"
+    echo "    Argument 3: pipeline version (optional)"
     exit 1
 fi
 
