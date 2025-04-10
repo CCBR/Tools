@@ -46,7 +46,10 @@ PIPELINE_OUTDIR_SIZE=$(du -bs $PIPELINE_OUTDIR | awk '{print $1}')
 PIPELINE_NAME_UPPER=$(echo "$PIPELINE_NAME" | tr '[:lower:]' '[:upper:]')
 PIPELINE_NAME_LOWER=$(echo "$PIPELINE_NAME" | tr '[:upper:]' '[:lower:]')
 PIPELINE_PATH=$(which $PIPELINE_NAME_LOWER) # TODO this is not guaranteed to be correct
-
+CCBRPIPELINER_MODULE=$(module list ccbrpipeliner 2>&1 /dev/null | grep ')' | tail -n 1 | sed 's/.*) //')
+if [[ "CCBRPIPELINER_MODULE" == "" ]];then
+    CCBRPIPELINER_MODULE="UNKNOWN"
+fi
 DT=$(date +%y%m%d%H%M%S)
 archivefile="${PIPELINE_OUTDIR}/${DT}.tar.gz"
 treefile="${PIPELINE_OUTDIR}/${DT}.tree.json"
@@ -74,6 +77,7 @@ if [[ -d "$PIPELINE_OUTDIR" ]];then
     echo "PIPELINE_NAME: $PIPELINE_NAME_UPPER" >> $metadata
     echo "PIPELINE_PATH: $PIPELINE_PATH" >> $metadata
     echo "PIPELINE_VERSION: $PIPELINE_VERSION" >> $metadata
+    echo "CCBRPIPELINER_MODULE: '$CCBRPIPELINER_MODULE'" >> $metadata
     echo "USER: $USER" >> $metadata
     #GROUPS=$(groups 2>/dev/null)
     echo "GROUPS:" $(groups) >> $metadata
