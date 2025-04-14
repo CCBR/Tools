@@ -10,6 +10,7 @@ import hashlib
 import json
 import glob
 import os
+import pathlib
 import re
 import stat
 import subprocess
@@ -505,24 +506,30 @@ def rename(filename):
     return filename
 
 
-def copy_config(config_paths, overwrite=True, repo_base=repo_base):
+def copy_config(
+    config_paths, outdir: pathlib.Path, overwrite=True, repo_base=repo_base
+):
     """
-    Copy default config files to the current working directory.
+    Copies default configuration files to the specified output directory.
 
     Args:
-        config_paths (list[str]): List of configuration paths to copy.
-        overwrite (bool): Whether to overwrite existing files. Defaults to True.
-        repo_base (function): Function to get the base directory of the repository.
+        config_paths (list): A list of paths to the local configuration files.
+        outdir (pathlib.Path): The output directory where the configuration files will be copied.
+        overwrite (bool, optional): Whether to overwrite existing files and directories. Defaults to True.
+
+    Raises:
+        FileNotFoundError: If a specified configuration file or directory does not exist.
     """
     msg("Copying default config files to current working directory")
     for local_config in config_paths:
         system_config = repo_base(local_config)
+        output_config = outdir / local_config
         if os.path.isfile(system_config):
-            shutil.copyfile(system_config, local_config)
+            shutil.copyfile(system_config, output_config)
         elif os.path.isdir(system_config):
-            shutil.copytree(system_config, local_config, dirs_exist_ok=overwrite)
+            shutil.copytree(system_config, output_config, dirs_exist_ok=overwrite)
         else:
-            raise FileNotFoundError(f"Cannot copy {system_config} to {local_config}")
+            raise FileNotFoundError(f"Cannot copy {system_config} to {output_config}")
 
 
 def read_config_yml(file):

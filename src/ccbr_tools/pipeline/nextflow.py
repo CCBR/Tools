@@ -15,9 +15,10 @@ from .cache import get_singularity_cachedir
 
 def run(
     nextfile_path,
-    nextflow_args=[],
     mode="local",
+    force_all=False,
     pipeline_name=None,
+    nextflow_args=None,
     debug=False,
     hpc=get_hpc(),
 ):
@@ -35,19 +36,18 @@ def run(
     if not pipeline_name:
         pipeline_name = "CCBR-nxf" if nextfile_path.endswith(".nf") else nextfile_path
 
-    nextflow_command = ["nextflow", "run", nextfile_path]
-
     if mode == "slurm" and not hpc:
         raise ValueError("mode is 'slurm' but no HPC environment was detected")
     # add any additional Nextflow commands
     args_dict = dict()
     prev_arg = ""
-    for arg in nextflow_args:
-        if arg.startswith("-"):
-            args_dict[arg] = ""
-        elif prev_arg.startswith("-"):
-            args_dict[prev_arg] = arg
-        prev_arg = arg
+    if nextflow_args:
+        for arg in nextflow_args:
+            if arg.startswith("-"):
+                args_dict[arg] = ""
+            elif prev_arg.startswith("-"):
+                args_dict[prev_arg] = arg
+            prev_arg = arg
     # make sure profile matches biowulf or frce
     profiles = (
         set(args_dict["-profile"].split(","))
@@ -62,9 +62,21 @@ def run(
         profiles
     ):  # only add to the profiles if there are any. there are none when champagne is run on GitHub Actions.
         args_dict["-profile"] = ",".join(sorted(profiles))
-    nextflow_command += list(f"{k} {v}" for k, v in args_dict.items())
-    # turn command into a string
-    nextflow_command = " ".join(str(nf) for nf in nextflow_command)
+
+    # use -resume by default, or do not use resume if force_all is True
+    if force_all and "-resume" in args_dict.keys():
+        args_dict.pop("-resume")
+    elif not force_all and "-resume" not in args_dict.keys():
+        args_dict["-resume"] = ""
+
+    nextflow_command = " ".join(
+        ["nextflow", "run", nextfile_path] + [f"{k} {v}" for k, v in args_dict.items()]
+    )
+    # Print a preview before launching the actual run
+    if "-preview" not in args_dict.keys():
+        preview_command = nextflow_command + " -preview"
+        msg_box("Pipeline Preview", errmsg=preview_command)
+        shell_run(preview_command, shell=True, check=True)
 
     if mode == "slurm":
         slurm_filename = "submit_slurm.sh"
