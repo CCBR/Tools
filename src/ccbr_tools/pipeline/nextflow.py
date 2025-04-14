@@ -2,15 +2,28 @@
 Run Nextflow workflows in local and HPC environments.
 
 Functions:
+- init(output, pipeline_name='pipeline', **kwargs)
+    Initialize the launch directory by copying the system default config files.
 - run(nextfile_path=None, nextflow_args=None, mode="local", pipeline_name=None, debug=False, hpc_options={})
     Run a Nextflow workflow.
 """
+import pathlib
 
 from ..pkg_util import msg_box
-from ..templates import use_template
 from ..shell import shell_run
-from .hpc import get_hpc
+from ..templates import use_template
 from .cache import get_singularity_cachedir
+from .util import copy_config
+from .hpc import get_hpc
+
+
+def init(output, repo_base, pipeline_name="pipeline"):
+    """Initialize the launch directory by copying the system default config files"""
+    output_dir = output if isinstance(output, pathlib.Path) else pathlib.Path(output)
+    msg_box(f"Initializing {pipeline_name} in {output_dir}")
+    (output_dir / "log/").mkdir(parents=True, exist_ok=True)
+    paths = ("nextflow.config", "conf/", "assets/")
+    copy_config(paths, repo_base=repo_base, outdir=output_dir)
 
 
 def run(
@@ -76,7 +89,8 @@ def run(
     if "-preview" not in args_dict.keys():
         preview_command = nextflow_command + " -preview"
         msg_box("Pipeline Preview", errmsg=preview_command)
-        shell_run(preview_command, shell=True, check=True)
+        if not debug:
+            shell_run(preview_command, shell=True, check=True)
 
     if mode == "slurm":
         slurm_filename = "submit_slurm.sh"
