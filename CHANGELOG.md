@@ -6,6 +6,7 @@
   - Use `-resume` by default and turn it off with `--forceall`.
   - Use `--output` option.
   - Run `-preview` before launching the pipeline with slurm.
+  - When running on biowulf, try adding spooker to the PATH if it's not available.
 
 ## Tools 0.2.2
 
