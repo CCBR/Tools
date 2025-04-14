@@ -59,20 +59,15 @@ class Biowulf(Cluster):
         super().__init__()
         self.name = "biowulf"
         self.modules = {
-            "nxf": " ".join(
-                [
-                    "nextflow",
-                    "" if is_loaded(module="ccbrpipeliner") else "ccbrpipeliner",
-                ]
-            ),
-            "smk": " ".join(
-                [
-                    "snakemake/7",
-                    "singularity",
-                    "" if is_loaded(module="ccbrpipeliner") else " ccbrpipeliner",
-                ]
-            ),
+            "nxf": " ".join(["nextflow"]),
+            "smk": " ".join(["snakemake/7", "singularity"]),
         }
+        self.env_vars = "\n".join(
+            (
+                f"export SINGULARITY_CACHEDIR={get_singularity_cachedir()}",
+                'if ! command -v spooker 2>&1 >/dev/null; then export PATH="$PATH:/data/CCBR_Pipeliner/Tools/ccbr_tools/v0.2/bin/"; fi',
+            )
+        )
 
 
 class FRCE(Cluster):
