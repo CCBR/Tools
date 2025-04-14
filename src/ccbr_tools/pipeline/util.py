@@ -520,7 +520,6 @@ def copy_config(
     Raises:
         FileNotFoundError: If a specified configuration file or directory does not exist.
     """
-    msg("Copying default config files to current working directory")
     for local_config in config_paths:
         system_config = repo_base(local_config)
         output_config = outdir / local_config
