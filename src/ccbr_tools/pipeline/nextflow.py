@@ -7,6 +7,7 @@ Functions:
 - run(nextfile_path=None, nextflow_args=None, mode="local", pipeline_name=None, debug=False, hpc_options={})
     Run a Nextflow workflow.
 """
+
 import pathlib
 
 from ..pkg_util import msg_box
