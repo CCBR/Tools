@@ -280,6 +280,13 @@ ul.task-list li input[type="checkbox"] {
 <ul>
 <li>Output ccbrpipeliner module version in spooker metadata. (#43, <span class="citation" data-cites="kelly-sovacool">@kelly-sovacool</span>)</li>
 <li>Spooker now correctly outputs metadata as a yaml file. (#43, <span class="citation" data-cites="kelly-sovacool">@kelly-sovacool</span>)</li>
+<li>Improvements to <code>ccbr_tools.pipeline.nextflow.run</code>: (#44, <span class="citation" data-cites="kelly-sovacool">@kelly-sovacool</span>)
+<ul>
+<li>Use <code>-resume</code> by default and turn it off with <code>--forceall</code>.</li>
+<li>Use <code>--output</code> option.</li>
+<li>Run <code>-preview</code> before launching the pipeline with slurm.</li>
+<li>When running on biowulf, try adding spooker to the PATH if it’s not available.</li>
+</ul></li>
 </ul>
 </section>
 <section id="tools-0.2.2" class="level2">
