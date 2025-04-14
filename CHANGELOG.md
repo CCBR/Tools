@@ -2,6 +2,10 @@
 
 - Output ccbrpipeliner module version in spooker metadata. (#43, @kelly-sovacool)
 - Spooker now correctly outputs metadata as a yaml file. (#43, @kelly-sovacool)
+- Improvements to `ccbr_tools.pipeline.nextflow.run`: (#44, @kelly-sovacool)
+  - Use `-resume` by default and turn it off with `--forceall`.
+  - Use `--output` option.
+  - Run `-preview` before launching the pipeline with slurm.
 
 ## Tools 0.2.2
 
