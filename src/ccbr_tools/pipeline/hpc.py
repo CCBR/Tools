@@ -59,19 +59,8 @@ class Biowulf(Cluster):
         super().__init__()
         self.name = "biowulf"
         self.modules = {
-            "nxf": " ".join(
-                [
-                    "nextflow",
-                    "" if is_loaded(module="ccbrpipeliner") else "ccbrpipeliner",
-                ]
-            ),
-            "smk": " ".join(
-                [
-                    "snakemake/7",
-                    "singularity",
-                    "" if is_loaded(module="ccbrpipeliner") else " ccbrpipeliner",
-                ]
-            ),
+            "nxf": " ".join(["nextflow"]),
+            "smk": " ".join(["snakemake/7", "singularity"]),
         }
         self.env_vars = "\n".join(
             (
