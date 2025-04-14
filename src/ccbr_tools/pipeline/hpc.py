@@ -73,6 +73,12 @@ class Biowulf(Cluster):
                 ]
             ),
         }
+        self.env_vars = "\n".join(
+            (
+                f"export SINGULARITY_CACHEDIR={get_singularity_cachedir()}",
+                'if ! command -v spooker 2>&1 >/dev/null; then export PATH="$PATH:/data/CCBR_Pipeliner/Tools/ccbr_tools/v0.2/bin/"; fi',
+            )
+        )
 
 
 class FRCE(Cluster):
