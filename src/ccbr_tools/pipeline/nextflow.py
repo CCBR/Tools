@@ -88,7 +88,11 @@ def run(
     )
     # Print a preview before launching the actual run
     if "-preview" not in args_dict.keys():
-        preview_command = nextflow_command + " -preview"
+        if hpc:
+            hpc_modules = hpc.modules["nxf"]
+            preview_command = f'bash -c "module load {hpc_modules} && {hpc.env_vars} && {nextflow_command} -preview"'
+        else:
+            preview_command = nextflow_command + " -preview"
         msg_box("Pipeline Preview", errmsg=preview_command)
         if not debug:
             shell_run(preview_command, shell=True, check=True, capture_output=False)
