@@ -95,7 +95,7 @@ def run(
             preview_command = nextflow_command + " -preview"
         msg_box("Pipeline Preview", errmsg=preview_command)
         if not debug:
-            shell_run(preview_command, shell=True, check=True, capture_output=False)
+            shell_run(preview_command, shell=True, check=False, capture_output=False)
 
     if mode == "slurm":
         slurm_filename = "submit_slurm.sh"
@@ -124,4 +124,4 @@ def run(
     # Run Nextflow
     msg_box("Nextflow command", errmsg=nextflow_command)
     if not debug:
-        shell_run(run_command, capture_output=False)
+        shell_run(run_command, capture_output=False, check=False)
