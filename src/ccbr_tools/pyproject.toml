@@ -17,7 +17,7 @@ authors = [
     {name = "Susan Huse"},
 ]
 maintainers = [
-    {name = "CCR Collaborative Bioinformatics Resource", email = "ccbr@mail.nih.gov"},
+    {name = "CCR Collaborative Bioinformatics Resource", email = "CCBR_Pipeliner@mail.nih.gov"},
 ]
 license = {file = "LICENSE"}
 classifiers = [
