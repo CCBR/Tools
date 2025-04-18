@@ -1,5 +1,28 @@
 ## Tools development version
 
+- Fix `ccbr_tools.pipeline.nextflow.run`:
+  - make sure preview loads necessary modules.
+  - improve stack trace when nextflow command fails.
+
+## Tools 0.2.3
+
+- Output ccbrpipeliner module version in spooker metadata. (#43, @kelly-sovacool)
+- Spooker now correctly outputs metadata as a yaml file. (#43, @kelly-sovacool)
+- Improvements to `ccbr_tools.pipeline.nextflow.run`: (#44, @kelly-sovacool)
+  - Use `-resume` by default and turn it off with `--forceall`.
+  - Use `--output` option.
+  - Run `-preview` before launching the pipeline with slurm.
+  - When running on biowulf, try adding spooker to the PATH if it's not available.
+
+## Tools 0.2.2
+
+- Fix bug where spooker failed when more than 2 arguments were passed. (#41, @kelly-sovacool)
+
+## Tools 0.2.1
+
+- Spooker update: accept pipeline version as an optional third positional argument. (#39, @kelly-sovacool)
+- Bump cffconvert version for compatibility with nf-schema. (#38, @kelly-sovacool)
+
 ## Tools 0.2.0
 
 - new commands:

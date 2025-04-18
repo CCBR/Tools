@@ -26,27 +26,34 @@ SCRIPTNAME="$0"
 SCRIPTBASENAME=$(basename $SCRIPTNAME)
 
 # 2 arguments are required ... PIPELINE_OUTDIR and PIPELINE_NAME
-if [[ "$#" != "2" ]];then
-    echo "$SCRIPTBASENAME FAILED!: ERROR: 2 arguments expected!"
-    echo "$SCRIPTBASENAME FAILED!: ERROR: Argument 1: pipeline outdir"
-    echo "$SCRIPTBASENAME FAILED!: ERROR: Argument 2: pipeline name"
+if [[ "$#" -lt "2" ]];then
+    echo "$SCRIPTBASENAME FAILED!: ERROR: at least 2 arguments expected!"
+    echo "    Argument 1: pipeline outdir"
+    echo "    Argument 2: pipeline name"
+    echo "    Argument 3: pipeline version (optional)"
     exit 1
 fi
 
 set -o pipefail
 PIPELINE_OUTDIR=$1
 PIPELINE_NAME=$2
+PIPELINE_VERSION=$3
+if [ ${#PIPELINE_VERSION} -eq 0 ]; then
+    PIPELINE_VERSION="UNKNOWN"
+fi
 
 PIPELINE_OUTDIR_SIZE=$(du -bs $PIPELINE_OUTDIR | awk '{print $1}')
 PIPELINE_NAME_UPPER=$(echo "$PIPELINE_NAME" | tr '[:lower:]' '[:upper:]')
 PIPELINE_NAME_LOWER=$(echo "$PIPELINE_NAME" | tr '[:upper:]' '[:lower:]')
-PIPELINE_PATH=$(which $PIPELINE_NAME_LOWER)
-PIPELINE_VERSION=$($PIPELINE_NAME_LOWER --version 2>/dev/null | tail -n1 | awk '{print $NF}' || echo "UNKNOWN")
-
+PIPELINE_PATH=$(which $PIPELINE_NAME_LOWER) # TODO this is not guaranteed to be correct
+CCBRPIPELINER_MODULE=$(module list ccbrpipeliner 2>&1 /dev/null | grep ')' | tail -n 1 | sed 's/.*) //')
+if [[ "CCBRPIPELINER_MODULE" == "" ]];then
+    CCBRPIPELINER_MODULE="UNKNOWN"
+fi
 DT=$(date +%y%m%d%H%M%S)
 archivefile="${PIPELINE_OUTDIR}/${DT}.tar.gz"
 treefile="${PIPELINE_OUTDIR}/${DT}.tree.json"
-metadata="${PIPELINE_OUTDIR}/${DT}.json"
+metadata="${PIPELINE_OUTDIR}/${DT}.yml"
 
 SCONTROL=$(type -P scontrol)
 if [[ "$SCONTROL" == "" ]];then
@@ -70,6 +77,7 @@ if [[ -d "$PIPELINE_OUTDIR" ]];then
     echo "PIPELINE_NAME: $PIPELINE_NAME_UPPER" >> $metadata
     echo "PIPELINE_PATH: $PIPELINE_PATH" >> $metadata
     echo "PIPELINE_VERSION: $PIPELINE_VERSION" >> $metadata
+    echo "CCBRPIPELINER_MODULE: '$CCBRPIPELINER_MODULE'" >> $metadata
     echo "USER: $USER" >> $metadata
     #GROUPS=$(groups 2>/dev/null)
     echo "GROUPS:" $(groups) >> $metadata
