@@ -5,6 +5,8 @@ Use [](`~ccbr_tools.pipeline.hpc.get_hpc`) to retrieve an HPC Cluster instance,
 which contains default attributes for supported clusters.
 """
 
+import pathlib
+
 from .cache import get_singularity_cachedir, get_sif_cache_dir
 from ..shell import shell_run
 
@@ -43,6 +45,16 @@ class Cluster:
     def singularity_sif_dir(self):
         return get_sif_cache_dir(hpc=self.name)
 
+    @staticmethod
+    def create_hpc(debug=False):
+        hpc_options = {"biowulf": Biowulf, "frce": FRCE}
+        hpc_name = get_hpcname() if not debug else debug
+        if not hpc_name:
+            raise ValueError(
+                "HPC name not found. This script only works on Biowulf & FRCE."
+            )
+        return hpc_options.get(hpc_name)()
+
 
 class Biowulf(Cluster):
     """
@@ -54,6 +66,11 @@ class Biowulf(Cluster):
         singularity_sif_dir (str): The directory path for Singularity SIF files.
         env_vars (str): A string representing the environment variables to be set on the cluster.
     """
+
+    GROUP = "CCBR_Pipeliner"
+    PIPELINES_HOME = pathlib.Path("/data/CCBR_Pipeliner/Pipelines")
+    TOOLS_HOME = pathlib.Path("/data/CCBR_Pipeliner/Tools")
+    CONDA_ACTIVATE = '. "/data/CCBR_Pipeliner/db/PipeDB/Conda/etc/profile.d/conda.sh && conda activate py311'
 
     def __init__(self):
         super().__init__()
@@ -80,6 +97,11 @@ class FRCE(Cluster):
         singularity_sif_dir (str): The directory path for Singularity SIF files.
         env_vars (str): A string representing the environment variables to be set on the cluster.
     """
+
+    GROUP = "nci-frederick-ccbr-pipelines"
+    PIPELINES_HOME = pathlib.Path("/mnt/projects/CCBR-Pipelines/pipelines")
+    TOOLS_HOME = pathlib.Path("/mnt/projects/CCBR-Pipelines/tools")
+    CONDA_ACTIVATE = '. "/mnt/projects/CCBR-Pipelines/resources/miniconda3/etc/profile.d/conda.sh && conda activate py311'
 
     def __init__(self):
         super().__init__()
