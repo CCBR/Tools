@@ -279,7 +279,7 @@ ul.task-list li input[type="checkbox"] {
 <section id="tools-development-version" class="level2">
 <h2 class="anchored" data-anchor-id="tools-development-version">Tools development version</h2>
 <ul>
-<li>Fix <code>ccbr_tools.pipeline.nextflow.run</code>:
+<li>Fix <code>ccbr_tools.pipeline.nextflow.run</code>: (#46, <span class="citation" data-cites="kelly-sovacool">@kelly-sovacool</span>)
 <ul>
 <li>make sure preview loads necessary modules.</li>
 <li>improve stack trace when nextflow command fails.</li>
@@ -288,6 +288,10 @@ ul.task-list li input[type="checkbox"] {
 <ul>
 <li><code>mkdocs-fnl</code> for websites built with mkdocs material.</li>
 <li><code>pkgdown-fnl</code> for R package websites built with pkgdown.</li>
+</ul></li>
+<li>Create helper to install software on supported HPCs.
+<ul>
+<li>usage: <code>ccbr_tools install TOOL_NAME VERSION_TAG</code></li>
 </ul></li>
 </ul>
 </section>

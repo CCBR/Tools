@@ -333,7 +333,7 @@
     "href": "CHANGELOG.html",
     "title": "CCBR Tools",
     "section": "",
-    "text": "Fix ccbr_tools.pipeline.nextflow.run:\n\nmake sure preview loads necessary modules.\nimprove stack trace when nextflow command fails.\n\nNew theme templates based on the FNL branding guide: (#47, @kelly-sovacool)\n\nmkdocs-fnl for websites built with mkdocs material.\npkgdown-fnl for R package websites built with pkgdown.",
+    "text": "Fix ccbr_tools.pipeline.nextflow.run: (#46, @kelly-sovacool)\n\nmake sure preview loads necessary modules.\nimprove stack trace when nextflow command fails.\n\nNew theme templates based on the FNL branding guide: (#47, @kelly-sovacool)\n\nmkdocs-fnl for websites built with mkdocs material.\npkgdown-fnl for R package websites built with pkgdown.\n\nCreate helper to install software on supported HPCs.\n\nusage: ccbr_tools install TOOL_NAME VERSION_TAG",
     "crumbs": [
       "Project information",
       "Changelog"
@@ -344,7 +344,7 @@
     "href": "CHANGELOG.html#tools-development-version",
     "title": "CCBR Tools",
     "section": "",
-    "text": "Fix ccbr_tools.pipeline.nextflow.run:\n\nmake sure preview loads necessary modules.\nimprove stack trace when nextflow command fails.\n\nNew theme templates based on the FNL branding guide: (#47, @kelly-sovacool)\n\nmkdocs-fnl for websites built with mkdocs material.\npkgdown-fnl for R package websites built with pkgdown.",
+    "text": "Fix ccbr_tools.pipeline.nextflow.run: (#46, @kelly-sovacool)\n\nmake sure preview loads necessary modules.\nimprove stack trace when nextflow command fails.\n\nNew theme templates based on the FNL branding guide: (#47, @kelly-sovacool)\n\nmkdocs-fnl for websites built with mkdocs material.\npkgdown-fnl for R package websites built with pkgdown.\n\nCreate helper to install software on supported HPCs.\n\nusage: ccbr_tools install TOOL_NAME VERSION_TAG",
     "crumbs": [
       "Project information",
       "Changelog"
