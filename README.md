@@ -75,7 +75,7 @@ import ccbr_tools.pkg_util
 print(ccbr_tools.pkg_util.get_version())
 ```
 
-    0.2.2-dev
+    0.2.3-dev
 
 View the API reference for more information:
 <https://ccbr.github.io/Tools/reference/>
@@ -145,7 +145,7 @@ guidelines](https://CCBR.github.io/Tools/CONTRIBUTING).
 Please cite this software if you use it in a publication:
 
 > Sovacool K., Koparde V., Kuhn S., Tandon M., and Huse S. (2025). CCBR
-> Tools: Utilities for CCBR Bioinformatics Software (version v0.2.2).
+> Tools: Utilities for CCBR Bioinformatics Software (version v0.2.3).
 > DOI: 10.5281/zenodo.13377166 URL: https://ccbr.github.io/Tools/
 
 ### Bibtex entry
