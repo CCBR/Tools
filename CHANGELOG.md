@@ -1,5 +1,9 @@
 ## Tools development version
 
+- Fix `ccbr_tools.pipeline.nextflow.run`:
+  - make sure preview loads necessary modules.
+  - improve stack trace when nextflow command fails.
+
 ## Tools 0.2.3
 
 - Output ccbrpipeliner module version in spooker metadata. (#43, @kelly-sovacool)
