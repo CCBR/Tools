@@ -329,6 +329,28 @@
     "text": "Come across a bug? Open an issue and include a minimal reproducible example.\nHave a question? Ask it in discussions.\nWant to contribute to this project? Check out the contributing guidelines."
   },
   {
+    "objectID": "CHANGELOG.html",
+    "href": "CHANGELOG.html",
+    "title": "CCBR Tools",
+    "section": "",
+    "text": "Fix ccbr_tools.pipeline.nextflow.run:\n\nmake sure preview loads necessary modules.\nimprove stack trace when nextflow command fails.",
+    "crumbs": [
+      "Project information",
+      "Changelog"
+    ]
+  },
+  {
+    "objectID": "CHANGELOG.html#tools-development-version",
+    "href": "CHANGELOG.html#tools-development-version",
+    "title": "CCBR Tools",
+    "section": "",
+    "text": "Fix ccbr_tools.pipeline.nextflow.run:\n\nmake sure preview loads necessary modules.\nimprove stack trace when nextflow command fails.",
+    "crumbs": [
+      "Project information",
+      "Changelog"
+    ]
+  },
+  {
     "objectID": "CHANGELOG.html#tools-0.2.3",
     "href": "CHANGELOG.html#tools-0.2.3",
     "title": "CCBR Tools",
