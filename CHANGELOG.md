@@ -1,11 +1,13 @@
 ## Tools development version
 
-- Fix `ccbr_tools.pipeline.nextflow.run`:
+- Fix `ccbr_tools.pipeline.nextflow.run`: (#46, @kelly-sovacool)
   - make sure preview loads necessary modules.
   - improve stack trace when nextflow command fails.
 - New theme templates based on the FNL branding guide: (#47, @kelly-sovacool)
   - `mkdocs-fnl` for websites built with mkdocs material.
   - `pkgdown-fnl` for R package websites built with pkgdown.
+- Create helper to install software on supported HPCs.
+  - usage: `ccbr_tools install TOOL_NAME VERSION_TAG`
 
 ## Tools 0.2.3
 
