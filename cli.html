@@ -257,6 +257,7 @@ ul.task-list li input[type="checkbox"] {
   <ul class="collapse">
   <li><a href="#send-email" id="toc-send-email" class="nav-link" data-scroll-target="#send-email">send-email</a></li>
   <li><a href="#quarto-add" id="toc-quarto-add" class="nav-link" data-scroll-target="#quarto-add">quarto-add</a></li>
+  <li><a href="#install" id="toc-install" class="nav-link" data-scroll-target="#install">install</a></li>
   <li><a href="#cite" id="toc-cite" class="nav-link" data-scroll-target="#cite">cite</a></li>
   <li><a href="#version" id="toc-version" class="nav-link" data-scroll-target="#version">version</a></li>
   </ul></li>
@@ -312,6 +313,7 @@ Options:
 Commands:
   send-email  Send an email (works on biowulf)
   quarto-add  Add a quarto extension
+  install     Install a specific version of a CCBR software package,...
   cite        Print the citation in the desired format
   version     Print the version of ccbr_tools
 
@@ -359,6 +361,26 @@ Options:
   -h, --help  Show this message and exit.
 
   Available extensions: fnl
+</code></pre>
+</section>
+<section id="install" class="level3">
+<h3 class="anchored" data-anchor-id="install">install</h3>
+<pre><code>Usage: ccbr_tools install [OPTIONS] TOOL_NAME VERSION_TAG
+
+  Install a specific version of a CCBR software package, tool, or pipeline on
+  a supported HPC.
+
+  Args:
+      tool_name (str): The name of the software package to install.
+      version_tag (str): The version tag to install.
+
+Options:
+  --run          Execute the install script; otherwise, just print it. It is a
+                 good idea to dry-run this script first to ensure the commands
+                 are correct, then run again with --run.
+  --branch TEXT  Branch or tag to install from GitHub. Use this option if the
+                 version is not a tag, e.g. for testing developmenmt versions.
+  -h, --help     Show this message and exit.
 </code></pre>
 </section>
 <section id="cite" class="level3">
