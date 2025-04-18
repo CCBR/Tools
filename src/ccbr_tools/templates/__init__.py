@@ -4,6 +4,8 @@ Template files for CCBR Tools.
 ### Templates
 
 - `submit_slurm.sh` -- slurm submission script template
+- `mkdocs-fnl` - theme for websites built with mkdocs material.
+- `pkgdown-fnl` - theme for R package websites built with pkgdown.
 
 ### Quarto extensions
 
