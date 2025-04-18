@@ -17,19 +17,19 @@ View the website for more detailed documentation:
 On [biowulf](https://hpc.nih.gov/) you can access the latest release of
 `ccbr_tools` by loading the ccbrpipeliner module:
 
-```sh
+``` sh
 module load ccbrpipeliner
 ```
 
 Outside of biowulf, you can install the package with pip:
 
-```sh
+``` sh
 pip install git+https://github.com/CCBR/Tools
 ```
 
 Or specify any tagged version or branch:
 
-```sh
+``` sh
 pip install git+https://github.com/CCBR/Tools@v0.1.0
 ```
 
@@ -37,7 +37,7 @@ pip install git+https://github.com/CCBR/Tools@v0.1.0
 
 ### CLI
 
-```sh
+``` sh
 ccbr_tools --help
 ```
 
@@ -56,6 +56,7 @@ ccbr_tools --help
     Commands:
       send-email  Send an email (works on biowulf)
       quarto-add  Add a quarto extension
+      install     Install a specific version of a CCBR software package,...
       cite        Print the citation in the desired format
       version     Print the version of ccbr_tools
 
@@ -70,7 +71,7 @@ ccbr_tools --help
 
 ### Python
 
-```python
+``` python
 import ccbr_tools.pkg_util
 print(ccbr_tools.pkg_util.get_version())
 ```
@@ -150,7 +151,7 @@ Please cite this software if you use it in a publication:
 
 ### Bibtex entry
 
-```bibtex
+``` bibtex
 @misc{YourReferenceHere,
 author = {Sovacool, Kelly and Koparde, Vishal and Kuhn, Skyler and Tandon, Mayank and Huse, Susan},
 doi = {10.5281/zenodo.13377166},
