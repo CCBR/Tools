@@ -83,9 +83,10 @@ def test_get_major_minor():
 def test_get_major_minor_nonsemantic():
     assert all(
         [
-            get_major_minor_version("1.0") == "1.0",
-            get_major_minor_version("v3.4", with_leading_v=True) == "v3.4",
-            get_major_minor_version("3.a") == None,
+            get_major_minor_version("1.0", strict_semver=False) == "1.0",
+            get_major_minor_version("v3.4", with_leading_v=True, strict_semver=False)
+            == "v3.4",
+            get_major_minor_version("3.a", strict_semver=False) == None,
         ]
     )
 

@@ -1,6 +1,6 @@
 ## Tools development version
 
-- Allow relaxed version with only major and minor components in `match_semver()`. (#49, @kelly-sovacool)
+- Allow relaxed version with only major and minor components in `match_semver()` with `strict_semver=False`. (#49, @kelly-sovacool)
 
 ## Tools 0.2.4
 
