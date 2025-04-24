@@ -1,5 +1,7 @@
 ## Tools development version
 
+- Remove `args` and add `repo` parameter to `get_latest_release_tag()` and `get_latest_release_hash()`. (#51, @kelly-sovacool)
+
 ## Tools 0.2.4
 
 - Fix `ccbr_tools.pipeline.nextflow.run`: (#46, @kelly-sovacool)
