@@ -4,7 +4,10 @@ Get information from git tags, commit hashes, and GitHub releases.
 
 import json
 import re
+import warnings
+
 from .shell import shell_run
+from .pkg_util import get_url_json
 
 
 def get_current_hash():
@@ -257,7 +260,7 @@ def get_releases(limit=1, args="", json_fields="name,tagName,isLatest,publishedA
     return json.loads(releases)
 
 
-def get_latest_release_tag(args=""):
+def get_latest_release_tag(repo="CCBR/Tools"):
     """
     Get the tag name of the latest release.
 
@@ -276,6 +279,7 @@ def get_latest_release_tag(args=""):
         >>> get_latest_release_tag()
         'v1.0.0'
     """
+    args = f"--repo {repo}" if repo else ""
     releases = get_releases(limit=100, args=args)
     latest_release = next(
         (release for release in releases if release["isLatest"]), None
@@ -283,14 +287,14 @@ def get_latest_release_tag(args=""):
     return latest_release["tagName"] if latest_release else ""
 
 
-def get_latest_release_hash(args=""):
+def get_latest_release_hash(repo="CCBR/Tools"):
     """
     Get the commit hash of the latest release.
 
     Uses git rev-list to get the commit hash of the latest release tag.
 
     Args:
-        args (str, optional): Additional arguments to pass to the GitHub CLI command (default is "").
+        repo (str, optional): The GitHub repository in the format 'owner/repo'. Default: 'CCBR/Tools'
 
     Returns:
         str: The commit hash of the latest release.
@@ -305,10 +309,32 @@ def get_latest_release_hash(args=""):
         >>> get_latest_release_hash()
         'abc123def4567890abcdef1234567890abcdef12'
     """
-    tag_name = get_latest_release_tag(args=args)
-    tag_hash = ""
-    if tag_name:
-        tag_hash = shell_run(f"git rev-list -n 1 {tag_name}")
-        if "fatal: ambiguous argument" in tag_hash:
-            raise ValueError(f"Tag {tag_name} not found in repository commit history")
+    tag_name = get_latest_release_tag(repo=repo)
+    tag_hash = get_tag_hash(tag_name, repo=repo)
     return tag_hash.strip()
+
+
+def get_tag_hash(tag_name, args="", repo="CCBR/Tools"):
+    """
+    Retrieve the commit hash associated with a specific tag in a GitHub repository.
+    Args:
+        tag_name (str): The name of the tag for which the commit hash is to be retrieved.
+        repo (str, optional): The GitHub repository in the format 'owner/repo'.
+                              Defaults to 'CCBR/Tools'.
+    Returns:
+        str: The commit hash (SHA) associated with the specified tag.
+    Raises:
+        requests.exceptions.RequestException: If there is an issue with the HTTP request.
+        KeyError: If the expected data is not found in the API response.
+    """
+
+    # use gh api to retrieve the commit hash of a tag
+    try:
+        tag_info = get_url_json(
+            f"https://api.github.com/repos/{repo}/git/refs/tags/{tag_name}"
+        )
+        hash = tag_info["object"]["sha"]
+    except ConnectionError:
+        warnings.warn(f"Could not retrieve tag info for {tag_name} from {repo}.")
+        hash = ""
+    return hash

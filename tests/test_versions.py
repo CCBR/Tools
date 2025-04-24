@@ -4,6 +4,7 @@ from ccbr_tools.versions import (
     get_releases,
     get_latest_release_tag,
     get_latest_release_hash,
+    get_tag_hash,
     match_semver,
     check_version_increments_by_one,
     get_major_minor_version,
@@ -23,7 +24,18 @@ def test_get_latest_release_hash():
     assert all(
         [
             len(get_latest_release_hash()) > 7,
-            get_latest_release_hash(args="--repo CCBR/CCBR_NextflowTemplate") == "",
+            len(get_latest_release_hash(repo="CCBR/actions")) > 7,
+            get_latest_release_hash(repo="CCBR/CCBR_NextflowTemplate") == "",
+        ]
+    )
+
+
+def test_get_tag_hash():
+    assert all(
+        [
+            len(get_tag_hash("v0.1.0")) > 7,
+            len(get_tag_hash("v0.2.0", repo="CCBR/actions")) > 7,
+            get_tag_hash("notATag", repo="CCBR/CCBR_NextflowTemplate") == "",
         ]
     )
 
