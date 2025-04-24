@@ -23,6 +23,9 @@ class Software:
             self.version_re
         ), f"Invalid version format '{version}' - Must be a valid semantic version."
 
+    def __repr__(self):
+        return f"{self.__class__.__name__}({self.name}, {self.version})"
+
     def path(self, hpc: Cluster, branch_tag=None):
         hidden_dir = self.hidden_version if not branch_tag else f".{branch_tag}"
         return hpc.TOOLS_HOME / self.name / hidden_dir
@@ -70,9 +73,14 @@ class Installer:
 class PythonTool(Software):
     def __init__(self, name, version):
         super(PythonTool, self).__init__(name, version)
+        self.repo_name = name.replace("ccbr_", "")
 
     def install(self, hpc: Cluster, branch_tag=None):
         return Installer.python(self, hpc, branch_tag=branch_tag)
+
+    @property
+    def url(self):
+        return f"https://github.com/CCBR/{self.repo_name}.git"
 
 
 class BashTool(Software):
