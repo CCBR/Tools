@@ -66,7 +66,7 @@
     "href": "cite.html",
     "title": "CCBR Tools",
     "section": "",
-    "text": "Please cite this software if you use it in a publication:\n\nSovacool K., Koparde V., Kuhn S., Tandon M., and Huse S. (2025). CCBR Tools: Utilities for CCBR Bioinformatics Software (version v0.2.4). DOI: 10.5281/zenodo.13377166 URL: https://ccbr.github.io/Tools/\n\n\nBibtex entry\n@misc{YourReferenceHere,\nauthor = {Sovacool, Kelly and Koparde, Vishal and Kuhn, Skyler and Tandon, Mayank and Huse, Susan},\ndoi = {10.5281/zenodo.13377166},\nmonth = {4},\ntitle = {CCBR Tools: Utilities for CCBR Bioinformatics Software},\nurl = {https://ccbr.github.io/Tools/},\nyear = {2025}\n}",
+    "text": "Please cite this software if you use it in a publication:\n\nSovacool K., Koparde V., Kuhn S., Tandon M., and Huse S. (2025). CCBR Tools: Utilities for CCBR Bioinformatics Software (version v0.3.0). DOI: 10.5281/zenodo.13377166 URL: https://ccbr.github.io/Tools/\n\n\nBibtex entry\n@misc{YourReferenceHere,\nauthor = {Sovacool, Kelly and Koparde, Vishal and Kuhn, Skyler and Tandon, Mayank and Huse, Susan},\ndoi = {10.5281/zenodo.13377166},\nmonth = {4},\ntitle = {CCBR Tools: Utilities for CCBR Bioinformatics Software},\nurl = {https://ccbr.github.io/Tools/},\nyear = {2025}\n}",
     "crumbs": [
       "Project information",
       "Citation"
@@ -710,22 +710,11 @@
     "text": "Utilities for CCBR Bioinformatics Software"
   },
   {
-    "objectID": "CHANGELOG.html",
-    "href": "CHANGELOG.html",
+    "objectID": "CHANGELOG.html#tools-0.3.0",
+    "href": "CHANGELOG.html#tools-0.3.0",
     "title": "CCBR Tools",
-    "section": "",
-    "text": "Allow relaxed version with only major and minor components in match_semver() with strict_semver=False. (#49, @kelly-sovacool)\nRemove args and add repo parameter to get_latest_release_tag() and get_latest_release_hash(). (#51, @kelly-sovacool)",
-    "crumbs": [
-      "Project information",
-      "Changelog"
-    ]
-  },
-  {
-    "objectID": "CHANGELOG.html#tools-development-version",
-    "href": "CHANGELOG.html#tools-development-version",
-    "title": "CCBR Tools",
-    "section": "",
-    "text": "Allow relaxed version with only major and minor components in match_semver() with strict_semver=False. (#49, @kelly-sovacool)\nRemove args and add repo parameter to get_latest_release_tag() and get_latest_release_hash(). (#51, @kelly-sovacool)",
+    "section": "Tools 0.3.0",
+    "text": "Tools 0.3.0\n\nAllow relaxed version with only major and minor components in match_semver() with strict_semver=False. (#49, @kelly-sovacool)\nRemove args and add repo parameter to get_latest_release_tag() and get_latest_release_hash(). (#51, @kelly-sovacool)",
     "crumbs": [
       "Project information",
       "Changelog"
