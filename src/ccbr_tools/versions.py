@@ -29,7 +29,7 @@ def get_current_hash():
     return shell_run("git rev-parse HEAD").strip()
 
 
-def match_semver(version_str, with_leading_v=False):
+def match_semver(version_str, with_leading_v=False, strict_semver=True, pattern=None):
     """
     Match a version string against the semantic versioning pattern.
 
@@ -38,8 +38,8 @@ def match_semver(version_str, with_leading_v=False):
     Args:
         version_str (str): The version string to match against the semantic versioning pattern.
         with_leading_v (bool): If True, the version string is expected to start with a leading 'v'.
-        re.Match or None: The match object if the version string matches the semantic versioning pattern, otherwise None.
-
+        strict_semver (bool): If True, the version string must match the full semantic versioning pattern. Otherwise, a relaxed format with only the major and minor components is allowed.
+        pattern (str, optional): A custom regex pattern to match against the version string. If None, the default semantic versioning pattern is used.
     Returns:
         re.Match or None
             The match object if the version string matches the semantic versioning pattern, otherwise None.
@@ -55,13 +55,20 @@ def match_semver(version_str, with_leading_v=False):
         >>> match_semver("invalid_version")
         None
     """
-    semver_pattern = r"(?P<major>0|[1-9]\d*)\.(?P<minor>0|[1-9]\d*)\.(?P<patch>0|[1-9]\d*)(?:-(?P<prerelease>(?:0|[1-9]\d*|\d*[a-zA-Z-][0-9a-zA-Z-]*)(?:\.(?:0|[1-9]\d*|\d*[a-zA-Z-][0-9a-zA-Z-]*))*))?(?:\+(?P<buildmetadata>[0-9a-zA-Z-]+(?:\.[0-9a-zA-Z-]+)*))?"
+    if not pattern:
+        pattern = (
+            r"(?P<major>0|[1-9]\d*)\.(?P<minor>0|[1-9]\d*)\.(?P<patch>0|[1-9]\d*)(?:-(?P<prerelease>(?:0|[1-9]\d*|\d*[a-zA-Z-][0-9a-zA-Z-]*)(?:\.(?:0|[1-9]\d*|\d*[a-zA-Z-][0-9a-zA-Z-]*))*))?(?:\+(?P<buildmetadata>[0-9a-zA-Z-]+(?:\.[0-9a-zA-Z-]+)*))?"
+            if strict_semver
+            else r"(?P<major>0|[1-9]\d*)\.(?P<minor>0|[1-9]\d*)"
+        )
+
     if with_leading_v:
-        semver_pattern = f"v{semver_pattern}"
-    return re.match(semver_pattern, version_str)
+        pattern = f"v{pattern}"
+    semver_match = re.match(pattern, version_str)
+    return semver_match
 
 
-def get_major_minor_version(version_str, with_leading_v=False):
+def get_major_minor_version(version_str, with_leading_v=False, strict_semver=True):
     """
     Extract the major and minor version from a semantic versioning string.
 
@@ -70,6 +77,7 @@ def get_major_minor_version(version_str, with_leading_v=False):
     Args:
         version_str (str): The version string to extract from.
         with_leading_v (bool): Whether to include a leading 'v' in the output.
+        strict_semver (bool): If True, the version string must match the full semantic versioning pattern. Otherwise, a relaxed format with only the major and minor components is allowed.
 
     Returns:
         str or None: The major and minor version in the format 'major.minor', or None if the version string is invalid.
@@ -84,8 +92,11 @@ def get_major_minor_version(version_str, with_leading_v=False):
         '2.1'
         >>> get_major_minor_version("invalid_version")
         None
+        >>> get_major_minor_version('3.1', strict_semver=False)
     """
-    semver_match = match_semver(version_str, with_leading_v=with_leading_v)
+    semver_match = match_semver(
+        version_str, with_leading_v=with_leading_v, strict_semver=strict_semver
+    )
     prefix = "v" if with_leading_v else ""
     return (
         f"{prefix}{semver_match.group('major')}.{semver_match.group('minor')}"
