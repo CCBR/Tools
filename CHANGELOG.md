@@ -1,6 +1,7 @@
 ## Tools development version
 
 - Fix bug in `ccbr_tools install` where CCBR/Tools & CCBR/actions were using incorrect repo names. (#53, @kelly-sovacool)
+- Minor documentation improvements. (#54, @kelly-sovacool)
 
 ## Tools 0.3.0
 
