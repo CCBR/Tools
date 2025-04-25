@@ -7,7 +7,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 
-<title>pkg_util – CCBR Tools</title>
+<title>versions – CCBR Tools</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -64,8 +64,8 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <script src="../site_libs/quarto-search/fuse.min.js"></script>
 <script src="../site_libs/quarto-search/quarto-search.js"></script>
 <meta name="quarto:offset" content="../">
-<link href="../reference/pipeline.html" rel="next">
-<link href="../reference/github.html" rel="prev">
+<link href="../reference/pipeline.cache.html" rel="next">
+<link href="../reference/templates.html" rel="prev">
 <script src="../site_libs/quarto-html/quarto.js"></script>
 <script src="../site_libs/quarto-html/popper.min.js"></script>
 <script src="../site_libs/quarto-html/tippy.umd.min.js"></script>
@@ -184,7 +184,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
       <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" role="button" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
         <i class="bi bi-layout-text-sidebar-reverse"></i>
       </button>
-        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../reference/github.html">Main modules</a></li><li class="breadcrumb-item"><a href="../reference/pkg_util.html">pkg_util</a></li></ol></nav>
+        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../reference/github.html">Main modules</a></li><li class="breadcrumb-item"><a href="../reference/versions.html">versions</a></li></ol></nav>
         <a class="flex-grow-1" role="navigation" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
         </a>
     </div>
@@ -219,7 +219,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../reference/pkg_util.html" class="sidebar-item-text sidebar-link active">
+  <a href="../reference/pkg_util.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">pkg_util</span></a>
   </div>
 </li>
@@ -255,7 +255,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../reference/versions.html" class="sidebar-item-text sidebar-link">
+  <a href="../reference/versions.html" class="sidebar-item-text sidebar-link active">
  <span class="menu-text">versions</span></a>
   </div>
 </li>
@@ -371,35 +371,34 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
     <h2 id="toc-title">On this page</h2>
    
   <ul>
-  <li><a href="#ccbr_tools.pkg_util" id="toc-ccbr_tools.pkg_util" class="nav-link active" data-scroll-target="#ccbr_tools.pkg_util">pkg_util</a>
+  <li><a href="#ccbr_tools.versions" id="toc-ccbr_tools.versions" class="nav-link active" data-scroll-target="#ccbr_tools.versions">versions</a>
   <ul class="collapse">
   <li><a href="#functions" id="toc-functions" class="nav-link" data-scroll-target="#functions">Functions</a>
   <ul class="collapse">
-  <li><a href="#ccbr_tools.pkg_util.get_external_scripts" id="toc-ccbr_tools.pkg_util.get_external_scripts" class="nav-link" data-scroll-target="#ccbr_tools.pkg_util.get_external_scripts">get_external_scripts</a></li>
-  <li><a href="#ccbr_tools.pkg_util.get_package_version" id="toc-ccbr_tools.pkg_util.get_package_version" class="nav-link" data-scroll-target="#ccbr_tools.pkg_util.get_package_version">get_package_version</a></li>
-  <li><a href="#ccbr_tools.pkg_util.get_project_scripts" id="toc-ccbr_tools.pkg_util.get_project_scripts" class="nav-link" data-scroll-target="#ccbr_tools.pkg_util.get_project_scripts">get_project_scripts</a></li>
-  <li><a href="#ccbr_tools.pkg_util.get_pyproject_toml" id="toc-ccbr_tools.pkg_util.get_pyproject_toml" class="nav-link" data-scroll-target="#ccbr_tools.pkg_util.get_pyproject_toml">get_pyproject_toml</a></li>
-  <li><a href="#ccbr_tools.pkg_util.get_url_json" id="toc-ccbr_tools.pkg_util.get_url_json" class="nav-link" data-scroll-target="#ccbr_tools.pkg_util.get_url_json">get_url_json</a></li>
-  <li><a href="#ccbr_tools.pkg_util.get_version" id="toc-ccbr_tools.pkg_util.get_version" class="nav-link" data-scroll-target="#ccbr_tools.pkg_util.get_version">get_version</a></li>
-  <li><a href="#ccbr_tools.pkg_util.msg" id="toc-ccbr_tools.pkg_util.msg" class="nav-link" data-scroll-target="#ccbr_tools.pkg_util.msg">msg</a></li>
-  <li><a href="#ccbr_tools.pkg_util.msg_box" id="toc-ccbr_tools.pkg_util.msg_box" class="nav-link" data-scroll-target="#ccbr_tools.pkg_util.msg_box">msg_box</a></li>
-  <li><a href="#ccbr_tools.pkg_util.print_citation" id="toc-ccbr_tools.pkg_util.print_citation" class="nav-link" data-scroll-target="#ccbr_tools.pkg_util.print_citation">print_citation</a></li>
-  <li><a href="#ccbr_tools.pkg_util.repo_base" id="toc-ccbr_tools.pkg_util.repo_base" class="nav-link" data-scroll-target="#ccbr_tools.pkg_util.repo_base">repo_base</a></li>
+  <li><a href="#ccbr_tools.versions.check_version_increments_by_one" id="toc-ccbr_tools.versions.check_version_increments_by_one" class="nav-link" data-scroll-target="#ccbr_tools.versions.check_version_increments_by_one">check_version_increments_by_one</a></li>
+  <li><a href="#ccbr_tools.versions.get_current_hash" id="toc-ccbr_tools.versions.get_current_hash" class="nav-link" data-scroll-target="#ccbr_tools.versions.get_current_hash">get_current_hash</a></li>
+  <li><a href="#ccbr_tools.versions.get_latest_release_hash" id="toc-ccbr_tools.versions.get_latest_release_hash" class="nav-link" data-scroll-target="#ccbr_tools.versions.get_latest_release_hash">get_latest_release_hash</a></li>
+  <li><a href="#ccbr_tools.versions.get_latest_release_tag" id="toc-ccbr_tools.versions.get_latest_release_tag" class="nav-link" data-scroll-target="#ccbr_tools.versions.get_latest_release_tag">get_latest_release_tag</a></li>
+  <li><a href="#ccbr_tools.versions.get_major_minor_version" id="toc-ccbr_tools.versions.get_major_minor_version" class="nav-link" data-scroll-target="#ccbr_tools.versions.get_major_minor_version">get_major_minor_version</a></li>
+  <li><a href="#ccbr_tools.versions.get_releases" id="toc-ccbr_tools.versions.get_releases" class="nav-link" data-scroll-target="#ccbr_tools.versions.get_releases">get_releases</a></li>
+  <li><a href="#ccbr_tools.versions.get_tag_hash" id="toc-ccbr_tools.versions.get_tag_hash" class="nav-link" data-scroll-target="#ccbr_tools.versions.get_tag_hash">get_tag_hash</a></li>
+  <li><a href="#ccbr_tools.versions.is_ancestor" id="toc-ccbr_tools.versions.is_ancestor" class="nav-link" data-scroll-target="#ccbr_tools.versions.is_ancestor">is_ancestor</a></li>
+  <li><a href="#ccbr_tools.versions.match_semver" id="toc-ccbr_tools.versions.match_semver" class="nav-link" data-scroll-target="#ccbr_tools.versions.match_semver">match_semver</a></li>
   </ul></li>
   </ul></li>
   </ul>
-<div class="toc-actions"><ul><li><a href="https://github.com/CCBR/Tools/edit/main/reference/pkg_util.qmd" class="toc-action"><i class="bi bi-github"></i>Edit this page</a></li><li><a href="https://github.com/CCBR/Tools/issues/new" class="toc-action"><i class="bi empty"></i>Report an issue</a></li></ul></div></nav>
+<div class="toc-actions"><ul><li><a href="https://github.com/CCBR/Tools/edit/main/reference/versions.qmd" class="toc-action"><i class="bi bi-github"></i>Edit this page</a></li><li><a href="https://github.com/CCBR/Tools/issues/new" class="toc-action"><i class="bi empty"></i>Report an issue</a></li></ul></div></nav>
     </div>
 <!-- main -->
-<main class="content" id="quarto-document-content"><header id="title-block-header" class="quarto-title-block"><nav class="quarto-page-breadcrumbs quarto-title-breadcrumbs d-none d-lg-block" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../reference/github.html">Main modules</a></li><li class="breadcrumb-item"><a href="../reference/pkg_util.html">pkg_util</a></li></ol></nav></header>
+<main class="content" id="quarto-document-content"><header id="title-block-header" class="quarto-title-block"><nav class="quarto-page-breadcrumbs quarto-title-breadcrumbs d-none d-lg-block" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../reference/github.html">Main modules</a></li><li class="breadcrumb-item"><a href="../reference/versions.html">versions</a></li></ol></nav></header>
 
 
 
 
-<section id="ccbr_tools.pkg_util" class="level1">
-<h1>pkg_util</h1>
-<p><code>pkg_util</code></p>
-<p>Miscellaneous utility functions for the package</p>
+<section id="ccbr_tools.versions" class="level1">
+<h1>versions</h1>
+<p><code>versions</code></p>
+<p>Get information from git tags, commit hashes, and GitHub releases.</p>
 <section id="functions" class="level2">
 <h2 class="anchored" data-anchor-id="functions">Functions</h2>
 <table class="caption-top table">
@@ -411,51 +410,54 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </thead>
 <tbody>
 <tr class="odd">
-<td><a href="#ccbr_tools.pkg_util.get_external_scripts">get_external_scripts</a></td>
-<td>Get list of standalone scripts included in the package</td>
+<td><a href="#ccbr_tools.versions.check_version_increments_by_one">check_version_increments_by_one</a></td>
+<td>Checks if the next version increments by exactly 1 digit from the current version.</td>
 </tr>
 <tr class="even">
-<td><a href="#ccbr_tools.pkg_util.get_package_version">get_package_version</a></td>
-<td>Get the current version of a package from the metadata.</td>
+<td><a href="#ccbr_tools.versions.get_current_hash">get_current_hash</a></td>
+<td>Get the current commit hash.</td>
 </tr>
 <tr class="odd">
-<td><a href="#ccbr_tools.pkg_util.get_project_scripts">get_project_scripts</a></td>
-<td>Get a list of CLI tools in the package.</td>
+<td><a href="#ccbr_tools.versions.get_latest_release_hash">get_latest_release_hash</a></td>
+<td>Get the commit hash of the latest release.</td>
 </tr>
 <tr class="even">
-<td><a href="#ccbr_tools.pkg_util.get_pyproject_toml">get_pyproject_toml</a></td>
-<td>Get the contents of the package’s pyproject.toml file.</td>
+<td><a href="#ccbr_tools.versions.get_latest_release_tag">get_latest_release_tag</a></td>
+<td>Get the tag name of the latest release.</td>
 </tr>
 <tr class="odd">
-<td><a href="#ccbr_tools.pkg_util.get_url_json">get_url_json</a></td>
-<td>Fetches JSON data from a given URL.</td>
+<td><a href="#ccbr_tools.versions.get_major_minor_version">get_major_minor_version</a></td>
+<td>Extract the major and minor version from a semantic versioning string.</td>
 </tr>
 <tr class="even">
-<td><a href="#ccbr_tools.pkg_util.get_version">get_version</a></td>
-<td>Get the current version of the ccbr_tools package.</td>
+<td><a href="#ccbr_tools.versions.get_releases">get_releases</a></td>
+<td>Get a list of releases from GitHub.</td>
 </tr>
 <tr class="odd">
-<td><a href="#ccbr_tools.pkg_util.msg">msg</a></td>
-<td>Prints the error message with a timestamp.</td>
+<td><a href="#ccbr_tools.versions.get_tag_hash">get_tag_hash</a></td>
+<td>Retrieve the commit hash associated with a specific tag in a GitHub repository.</td>
 </tr>
 <tr class="even">
-<td><a href="#ccbr_tools.pkg_util.msg_box">msg_box</a></td>
-<td>Displays a message box with a given splash message.</td>
+<td><a href="#ccbr_tools.versions.is_ancestor">is_ancestor</a></td>
+<td>Check if one commit is an ancestor of another.</td>
 </tr>
 <tr class="odd">
-<td><a href="#ccbr_tools.pkg_util.print_citation">print_citation</a></td>
-<td>Prints the citation for the given citation file in the specified output format.</td>
-</tr>
-<tr class="even">
-<td><a href="#ccbr_tools.pkg_util.repo_base">repo_base</a></td>
-<td>Get the absolute path to a file in the repository</td>
+<td><a href="#ccbr_tools.versions.match_semver">match_semver</a></td>
+<td>Match a version string against the semantic versioning pattern.</td>
 </tr>
 </tbody>
 </table>
-<section id="ccbr_tools.pkg_util.get_external_scripts" class="level3">
-<h3 class="anchored" data-anchor-id="ccbr_tools.pkg_util.get_external_scripts">get_external_scripts</h3>
-<div class="sourceCode" id="cb1"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a>pkg_util.get_external_scripts(pkg_name<span class="op">=</span><span class="st">'ccbr_tools'</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<p>Get list of standalone scripts included in the package</p>
+<section id="ccbr_tools.versions.check_version_increments_by_one" class="level3">
+<h3 class="anchored" data-anchor-id="ccbr_tools.versions.check_version_increments_by_one">check_version_increments_by_one</h3>
+<div class="sourceCode" id="cb1"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a>versions.check_version_increments_by_one(</span>
+<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a>    current_version,</span>
+<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a>    next_version,</span>
+<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a>    with_leading_v<span class="op">=</span><span class="va">False</span>,</span>
+<span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a>    error_on_false<span class="op">=</span><span class="va">True</span>,</span>
+<span id="cb1-6"><a href="#cb1-6" aria-hidden="true" tabindex="-1"></a>    debug<span class="op">=</span><span class="va">False</span>,</span>
+<span id="cb1-7"><a href="#cb1-7" aria-hidden="true" tabindex="-1"></a>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p>Checks if the next version increments by exactly 1 digit from the current version.</p>
+<p>Ensures that the next version follows semantic versioning guidelines and increments only one of the major, minor, or patch numbers by 1.</p>
 <section id="parameters" class="level4 doc-section doc-section-parameters">
 <h4 class="doc-section doc-section-parameters anchored" data-anchor-id="parameters">Parameters</h4>
 <table class="caption-top table">
@@ -469,16 +471,64 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </thead>
 <tbody>
 <tr class="odd">
-<td>pkg_name</td>
+<td>current_version</td>
 <td><a href="https://docs.python.org/3/library/stdtypes.html#str">str</a></td>
-<td>The name of the package. Defaults to “ccbr_tools”.</td>
-<td><code>'ccbr_tools'</code></td>
+<td>The current version string.</td>
+<td><em>required</em></td>
+</tr>
+<tr class="even">
+<td>next_version</td>
+<td><a href="https://docs.python.org/3/library/stdtypes.html#str">str</a></td>
+<td>The proposed next version string.</td>
+<td><em>required</em></td>
+</tr>
+<tr class="odd">
+<td>with_leading_v</td>
+<td><a href="https://docs.python.org/3/library/functions.html#bool">bool</a></td>
+<td>If True, expects the version strings to start with ‘v’. Defaults to False.</td>
+<td><code>False</code></td>
+</tr>
+<tr class="even">
+<td>error_on_false</td>
+<td><a href="https://docs.python.org/3/library/functions.html#bool">bool</a></td>
+<td>If True, raises a ValueError when the check fails. Defaults to True.</td>
+<td><code>True</code></td>
+</tr>
+<tr class="odd">
+<td>debug</td>
+<td><a href="https://docs.python.org/3/library/functions.html#bool">bool</a></td>
+<td>If True, prints debug information. Defaults to False.</td>
+<td><code>False</code></td>
 </tr>
 </tbody>
 </table>
 </section>
 <section id="returns" class="level4 doc-section doc-section-returns">
 <h4 class="doc-section doc-section-returns anchored" data-anchor-id="returns">Returns</h4>
+<table class="caption-top table">
+<colgroup>
+<col style="width: 9%">
+<col style="width: 9%">
+<col style="width: 81%">
+</colgroup>
+<thead>
+<tr class="header">
+<th>Name</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>bool</td>
+<td></td>
+<td>True if the next version increments by exactly one, False otherwise.</td>
+</tr>
+</tbody>
+</table>
+</section>
+<section id="raises" class="level4 doc-section doc-section-raises">
+<h4 class="doc-section doc-section-raises anchored" data-anchor-id="raises">Raises</h4>
 <table class="caption-top table">
 <thead>
 <tr class="header">
@@ -489,18 +539,68 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </thead>
 <tbody>
 <tr class="odd">
-<td>scripts</td>
-<td><a href="https://docs.python.org/3/library/stdtypes.html#list">list</a></td>
-<td>A list of standalone scripts included in the package.</td>
+<td></td>
+<td><a href="https://docs.python.org/3/library/exceptions.html#ValueError">ValueError</a></td>
+<td>If the next version does not match semantic versioning guidelines or does not increment by exactly one.</td>
 </tr>
 </tbody>
 </table>
 </section>
+<section id="examples" class="level4 doc-section doc-section-examples">
+<h4 class="doc-section doc-section-examples anchored" data-anchor-id="examples">Examples</h4>
+<div class="sourceCode" id="cb2"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="op">&gt;&gt;&gt;</span> check_version_increments_by_one(<span class="st">"1.0.0"</span>, <span class="st">"1.0.1"</span>)</span>
+<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a><span class="va">True</span></span>
+<span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a><span class="op">&gt;&gt;&gt;</span> check_version_increments_by_one(<span class="st">"1.0.0"</span>, <span class="st">"1.1.0"</span>)</span>
+<span id="cb2-4"><a href="#cb2-4" aria-hidden="true" tabindex="-1"></a><span class="va">True</span></span>
+<span id="cb2-5"><a href="#cb2-5" aria-hidden="true" tabindex="-1"></a><span class="op">&gt;&gt;&gt;</span> check_version_increments_by_one(<span class="st">"1.0.0"</span>, <span class="st">"2.0.0"</span>)</span>
+<span id="cb2-6"><a href="#cb2-6" aria-hidden="true" tabindex="-1"></a><span class="va">True</span></span>
+<span id="cb2-7"><a href="#cb2-7" aria-hidden="true" tabindex="-1"></a><span class="op">&gt;&gt;&gt;</span> check_version_increments_by_one(<span class="st">"1.0.0"</span>, <span class="st">"1.0.2"</span>)</span>
+<span id="cb2-8"><a href="#cb2-8" aria-hidden="true" tabindex="-1"></a><span class="va">False</span></span>
+<span id="cb2-9"><a href="#cb2-9" aria-hidden="true" tabindex="-1"></a><span class="op">&gt;&gt;&gt;</span> check_version_increments_by_one(<span class="st">"1.0.0"</span>, <span class="st">"1.2.0"</span>)</span>
+<span id="cb2-10"><a href="#cb2-10" aria-hidden="true" tabindex="-1"></a><span class="va">False</span></span>
+<span id="cb2-11"><a href="#cb2-11" aria-hidden="true" tabindex="-1"></a><span class="op">&gt;&gt;&gt;</span> check_version_increments_by_one(<span class="st">"1.0.0"</span>, <span class="st">"3.0.0"</span>)</span>
+<span id="cb2-12"><a href="#cb2-12" aria-hidden="true" tabindex="-1"></a><span class="va">False</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </section>
-<section id="ccbr_tools.pkg_util.get_package_version" class="level3">
-<h3 class="anchored" data-anchor-id="ccbr_tools.pkg_util.get_package_version">get_package_version</h3>
-<div class="sourceCode" id="cb2"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a>pkg_util.get_package_version(pkg_name<span class="op">=</span><span class="st">'ccbr_tools'</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<p>Get the current version of a package from the metadata.</p>
+</section>
+<section id="ccbr_tools.versions.get_current_hash" class="level3">
+<h3 class="anchored" data-anchor-id="ccbr_tools.versions.get_current_hash">get_current_hash</h3>
+<div class="sourceCode" id="cb3"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a>versions.get_current_hash()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p>Get the current commit hash.</p>
+<p>Uses git rev-parse HEAD to get the current commit hash.</p>
+<section id="returns-1" class="level4 doc-section doc-section-returns">
+<h4 class="doc-section doc-section-returns anchored" data-anchor-id="returns-1">Returns</h4>
+<table class="caption-top table">
+<thead>
+<tr class="header">
+<th>Name</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>str</td>
+<td></td>
+<td>The current commit hash.</td>
+</tr>
+</tbody>
+</table>
+</section>
+<section id="see-also" class="level4 doc-section doc-section-see-also">
+<h4 class="doc-section doc-section-see-also anchored" data-anchor-id="see-also">See Also</h4>
+<p><code>get_latest_release_hash</code> : Get the commit hash of the latest release.</p>
+</section>
+<section id="examples-1" class="level4 doc-section doc-section-examples">
+<h4 class="doc-section doc-section-examples anchored" data-anchor-id="examples-1">Examples</h4>
+<div class="sourceCode" id="cb4"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="op">&gt;&gt;&gt;</span> get_current_hash()</span>
+<span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a><span class="co">'abc123def4567890abcdef1234567890abcdef12'</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</section>
+</section>
+<section id="ccbr_tools.versions.get_latest_release_hash" class="level3">
+<h3 class="anchored" data-anchor-id="ccbr_tools.versions.get_latest_release_hash">get_latest_release_hash</h3>
+<div class="sourceCode" id="cb5"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a>versions.get_latest_release_hash(repo<span class="op">=</span><span class="st">'CCBR/Tools'</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p>Get the commit hash of the latest release.</p>
+<p>Uses git rev-list to get the commit hash of the latest release tag.</p>
 <section id="parameters-1" class="level4 doc-section doc-section-parameters">
 <h4 class="doc-section doc-section-parameters anchored" data-anchor-id="parameters-1">Parameters</h4>
 <table class="caption-top table">
@@ -514,55 +614,10 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </thead>
 <tbody>
 <tr class="odd">
-<td>pkg_name</td>
+<td>repo</td>
 <td><a href="https://docs.python.org/3/library/stdtypes.html#str">str</a></td>
-<td>Name of the package (default: ccbr_tools).</td>
-<td><code>'ccbr_tools'</code></td>
-</tr>
-</tbody>
-</table>
-</section>
-<section id="returns-1" class="level4 doc-section doc-section-returns">
-<h4 class="doc-section doc-section-returns anchored" data-anchor-id="returns-1">Returns</h4>
-<table class="caption-top table">
-<thead>
-<tr class="header">
-<th>Name</th>
-<th>Type</th>
-<th>Description</th>
-</tr>
-</thead>
-<tbody>
-<tr class="odd">
-<td>version</td>
-<td><a href="https://docs.python.org/3/library/stdtypes.html#str">str</a></td>
-<td>The version of the package.</td>
-</tr>
-</tbody>
-</table>
-</section>
-</section>
-<section id="ccbr_tools.pkg_util.get_project_scripts" class="level3">
-<h3 class="anchored" data-anchor-id="ccbr_tools.pkg_util.get_project_scripts">get_project_scripts</h3>
-<div class="sourceCode" id="cb3"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a>pkg_util.get_project_scripts(pkg_name<span class="op">=</span><span class="st">'ccbr_tools'</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<p>Get a list of CLI tools in the package.</p>
-<section id="parameters-2" class="level4 doc-section doc-section-parameters">
-<h4 class="doc-section doc-section-parameters anchored" data-anchor-id="parameters-2">Parameters</h4>
-<table class="caption-top table">
-<thead>
-<tr class="header">
-<th>Name</th>
-<th>Type</th>
-<th>Description</th>
-<th>Default</th>
-</tr>
-</thead>
-<tbody>
-<tr class="odd">
-<td>pkg_name</td>
-<td><a href="https://docs.python.org/3/library/stdtypes.html#str">str</a></td>
-<td>The name of the package. Defaults to “ccbr_tools”.</td>
-<td><code>'ccbr_tools'</code></td>
+<td>The GitHub repository in the format ‘owner/repo’. Default: ‘CCBR/Tools’</td>
+<td><code>'CCBR/Tools'</code></td>
 </tr>
 </tbody>
 </table>
@@ -579,18 +634,111 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </thead>
 <tbody>
 <tr class="odd">
-<td>tools</td>
-<td><a href="https://docs.python.org/3/library/stdtypes.html#list">list</a></td>
-<td>A sorted list of CLI tool names.</td>
+<td>str</td>
+<td></td>
+<td>The commit hash of the latest release.</td>
 </tr>
 </tbody>
 </table>
 </section>
+<section id="raises-1" class="level4 doc-section doc-section-raises">
+<h4 class="doc-section doc-section-raises anchored" data-anchor-id="raises-1">Raises</h4>
+<table class="caption-top table">
+<thead>
+<tr class="header">
+<th>Name</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td></td>
+<td><a href="https://docs.python.org/3/library/exceptions.html#ValueError">ValueError</a></td>
+<td>If the tag is not found in the repository commit history.</td>
+</tr>
+</tbody>
+</table>
 </section>
-<section id="ccbr_tools.pkg_util.get_pyproject_toml" class="level3">
-<h3 class="anchored" data-anchor-id="ccbr_tools.pkg_util.get_pyproject_toml">get_pyproject_toml</h3>
-<div class="sourceCode" id="cb4"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a>pkg_util.get_pyproject_toml(pkg_name<span class="op">=</span><span class="st">'ccbr_tools'</span>, repo_base<span class="op">=</span>repo_base)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<p>Get the contents of the package’s pyproject.toml file.</p>
+<section id="see-also-1" class="level4 doc-section doc-section-see-also">
+<h4 class="doc-section doc-section-see-also anchored" data-anchor-id="see-also-1">See Also</h4>
+<p><code>get_latest_release_tag</code>: Get the tag name of the latest release.</p>
+</section>
+<section id="examples-2" class="level4 doc-section doc-section-examples">
+<h4 class="doc-section doc-section-examples anchored" data-anchor-id="examples-2">Examples</h4>
+<div class="sourceCode" id="cb6"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a><span class="op">&gt;&gt;&gt;</span> get_latest_release_hash()</span>
+<span id="cb6-2"><a href="#cb6-2" aria-hidden="true" tabindex="-1"></a><span class="co">'abc123def4567890abcdef1234567890abcdef12'</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</section>
+</section>
+<section id="ccbr_tools.versions.get_latest_release_tag" class="level3">
+<h3 class="anchored" data-anchor-id="ccbr_tools.versions.get_latest_release_tag">get_latest_release_tag</h3>
+<div class="sourceCode" id="cb7"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a>versions.get_latest_release_tag(repo<span class="op">=</span><span class="st">'CCBR/Tools'</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p>Get the tag name of the latest release.</p>
+<p>Uses the GitHub CLI to retrieve the latest release tag from a repository.</p>
+<section id="parameters-2" class="level4 doc-section doc-section-parameters">
+<h4 class="doc-section doc-section-parameters anchored" data-anchor-id="parameters-2">Parameters</h4>
+<table class="caption-top table">
+<thead>
+<tr class="header">
+<th>Name</th>
+<th>Type</th>
+<th>Description</th>
+<th>Default</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>args</td>
+<td><a href="https://docs.python.org/3/library/stdtypes.html#str">str</a></td>
+<td>Additional arguments to pass to the GitHub CLI command (default is ““).</td>
+<td><em>required</em></td>
+</tr>
+</tbody>
+</table>
+</section>
+<section id="returns-3" class="level4 doc-section doc-section-returns">
+<h4 class="doc-section doc-section-returns anchored" data-anchor-id="returns-3">Returns</h4>
+<table class="caption-top table">
+<colgroup>
+<col style="width: 7%">
+<col style="width: 7%">
+<col style="width: 84%">
+</colgroup>
+<thead>
+<tr class="header">
+<th>Name</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td></td>
+<td></td>
+<td>str or None: The tag name of the latest release, or None if no latest release is found.</td>
+</tr>
+</tbody>
+</table>
+</section>
+<section id="see-also-2" class="level4 doc-section doc-section-see-also">
+<h4 class="doc-section doc-section-see-also anchored" data-anchor-id="see-also-2">See Also</h4>
+<p><code>get_releases</code>: Get a list of releases from GitHub.</p>
+</section>
+<section id="examples-3" class="level4 doc-section doc-section-examples">
+<h4 class="doc-section doc-section-examples anchored" data-anchor-id="examples-3">Examples</h4>
+<div class="sourceCode" id="cb8"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a><span class="op">&gt;&gt;&gt;</span> get_latest_release_tag()</span>
+<span id="cb8-2"><a href="#cb8-2" aria-hidden="true" tabindex="-1"></a><span class="co">'v1.0.0'</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</section>
+</section>
+<section id="ccbr_tools.versions.get_major_minor_version" class="level3">
+<h3 class="anchored" data-anchor-id="ccbr_tools.versions.get_major_minor_version">get_major_minor_version</h3>
+<div class="sourceCode" id="cb9"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a>versions.get_major_minor_version(</span>
+<span id="cb9-2"><a href="#cb9-2" aria-hidden="true" tabindex="-1"></a>    version_str,</span>
+<span id="cb9-3"><a href="#cb9-3" aria-hidden="true" tabindex="-1"></a>    with_leading_v<span class="op">=</span><span class="va">False</span>,</span>
+<span id="cb9-4"><a href="#cb9-4" aria-hidden="true" tabindex="-1"></a>    strict_semver<span class="op">=</span><span class="va">True</span>,</span>
+<span id="cb9-5"><a href="#cb9-5" aria-hidden="true" tabindex="-1"></a>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p>Extract the major and minor version from a semantic versioning string.</p>
+<p>See the semantic versioning guidelines: <a href="https://semver.org/" class="uri">https://semver.org/</a></p>
 <section id="parameters-3" class="level4 doc-section doc-section-parameters">
 <h4 class="doc-section doc-section-parameters anchored" data-anchor-id="parameters-3">Parameters</h4>
 <table class="caption-top table">
@@ -604,17 +752,34 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </thead>
 <tbody>
 <tr class="odd">
-<td>pkg_name</td>
+<td>version_str</td>
 <td><a href="https://docs.python.org/3/library/stdtypes.html#str">str</a></td>
-<td>Name of the package (default: ccbr_tools).</td>
-<td><code>'ccbr_tools'</code></td>
+<td>The version string to extract from.</td>
+<td><em>required</em></td>
+</tr>
+<tr class="even">
+<td>with_leading_v</td>
+<td><a href="https://docs.python.org/3/library/functions.html#bool">bool</a></td>
+<td>Whether to include a leading ‘v’ in the output.</td>
+<td><code>False</code></td>
+</tr>
+<tr class="odd">
+<td>strict_semver</td>
+<td><a href="https://docs.python.org/3/library/functions.html#bool">bool</a></td>
+<td>If True, the version string must match the full semantic versioning pattern. Otherwise, a relaxed format with only the major and minor components is allowed.</td>
+<td><code>True</code></td>
 </tr>
 </tbody>
 </table>
 </section>
-<section id="returns-3" class="level4 doc-section doc-section-returns">
-<h4 class="doc-section doc-section-returns anchored" data-anchor-id="returns-3">Returns</h4>
+<section id="returns-4" class="level4 doc-section doc-section-returns">
+<h4 class="doc-section doc-section-returns anchored" data-anchor-id="returns-4">Returns</h4>
 <table class="caption-top table">
+<colgroup>
+<col style="width: 6%">
+<col style="width: 6%">
+<col style="width: 87%">
+</colgroup>
 <thead>
 <tr class="header">
 <th>Name</th>
@@ -624,18 +789,37 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </thead>
 <tbody>
 <tr class="odd">
-<td>pyproject</td>
-<td><a href="https://docs.python.org/3/library/stdtypes.html#dict">dict</a></td>
-<td>The contents of the pyproject.toml file.</td>
+<td></td>
+<td></td>
+<td>str or None: The major and minor version in the format ‘major.minor’, or None if the version string is invalid.</td>
 </tr>
 </tbody>
 </table>
 </section>
+<section id="see-also-3" class="level4 doc-section doc-section-see-also">
+<h4 class="doc-section doc-section-see-also anchored" data-anchor-id="see-also-3">See Also</h4>
+<p><code>match_semver</code>: Match a version string against the semantic versioning pattern.</p>
 </section>
-<section id="ccbr_tools.pkg_util.get_url_json" class="level3">
-<h3 class="anchored" data-anchor-id="ccbr_tools.pkg_util.get_url_json">get_url_json</h3>
-<div class="sourceCode" id="cb5"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a>pkg_util.get_url_json(url)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<p>Fetches JSON data from a given URL.</p>
+<section id="examples-4" class="level4 doc-section doc-section-examples">
+<h4 class="doc-section doc-section-examples anchored" data-anchor-id="examples-4">Examples</h4>
+<div class="sourceCode" id="cb10"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a><span class="op">&gt;&gt;&gt;</span> get_major_minor_version(<span class="st">"1.0.0"</span>)</span>
+<span id="cb10-2"><a href="#cb10-2" aria-hidden="true" tabindex="-1"></a><span class="co">'1.0'</span></span>
+<span id="cb10-3"><a href="#cb10-3" aria-hidden="true" tabindex="-1"></a><span class="op">&gt;&gt;&gt;</span> get_major_minor_version(<span class="st">"2.1.3-alpha"</span>)</span>
+<span id="cb10-4"><a href="#cb10-4" aria-hidden="true" tabindex="-1"></a><span class="co">'2.1'</span></span>
+<span id="cb10-5"><a href="#cb10-5" aria-hidden="true" tabindex="-1"></a><span class="op">&gt;&gt;&gt;</span> get_major_minor_version(<span class="st">"invalid_version"</span>)</span>
+<span id="cb10-6"><a href="#cb10-6" aria-hidden="true" tabindex="-1"></a><span class="va">None</span></span>
+<span id="cb10-7"><a href="#cb10-7" aria-hidden="true" tabindex="-1"></a><span class="op">&gt;&gt;&gt;</span> get_major_minor_version(<span class="st">'3.1'</span>, strict_semver<span class="op">=</span><span class="va">False</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</section>
+</section>
+<section id="ccbr_tools.versions.get_releases" class="level3">
+<h3 class="anchored" data-anchor-id="ccbr_tools.versions.get_releases">get_releases</h3>
+<div class="sourceCode" id="cb11"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a>versions.get_releases(</span>
+<span id="cb11-2"><a href="#cb11-2" aria-hidden="true" tabindex="-1"></a>    limit<span class="op">=</span><span class="dv">1</span>,</span>
+<span id="cb11-3"><a href="#cb11-3" aria-hidden="true" tabindex="-1"></a>    args<span class="op">=</span><span class="st">''</span>,</span>
+<span id="cb11-4"><a href="#cb11-4" aria-hidden="true" tabindex="-1"></a>    json_fields<span class="op">=</span><span class="st">'name,tagName,isLatest,publishedAt'</span>,</span>
+<span id="cb11-5"><a href="#cb11-5" aria-hidden="true" tabindex="-1"></a>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p>Get a list of releases from GitHub.</p>
+<p>Uses the GitHub CLI to retrieve a list of releases from a repository. You will need to <a href="https://cli.github.com/">install it</a> before you can use this function.</p>
 <section id="parameters-4" class="level4 doc-section doc-section-parameters">
 <h4 class="doc-section doc-section-parameters anchored" data-anchor-id="parameters-4">Parameters</h4>
 <table class="caption-top table">
@@ -649,21 +833,33 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </thead>
 <tbody>
 <tr class="odd">
-<td>url</td>
+<td>limit</td>
+<td><a href="https://docs.python.org/3/library/functions.html#int">int</a></td>
+<td>The maximum number of releases to retrieve (default is 1).</td>
+<td><code>1</code></td>
+</tr>
+<tr class="even">
+<td>args</td>
 <td><a href="https://docs.python.org/3/library/stdtypes.html#str">str</a></td>
-<td>The URL to fetch the JSON data from.</td>
-<td><em>required</em></td>
+<td>Additional arguments to pass to the GitHub CLI command (default is ““).</td>
+<td><code>''</code></td>
+</tr>
+<tr class="odd">
+<td>json_fields</td>
+<td><a href="https://docs.python.org/3/library/stdtypes.html#str">str</a></td>
+<td>The JSON fields to include in the output (default is “name,tagName,isLatest,publishedAt”).</td>
+<td><code>'name,tagName,isLatest,publishedAt'</code></td>
 </tr>
 </tbody>
 </table>
 </section>
-<section id="returns-4" class="level4 doc-section doc-section-returns">
-<h4 class="doc-section doc-section-returns anchored" data-anchor-id="returns-4">Returns</h4>
+<section id="returns-5" class="level4 doc-section doc-section-returns">
+<h4 class="doc-section doc-section-returns anchored" data-anchor-id="returns-5">Returns</h4>
 <table class="caption-top table">
 <colgroup>
-<col style="width: 6%">
-<col style="width: 6%">
-<col style="width: 86%">
+<col style="width: 11%">
+<col style="width: 11%">
+<col style="width: 77%">
 </colgroup>
 <thead>
 <tr class="header">
@@ -674,18 +870,41 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </thead>
 <tbody>
 <tr class="odd">
-<td>dict</td>
+<td>list</td>
 <td></td>
-<td>The JSON data retrieved from the URL if the request is successful, otherwise an empty dictionary.</td>
+<td>A list of dictionaries containing release information.</td>
 </tr>
 </tbody>
 </table>
 </section>
+<section id="see-also-4" class="level4 doc-section doc-section-see-also">
+<h4 class="doc-section doc-section-see-also anchored" data-anchor-id="see-also-4">See Also</h4>
+<p><code>get_latest_release_tag</code> : Get the tag name of the latest release. <code>get_latest_release_hash</code> : Get the commit hash of the latest release.</p>
 </section>
-<section id="ccbr_tools.pkg_util.get_version" class="level3">
-<h3 class="anchored" data-anchor-id="ccbr_tools.pkg_util.get_version">get_version</h3>
-<div class="sourceCode" id="cb6"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a>pkg_util.get_version(repo_base<span class="op">=</span>repo_base, debug<span class="op">=</span><span class="va">False</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<p>Get the current version of the ccbr_tools package.</p>
+<section id="notes" class="level4 doc-section doc-section-notes">
+<h4 class="doc-section doc-section-notes anchored" data-anchor-id="notes">Notes</h4>
+<p>gh cli docs: <a href="https://cli.github.com/manual/gh_release_list" class="uri">https://cli.github.com/manual/gh_release_list</a></p>
+</section>
+<section id="examples-5" class="level4 doc-section doc-section-examples">
+<h4 class="doc-section doc-section-examples anchored" data-anchor-id="examples-5">Examples</h4>
+<div class="sourceCode" id="cb12"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb12-1"><a href="#cb12-1" aria-hidden="true" tabindex="-1"></a><span class="op">&gt;&gt;&gt;</span> get_releases(limit<span class="op">=</span><span class="dv">2</span>)</span>
+<span id="cb12-2"><a href="#cb12-2" aria-hidden="true" tabindex="-1"></a>[{<span class="st">'name'</span>: <span class="st">'v1.0.0'</span>, <span class="st">'tagName'</span>: <span class="st">'v1.0.0'</span>, <span class="st">'isLatest'</span>: <span class="va">True</span>, <span class="st">'publishedAt'</span>: <span class="st">'2021-01-01T00:00:00Z'</span>},</span>
+<span id="cb12-3"><a href="#cb12-3" aria-hidden="true" tabindex="-1"></a>{<span class="st">'name'</span>: <span class="st">'v0.9.0'</span>, <span class="st">'tagName'</span>: <span class="st">'v0.9.0'</span>, <span class="st">'isLatest'</span>: <span class="va">False</span>, <span class="st">'publishedAt'</span>: <span class="st">'2020-12-01T00:00:00Z'</span>}]</span>
+<span id="cb12-4"><a href="#cb12-4" aria-hidden="true" tabindex="-1"></a><span class="op">&gt;&gt;&gt;</span> get_releases(limit<span class="op">=</span><span class="dv">2</span>, args<span class="op">=</span><span class="st">"--repo CCBR/RENEE"</span>)</span>
+<span id="cb12-5"><a href="#cb12-5" aria-hidden="true" tabindex="-1"></a>[{<span class="st">'isLatest'</span>: <span class="va">True</span>, <span class="st">'name'</span>: <span class="st">'RENEE 2.5.12'</span>, <span class="st">'publishedAt'</span>: <span class="st">'2024-04-12T14:49:11Z'</span>, <span class="st">'tagName'</span>: <span class="st">'v2.5.12'</span>},</span>
+<span id="cb12-6"><a href="#cb12-6" aria-hidden="true" tabindex="-1"></a>{<span class="st">'isLatest'</span>: <span class="va">False</span>, <span class="st">'name'</span>: <span class="st">'RENEE 2.5.11'</span>, <span class="st">'publishedAt'</span>: <span class="st">'2024-01-22T21:02:30Z'</span>, <span class="st">'tagName'</span>: <span class="st">'v2.5.11'</span>}]</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</section>
+</section>
+<section id="ccbr_tools.versions.get_tag_hash" class="level3">
+<h3 class="anchored" data-anchor-id="ccbr_tools.versions.get_tag_hash">get_tag_hash</h3>
+<div class="sourceCode" id="cb13"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb13-1"><a href="#cb13-1" aria-hidden="true" tabindex="-1"></a>versions.get_tag_hash(tag_name, args<span class="op">=</span><span class="st">''</span>, repo<span class="op">=</span><span class="st">'CCBR/Tools'</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p>Retrieve the commit hash associated with a specific tag in a GitHub repository. Args: tag_name (str): The name of the tag for which the commit hash is to be retrieved. repo (str, optional): The GitHub repository in the format ‘owner/repo’. Defaults to ‘CCBR/Tools’. Returns: str: The commit hash (SHA) associated with the specified tag. Raises: requests.exceptions.RequestException: If there is an issue with the HTTP request. KeyError: If the expected data is not found in the API response.</p>
+</section>
+<section id="ccbr_tools.versions.is_ancestor" class="level3">
+<h3 class="anchored" data-anchor-id="ccbr_tools.versions.is_ancestor">is_ancestor</h3>
+<div class="sourceCode" id="cb14"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb14-1"><a href="#cb14-1" aria-hidden="true" tabindex="-1"></a>versions.is_ancestor(ancestor, descendant)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p>Check if one commit is an ancestor of another.</p>
+<p>Uses git merge-base –is-ancestor to determine if the ancestor is an ancestor of the descendant.</p>
 <section id="parameters-5" class="level4 doc-section doc-section-parameters">
 <h4 class="doc-section doc-section-parameters anchored" data-anchor-id="parameters-5">Parameters</h4>
 <table class="caption-top table">
@@ -699,23 +918,28 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </thead>
 <tbody>
 <tr class="odd">
-<td>repo_base</td>
-<td><code>function</code></td>
-<td>A function that returns the base path of the repository.</td>
-<td><code>repo_base</code></td>
+<td>ancestor</td>
+<td><a href="https://docs.python.org/3/library/stdtypes.html#str">str</a></td>
+<td>The commit hash of the potential ancestor.</td>
+<td><em>required</em></td>
 </tr>
 <tr class="even">
-<td>debug</td>
-<td><a href="https://docs.python.org/3/library/functions.html#bool">bool</a></td>
-<td>Print the path to the VERSION file (default: False).</td>
-<td><code>False</code></td>
+<td>descendant</td>
+<td><a href="https://docs.python.org/3/library/stdtypes.html#str">str</a></td>
+<td>The commit hash of the potential descendant.</td>
+<td><em>required</em></td>
 </tr>
 </tbody>
 </table>
 </section>
-<section id="returns-5" class="level4 doc-section doc-section-returns">
-<h4 class="doc-section doc-section-returns anchored" data-anchor-id="returns-5">Returns</h4>
+<section id="returns-6" class="level4 doc-section doc-section-returns">
+<h4 class="doc-section doc-section-returns anchored" data-anchor-id="returns-6">Returns</h4>
 <table class="caption-top table">
+<colgroup>
+<col style="width: 8%">
+<col style="width: 8%">
+<col style="width: 82%">
+</colgroup>
 <thead>
 <tr class="header">
 <th>Name</th>
@@ -725,18 +949,35 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </thead>
 <tbody>
 <tr class="odd">
-<td>version</td>
-<td><a href="https://docs.python.org/3/library/stdtypes.html#str">str</a></td>
-<td>The version of the package.</td>
+<td>bool</td>
+<td></td>
+<td>True if the ancestor is an ancestor of the descendant, otherwise False.</td>
 </tr>
 </tbody>
 </table>
 </section>
+<section id="see-also-5" class="level4 doc-section doc-section-see-also">
+<h4 class="doc-section doc-section-see-also anchored" data-anchor-id="see-also-5">See Also</h4>
+<p><code>get_latest_release_hash</code> : Get the commit hash of the latest release. <code>get_current_hash</code> : Get the commit hash of the current.</p>
 </section>
-<section id="ccbr_tools.pkg_util.msg" class="level3">
-<h3 class="anchored" data-anchor-id="ccbr_tools.pkg_util.msg">msg</h3>
-<div class="sourceCode" id="cb7"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a>pkg_util.msg(err_message)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<p>Prints the error message with a timestamp.</p>
+<section id="examples-6" class="level4 doc-section doc-section-examples">
+<h4 class="doc-section doc-section-examples anchored" data-anchor-id="examples-6">Examples</h4>
+<div class="sourceCode" id="cb15"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb15-1"><a href="#cb15-1" aria-hidden="true" tabindex="-1"></a><span class="op">&gt;&gt;&gt;</span> is_ancestor(<span class="st">"abc123"</span>, <span class="st">"def456"</span>)</span>
+<span id="cb15-2"><a href="#cb15-2" aria-hidden="true" tabindex="-1"></a><span class="va">True</span></span>
+<span id="cb15-3"><a href="#cb15-3" aria-hidden="true" tabindex="-1"></a><span class="op">&gt;&gt;&gt;</span> is_ancestor(<span class="st">"abc123"</span>, <span class="st">"ghi789"</span>)</span>
+<span id="cb15-4"><a href="#cb15-4" aria-hidden="true" tabindex="-1"></a><span class="va">False</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</section>
+</section>
+<section id="ccbr_tools.versions.match_semver" class="level3">
+<h3 class="anchored" data-anchor-id="ccbr_tools.versions.match_semver">match_semver</h3>
+<div class="sourceCode" id="cb16"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb16-1"><a href="#cb16-1" aria-hidden="true" tabindex="-1"></a>versions.match_semver(</span>
+<span id="cb16-2"><a href="#cb16-2" aria-hidden="true" tabindex="-1"></a>    version_str,</span>
+<span id="cb16-3"><a href="#cb16-3" aria-hidden="true" tabindex="-1"></a>    with_leading_v<span class="op">=</span><span class="va">False</span>,</span>
+<span id="cb16-4"><a href="#cb16-4" aria-hidden="true" tabindex="-1"></a>    strict_semver<span class="op">=</span><span class="va">True</span>,</span>
+<span id="cb16-5"><a href="#cb16-5" aria-hidden="true" tabindex="-1"></a>    pattern<span class="op">=</span><span class="va">None</span>,</span>
+<span id="cb16-6"><a href="#cb16-6" aria-hidden="true" tabindex="-1"></a>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p>Match a version string against the semantic versioning pattern.</p>
+<p>See the semantic versioning guidelines: <a href="https://semver.org/" class="uri">https://semver.org/</a></p>
 <section id="parameters-6" class="level4 doc-section doc-section-parameters">
 <h4 class="doc-section doc-section-parameters anchored" data-anchor-id="parameters-6">Parameters</h4>
 <table class="caption-top table">
@@ -750,126 +991,45 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </thead>
 <tbody>
 <tr class="odd">
-<td>err_message</td>
+<td>version_str</td>
 <td><a href="https://docs.python.org/3/library/stdtypes.html#str">str</a></td>
-<td>The error message to be printed.</td>
-<td><em>required</em></td>
-</tr>
-</tbody>
-</table>
-<p>Returns: None</p>
-</section>
-</section>
-<section id="ccbr_tools.pkg_util.msg_box" class="level3">
-<h3 class="anchored" data-anchor-id="ccbr_tools.pkg_util.msg_box">msg_box</h3>
-<div class="sourceCode" id="cb8"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a>pkg_util.msg_box(splash, errmsg<span class="op">=</span><span class="va">None</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<p>Displays a message box with a given splash message.</p>
-<section id="parameters-7" class="level4 doc-section doc-section-parameters">
-<h4 class="doc-section doc-section-parameters anchored" data-anchor-id="parameters-7">Parameters</h4>
-<table class="caption-top table">
-<thead>
-<tr class="header">
-<th>Name</th>
-<th>Type</th>
-<th>Description</th>
-<th>Default</th>
-</tr>
-</thead>
-<tbody>
-<tr class="odd">
-<td>splash</td>
-<td><a href="https://docs.python.org/3/library/stdtypes.html#str">str</a></td>
-<td>The splash message to be displayed.</td>
+<td>The version string to match against the semantic versioning pattern.</td>
 <td><em>required</em></td>
 </tr>
 <tr class="even">
-<td>errmsg</td>
+<td>with_leading_v</td>
+<td><a href="https://docs.python.org/3/library/functions.html#bool">bool</a></td>
+<td>If True, the version string is expected to start with a leading ‘v’.</td>
+<td><code>False</code></td>
+</tr>
+<tr class="odd">
+<td>strict_semver</td>
+<td><a href="https://docs.python.org/3/library/functions.html#bool">bool</a></td>
+<td>If True, the version string must match the full semantic versioning pattern. Otherwise, a relaxed format with only the major and minor components is allowed.</td>
+<td><code>True</code></td>
+</tr>
+<tr class="even">
+<td>pattern</td>
 <td><a href="https://docs.python.org/3/library/stdtypes.html#str">str</a></td>
-<td>An error message to be displayed below the splash message. Defaults to None.</td>
+<td>A custom regex pattern to match against the version string. If None, the default semantic versioning pattern is used.</td>
 <td><code>None</code></td>
 </tr>
 </tbody>
 </table>
+<p>Returns: re.Match or None The match object if the version string matches the semantic versioning pattern, otherwise None.</p>
 </section>
+<section id="see-also-6" class="level4 doc-section doc-section-see-also">
+<h4 class="doc-section doc-section-see-also anchored" data-anchor-id="see-also-6">See Also</h4>
+<p><code>get_major_minor_version</code> : Extract the major and minor version from a semantic versioning string.</p>
 </section>
-<section id="ccbr_tools.pkg_util.print_citation" class="level3">
-<h3 class="anchored" data-anchor-id="ccbr_tools.pkg_util.print_citation">print_citation</h3>
-<div class="sourceCode" id="cb9"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a>pkg_util.print_citation(</span>
-<span id="cb9-2"><a href="#cb9-2" aria-hidden="true" tabindex="-1"></a>    citation_file<span class="op">=</span>repo_base(<span class="st">'CITATION.cff'</span>),</span>
-<span id="cb9-3"><a href="#cb9-3" aria-hidden="true" tabindex="-1"></a>    output_format<span class="op">=</span><span class="st">'bibtex'</span>,</span>
-<span id="cb9-4"><a href="#cb9-4" aria-hidden="true" tabindex="-1"></a>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<p>Prints the citation for the given citation file in the specified output format.</p>
-<section id="parameters-8" class="level4 doc-section doc-section-parameters">
-<h4 class="doc-section doc-section-parameters anchored" data-anchor-id="parameters-8">Parameters</h4>
-<table class="caption-top table">
-<thead>
-<tr class="header">
-<th>Name</th>
-<th>Type</th>
-<th>Description</th>
-<th>Default</th>
-</tr>
-</thead>
-<tbody>
-<tr class="odd">
-<td>citation_file</td>
-<td><a href="https://docs.python.org/3/library/stdtypes.html#str">str</a></td>
-<td>The path to the citation file.</td>
-<td><code>repo_base('CITATION.cff')</code></td>
-</tr>
-<tr class="even">
-<td>output_format</td>
-<td><a href="https://docs.python.org/3/library/stdtypes.html#str">str</a></td>
-<td>The desired output format for the citation.</td>
-<td><code>'bibtex'</code></td>
-</tr>
-</tbody>
-</table>
-</section>
-</section>
-<section id="ccbr_tools.pkg_util.repo_base" class="level3">
-<h3 class="anchored" data-anchor-id="ccbr_tools.pkg_util.repo_base">repo_base</h3>
-<div class="sourceCode" id="cb10"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a>pkg_util.repo_base(<span class="op">*</span>paths)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<p>Get the absolute path to a file in the repository</p>
-<section id="parameters-9" class="level4 doc-section doc-section-parameters">
-<h4 class="doc-section doc-section-parameters anchored" data-anchor-id="parameters-9">Parameters</h4>
-<table class="caption-top table">
-<thead>
-<tr class="header">
-<th>Name</th>
-<th>Type</th>
-<th>Description</th>
-<th>Default</th>
-</tr>
-</thead>
-<tbody>
-<tr class="odd">
-<td>*paths</td>
-<td><a href="https://docs.python.org/3/library/stdtypes.html#str">str</a></td>
-<td>Additional paths to join with the base path.</td>
-<td><code>()</code></td>
-</tr>
-</tbody>
-</table>
-</section>
-<section id="returns-6" class="level4 doc-section doc-section-returns">
-<h4 class="doc-section doc-section-returns anchored" data-anchor-id="returns-6">Returns</h4>
-<table class="caption-top table">
-<thead>
-<tr class="header">
-<th>Name</th>
-<th>Type</th>
-<th>Description</th>
-</tr>
-</thead>
-<tbody>
-<tr class="odd">
-<td>path</td>
-<td><a href="https://docs.python.org/3/library/stdtypes.html#str">str</a></td>
-<td>The absolute path to the file in the repository.</td>
-</tr>
-</tbody>
-</table>
+<section id="examples-7" class="level4 doc-section doc-section-examples">
+<h4 class="doc-section doc-section-examples anchored" data-anchor-id="examples-7">Examples</h4>
+<div class="sourceCode" id="cb17"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb17-1"><a href="#cb17-1" aria-hidden="true" tabindex="-1"></a><span class="op">&gt;&gt;&gt;</span> match_semver(<span class="st">"1.0.0"</span>)</span>
+<span id="cb17-2"><a href="#cb17-2" aria-hidden="true" tabindex="-1"></a><span class="op">&lt;</span>re.Match <span class="bu">object</span><span class="op">;</span> span<span class="op">=</span>(<span class="dv">0</span>, <span class="dv">5</span>), match<span class="op">=</span><span class="st">'1.0.0'</span><span class="op">&gt;</span></span>
+<span id="cb17-3"><a href="#cb17-3" aria-hidden="true" tabindex="-1"></a><span class="op">&gt;&gt;&gt;</span> match_semver(<span class="st">"1.0.0-alpha+001"</span>)</span>
+<span id="cb17-4"><a href="#cb17-4" aria-hidden="true" tabindex="-1"></a><span class="op">&lt;</span>re.Match <span class="bu">object</span><span class="op">;</span> span<span class="op">=</span>(<span class="dv">0</span>, <span class="dv">13</span>), match<span class="op">=</span><span class="st">'1.0.0-alpha+001'</span><span class="op">&gt;</span></span>
+<span id="cb17-5"><a href="#cb17-5" aria-hidden="true" tabindex="-1"></a><span class="op">&gt;&gt;&gt;</span> match_semver(<span class="st">"invalid_version"</span>)</span>
+<span id="cb17-6"><a href="#cb17-6" aria-hidden="true" tabindex="-1"></a><span class="va">None</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 
 
 </section>
@@ -1441,13 +1601,13 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
 </script>
 <nav class="page-navigation">
   <div class="nav-page nav-page-previous">
-      <a href="../reference/github.html" class="pagination-link" aria-label="github">
-        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text">github</span>
+      <a href="../reference/templates.html" class="pagination-link" aria-label="templates">
+        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text">templates</span>
       </a>          
   </div>
   <div class="nav-page nav-page-next">
-      <a href="../reference/pipeline.html" class="pagination-link" aria-label="pipeline">
-        <span class="nav-page-text">pipeline</span> <i class="bi bi-arrow-right-short"></i>
+      <a href="../reference/pipeline.cache.html" class="pagination-link" aria-label="pipeline.cache">
+        <span class="nav-page-text">pipeline.cache</span> <i class="bi bi-arrow-right-short"></i>
       </a>
   </div>
 </nav>
@@ -1459,7 +1619,7 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
 </div>   
     <div class="nav-footer-center">
       &nbsp;
-    <div class="toc-actions d-sm-block d-md-none"><ul><li><a href="https://github.com/CCBR/Tools/edit/main/reference/pkg_util.qmd" class="toc-action"><i class="bi bi-github"></i>Edit this page</a></li><li><a href="https://github.com/CCBR/Tools/issues/new" class="toc-action"><i class="bi empty"></i>Report an issue</a></li></ul></div></div>
+    <div class="toc-actions d-sm-block d-md-none"><ul><li><a href="https://github.com/CCBR/Tools/edit/main/reference/versions.qmd" class="toc-action"><i class="bi bi-github"></i>Edit this page</a></li><li><a href="https://github.com/CCBR/Tools/issues/new" class="toc-action"><i class="bi empty"></i>Report an issue</a></li></ul></div></div>
     <div class="nav-footer-right">
       &nbsp;
     </div>
