@@ -1,8 +1,9 @@
 ## Tools development version
 
-- Fix bugs in `ccbr_tools install`
+- Bug fixes in `ccbr_tools install`:
   - ccbr_tools & ccbr_actions were using incorrect repo names. (#53, @kelly-sovacool)
-  - absolute paths were not being used for the symlinks. (, @kelly-sovacool)
+  - absolute paths were not being used for the symlinks. (#55, @kelly-sovacool)
+- Minor documentation improvements. (#54, @kelly-sovacool)
 
 ## Tools 0.3.0
 
