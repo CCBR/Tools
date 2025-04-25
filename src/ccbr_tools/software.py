@@ -156,7 +156,7 @@ def install(
     script = install_script.format(
         GROUP=hpc.GROUP,
         CONDA_ACTIVATE=hpc.CONDA_ACTIVATE,
-        INSTALL=tool.install(hpc),
+        INSTALL=tool.install(hpc, branch_tag=branch_tag),
         PATH=tool.path(hpc),
     )
     if not tool.is_dev_version:

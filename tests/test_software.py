@@ -9,6 +9,10 @@ def test_python():
             == "https://github.com/CCBR/tools.git",
             Software.create_software("ccbr_actions", "v0.1.2").url
             == "https://github.com/CCBR/actions.git",
+            Software.create_software("ccbr_actions", "v1.0.0-dev").install(
+                hpc=Biowulf, branch_tag="main"
+            )
+            == "pip install git+https://github.com/CCBR/actions.git@main -t /data/CCBR_Pipeliner/Tools/ccbr_actions/.v1.0.0-dev",
         ]
     )
 
