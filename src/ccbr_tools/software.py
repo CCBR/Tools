@@ -26,9 +26,12 @@ class Software:
     def __repr__(self):
         return f"{self.__class__.__name__}({self.name}, {self.version})"
 
-    def path(self, hpc: Cluster, branch_tag=None):
-        hidden_dir = self.hidden_version if not branch_tag else f".{branch_tag}"
+    def path(self, hpc: Cluster):
+        hidden_dir = self.hidden_version
         return hpc.TOOLS_HOME / self.name / hidden_dir
+
+    def base_path(self, hpc: Cluster):
+        return hpc.TOOLS_HOME / self.name
 
     @property
     def version_re(self):
@@ -95,9 +98,12 @@ class Nextflow(Software):
     def __init__(self, name, version):
         super(Nextflow, self).__init__(name.upper(), version)
 
-    def path(self, hpc: Cluster, branch_tag=None):
-        hidden_dir = self.hidden_version  # if not branch_tag else f".{branch_tag}"
+    def path(self, hpc: Cluster):
+        hidden_dir = self.hidden_version
         return hpc.PIPELINES_HOME / self.name / hidden_dir
+
+    def base_path(self, hpc: Cluster):
+        return hpc.PIPELINES_HOME / self.name
 
     def install(self, hpc: Cluster, branch_tag=None):
         return Installer.python(self, hpc, branch_tag=branch_tag)
@@ -107,9 +113,12 @@ class Snakemake(Software):
     def __init__(self, name, version):
         super(Snakemake, self).__init__(name.upper(), version)
 
-    def path(self, hpc: Cluster, branch_tag=None):
-        hidden_dir = self.hidden_version  # if not branch_tag else f".{branch_tag}"
+    def path(self, hpc: Cluster):
+        hidden_dir = self.hidden_version
         return hpc.PIPELINES_HOME / self.name / hidden_dir
+
+    def base_path(self, hpc: Cluster):
+        return hpc.PIPELINES_HOME / self.name
 
     def install(self, hpc: Cluster, branch_tag=None):
         return Installer.bash(self, hpc, branch_tag=branch_tag)
@@ -133,7 +142,8 @@ CCBR_SOFTWARE = {
 }
 
 
-SET_SYMLINK = """rm -if {MAJOR_MINOR_VERSION}
+SET_SYMLINK = """
+rm -if {MAJOR_MINOR_VERSION}
 ln -s {PATH} {MAJOR_MINOR_VERSION}"""
 
 INSTALL_SCRIPT = """{CONDA_ACTIVATE}
@@ -149,8 +159,9 @@ def install(
     branch_tag=None,
     install_script=INSTALL_SCRIPT,
     symlink_script=SET_SYMLINK,
+    debug=False,
 ):
-    hpc = Cluster.create_hpc()
+    hpc = Cluster.create_hpc(debug=debug)
     tool = Software.create_software(tool_name, version)
 
     script = install_script.format(
@@ -162,7 +173,7 @@ def install(
     if not tool.is_dev_version:
         script += symlink_script.format(
             PATH=tool.path(hpc),
-            MAJOR_MINOR_VERSION=tool.major_minor,
+            MAJOR_MINOR_VERSION=tool.base_path(hpc) / tool.major_minor,
         )
     if dryrun:
         print(script)
