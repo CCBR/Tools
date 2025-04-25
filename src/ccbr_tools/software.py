@@ -136,10 +136,10 @@ CCBR_SOFTWARE = {
 SET_SYMLINK = """rm -if {MAJOR_MINOR_VERSION}
 ln -s {PATH} {MAJOR_MINOR_VERSION}"""
 
-INSTALL_SCRIPT = """newgrp {GROUP}
-{CONDA_ACTIVATE}
+INSTALL_SCRIPT = """{CONDA_ACTIVATE}
 {INSTALL}
-chmod -R a+rX {PATH}"""
+chmod -R a+rX {PATH}
+chown -R :{GROUP} {PATH}"""
 
 
 def install(
@@ -167,4 +167,4 @@ def install(
     if dryrun:
         print(script)
     else:
-        shell_run(script, shell=True, check=True, capture_output=False)
+        shell_run(script, shell=True, capture_output=False)
