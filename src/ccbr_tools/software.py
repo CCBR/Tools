@@ -23,6 +23,9 @@ class Software:
             self.version_re
         ), f"Invalid version format '{version}' - Must be a valid semantic version."
 
+    def __repr__(self):
+        return f"{self.__class__.__name__}({self.name}, {self.version})"
+
     def path(self, hpc: Cluster, branch_tag=None):
         hidden_dir = self.hidden_version if not branch_tag else f".{branch_tag}"
         return hpc.TOOLS_HOME / self.name / hidden_dir
@@ -70,9 +73,14 @@ class Installer:
 class PythonTool(Software):
     def __init__(self, name, version):
         super(PythonTool, self).__init__(name, version)
+        self.repo_name = name.replace("ccbr_", "")
 
     def install(self, hpc: Cluster, branch_tag=None):
         return Installer.python(self, hpc, branch_tag=branch_tag)
+
+    @property
+    def url(self):
+        return f"https://github.com/CCBR/{self.repo_name}.git"
 
 
 class BashTool(Software):
@@ -128,10 +136,10 @@ CCBR_SOFTWARE = {
 SET_SYMLINK = """rm -if {MAJOR_MINOR_VERSION}
 ln -s {PATH} {MAJOR_MINOR_VERSION}"""
 
-INSTALL_SCRIPT = """newgrp {GROUP}
-{CONDA_ACTIVATE}
+INSTALL_SCRIPT = """{CONDA_ACTIVATE}
 {INSTALL}
-chmod -R a+rX {PATH}"""
+chmod -R a+rX {PATH}
+chown -R :{GROUP} {PATH}"""
 
 
 def install(
@@ -148,7 +156,7 @@ def install(
     script = install_script.format(
         GROUP=hpc.GROUP,
         CONDA_ACTIVATE=hpc.CONDA_ACTIVATE,
-        INSTALL=tool.install(hpc),
+        INSTALL=tool.install(hpc, branch_tag=branch_tag),
         PATH=tool.path(hpc),
     )
     if not tool.is_dev_version:
@@ -159,4 +167,4 @@ def install(
     if dryrun:
         print(script)
     else:
-        shell_run(script, shell=True, check=True, capture_output=False)
+        shell_run(script, shell=True, capture_output=False)
