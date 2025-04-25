@@ -115,6 +115,10 @@ class FRCE(Cluster):
         )
 
 
+class GitHubActions(Cluster):
+    pass
+
+
 def get_hpc(debug=False):
     """
     Returns an instance of the High-Performance Computing (HPC) cluster based on the specified HPC name.
