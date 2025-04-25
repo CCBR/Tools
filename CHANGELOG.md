@@ -1,5 +1,7 @@
 ## Tools development version
 
+- Minor documentation improvements. (#54, @kelly-sovacool)
+
 ## Tools 0.3.0
 
 - Allow relaxed version with only major and minor components in `match_semver()` with `strict_semver=False`. (#49, @kelly-sovacool)
