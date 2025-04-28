@@ -1,5 +1,7 @@
 ## Tools development version
 
+- fix `ccbr_tools install` to use relative paths for symlinks within the same directory. (#58, @kelly-sovacool)
+
 ## Tools 0.3.1
 
 - Bug fixes in `ccbr_tools install`:
