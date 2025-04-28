@@ -1,0 +1,92 @@
+[data-md-color-scheme="fnl"] {
+  --md-primary-fg-color: #ffffff;
+  --md-primary-bg-color: #000000;
+  --md-accent-fg-color: #7cc349;
+  --md-accent-bg-color: #7cc349;
+  --md-default-fg-color: #296b7f;
+  --md-default-bg-color: #ffffff;
+  --md-typeset-color: #000000;
+  --md-typeset-a-color: #296b7f;
+  .md-header__title {
+    color: #000000;
+  }
+
+  .md-tabs,
+  .md-tabs__link,
+  .md-typeset h1,
+  .md-typeset h2,
+  .md-typeset h3 {
+    color: #000000;
+  }
+  .md-tabs__link--active,
+  .md-tabs__link:hover,
+  .md-tabs__link:focus {
+    color: #296b7f;
+  }
+  .logo-dark {
+    display: none;
+  }
+}
+[data-md-color-scheme="fnldark"] {
+  --md-primary-bg-color: #ffffff;
+  --md-primary-fg-color: #000000;
+  --md-accent-fg-color: #296b7f;
+  --md-accent-bg-color: #7cc349;
+  --md-default-fg-color: #296b7f;
+  --md-default-bg-color: #03191f;
+  --md-typeset-color: #ffffff;
+  --md-typeset-a-color: #7cc349;
+
+  .md-tabs,
+  .md-tabs__link,
+  .md-typeset h1,
+  .md-typeset h2,
+  .md-typeset h3 {
+    color: #ffffff;
+  }
+  .md-tabs__link--active,
+  .md-tabs__link:hover,
+  .md-tabs__link:focus {
+    color: #7cc349;
+  }
+
+  .logo-light {
+    display: none;
+  }
+}
+
+/*
+https://github.com/squidfunk/mkdocs-material/blob/master/src/templates/assets/stylesheets/main/components/_header.scss
+*/
+.md-header {
+  height: 100px;
+  text-align: center;
+  align-items: center;
+}
+.md-header__title {
+  font-size: 26px;
+  text-align: center;
+  align-items: center;
+}
+.logo-dark {
+  padding: px2rem(12px);
+  margin: px2rem(8px);
+
+  :is(img, svg) {
+    display: block;
+    width: auto;
+    height: px2rem(84px);
+    fill: currentcolor;
+  }
+}
+.logo-light {
+  padding: px2rem(12px);
+  margin: px2rem(8px);
+
+  :is(img, svg) {
+    display: block;
+    width: auto;
+    height: px2rem(84px);
+    fill: currentcolor;
+  }
+}

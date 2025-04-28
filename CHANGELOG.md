@@ -1,5 +1,49 @@
 ## Tools development version
 
+## Tools 0.3.1
+
+- Bug fixes in `ccbr_tools install`:
+  - ccbr_tools & ccbr_actions were using incorrect repo names. (#53, @kelly-sovacool)
+  - absolute paths were not being used for the symlinks. (#55, @kelly-sovacool)
+- Minor documentation improvements. (#54, @kelly-sovacool)
+
+## Tools 0.3.0
+
+- Allow relaxed version with only major and minor components in `match_semver()` with `strict_semver=False`. (#49, @kelly-sovacool)
+- Remove `args` and add `repo` parameter to `get_latest_release_tag()` and `get_latest_release_hash()`. (#51, @kelly-sovacool)
+
+## Tools 0.2.4
+
+- Fix `ccbr_tools.pipeline.nextflow.run`: (#46, @kelly-sovacool)
+  - make sure preview loads necessary modules.
+  - improve stack trace when nextflow command fails.
+- New theme templates based on the FNL branding guide: (#47, @kelly-sovacool)
+  - `mkdocs-fnl` for websites built with mkdocs material.
+  - `pkgdown-fnl` for R package websites built with pkgdown.
+- Create helper to install software on supported HPCs.
+  - usage: `ccbr_tools install TOOL_NAME VERSION_TAG`
+
+## Tools 0.2.3
+
+- Output ccbrpipeliner module version in spooker metadata. (#43, @kelly-sovacool)
+- Spooker now correctly outputs metadata as a yaml file. (#43, @kelly-sovacool)
+- Improvements to `ccbr_tools.pipeline.nextflow.run`: (#44, @kelly-sovacool)
+  - Use `-resume` by default and turn it off with `--forceall`.
+  - Use `--output` option.
+  - Run `-preview` before launching the pipeline with slurm.
+  - When running on biowulf, try adding spooker to the PATH if it's not available.
+
+## Tools 0.2.2
+
+- Fix bug where spooker failed when more than 2 arguments were passed. (#41, @kelly-sovacool)
+
+## Tools 0.2.1
+
+- Spooker update: accept pipeline version as an optional third positional argument. (#39, @kelly-sovacool)
+- Bump cffconvert version for compatibility with nf-schema. (#38, @kelly-sovacool)
+
+## Tools 0.2.0
+
 - new commands:
   - `ccbr_tools send-email` for sending emails from the command line. (#26, @kelly-sovacool)
     - With new helper function: `send_email.send_email_msg()`.
@@ -15,6 +59,10 @@
   - miscellaneous minor improvements. (#32, @kelly-sovacool)
 - bug fixes:
   - include data files in package installation for `homologfinder`. (#31, @kelly-sovacool)
+
+## Tools 0.1.4
+
+- fix copy location for spook. (@kopardev)
 
 ## Tools 0.1.3
 

@@ -1,0 +1,16 @@
+extra_css:
+  - stylesheets/extra.css
+theme:
+  name: material
+  custom_dir: docs/custom-overrides
+  font:
+    text: Roboto
+  palette:
+    - scheme: fnldark
+      toggle:
+        icon: material/toggle-switch
+        name: Switch to light mode
+    - scheme: fnl
+      toggle:
+        icon: material/toggle-switch-off-outline
+        name: Switch to dark mode

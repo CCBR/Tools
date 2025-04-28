@@ -30,7 +30,7 @@ pip install git+https://github.com/CCBR/Tools
 Or specify any tagged version or branch:
 
 ``` sh
-pip install git+https://github.com/CCBR/Tools@v0.1.0
+pip install git+https://github.com/CCBR/Tools@v0.2.4
 ```
 
 ## Basic usage
@@ -56,6 +56,7 @@ ccbr_tools --help
     Commands:
       send-email  Send an email (works on biowulf)
       quarto-add  Add a quarto extension
+      install     Install a specific version of a CCBR software package,...
       cite        Print the citation in the desired format
       version     Print the version of ccbr_tools
 
@@ -71,11 +72,23 @@ ccbr_tools --help
 ### Python
 
 ``` python
-import ccbr_tools.pkg_util
-print(ccbr_tools.pkg_util.get_version())
+import ccbr_tools.shell
+print(ccbr_tools.shell.shell_run('echo "Hello, world!"'))
 ```
 
-    0.1.3-dev-1
+    Hello, world!
+
+``` python
+import ccbr_tools.versions
+version = ccbr_tools.versions.match_semver('0.2.3')
+version.groupdict()
+```
+
+    {'major': '0',
+     'minor': '2',
+     'patch': '3',
+     'prerelease': None,
+     'buildmetadata': None}
 
 View the API reference for more information:
 <https://ccbr.github.io/Tools/reference/>
@@ -144,8 +157,8 @@ guidelines](https://CCBR.github.io/Tools/CONTRIBUTING).
 
 Please cite this software if you use it in a publication:
 
-> Sovacool K., Koparde V., Kuhn S., Tandon M., Huse S. (2024). CCBR
-> Tools: Utilities for CCBR Bioinformatics Software (version v0.1.3).
+> Sovacool K., Koparde V., Kuhn S., Tandon M., and Huse S. (2025). CCBR
+> Tools: Utilities for CCBR Bioinformatics Software (version v0.3.0).
 > DOI: 10.5281/zenodo.13377166 URL: https://ccbr.github.io/Tools/
 
 ### Bibtex entry
@@ -154,9 +167,9 @@ Please cite this software if you use it in a publication:
 @misc{YourReferenceHere,
 author = {Sovacool, Kelly and Koparde, Vishal and Kuhn, Skyler and Tandon, Mayank and Huse, Susan},
 doi = {10.5281/zenodo.13377166},
-month = {12},
+month = {4},
 title = {CCBR Tools: Utilities for CCBR Bioinformatics Software},
 url = {https://ccbr.github.io/Tools/},
-year = {2024}
+year = {2025}
 }
 ```

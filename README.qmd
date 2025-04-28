@@ -25,6 +25,7 @@ Command-line utilities in CCBR Tools.
 ```{python}
 #| echo: false
 #| output: asis
+import ccbr_tools.pkg_util
 print("\n".join([f"  - `{cmd}`" for cmd in ccbr_tools.pkg_util.get_project_scripts()]))
 ```
 

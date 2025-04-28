@@ -14,6 +14,7 @@ from .pkg_util import (
 )
 from .send_email import send_email_msg
 from .templates import use_quarto_ext, get_quarto_extensions
+from .software import install as install_software
 
 
 all_scripts = "All installed tools:\n" + "\n".join(
@@ -157,8 +158,36 @@ def quarto_add(ext_name):
     use_quarto_ext(ext_name)
 
 
+@click.command(context_settings=dict(help_option_names=["-h", "--help"]))
+@click.argument("tool_name")
+@click.argument("version_tag")
+@click.option(
+    "--run",
+    is_flag=True,
+    default=False,
+    help="Execute the install script; otherwise, just print it. It is a good idea to dry-run this script first to ensure the commands are correct, then run again with --run.",
+)
+@click.option(
+    "--branch",
+    "branch_tag",
+    default=None,
+    help="Branch or tag to install from GitHub. Use this option if the version is not a tag, e.g. for testing developmenmt versions.",
+)
+def install(tool_name, version_tag, run, branch_tag):
+    """
+    Install a specific version of a CCBR software package, tool, or pipeline on a supported HPC.
+
+    \b
+    Args:
+        tool_name (str): The name of the software package to install.
+        version_tag (str): The version tag to install.
+    """
+    install_software(tool_name, version_tag, dryrun=not run, branch_tag=branch_tag)
+
+
 cli.add_command(send_email)
 cli.add_command(quarto_add)
+cli.add_command(install)
 cli.add_command(cite)
 cli.add_command(version)
 

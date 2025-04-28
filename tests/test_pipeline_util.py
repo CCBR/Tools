@@ -1,8 +1,10 @@
 import argparse
 import os
 import pathlib
+import tempfile
 
 from ccbr_tools.pipeline.util import (
+    copy_config,
     get_tmp_dir,
     _get_file_mtime,
     get_genomes_dict,
@@ -12,6 +14,23 @@ from ccbr_tools.pipeline.util import (
     which,
 )
 from ccbr_tools.pkg_util import repo_base
+
+
+def test_copy_config():
+    with tempfile.TemporaryDirectory() as tmp_dir:
+        tmp_dir = pathlib.Path(tmp_dir)
+        copy_config(
+            ("file.txt", "file2.txt"),
+            repo_base=lambda f: pathlib.Path(__file__).absolute().parent / "data" / f,
+            outdir=tmp_dir,
+        )
+        assert all(
+            [
+                (tmp_dir / "file.txt").exists(),
+                (tmp_dir / "file2.txt").exists(),
+                not (tmp_dir / "file.fa").exists(),
+            ]
+        )
 
 
 def test_tmp_dir():
