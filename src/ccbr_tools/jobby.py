@@ -43,20 +43,21 @@ COLUMNS = {
     "WorkDir": "WorkDir",
 }
 
+
 def parse_time_to_seconds(t):
     """Convert SLURM time formats like '1-02:03:04', '02:03:04', '37:55.869', or '55.869' to seconds."""
     try:
         if not t or t.strip() == "":
             return 0
 
-        if '-' in t:
-            days, rest = t.split('-')
+        if "-" in t:
+            days, rest = t.split("-")
             days = int(days)
             t = rest
         else:
             days = 0
 
-        parts = t.split(':')
+        parts = t.split(":")
         parts = [float(p) for p in parts]
 
         if len(parts) == 3:
@@ -77,20 +78,19 @@ def parse_time_to_seconds(t):
         return 0
 
 
-
 def parse_mem_to_gb(mem_str):
     """Convert SLURM memory strings like '4000M', '4G', '102400K' to GB as float."""
     try:
-        if mem_str.endswith('K'):
-            return float(mem_str[:-1]) / (1024*1024)
-        elif mem_str.endswith('M'):
+        if mem_str.endswith("K"):
+            return float(mem_str[:-1]) / (1024 * 1024)
+        elif mem_str.endswith("M"):
             return float(mem_str[:-1]) / 1024
-        elif mem_str.endswith('G'):
+        elif mem_str.endswith("G"):
             return float(mem_str[:-1])
-        elif mem_str.endswith('T'):
+        elif mem_str.endswith("T"):
             return float(mem_str[:-1]) * 1024
         else:
-            return float(mem_str) / (1024*1024)  # assume bytes
+            return float(mem_str) / (1024 * 1024)  # assume bytes
     except Exception:
         return None
 
@@ -113,8 +113,7 @@ def extract_jobids_from_file(filepath):
                     job_ids.append(match_nextflow.group(1))
     except FileNotFoundError:
         print(f"❌ File not found: {filepath}")
-    return list(sorted(set(job_ids))) # deduplicate
-
+    return list(sorted(set(job_ids)))  # deduplicate
 
 
 def get_sacct_info(job_ids):
@@ -123,17 +122,18 @@ def get_sacct_info(job_ids):
         try:
             sacct_cmd = [
                 "sacct",
-                "-j", str(jobid),
+                "-j",
+                str(jobid),
                 f"--format={','.join(COLUMNS.keys())}",
                 "-P",
-                "--parsable2"
+                "--parsable2",
             ]
             output = subprocess.check_output(sacct_cmd, text=True).strip().split("\n")
-            header = output[0].split('|')
+            header = output[0].split("|")
             job_records = {}
 
             for line in output[1:]:
-                parts = line.split('|')
+                parts = line.split("|")
                 record_raw = dict(zip(header, parts))
 
                 base_jobid = record_raw.get("JobID", "").split(".")[0]
@@ -146,17 +146,25 @@ def get_sacct_info(job_ids):
                     # If this is .batch, update resource usage fields
                     if step_type.endswith(".batch"):
                         for resource_field in ("MaxRSS", "AveRSS", "MaxVMSize"):
-                            if resource_field in record_raw and record_raw[resource_field]:
-                                job_records[base_jobid][resource_field] = record_raw[resource_field]
+                            if (
+                                resource_field in record_raw
+                                and record_raw[resource_field]
+                            ):
+                                job_records[base_jobid][resource_field] = record_raw[
+                                    resource_field
+                                ]
 
             # Now, build the final records list
             for jobid, record_raw in job_records.items():
-                record = {new: record_raw.get(old, "N/A") for old, new in COLUMNS.items()}
+                record = {
+                    new: record_raw.get(old, "N/A") for old, new in COLUMNS.items()
+                }
                 records.append(record)
 
         except subprocess.CalledProcessError:
             print(f"❌ Failed to fetch info for JobID {jobid}")
     return records
+
 
 def main():
     args = sys.argv[1:]
@@ -180,7 +188,9 @@ def main():
         output_format = "yaml"
         args.remove("--yaml")
         if yaml is None:
-            print("❌ YAML output requested but PyYAML is not installed. Install with `pip install pyyaml`.")
+            print(
+                "❌ YAML output requested but PyYAML is not installed. Install with `pip install pyyaml`."
+            )
             sys.exit(1)
 
     # Case: 1 argument and it's a file
@@ -201,60 +211,63 @@ def main():
     df = pd.DataFrame(records)
 
     # convert Memory to GB
-    df['ReqMem'] = df['ReqMem'].apply(parse_mem_to_gb).round(2)
-    df['MaxMemUsed'] = df['MaxMemUsed'].apply(parse_mem_to_gb).round(2)
+    df["ReqMem"] = df["ReqMem"].apply(parse_mem_to_gb).round(2)
+    df["MaxMemUsed"] = df["MaxMemUsed"].apply(parse_mem_to_gb).round(2)
 
     # Split ExitCode into ExitCode and KillSignal
-    exit_split = df['ExitCode'].str.split(':', expand=True)
-    df['ExitCode'] = pd.to_numeric(exit_split[0], errors='coerce').astype('Int64')
-    df['KillSignal'] = pd.to_numeric(exit_split[1], errors='coerce').astype('Int64')
+    exit_split = df["ExitCode"].str.split(":", expand=True)
+    df["ExitCode"] = pd.to_numeric(exit_split[0], errors="coerce").astype("Int64")
+    df["KillSignal"] = pd.to_numeric(exit_split[1], errors="coerce").astype("Int64")
 
     # Parse time columns to seconds
-    df['ElapsedSec'] = df['RunTime'].apply(parse_time_to_seconds)
-    df['CPUTimeSec'] = df['TotalCPUTime'].apply(parse_time_to_seconds)
+    df["ElapsedSec"] = df["RunTime"].apply(parse_time_to_seconds)
+    df["CPUTimeSec"] = df["TotalCPUTime"].apply(parse_time_to_seconds)
 
     # Ensure AllocCPUs is numeric
-    df['AllocCPUs'] = pd.to_numeric(df['NumCPUs'], errors='coerce')
+    df["AllocCPUs"] = pd.to_numeric(df["NumCPUs"], errors="coerce")
 
     # Calculate CPU Efficiency
-    df['CPUEfficiency'] = np.where(
-        (df['ElapsedSec'] > 0) & (df['AllocCPUs'] > 0),
-        df['CPUTimeSec'] / (df['ElapsedSec'] * df['AllocCPUs']),
-        np.nan
+    df["CPUEfficiency"] = np.where(
+        (df["ElapsedSec"] > 0) & (df["AllocCPUs"] > 0),
+        df["CPUTimeSec"] / (df["ElapsedSec"] * df["AllocCPUs"]),
+        np.nan,
     )
 
     # Optionally round CPUEfficiency to 2 decimals
-    df['CPUEfficiency'] = (df['CPUEfficiency'] * 100).round(2)  # Expressed as a percentage
-   
+    df["CPUEfficiency"] = (df["CPUEfficiency"] * 100).round(
+        2
+    )  # Expressed as a percentage
+
     # Reorder CPUEfficiency next to NumCPUs
     cols = list(df.columns)
-    if 'CPUEfficiency' in cols and 'NumCPUs' in cols:
+    if "CPUEfficiency" in cols and "NumCPUs" in cols:
         # Move CPUEfficiency right after NumCPUs
-        cols.insert(cols.index('NumCPUs') + 1, cols.pop(cols.index('CPUEfficiency')))
+        cols.insert(cols.index("NumCPUs") + 1, cols.pop(cols.index("CPUEfficiency")))
         df = df[cols]
 
     # Drop unwanted technical columns
-    df = df.drop(columns=['TotalCPUTime', 'AllocCPUs', 'ElapsedSec', 'CPUTimeSec'], errors='ignore')
-
+    df = df.drop(
+        columns=["TotalCPUTime", "AllocCPUs", "ElapsedSec", "CPUTimeSec"],
+        errors="ignore",
+    )
 
     # Reorder columns to keep KillSignal right after ExitCode
     cols = list(df.columns)
-    if 'KillSignal' in cols:
+    if "KillSignal" in cols:
         # Move KillSignal to immediately after ExitCode
-        cols.insert(cols.index('ExitCode') + 1, cols.pop(cols.index('KillSignal')))
+        cols.insert(cols.index("ExitCode") + 1, cols.pop(cols.index("KillSignal")))
         df = df[cols]
 
     # Output based on requested format
     if output_format == "markdown":
         print(df.to_markdown(index=False))
     elif output_format == "tsv":
-        print(df.to_csv(sep='\t', index=False))
+        print(df.to_csv(sep="\t", index=False))
     elif output_format == "json":
-        print(df.to_json(orient='records', indent=2))
+        print(df.to_json(orient="records", indent=2))
     elif output_format == "yaml":
-        print(yaml.dump(df.to_dict(orient='records'), sort_keys=False))
+        print(yaml.dump(df.to_dict(orient="records"), sort_keys=False))
+
 
 if __name__ == "__main__":
     main()
-
-
