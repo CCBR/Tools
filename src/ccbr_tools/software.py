@@ -143,8 +143,10 @@ CCBR_SOFTWARE = {
 
 
 SET_SYMLINK = """
+pushd {BASE_PATH}
 rm -if {MAJOR_MINOR_VERSION}
-ln -s {PATH} {MAJOR_MINOR_VERSION}"""
+ln -s {HIDDEN_VERSION} {MAJOR_MINOR_VERSION}
+popd"""
 
 INSTALL_SCRIPT = """{CONDA_ACTIVATE}
 {INSTALL}
@@ -172,8 +174,9 @@ def install(
     )
     if not tool.is_dev_version:
         script += symlink_script.format(
-            PATH=tool.path(hpc),
-            MAJOR_MINOR_VERSION=tool.base_path(hpc) / tool.major_minor,
+            BASE_PATH=tool.base_path(hpc),
+            HIDDEN_VERSION=tool.hidden_version,
+            MAJOR_MINOR_VERSION=tool.major_minor,
         )
     if dryrun:
         print(script)
