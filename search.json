@@ -743,6 +743,28 @@
     "text": "Utilities for CCBR Bioinformatics Software"
   },
   {
+    "objectID": "CHANGELOG.html",
+    "href": "CHANGELOG.html",
+    "title": "CCBR Tools",
+    "section": "",
+    "text": "fix ccbr_tools install to use relative paths for symlinks within the same directory. (#58, @kelly-sovacool)",
+    "crumbs": [
+      "Project information",
+      "Changelog"
+    ]
+  },
+  {
+    "objectID": "CHANGELOG.html#tools-development-version",
+    "href": "CHANGELOG.html#tools-development-version",
+    "title": "CCBR Tools",
+    "section": "",
+    "text": "fix ccbr_tools install to use relative paths for symlinks within the same directory. (#58, @kelly-sovacool)",
+    "crumbs": [
+      "Project information",
+      "Changelog"
+    ]
+  },
+  {
     "objectID": "CHANGELOG.html#tools-0.3.1",
     "href": "CHANGELOG.html#tools-0.3.1",
     "title": "CCBR Tools",
