@@ -34,6 +34,7 @@ EXAMPLES:
     jobby 12345678 12345679
     jobby snakemake.log --json
     jobby .nextflow.log --yaml
+    jobby 12345678,12345679 --tsv
 
 """
 
