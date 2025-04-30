@@ -1,4 +1,41 @@
 #!/usr/bin/env python3
+"""
+Display job information for past SLURM job IDs.
+
+ABOUT:
+    `jobby` is a command-line utility that collects and displays job metadata from SLURM-managed clusters.
+    It supports retrieving job IDs from direct input, Snakemake logs, or Nextflow logs, and presents job
+    status and resource usage in a standardized output format.
+
+    Why?
+    `jobby` aims to simplify and unify the job-querying process by abstracting away cluster-specific tools
+    and normalizing output into common formats. `jobby` will ensure consistent reporting from multiple 
+    CCBR Snakemake and Nextflow pipelines when embedded in onsuccess/onerror/oncomplete blocks.
+
+FEATURES:
+    - Parses SLURM job IDs from CLI args, `.nextflow.log`, and `snakemake.log`.
+    - Queries SLURM using `sacct` to gather job information such as state, runtime, CPU/memory usage, etc.
+    - Converts time fields to seconds, memory fields to GB, and calculates CPU efficiency.
+    - Supports multiple output formats: Markdown (default), TSV, JSON, and YAML.
+
+USAGE:
+    jobby <jobid1> [jobid2 ...] [--tsv|--json|--yaml]
+    jobby <jobid1>,<jobid2> [--tsv|--json|--yaml]
+    jobby snakemake.log [--tsv|--json|--yaml]
+    jobby .nextflow.log [--tsv|--json|--yaml]
+
+DEPENDENCIES:
+    - Python 3.7+
+    - pandas (required)
+    - numpy (required)
+    - PyYAML (optional, required only for --yaml output)
+
+EXAMPLES:
+    jobby 12345678 12345679
+    jobby snakemake.log --json
+    jobby .nextflow.log --yaml
+
+"""
 
 import subprocess
 import sys
