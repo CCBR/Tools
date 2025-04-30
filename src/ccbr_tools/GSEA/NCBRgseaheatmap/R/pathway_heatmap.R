@@ -8,7 +8,7 @@
 #' Creates a pretty heatmap of both gene set enrichment and q-values for multiple GSEA comparisons
 #'
 #' Creates a heatmap (using pheatmap) from the matrix, with a primary heatmap of GSEA enrichment scores
-#'   and a secondary heatmap of q-values (FDR). 
+#'   and a secondary heatmap of q-values (FDR).
 #'
 #' Assumes that a matrix of normalized enrichment scores from GSEA analyses has been created using gsea_to_mtx.
 #' The heatmap is created using the pheatmap package.  Many of the pheatmap parameters are included in this function.
@@ -21,11 +21,11 @@
 #' @param clustrow number of sections to split the heatmap into based on the row dendogram. (see pheatmap: cutree_rows)
 #' @param clustcol number of sections to split the heatmap into based on the column dendogram. (see pheatmap: cutree_cols)
 #' @param annotlegend boolean to include the annotation_legend or not (see pheatmap)
-#' @param samples sample names to be used in the annotation_col, should be in the same order as the data matrix (see pheatmap) 
+#' @param samples sample names to be used in the annotation_col, should be in the same order as the data matrix (see pheatmap)
 #' @param fontsize_row font size for row text displaying gene sets (see pheatmap)
 #' @param fontsize_col font size for col text displaying sample names (see pheatmap)
 #' @param main text string for main heatmap title
-#' 
+#'
 #' @return a heatmap object for printing
 #'
 #' @author Susan Huse \email{susan.huse@@nih.gov}
@@ -40,7 +40,7 @@
 #' clustrow = 3
 #' pdf("myoutput.pdf")
 #' pathway_heatmap(nes, clustrow=clustrow, clustcol=1, cluster_cols=FALSE,
-#'                 main=main, samples=NULL, annotlegend=FALSE, 
+#'                 main=main, samples=NULL, annotlegend=FALSE,
 #'                 fontsize_row=fontsize_row, fontsize_col=12)
 #' dev.off()
 #'
@@ -48,7 +48,7 @@
 #' @import RColorBrewer
 #' @import randomcoloR
 #' @export
-pathway_heatmap <- function(nes, q=0.1, clustrow=1, clustcol=1, cluster_cols=TRUE, main="", 
+pathway_heatmap <- function(nes, q=0.1, clustrow=1, clustcol=1, cluster_cols=TRUE, main="",
                             annotlegend=TRUE, samples=NULL, fontsize_row=12, fontsize_col=12) {
   require("pheatmap")
   require("RColorBrewer")
@@ -65,7 +65,7 @@ pathway_heatmap <- function(nes, q=0.1, clustrow=1, clustcol=1, cluster_cols=TRU
   annotrow[annotrow > q] <- 0
   annotrow[annotrow == -1] <- 1
   annotrow[is.na(annotrow)] <- 0
-  
+
   # create the list of annotation colors
   anncolors <- list()
   for(i in 1:ncol(annotrow)) {
@@ -79,17 +79,17 @@ pathway_heatmap <- function(nes, q=0.1, clustrow=1, clustcol=1, cluster_cols=TRU
   } else {
     annotcol <- data.frame(Samples=factor(samples))
     rownames(annotcol) <- nes$dcols
-    
+
     colorvector <- distinctColorPalette(length(unique(samples)))
     names(colorvector) <- unique(samples)
-    anncolors[["Samples"]] <- colorvector 
-  } 
-  
+    anncolors[["Samples"]] <- colorvector
+  }
+
   # double check the requested number of clusters
   if (clustrow < 1) {clustrow <- 1}
   if (clustcol < 1) {clustcol <- 1}
   if (! cluster_cols) {clustcol == NULL}
-  
+
   # Set the colorramp for the data
   if(max(datamtx) <= 0) {
     pctRed = 0
@@ -101,12 +101,12 @@ pathway_heatmap <- function(nes, q=0.1, clustrow=1, clustcol=1, cluster_cols=TRU
     pctRed <- round(max(datamtx) / (max(datamtx) - min(datamtx)) * 100)
     pctBlue <- abs(round(min(datamtx) / (max(datamtx) - min(datamtx)) * 100))
   }
-  
+
   reds = colorRampPalette(brewer.pal(n=7, name = "Reds"))(pctRed)
   blues = colorRampPalette(rev(brewer.pal(n=7, name = "Blues")))(pctBlue)
   color = c(blues, rep("#BEBEBE",1), reds)
-  
-  
+
+
   # export the heatmap
   return(pheatmap(datamtx,
                   main=main,

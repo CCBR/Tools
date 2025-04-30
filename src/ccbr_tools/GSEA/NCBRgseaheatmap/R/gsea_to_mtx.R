@@ -5,21 +5,21 @@
 #  October 9, 2018
 #
 ####################
-#' Reads a GSEA output file and creates a matrix from the positive and negative report files, 
+#' Reads a GSEA output file and creates a matrix from the positive and negative report files,
 #' that serves as input to pathway_heatmap
 #'
-#' Reads in both the positive and negative GSEA enrichment reports from the appropriate directories, 
-#'   reads the scoring column (default="GseaPreranked") and creates a single matrix of 
+#' Reads in both the positive and negative GSEA enrichment reports from the appropriate directories,
+#'   reads the scoring column (default="GseaPreranked") and creates a single matrix of
 #'   positive and negative enrichment scores
-#' 
-#' The directory list should be generated with the list.dirs() function, 
+#'
+#' The directory list should be generated with the list.dirs() function,
 #' these directories will be further filtered to only those containing the db name (e.g., GO or Path).
 #'
-#' Once the GSEA results have been read in, they will be filtered to only q (FDR) values 
-#' less than the minimum (q).  
+#' Once the GSEA results have been read in, they will be filtered to only q (FDR) values
+#' less than the minimum (q).
 #' The set of resulting matrices for each comparison will be filtered to include only a maximum of preN values.
-#' The matrices will then be combined across all comparisons, and the filtered again to a maximum number of rows (postN).  
-#' The current RNASeq pipeliner sets the normalized GSEA score to "GseaPreranked", 
+#' The matrices will then be combined across all comparisons, and the filtered again to a maximum number of rows (postN).
+#' The current RNASeq pipeliner sets the normalized GSEA score to "GseaPreranked",
 #' Use colname to set the appropriate column name for GSEA results derived from outside of pipeliner.
 #'
 #' @param dirlist a list of GSEA directories of interest, containing the results for multiple gene sets
@@ -28,8 +28,8 @@
 #' @param preN maximum number of rows to include from each input GSEA analysis (pairwise comparison)
 #' @param postN maximum number of rows to include in the final merged matrix.
 #' @param colname name of the column in the GSEA output containing the normalized scores ("GseaPreranked" for RNASeq pipeliner results)
-#' 
-#' @return a list of three elements: 
+#'
+#' @return a list of three elements:
 #'         1) numeric matrix, with rownames as genesets, column names as comparisons
 #'         2) a vector of names for the columns containing the actual enrichment data
 #'         3) a vector of names for the column names containing q-values
@@ -45,13 +45,13 @@
 #' fontsize_row=8
 #' pdf("myoutput.pdf")
 #' pathway_heatmap(nes, clustrow=1, clustcol=1, cluster_cols=FALSE,
-#'                 main=main, samples=NULL, annotlegend=FALSE, 
+#'                 main=main, samples=NULL, annotlegend=FALSE,
 #'                 fontsize_row=fontsize_row, fontsize_col=12)
 #' dev.off()
 #'
 #' @export
 gsea_to_mtx <- function(dirlist, db="GO", q=0.1, preN=25, postN=NULL, colname="GseaPreranked") {
-  # read the directories, 
+  # read the directories,
   # double check that there are at least two valid GSEA db directories
   dirlist = dirlist[grep(paste("", db, colname, sep="."), dirlist)]
   if(length(dirlist) < 2) {print("Insufficient GSEA directories to create heatmap"); return(NULL)}
@@ -64,7 +64,7 @@ gsea_to_mtx <- function(dirlist, db="GO", q=0.1, preN=25, postN=NULL, colname="G
   for(d in dirlist) {
     # print(d)
     comparison = gsub(paste("", db, "GseaPreranked", "*$", sep="."), "", basename(d))
-    
+
     # pull gsea_report_for_na_neg_1536947190154.xls and gsea_report_for_pos_neg_1536947190154.xls
     xlsfiles <- list.files(path=d, pattern="gsea_report_for_na", full.names=TRUE)
     xlsfiles = xlsfiles[grepl(".xls", xlsfiles)]
@@ -79,27 +79,27 @@ gsea_to_mtx <- function(dirlist, db="GO", q=0.1, preN=25, postN=NULL, colname="G
 
     # sort by q-value then filter the individual dataframes with "preN"
     dfq <- df[df[, 3] <= q, ]
-    
-    # We need to individually decide the top preN rows, 
+
+    # We need to individually decide the top preN rows,
     # but have to keep everything in the matrix, so that if it is not q-significant here, but is elsewhere
     # we have the NES value for it.
     theRows <- dfq[,1]
     if (! is.null(preN)) {
       df <- df[order(df[,3]),]
-      
+
       if(length(theRows) > preN) {
         theRows <- theRows[1:preN]
       }
     }
     # print(df)
-    
+
     # create a list for merge later
     if(length(theRows) > 0) {
       nes_list[[comparison]] <- df
       allRows <- union(allRows, theRows)
     }
   }
-  
+
   # merge all
   first=TRUE
   for(x in nes_list) {
