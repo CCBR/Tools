@@ -444,6 +444,11 @@ ul.task-list li input[type="checkbox"] {
 <h2 class="anchored" data-anchor-id="tools-development-version">Tools development version</h2>
 <ul>
 <li>fix <code>ccbr_tools install</code> to use relative paths for symlinks within the same directory. (#58, <span class="citation" data-cites="kelly-sovacool">@kelly-sovacool</span>)</li>
+<li><code>ccbr_tools install</code> has new options: (#60, <span class="citation" data-cites="kelly-sovacool">@kelly-sovacool</span>)
+<ul>
+<li><code>--type</code> to specify the type of tool to install (e.g.&nbsp;<code>PythonTool</code>, <code>BashTool</code>, <code>Snakemake</code>, or <code>Nextflow</code>).</li>
+<li><code>--hpc</code> (e.g.&nbsp;<code>biowulf</code>, <code>frce</code>) to specify the HPC environment for debugging purposes.</li>
+</ul></li>
 </ul>
 </section>
 <section id="tools-0.3.1" class="level2">
