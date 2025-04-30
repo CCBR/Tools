@@ -4,19 +4,18 @@ import subprocess
 import sys
 import os
 import re
+import warnings
 
 # Graceful imports
-try:
-    import pandas as pd
-except ImportError:
-    print("❌ Missing required package: pandas. Install it with `pip install pandas`.")
-    sys.exit(1)
+try:  
+    import pandas as pd  
+except ImportError as err:  
+    raise Exception("❌ Missing required package: pandas. Install it with `pip install pandas`.") from err  
 
-try:
-    import numpy as np
-except ImportError:
-    print("❌ Missing required package: numpy. Install it with `pip install numpy`.")
-    sys.exit(1)
+try:  
+    import numpy as np  
+except ImportError as err:  
+    raise Exception("❌ Missing required package: numpy. Install it with `pip install numpy`.") from err 
 
 try:
     import yaml
@@ -45,54 +44,60 @@ COLUMNS = {
 
 def parse_time_to_seconds(t):
     """Convert SLURM time formats like '1-02:03:04', '02:03:04', '37:55.869', or '55.869' to seconds."""
+def parse_time_string(t):
+    total_seconds = 0
     try:
         if not t or t.strip() == "":
-            return 0
-
-        if '-' in t:
-            days, rest = t.split('-')
-            days = int(days)
-            t = rest
+            pass
         else:
-            days = 0
+            if '-' in t:
+                days, rest = t.split('-')
+                days = int(days)
+                t = rest
+            else:
+                days = 0
 
-        parts = t.split(':')
-        parts = [float(p) for p in parts]
+            parts = t.split(':')
+            parts = [float(p) for p in parts]
 
-        if len(parts) == 3:
-            h, m, s = parts
-        elif len(parts) == 2:
-            h = 0
-            m, s = parts
-        elif len(parts) == 1:
-            h = 0
-            m = 0
-            s = parts[0]
-        else:
-            return 0
+            h = m = s = 0
+            if len(parts) == 3:
+                h, m, s = parts
+            elif len(parts) == 2:
+                m, s = parts
+            elif len(parts) == 1:
+                s = parts[0]
 
-        total_seconds = int(days) * 86400 + int(h) * 3600 + int(m) * 60 + s
-        return int(round(total_seconds))
-    except Exception:
-        return 0
+            total_seconds = int(round((
+                int(days) * 86400 +
+                int(h) * 3600 +
+                int(m) * 60 +
+                s
+            )))
+    except:
+        total_seconds = np.nan
+
+    return total_seconds
 
 
 
 def parse_mem_to_gb(mem_str):
     """Convert SLURM memory strings like '4000M', '4G', '102400K' to GB as float."""
+    result = 0
     try:
         if mem_str.endswith('K'):
-            return float(mem_str[:-1]) / (1024*1024)
+            result = float(mem_str[:-1]) / (1024*1024)
         elif mem_str.endswith('M'):
-            return float(mem_str[:-1]) / 1024
+            result = float(mem_str[:-1]) / 1024
         elif mem_str.endswith('G'):
-            return float(mem_str[:-1])
+            result = float(mem_str[:-1])
         elif mem_str.endswith('T'):
-            return float(mem_str[:-1]) * 1024
+            result = float(mem_str[:-1]) * 1024
         else:
-            return float(mem_str) / (1024*1024)  # assume bytes
-    except Exception:
-        return None
+            result = float(mem_str) / (1024*1024)  # assume bytes
+    except ValueError:
+        result = np.nan
+    return result
 
 
 def extract_jobids_from_file(filepath):
@@ -108,11 +113,11 @@ def extract_jobids_from_file(filepath):
                     continue  # no need to check further if matched
 
                 # Match Nextflow pattern: (JOB ID: 12345)
-                match_nextflow = re.search(r"\(JOB ID:\s*(\d+)\)", line)
+                match_nextflow = re.search(r"\[Task submitter\].*?>\s*jobId:\s*(\d+);", line)
                 if match_nextflow:
                     job_ids.append(match_nextflow.group(1))
     except FileNotFoundError:
-        print(f"❌ File not found: {filepath}")
+        warnings.warn(f"❌ File not found: {filepath}")
     return list(sorted(set(job_ids))) # deduplicate
 
 
@@ -155,13 +160,13 @@ def get_sacct_info(job_ids):
                 records.append(record)
 
         except subprocess.CalledProcessError:
-            print(f"❌ Failed to fetch info for JobID {jobid}")
+            warnings.warn(f"❌ Failed to fetch info for JobID {jobid}")
     return records
 
 def main():
     args = sys.argv[1:]
 
-    if len(args) == 0:
+    if len(args) == 0 or '-h' in args or '--help' in args:
         print("Usage:")
         print("  jobby <jobid1> [jobid2 ...] [--tsv|--json|--yaml]")
         print("  jobby <jobid1>,<jobid2> [--tsv|--json|--yaml]")
@@ -180,8 +185,9 @@ def main():
         output_format = "yaml"
         args.remove("--yaml")
         if yaml is None:
-            print("❌ YAML output requested but PyYAML is not installed. Install with `pip install pyyaml`.")
-            sys.exit(1)
+            raise ImportError(  
+                "❌ YAML output requested but PyYAML is not installed. Install with `pip install pyyaml`."  
+            )  
 
     # Case: 1 argument and it's a file
     if len(args) == 1 and os.path.isfile(args[0]):
@@ -190,13 +196,11 @@ def main():
         job_ids = args  # Treat all arguments as job IDs
 
     if not job_ids:
-        print("⚠️ No job IDs to process.")
-        sys.exit(1)
+        raise ValueError("⚠️ No job IDs to process.")
 
     records = get_sacct_info(job_ids)
     if not records:
-        print("⚠️ No job data found.")
-        sys.exit(0)
+        raise ValueError("⚠️ No job data found.")
 
     df = pd.DataFrame(records)
 
@@ -253,6 +257,8 @@ def main():
         print(df.to_json(orient='records', indent=2))
     elif output_format == "yaml":
         print(yaml.dump(df.to_dict(orient='records'), sort_keys=False))
+    else:  
+        raise ValueError(f"output format {output_format} not supported")
 
 if __name__ == "__main__":
     main()
