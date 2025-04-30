@@ -7,15 +7,19 @@ import re
 import warnings
 
 # Graceful imports
-try:  
-    import pandas as pd  
-except ImportError as err:  
-    raise Exception("❌ Missing required package: pandas. Install it with `pip install pandas`.") from err  
+try:
+    import pandas as pd
+except ImportError as err:
+    raise Exception(
+        "❌ Missing required package: pandas. Install it with `pip install pandas`."
+    ) from err
 
-try:  
-    import numpy as np  
-except ImportError as err:  
-    raise Exception("❌ Missing required package: numpy. Install it with `pip install numpy`.") from err 
+try:
+    import numpy as np
+except ImportError as err:
+    raise Exception(
+        "❌ Missing required package: numpy. Install it with `pip install numpy`."
+    ) from err
 
 try:
     import yaml
@@ -45,20 +49,22 @@ COLUMNS = {
 
 def parse_time_to_seconds(t):
     """Convert SLURM time formats like '1-02:03:04', '02:03:04', '37:55.869', or '55.869' to seconds."""
+
+
 def parse_time_string(t):
     total_seconds = 0
     try:
         if not t or t.strip() == "":
             pass
         else:
-            if '-' in t:
-                days, rest = t.split('-')
+            if "-" in t:
+                days, rest = t.split("-")
                 days = int(days)
                 t = rest
             else:
                 days = 0
 
-            parts = t.split(':')
+            parts = t.split(":")
             parts = [float(p) for p in parts]
 
             h = m = s = 0
@@ -69,12 +75,9 @@ def parse_time_string(t):
             elif len(parts) == 1:
                 s = parts[0]
 
-            total_seconds = int(round((
-                int(days) * 86400 +
-                int(h) * 3600 +
-                int(m) * 60 +
-                s
-            )))
+            total_seconds = int(
+                round((int(days) * 86400 + int(h) * 3600 + int(m) * 60 + s))
+            )
     except:
         total_seconds = np.nan
 
@@ -85,16 +88,16 @@ def parse_mem_to_gb(mem_str):
     """Convert SLURM memory strings like '4000M', '4G', '102400K' to GB as float."""
     result = 0
     try:
-        if mem_str.endswith('K'):
-            result = float(mem_str[:-1]) / (1024*1024)
-        elif mem_str.endswith('M'):
+        if mem_str.endswith("K"):
+            result = float(mem_str[:-1]) / (1024 * 1024)
+        elif mem_str.endswith("M"):
             result = float(mem_str[:-1]) / 1024
-        elif mem_str.endswith('G'):
+        elif mem_str.endswith("G"):
             result = float(mem_str[:-1])
-        elif mem_str.endswith('T'):
+        elif mem_str.endswith("T"):
             result = float(mem_str[:-1]) * 1024
         else:
-            result = float(mem_str) / (1024*1024)  # assume bytes
+            result = float(mem_str) / (1024 * 1024)  # assume bytes
     except ValueError:
         result = np.nan
     return result
@@ -113,13 +116,14 @@ def extract_jobids_from_file(filepath):
                     continue  # no need to check further if matched
 
                 # Match Nextflow pattern: (JOB ID: 12345)
-                match_nextflow = re.search(r"\[Task submitter\].*?>\s*jobId:\s*(\d+);", line)
+                match_nextflow = re.search(
+                    r"\[Task submitter\].*?>\s*jobId:\s*(\d+);", line
+                )
                 if match_nextflow:
                     job_ids.append(match_nextflow.group(1))
     except FileNotFoundError:
         warnings.warn(f"❌ File not found: {filepath}")
-    return list(sorted(set(job_ids))) # deduplicate
-
+    return list(sorted(set(job_ids)))  # deduplicate
 
 
 def get_sacct_info(job_ids):
@@ -175,7 +179,7 @@ def get_sacct_info(job_ids):
 def main():
     args = sys.argv[1:]
 
-    if len(args) == 0 or '-h' in args or '--help' in args:
+    if len(args) == 0 or "-h" in args or "--help" in args:
         print("Usage:")
         print("  jobby <jobid1> [jobid2 ...] [--tsv|--json|--yaml]")
         print("  jobby <jobid1>,<jobid2> [--tsv|--json|--yaml]")
@@ -194,9 +198,9 @@ def main():
         output_format = "yaml"
         args.remove("--yaml")
         if yaml is None:
-            raise ImportError(  
-                "❌ YAML output requested but PyYAML is not installed. Install with `pip install pyyaml`."  
-            )  
+            raise ImportError(
+                "❌ YAML output requested but PyYAML is not installed. Install with `pip install pyyaml`."
+            )
 
     # Case: 1 argument and it's a file
     if len(args) == 1 and os.path.isfile(args[0]):
@@ -269,9 +273,10 @@ def main():
     elif output_format == "json":
         print(df.to_json(orient="records", indent=2))
     elif output_format == "yaml":
-        print(yaml.dump(df.to_dict(orient='records'), sort_keys=False))
-    else:  
+        print(yaml.dump(df.to_dict(orient="records"), sort_keys=False))
+    else:
         raise ValueError(f"output format {output_format} not supported")
+
 
 if __name__ == "__main__":
     main()
