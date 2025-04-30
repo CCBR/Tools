@@ -1,0 +1,166 @@
+Apr-28 13:51:25.690 [main] DEBUG nextflow.cli.Launcher - Setting http proxy: ProxyConfig[protocol=http; host=dtn22-e0; port=3128]
+Apr-28 13:51:25.793 [main] DEBUG nextflow.cli.Launcher - Setting https proxy: ProxyConfig[protocol=https; host=dtn22-e0; port=3128]
+Apr-28 13:51:25.793 [main] DEBUG nextflow.cli.Launcher - Setting ftp proxy: ProxyConfig[protocol=ftp; host=dtn22-e0; port=3128]
+Apr-28 13:51:25.794 [main] DEBUG nextflow.cli.Launcher - $> nextflow run /gpfs/gsfs10/users/CCBR_Pipeliner/Pipelines/CRISPIN/sovacool-dev-crispin/main.nf -profile biowulf,slurm,test
+Apr-28 13:51:25.902 [main] DEBUG nextflow.cli.CmdRun - N E X T F L O W  ~  version 24.10.3
+Apr-28 13:51:25.975 [main] DEBUG nextflow.plugin.PluginsFacade - Setting up plugin manager > mode=prod; embedded=false; plugins-dir=/home/sovacoolkl/.nextflow/24.10.3/plugins; core-plugins: nf-amazon@2.9.2,nf-azure@1.10.2,nf-cloudcache@0.4.2,nf-codecommit@0.2.2,nf-console@1.1.4,nf-google@1.15.3,nf-tower@1.9.3,nf-wave@1.7.4
+Apr-28 13:51:26.017 [main] INFO  o.pf4j.DefaultPluginStatusProvider - Enabled plugins: []
+Apr-28 13:51:26.018 [main] INFO  o.pf4j.DefaultPluginStatusProvider - Disabled plugins: []
+Apr-28 13:51:26.035 [main] INFO  org.pf4j.DefaultPluginManager - PF4J version 3.12.0 in 'deployment' mode
+Apr-28 13:51:26.065 [main] INFO  org.pf4j.AbstractPluginManager - No plugins
+Apr-28 13:51:26.098 [main] DEBUG nextflow.config.ConfigBuilder - Found config base: /gpfs/gsfs10/users/CCBR_Pipeliner/Pipelines/CRISPIN/sovacool-dev-crispin/nextflow.config
+Apr-28 13:51:26.101 [main] DEBUG nextflow.config.ConfigBuilder - Found config local: /gpfs/gsfs12/users/sovacoolkl/crispin_test_rel-8/nextflow.config
+Apr-28 13:51:26.104 [main] DEBUG nextflow.config.ConfigBuilder - Parsing config file: /gpfs/gsfs10/users/CCBR_Pipeliner/Pipelines/CRISPIN/sovacool-dev-crispin/nextflow.config
+Apr-28 13:51:26.105 [main] DEBUG nextflow.config.ConfigBuilder - Parsing config file: /gpfs/gsfs12/users/sovacoolkl/crispin_test_rel-8/nextflow.config
+Apr-28 13:51:26.167 [main] DEBUG n.secret.LocalSecretsProvider - Secrets store: /home/sovacoolkl/.nextflow/24.10.3/secrets/store.json
+Apr-28 13:51:26.171 [main] DEBUG nextflow.secret.SecretsLoader - Discovered secrets providers: [nextflow.secret.LocalSecretsProvider@585ac855] - activable => nextflow.secret.LocalSecretsProvider@585ac855
+Apr-28 13:51:26.180 [main] DEBUG nextflow.config.ConfigBuilder - Applying config profile: `biowulf,slurm,test`
+Apr-28 13:51:27.929 [main] DEBUG nextflow.config.ConfigBuilder - Applying config profile: `biowulf,slurm,test`
+Apr-28 13:51:28.280 [main] DEBUG nextflow.config.ConfigBuilder - Available config profiles: [slurm, ci_stub, debug, biowulf, test_mle, test, interactive, singularity, docker]
+Apr-28 13:51:28.328 [main] DEBUG nextflow.cli.CmdRun - Applied DSL=2 from config declaration
+Apr-28 13:51:28.354 [main] DEBUG nextflow.cli.CmdRun - Launching `/gpfs/gsfs10/users/CCBR_Pipeliner/Pipelines/CRISPIN/sovacool-dev-crispin/main.nf` [admiring_bohr] DSL2 - revision: fe73fd018b
+Apr-28 13:51:28.356 [main] DEBUG nextflow.plugin.PluginsFacade - Plugins default=[]
+Apr-28 13:51:28.356 [main] DEBUG nextflow.plugin.PluginsFacade - Plugins resolved requirement=[]
+Apr-28 13:51:28.424 [main] DEBUG nextflow.Session - Session UUID: 4d6e8593-e33e-41e4-8eca-cac742c3bbbc
+Apr-28 13:51:28.425 [main] DEBUG nextflow.Session - Run name: admiring_bohr
+Apr-28 13:51:28.425 [main] DEBUG nextflow.Session - Executor pool size: 2
+Apr-28 13:51:28.433 [main] DEBUG nextflow.file.FilePorter - File porter settings maxRetries=3; maxTransfers=50; pollTimeout=null
+Apr-28 13:51:28.438 [main] DEBUG nextflow.util.ThreadPoolBuilder - Creating thread pool 'FileTransfer' minSize=10; maxSize=10; workQueue=LinkedBlockingQueue[10000]; allowCoreThreadTimeout=false
+Apr-28 13:51:28.490 [main] DEBUG nextflow.cli.CmdRun -
+  Version: 24.10.3 build 5933
+  Created: 16-12-2024 15:34 UTC (10:34 EDT)
+  System: Linux 4.18.0-425.19.2.el8_7.x86_64
+  Runtime: Groovy 4.0.23 on Java HotSpot(TM) 64-Bit Server VM 17.0.3.1+2-LTS-6
+  Encoding: UTF-8 (UTF-8)
+  Process: 142853@cn0040 [10.2.20.40]
+  CPUs: 2 - Mem: 1 GB (825.1 MB) - Swap: 0 (0)
+Apr-28 13:51:28.541 [main] DEBUG nextflow.Session - Work-dir: /gpfs/gsfs12/users/sovacoolkl/crispin_test_rel-8/work [gpfs]
+Apr-28 13:51:28.700 [main] DEBUG nextflow.executor.ExecutorFactory - Extension executors providers=[]
+Apr-28 13:51:28.709 [main] DEBUG nextflow.Session - Observer factory: DefaultObserverFactory
+Apr-28 13:51:28.757 [main] DEBUG nextflow.cache.CacheFactory - Using Nextflow cache factory: nextflow.cache.DefaultCacheFactory
+Apr-28 13:51:28.768 [main] DEBUG nextflow.util.CustomThreadPool - Creating default thread pool > poolSize: 3; maxThreads: 1000
+Apr-28 13:51:28.867 [main] DEBUG nextflow.Session - Session start
+Apr-28 13:51:28.870 [main] DEBUG nextflow.trace.TraceFileObserver - Workflow started -- trace file: /gpfs/gsfs12/users/sovacoolkl/crispin_test_rel-8/results/test/pipeline_info/execution_trace_2025-04-28_13-51-28.txt
+Apr-28 13:51:28.884 [main] DEBUG nextflow.Session - Using default localLib path: /gpfs/gsfs10/users/CCBR_Pipeliner/Pipelines/CRISPIN/sovacool-dev-crispin/lib
+Apr-28 13:51:28.888 [main] DEBUG nextflow.Session - Adding to the classpath library: /gpfs/gsfs10/users/CCBR_Pipeliner/Pipelines/CRISPIN/sovacool-dev-crispin/lib
+Apr-28 13:51:29.276 [main] DEBUG nextflow.script.ScriptRunner - > Launching execution
+Apr-28 13:51:29.291 [main] INFO  nextflow.Nextflow - CRISPIN 🍪 1.1.0-dev
+
+=============
+NF version   : 24.10.3
+runName      : admiring_bohr
+username     : sovacoolkl
+configs      : [/gpfs/gsfs10/users/CCBR_Pipeliner/Pipelines/CRISPIN/sovacool-dev-crispin/nextflow.config, /gpfs/gsfs12/users/sovacoolkl/crispin_test_rel-8/nextflow.config]
+profile      : biowulf,slurm,test
+cmd line     : nextflow run /gpfs/gsfs10/users/CCBR_Pipeliner/Pipelines/CRISPIN/sovacool-dev-crispin/main.nf -profile biowulf,slurm,test
+start time   : 2025-04-28T13:51:28.739136055-04:00
+projectDir   : /gpfs/gsfs10/users/CCBR_Pipeliner/Pipelines/CRISPIN/sovacool-dev-crispin
+launchDir    : /gpfs/gsfs12/users/sovacoolkl/crispin_test_rel-8
+workDir      : /gpfs/gsfs12/users/sovacoolkl/crispin_test_rel-8/work
+homeDir      : /home/sovacoolkl
+input        : assets/samplesheet_test_biowulf.csv
+
+Apr-28 13:51:30.463 [main] DEBUG nextflow.script.ProcessConfig - Config settings `withName:INPUT_CHECK:SAMPLESHEET_CHECK` matches process INPUT_CHECK:SAMPLESHEET_CHECK
+Apr-28 13:51:30.500 [main] DEBUG nextflow.executor.ExecutorFactory - << taskConfig executor: slurm
+Apr-28 13:51:30.500 [main] DEBUG nextflow.executor.ExecutorFactory - >> processorType: 'slurm'
+Apr-28 13:51:30.514 [main] DEBUG nextflow.executor.Executor - [warm up] executor > slurm
+Apr-28 13:51:30.520 [main] DEBUG n.processor.TaskPollingMonitor - Creating task monitor for executor 'slurm' > capacity: 200; pollInterval: 2m; dumpInterval: 5m
+Apr-28 13:51:30.527 [main] DEBUG n.processor.TaskPollingMonitor - >>> barrier register (monitor: slurm)
+Apr-28 13:51:30.530 [main] DEBUG n.processor.TaskPollingMonitor - Creating submit rate limit of 6 submissions per 60 seconds
+Apr-28 13:51:30.542 [main] DEBUG n.executor.AbstractGridExecutor - Creating executor 'slurm' > queue-stat-interval: 5m
+Apr-28 13:51:30.769 [main] DEBUG nextflow.script.ProcessConfig - Config settings `withLabel:process_high` matches labels `process_high` for process with name TRIM_COUNT:CUTADAPT
+Apr-28 13:51:30.782 [main] DEBUG nextflow.executor.ExecutorFactory - << taskConfig executor: slurm
+Apr-28 13:51:30.782 [main] DEBUG nextflow.executor.ExecutorFactory - >> processorType: 'slurm'
+Apr-28 13:51:30.817 [main] DEBUG nextflow.executor.ExecutorFactory - << taskConfig executor: slurm
+Apr-28 13:51:30.817 [main] DEBUG nextflow.executor.ExecutorFactory - >> processorType: 'slurm'
+Apr-28 13:51:30.852 [main] DEBUG nextflow.executor.ExecutorFactory - << taskConfig executor: slurm
+Apr-28 13:51:30.853 [main] DEBUG nextflow.executor.ExecutorFactory - >> processorType: 'slurm'
+Apr-28 13:51:30.870 [main] DEBUG nextflow.executor.ExecutorFactory - << taskConfig executor: slurm
+Apr-28 13:51:30.870 [main] DEBUG nextflow.executor.ExecutorFactory - >> processorType: 'slurm'
+Apr-28 13:51:30.886 [main] DEBUG nextflow.executor.ExecutorFactory - << taskConfig executor: slurm
+Apr-28 13:51:30.887 [main] DEBUG nextflow.executor.ExecutorFactory - >> processorType: 'slurm'
+Apr-28 13:51:30.897 [main] DEBUG nextflow.executor.ExecutorFactory - << taskConfig executor: slurm
+Apr-28 13:51:30.898 [main] DEBUG nextflow.executor.ExecutorFactory - >> processorType: 'slurm'
+Apr-28 13:51:30.911 [main] DEBUG nextflow.executor.ExecutorFactory - << taskConfig executor: slurm
+Apr-28 13:51:30.911 [main] DEBUG nextflow.executor.ExecutorFactory - >> processorType: 'slurm'
+Apr-28 13:51:30.918 [main] DEBUG nextflow.Session - Workflow process names [dsl2]: TRIM_COUNT:CUTADAPT, BAGEL:PRECISION_RECALL, SAMPLESHEET_CHECK, MAGECK:TEST, FOLD_CHANGE, PRECISION_RECALL, MLE, BAGEL:FOLD_CHANGE, CUTADAPT, TRIM_COUNT:MAGECK_COUNT, MAGECK_COUNT, INPUT_CHECK:SAMPLESHEET_CHECK, TEST, BAYES_FACTOR, COUNT, VISPR, BAGEL:BAYES_FACTOR, DRUGZ
+Apr-28 13:51:30.920 [main] DEBUG nextflow.Session - Igniting dataflow network (8)
+Apr-28 13:51:30.920 [main] DEBUG nextflow.processor.TaskProcessor - Starting process > INPUT_CHECK:SAMPLESHEET_CHECK
+Apr-28 13:51:30.963 [main] DEBUG nextflow.processor.TaskProcessor - Starting process > TRIM_COUNT:CUTADAPT
+Apr-28 13:51:30.964 [main] DEBUG nextflow.processor.TaskProcessor - Starting process > TRIM_COUNT:MAGECK_COUNT
+Apr-28 13:51:30.966 [main] DEBUG nextflow.processor.TaskProcessor - Starting process > MAGECK:TEST
+Apr-28 13:51:30.966 [main] DEBUG nextflow.processor.TaskProcessor - Starting process > DRUGZ
+Apr-28 13:51:30.967 [main] DEBUG nextflow.processor.TaskProcessor - Starting process > BAGEL:FOLD_CHANGE
+Apr-28 13:51:30.967 [main] DEBUG nextflow.processor.TaskProcessor - Starting process > BAGEL:BAYES_FACTOR
+Apr-28 13:51:30.967 [main] DEBUG nextflow.processor.TaskProcessor - Starting process > BAGEL:PRECISION_RECALL
+Apr-28 13:51:30.968 [main] DEBUG nextflow.script.ScriptRunner - Parsed script files:
+  Script_a9d650a3551e9cbe: /gpfs/gsfs10/users/CCBR_Pipeliner/Pipelines/CRISPIN/sovacool-dev-crispin/./subworkflows/local/../../modules/local/bagel.nf
+  Script_6957cbc207f5f6a7: /gpfs/gsfs10/users/CCBR_Pipeliner/Pipelines/CRISPIN/sovacool-dev-crispin/./subworkflows/local/../../modules/local/mageck.nf
+  Script_2a352beb9d8c059b: /gpfs/gsfs10/users/CCBR_Pipeliner/Pipelines/CRISPIN/sovacool-dev-crispin/./subworkflows/local/trim_count.nf
+  Script_9c44b6eb2d3839f3: /gpfs/gsfs10/users/CCBR_Pipeliner/Pipelines/CRISPIN/sovacool-dev-crispin/./subworkflows/local/input_check.nf
+  Script_a236222e5b629937: /gpfs/gsfs10/users/CCBR_Pipeliner/Pipelines/CRISPIN/sovacool-dev-crispin/./subworkflows/local/bagel.nf
+  Script_9584c61e14ea6d47: /gpfs/gsfs10/users/CCBR_Pipeliner/Pipelines/CRISPIN/sovacool-dev-crispin/./modules/local/drugz.nf
+  Script_e262a2abc13553c3: /gpfs/gsfs10/users/CCBR_Pipeliner/Pipelines/CRISPIN/sovacool-dev-crispin/./subworkflows/local/../../modules/CCBR/cutadapt/main.nf
+  Script_cee2cd12726c4d18: /gpfs/gsfs10/users/CCBR_Pipeliner/Pipelines/CRISPIN/sovacool-dev-crispin/main.nf
+  Script_edd501be2bf2075f: /gpfs/gsfs10/users/CCBR_Pipeliner/Pipelines/CRISPIN/sovacool-dev-crispin/./subworkflows/local/mageck.nf
+  Script_67d28b83892e7c44: /gpfs/gsfs10/users/CCBR_Pipeliner/Pipelines/CRISPIN/sovacool-dev-crispin/./subworkflows/local/../../modules/local/samplesheet_check.nf
+Apr-28 13:51:30.968 [main] DEBUG nextflow.script.ScriptRunner - > Awaiting termination
+Apr-28 13:51:30.968 [main] DEBUG nextflow.Session - Session await
+Apr-28 13:51:31.055 [Actor Thread 1] DEBUG nextflow.container.SingularityCache - Singularity found local library for image=https://depot.galaxyproject.org/singularity/python:3.8.3; path=/fdb/nxf/singularity-images/depot.galaxyproject.org-singularity-python-3.8.3.img
+Apr-28 13:51:32.958 [Task submitter] DEBUG nextflow.executor.GridTaskHandler - [SLURM] submitted process INPUT_CHECK:SAMPLESHEET_CHECK (samplesheet_test_biowulf.csv) > jobId: 55256481; workDir: /gpfs/gsfs12/users/sovacoolkl/crispin_test_rel-8/work/e2/62851bd19f3af31e1ddade769dcb5c
+Apr-28 13:51:32.959 [Task submitter] INFO  nextflow.Session - [e2/62851b] Submitted process > INPUT_CHECK:SAMPLESHEET_CHECK (samplesheet_test_biowulf.csv)
+Apr-28 13:55:30.554 [Task monitor] DEBUG n.processor.TaskPollingMonitor - Task completed > TaskHandler[jobId: 55256481; id: 1; name: INPUT_CHECK:SAMPLESHEET_CHECK (samplesheet_test_biowulf.csv); status: COMPLETED; exit: 0; error: -; workDir: /gpfs/gsfs12/users/sovacoolkl/crispin_test_rel-8/work/e2/62851bd19f3af31e1ddade769dcb5c started: 1745862930547; exited: 2025-04-28T17:53:38.906389374Z; ]
+Apr-28 13:55:30.555 [Task monitor] DEBUG nextflow.util.ThreadPoolBuilder - Creating thread pool 'TaskFinalizer' minSize=10; maxSize=10; workQueue=LinkedBlockingQueue[10000]; allowCoreThreadTimeout=false
+Apr-28 13:55:30.636 [Actor Thread 9] DEBUG nextflow.container.SingularityCache - Singularity found local store for image=docker://nciccbr/ncigb_cutadapt_v1.18:latest; path=/data/CCBR_Pipeliner/SIFs/nciccbr-ncigb_cutadapt_v1.18-latest.img
+Apr-28 13:55:37.749 [Task submitter] DEBUG nextflow.executor.GridTaskHandler - [SLURM] submitted process TRIM_COUNT:CUTADAPT (ESC1) > jobId: 55256959; workDir: /gpfs/gsfs12/users/sovacoolkl/crispin_test_rel-8/work/c2/04c6e4ca5a9221abb4d8c92ae50539
+Apr-28 13:55:37.749 [Task submitter] INFO  nextflow.Session - [c2/04c6e4] Submitted process > TRIM_COUNT:CUTADAPT (ESC1)
+Apr-28 13:55:52.467 [Task submitter] DEBUG nextflow.executor.GridTaskHandler - [SLURM] submitted process TRIM_COUNT:CUTADAPT (plasmid) > jobId: 55256962; workDir: /gpfs/gsfs12/users/sovacoolkl/crispin_test_rel-8/work/28/ee6f9907f0c5096948ddf14bf75fc1
+Apr-28 13:55:52.467 [Task submitter] INFO  nextflow.Session - [28/ee6f99] Submitted process > TRIM_COUNT:CUTADAPT (plasmid)
+Apr-28 13:59:30.547 [Task monitor] DEBUG n.processor.TaskPollingMonitor - !! executor slurm > tasks to be completed: 2 -- submitted tasks are shown below
+~> TaskHandler[jobId: 55256959; id: 2; name: TRIM_COUNT:CUTADAPT (ESC1); status: SUBMITTED; exit: -; error: -; workDir: /gpfs/gsfs12/users/sovacoolkl/crispin_test_rel-8/work/c2/04c6e4ca5a9221abb4d8c92ae50539 started: -; exited: -; ]
+~> TaskHandler[jobId: 55256962; id: 3; name: TRIM_COUNT:CUTADAPT (plasmid); status: SUBMITTED; exit: -; error: -; workDir: /gpfs/gsfs12/users/sovacoolkl/crispin_test_rel-8/work/28/ee6f9907f0c5096948ddf14bf75fc1 started: -; exited: -; ]
+Apr-28 14:03:30.573 [Task monitor] DEBUG n.processor.TaskPollingMonitor - Task completed > TaskHandler[jobId: 55256959; id: 2; name: TRIM_COUNT:CUTADAPT (ESC1); status: COMPLETED; exit: 0; error: -; workDir: /gpfs/gsfs12/users/sovacoolkl/crispin_test_rel-8/work/c2/04c6e4ca5a9221abb4d8c92ae50539 started: 1745863170549; exited: 2025-04-28T18:01:44.698223177Z; ]
+Apr-28 14:03:30.578 [Task monitor] DEBUG n.processor.TaskPollingMonitor - Task completed > TaskHandler[jobId: 55256962; id: 3; name: TRIM_COUNT:CUTADAPT (plasmid); status: COMPLETED; exit: 0; error: -; workDir: /gpfs/gsfs12/users/sovacoolkl/crispin_test_rel-8/work/28/ee6f9907f0c5096948ddf14bf75fc1 started: 1745863172564; exited: 2025-04-28T18:02:46.007674235Z; ]
+Apr-28 14:03:30.838 [Actor Thread 10] DEBUG nextflow.container.SingularityCache - Singularity found local store for image=docker://quay.io/biocontainers/mageck:0.5.9.5--py39h1f90b4d_3; path=/data/CCBR_Pipeliner/SIFs/quay.io-biocontainers-mageck-0.5.9.5--py39h1f90b4d_3.img
+Apr-28 14:03:32.192 [Task submitter] DEBUG nextflow.executor.GridTaskHandler - [SLURM] submitted process TRIM_COUNT:MAGECK_COUNT > jobId: 55257214; workDir: /gpfs/gsfs12/users/sovacoolkl/crispin_test_rel-8/work/9b/989f3bcc3a349bb85e85b2941093f6
+Apr-28 14:03:32.193 [Task submitter] INFO  nextflow.Session - [9b/989f3b] Submitted process > TRIM_COUNT:MAGECK_COUNT
+Apr-28 14:05:30.551 [Task monitor] DEBUG n.processor.TaskPollingMonitor - !! executor slurm > tasks to be completed: 1 -- submitted tasks are shown below
+~> TaskHandler[jobId: 55257214; id: 4; name: TRIM_COUNT:MAGECK_COUNT; status: SUBMITTED; exit: -; error: -; workDir: /gpfs/gsfs12/users/sovacoolkl/crispin_test_rel-8/work/9b/989f3bcc3a349bb85e85b2941093f6 started: -; exited: -; ]
+Apr-28 14:07:30.554 [Task monitor] DEBUG n.processor.TaskPollingMonitor - Task completed > TaskHandler[jobId: 55257214; id: 4; name: TRIM_COUNT:MAGECK_COUNT; status: COMPLETED; exit: 0; error: -; workDir: /gpfs/gsfs12/users/sovacoolkl/crispin_test_rel-8/work/9b/989f3bcc3a349bb85e85b2941093f6 started: 1745863530553; exited: 2025-04-28T18:05:34.392671405Z; ]
+Apr-28 14:07:30.597 [Actor Thread 19] DEBUG nextflow.container.SingularityCache - Singularity found local store for image=docker://nciccbr/crispin_bagel_2.0:0.1.0; path=/data/CCBR_Pipeliner/SIFs/nciccbr-crispin_bagel_2.0-0.1.0.img
+Apr-28 14:07:30.600 [Actor Thread 18] DEBUG nextflow.container.SingularityCache - Singularity found local store for image=docker://nciccbr/crispin_drugz:0.1.0; path=/data/CCBR_Pipeliner/SIFs/nciccbr-crispin_drugz-0.1.0.img
+Apr-28 14:07:38.039 [Task submitter] DEBUG nextflow.executor.GridTaskHandler - [SLURM] submitted process MAGECK:TEST > jobId: 55257465; workDir: /gpfs/gsfs12/users/sovacoolkl/crispin_test_rel-8/work/ae/5d33cdc0ed39bb0839fca241aa50eb
+Apr-28 14:07:38.039 [Task submitter] INFO  nextflow.Session - [ae/5d33cd] Submitted process > MAGECK:TEST
+Apr-28 14:07:41.490 [Task submitter] DEBUG nextflow.executor.GridTaskHandler - [SLURM] submitted process BAGEL:FOLD_CHANGE > jobId: 55257468; workDir: /gpfs/gsfs12/users/sovacoolkl/crispin_test_rel-8/work/19/fcfdf2590f0831f7e9f4a0f10e0d81
+Apr-28 14:07:41.491 [Task submitter] INFO  nextflow.Session - [19/fcfdf2] Submitted process > BAGEL:FOLD_CHANGE
+Apr-28 14:07:53.732 [Task submitter] DEBUG nextflow.executor.GridTaskHandler - [SLURM] submitted process DRUGZ > jobId: 55257469; workDir: /gpfs/gsfs12/users/sovacoolkl/crispin_test_rel-8/work/e1/234570e450f7e5e008f89e2be66afa
+Apr-28 14:07:53.732 [Task submitter] INFO  nextflow.Session - [e1/234570] Submitted process > DRUGZ
+Apr-28 14:11:30.560 [Task monitor] DEBUG n.processor.TaskPollingMonitor - !! executor slurm > tasks to be completed: 3 -- submitted tasks are shown below
+~> TaskHandler[jobId: 55257465; id: 7; name: MAGECK:TEST; status: SUBMITTED; exit: -; error: -; workDir: /gpfs/gsfs12/users/sovacoolkl/crispin_test_rel-8/work/ae/5d33cdc0ed39bb0839fca241aa50eb started: -; exited: 2025-04-28T18:10:16.077694391Z; ]
+~> TaskHandler[jobId: 55257468; id: 6; name: BAGEL:FOLD_CHANGE; status: SUBMITTED; exit: -; error: -; workDir: /gpfs/gsfs12/users/sovacoolkl/crispin_test_rel-8/work/19/fcfdf2590f0831f7e9f4a0f10e0d81 started: -; exited: 2025-04-28T18:10:00.34398502Z; ]
+~> TaskHandler[jobId: 55257469; id: 5; name: DRUGZ; status: SUBMITTED; exit: -; error: -; workDir: /gpfs/gsfs12/users/sovacoolkl/crispin_test_rel-8/work/e1/234570e450f7e5e008f89e2be66afa started: -; exited: 2025-04-28T18:10:04.567318542Z; ]
+Apr-28 14:11:30.563 [Task monitor] DEBUG n.processor.TaskPollingMonitor - Task completed > TaskHandler[jobId: 55257465; id: 7; name: MAGECK:TEST; status: COMPLETED; exit: 0; error: -; workDir: /gpfs/gsfs12/users/sovacoolkl/crispin_test_rel-8/work/ae/5d33cdc0ed39bb0839fca241aa50eb started: 1745863890561; exited: 2025-04-28T18:10:16.077694391Z; ]
+Apr-28 14:11:30.566 [Task monitor] DEBUG n.processor.TaskPollingMonitor - Task completed > TaskHandler[jobId: 55257468; id: 6; name: BAGEL:FOLD_CHANGE; status: COMPLETED; exit: 0; error: -; workDir: /gpfs/gsfs12/users/sovacoolkl/crispin_test_rel-8/work/19/fcfdf2590f0831f7e9f4a0f10e0d81 started: 1745863890565; exited: 2025-04-28T18:10:00.34398502Z; ]
+Apr-28 14:11:30.607 [Task monitor] DEBUG n.processor.TaskPollingMonitor - Task completed > TaskHandler[jobId: 55257469; id: 5; name: DRUGZ; status: COMPLETED; exit: 0; error: -; workDir: /gpfs/gsfs12/users/sovacoolkl/crispin_test_rel-8/work/e1/234570e450f7e5e008f89e2be66afa started: 1745863890604; exited: 2025-04-28T18:10:04.567318542Z; ]
+Apr-28 14:11:32.938 [Task submitter] DEBUG nextflow.executor.GridTaskHandler - [SLURM] submitted process BAGEL:BAYES_FACTOR > jobId: 55257648; workDir: /gpfs/gsfs12/users/sovacoolkl/crispin_test_rel-8/work/2a/e26fd9c4952ebd0536426e9d0cd0e7
+Apr-28 14:11:32.938 [Task submitter] INFO  nextflow.Session - [2a/e26fd9] Submitted process > BAGEL:BAYES_FACTOR
+Apr-28 14:13:30.566 [Task monitor] DEBUG n.processor.TaskPollingMonitor - Task completed > TaskHandler[jobId: 55257648; id: 8; name: BAGEL:BAYES_FACTOR; status: COMPLETED; exit: 0; error: -; workDir: /gpfs/gsfs12/users/sovacoolkl/crispin_test_rel-8/work/2a/e26fd9c4952ebd0536426e9d0cd0e7 started: 1745864010564; exited: 2025-04-28T18:13:05.258973025Z; ]
+Apr-28 14:13:43.168 [Task submitter] DEBUG nextflow.executor.GridTaskHandler - [SLURM] submitted process BAGEL:PRECISION_RECALL > jobId: 55257961; workDir: /gpfs/gsfs12/users/sovacoolkl/crispin_test_rel-8/work/d5/2be004aeb899faca5a88b2a020ef85
+Apr-28 14:13:43.168 [Task submitter] INFO  nextflow.Session - [d5/2be004] Submitted process > BAGEL:PRECISION_RECALL
+Apr-28 14:17:30.564 [Task monitor] DEBUG n.processor.TaskPollingMonitor - !! executor slurm > tasks to be completed: 1 -- submitted tasks are shown below
+~> TaskHandler[jobId: 55257961; id: 9; name: BAGEL:PRECISION_RECALL; status: SUBMITTED; exit: -; error: -; workDir: /gpfs/gsfs12/users/sovacoolkl/crispin_test_rel-8/work/d5/2be004aeb899faca5a88b2a020ef85 started: -; exited: 2025-04-28T18:17:02.979477998Z; ]
+Apr-28 14:17:30.566 [Task monitor] DEBUG n.processor.TaskPollingMonitor - Task completed > TaskHandler[jobId: 55257961; id: 9; name: BAGEL:PRECISION_RECALL; status: COMPLETED; exit: 0; error: -; workDir: /gpfs/gsfs12/users/sovacoolkl/crispin_test_rel-8/work/d5/2be004aeb899faca5a88b2a020ef85 started: 1745864250565; exited: 2025-04-28T18:17:02.979477998Z; ]
+Apr-28 14:17:30.582 [main] DEBUG nextflow.Session - Session await > all processes finished
+Apr-28 14:19:30.564 [Task monitor] DEBUG n.processor.TaskPollingMonitor - <<< barrier arrives (monitor: slurm) - terminating tasks monitor poll loop
+Apr-28 14:19:30.564 [main] DEBUG nextflow.Session - Session await > all barriers passed
+Apr-28 14:19:30.567 [main] DEBUG nextflow.util.ThreadPoolManager - Thread pool 'TaskFinalizer' shutdown completed (hard=false)
+Apr-28 14:19:35.340 [main] INFO  nextflow.script.BaseScript - tar: Removing leading `/' from member names
+tar: Removing leading `/' from hard link targets
+
+Apr-28 14:19:35.345 [main] DEBUG n.trace.WorkflowStatsObserver - Workflow completed > WorkflowStats[succeededCount=9; failedCount=0; ignoredCount=0; cachedCount=0; pendingCount=0; submittedCount=0; runningCount=0; retriesCount=0; abortedCount=0; succeedDuration=1h 25m 15s; failedDuration=0ms; cachedDuration=0ms;loadCpus=0; loadMemory=0; peakRunning=3; peakCpus=24; peakMemory=144 GB; ]
+Apr-28 14:19:35.345 [main] DEBUG nextflow.trace.TraceFileObserver - Workflow completed -- saving trace file
+Apr-28 14:19:35.348 [main] DEBUG nextflow.trace.ReportObserver - Workflow completed -- rendering execution report
+Apr-28 14:19:35.842 [main] DEBUG nextflow.trace.TimelineObserver - Workflow completed -- rendering execution timeline
+Apr-28 14:19:36.100 [main] DEBUG nextflow.cache.CacheDB - Closing CacheDB done
+Apr-28 14:19:36.115 [main] DEBUG nextflow.util.ThreadPoolManager - Thread pool 'FileTransfer' shutdown completed (hard=false)
+Apr-28 14:19:36.115 [main] DEBUG nextflow.script.ScriptRunner - > Execution complete -- Goodbye

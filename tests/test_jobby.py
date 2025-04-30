@@ -3,75 +3,89 @@ import pytest
 
 from ccbr_tools.shell import exec_in_context
 from ccbr_tools.jobby import (
-    jobby,
-    which,
-    get_toolkit,
-    add_missing,
-    convert_size,
-    to_bytes,
-    sge,
-    uge,
+    parse_time_to_seconds,
+    parse_mem_to_gb,
+    extract_jobids_from_file,
 )
 
 
-def test_jobby_scheduler():
-    args = argparse.Namespace(
-        JOB_ID="abc", scheduler="unknown", threads=1, tmp_dir="/tmp"
-    )
-    with pytest.raises(SystemExit) as exc_info:
-        exec_in_context(jobby, args)
-    assert str(exc_info.value) == "1"
-
-
-def test_jobby_slurm():
-    args = argparse.Namespace(
-        JOB_ID="abc", scheduler="slurm", threads=1, tmp_dir="/tmp"
-    )
-    with pytest.raises(SystemExit) as exc_info:
-        exec_in_context(jobby, args)
-    assert str(exc_info.value) == "1"
-
-
-def test_which():
-    assert all([which("ls"), not which("unknown")])
-
-
-def test_get_toolkit():
-    assert get_toolkit(["ls", "notATool"]) == "ls"
-
-
-def test_add_missing():
-    outlist = add_missing([0, 1, 2, 3, 4], {3: ["+", "++"], 1: "-", 4: "@"})
-    assert outlist == [0, "-", 1, 2, "+", "++", 3, "@", 4]
-
-
-def test_convert_size():
+def test_parse_time_to_seconds():
     assert all(
         [
-            convert_size(1024) == "1.0KiB",
-            convert_size(0) == "0B",
-            convert_size(1024 * 1024) == "1.0MiB",
+            parse_time_to_seconds(t) == expected
+            for t, expected in [
+                ("1-02:03:04", 93784),
+                ("02:03:04", 7384),
+                ("37:55.869", 2276),
+                ("55.869", 56),
+                ("", 0),
+                (None, 0),
+                ("invalid", 0),
+            ]
         ]
     )
 
 
-def test_to_bytes():
+def test_parse_mem_to_gb():
     assert all(
         [
-            to_bytes("1.0KiB") == 1024,
-            to_bytes("0B") == 0,
-            to_bytes("1.0MiB") == 1024 * 1024,
+            parse_mem_to_gb(mem_str) == expected
+            for mem_str, expected in [
+                ("4000M", 3.90625),
+                ("4G", 4.0),
+                ("102400K", 0.09765625),
+                ("1T", 1024.0),
+                ("invalid", None),
+                (None, None),
+            ]
         ]
     )
 
 
-def test_sge():
-    with pytest.raises(NotImplementedError) as exc_info:
-        sge("", "", "")
-    assert str(exc_info.value) == "SGE cluster support is not yet implemented!"
+def test_extract_jobids_snakemake():
+    assert extract_jobids_from_file("tests/data/jobby/snakemake.log") == [
+        "50456412",
+        "50456444",
+        "50456446",
+        "50456448",
+        "50456855",
+        "50456856",
+        "50456858",
+        "50456859",
+        "50456860",
+        "50457081",
+        "50457082",
+        "50457083",
+        "50457294",
+        "50457690",
+        "50457692",
+        "50457694",
+        "50457697",
+        "50457699",
+        "50457965",
+        "50457966",
+        "50457968",
+        "50458236",
+        "50459201",
+        "50459203",
+        "50459205",
+        "50459393",
+    ]
 
 
-def test_uge():
-    with pytest.raises(NotImplementedError) as exc_info:
-        uge("", "", "")
-    assert str(exc_info.value) == "UGE cluster support is not yet implemented!"
+def test_extract_jobids_nextflow():
+    assert extract_jobids_from_file("tests/data/jobby/nextflow.log") == [
+        "55256481",
+        "55256959",
+        "55256962",
+        "55257214",
+        "55257465",
+        "55257468",
+        "55257469",
+        "55257648",
+        "55257961",
+    ]
+
+
+def test_extract_jobids_empty():
+    assert extract_jobids_from_file("not_a_file") == []
