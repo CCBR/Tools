@@ -31,8 +31,8 @@ COLUMNS = {
     "AllocNodes": "NumNodes",
     "AllocCPUS": "NumCPUs",
     "TotalCPU": "TotalCPUTime",
-    "ReqMem": "ReqMem",
-    "MaxRSS": "MaxMemUsed",
+    "ReqMem": "ReqMemGB",
+    "MaxRSS": "MaxMemUsedGB",
     "ExitCode": "ExitCode",
     "Timelimit": "Timelimit",
     "NodeList": "NodeList",
@@ -214,8 +214,8 @@ def main():
     df = pd.DataFrame(records)
 
     # convert Memory to GB
-    df["ReqMem"] = df["ReqMem"].apply(parse_mem_to_gb).round(2)
-    df["MaxMemUsed"] = df["MaxMemUsed"].apply(parse_mem_to_gb).round(2)
+    df["ReqMemGB"] = df["ReqMemGB"].apply(parse_mem_to_gb).round(2)
+    df["MaxMemUsedGB"] = df["MaxMemUsedGB"].apply(parse_mem_to_gb).round(2)
 
     # Split ExitCode into ExitCode and KillSignal
     exit_split = df["ExitCode"].str.split(":", expand=True)
