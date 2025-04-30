@@ -38,6 +38,19 @@ def test_parse_mem_to_gb():
     assert all(results)
 
 
+def test_assertions():
+    with pytest.raises(AssertionError) as exc1:
+        parse_time_to_seconds(False)
+    with pytest.raises(AssertionError) as exc2:
+        parse_mem_to_gb(0)
+    assert all(
+        [
+            str(exc1.value) == "Input must be a string",
+            str(exc2.value) == "Input must be a string",
+        ]
+    )
+
+
 def test_extract_jobids_snakemake():
     assert extract_jobids_from_file("tests/data/jobby/snakemake.log") == [
         "50456412",
