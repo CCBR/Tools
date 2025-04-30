@@ -2,6 +2,8 @@ from ccbr_tools.software import Software, install
 from ccbr_tools.pipeline.hpc import Biowulf
 from ccbr_tools.shell import exec_in_context
 
+import pytest
+
 
 def test_python():
     assert all(
@@ -94,3 +96,11 @@ ln -s .v1.0.0 v1.0
 popd
 """
     )
+
+
+def test_unsupported():
+    with pytest.raises(KeyError) as exc_info:
+        Software.create_software("unsupported_tool", "v1.0.0")
+        assert str(exc_info.value).startswith(
+            "unsupported_tool not found in software list"
+        )

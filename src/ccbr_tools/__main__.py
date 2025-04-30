@@ -179,7 +179,13 @@ def quarto_add(ext_name):
     default=None,
     help="Type of software to install. Must be a class in `ccbr_tools.software`. If not specified, the type will be determined automatically (i.e. for CCBR software).",
 )
-def install(tool_name, version_tag, run, branch_tag, software_type):
+@click.option(
+    "--hpc",
+    "hpc",
+    default=None,
+    help="HPC to install on. If not specified, the HPC will be detected automatically.",
+)
+def install(tool_name, version_tag, run, branch_tag, software_type, hpc):
     """
     Install a specific version of a CCBR software package, tool, or pipeline on a supported HPC.
 
@@ -194,6 +200,7 @@ def install(tool_name, version_tag, run, branch_tag, software_type):
         dryrun=not run,
         branch_tag=branch_tag,
         software_type=software_type,
+        debug=hpc,
     )
 
 
