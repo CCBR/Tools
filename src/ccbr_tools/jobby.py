@@ -134,9 +134,7 @@ def parse_mem_to_gb(mem_str: str):
         else:
             result = float(mem_str) / (1024 * 1024)  # assume bytes
     except ValueError:
-        warnings.warn(
-            f"❌ Invalid memory format: {mem_str}. Memory will be set to NaN."
-        )
+        warnings.warn(f"❌ Invalid memory format: {mem_str}. Memory will be set to NaN.")
     return result
 
 
@@ -213,17 +211,7 @@ def get_sacct_info(job_ids):
     return records
 
 
-def main():
-    args = sys.argv[1:]
-
-    if len(args) == 0 or "-h" in args or "--help" in args:
-        print("Usage:")
-        print("  jobby <jobid1> [jobid2 ...] [--tsv|--json|--yaml]")
-        print("  jobby <jobid1>,<jobid2> [--tsv|--json|--yaml]")
-        print("  jobby snakemake.log [--tsv|--json|--yaml]")
-        print("  jobby .nextflow.log [--tsv|--json|--yaml]")
-        sys.exit(1)
-
+def jobby(args):
     output_format = "markdown"
     if "--tsv" in args:
         output_format = "tsv"
@@ -313,6 +301,19 @@ def main():
         print(yaml.dump(df.to_dict(orient="records"), sort_keys=False))
     else:
         raise ValueError(f"output format {output_format} not supported")
+
+
+def main():
+    args = sys.argv[1:]
+
+    if len(args) == 0 or "-h" in args or "--help" in args:
+        print("Usage:")
+        print("  jobby <jobid1> [jobid2 ...] [--tsv|--json|--yaml]")
+        print("  jobby <jobid1>,<jobid2> [--tsv|--json|--yaml]")
+        print("  jobby snakemake.log [--tsv|--json|--yaml]")
+        print("  jobby .nextflow.log [--tsv|--json|--yaml]")
+    else:
+        jobby(args)
 
 
 if __name__ == "__main__":
