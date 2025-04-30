@@ -32,9 +32,7 @@ def test_help_hf():
 
 
 def test_help_jobby():
-    assert "Will take your job(s)... and display their information!" in shell_run(
-        "jobby -h"
-    )
+    assert "jobby <jobid1> [jobid2 ...] " in shell_run("jobby -h")
 
 
 def test_help_jobinfo():

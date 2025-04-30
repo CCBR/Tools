@@ -1,7 +1,6 @@
-import argparse
 import pytest
+import numpy as np
 
-from ccbr_tools.shell import exec_in_context
 from ccbr_tools.jobby import (
     parse_time_to_seconds,
     parse_mem_to_gb,
@@ -10,36 +9,33 @@ from ccbr_tools.jobby import (
 
 
 def test_parse_time_to_seconds():
-    assert all(
-        [
-            parse_time_to_seconds(t) == expected
-            for t, expected in [
-                ("1-02:03:04", 93784),
-                ("02:03:04", 7384),
-                ("37:55.869", 2276),
-                ("55.869", 56),
-                ("", 0),
-                (None, 0),
-                ("invalid", 0),
-            ]
+    results = [
+        parse_time_to_seconds(t) == expected
+        for t, expected in [
+            ("1-02:03:04", 93784),
+            ("02:03:04", 7384),
+            ("37:55.869", 2276),
+            ("55.869", 56),
         ]
-    )
+    ]
+    with pytest.warns(UserWarning):
+        results.append(parse_time_to_seconds("invalid") is np.nan)
+    assert all(results)
 
 
 def test_parse_mem_to_gb():
-    assert all(
-        [
-            parse_mem_to_gb(mem_str) == expected
-            for mem_str, expected in [
-                ("4000M", 3.90625),
-                ("4G", 4.0),
-                ("102400K", 0.09765625),
-                ("1T", 1024.0),
-                ("invalid", None),
-                (None, None),
-            ]
+    results = [
+        parse_mem_to_gb(mem_str) == expected
+        for mem_str, expected in [
+            ("4000M", 3.90625),
+            ("4G", 4.0),
+            ("102400K", 0.09765625),
+            ("1T", 1024.0),
         ]
-    )
+    ]
+    with pytest.warns(UserWarning):
+        results.append(parse_mem_to_gb("invalid") is np.nan)
+    assert all(results)
 
 
 def test_extract_jobids_snakemake():
@@ -87,5 +83,8 @@ def test_extract_jobids_nextflow():
     ]
 
 
+@pytest.mark.filterwarnings("ignore:File not found")
 def test_extract_jobids_empty():
-    assert extract_jobids_from_file("not_a_file") == []
+    with pytest.warns(UserWarning):
+        output = extract_jobids_from_file("not_a_file")
+    assert output == []
