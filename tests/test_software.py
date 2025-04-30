@@ -71,3 +71,26 @@ chmod -R a+rX /data/CCBR_Pipeliner/Pipelines/CHAMPAGNE/.v0.3.0-dev
 chown -R :CCBR_Pipeliner /data/CCBR_Pipeliner/Pipelines/CHAMPAGNE/.v0.3.0-dev
 """
     )
+
+
+def test_custom():
+    result = exec_in_context(
+        install,
+        tool_name="cooltool",
+        version="v1.0.0",
+        dryrun=True,
+        software_type="PythonTool",
+        debug="biowulf",
+    )
+    assert (
+        result
+        == """. "/data/CCBR_Pipeliner/db/PipeDB/Conda/etc/profile.d/conda.sh" && conda activate py311
+pip install git+https://github.com/CCBR/cooltool.git@v1.0.0 -t /data/CCBR_Pipeliner/Tools/cooltool/.v1.0.0
+chmod -R a+rX /data/CCBR_Pipeliner/Tools/cooltool/.v1.0.0
+chown -R :CCBR_Pipeliner /data/CCBR_Pipeliner/Tools/cooltool/.v1.0.0
+pushd /data/CCBR_Pipeliner/Tools/cooltool
+rm -if v1.0
+ln -s .v1.0.0 v1.0
+popd
+"""
+    )

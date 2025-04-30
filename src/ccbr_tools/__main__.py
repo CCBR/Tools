@@ -171,9 +171,15 @@ def quarto_add(ext_name):
     "--branch",
     "branch_tag",
     default=None,
-    help="Branch or tag to install from GitHub. Use this option if the version is not a tag, e.g. for testing developmenmt versions.",
+    help="Branch or tag to install from GitHub. Use this option if the version is not a tag, e.g. for testing development versions.",
 )
-def install(tool_name, version_tag, run, branch_tag):
+@click.option(
+    "--type",
+    "software_type",
+    default=None,
+    help="Type of software to install. Must be a class in `ccbr_tools.software`. If not specified, the type will be determined automatically (i.e. for CCBR software).",
+)
+def install(tool_name, version_tag, run, branch_tag, software_type):
     """
     Install a specific version of a CCBR software package, tool, or pipeline on a supported HPC.
 
@@ -182,7 +188,13 @@ def install(tool_name, version_tag, run, branch_tag):
         tool_name (str): The name of the software package to install.
         version_tag (str): The version tag to install.
     """
-    install_software(tool_name, version_tag, dryrun=not run, branch_tag=branch_tag)
+    install_software(
+        tool_name,
+        version_tag,
+        dryrun=not run,
+        branch_tag=branch_tag,
+        software_type=software_type,
+    )
 
 
 cli.add_command(send_email)
