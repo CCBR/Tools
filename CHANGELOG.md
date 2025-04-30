@@ -1,5 +1,10 @@
 ## Tools development version
 
+- fix `ccbr_tools install` to use relative paths for symlinks within the same directory. (#58, @kelly-sovacool)
+- `ccbr_tools install` has new options: (#60, @kelly-sovacool)
+  - `--type` to specify the type of tool to install (e.g. `PythonTool`, `BashTool`, `Snakemake`, or `Nextflow`).
+  - `--hpc` (e.g. `biowulf`, `frce`) to specify the HPC environment for debugging purposes.
+
 ## Tools 0.3.1
 
 - Bug fixes in `ccbr_tools install`:
