@@ -134,9 +134,7 @@ def parse_mem_to_gb(mem_str: str):
         else:
             result = float(mem_str) / (1024 * 1024)  # assume bytes
     except ValueError:
-        warnings.warn(
-            f"❌ Invalid memory format: {mem_str}. Memory will be set to NaN."
-        )
+        warnings.warn(f"❌ Invalid memory format: {mem_str}. Memory will be set to NaN.")
     return result
 
 

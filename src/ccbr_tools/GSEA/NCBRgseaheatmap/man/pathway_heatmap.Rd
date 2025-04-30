@@ -50,7 +50,7 @@ fontsize_row=8
 clustrow = 3
 pdf("myoutput.pdf")
 pathway_heatmap(nes, clustrow=clustrow, clustcol=1, cluster_cols=FALSE,
-                main=main, samples=NULL, annotlegend=FALSE, 
+                main=main, samples=NULL, annotlegend=FALSE,
                 fontsize_row=fontsize_row, fontsize_col=12)
 dev.off()
 
