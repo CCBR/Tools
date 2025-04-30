@@ -49,7 +49,6 @@ def parse_time_string(t):
     total_seconds = 0
     try:
         if not t or t.strip() == "":
-<<<<<<< HEAD
             pass
         else:
             if '-' in t:
@@ -69,31 +68,6 @@ def parse_time_string(t):
                 m, s = parts
             elif len(parts) == 1:
                 s = parts[0]
-=======
-            return 0
-
-        if "-" in t:
-            days, rest = t.split("-")
-            days = int(days)
-            t = rest
-        else:
-            days = 0
-
-        parts = t.split(":")
-        parts = [float(p) for p in parts]
-
-        if len(parts) == 3:
-            h, m, s = parts
-        elif len(parts) == 2:
-            h = 0
-            m, s = parts
-        elif len(parts) == 1:
-            h = 0
-            m = 0
-            s = parts[0]
-        else:
-            return 0
->>>>>>> 6efe32fa0398b9bfa73fccfa2d8ea654536fe81f
 
             total_seconds = int(round((
                 int(days) * 86400 +
@@ -111,7 +85,6 @@ def parse_mem_to_gb(mem_str):
     """Convert SLURM memory strings like '4000M', '4G', '102400K' to GB as float."""
     result = 0
     try:
-<<<<<<< HEAD
         if mem_str.endswith('K'):
             result = float(mem_str[:-1]) / (1024*1024)
         elif mem_str.endswith('M'):
@@ -125,20 +98,6 @@ def parse_mem_to_gb(mem_str):
     except ValueError:
         result = np.nan
     return result
-=======
-        if mem_str.endswith("K"):
-            return float(mem_str[:-1]) / (1024 * 1024)
-        elif mem_str.endswith("M"):
-            return float(mem_str[:-1]) / 1024
-        elif mem_str.endswith("G"):
-            return float(mem_str[:-1])
-        elif mem_str.endswith("T"):
-            return float(mem_str[:-1]) * 1024
-        else:
-            return float(mem_str) / (1024 * 1024)  # assume bytes
-    except Exception:
-        return None
->>>>>>> 6efe32fa0398b9bfa73fccfa2d8ea654536fe81f
 
 
 def extract_jobids_from_file(filepath):
@@ -158,14 +117,9 @@ def extract_jobids_from_file(filepath):
                 if match_nextflow:
                     job_ids.append(match_nextflow.group(1))
     except FileNotFoundError:
-<<<<<<< HEAD
         warnings.warn(f"❌ File not found: {filepath}")
     return list(sorted(set(job_ids))) # deduplicate
 
-=======
-        print(f"❌ File not found: {filepath}")
-    return list(sorted(set(job_ids)))  # deduplicate
->>>>>>> 6efe32fa0398b9bfa73fccfa2d8ea654536fe81f
 
 
 def get_sacct_info(job_ids):
