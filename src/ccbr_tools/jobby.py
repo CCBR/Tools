@@ -9,7 +9,7 @@ ABOUT:
 
     Why?
     `jobby` aims to simplify and unify the job-querying process by abstracting away cluster-specific tools
-    and normalizing output into common formats. `jobby` will ensure consistent reporting from multiple 
+    and normalizing output into common formats. `jobby` will ensure consistent reporting from multiple
     CCBR Snakemake and Nextflow pipelines when embedded in onsuccess/onerror/oncomplete blocks.
 
 FEATURES:
