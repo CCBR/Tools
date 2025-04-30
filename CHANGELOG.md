@@ -1,6 +1,7 @@
 ## Tools development version
 
 - fix `ccbr_tools install` to use relative paths for symlinks within the same directory. (#58, @kelly-sovacool)
+- `ccbr_tools install` now has `--type` option to specify the type of tool to install (e.g. `PythonTool`, `BashTool`, `Snakemake`, or `Nextflow`). (#59, @kelly-sovacool)
 
 ## Tools 0.3.1
 
