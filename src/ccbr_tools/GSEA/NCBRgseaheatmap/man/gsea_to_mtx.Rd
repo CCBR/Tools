@@ -2,7 +2,7 @@
 % Please edit documentation in R/gsea_to_mtx.R
 \name{gsea_to_mtx}
 \alias{gsea_to_mtx}
-\title{Reads a GSEA output file and creates a matrix from the positive and negative report files, 
+\title{Reads a GSEA output file and creates a matrix from the positive and negative report files,
 that serves as input to pathway_heatmap}
 \usage{
 gsea_to_mtx(dirlist, db = "GO", q = 0.1, preN = 25, postN = NULL,
@@ -22,25 +22,25 @@ gsea_to_mtx(dirlist, db = "GO", q = 0.1, preN = 25, postN = NULL,
 \item{colname}{name of the column in the GSEA output containing the normalized scores ("GseaPreranked" for RNASeq pipeliner results)}
 }
 \value{
-a list of three elements: 
+a list of three elements:
         1) numeric matrix, with rownames as genesets, column names as comparisons
         2) a vector of names for the columns containing the actual enrichment data
         3) a vector of names for the column names containing q-values
 }
 \description{
-Reads in both the positive and negative GSEA enrichment reports from the appropriate directories, 
-  reads the scoring column (default="GseaPreranked") and creates a single matrix of 
+Reads in both the positive and negative GSEA enrichment reports from the appropriate directories,
+  reads the scoring column (default="GseaPreranked") and creates a single matrix of
   positive and negative enrichment scores
 }
 \details{
-The directory list should be generated with the list.dirs() function, 
+The directory list should be generated with the list.dirs() function,
 these directories will be further filtered to only those containing the db name (e.g., GO or Path).
 
-Once the GSEA results have been read in, they will be filtered to only q (FDR) values 
-less than the minimum (q).  
+Once the GSEA results have been read in, they will be filtered to only q (FDR) values
+less than the minimum (q).
 The set of resulting matrices for each comparison will be filtered to include only a maximum of preN values.
-The matrices will then be combined across all comparisons, and the filtered again to a maximum number of rows (postN).  
-The current RNASeq pipeliner sets the normalized GSEA score to "GseaPreranked", 
+The matrices will then be combined across all comparisons, and the filtered again to a maximum number of rows (postN).
+The current RNASeq pipeliner sets the normalized GSEA score to "GseaPreranked",
 Use colname to set the appropriate column name for GSEA results derived from outside of pipeliner.
 }
 \examples{
@@ -51,7 +51,7 @@ main=paste("Gene Set Enrichment:", i, "\\nPairwise comparisons of genotype withi
 fontsize_row=8
 pdf("myoutput.pdf")
 pathway_heatmap(nes, clustrow=1, clustcol=1, cluster_cols=FALSE,
-                main=main, samples=NULL, annotlegend=FALSE, 
+                main=main, samples=NULL, annotlegend=FALSE,
                 fontsize_row=fontsize_row, fontsize_col=12)
 dev.off()
 
