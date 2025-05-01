@@ -1,5 +1,14 @@
 ## Tools development version
 
+- fix `ccbr_tools install` to use relative paths for symlinks within the same directory. (#58, @kelly-sovacool)
+- `ccbr_tools install` has new options: (#60, @kelly-sovacool)
+  - `--type` to specify the type of tool to install (e.g. `PythonTool`, `BashTool`, `Snakemake`, or `Nextflow`).
+  - `--hpc` (e.g. `biowulf`, `frce`) to specify the HPC environment for debugging purposes.
+- `jobby` overhaul (#59, @kopardev)
+  - uses `saccount` to get slurm job information, which should work for any HPC running slurm.
+  - has options `--tsv`, `--json`, and `--yaml` to output the job information in those formats.
+  - can accept a snakemake log file, nextflow log file, or a list of slurm job IDs as input.
+
 ## Tools 0.3.1
 
 - Bug fixes in `ccbr_tools install`:

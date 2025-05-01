@@ -9,7 +9,7 @@ ABOUT:
 
     Why?
     `jobby` aims to simplify and unify the job-querying process by abstracting away cluster-specific tools
-    and normalizing output into common formats. `jobby` will ensure consistent reporting from multiple 
+    and normalizing output into common formats. `jobby` will ensure consistent reporting from multiple
     CCBR Snakemake and Nextflow pipelines when embedded in onsuccess/onerror/oncomplete blocks.
 
 FEATURES:
@@ -85,12 +85,10 @@ COLUMNS = {
 }
 
 
-def parse_time_to_seconds(t):
+def parse_time_to_seconds(t: str):
     """Convert SLURM time formats like '1-02:03:04', '02:03:04', '37:55.869', or '55.869' to seconds."""
-
-
-def parse_time_string(t):
-    total_seconds = 0
+    assert isinstance(t, str), "Input must be a string"
+    total_seconds = np.nan
     try:
         if not t or t.strip() == "":
             pass
@@ -116,15 +114,15 @@ def parse_time_string(t):
             total_seconds = int(
                 round((int(days) * 86400 + int(h) * 3600 + int(m) * 60 + s))
             )
-    except:
-        total_seconds = np.nan
-
+    except ValueError:
+        warnings.warn(f"❌ Invalid time format: {t}. Time will be set to NaN.")
     return total_seconds
 
 
-def parse_mem_to_gb(mem_str):
+def parse_mem_to_gb(mem_str: str):
     """Convert SLURM memory strings like '4000M', '4G', '102400K' to GB as float."""
-    result = 0
+    assert isinstance(mem_str, str), "Input must be a string"
+    result = np.nan
     try:
         if mem_str.endswith("K"):
             result = float(mem_str[:-1]) / (1024 * 1024)
@@ -137,7 +135,7 @@ def parse_mem_to_gb(mem_str):
         else:
             result = float(mem_str) / (1024 * 1024)  # assume bytes
     except ValueError:
-        result = np.nan
+        warnings.warn(f"❌ Invalid memory format: {mem_str}. Memory will be set to NaN.")
     return result
 
 
@@ -214,17 +212,7 @@ def get_sacct_info(job_ids):
     return records
 
 
-def main():
-    args = sys.argv[1:]
-
-    if len(args) == 0 or "-h" in args or "--help" in args:
-        print("Usage:")
-        print("  jobby <jobid1> [jobid2 ...] [--tsv|--json|--yaml]")
-        print("  jobby <jobid1>,<jobid2> [--tsv|--json|--yaml]")
-        print("  jobby snakemake.log [--tsv|--json|--yaml]")
-        print("  jobby .nextflow.log [--tsv|--json|--yaml]")
-        sys.exit(1)
-
+def jobby(args):
     output_format = "markdown"
     if "--tsv" in args:
         output_format = "tsv"
@@ -314,6 +302,19 @@ def main():
         print(yaml.dump(df.to_dict(orient="records"), sort_keys=False))
     else:
         raise ValueError(f"output format {output_format} not supported")
+
+
+def main():
+    args = sys.argv[1:]
+
+    if len(args) == 0 or "-h" in args or "--help" in args:
+        print("Usage:")
+        print("  jobby <jobid1> [jobid2 ...] [--tsv|--json|--yaml]")
+        print("  jobby <jobid1>,<jobid2> [--tsv|--json|--yaml]")
+        print("  jobby snakemake.log [--tsv|--json|--yaml]")
+        print("  jobby .nextflow.log [--tsv|--json|--yaml]")
+    else:
+        jobby(args)
 
 
 if __name__ == "__main__":
