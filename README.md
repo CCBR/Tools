@@ -17,19 +17,19 @@ View the website for more detailed documentation:
 On [biowulf](https://hpc.nih.gov/) you can access the latest release of
 `ccbr_tools` by loading the ccbrpipeliner module:
 
-```sh
+``` sh
 module load ccbrpipeliner
 ```
 
 Outside of biowulf, you can install the package with pip:
 
-```sh
+``` sh
 pip install git+https://github.com/CCBR/Tools
 ```
 
 Or specify any tagged version or branch:
 
-```sh
+``` sh
 pip install git+https://github.com/CCBR/Tools@v0.2.4
 ```
 
@@ -37,7 +37,7 @@ pip install git+https://github.com/CCBR/Tools@v0.2.4
 
 ### CLI
 
-```sh
+``` sh
 ccbr_tools --help
 ```
 
@@ -67,18 +67,19 @@ ccbr_tools --help
       intersect
       jobby
       jobinfo
+      module_list
       peek
 
 ### Python
 
-```python
+``` python
 import ccbr_tools.shell
 print(ccbr_tools.shell.shell_run('echo "Hello, world!"'))
 ```
 
     Hello, world!
 
-```python
+``` python
 import ccbr_tools.versions
 version = ccbr_tools.versions.match_semver('0.2.3')
 version.groupdict()
@@ -103,6 +104,7 @@ Command-line utilities in CCBR Tools.
 - `intersect`
 - `jobby`
 - `jobinfo`
+- `module_list`
 - `peek`
 
 Run a command with `--help` to learn how to use it.
@@ -163,7 +165,7 @@ Please cite this software if you use it in a publication:
 
 ### Bibtex entry
 
-```bibtex
+``` bibtex
 @misc{YourReferenceHere,
 author = {Sovacool, Kelly and Koparde, Vishal and Kuhn, Skyler and Tandon, Mayank and Huse, Susan},
 doi = {10.5281/zenodo.13377166},
