@@ -449,6 +449,12 @@ ul.task-list li input[type="checkbox"] {
 <li><code>--type</code> to specify the type of tool to install (e.g.&nbsp;<code>PythonTool</code>, <code>BashTool</code>, <code>Snakemake</code>, or <code>Nextflow</code>).</li>
 <li><code>--hpc</code> (e.g.&nbsp;<code>biowulf</code>, <code>frce</code>) to specify the HPC environment for debugging purposes.</li>
 </ul></li>
+<li><code>jobby</code> overhaul (#59, <span class="citation" data-cites="kopardev">@kopardev</span>)
+<ul>
+<li>uses <code>saccount</code> to get slurm job information, which should work for any HPC running slurm.</li>
+<li>has options <code>--tsv</code>, <code>--json</code>, and <code>--yaml</code> to output the job information in those formats.</li>
+<li>can accept a snakemake log file, nextflow log file, or a list of slurm job IDs as input.</li>
+</ul></li>
 </ul>
 </section>
 <section id="tools-0.3.1" class="level2">

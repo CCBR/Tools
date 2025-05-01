@@ -629,72 +629,11 @@ intersect filename1 filename2 f1ColumnIndex F2ColumnIndex
 </section>
 <section id="jobby" class="level3">
 <h3 class="anchored" data-anchor-id="jobby">jobby</h3>
-<pre><code>jobby: Will take your job(s)... and display their information!
-
-Synopsis:
-  $ jobby [--version] [--help] \
-        [--scheduler {slurm | ...}] \
-        [--threads THREADS] [--tmp-dir TMP_DIR] \
-        &lt;JOB_ID [JOB_ID ...]&gt;
-
-Description:
-  jobby will take your past jobs and display their job information
-in a standardized format. Why???! We have pipelines running on several
-different clusters (using different job schedulers). jobby centralizes
-and abstracts the process of querying different job schedulers within
-a unified command-line interface.
-
-  For each supported scheduler, jobby will determine the best method
-on a given target system for getting job information to return to the
-user in a common output format.
-
-Required Positional Arguments:
-  &lt;JOB_ID [JOB_ID ...]&gt;
-                       Identiers of past jobs. One or more JOB_IDs
-                       can be provided. Multiple JOB_IDs should be
-                       separated by a space. Information for each
-                       of the JOB_IDs will be displayed to standard
-                       output. Please see example section below for
-                       more information.
-
-Options:
-  -s,--scheduler {slurm | ...}
-                        @Default: slurm
-                        Job scheduler. Defines the job scheduler
-                        of the target system. Additional support
-                        for more schedulers coming soon!
-                          @Example: --scheduler slurm
-  -n, --threads THREADS
-                        @Default: 1
-                        Number of threads to query the scheduler
-                        in parallel.
-                          @Example: --threads: 8
-  -t, --tmp-dir TMP_DIR
-                        @Default: /tmp/
-                        Temporary directory. Path on the filesystem
-                        for writing temporary output files. Ideally,
-                        this path should point to a dedicated space
-                        on the filesystem for writing tmp files. If
-                        you need to inject a variable into this path
-                        that should NOT be expanded, please quote the
-                        options value in single quotes. The default
-                        location of this option is set to the system
-                        default via the $TMPDIR environment variable.
-                          @Example: --tmp-dir '/scratch/$USER/'
-
-  -h, --help            Shows help and usage information and exits.
-                          @Example: --help
-
-  -v, --version         Displays version information and exits.
-                          @Example: --version
-
-Example:
-# Please avoid running jobby
-# on a cluster's head node!
-./jobby -s slurm  -n 4 18627542 13627516 58627597 48627666
-
-Version:
-  v0.2.0
+<pre><code>Usage:
+  jobby &lt;jobid1&gt; [jobid2 ...] [--tsv|--json|--yaml]
+  jobby &lt;jobid1&gt;,&lt;jobid2&gt; [--tsv|--json|--yaml]
+  jobby snakemake.log [--tsv|--json|--yaml]
+  jobby .nextflow.log [--tsv|--json|--yaml]
 </code></pre>
 </section>
 <section id="jobinfo" class="level3">
