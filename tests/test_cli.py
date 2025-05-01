@@ -79,7 +79,7 @@ def test_install():
     output = shell_run("ccbr_tools install champagne v0.3.0 --hpc biowulf", check=False)
     assert (
         output
-        == """. "/data/CCBR_Pipeliner/db/PipeDB/Conda/etc/profile.d/conda.sh" && conda activate py311
+        == """conda activate /data/CCBR_Pipeliner/db/PipeDB/Conda/envs/py311
 pip install git+https://github.com/CCBR/CHAMPAGNE.git@v0.3.0 -t /data/CCBR_Pipeliner/Pipelines/CHAMPAGNE/.v0.3.0
 chmod -R a+rX /data/CCBR_Pipeliner/Pipelines/CHAMPAGNE/.v0.3.0
 chown -R :CCBR_Pipeliner /data/CCBR_Pipeliner/Pipelines/CHAMPAGNE/.v0.3.0
