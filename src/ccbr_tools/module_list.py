@@ -64,11 +64,11 @@ Example:
 """
 
 
-
 import sys
 import re
 import subprocess
 import json
+
 
 def get_loaded_modules():
     try:
@@ -78,7 +78,7 @@ def get_loaded_modules():
             shell=True,
             stdout=subprocess.PIPE,
             stderr=subprocess.PIPE,
-            text=True
+            text=True,
         )
         # 'module list' outputs to stderr
         output = result.stderr
@@ -87,19 +87,21 @@ def get_loaded_modules():
         print(f"Error executing 'module list': {e}")
         return ""
 
+
 def parse_modules(output):
     modules = {}
     # Regular expression to match module entries like '1) module_name/version'
-    pattern = re.compile(r'\d+\)\s+([\w\-/\.]+)')
+    pattern = re.compile(r"\d+\)\s+([\w\-/\.]+)")
     matches = pattern.findall(output)
     for module_info in matches:
         # Split module name and version
-        if '/' in module_info:
-            name, version = module_info.rsplit('/', 1)
+        if "/" in module_info:
+            name, version = module_info.rsplit("/", 1)
         else:
             name, version = module_info, ""
         modules[name] = version
     return modules
+
 
 def print_help():
     help_message = """
@@ -110,6 +112,7 @@ Usage:
 """
     print(help_message.strip())
 
+
 def main():
     args = sys.argv[1:]
 
@@ -117,7 +120,9 @@ def main():
         # No arguments provided; print all loaded modules in JSON format
         output = get_loaded_modules()
         modules = parse_modules(output)
-        module_list = [{'name': name, 'version': version} for name, version in modules.items()]
+        module_list = [
+            {"name": name, "version": version} for name, version in modules.items()
+        ]
         print(json.dumps(module_list, indent=4))
     elif len(args) == 1:
         if args[0] in ("-h", "--help"):
@@ -138,6 +143,7 @@ def main():
         print("Error: Too many arguments provided.")
         print_help()
         sys.exit(1)
+
 
 if __name__ == "__main__":
     main()
