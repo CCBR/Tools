@@ -1,3 +1,7 @@
+## Tools development version
+
+- fix `ccbr_tools install`: use the full path to the conda env on biowulf. (#64, @kelly-sovacool)
+
 ## Tools 0.3.1
 
 - Bug fixes in `ccbr_tools install`:
