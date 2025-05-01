@@ -42,7 +42,7 @@ def test_install():
     )
     assert (
         result
-        == """. "/data/CCBR_Pipeliner/db/PipeDB/Conda/etc/profile.d/conda.sh" && conda activate py311
+        == """. "/data/CCBR_Pipeliner/db/PipeDB/Conda/etc/profile.d/conda.sh" && conda activate /data/CCBR_Pipeliner/db/PipeDB/Conda/envs/py311
 pip install git+https://github.com/CCBR/CHAMPAGNE.git@v0.3.0 -t /data/CCBR_Pipeliner/Pipelines/CHAMPAGNE/.v0.3.0
 chmod -R a+rX /data/CCBR_Pipeliner/Pipelines/CHAMPAGNE/.v0.3.0
 chown -R :CCBR_Pipeliner /data/CCBR_Pipeliner/Pipelines/CHAMPAGNE/.v0.3.0
@@ -63,7 +63,7 @@ def test_install_dev():
     )
     assert (
         result
-        == """. "/data/CCBR_Pipeliner/db/PipeDB/Conda/etc/profile.d/conda.sh" && conda activate py311
+        == """. "/data/CCBR_Pipeliner/db/PipeDB/Conda/etc/profile.d/conda.sh" && conda activate /data/CCBR_Pipeliner/db/PipeDB/Conda/envs/py311
 pip install git+https://github.com/CCBR/CHAMPAGNE.git@main -t /data/CCBR_Pipeliner/Pipelines/CHAMPAGNE/.v0.3.0-dev
 chmod -R a+rX /data/CCBR_Pipeliner/Pipelines/CHAMPAGNE/.v0.3.0-dev
 chown -R :CCBR_Pipeliner /data/CCBR_Pipeliner/Pipelines/CHAMPAGNE/.v0.3.0-dev

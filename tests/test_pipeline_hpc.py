@@ -14,7 +14,7 @@ def test_hpc_biowulf():
                 "<class 'ccbr_tools.pipeline.hpc.Biowulf'>({'name': 'biowulf'"
             ),
             hpc.CONDA_ACTIVATE
-            == '. "/data/CCBR_Pipeliner/db/PipeDB/Conda/etc/profile.d/conda.sh" && conda activate py311',
+            == '. "/data/CCBR_Pipeliner/db/PipeDB/Conda/etc/profile.d/conda.sh" && conda activate /data/CCBR_Pipeliner/db/PipeDB/Conda/envs/py311',
         ]
     )
 
