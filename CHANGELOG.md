@@ -1,19 +1,23 @@
 ## Tools development version
 
-- fixes in `ccbr_tools install`:
-  - use relative paths for symlinks within the same directory. (#58, @kelly-sovacool)
+### New features
+
+- `jobby` overhaul (#59, @kopardev)
+  - Uses `saccount` to get slurm job information, which should work for any HPC running slurm.
+  - Has options `--tsv`, `--json`, and `--yaml` to output the job information in those formats. If not specified, markdown is used.
+  - Can accept a snakemake log file, nextflow log file, or a list of slurm job IDs as input.
+- `module_list` is a new utility to list all loaded modules as JSON or retrieve the version of a specific module. (#63, @kopardev)
 - `ccbr_tools install` has new options: (#60, @kelly-sovacool)
   - `--type` to specify the type of tool to install (e.g. `PythonTool`, `BashTool`, `Snakemake`, or `Nextflow`).
   - `--hpc` (e.g. `biowulf`, `frce`) to specify the HPC environment for debugging purposes.
-- `jobby` overhaul (#59, @kopardev)
-  - uses `saccount` to get slurm job information, which should work for any HPC running slurm.
-  - has options `--tsv`, `--json`, and `--yaml` to output the job information in those formats.
-  - can accept a snakemake log file, nextflow log file, or a list of slurm job IDs as input.
-- new utility: `module_list` to list all loaded modules as JSON or retrieve the version of a specific module. (#63, @kopardev)
+
+### Bug fixes
+
+- Fix `ccbr_tools install`: use relative paths for symlinks within the same directory. (#58, @kelly-sovacool)
 
 ## Tools 0.3.2
 
-- fix `ccbr_tools install`: use the full path to the conda env on biowulf. (#64, @kelly-sovacool)
+- Fix `ccbr_tools install`: use the full path to the conda env on biowulf. (#64, @kelly-sovacool)
 
 ## Tools 0.3.1
 
