@@ -98,9 +98,9 @@ def test_jobby_no_list():
 
 @pytest.mark.skipif(HPC != "", reason="HPC is not empty")
 def test_jobby_no_args():
-    with pytest.raises(ValueError) as exc_info:
+    with pytest.warns(UserWarning) as exc_info:
         jobby([])
-    assert "No job IDs to process" in str(exc_info.value)
+    assert "No job IDs to process" in str(exc_info[0].message)
 
 
 @pytest.mark.skipif(HPC != "", reason="HPC is not empty")
@@ -112,9 +112,9 @@ def test_jobby_no_records():
 
 @pytest.mark.skipif(HPC != "biowulf", reason="only works on biowulf")
 def test_jobby_no_records_biowulf():
-    with pytest.raises(RuntimeError) as exc_info:
+    with pytest.warns(UserWarning) as exc_info:
         jobby(["invalid_job_id"])
-    assert "Failed to fetch info for JobID" in str(exc_info.value)
+    assert "Failed to fetch info for JobID" in str(exc_info[0].message)
 
 
 @pytest.mark.skipif(
