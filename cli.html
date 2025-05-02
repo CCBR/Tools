@@ -428,6 +428,7 @@ ul.task-list li input[type="checkbox"] {
   <li><a href="#intersect" id="toc-intersect" class="nav-link" data-scroll-target="#intersect">intersect</a></li>
   <li><a href="#jobby" id="toc-jobby" class="nav-link" data-scroll-target="#jobby">jobby</a></li>
   <li><a href="#jobinfo" id="toc-jobinfo" class="nav-link" data-scroll-target="#jobinfo">jobinfo</a></li>
+  <li><a href="#module_list" id="toc-module_list" class="nav-link" data-scroll-target="#module_list">module_list</a></li>
   <li><a href="#peek" id="toc-peek" class="nav-link" data-scroll-target="#peek">peek</a></li>
   </ul></li>
   </ul>
@@ -485,6 +486,7 @@ All installed tools:
   intersect
   jobby
   jobinfo
+  module_list
   peek
 </code></pre>
 <section id="send-email" class="level3">
@@ -677,6 +679,15 @@ options:
   -f, --failonly        output FAILED jobs only (onscreen). Path to the STDERR
                         files for failed jobs. All jobs are reported with -o
                         option.
+</code></pre>
+</section>
+<section id="module_list" class="level3">
+<h3 class="anchored" data-anchor-id="module_list">module_list</h3>
+<pre><code>
+Usage:
+  module_list           # List all loaded modules in JSON format
+  module_list &lt;module&gt;  # Get version of a specific loaded module
+  module_list -h | --help  # Show this help message
 </code></pre>
 </section>
 <section id="peek" class="level3">

@@ -7,7 +7,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 
-<title>gsea.multitext2excel – CCBR Tools</title>
+<title>module_list – CCBR Tools</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -20,6 +20,41 @@ ul.task-list li input[type="checkbox"] {
   margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
   vertical-align: middle;
 }
+/* CSS for syntax highlighting */
+html { -webkit-text-size-adjust: 100%; }
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+div.sourceCode { margin: 1em 0; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+  }
+pre.numberSource { margin-left: 3em;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
 </style>
 
 
@@ -30,8 +65,8 @@ ul.task-list li input[type="checkbox"] {
 <script src="../site_libs/quarto-search/fuse.min.js"></script>
 <script src="../site_libs/quarto-search/quarto-search.js"></script>
 <meta name="quarto:offset" content="../">
-<link href="../reference/GSEA.ncbr_huse.html" rel="next">
-<link href="../reference/GSEA.deg2gs.html" rel="prev">
+<link href="../reference/pkg_util.html" rel="next">
+<link href="../reference/jobby.html" rel="prev">
 <script src="../site_libs/quarto-html/quarto.js" type="module"></script>
 <script src="../site_libs/quarto-html/tabsets/tabsets.js" type="module"></script>
 <script src="../site_libs/quarto-html/popper.min.js"></script>
@@ -310,7 +345,7 @@ ul.task-list li input[type="checkbox"] {
       <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" role="button" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
         <i class="bi bi-layout-text-sidebar-reverse"></i>
       </button>
-        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../reference/GSEA.deg2gs.html">Legacy tools</a></li><li class="breadcrumb-item"><a href="../reference/GSEA.multitext2excel.html">GSEA.multitext2excel</a></li></ol></nav>
+        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../reference/github.html">Main modules</a></li><li class="breadcrumb-item"><a href="../reference/module_list.html">module_list</a></li></ol></nav>
         <a class="flex-grow-1" role="navigation" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
         </a>
     </div>
@@ -351,7 +386,7 @@ ul.task-list li input[type="checkbox"] {
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../reference/module_list.html" class="sidebar-item-text sidebar-link">
+  <a href="../reference/module_list.html" class="sidebar-item-text sidebar-link active">
  <span class="menu-text">module_list</span></a>
   </div>
 </li>
@@ -451,7 +486,7 @@ ul.task-list li input[type="checkbox"] {
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../reference/GSEA.multitext2excel.html" class="sidebar-item-text sidebar-link active">
+  <a href="../reference/GSEA.multitext2excel.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">GSEA.multitext2excel</span></a>
   </div>
 </li>
@@ -503,26 +538,106 @@ ul.task-list li input[type="checkbox"] {
     <h2 id="toc-title">On this page</h2>
    
   <ul>
-  <li><a href="#ccbr_tools.GSEA.multitext2excel" id="toc-ccbr_tools.GSEA.multitext2excel" class="nav-link active" data-scroll-target="#ccbr_tools.GSEA.multitext2excel">GSEA.multitext2excel</a></li>
+  <li><a href="#ccbr_tools.module_list" id="toc-ccbr_tools.module_list" class="nav-link active" data-scroll-target="#ccbr_tools.module_list">module_list</a>
+  <ul class="collapse">
+  <li><a href="#usage" id="toc-usage" class="nav-link" data-scroll-target="#usage">Usage</a></li>
+  <li><a href="#note" id="toc-note" class="nav-link" data-scroll-target="#note">Note</a></li>
+  <li><a href="#example" id="toc-example" class="nav-link" data-scroll-target="#example">Example</a></li>
+  <li><a href="#functions" id="toc-functions" class="nav-link" data-scroll-target="#functions">Functions</a>
+  <ul class="collapse">
+  <li><a href="#ccbr_tools.module_list.module_list" id="toc-ccbr_tools.module_list.module_list" class="nav-link" data-scroll-target="#ccbr_tools.module_list.module_list">module_list</a></li>
+  </ul></li>
+  </ul></li>
   </ul>
-<div class="toc-actions"><ul><li><a href="https://github.com/CCBR/Tools/edit/main/reference/GSEA.multitext2excel.qmd" class="toc-action"><i class="bi bi-github"></i>Edit this page</a></li><li><a href="https://github.com/CCBR/Tools/issues/new" class="toc-action"><i class="bi empty"></i>Report an issue</a></li></ul></div></nav>
+<div class="toc-actions"><ul><li><a href="https://github.com/CCBR/Tools/edit/main/reference/module_list.qmd" class="toc-action"><i class="bi bi-github"></i>Edit this page</a></li><li><a href="https://github.com/CCBR/Tools/issues/new" class="toc-action"><i class="bi empty"></i>Report an issue</a></li></ul></div></nav>
     </div>
 <!-- main -->
-<main class="content" id="quarto-document-content"><header id="title-block-header" class="quarto-title-block"><nav class="quarto-page-breadcrumbs quarto-title-breadcrumbs d-none d-lg-block" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../reference/GSEA.deg2gs.html">Legacy tools</a></li><li class="breadcrumb-item"><a href="../reference/GSEA.multitext2excel.html">GSEA.multitext2excel</a></li></ol></nav></header>
+<main class="content" id="quarto-document-content"><header id="title-block-header" class="quarto-title-block"><nav class="quarto-page-breadcrumbs quarto-title-breadcrumbs d-none d-lg-block" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../reference/github.html">Main modules</a></li><li class="breadcrumb-item"><a href="../reference/module_list.html">module_list</a></li></ol></nav></header>
 
 
 
 
 
-<section id="ccbr_tools.GSEA.multitext2excel" class="level1">
-<h1>GSEA.multitext2excel</h1>
-<p><code>GSEA.multitext2excel</code></p>
-<p>Reads a list of files to import as separate tabs in Excel</p>
-<p>Created on Mon Aug 6 14:59:13 2018</p>
-<p>Susan Huse NIAID Center for Biological Research Frederick National Laboratory for Cancer Research Leidos Biomedical</p>
-<p>v 1.0 - initial code version. v 1.1 - updated to include first splitter markowitzte@nih.gov</p>
+<section id="ccbr_tools.module_list" class="level1">
+<h1>module_list</h1>
+<p><code>module_list</code></p>
+<p>module_list</p>
+<p>A command-line utility to display information about currently loaded environment modules.</p>
+<p>This script interacts with the system’s module management system (e.g., Lmod or Environment Modules) to retrieve and display information about loaded modules. It supports two primary modes of operation:</p>
+<ol type="1">
+<li><p><strong>List All Loaded Modules</strong>: When executed without any arguments, the script lists all currently loaded modules, presenting each module’s name and version in a structured JSON format.</p></li>
+<li><p><strong>Check Specific Module</strong>: When provided with a single module name as an argument, the script checks whether that module is currently loaded:</p>
+<ul>
+<li>If the module is loaded, its version is printed.</li>
+<li>If the module is not loaded, the script outputs “not_loaded”.</li>
+</ul></li>
+</ol>
+<section id="usage" class="level2 doc-section doc-section-usage">
+<h2 class="doc-section doc-section-usage anchored" data-anchor-id="usage">Usage</h2>
+<p>module_list Lists all currently loaded modules in JSON format.</p>
+<p>module_list <module_name> Checks if <module_name> is loaded and prints its version or “not_loaded”.</module_name></module_name></p>
+<p>module_list -h | –help Displays this help message.</p>
+</section>
+<section id="note" class="level2 doc-section doc-section-note">
+<h2 class="doc-section doc-section-note anchored" data-anchor-id="note">Note</h2>
+<ul>
+<li>The script relies on the ‘module’ command-line utility to fetch information about loaded modules. Ensure that this utility is available in your system’s PATH.</li>
+<li>The ‘module list’ command typically outputs to stderr; this script captures that output to parse module information.</li>
+<li>The script is designed to work in environments where modules are managed using systems like Lmod or Environment Modules, commonly found in HPC environments.</li>
+</ul>
+</section>
+<section id="example" class="level2 doc-section doc-section-example">
+<h2 class="doc-section doc-section-example anchored" data-anchor-id="example">Example</h2>
+<p>$ module_list [ { “name”: “rclone”, “version”: “1.70.0-beta” }, { “name”: “ccbrpipeliner”, “version”: “7” }, { “name”: “snakemake”, “version”: “7.32.4” }, { “name”: “singularity”, “version”: “4.2.2” }]</p>
+<p>$ module_list snakemake 7.32.4</p>
+<p>$ module_list python not_loaded</p>
+</section>
+<section id="functions" class="level2">
+<h2 class="anchored" data-anchor-id="functions">Functions</h2>
+<table class="caption-top table">
+<thead>
+<tr class="header">
+<th>Name</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td><a href="#ccbr_tools.module_list.module_list">module_list</a></td>
+<td>Get the list of loaded modules or the version of a specific module.</td>
+</tr>
+</tbody>
+</table>
+<section id="ccbr_tools.module_list.module_list" class="level3">
+<h3 class="anchored" data-anchor-id="ccbr_tools.module_list.module_list">module_list</h3>
+<div class="sourceCode" id="cb1"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a>module_list.module_list(module<span class="op">=</span><span class="st">''</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p>Get the list of loaded modules or the version of a specific module.</p>
+<section id="parameters" class="level4 doc-section doc-section-parameters">
+<h4 class="doc-section doc-section-parameters anchored" data-anchor-id="parameters">Parameters</h4>
+<table class="caption-top table">
+<thead>
+<tr class="header">
+<th>Name</th>
+<th>Type</th>
+<th>Description</th>
+<th>Default</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>module</td>
+<td><a href="https://docs.python.org/3/library/stdtypes.html#str">str</a></td>
+<td>The name of the module to check. If empty, all loaded modules are listed.</td>
+<td><code>''</code></td>
+</tr>
+</tbody>
+</table>
+<p>Returns: output (str): JSON string of loaded modules or the version of the specified module.</p>
 
 
+</section>
+</section>
+</section>
 </section>
 
 </main> <!-- /main -->
@@ -940,13 +1055,13 @@ ul.task-list li input[type="checkbox"] {
   </script>
 <nav class="page-navigation">
   <div class="nav-page nav-page-previous">
-      <a href="../reference/GSEA.deg2gs.html" class="pagination-link" aria-label="GSEA.deg2gs">
-        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text">GSEA.deg2gs</span>
+      <a href="../reference/jobby.html" class="pagination-link" aria-label="jobby">
+        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text">jobby</span>
       </a>          
   </div>
   <div class="nav-page nav-page-next">
-      <a href="../reference/GSEA.ncbr_huse.html" class="pagination-link" aria-label="GSEA.ncbr_huse">
-        <span class="nav-page-text">GSEA.ncbr_huse</span> <i class="bi bi-arrow-right-short"></i>
+      <a href="../reference/pkg_util.html" class="pagination-link" aria-label="pkg_util">
+        <span class="nav-page-text">pkg_util</span> <i class="bi bi-arrow-right-short"></i>
       </a>
   </div>
 </nav>
@@ -958,7 +1073,7 @@ ul.task-list li input[type="checkbox"] {
 </div>   
     <div class="nav-footer-center">
       &nbsp;
-    <div class="toc-actions d-sm-block d-md-none"><ul><li><a href="https://github.com/CCBR/Tools/edit/main/reference/GSEA.multitext2excel.qmd" class="toc-action"><i class="bi bi-github"></i>Edit this page</a></li><li><a href="https://github.com/CCBR/Tools/issues/new" class="toc-action"><i class="bi empty"></i>Report an issue</a></li></ul></div></div>
+    <div class="toc-actions d-sm-block d-md-none"><ul><li><a href="https://github.com/CCBR/Tools/edit/main/reference/module_list.qmd" class="toc-action"><i class="bi bi-github"></i>Edit this page</a></li><li><a href="https://github.com/CCBR/Tools/issues/new" class="toc-action"><i class="bi empty"></i>Report an issue</a></li></ul></div></div>
     <div class="nav-footer-right">
       &nbsp;
     </div>

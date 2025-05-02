@@ -77,7 +77,7 @@
     "href": "cli.html",
     "title": "Command line interface",
     "section": "",
-    "text": "Usage: ccbr_tools [OPTIONS] COMMAND [ARGS]...\n\n  Utilities for CCBR Bioinformatics Software\n\n  For more options, run: ccbr_tools [command] --help\n\n  https://ccbr.github.io/Tools/\n\nOptions:\n  -v, --version  Show the version and exit.\n  -h, --help     Show this message and exit.\n\nCommands:\n  send-email  Send an email (works on biowulf)\n  quarto-add  Add a quarto extension\n  install     Install a specific version of a CCBR software package,...\n  cite        Print the citation in the desired format\n  version     Print the version of ccbr_tools\n\nAll installed tools:\n  ccbr_tools\n  gb2gtf\n  hf\n  intersect\n  jobby\n  jobinfo\n  peek\n\n\n\nUsage: ccbr_tools send-email [OPTIONS] [TO_ADDRESS] [TEXT]\n\n  Send an email (works on biowulf)\n\n  Arguments:\n      to_address    The email address of the recipient\n      text          The plain text content of the email\n\nOptions:\n  -s, --subject TEXT      The subject line of the email\n  -a, --attach-html PATH  The file path to the HTML attachment\n  -r, --from-addr TEXT    The email address of the sender\n  -d, --debug             Return the Email Message object without sending the\n                          email\n  -h, --help              Show this message and exit.\n\n\n\n\nUsage: ccbr_tools quarto-add [OPTIONS] EXT_NAME\n\n  Add a quarto extension\n\n  Arguments:\n      ext_name    The name of the extension in ccbr_tools\n\n  Examples:\n      ccbr_tools quarto-add fnl\n\nOptions:\n  -h, --help  Show this message and exit.\n\n  Available extensions: fnl\n\n\n\n\nUsage: ccbr_tools install [OPTIONS] TOOL_NAME VERSION_TAG\n\n  Install a specific version of a CCBR software package, tool, or pipeline on\n  a supported HPC.\n\n  Args:\n      tool_name (str): The name of the software package to install.\n      version_tag (str): The version tag to install.\n\nOptions:\n  --run          Execute the install script; otherwise, just print it. It is a\n                 good idea to dry-run this script first to ensure the commands\n                 are correct, then run again with --run.\n  --branch TEXT  Branch or tag to install from GitHub. Use this option if the\n                 version is not a tag, e.g. for testing development versions.\n  --type TEXT    Type of software to install. Must be a class in\n                 `ccbr_tools.software`. If not specified, the type will be\n                 determined automatically (i.e. for CCBR software).\n  --hpc TEXT     HPC to install on. If not specified, the HPC will be detected\n                 automatically.\n  -h, --help     Show this message and exit.\n\n\n\n\nUsage: ccbr_tools cite [OPTIONS] CITATION_FILE\n\n  Print the citation in the desired format\n\n  citation_file : Path to a file in Citation File Format (CFF) [default: the\n  CFF for ccbr_tools]\n\nOptions:\n  -f, --output-format [apalike|bibtex|cff|codemeta|endnote|ris|schema.org|zenodo]\n                                  Output format for the citation\n  -h, --help                      Show this message and exit.\n\n\n\n\nUsage: ccbr_tools version [OPTIONS]\n\n  Print the version of ccbr_tools\n\nOptions:\n  -d, --debug  Print the path to the VERSION file\n  -h, --help   Show this message and exit.",
+    "text": "Usage: ccbr_tools [OPTIONS] COMMAND [ARGS]...\n\n  Utilities for CCBR Bioinformatics Software\n\n  For more options, run: ccbr_tools [command] --help\n\n  https://ccbr.github.io/Tools/\n\nOptions:\n  -v, --version  Show the version and exit.\n  -h, --help     Show this message and exit.\n\nCommands:\n  send-email  Send an email (works on biowulf)\n  quarto-add  Add a quarto extension\n  install     Install a specific version of a CCBR software package,...\n  cite        Print the citation in the desired format\n  version     Print the version of ccbr_tools\n\nAll installed tools:\n  ccbr_tools\n  gb2gtf\n  hf\n  intersect\n  jobby\n  jobinfo\n  module_list\n  peek\n\n\n\nUsage: ccbr_tools send-email [OPTIONS] [TO_ADDRESS] [TEXT]\n\n  Send an email (works on biowulf)\n\n  Arguments:\n      to_address    The email address of the recipient\n      text          The plain text content of the email\n\nOptions:\n  -s, --subject TEXT      The subject line of the email\n  -a, --attach-html PATH  The file path to the HTML attachment\n  -r, --from-addr TEXT    The email address of the sender\n  -d, --debug             Return the Email Message object without sending the\n                          email\n  -h, --help              Show this message and exit.\n\n\n\n\nUsage: ccbr_tools quarto-add [OPTIONS] EXT_NAME\n\n  Add a quarto extension\n\n  Arguments:\n      ext_name    The name of the extension in ccbr_tools\n\n  Examples:\n      ccbr_tools quarto-add fnl\n\nOptions:\n  -h, --help  Show this message and exit.\n\n  Available extensions: fnl\n\n\n\n\nUsage: ccbr_tools install [OPTIONS] TOOL_NAME VERSION_TAG\n\n  Install a specific version of a CCBR software package, tool, or pipeline on\n  a supported HPC.\n\n  Args:\n      tool_name (str): The name of the software package to install.\n      version_tag (str): The version tag to install.\n\nOptions:\n  --run          Execute the install script; otherwise, just print it. It is a\n                 good idea to dry-run this script first to ensure the commands\n                 are correct, then run again with --run.\n  --branch TEXT  Branch or tag to install from GitHub. Use this option if the\n                 version is not a tag, e.g. for testing development versions.\n  --type TEXT    Type of software to install. Must be a class in\n                 `ccbr_tools.software`. If not specified, the type will be\n                 determined automatically (i.e. for CCBR software).\n  --hpc TEXT     HPC to install on. If not specified, the HPC will be detected\n                 automatically.\n  -h, --help     Show this message and exit.\n\n\n\n\nUsage: ccbr_tools cite [OPTIONS] CITATION_FILE\n\n  Print the citation in the desired format\n\n  citation_file : Path to a file in Citation File Format (CFF) [default: the\n  CFF for ccbr_tools]\n\nOptions:\n  -f, --output-format [apalike|bibtex|cff|codemeta|endnote|ris|schema.org|zenodo]\n                                  Output format for the citation\n  -h, --help                      Show this message and exit.\n\n\n\n\nUsage: ccbr_tools version [OPTIONS]\n\n  Print the version of ccbr_tools\n\nOptions:\n  -d, --debug  Print the path to the VERSION file\n  -h, --help   Show this message and exit.",
     "crumbs": [
       "Usage",
       "Command line interface"
@@ -88,7 +88,7 @@
     "href": "cli.html#main-cli",
     "title": "Command line interface",
     "section": "",
-    "text": "Usage: ccbr_tools [OPTIONS] COMMAND [ARGS]...\n\n  Utilities for CCBR Bioinformatics Software\n\n  For more options, run: ccbr_tools [command] --help\n\n  https://ccbr.github.io/Tools/\n\nOptions:\n  -v, --version  Show the version and exit.\n  -h, --help     Show this message and exit.\n\nCommands:\n  send-email  Send an email (works on biowulf)\n  quarto-add  Add a quarto extension\n  install     Install a specific version of a CCBR software package,...\n  cite        Print the citation in the desired format\n  version     Print the version of ccbr_tools\n\nAll installed tools:\n  ccbr_tools\n  gb2gtf\n  hf\n  intersect\n  jobby\n  jobinfo\n  peek\n\n\n\nUsage: ccbr_tools send-email [OPTIONS] [TO_ADDRESS] [TEXT]\n\n  Send an email (works on biowulf)\n\n  Arguments:\n      to_address    The email address of the recipient\n      text          The plain text content of the email\n\nOptions:\n  -s, --subject TEXT      The subject line of the email\n  -a, --attach-html PATH  The file path to the HTML attachment\n  -r, --from-addr TEXT    The email address of the sender\n  -d, --debug             Return the Email Message object without sending the\n                          email\n  -h, --help              Show this message and exit.\n\n\n\n\nUsage: ccbr_tools quarto-add [OPTIONS] EXT_NAME\n\n  Add a quarto extension\n\n  Arguments:\n      ext_name    The name of the extension in ccbr_tools\n\n  Examples:\n      ccbr_tools quarto-add fnl\n\nOptions:\n  -h, --help  Show this message and exit.\n\n  Available extensions: fnl\n\n\n\n\nUsage: ccbr_tools install [OPTIONS] TOOL_NAME VERSION_TAG\n\n  Install a specific version of a CCBR software package, tool, or pipeline on\n  a supported HPC.\n\n  Args:\n      tool_name (str): The name of the software package to install.\n      version_tag (str): The version tag to install.\n\nOptions:\n  --run          Execute the install script; otherwise, just print it. It is a\n                 good idea to dry-run this script first to ensure the commands\n                 are correct, then run again with --run.\n  --branch TEXT  Branch or tag to install from GitHub. Use this option if the\n                 version is not a tag, e.g. for testing development versions.\n  --type TEXT    Type of software to install. Must be a class in\n                 `ccbr_tools.software`. If not specified, the type will be\n                 determined automatically (i.e. for CCBR software).\n  --hpc TEXT     HPC to install on. If not specified, the HPC will be detected\n                 automatically.\n  -h, --help     Show this message and exit.\n\n\n\n\nUsage: ccbr_tools cite [OPTIONS] CITATION_FILE\n\n  Print the citation in the desired format\n\n  citation_file : Path to a file in Citation File Format (CFF) [default: the\n  CFF for ccbr_tools]\n\nOptions:\n  -f, --output-format [apalike|bibtex|cff|codemeta|endnote|ris|schema.org|zenodo]\n                                  Output format for the citation\n  -h, --help                      Show this message and exit.\n\n\n\n\nUsage: ccbr_tools version [OPTIONS]\n\n  Print the version of ccbr_tools\n\nOptions:\n  -d, --debug  Print the path to the VERSION file\n  -h, --help   Show this message and exit.",
+    "text": "Usage: ccbr_tools [OPTIONS] COMMAND [ARGS]...\n\n  Utilities for CCBR Bioinformatics Software\n\n  For more options, run: ccbr_tools [command] --help\n\n  https://ccbr.github.io/Tools/\n\nOptions:\n  -v, --version  Show the version and exit.\n  -h, --help     Show this message and exit.\n\nCommands:\n  send-email  Send an email (works on biowulf)\n  quarto-add  Add a quarto extension\n  install     Install a specific version of a CCBR software package,...\n  cite        Print the citation in the desired format\n  version     Print the version of ccbr_tools\n\nAll installed tools:\n  ccbr_tools\n  gb2gtf\n  hf\n  intersect\n  jobby\n  jobinfo\n  module_list\n  peek\n\n\n\nUsage: ccbr_tools send-email [OPTIONS] [TO_ADDRESS] [TEXT]\n\n  Send an email (works on biowulf)\n\n  Arguments:\n      to_address    The email address of the recipient\n      text          The plain text content of the email\n\nOptions:\n  -s, --subject TEXT      The subject line of the email\n  -a, --attach-html PATH  The file path to the HTML attachment\n  -r, --from-addr TEXT    The email address of the sender\n  -d, --debug             Return the Email Message object without sending the\n                          email\n  -h, --help              Show this message and exit.\n\n\n\n\nUsage: ccbr_tools quarto-add [OPTIONS] EXT_NAME\n\n  Add a quarto extension\n\n  Arguments:\n      ext_name    The name of the extension in ccbr_tools\n\n  Examples:\n      ccbr_tools quarto-add fnl\n\nOptions:\n  -h, --help  Show this message and exit.\n\n  Available extensions: fnl\n\n\n\n\nUsage: ccbr_tools install [OPTIONS] TOOL_NAME VERSION_TAG\n\n  Install a specific version of a CCBR software package, tool, or pipeline on\n  a supported HPC.\n\n  Args:\n      tool_name (str): The name of the software package to install.\n      version_tag (str): The version tag to install.\n\nOptions:\n  --run          Execute the install script; otherwise, just print it. It is a\n                 good idea to dry-run this script first to ensure the commands\n                 are correct, then run again with --run.\n  --branch TEXT  Branch or tag to install from GitHub. Use this option if the\n                 version is not a tag, e.g. for testing development versions.\n  --type TEXT    Type of software to install. Must be a class in\n                 `ccbr_tools.software`. If not specified, the type will be\n                 determined automatically (i.e. for CCBR software).\n  --hpc TEXT     HPC to install on. If not specified, the HPC will be detected\n                 automatically.\n  -h, --help     Show this message and exit.\n\n\n\n\nUsage: ccbr_tools cite [OPTIONS] CITATION_FILE\n\n  Print the citation in the desired format\n\n  citation_file : Path to a file in Citation File Format (CFF) [default: the\n  CFF for ccbr_tools]\n\nOptions:\n  -f, --output-format [apalike|bibtex|cff|codemeta|endnote|ris|schema.org|zenodo]\n                                  Output format for the citation\n  -h, --help                      Show this message and exit.\n\n\n\n\nUsage: ccbr_tools version [OPTIONS]\n\n  Print the version of ccbr_tools\n\nOptions:\n  -d, --debug  Print the path to the VERSION file\n  -h, --help   Show this message and exit.",
     "crumbs": [
       "Usage",
       "Command line interface"
@@ -99,7 +99,7 @@
     "href": "cli.html#additional-utilities",
     "title": "Command line interface",
     "section": "Additional utilities",
-    "text": "Additional utilities\n\ngb2gtf\nConvert GenBank files to GTF format.\n\nUsage: gb2gtf sequence.gb &gt; sequence.gtf\n\n\n\n\nhf\n\nFinds homologs in human and mouse.\n\nAbout:\n    hf or HomologFinder finds homologs in human and mouse.\n    if the input gene or genelist is human, then it returns mouse homolog(s) and vice versa\n\nUsage:\n    $ hf -h\n\nExamples:\n    $ hf -g ZNF365\n\n    $ hf -l Wdr53,Zfp365\n\n    $ hf -f genelist.txt\n\n\nusage: hf [-h] [-v] [-g GENE] [-l GENELIST] [-f GENELISTFILE]\n\nGet Human2Mouse (or Mouse2Human) homolog gene or genelist\n\noptions:\n  -h, --help            show this help message and exit\n  -v, --version         show program's version number and exit\n  -g GENE, --gene GENE  single gene name\n  -l GENELIST, --genelist GENELIST\n                        comma separated gene list\n  -f GENELISTFILE, --genelistfile GENELISTFILE\n                        genelist in file (one gene per line)\n\n\n\nintersect\nUSAGE:\nintersect filename1 filename2 f1ColumnIndex F2ColumnIndex\n    --Ex. intersect file1 file2 0 0\n\n\n\njobby\nUsage:\n  jobby &lt;jobid1&gt; [jobid2 ...] [--tsv|--json|--yaml]\n  jobby &lt;jobid1&gt;,&lt;jobid2&gt; [--tsv|--json|--yaml]\n  jobby snakemake.log [--tsv|--json|--yaml]\n  jobby .nextflow.log [--tsv|--json|--yaml]\n\n\n\njobinfo\n\nGet HPC usage metadata for a list of slurm jobids on biowulf\n\nAbout:\n    This wrapper script works only on BIOWULF!\n    This script usage the \"dashboard_cli\" utility on biowulf to get HPC usage metadata\n    for a list of slurm jobids. These slurm jobids can be either provided at command\n    line or extracted from a snakemake.log file. Using snakemake.log file option together\n    with --failonly option lists path to the STDERR files for failed jobs. This can be\n    very useful to debug failed Snakemake workflows.\n\nUSAGE:\n    $ jobinfo -h\n\nExample:\n    $ jobinfo -j 123456,7891011\n    $ jobinfo -s /path/to/snakemake.log\n    $ jobinfo -j 123456,7891011 -o /path/to/report.tsv\n    $ jobinfo -s /path/to/snakemake.log --failonly\n\nusage: jobinfo [-h] [-v] [-j JOBLIST] [-s SNAKEMAKELOG] [-o OUTPUT] [-f]\n\nGet slurm job information using slurm job id or snakemake.log file\n\noptions:\n  -h, --help            show this help message and exit\n  -v, --version         show program's version number and exit\n  -j JOBLIST, --joblist JOBLIST\n                        comma separated list of jobids. Cannot be used\n                        together with -s option.\n  -s SNAKEMAKELOG, --snakemakelog SNAKEMAKELOG\n                        snakemake.log file. Slurm jobids are extracted from\n                        here. Cannot be used together with -j option.\n  -o OUTPUT, --output OUTPUT\n                        Path to output file. All jobs (all states) and all\n                        columns are reported in output file.\n  -f, --failonly        output FAILED jobs only (onscreen). Path to the STDERR\n                        files for failed jobs. All jobs are reported with -o\n                        option.\n\n\n\npeek\nUSAGE: peek &lt;file.tsv&gt; [buffer]\n\nAssumptions:\n    Input file is tab delimited\n     └── Globbing supported: *.txt\n\nOptional:\n    buffer = 40 (default)\n     └── Changing buffer will increase/decrease output justification",
+    "text": "Additional utilities\n\ngb2gtf\nConvert GenBank files to GTF format.\n\nUsage: gb2gtf sequence.gb &gt; sequence.gtf\n\n\n\n\nhf\n\nFinds homologs in human and mouse.\n\nAbout:\n    hf or HomologFinder finds homologs in human and mouse.\n    if the input gene or genelist is human, then it returns mouse homolog(s) and vice versa\n\nUsage:\n    $ hf -h\n\nExamples:\n    $ hf -g ZNF365\n\n    $ hf -l Wdr53,Zfp365\n\n    $ hf -f genelist.txt\n\n\nusage: hf [-h] [-v] [-g GENE] [-l GENELIST] [-f GENELISTFILE]\n\nGet Human2Mouse (or Mouse2Human) homolog gene or genelist\n\noptions:\n  -h, --help            show this help message and exit\n  -v, --version         show program's version number and exit\n  -g GENE, --gene GENE  single gene name\n  -l GENELIST, --genelist GENELIST\n                        comma separated gene list\n  -f GENELISTFILE, --genelistfile GENELISTFILE\n                        genelist in file (one gene per line)\n\n\n\nintersect\nUSAGE:\nintersect filename1 filename2 f1ColumnIndex F2ColumnIndex\n    --Ex. intersect file1 file2 0 0\n\n\n\njobby\nUsage:\n  jobby &lt;jobid1&gt; [jobid2 ...] [--tsv|--json|--yaml]\n  jobby &lt;jobid1&gt;,&lt;jobid2&gt; [--tsv|--json|--yaml]\n  jobby snakemake.log [--tsv|--json|--yaml]\n  jobby .nextflow.log [--tsv|--json|--yaml]\n\n\n\njobinfo\n\nGet HPC usage metadata for a list of slurm jobids on biowulf\n\nAbout:\n    This wrapper script works only on BIOWULF!\n    This script usage the \"dashboard_cli\" utility on biowulf to get HPC usage metadata\n    for a list of slurm jobids. These slurm jobids can be either provided at command\n    line or extracted from a snakemake.log file. Using snakemake.log file option together\n    with --failonly option lists path to the STDERR files for failed jobs. This can be\n    very useful to debug failed Snakemake workflows.\n\nUSAGE:\n    $ jobinfo -h\n\nExample:\n    $ jobinfo -j 123456,7891011\n    $ jobinfo -s /path/to/snakemake.log\n    $ jobinfo -j 123456,7891011 -o /path/to/report.tsv\n    $ jobinfo -s /path/to/snakemake.log --failonly\n\nusage: jobinfo [-h] [-v] [-j JOBLIST] [-s SNAKEMAKELOG] [-o OUTPUT] [-f]\n\nGet slurm job information using slurm job id or snakemake.log file\n\noptions:\n  -h, --help            show this help message and exit\n  -v, --version         show program's version number and exit\n  -j JOBLIST, --joblist JOBLIST\n                        comma separated list of jobids. Cannot be used\n                        together with -s option.\n  -s SNAKEMAKELOG, --snakemakelog SNAKEMAKELOG\n                        snakemake.log file. Slurm jobids are extracted from\n                        here. Cannot be used together with -j option.\n  -o OUTPUT, --output OUTPUT\n                        Path to output file. All jobs (all states) and all\n                        columns are reported in output file.\n  -f, --failonly        output FAILED jobs only (onscreen). Path to the STDERR\n                        files for failed jobs. All jobs are reported with -o\n                        option.\n\n\n\nmodule_list\n\nUsage:\n  module_list           # List all loaded modules in JSON format\n  module_list &lt;module&gt;  # Get version of a specific loaded module\n  module_list -h | --help  # Show this help message\n\n\n\npeek\nUSAGE: peek &lt;file.tsv&gt; [buffer]\n\nAssumptions:\n    Input file is tab delimited\n     └── Globbing supported: *.txt\n\nOptional:\n    buffer = 40 (default)\n     └── Changing buffer will increase/decrease output justification",
     "crumbs": [
       "Usage",
       "Command line interface"
@@ -183,25 +183,472 @@
     ]
   },
   {
-    "objectID": "reference/software.html",
-    "href": "reference/software.html",
-    "title": "software",
+    "objectID": "reference/module_list.html",
+    "href": "reference/module_list.html",
+    "title": "module_list",
     "section": "",
-    "text": "software\nsoftware",
+    "text": "module_list\nmodule_list\nA command-line utility to display information about currently loaded environment modules.\nThis script interacts with the system’s module management system (e.g., Lmod or Environment Modules) to retrieve and display information about loaded modules. It supports two primary modes of operation:\n\nList All Loaded Modules: When executed without any arguments, the script lists all currently loaded modules, presenting each module’s name and version in a structured JSON format.\nCheck Specific Module: When provided with a single module name as an argument, the script checks whether that module is currently loaded:\n\nIf the module is loaded, its version is printed.\nIf the module is not loaded, the script outputs “not_loaded”.\n\n\n\n\nmodule_list Lists all currently loaded modules in JSON format.\nmodule_list  Checks if  is loaded and prints its version or “not_loaded”.\nmodule_list -h | –help Displays this help message.\n\n\n\n\nThe script relies on the ‘module’ command-line utility to fetch information about loaded modules. Ensure that this utility is available in your system’s PATH.\nThe ‘module list’ command typically outputs to stderr; this script captures that output to parse module information.\nThe script is designed to work in environments where modules are managed using systems like Lmod or Environment Modules, commonly found in HPC environments.\n\n\n\n\n$ module_list [ { “name”: “rclone”, “version”: “1.70.0-beta” }, { “name”: “ccbrpipeliner”, “version”: “7” }, { “name”: “snakemake”, “version”: “7.32.4” }, { “name”: “singularity”, “version”: “4.2.2” }]\n$ module_list snakemake 7.32.4\n$ module_list python not_loaded\n\n\n\n\n\n\nName\nDescription\n\n\n\n\nmodule_list\nGet the list of loaded modules or the version of a specific module.\n\n\n\n\n\nmodule_list.module_list(module='')\nGet the list of loaded modules or the version of a specific module.\n\n\n\n\n\nName\nType\nDescription\nDefault\n\n\n\n\nmodule\nstr\nThe name of the module to check. If empty, all loaded modules are listed.\n''\n\n\n\nReturns: output (str): JSON string of loaded modules or the version of the specified module.",
     "crumbs": [
       "Main modules",
-      "software"
+      "module_list"
     ]
   },
   {
-    "objectID": "reference/GSEA.multitext2excel.html",
-    "href": "reference/GSEA.multitext2excel.html",
-    "title": "GSEA.multitext2excel",
+    "objectID": "reference/module_list.html#usage",
+    "href": "reference/module_list.html#usage",
+    "title": "module_list",
     "section": "",
-    "text": "GSEA.multitext2excel\nGSEA.multitext2excel\nReads a list of files to import as separate tabs in Excel\nCreated on Mon Aug 6 14:59:13 2018\nSusan Huse NIAID Center for Biological Research Frederick National Laboratory for Cancer Research Leidos Biomedical\nv 1.0 - initial code version. v 1.1 - updated to include first splitter markowitzte@nih.gov",
+    "text": "module_list Lists all currently loaded modules in JSON format.\nmodule_list  Checks if  is loaded and prints its version or “not_loaded”.\nmodule_list -h | –help Displays this help message.",
+    "crumbs": [
+      "Main modules",
+      "module_list"
+    ]
+  },
+  {
+    "objectID": "reference/module_list.html#note",
+    "href": "reference/module_list.html#note",
+    "title": "module_list",
+    "section": "",
+    "text": "The script relies on the ‘module’ command-line utility to fetch information about loaded modules. Ensure that this utility is available in your system’s PATH.\nThe ‘module list’ command typically outputs to stderr; this script captures that output to parse module information.\nThe script is designed to work in environments where modules are managed using systems like Lmod or Environment Modules, commonly found in HPC environments.",
+    "crumbs": [
+      "Main modules",
+      "module_list"
+    ]
+  },
+  {
+    "objectID": "reference/module_list.html#example",
+    "href": "reference/module_list.html#example",
+    "title": "module_list",
+    "section": "",
+    "text": "$ module_list [ { “name”: “rclone”, “version”: “1.70.0-beta” }, { “name”: “ccbrpipeliner”, “version”: “7” }, { “name”: “snakemake”, “version”: “7.32.4” }, { “name”: “singularity”, “version”: “4.2.2” }]\n$ module_list snakemake 7.32.4\n$ module_list python not_loaded",
+    "crumbs": [
+      "Main modules",
+      "module_list"
+    ]
+  },
+  {
+    "objectID": "reference/module_list.html#functions",
+    "href": "reference/module_list.html#functions",
+    "title": "module_list",
+    "section": "",
+    "text": "Name\nDescription\n\n\n\n\nmodule_list\nGet the list of loaded modules or the version of a specific module.\n\n\n\n\n\nmodule_list.module_list(module='')\nGet the list of loaded modules or the version of a specific module.\n\n\n\n\n\nName\nType\nDescription\nDefault\n\n\n\n\nmodule\nstr\nThe name of the module to check. If empty, all loaded modules are listed.\n''\n\n\n\nReturns: output (str): JSON string of loaded modules or the version of the specified module.",
+    "crumbs": [
+      "Main modules",
+      "module_list"
+    ]
+  },
+  {
+    "objectID": "reference/peek.html",
+    "href": "reference/peek.html",
+    "title": "peek",
+    "section": "",
+    "text": "peek\nTake a peek at tab-delimited files\n\n\npeek &lt;file.tsv&gt; [buffer]\n\n\n\n\n\n\nName\nDescription\n\n\n\n\njustify\nCalculates the spacing for justifying to the right\n\n\nmax_string\nGiven a list of strings, finds the maximum strign length\n\n\npargs\nBasic command-line parser\n\n\npprint\nRe-formats first two lines on file so columns are left justified and values are right justified\n\n\nprint_header\nPrint filenames and divider\n\n\nusage\nPrint usage information and exit program\n\n\n\n\n\npeek.justify(h, d, n, nr)\nCalculates the spacing for justifying to the right\n\n\n\npeek.max_string(data)\nGiven a list of strings, finds the maximum strign length\n\n\n\npeek.pargs()\nBasic command-line parser\n\n\n\npeek.pprint(headlist, data, linelength, fn)\nRe-formats first two lines on file so columns are left justified and values are right justified\n\n\n\npeek.print_header(filename, length)\nPrint filenames and divider\n\n\n\npeek.usage()\nPrint usage information and exit program",
     "crumbs": [
       "Legacy tools",
-      "GSEA.multitext2excel"
+      "peek"
+    ]
+  },
+  {
+    "objectID": "reference/peek.html#usage",
+    "href": "reference/peek.html#usage",
+    "title": "peek",
+    "section": "",
+    "text": "peek &lt;file.tsv&gt; [buffer]",
+    "crumbs": [
+      "Legacy tools",
+      "peek"
+    ]
+  },
+  {
+    "objectID": "reference/peek.html#functions",
+    "href": "reference/peek.html#functions",
+    "title": "peek",
+    "section": "",
+    "text": "Name\nDescription\n\n\n\n\njustify\nCalculates the spacing for justifying to the right\n\n\nmax_string\nGiven a list of strings, finds the maximum strign length\n\n\npargs\nBasic command-line parser\n\n\npprint\nRe-formats first two lines on file so columns are left justified and values are right justified\n\n\nprint_header\nPrint filenames and divider\n\n\nusage\nPrint usage information and exit program\n\n\n\n\n\npeek.justify(h, d, n, nr)\nCalculates the spacing for justifying to the right\n\n\n\npeek.max_string(data)\nGiven a list of strings, finds the maximum strign length\n\n\n\npeek.pargs()\nBasic command-line parser\n\n\n\npeek.pprint(headlist, data, linelength, fn)\nRe-formats first two lines on file so columns are left justified and values are right justified\n\n\n\npeek.print_header(filename, length)\nPrint filenames and divider\n\n\n\npeek.usage()\nPrint usage information and exit program",
+    "crumbs": [
+      "Legacy tools",
+      "peek"
+    ]
+  },
+  {
+    "objectID": "reference/GSEA.ncbr_huse.html",
+    "href": "reference/GSEA.ncbr_huse.html",
+    "title": "GSEA.ncbr_huse",
+    "section": "",
+    "text": "GSEA.ncbr_huse\nGSEA.ncbr_huse\nSet of functions supporting the FNL NCBR work\nAuthor: Susan Huse\nCreated on Mon Aug 6 11:07:30 2018",
+    "crumbs": [
+      "Legacy tools",
+      "GSEA.ncbr_huse"
+    ]
+  },
+  {
+    "objectID": "reference/index.html",
+    "href": "reference/index.html",
+    "title": "API Reference",
+    "section": "",
+    "text": "github\nGitHub helper functions\n\n\njobby\nDisplay job information for past SLURM job IDs.\n\n\nmodule_list\nmodule_list\n\n\npkg_util\nMiscellaneous utility functions for the package\n\n\npipeline\nHelpers for bioinformatics pipelines\n\n\nsend_email\nSend an email with an attachment\n\n\nshell\nUtility functions for shell command execution.\n\n\nsoftware\n\n\n\ntemplates\nTemplate files for CCBR Tools.\n\n\nversions\nGet information from git tags, commit hashes, and GitHub releases.\n\n\n\n\n\n\n\n\n\npipeline.cache\nFunctions for singularity cache management\n\n\npipeline.hpc\nClasses for working with different HPC clusters.\n\n\npipeline.nextflow\nRun Nextflow workflows in local and HPC environments.\n\n\npipeline.util\nPipeline utility functions\n\n\n\n\n\n\n\n\n\nGSEA.deg2gs\nReads a rnaseq pipeliner *_DEG_all_genes.txt file and outputs a prioritized list of Ensembl gene IDs for ToppFun\n\n\nGSEA.multitext2excel\nReads a list of files to import as separate tabs in Excel\n\n\nGSEA.ncbr_huse\nSet of functions supporting the FNL NCBR work\n\n\ngb2gtf\nModule for converting GenBank files to GTF format.\n\n\nhomologfinder.hf\nFinds homologs in human and mouse.\n\n\nintersect\nFind the intersect of two files, returns the inner join\n\n\njobinfo\nGet HPC usage metadata for a list of slurm jobids on biowulf\n\n\npeek\nTake a peek at tab-delimited files",
+    "crumbs": [
+      "Usage",
+      "Python API reference"
+    ]
+  },
+  {
+    "objectID": "reference/index.html#main-modules",
+    "href": "reference/index.html#main-modules",
+    "title": "API Reference",
+    "section": "",
+    "text": "github\nGitHub helper functions\n\n\njobby\nDisplay job information for past SLURM job IDs.\n\n\nmodule_list\nmodule_list\n\n\npkg_util\nMiscellaneous utility functions for the package\n\n\npipeline\nHelpers for bioinformatics pipelines\n\n\nsend_email\nSend an email with an attachment\n\n\nshell\nUtility functions for shell command execution.\n\n\nsoftware\n\n\n\ntemplates\nTemplate files for CCBR Tools.\n\n\nversions\nGet information from git tags, commit hashes, and GitHub releases.",
+    "crumbs": [
+      "Usage",
+      "Python API reference"
+    ]
+  },
+  {
+    "objectID": "reference/index.html#pipeline-utilities",
+    "href": "reference/index.html#pipeline-utilities",
+    "title": "API Reference",
+    "section": "",
+    "text": "pipeline.cache\nFunctions for singularity cache management\n\n\npipeline.hpc\nClasses for working with different HPC clusters.\n\n\npipeline.nextflow\nRun Nextflow workflows in local and HPC environments.\n\n\npipeline.util\nPipeline utility functions",
+    "crumbs": [
+      "Usage",
+      "Python API reference"
+    ]
+  },
+  {
+    "objectID": "reference/index.html#legacy-tools",
+    "href": "reference/index.html#legacy-tools",
+    "title": "API Reference",
+    "section": "",
+    "text": "GSEA.deg2gs\nReads a rnaseq pipeliner *_DEG_all_genes.txt file and outputs a prioritized list of Ensembl gene IDs for ToppFun\n\n\nGSEA.multitext2excel\nReads a list of files to import as separate tabs in Excel\n\n\nGSEA.ncbr_huse\nSet of functions supporting the FNL NCBR work\n\n\ngb2gtf\nModule for converting GenBank files to GTF format.\n\n\nhomologfinder.hf\nFinds homologs in human and mouse.\n\n\nintersect\nFind the intersect of two files, returns the inner join\n\n\njobinfo\nGet HPC usage metadata for a list of slurm jobids on biowulf\n\n\npeek\nTake a peek at tab-delimited files",
+    "crumbs": [
+      "Usage",
+      "Python API reference"
+    ]
+  },
+  {
+    "objectID": "reference/pipeline.cache.html",
+    "href": "reference/pipeline.cache.html",
+    "title": "pipeline.cache",
+    "section": "",
+    "text": "pipeline.cache\nFunctions for singularity cache management\n\n\n\n\n\nName\nDescription\n\n\n\n\ncheck_cache\nCheck if provided SINGULARITY_CACHE is valid. Singularity caches cannot be\n\n\nget_sif_cache_dir\nGet the directory path for SIF cache based on the HPC environment.\n\n\nget_singularity_cachedir\nReturns the singularity cache directory.\n\n\nimage_cache\nAdds Docker Image URIs, or SIF paths to config if singularity cache option is provided.\n\n\n\n\n\npipeline.cache.check_cache(parser, cache, *args, **kwargs)\nCheck if provided SINGULARITY_CACHE is valid. Singularity caches cannot be shared across users (and must be owned by the user). Singularity strictly enforces 0700 user permission on the cache directory and will return a non-zero exit code.\n\n\n\n\n\nName\nType\nDescription\nDefault\n\n\n\n\nparser\nargparse.ArgumentParser\nArgparse parser object.\nrequired\n\n\ncache\nstr\nSingularity cache directory.\nrequired\n\n\n\n\n\n\n\n\n\nName\nType\nDescription\n\n\n\n\nstr\n\nIf singularity cache directory is valid.\n\n\n\n\n\n\n\npipeline.cache.get_sif_cache_dir(hpc=None)\nGet the directory path for SIF cache based on the HPC environment.\n\n\n\n\n\nName\nType\nDescription\nDefault\n\n\n\n\nhpc\nstr\nThe name of the HPC environment. Supported values are “biowulf” and “frce”. Defaults to None.\nNone\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nName\nType\nDescription\n\n\n\n\nstr\n\nThe directory path for the SIF cache. Returns an empty string if the HPC environment is not recognized.\n\n\n\n\n\n\n\npipeline.cache.get_singularity_cachedir(output_dir=None, cache_dir=None)\nReturns the singularity cache directory. If no user-provided cache directory is provided, the default singularity cache is in the output directory.\n\n\n\n\n\nName\nType\nDescription\nDefault\n\n\n\n\noutput_dir\nstr\nThe directory where the output is stored. Defaults to the current working directory if not provided.\nNone\n\n\ncache_dir\nstr\nThe directory where the singularity cache is stored. Defaults to a hidden “.singularity” directory within the output directory if not provided.\nNone\n\n\n\n\n\n\n\n\n\nName\nType\nDescription\n\n\n\n\nstr\n\nThe path to the singularity cache directory.\n\n\n\n\n\n\n\npipeline.cache.image_cache(sub_args, config)\nAdds Docker Image URIs, or SIF paths to config if singularity cache option is provided.\nIf singularity cache option is provided and a local SIF does not exist, a warning is displayed and the image will be pulled from URI in ‘config/containers/images.json’.\n\n\n\n\n\nName\nType\nDescription\nDefault\n\n\n\n\nsub_args\nargparse.Namespace\nParsed arguments for run sub-command.\nrequired\n\n\nconfig\ndict\nDocker Image config dictionary.\nrequired\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nName\nType\nDescription\n\n\n\n\ndict\n\nUpdated config dictionary containing user information (username and home directory).",
+    "crumbs": [
+      "Pipeline utilities",
+      "pipeline.cache"
+    ]
+  },
+  {
+    "objectID": "reference/pipeline.cache.html#functions",
+    "href": "reference/pipeline.cache.html#functions",
+    "title": "pipeline.cache",
+    "section": "",
+    "text": "Name\nDescription\n\n\n\n\ncheck_cache\nCheck if provided SINGULARITY_CACHE is valid. Singularity caches cannot be\n\n\nget_sif_cache_dir\nGet the directory path for SIF cache based on the HPC environment.\n\n\nget_singularity_cachedir\nReturns the singularity cache directory.\n\n\nimage_cache\nAdds Docker Image URIs, or SIF paths to config if singularity cache option is provided.\n\n\n\n\n\npipeline.cache.check_cache(parser, cache, *args, **kwargs)\nCheck if provided SINGULARITY_CACHE is valid. Singularity caches cannot be shared across users (and must be owned by the user). Singularity strictly enforces 0700 user permission on the cache directory and will return a non-zero exit code.\n\n\n\n\n\nName\nType\nDescription\nDefault\n\n\n\n\nparser\nargparse.ArgumentParser\nArgparse parser object.\nrequired\n\n\ncache\nstr\nSingularity cache directory.\nrequired\n\n\n\n\n\n\n\n\n\nName\nType\nDescription\n\n\n\n\nstr\n\nIf singularity cache directory is valid.\n\n\n\n\n\n\n\npipeline.cache.get_sif_cache_dir(hpc=None)\nGet the directory path for SIF cache based on the HPC environment.\n\n\n\n\n\nName\nType\nDescription\nDefault\n\n\n\n\nhpc\nstr\nThe name of the HPC environment. Supported values are “biowulf” and “frce”. Defaults to None.\nNone\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nName\nType\nDescription\n\n\n\n\nstr\n\nThe directory path for the SIF cache. Returns an empty string if the HPC environment is not recognized.\n\n\n\n\n\n\n\npipeline.cache.get_singularity_cachedir(output_dir=None, cache_dir=None)\nReturns the singularity cache directory. If no user-provided cache directory is provided, the default singularity cache is in the output directory.\n\n\n\n\n\nName\nType\nDescription\nDefault\n\n\n\n\noutput_dir\nstr\nThe directory where the output is stored. Defaults to the current working directory if not provided.\nNone\n\n\ncache_dir\nstr\nThe directory where the singularity cache is stored. Defaults to a hidden “.singularity” directory within the output directory if not provided.\nNone\n\n\n\n\n\n\n\n\n\nName\nType\nDescription\n\n\n\n\nstr\n\nThe path to the singularity cache directory.\n\n\n\n\n\n\n\npipeline.cache.image_cache(sub_args, config)\nAdds Docker Image URIs, or SIF paths to config if singularity cache option is provided.\nIf singularity cache option is provided and a local SIF does not exist, a warning is displayed and the image will be pulled from URI in ‘config/containers/images.json’.\n\n\n\n\n\nName\nType\nDescription\nDefault\n\n\n\n\nsub_args\nargparse.Namespace\nParsed arguments for run sub-command.\nrequired\n\n\nconfig\ndict\nDocker Image config dictionary.\nrequired\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nName\nType\nDescription\n\n\n\n\ndict\n\nUpdated config dictionary containing user information (username and home directory).",
+    "crumbs": [
+      "Pipeline utilities",
+      "pipeline.cache"
+    ]
+  },
+  {
+    "objectID": "reference/intersect.html",
+    "href": "reference/intersect.html",
+    "title": "intersect",
+    "section": "",
+    "text": "intersect\nFind the intersect of two files, returns the inner join\nOriginal author: Skyler Kuhn (@skchronicles)\n\n\nintersect file1 file2",
+    "crumbs": [
+      "Legacy tools",
+      "intersect"
+    ]
+  },
+  {
+    "objectID": "reference/intersect.html#usage",
+    "href": "reference/intersect.html#usage",
+    "title": "intersect",
+    "section": "",
+    "text": "intersect file1 file2",
+    "crumbs": [
+      "Legacy tools",
+      "intersect"
+    ]
+  },
+  {
+    "objectID": "reference/pkg_util.html",
+    "href": "reference/pkg_util.html",
+    "title": "pkg_util",
+    "section": "",
+    "text": "pkg_util\nMiscellaneous utility functions for the package\n\n\n\n\n\nName\nDescription\n\n\n\n\nget_external_scripts\nGet list of standalone scripts included in the package\n\n\nget_package_version\nGet the current version of a package from the metadata.\n\n\nget_project_scripts\nGet a list of CLI tools in the package.\n\n\nget_pyproject_toml\nGet the contents of the package’s pyproject.toml file.\n\n\nget_url_json\nFetches JSON data from a given URL.\n\n\nget_version\nGet the current version of the ccbr_tools package.\n\n\nmsg\nPrints the error message with a timestamp.\n\n\nmsg_box\nDisplays a message box with a given splash message.\n\n\nprint_citation\nPrints the citation for the given citation file in the specified output format.\n\n\nrepo_base\nGet the absolute path to a file in the repository\n\n\n\n\n\npkg_util.get_external_scripts(pkg_name='ccbr_tools')\nGet list of standalone scripts included in the package\n\n\n\n\n\nName\nType\nDescription\nDefault\n\n\n\n\npkg_name\nstr\nThe name of the package. Defaults to “ccbr_tools”.\n'ccbr_tools'\n\n\n\n\n\n\n\n\n\nName\nType\nDescription\n\n\n\n\nscripts\nlist\nA list of standalone scripts included in the package.\n\n\n\n\n\n\n\npkg_util.get_package_version(pkg_name='ccbr_tools')\nGet the current version of a package from the metadata.\n\n\n\n\n\nName\nType\nDescription\nDefault\n\n\n\n\npkg_name\nstr\nName of the package (default: ccbr_tools).\n'ccbr_tools'\n\n\n\n\n\n\n\n\n\nName\nType\nDescription\n\n\n\n\nversion\nstr\nThe version of the package.\n\n\n\n\n\n\n\npkg_util.get_project_scripts(pkg_name='ccbr_tools')\nGet a list of CLI tools in the package.\n\n\n\n\n\nName\nType\nDescription\nDefault\n\n\n\n\npkg_name\nstr\nThe name of the package. Defaults to “ccbr_tools”.\n'ccbr_tools'\n\n\n\n\n\n\n\n\n\nName\nType\nDescription\n\n\n\n\ntools\nlist\nA sorted list of CLI tool names.\n\n\n\n\n\n\n\npkg_util.get_pyproject_toml(pkg_name='ccbr_tools', repo_base=repo_base)\nGet the contents of the package’s pyproject.toml file.\n\n\n\n\n\nName\nType\nDescription\nDefault\n\n\n\n\npkg_name\nstr\nName of the package (default: ccbr_tools).\n'ccbr_tools'\n\n\n\n\n\n\n\n\n\nName\nType\nDescription\n\n\n\n\npyproject\ndict\nThe contents of the pyproject.toml file.\n\n\n\n\n\n\n\npkg_util.get_url_json(url)\nFetches JSON data from a given URL.\n\n\n\n\n\nName\nType\nDescription\nDefault\n\n\n\n\nurl\nstr\nThe URL to fetch the JSON data from.\nrequired\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nName\nType\nDescription\n\n\n\n\ndict\n\nThe JSON data retrieved from the URL if the request is successful, otherwise an empty dictionary.\n\n\n\n\n\n\n\npkg_util.get_version(repo_base=repo_base, debug=False)\nGet the current version of the ccbr_tools package.\n\n\n\n\n\nName\nType\nDescription\nDefault\n\n\n\n\nrepo_base\nfunction\nA function that returns the base path of the repository.\nrepo_base\n\n\ndebug\nbool\nPrint the path to the VERSION file (default: False).\nFalse\n\n\n\n\n\n\n\n\n\nName\nType\nDescription\n\n\n\n\nversion\nstr\nThe version of the package.\n\n\n\n\n\n\n\npkg_util.msg(err_message)\nPrints the error message with a timestamp.\n\n\n\n\n\nName\nType\nDescription\nDefault\n\n\n\n\nerr_message\nstr\nThe error message to be printed.\nrequired\n\n\n\nReturns: None\n\n\n\n\npkg_util.msg_box(splash, errmsg=None)\nDisplays a message box with a given splash message.\n\n\n\n\n\nName\nType\nDescription\nDefault\n\n\n\n\nsplash\nstr\nThe splash message to be displayed.\nrequired\n\n\nerrmsg\nstr\nAn error message to be displayed below the splash message. Defaults to None.\nNone\n\n\n\n\n\n\n\npkg_util.print_citation(\n    citation_file=repo_base('CITATION.cff'),\n    output_format='bibtex',\n)\nPrints the citation for the given citation file in the specified output format.\n\n\n\n\n\nName\nType\nDescription\nDefault\n\n\n\n\ncitation_file\nstr\nThe path to the citation file.\nrepo_base('CITATION.cff')\n\n\noutput_format\nstr\nThe desired output format for the citation.\n'bibtex'\n\n\n\n\n\n\n\npkg_util.repo_base(*paths)\nGet the absolute path to a file in the repository\n\n\n\n\n\nName\nType\nDescription\nDefault\n\n\n\n\n*paths\nstr\nAdditional paths to join with the base path.\n()\n\n\n\n\n\n\n\n\n\nName\nType\nDescription\n\n\n\n\npath\nstr\nThe absolute path to the file in the repository.",
+    "crumbs": [
+      "Main modules",
+      "pkg_util"
+    ]
+  },
+  {
+    "objectID": "reference/pkg_util.html#functions",
+    "href": "reference/pkg_util.html#functions",
+    "title": "pkg_util",
+    "section": "",
+    "text": "Name\nDescription\n\n\n\n\nget_external_scripts\nGet list of standalone scripts included in the package\n\n\nget_package_version\nGet the current version of a package from the metadata.\n\n\nget_project_scripts\nGet a list of CLI tools in the package.\n\n\nget_pyproject_toml\nGet the contents of the package’s pyproject.toml file.\n\n\nget_url_json\nFetches JSON data from a given URL.\n\n\nget_version\nGet the current version of the ccbr_tools package.\n\n\nmsg\nPrints the error message with a timestamp.\n\n\nmsg_box\nDisplays a message box with a given splash message.\n\n\nprint_citation\nPrints the citation for the given citation file in the specified output format.\n\n\nrepo_base\nGet the absolute path to a file in the repository\n\n\n\n\n\npkg_util.get_external_scripts(pkg_name='ccbr_tools')\nGet list of standalone scripts included in the package\n\n\n\n\n\nName\nType\nDescription\nDefault\n\n\n\n\npkg_name\nstr\nThe name of the package. Defaults to “ccbr_tools”.\n'ccbr_tools'\n\n\n\n\n\n\n\n\n\nName\nType\nDescription\n\n\n\n\nscripts\nlist\nA list of standalone scripts included in the package.\n\n\n\n\n\n\n\npkg_util.get_package_version(pkg_name='ccbr_tools')\nGet the current version of a package from the metadata.\n\n\n\n\n\nName\nType\nDescription\nDefault\n\n\n\n\npkg_name\nstr\nName of the package (default: ccbr_tools).\n'ccbr_tools'\n\n\n\n\n\n\n\n\n\nName\nType\nDescription\n\n\n\n\nversion\nstr\nThe version of the package.\n\n\n\n\n\n\n\npkg_util.get_project_scripts(pkg_name='ccbr_tools')\nGet a list of CLI tools in the package.\n\n\n\n\n\nName\nType\nDescription\nDefault\n\n\n\n\npkg_name\nstr\nThe name of the package. Defaults to “ccbr_tools”.\n'ccbr_tools'\n\n\n\n\n\n\n\n\n\nName\nType\nDescription\n\n\n\n\ntools\nlist\nA sorted list of CLI tool names.\n\n\n\n\n\n\n\npkg_util.get_pyproject_toml(pkg_name='ccbr_tools', repo_base=repo_base)\nGet the contents of the package’s pyproject.toml file.\n\n\n\n\n\nName\nType\nDescription\nDefault\n\n\n\n\npkg_name\nstr\nName of the package (default: ccbr_tools).\n'ccbr_tools'\n\n\n\n\n\n\n\n\n\nName\nType\nDescription\n\n\n\n\npyproject\ndict\nThe contents of the pyproject.toml file.\n\n\n\n\n\n\n\npkg_util.get_url_json(url)\nFetches JSON data from a given URL.\n\n\n\n\n\nName\nType\nDescription\nDefault\n\n\n\n\nurl\nstr\nThe URL to fetch the JSON data from.\nrequired\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nName\nType\nDescription\n\n\n\n\ndict\n\nThe JSON data retrieved from the URL if the request is successful, otherwise an empty dictionary.\n\n\n\n\n\n\n\npkg_util.get_version(repo_base=repo_base, debug=False)\nGet the current version of the ccbr_tools package.\n\n\n\n\n\nName\nType\nDescription\nDefault\n\n\n\n\nrepo_base\nfunction\nA function that returns the base path of the repository.\nrepo_base\n\n\ndebug\nbool\nPrint the path to the VERSION file (default: False).\nFalse\n\n\n\n\n\n\n\n\n\nName\nType\nDescription\n\n\n\n\nversion\nstr\nThe version of the package.\n\n\n\n\n\n\n\npkg_util.msg(err_message)\nPrints the error message with a timestamp.\n\n\n\n\n\nName\nType\nDescription\nDefault\n\n\n\n\nerr_message\nstr\nThe error message to be printed.\nrequired\n\n\n\nReturns: None\n\n\n\n\npkg_util.msg_box(splash, errmsg=None)\nDisplays a message box with a given splash message.\n\n\n\n\n\nName\nType\nDescription\nDefault\n\n\n\n\nsplash\nstr\nThe splash message to be displayed.\nrequired\n\n\nerrmsg\nstr\nAn error message to be displayed below the splash message. Defaults to None.\nNone\n\n\n\n\n\n\n\npkg_util.print_citation(\n    citation_file=repo_base('CITATION.cff'),\n    output_format='bibtex',\n)\nPrints the citation for the given citation file in the specified output format.\n\n\n\n\n\nName\nType\nDescription\nDefault\n\n\n\n\ncitation_file\nstr\nThe path to the citation file.\nrepo_base('CITATION.cff')\n\n\noutput_format\nstr\nThe desired output format for the citation.\n'bibtex'\n\n\n\n\n\n\n\npkg_util.repo_base(*paths)\nGet the absolute path to a file in the repository\n\n\n\n\n\nName\nType\nDescription\nDefault\n\n\n\n\n*paths\nstr\nAdditional paths to join with the base path.\n()\n\n\n\n\n\n\n\n\n\nName\nType\nDescription\n\n\n\n\npath\nstr\nThe absolute path to the file in the repository.",
+    "crumbs": [
+      "Main modules",
+      "pkg_util"
+    ]
+  },
+  {
+    "objectID": "reference/pipeline.hpc.html",
+    "href": "reference/pipeline.hpc.html",
+    "title": "pipeline.hpc",
+    "section": "",
+    "text": "pipeline.hpc\nClasses for working with different HPC clusters.\nUse get_hpc to retrieve an HPC Cluster instance, which contains default attributes for supported clusters.\n\n\n\n\n\nName\nDescription\n\n\n\n\nBiowulf\nThe Biowulf cluster – child of Cluster\n\n\nCluster\nBase class for an HPC cluster - evaluates to None\n\n\nFRCE\nThe FRCE cluster – child of Cluster\n\n\n\n\n\npipeline.hpc.Biowulf(self)\nThe Biowulf cluster – child of Cluster\n\n\n\n\n\nName\nType\nDescription\n\n\n\n\nname\nstr\nThe name of the cluster.\n\n\nmodules\ndict\nA dictionary mapping module names to their corresponding commands.\n\n\nsingularity_sif_dir\nstr\nThe directory path for Singularity SIF files.\n\n\nenv_vars\nstr\nA string representing the environment variables to be set on the cluster.\n\n\n\n\n\n\n\npipeline.hpc.Cluster(self)\nBase class for an HPC cluster - evaluates to None\n\n\n\n\n\nName\nType\nDescription\n\n\n\n\nname\nstr\nThe name of the cluster.\n\n\nmodules\ndict\nA dictionary containing the modules installed on the cluster. The keys are the module names and the values are the corresponding versions.\n\n\nsingularity_sif_dir\nstr\nThe directory where Singularity SIF files are stored.\n\n\nenv_vars\nstr\nA string representing the environment variables to be set on the cluster.\n\n\n\n\n\n\n\npipeline.hpc.FRCE(self)\nThe FRCE cluster – child of Cluster\n\n\n\n\n\nName\nType\nDescription\n\n\n\n\nname\nstr\nThe name of the cluster.\n\n\nmodules\ndict\nA dictionary mapping module names to their corresponding commands.\n\n\nsingularity_sif_dir\nstr\nThe directory path for Singularity SIF files.\n\n\nenv_vars\nstr\nA string representing the environment variables to be set on the cluster.\n\n\n\n\n\n\n\n\n\n\n\nName\nDescription\n\n\n\n\nget_hpc\nReturns an instance of the High-Performance Computing (HPC) cluster based on the specified HPC name.\n\n\nget_hpcname\nGet the HPC name using scontrol\n\n\nis_loaded\nCheck whether a module is loaded\n\n\nlist_modules\nGet the list of loaded modules using module list\n\n\nparse_modules\nParse the output of module list to extract module names and versions\n\n\nscontrol_show\nRun scontrol show config and parse the output as a dictionary\n\n\n\n\n\npipeline.hpc.get_hpc(debug=False)\nReturns an instance of the High-Performance Computing (HPC) cluster based on the specified HPC name.\nIf the HPC is not known or supported, an instance of the base Cluster class is returned.\n\n\n\n\n\nName\nType\nDescription\nDefault\n\n\n\n\ndebug\nbool\nIf True, uses debug as the HPC name. Defaults to False.\nFalse\n\n\n\n\n\n\n\n\n\nName\nType\nDescription\n\n\n\n\ncluster\nCluster\nAn instance of the HPC cluster.\n\n\n\n\n\n\n&gt;&gt;&gt; get_hpc()\n&gt;&gt;&gt; get_hpc(debug=True)\n\n\n\n\npipeline.hpc.get_hpcname()\nGet the HPC name using scontrol\n\n\n\n\n\nName\nType\nDescription\n\n\n\n\nhpcname\nstr\nThe HPC name (biowulf, frce, or an empty string)\n\n\n\n\n\n\n\npipeline.hpc.is_loaded(module='ccbrpipeliner')\nCheck whether a module is loaded\n\n\n\n\n\nName\nType\nDescription\nDefault\n\n\n\n\nmodule\nstr\nThe name of the module to check (default: “ccbrpipeliner”)\n'ccbrpipeliner'\n\n\n\n\n\n\n\n\n\nName\nType\nDescription\n\n\n\n\nis_loaded\nbool\nTrue if the module is loaded, False otherwise\n\n\n\n\n\n\n\npipeline.hpc.list_modules()\nGet the list of loaded modules using module list\n\n\n\n\n\nName\nType\nDescription\n\n\n\n\nloaded_modules\nstr\nThe output of module list\n\n\n\n\n\n\n\npipeline.hpc.parse_modules(ml_output)\nParse the output of module list to extract module names and versions Args: ml_output (str): The output of module list Returns: modules (dict): A dictionary containing module names and their versions Example: &gt;&gt;&gt; ml_output = “1) module_name/version” &gt;&gt;&gt; parse_modules(ml_output) {‘module_name’: ‘version’} &gt;&gt;&gt; parse_modules(list_modules()) {‘module_name’: ‘version’, …}\n\n\n\npipeline.hpc.scontrol_show()\nRun scontrol show config and parse the output as a dictionary\n\n\n\n\n\nName\nType\nDescription\n\n\n\n\nscontrol_dict\ndict\ndictionary containing the output of scontrol show config",
+    "crumbs": [
+      "Pipeline utilities",
+      "pipeline.hpc"
+    ]
+  },
+  {
+    "objectID": "reference/pipeline.hpc.html#classes",
+    "href": "reference/pipeline.hpc.html#classes",
+    "title": "pipeline.hpc",
+    "section": "",
+    "text": "Name\nDescription\n\n\n\n\nBiowulf\nThe Biowulf cluster – child of Cluster\n\n\nCluster\nBase class for an HPC cluster - evaluates to None\n\n\nFRCE\nThe FRCE cluster – child of Cluster\n\n\n\n\n\npipeline.hpc.Biowulf(self)\nThe Biowulf cluster – child of Cluster\n\n\n\n\n\nName\nType\nDescription\n\n\n\n\nname\nstr\nThe name of the cluster.\n\n\nmodules\ndict\nA dictionary mapping module names to their corresponding commands.\n\n\nsingularity_sif_dir\nstr\nThe directory path for Singularity SIF files.\n\n\nenv_vars\nstr\nA string representing the environment variables to be set on the cluster.\n\n\n\n\n\n\n\npipeline.hpc.Cluster(self)\nBase class for an HPC cluster - evaluates to None\n\n\n\n\n\nName\nType\nDescription\n\n\n\n\nname\nstr\nThe name of the cluster.\n\n\nmodules\ndict\nA dictionary containing the modules installed on the cluster. The keys are the module names and the values are the corresponding versions.\n\n\nsingularity_sif_dir\nstr\nThe directory where Singularity SIF files are stored.\n\n\nenv_vars\nstr\nA string representing the environment variables to be set on the cluster.\n\n\n\n\n\n\n\npipeline.hpc.FRCE(self)\nThe FRCE cluster – child of Cluster\n\n\n\n\n\nName\nType\nDescription\n\n\n\n\nname\nstr\nThe name of the cluster.\n\n\nmodules\ndict\nA dictionary mapping module names to their corresponding commands.\n\n\nsingularity_sif_dir\nstr\nThe directory path for Singularity SIF files.\n\n\nenv_vars\nstr\nA string representing the environment variables to be set on the cluster.",
+    "crumbs": [
+      "Pipeline utilities",
+      "pipeline.hpc"
+    ]
+  },
+  {
+    "objectID": "reference/pipeline.hpc.html#functions",
+    "href": "reference/pipeline.hpc.html#functions",
+    "title": "pipeline.hpc",
+    "section": "",
+    "text": "Name\nDescription\n\n\n\n\nget_hpc\nReturns an instance of the High-Performance Computing (HPC) cluster based on the specified HPC name.\n\n\nget_hpcname\nGet the HPC name using scontrol\n\n\nis_loaded\nCheck whether a module is loaded\n\n\nlist_modules\nGet the list of loaded modules using module list\n\n\nparse_modules\nParse the output of module list to extract module names and versions\n\n\nscontrol_show\nRun scontrol show config and parse the output as a dictionary\n\n\n\n\n\npipeline.hpc.get_hpc(debug=False)\nReturns an instance of the High-Performance Computing (HPC) cluster based on the specified HPC name.\nIf the HPC is not known or supported, an instance of the base Cluster class is returned.\n\n\n\n\n\nName\nType\nDescription\nDefault\n\n\n\n\ndebug\nbool\nIf True, uses debug as the HPC name. Defaults to False.\nFalse\n\n\n\n\n\n\n\n\n\nName\nType\nDescription\n\n\n\n\ncluster\nCluster\nAn instance of the HPC cluster.\n\n\n\n\n\n\n&gt;&gt;&gt; get_hpc()\n&gt;&gt;&gt; get_hpc(debug=True)\n\n\n\n\npipeline.hpc.get_hpcname()\nGet the HPC name using scontrol\n\n\n\n\n\nName\nType\nDescription\n\n\n\n\nhpcname\nstr\nThe HPC name (biowulf, frce, or an empty string)\n\n\n\n\n\n\n\npipeline.hpc.is_loaded(module='ccbrpipeliner')\nCheck whether a module is loaded\n\n\n\n\n\nName\nType\nDescription\nDefault\n\n\n\n\nmodule\nstr\nThe name of the module to check (default: “ccbrpipeliner”)\n'ccbrpipeliner'\n\n\n\n\n\n\n\n\n\nName\nType\nDescription\n\n\n\n\nis_loaded\nbool\nTrue if the module is loaded, False otherwise\n\n\n\n\n\n\n\npipeline.hpc.list_modules()\nGet the list of loaded modules using module list\n\n\n\n\n\nName\nType\nDescription\n\n\n\n\nloaded_modules\nstr\nThe output of module list\n\n\n\n\n\n\n\npipeline.hpc.parse_modules(ml_output)\nParse the output of module list to extract module names and versions Args: ml_output (str): The output of module list Returns: modules (dict): A dictionary containing module names and their versions Example: &gt;&gt;&gt; ml_output = “1) module_name/version” &gt;&gt;&gt; parse_modules(ml_output) {‘module_name’: ‘version’} &gt;&gt;&gt; parse_modules(list_modules()) {‘module_name’: ‘version’, …}\n\n\n\npipeline.hpc.scontrol_show()\nRun scontrol show config and parse the output as a dictionary\n\n\n\n\n\nName\nType\nDescription\n\n\n\n\nscontrol_dict\ndict\ndictionary containing the output of scontrol show config",
+    "crumbs": [
+      "Pipeline utilities",
+      "pipeline.hpc"
+    ]
+  },
+  {
+    "objectID": "reference/pipeline.nextflow.html",
+    "href": "reference/pipeline.nextflow.html",
+    "title": "pipeline.nextflow",
+    "section": "",
+    "text": "pipeline.nextflow\nRun Nextflow workflows in local and HPC environments.\n\ninit(output, pipeline_name=‘pipeline’, **kwargs) Initialize the launch directory by copying the system default config files.\nrun(nextfile_path=None, nextflow_args=None, mode=“local”, pipeline_name=None, debug=False, hpc_options={}) Run a Nextflow workflow.\n\n\n\n\n\n\nName\nDescription\n\n\n\n\ninit\nInitialize the launch directory by copying the system default config files\n\n\nrun\nRun a Nextflow workflow\n\n\n\n\n\npipeline.nextflow.init(output, repo_base, pipeline_name='pipeline')\nInitialize the launch directory by copying the system default config files\n\n\n\npipeline.nextflow.run(\n    nextfile_path,\n    mode='local',\n    force_all=False,\n    pipeline_name=None,\n    nextflow_args=None,\n    debug=False,\n    hpc=get_hpc(),\n)\nRun a Nextflow workflow\n\n\n\n\n\nName\nType\nDescription\nDefault\n\n\n\n\nnextfile_path\nstr\nPath to the Nextflow file.\nrequired\n\n\nnextflow_args\nlist\nAdditional Nextflow arguments. Defaults to an empty list.\nNone\n\n\nmode\nstr\nExecution mode. Defaults to “local”.\n'local'\n\n\n\n\n\n\n\n\n\nName\nType\nDescription\n\n\n\n\n\nValueError\nIf mode is ‘slurm’ but no HPC environment was detected.",
+    "crumbs": [
+      "Pipeline utilities",
+      "pipeline.nextflow"
+    ]
+  },
+  {
+    "objectID": "reference/pipeline.nextflow.html#functions",
+    "href": "reference/pipeline.nextflow.html#functions",
+    "title": "pipeline.nextflow",
+    "section": "",
+    "text": "Name\nDescription\n\n\n\n\ninit\nInitialize the launch directory by copying the system default config files\n\n\nrun\nRun a Nextflow workflow\n\n\n\n\n\npipeline.nextflow.init(output, repo_base, pipeline_name='pipeline')\nInitialize the launch directory by copying the system default config files\n\n\n\npipeline.nextflow.run(\n    nextfile_path,\n    mode='local',\n    force_all=False,\n    pipeline_name=None,\n    nextflow_args=None,\n    debug=False,\n    hpc=get_hpc(),\n)\nRun a Nextflow workflow\n\n\n\n\n\nName\nType\nDescription\nDefault\n\n\n\n\nnextfile_path\nstr\nPath to the Nextflow file.\nrequired\n\n\nnextflow_args\nlist\nAdditional Nextflow arguments. Defaults to an empty list.\nNone\n\n\nmode\nstr\nExecution mode. Defaults to “local”.\n'local'\n\n\n\n\n\n\n\n\n\nName\nType\nDescription\n\n\n\n\n\nValueError\nIf mode is ‘slurm’ but no HPC environment was detected.",
+    "crumbs": [
+      "Pipeline utilities",
+      "pipeline.nextflow"
+    ]
+  },
+  {
+    "objectID": "reference/GSEA.deg2gs.html",
+    "href": "reference/GSEA.deg2gs.html",
+    "title": "GSEA.deg2gs",
+    "section": "",
+    "text": "GSEA.deg2gs\nGSEA.deg2gs\nReads a rnaseq pipeliner *_DEG_all_genes.txt file and outputs a prioritized list of Ensembl gene IDs for ToppFun\nAuthor: Susan Huse\nNIAID Center for Biological Research\nFrederick National Laboratory for Cancer Research\nLeidos Biomedical\n\nv 1.0 - initial code version.\nv 1.1 - updated for new column headers in pipeliner limma_DEG_all_genes.txt\nv 1.2 - top2Excel format is now csv rather than tab-delimited",
+    "crumbs": [
+      "Legacy tools",
+      "GSEA.deg2gs"
+    ]
+  },
+  {
+    "objectID": "basic_usage.html",
+    "href": "basic_usage.html",
+    "title": "CLI",
+    "section": "",
+    "text": "ccbr_tools --help\n\n\nUsage: ccbr_tools [OPTIONS] COMMAND [ARGS]...\n\n  Utilities for CCBR Bioinformatics Software\n\n  For more options, run: ccbr_tools [command] --help\n\n  https://ccbr.github.io/Tools/\n\nOptions:\n  -v, --version  Show the version and exit.\n  -h, --help     Show this message and exit.\n\nCommands:\n  send-email  Send an email (works on biowulf)\n  quarto-add  Add a quarto extension\n  install     Install a specific version of a CCBR software package,...\n  cite        Print the citation in the desired format\n  version     Print the version of ccbr_tools\n\nAll installed tools:\n  ccbr_tools\n  gb2gtf\n  hf\n  intersect\n  jobby\n  jobinfo\n  module_list\n  peek\n\n\n\nPython\n\n\nCode\nimport ccbr_tools.shell\nprint(ccbr_tools.shell.shell_run('echo \"Hello, world!\"'))\n\n\nHello, world!\n\n\n\n\n\nCode\nimport ccbr_tools.versions\nversion = ccbr_tools.versions.match_semver('0.2.3')\nversion.groupdict()\n\n\n{'major': '0',\n 'minor': '2',\n 'patch': '3',\n 'prerelease': None,\n 'buildmetadata': None}\n\n\nView the API reference for more information: https://ccbr.github.io/Tools/reference/"
+  },
+  {
+    "objectID": "LICENSE.html",
+    "href": "LICENSE.html",
+    "title": "CCBR Tools",
+    "section": "",
+    "text": "MIT License\nCopyright (c) 2018 CCR Collaborative Bioinformatics Resource\nPermission is hereby granted, free of charge, to any person obtaining a copy of this software and associated documentation files (the “Software”), to deal in the Software without restriction, including without limitation the rights to use, copy, modify, merge, publish, distribute, sublicense, and/or sell copies of the Software, and to permit persons to whom the Software is furnished to do so, subject to the following conditions:\nThe above copyright notice and this permission notice shall be included in all copies or substantial portions of the Software.\nTHE SOFTWARE IS PROVIDED “AS IS”, WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.",
+    "crumbs": [
+      "Project information",
+      "License"
+    ]
+  },
+  {
+    "objectID": "reference/github.html",
+    "href": "reference/github.html",
+    "title": "github",
+    "section": "",
+    "text": "github\nGitHub helper functions\nContributor related functions:\n\nprint_contributor_images - Print contributor profile images for HTML web pages\nget_repo_contributors - Get a list of contributors to a GitHub repository\nget_user_info - Get profile information about a GitHub user\nget_contrib_html - Generates HTML for a GitHub contributor’s profile image and link\n\n\n\n\n\n\nName\nDescription\n\n\n\n\nget_contrib_html\nGenerates HTML for a GitHub contributor’s profile image and link.\n\n\nget_repo_contributors\nGet a list of contributors to a GitHub repository.\n\n\nget_user_info\nGet profile information about a GitHub user.\n\n\nprint_contributor_images\nPrint contributor profile images for HTML web pages\n\n\n\n\n\ngithub.get_contrib_html(contrib, img_attr='{width=100px height=100px}')\nGenerates HTML for a GitHub contributor’s profile image and link.\n\n\n\n\n\nName\nType\nDescription\nDefault\n\n\n\n\ncontrib\ndict\nA dictionary containing contributor information. Expected keys are ‘login’, ‘avatar_url’, and ‘html_url’.\nrequired\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nName\nType\nDescription\n\n\n\n\nstr\n\nA string containing HTML that displays the contributor’s profile image and links to their GitHub profile.\n\n\n\n\n\n\n\ngithub.get_repo_contributors(repo, org='CCBR')\nGet a list of contributors to a GitHub repository.\n\n\n\n\n\nName\nType\nDescription\nDefault\n\n\n\n\nrepo\nstr\nThe name of the repository.\nrequired\n\n\norg\nstr\nThe organization name. Defaults to ‘CCBR’.\n'CCBR'\n\n\n\nReturns: list: A list of contributors to the specified repository.\n\n\n\n\ngithub.get_user_info(user_login)\nGet profile information about a GitHub user.\n\n\n\n\n\nName\nType\nDescription\nDefault\n\n\n\n\nuser_login\nstr\nThe GitHub username of the user.\nrequired\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nName\nType\nDescription\n\n\n\n\ndict\n\nA dictionary containing the user’s profile information.\n\n\n\n\n\n\n\ngithub.print_contributor_images(repo, org='CCBR')\nPrint contributor profile images for HTML web pages\n\n\n\n\n\nName\nType\nDescription\nDefault\n\n\n\n\nrepo\nstr\nThe name of the GitHub repository.\nrequired\n\n\norg\nstr\nThe GitHub organization or user that owns the repository. Defaults to ‘CCBR’.\n'CCBR'\n\n\n\n\n\n\n\n\n\nName\nType\nDescription\n\n\n\n\n\n\nNone",
+    "crumbs": [
+      "Main modules",
+      "github"
+    ]
+  },
+  {
+    "objectID": "reference/github.html#functions",
+    "href": "reference/github.html#functions",
+    "title": "github",
+    "section": "",
+    "text": "Name\nDescription\n\n\n\n\nget_contrib_html\nGenerates HTML for a GitHub contributor’s profile image and link.\n\n\nget_repo_contributors\nGet a list of contributors to a GitHub repository.\n\n\nget_user_info\nGet profile information about a GitHub user.\n\n\nprint_contributor_images\nPrint contributor profile images for HTML web pages\n\n\n\n\n\ngithub.get_contrib_html(contrib, img_attr='{width=100px height=100px}')\nGenerates HTML for a GitHub contributor’s profile image and link.\n\n\n\n\n\nName\nType\nDescription\nDefault\n\n\n\n\ncontrib\ndict\nA dictionary containing contributor information. Expected keys are ‘login’, ‘avatar_url’, and ‘html_url’.\nrequired\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nName\nType\nDescription\n\n\n\n\nstr\n\nA string containing HTML that displays the contributor’s profile image and links to their GitHub profile.\n\n\n\n\n\n\n\ngithub.get_repo_contributors(repo, org='CCBR')\nGet a list of contributors to a GitHub repository.\n\n\n\n\n\nName\nType\nDescription\nDefault\n\n\n\n\nrepo\nstr\nThe name of the repository.\nrequired\n\n\norg\nstr\nThe organization name. Defaults to ‘CCBR’.\n'CCBR'\n\n\n\nReturns: list: A list of contributors to the specified repository.\n\n\n\n\ngithub.get_user_info(user_login)\nGet profile information about a GitHub user.\n\n\n\n\n\nName\nType\nDescription\nDefault\n\n\n\n\nuser_login\nstr\nThe GitHub username of the user.\nrequired\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nName\nType\nDescription\n\n\n\n\ndict\n\nA dictionary containing the user’s profile information.\n\n\n\n\n\n\n\ngithub.print_contributor_images(repo, org='CCBR')\nPrint contributor profile images for HTML web pages\n\n\n\n\n\nName\nType\nDescription\nDefault\n\n\n\n\nrepo\nstr\nThe name of the GitHub repository.\nrequired\n\n\norg\nstr\nThe GitHub organization or user that owns the repository. Defaults to ‘CCBR’.\n'CCBR'\n\n\n\n\n\n\n\n\n\nName\nType\nDescription\n\n\n\n\n\n\nNone",
+    "crumbs": [
+      "Main modules",
+      "github"
+    ]
+  },
+  {
+    "objectID": "reference/versions.html",
+    "href": "reference/versions.html",
+    "title": "versions",
+    "section": "",
+    "text": "versions\nGet information from git tags, commit hashes, and GitHub releases.\n\n\n\n\n\nName\nDescription\n\n\n\n\ncheck_version_increments_by_one\nChecks if the next version increments by exactly 1 digit from the current version.\n\n\nget_current_hash\nGet the current commit hash.\n\n\nget_latest_release_hash\nGet the commit hash of the latest release.\n\n\nget_latest_release_tag\nGet the tag name of the latest release.\n\n\nget_major_minor_version\nExtract the major and minor version from a semantic versioning string.\n\n\nget_releases\nGet a list of releases from GitHub.\n\n\nget_tag_hash\nRetrieve the commit hash associated with a specific tag in a GitHub repository.\n\n\nis_ancestor\nCheck if one commit is an ancestor of another.\n\n\nmatch_semver\nMatch a version string against the semantic versioning pattern.\n\n\n\n\n\nversions.check_version_increments_by_one(\n    current_version,\n    next_version,\n    with_leading_v=False,\n    error_on_false=True,\n    debug=False,\n)\nChecks if the next version increments by exactly 1 digit from the current version.\nEnsures that the next version follows semantic versioning guidelines and increments only one of the major, minor, or patch numbers by 1.\n\n\n\n\n\nName\nType\nDescription\nDefault\n\n\n\n\ncurrent_version\nstr\nThe current version string.\nrequired\n\n\nnext_version\nstr\nThe proposed next version string.\nrequired\n\n\nwith_leading_v\nbool\nIf True, expects the version strings to start with ‘v’. Defaults to False.\nFalse\n\n\nerror_on_false\nbool\nIf True, raises a ValueError when the check fails. Defaults to True.\nTrue\n\n\ndebug\nbool\nIf True, prints debug information. Defaults to False.\nFalse\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nName\nType\nDescription\n\n\n\n\nbool\n\nTrue if the next version increments by exactly one, False otherwise.\n\n\n\n\n\n\n\n\n\nName\nType\nDescription\n\n\n\n\n\nValueError\nIf the next version does not match semantic versioning guidelines or does not increment by exactly one.\n\n\n\n\n\n\n&gt;&gt;&gt; check_version_increments_by_one(\"1.0.0\", \"1.0.1\")\nTrue\n&gt;&gt;&gt; check_version_increments_by_one(\"1.0.0\", \"1.1.0\")\nTrue\n&gt;&gt;&gt; check_version_increments_by_one(\"1.0.0\", \"2.0.0\")\nTrue\n&gt;&gt;&gt; check_version_increments_by_one(\"1.0.0\", \"1.0.2\")\nFalse\n&gt;&gt;&gt; check_version_increments_by_one(\"1.0.0\", \"1.2.0\")\nFalse\n&gt;&gt;&gt; check_version_increments_by_one(\"1.0.0\", \"3.0.0\")\nFalse\n\n\n\n\nversions.get_current_hash()\nGet the current commit hash.\nUses git rev-parse HEAD to get the current commit hash.\n\n\n\n\n\nName\nType\nDescription\n\n\n\n\nstr\n\nThe current commit hash.\n\n\n\n\n\n\nget_latest_release_hash : Get the commit hash of the latest release.\n\n\n\n&gt;&gt;&gt; get_current_hash()\n'abc123def4567890abcdef1234567890abcdef12'\n\n\n\n\nversions.get_latest_release_hash(repo='CCBR/Tools')\nGet the commit hash of the latest release.\nUses git rev-list to get the commit hash of the latest release tag.\n\n\n\n\n\nName\nType\nDescription\nDefault\n\n\n\n\nrepo\nstr\nThe GitHub repository in the format ‘owner/repo’. Default: ‘CCBR/Tools’\n'CCBR/Tools'\n\n\n\n\n\n\n\n\n\nName\nType\nDescription\n\n\n\n\nstr\n\nThe commit hash of the latest release.\n\n\n\n\n\n\n\n\n\nName\nType\nDescription\n\n\n\n\n\nValueError\nIf the tag is not found in the repository commit history.\n\n\n\n\n\n\nget_latest_release_tag: Get the tag name of the latest release.\n\n\n\n&gt;&gt;&gt; get_latest_release_hash()\n'abc123def4567890abcdef1234567890abcdef12'\n\n\n\n\nversions.get_latest_release_tag(repo='CCBR/Tools')\nGet the tag name of the latest release.\nUses the GitHub CLI to retrieve the latest release tag from a repository.\n\n\n\n\n\nName\nType\nDescription\nDefault\n\n\n\n\nargs\nstr\nAdditional arguments to pass to the GitHub CLI command (default is ““).\nrequired\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nName\nType\nDescription\n\n\n\n\n\n\nstr or None: The tag name of the latest release, or None if no latest release is found.\n\n\n\n\n\n\nget_releases: Get a list of releases from GitHub.\n\n\n\n&gt;&gt;&gt; get_latest_release_tag()\n'v1.0.0'\n\n\n\n\nversions.get_major_minor_version(\n    version_str,\n    with_leading_v=False,\n    strict_semver=True,\n)\nExtract the major and minor version from a semantic versioning string.\nSee the semantic versioning guidelines: https://semver.org/\n\n\n\n\n\nName\nType\nDescription\nDefault\n\n\n\n\nversion_str\nstr\nThe version string to extract from.\nrequired\n\n\nwith_leading_v\nbool\nWhether to include a leading ‘v’ in the output.\nFalse\n\n\nstrict_semver\nbool\nIf True, the version string must match the full semantic versioning pattern. Otherwise, a relaxed format with only the major and minor components is allowed.\nTrue\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nName\nType\nDescription\n\n\n\n\n\n\nstr or None: The major and minor version in the format ‘major.minor’, or None if the version string is invalid.\n\n\n\n\n\n\nmatch_semver: Match a version string against the semantic versioning pattern.\n\n\n\n&gt;&gt;&gt; get_major_minor_version(\"1.0.0\")\n'1.0'\n&gt;&gt;&gt; get_major_minor_version(\"2.1.3-alpha\")\n'2.1'\n&gt;&gt;&gt; get_major_minor_version(\"invalid_version\")\nNone\n&gt;&gt;&gt; get_major_minor_version('3.1', strict_semver=False)\n\n\n\n\nversions.get_releases(\n    limit=1,\n    args='',\n    json_fields='name,tagName,isLatest,publishedAt',\n)\nGet a list of releases from GitHub.\nUses the GitHub CLI to retrieve a list of releases from a repository. You will need to install it before you can use this function.\n\n\n\n\n\nName\nType\nDescription\nDefault\n\n\n\n\nlimit\nint\nThe maximum number of releases to retrieve (default is 1).\n1\n\n\nargs\nstr\nAdditional arguments to pass to the GitHub CLI command (default is ““).\n''\n\n\njson_fields\nstr\nThe JSON fields to include in the output (default is “name,tagName,isLatest,publishedAt”).\n'name,tagName,isLatest,publishedAt'\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nName\nType\nDescription\n\n\n\n\nlist\n\nA list of dictionaries containing release information.\n\n\n\n\n\n\nget_latest_release_tag : Get the tag name of the latest release. get_latest_release_hash : Get the commit hash of the latest release.\n\n\n\ngh cli docs: https://cli.github.com/manual/gh_release_list\n\n\n\n&gt;&gt;&gt; get_releases(limit=2)\n[{'name': 'v1.0.0', 'tagName': 'v1.0.0', 'isLatest': True, 'publishedAt': '2021-01-01T00:00:00Z'},\n{'name': 'v0.9.0', 'tagName': 'v0.9.0', 'isLatest': False, 'publishedAt': '2020-12-01T00:00:00Z'}]\n&gt;&gt;&gt; get_releases(limit=2, args=\"--repo CCBR/RENEE\")\n[{'isLatest': True, 'name': 'RENEE 2.5.12', 'publishedAt': '2024-04-12T14:49:11Z', 'tagName': 'v2.5.12'},\n{'isLatest': False, 'name': 'RENEE 2.5.11', 'publishedAt': '2024-01-22T21:02:30Z', 'tagName': 'v2.5.11'}]\n\n\n\n\nversions.get_tag_hash(tag_name, args='', repo='CCBR/Tools')\nRetrieve the commit hash associated with a specific tag in a GitHub repository. Args: tag_name (str): The name of the tag for which the commit hash is to be retrieved. repo (str, optional): The GitHub repository in the format ‘owner/repo’. Defaults to ‘CCBR/Tools’. Returns: str: The commit hash (SHA) associated with the specified tag. Raises: requests.exceptions.RequestException: If there is an issue with the HTTP request. KeyError: If the expected data is not found in the API response.\n\n\n\nversions.is_ancestor(ancestor, descendant)\nCheck if one commit is an ancestor of another.\nUses git merge-base –is-ancestor to determine if the ancestor is an ancestor of the descendant.\n\n\n\n\n\nName\nType\nDescription\nDefault\n\n\n\n\nancestor\nstr\nThe commit hash of the potential ancestor.\nrequired\n\n\ndescendant\nstr\nThe commit hash of the potential descendant.\nrequired\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nName\nType\nDescription\n\n\n\n\nbool\n\nTrue if the ancestor is an ancestor of the descendant, otherwise False.\n\n\n\n\n\n\nget_latest_release_hash : Get the commit hash of the latest release. get_current_hash : Get the commit hash of the current.\n\n\n\n&gt;&gt;&gt; is_ancestor(\"abc123\", \"def456\")\nTrue\n&gt;&gt;&gt; is_ancestor(\"abc123\", \"ghi789\")\nFalse\n\n\n\n\nversions.match_semver(\n    version_str,\n    with_leading_v=False,\n    strict_semver=True,\n    pattern=None,\n)\nMatch a version string against the semantic versioning pattern.\nSee the semantic versioning guidelines: https://semver.org/\n\n\n\n\n\nName\nType\nDescription\nDefault\n\n\n\n\nversion_str\nstr\nThe version string to match against the semantic versioning pattern.\nrequired\n\n\nwith_leading_v\nbool\nIf True, the version string is expected to start with a leading ‘v’.\nFalse\n\n\nstrict_semver\nbool\nIf True, the version string must match the full semantic versioning pattern. Otherwise, a relaxed format with only the major and minor components is allowed.\nTrue\n\n\npattern\nstr\nA custom regex pattern to match against the version string. If None, the default semantic versioning pattern is used.\nNone\n\n\n\nReturns: re.Match or None The match object if the version string matches the semantic versioning pattern, otherwise None.\n\n\n\nget_major_minor_version : Extract the major and minor version from a semantic versioning string.\n\n\n\n&gt;&gt;&gt; match_semver(\"1.0.0\")\n&lt;re.Match object; span=(0, 5), match='1.0.0'&gt;\n&gt;&gt;&gt; match_semver(\"1.0.0-alpha+001\")\n&lt;re.Match object; span=(0, 13), match='1.0.0-alpha+001'&gt;\n&gt;&gt;&gt; match_semver(\"invalid_version\")\nNone",
+    "crumbs": [
+      "Main modules",
+      "versions"
+    ]
+  },
+  {
+    "objectID": "reference/versions.html#functions",
+    "href": "reference/versions.html#functions",
+    "title": "versions",
+    "section": "",
+    "text": "Name\nDescription\n\n\n\n\ncheck_version_increments_by_one\nChecks if the next version increments by exactly 1 digit from the current version.\n\n\nget_current_hash\nGet the current commit hash.\n\n\nget_latest_release_hash\nGet the commit hash of the latest release.\n\n\nget_latest_release_tag\nGet the tag name of the latest release.\n\n\nget_major_minor_version\nExtract the major and minor version from a semantic versioning string.\n\n\nget_releases\nGet a list of releases from GitHub.\n\n\nget_tag_hash\nRetrieve the commit hash associated with a specific tag in a GitHub repository.\n\n\nis_ancestor\nCheck if one commit is an ancestor of another.\n\n\nmatch_semver\nMatch a version string against the semantic versioning pattern.\n\n\n\n\n\nversions.check_version_increments_by_one(\n    current_version,\n    next_version,\n    with_leading_v=False,\n    error_on_false=True,\n    debug=False,\n)\nChecks if the next version increments by exactly 1 digit from the current version.\nEnsures that the next version follows semantic versioning guidelines and increments only one of the major, minor, or patch numbers by 1.\n\n\n\n\n\nName\nType\nDescription\nDefault\n\n\n\n\ncurrent_version\nstr\nThe current version string.\nrequired\n\n\nnext_version\nstr\nThe proposed next version string.\nrequired\n\n\nwith_leading_v\nbool\nIf True, expects the version strings to start with ‘v’. Defaults to False.\nFalse\n\n\nerror_on_false\nbool\nIf True, raises a ValueError when the check fails. Defaults to True.\nTrue\n\n\ndebug\nbool\nIf True, prints debug information. Defaults to False.\nFalse\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nName\nType\nDescription\n\n\n\n\nbool\n\nTrue if the next version increments by exactly one, False otherwise.\n\n\n\n\n\n\n\n\n\nName\nType\nDescription\n\n\n\n\n\nValueError\nIf the next version does not match semantic versioning guidelines or does not increment by exactly one.\n\n\n\n\n\n\n&gt;&gt;&gt; check_version_increments_by_one(\"1.0.0\", \"1.0.1\")\nTrue\n&gt;&gt;&gt; check_version_increments_by_one(\"1.0.0\", \"1.1.0\")\nTrue\n&gt;&gt;&gt; check_version_increments_by_one(\"1.0.0\", \"2.0.0\")\nTrue\n&gt;&gt;&gt; check_version_increments_by_one(\"1.0.0\", \"1.0.2\")\nFalse\n&gt;&gt;&gt; check_version_increments_by_one(\"1.0.0\", \"1.2.0\")\nFalse\n&gt;&gt;&gt; check_version_increments_by_one(\"1.0.0\", \"3.0.0\")\nFalse\n\n\n\n\nversions.get_current_hash()\nGet the current commit hash.\nUses git rev-parse HEAD to get the current commit hash.\n\n\n\n\n\nName\nType\nDescription\n\n\n\n\nstr\n\nThe current commit hash.\n\n\n\n\n\n\nget_latest_release_hash : Get the commit hash of the latest release.\n\n\n\n&gt;&gt;&gt; get_current_hash()\n'abc123def4567890abcdef1234567890abcdef12'\n\n\n\n\nversions.get_latest_release_hash(repo='CCBR/Tools')\nGet the commit hash of the latest release.\nUses git rev-list to get the commit hash of the latest release tag.\n\n\n\n\n\nName\nType\nDescription\nDefault\n\n\n\n\nrepo\nstr\nThe GitHub repository in the format ‘owner/repo’. Default: ‘CCBR/Tools’\n'CCBR/Tools'\n\n\n\n\n\n\n\n\n\nName\nType\nDescription\n\n\n\n\nstr\n\nThe commit hash of the latest release.\n\n\n\n\n\n\n\n\n\nName\nType\nDescription\n\n\n\n\n\nValueError\nIf the tag is not found in the repository commit history.\n\n\n\n\n\n\nget_latest_release_tag: Get the tag name of the latest release.\n\n\n\n&gt;&gt;&gt; get_latest_release_hash()\n'abc123def4567890abcdef1234567890abcdef12'\n\n\n\n\nversions.get_latest_release_tag(repo='CCBR/Tools')\nGet the tag name of the latest release.\nUses the GitHub CLI to retrieve the latest release tag from a repository.\n\n\n\n\n\nName\nType\nDescription\nDefault\n\n\n\n\nargs\nstr\nAdditional arguments to pass to the GitHub CLI command (default is ““).\nrequired\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nName\nType\nDescription\n\n\n\n\n\n\nstr or None: The tag name of the latest release, or None if no latest release is found.\n\n\n\n\n\n\nget_releases: Get a list of releases from GitHub.\n\n\n\n&gt;&gt;&gt; get_latest_release_tag()\n'v1.0.0'\n\n\n\n\nversions.get_major_minor_version(\n    version_str,\n    with_leading_v=False,\n    strict_semver=True,\n)\nExtract the major and minor version from a semantic versioning string.\nSee the semantic versioning guidelines: https://semver.org/\n\n\n\n\n\nName\nType\nDescription\nDefault\n\n\n\n\nversion_str\nstr\nThe version string to extract from.\nrequired\n\n\nwith_leading_v\nbool\nWhether to include a leading ‘v’ in the output.\nFalse\n\n\nstrict_semver\nbool\nIf True, the version string must match the full semantic versioning pattern. Otherwise, a relaxed format with only the major and minor components is allowed.\nTrue\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nName\nType\nDescription\n\n\n\n\n\n\nstr or None: The major and minor version in the format ‘major.minor’, or None if the version string is invalid.\n\n\n\n\n\n\nmatch_semver: Match a version string against the semantic versioning pattern.\n\n\n\n&gt;&gt;&gt; get_major_minor_version(\"1.0.0\")\n'1.0'\n&gt;&gt;&gt; get_major_minor_version(\"2.1.3-alpha\")\n'2.1'\n&gt;&gt;&gt; get_major_minor_version(\"invalid_version\")\nNone\n&gt;&gt;&gt; get_major_minor_version('3.1', strict_semver=False)\n\n\n\n\nversions.get_releases(\n    limit=1,\n    args='',\n    json_fields='name,tagName,isLatest,publishedAt',\n)\nGet a list of releases from GitHub.\nUses the GitHub CLI to retrieve a list of releases from a repository. You will need to install it before you can use this function.\n\n\n\n\n\nName\nType\nDescription\nDefault\n\n\n\n\nlimit\nint\nThe maximum number of releases to retrieve (default is 1).\n1\n\n\nargs\nstr\nAdditional arguments to pass to the GitHub CLI command (default is ““).\n''\n\n\njson_fields\nstr\nThe JSON fields to include in the output (default is “name,tagName,isLatest,publishedAt”).\n'name,tagName,isLatest,publishedAt'\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nName\nType\nDescription\n\n\n\n\nlist\n\nA list of dictionaries containing release information.\n\n\n\n\n\n\nget_latest_release_tag : Get the tag name of the latest release. get_latest_release_hash : Get the commit hash of the latest release.\n\n\n\ngh cli docs: https://cli.github.com/manual/gh_release_list\n\n\n\n&gt;&gt;&gt; get_releases(limit=2)\n[{'name': 'v1.0.0', 'tagName': 'v1.0.0', 'isLatest': True, 'publishedAt': '2021-01-01T00:00:00Z'},\n{'name': 'v0.9.0', 'tagName': 'v0.9.0', 'isLatest': False, 'publishedAt': '2020-12-01T00:00:00Z'}]\n&gt;&gt;&gt; get_releases(limit=2, args=\"--repo CCBR/RENEE\")\n[{'isLatest': True, 'name': 'RENEE 2.5.12', 'publishedAt': '2024-04-12T14:49:11Z', 'tagName': 'v2.5.12'},\n{'isLatest': False, 'name': 'RENEE 2.5.11', 'publishedAt': '2024-01-22T21:02:30Z', 'tagName': 'v2.5.11'}]\n\n\n\n\nversions.get_tag_hash(tag_name, args='', repo='CCBR/Tools')\nRetrieve the commit hash associated with a specific tag in a GitHub repository. Args: tag_name (str): The name of the tag for which the commit hash is to be retrieved. repo (str, optional): The GitHub repository in the format ‘owner/repo’. Defaults to ‘CCBR/Tools’. Returns: str: The commit hash (SHA) associated with the specified tag. Raises: requests.exceptions.RequestException: If there is an issue with the HTTP request. KeyError: If the expected data is not found in the API response.\n\n\n\nversions.is_ancestor(ancestor, descendant)\nCheck if one commit is an ancestor of another.\nUses git merge-base –is-ancestor to determine if the ancestor is an ancestor of the descendant.\n\n\n\n\n\nName\nType\nDescription\nDefault\n\n\n\n\nancestor\nstr\nThe commit hash of the potential ancestor.\nrequired\n\n\ndescendant\nstr\nThe commit hash of the potential descendant.\nrequired\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nName\nType\nDescription\n\n\n\n\nbool\n\nTrue if the ancestor is an ancestor of the descendant, otherwise False.\n\n\n\n\n\n\nget_latest_release_hash : Get the commit hash of the latest release. get_current_hash : Get the commit hash of the current.\n\n\n\n&gt;&gt;&gt; is_ancestor(\"abc123\", \"def456\")\nTrue\n&gt;&gt;&gt; is_ancestor(\"abc123\", \"ghi789\")\nFalse\n\n\n\n\nversions.match_semver(\n    version_str,\n    with_leading_v=False,\n    strict_semver=True,\n    pattern=None,\n)\nMatch a version string against the semantic versioning pattern.\nSee the semantic versioning guidelines: https://semver.org/\n\n\n\n\n\nName\nType\nDescription\nDefault\n\n\n\n\nversion_str\nstr\nThe version string to match against the semantic versioning pattern.\nrequired\n\n\nwith_leading_v\nbool\nIf True, the version string is expected to start with a leading ‘v’.\nFalse\n\n\nstrict_semver\nbool\nIf True, the version string must match the full semantic versioning pattern. Otherwise, a relaxed format with only the major and minor components is allowed.\nTrue\n\n\npattern\nstr\nA custom regex pattern to match against the version string. If None, the default semantic versioning pattern is used.\nNone\n\n\n\nReturns: re.Match or None The match object if the version string matches the semantic versioning pattern, otherwise None.\n\n\n\nget_major_minor_version : Extract the major and minor version from a semantic versioning string.\n\n\n\n&gt;&gt;&gt; match_semver(\"1.0.0\")\n&lt;re.Match object; span=(0, 5), match='1.0.0'&gt;\n&gt;&gt;&gt; match_semver(\"1.0.0-alpha+001\")\n&lt;re.Match object; span=(0, 13), match='1.0.0-alpha+001'&gt;\n&gt;&gt;&gt; match_semver(\"invalid_version\")\nNone",
+    "crumbs": [
+      "Main modules",
+      "versions"
+    ]
+  },
+  {
+    "objectID": "reference/gb2gtf.html",
+    "href": "reference/gb2gtf.html",
+    "title": "gb2gtf",
+    "section": "",
+    "text": "gb2gtf\nModule for converting GenBank files to GTF format.\n\n\npython gb2gtf.py sequence.gb &gt; sequence.gtf",
+    "crumbs": [
+      "Legacy tools",
+      "gb2gtf"
+    ]
+  },
+  {
+    "objectID": "reference/gb2gtf.html#usage",
+    "href": "reference/gb2gtf.html#usage",
+    "title": "gb2gtf",
+    "section": "",
+    "text": "python gb2gtf.py sequence.gb &gt; sequence.gtf",
+    "crumbs": [
+      "Legacy tools",
+      "gb2gtf"
+    ]
+  },
+  {
+    "objectID": "reference/pipeline.html",
+    "href": "reference/pipeline.html",
+    "title": "pipeline",
+    "section": "",
+    "text": "pipeline\npipeline\nHelpers for bioinformatics pipelines\n\ncache\nhpc\nnextflow\nutil",
+    "crumbs": [
+      "Main modules",
+      "pipeline"
+    ]
+  },
+  {
+    "objectID": "reference/jobby.html",
+    "href": "reference/jobby.html",
+    "title": "jobby",
+    "section": "",
+    "text": "jobby\nDisplay job information for past SLURM job IDs.\n\n\njobby is a command-line utility that collects and displays job metadata from SLURM-managed clusters. It supports retrieving job IDs from direct input, Snakemake logs, or Nextflow logs, and presents job status and resource usage in a standardized output format.\nWhy? jobby aims to simplify and unify the job-querying process by abstracting away cluster-specific tools and normalizing output into common formats. jobby will ensure consistent reporting from multiple CCBR Snakemake and Nextflow pipelines when embedded in onsuccess/onerror/oncomplete blocks.\n\n\n\n\nParses SLURM job IDs from CLI args, .nextflow.log, and snakemake.log.\nQueries SLURM using sacct to gather job information such as state, runtime, CPU/memory usage, etc.\nConverts time fields to seconds, memory fields to GB, and calculates CPU efficiency.\nSupports multiple output formats: Markdown (default), TSV, JSON, and YAML.\n\n\n\n\njobby  [jobid2 …] [–tsv|–json|–yaml] jobby , [–tsv|–json|–yaml] jobby snakemake.log [–tsv|–json|–yaml] jobby .nextflow.log [–tsv|–json|–yaml]\n\n\n\n\nPython 3.7+\npandas (required)\nnumpy (required)\nPyYAML (optional, required only for –yaml output)\n\n\n\n\njobby 12345678 12345679 jobby snakemake.log –json jobby .nextflow.log –yaml jobby 12345678,12345679 –tsv\n\n\n\n\n\n\nName\nDescription\n\n\n\n\nextract_jobids_from_file\nExtract SLURM job IDs from a Snakemake or Nextflow log file.\n\n\nformat_df\nFormat the DataFrame for output based on the requested format.\n\n\nparse_mem_to_gb\nConvert SLURM memory strings like ‘4000M’, ‘4G’, ‘102400K’ to GB as float.\n\n\nparse_time_to_seconds\nConvert SLURM time formats like ‘1-02:03:04’, ‘02:03:04’, ‘37:55.869’, or ‘55.869’ to seconds.\n\n\nrecords_to_df\nConvert a list of job records to a pandas DataFrame.\n\n\n\n\n\njobby.extract_jobids_from_file(filepath)\nExtract SLURM job IDs from a Snakemake or Nextflow log file.\n\n\n\njobby.format_df(df, output_format)\nFormat the DataFrame for output based on the requested format.\n\n\n\njobby.parse_mem_to_gb(mem_str)\nConvert SLURM memory strings like ‘4000M’, ‘4G’, ‘102400K’ to GB as float.\n\n\n\njobby.parse_time_to_seconds(t)\nConvert SLURM time formats like ‘1-02:03:04’, ‘02:03:04’, ‘37:55.869’, or ‘55.869’ to seconds.\n\n\n\njobby.records_to_df(records)\nConvert a list of job records to a pandas DataFrame.",
+    "crumbs": [
+      "Main modules",
+      "jobby"
+    ]
+  },
+  {
+    "objectID": "reference/jobby.html#about",
+    "href": "reference/jobby.html#about",
+    "title": "jobby",
+    "section": "",
+    "text": "jobby is a command-line utility that collects and displays job metadata from SLURM-managed clusters. It supports retrieving job IDs from direct input, Snakemake logs, or Nextflow logs, and presents job status and resource usage in a standardized output format.\nWhy? jobby aims to simplify and unify the job-querying process by abstracting away cluster-specific tools and normalizing output into common formats. jobby will ensure consistent reporting from multiple CCBR Snakemake and Nextflow pipelines when embedded in onsuccess/onerror/oncomplete blocks.",
+    "crumbs": [
+      "Main modules",
+      "jobby"
+    ]
+  },
+  {
+    "objectID": "reference/jobby.html#features",
+    "href": "reference/jobby.html#features",
+    "title": "jobby",
+    "section": "",
+    "text": "Parses SLURM job IDs from CLI args, .nextflow.log, and snakemake.log.\nQueries SLURM using sacct to gather job information such as state, runtime, CPU/memory usage, etc.\nConverts time fields to seconds, memory fields to GB, and calculates CPU efficiency.\nSupports multiple output formats: Markdown (default), TSV, JSON, and YAML.",
+    "crumbs": [
+      "Main modules",
+      "jobby"
+    ]
+  },
+  {
+    "objectID": "reference/jobby.html#usage",
+    "href": "reference/jobby.html#usage",
+    "title": "jobby",
+    "section": "",
+    "text": "jobby  [jobid2 …] [–tsv|–json|–yaml] jobby , [–tsv|–json|–yaml] jobby snakemake.log [–tsv|–json|–yaml] jobby .nextflow.log [–tsv|–json|–yaml]",
+    "crumbs": [
+      "Main modules",
+      "jobby"
+    ]
+  },
+  {
+    "objectID": "reference/jobby.html#dependencies",
+    "href": "reference/jobby.html#dependencies",
+    "title": "jobby",
+    "section": "",
+    "text": "Python 3.7+\npandas (required)\nnumpy (required)\nPyYAML (optional, required only for –yaml output)",
+    "crumbs": [
+      "Main modules",
+      "jobby"
+    ]
+  },
+  {
+    "objectID": "reference/jobby.html#examples",
+    "href": "reference/jobby.html#examples",
+    "title": "jobby",
+    "section": "",
+    "text": "jobby 12345678 12345679 jobby snakemake.log –json jobby .nextflow.log –yaml jobby 12345678,12345679 –tsv",
+    "crumbs": [
+      "Main modules",
+      "jobby"
+    ]
+  },
+  {
+    "objectID": "reference/jobby.html#functions",
+    "href": "reference/jobby.html#functions",
+    "title": "jobby",
+    "section": "",
+    "text": "Name\nDescription\n\n\n\n\nextract_jobids_from_file\nExtract SLURM job IDs from a Snakemake or Nextflow log file.\n\n\nformat_df\nFormat the DataFrame for output based on the requested format.\n\n\nparse_mem_to_gb\nConvert SLURM memory strings like ‘4000M’, ‘4G’, ‘102400K’ to GB as float.\n\n\nparse_time_to_seconds\nConvert SLURM time formats like ‘1-02:03:04’, ‘02:03:04’, ‘37:55.869’, or ‘55.869’ to seconds.\n\n\nrecords_to_df\nConvert a list of job records to a pandas DataFrame.\n\n\n\n\n\njobby.extract_jobids_from_file(filepath)\nExtract SLURM job IDs from a Snakemake or Nextflow log file.\n\n\n\njobby.format_df(df, output_format)\nFormat the DataFrame for output based on the requested format.\n\n\n\njobby.parse_mem_to_gb(mem_str)\nConvert SLURM memory strings like ‘4000M’, ‘4G’, ‘102400K’ to GB as float.\n\n\n\njobby.parse_time_to_seconds(t)\nConvert SLURM time formats like ‘1-02:03:04’, ‘02:03:04’, ‘37:55.869’, or ‘55.869’ to seconds.\n\n\n\njobby.records_to_df(records)\nConvert a list of job records to a pandas DataFrame.",
+    "crumbs": [
+      "Main modules",
+      "jobby"
+    ]
+  },
+  {
+    "objectID": "reference/send_email.html",
+    "href": "reference/send_email.html",
+    "title": "send_email",
+    "section": "",
+    "text": "send_email\nSend an email with an attachment\nIntended to run from biowulf\n\n\n\n\n\nName\nDescription\n\n\n\n\nsend_email_msg\nSends an email with an optional message & HTML attachment.\n\n\n\n\n\nsend_email.send_email_msg(\n    to_address='${USER}@hpc.nih.gov',\n    text='This is an automated email',\n    subject='test email from python',\n    attach_html=None,\n    from_addr='${USER}@hpc.nih.gov',\n    debug=False,\n)\nSends an email with an optional message & HTML attachment.\n\n\n\n\n\nName\nType\nDescription\nDefault\n\n\n\n\nto_address\nstr\nThe email address of the recipient.\n'${USER}@hpc.nih.gov'\n\n\ntext\nstr\nThe plain text content of the email.\n'This is an automated email'\n\n\nsubject\nstr\nThe subject line of the email.\n'test email from python'\n\n\nattach_html\nstr\nThe file path to the HTML attachment.\nNone\n\n\nfrom_addr\nstr\nThe email address of the sender.\n'${USER}@hpc.nih.gov'\n\n\n\n\n\n\n\n\n\nName\nType\nDescription\n\n\n\n\n\nFileNotFoundError\nIf the HTML attachment file does not exist.\n\n\n\nsmtplib.SMTPException\nIf there is an error sending the email.",
+    "crumbs": [
+      "Main modules",
+      "send_email"
+    ]
+  },
+  {
+    "objectID": "reference/send_email.html#functions",
+    "href": "reference/send_email.html#functions",
+    "title": "send_email",
+    "section": "",
+    "text": "Name\nDescription\n\n\n\n\nsend_email_msg\nSends an email with an optional message & HTML attachment.\n\n\n\n\n\nsend_email.send_email_msg(\n    to_address='${USER}@hpc.nih.gov',\n    text='This is an automated email',\n    subject='test email from python',\n    attach_html=None,\n    from_addr='${USER}@hpc.nih.gov',\n    debug=False,\n)\nSends an email with an optional message & HTML attachment.\n\n\n\n\n\nName\nType\nDescription\nDefault\n\n\n\n\nto_address\nstr\nThe email address of the recipient.\n'${USER}@hpc.nih.gov'\n\n\ntext\nstr\nThe plain text content of the email.\n'This is an automated email'\n\n\nsubject\nstr\nThe subject line of the email.\n'test email from python'\n\n\nattach_html\nstr\nThe file path to the HTML attachment.\nNone\n\n\nfrom_addr\nstr\nThe email address of the sender.\n'${USER}@hpc.nih.gov'\n\n\n\n\n\n\n\n\n\nName\nType\nDescription\n\n\n\n\n\nFileNotFoundError\nIf the HTML attachment file does not exist.\n\n\n\nsmtplib.SMTPException\nIf there is an error sending the email.",
+    "crumbs": [
+      "Main modules",
+      "send_email"
     ]
   },
   {
@@ -260,417 +707,25 @@
     ]
   },
   {
-    "objectID": "reference/send_email.html",
-    "href": "reference/send_email.html",
-    "title": "send_email",
+    "objectID": "reference/GSEA.multitext2excel.html",
+    "href": "reference/GSEA.multitext2excel.html",
+    "title": "GSEA.multitext2excel",
     "section": "",
-    "text": "send_email\nSend an email with an attachment\nIntended to run from biowulf\n\n\n\n\n\nName\nDescription\n\n\n\n\nsend_email_msg\nSends an email with an optional message & HTML attachment.\n\n\n\n\n\nsend_email.send_email_msg(\n    to_address='${USER}@hpc.nih.gov',\n    text='This is an automated email',\n    subject='test email from python',\n    attach_html=None,\n    from_addr='${USER}@hpc.nih.gov',\n    debug=False,\n)\nSends an email with an optional message & HTML attachment.\n\n\n\n\n\nName\nType\nDescription\nDefault\n\n\n\n\nto_address\nstr\nThe email address of the recipient.\n'${USER}@hpc.nih.gov'\n\n\ntext\nstr\nThe plain text content of the email.\n'This is an automated email'\n\n\nsubject\nstr\nThe subject line of the email.\n'test email from python'\n\n\nattach_html\nstr\nThe file path to the HTML attachment.\nNone\n\n\nfrom_addr\nstr\nThe email address of the sender.\n'${USER}@hpc.nih.gov'\n\n\n\n\n\n\n\n\n\nName\nType\nDescription\n\n\n\n\n\nFileNotFoundError\nIf the HTML attachment file does not exist.\n\n\n\nsmtplib.SMTPException\nIf there is an error sending the email.",
+    "text": "GSEA.multitext2excel\nGSEA.multitext2excel\nReads a list of files to import as separate tabs in Excel\nCreated on Mon Aug 6 14:59:13 2018\nSusan Huse NIAID Center for Biological Research Frederick National Laboratory for Cancer Research Leidos Biomedical\nv 1.0 - initial code version. v 1.1 - updated to include first splitter markowitzte@nih.gov",
+    "crumbs": [
+      "Legacy tools",
+      "GSEA.multitext2excel"
+    ]
+  },
+  {
+    "objectID": "reference/software.html",
+    "href": "reference/software.html",
+    "title": "software",
+    "section": "",
+    "text": "software\nsoftware",
     "crumbs": [
       "Main modules",
-      "send_email"
-    ]
-  },
-  {
-    "objectID": "reference/send_email.html#functions",
-    "href": "reference/send_email.html#functions",
-    "title": "send_email",
-    "section": "",
-    "text": "Name\nDescription\n\n\n\n\nsend_email_msg\nSends an email with an optional message & HTML attachment.\n\n\n\n\n\nsend_email.send_email_msg(\n    to_address='${USER}@hpc.nih.gov',\n    text='This is an automated email',\n    subject='test email from python',\n    attach_html=None,\n    from_addr='${USER}@hpc.nih.gov',\n    debug=False,\n)\nSends an email with an optional message & HTML attachment.\n\n\n\n\n\nName\nType\nDescription\nDefault\n\n\n\n\nto_address\nstr\nThe email address of the recipient.\n'${USER}@hpc.nih.gov'\n\n\ntext\nstr\nThe plain text content of the email.\n'This is an automated email'\n\n\nsubject\nstr\nThe subject line of the email.\n'test email from python'\n\n\nattach_html\nstr\nThe file path to the HTML attachment.\nNone\n\n\nfrom_addr\nstr\nThe email address of the sender.\n'${USER}@hpc.nih.gov'\n\n\n\n\n\n\n\n\n\nName\nType\nDescription\n\n\n\n\n\nFileNotFoundError\nIf the HTML attachment file does not exist.\n\n\n\nsmtplib.SMTPException\nIf there is an error sending the email.",
-    "crumbs": [
-      "Main modules",
-      "send_email"
-    ]
-  },
-  {
-    "objectID": "reference/jobby.html",
-    "href": "reference/jobby.html",
-    "title": "jobby",
-    "section": "",
-    "text": "jobby\nDisplay job information for past SLURM job IDs.\n\n\njobby is a command-line utility that collects and displays job metadata from SLURM-managed clusters. It supports retrieving job IDs from direct input, Snakemake logs, or Nextflow logs, and presents job status and resource usage in a standardized output format.\nWhy? jobby aims to simplify and unify the job-querying process by abstracting away cluster-specific tools and normalizing output into common formats. jobby will ensure consistent reporting from multiple CCBR Snakemake and Nextflow pipelines when embedded in onsuccess/onerror/oncomplete blocks.\n\n\n\n\nParses SLURM job IDs from CLI args, .nextflow.log, and snakemake.log.\nQueries SLURM using sacct to gather job information such as state, runtime, CPU/memory usage, etc.\nConverts time fields to seconds, memory fields to GB, and calculates CPU efficiency.\nSupports multiple output formats: Markdown (default), TSV, JSON, and YAML.\n\n\n\n\njobby  [jobid2 …] [–tsv|–json|–yaml] jobby , [–tsv|–json|–yaml] jobby snakemake.log [–tsv|–json|–yaml] jobby .nextflow.log [–tsv|–json|–yaml]\n\n\n\n\nPython 3.7+\npandas (required)\nnumpy (required)\nPyYAML (optional, required only for –yaml output)\n\n\n\n\njobby 12345678 12345679 jobby snakemake.log –json jobby .nextflow.log –yaml jobby 12345678,12345679 –tsv\n\n\n\n\n\n\nName\nDescription\n\n\n\n\nextract_jobids_from_file\nExtract SLURM job IDs from a Snakemake or Nextflow log file.\n\n\nformat_df\nFormat the DataFrame for output based on the requested format.\n\n\nparse_mem_to_gb\nConvert SLURM memory strings like ‘4000M’, ‘4G’, ‘102400K’ to GB as float.\n\n\nparse_time_to_seconds\nConvert SLURM time formats like ‘1-02:03:04’, ‘02:03:04’, ‘37:55.869’, or ‘55.869’ to seconds.\n\n\nrecords_to_df\nConvert a list of job records to a pandas DataFrame.\n\n\n\n\n\njobby.extract_jobids_from_file(filepath)\nExtract SLURM job IDs from a Snakemake or Nextflow log file.\n\n\n\njobby.format_df(df, output_format)\nFormat the DataFrame for output based on the requested format.\n\n\n\njobby.parse_mem_to_gb(mem_str)\nConvert SLURM memory strings like ‘4000M’, ‘4G’, ‘102400K’ to GB as float.\n\n\n\njobby.parse_time_to_seconds(t)\nConvert SLURM time formats like ‘1-02:03:04’, ‘02:03:04’, ‘37:55.869’, or ‘55.869’ to seconds.\n\n\n\njobby.records_to_df(records)\nConvert a list of job records to a pandas DataFrame.",
-    "crumbs": [
-      "Legacy tools",
-      "jobby"
-    ]
-  },
-  {
-    "objectID": "reference/jobby.html#about",
-    "href": "reference/jobby.html#about",
-    "title": "jobby",
-    "section": "",
-    "text": "jobby is a command-line utility that collects and displays job metadata from SLURM-managed clusters. It supports retrieving job IDs from direct input, Snakemake logs, or Nextflow logs, and presents job status and resource usage in a standardized output format.\nWhy? jobby aims to simplify and unify the job-querying process by abstracting away cluster-specific tools and normalizing output into common formats. jobby will ensure consistent reporting from multiple CCBR Snakemake and Nextflow pipelines when embedded in onsuccess/onerror/oncomplete blocks.",
-    "crumbs": [
-      "Legacy tools",
-      "jobby"
-    ]
-  },
-  {
-    "objectID": "reference/jobby.html#features",
-    "href": "reference/jobby.html#features",
-    "title": "jobby",
-    "section": "",
-    "text": "Parses SLURM job IDs from CLI args, .nextflow.log, and snakemake.log.\nQueries SLURM using sacct to gather job information such as state, runtime, CPU/memory usage, etc.\nConverts time fields to seconds, memory fields to GB, and calculates CPU efficiency.\nSupports multiple output formats: Markdown (default), TSV, JSON, and YAML.",
-    "crumbs": [
-      "Legacy tools",
-      "jobby"
-    ]
-  },
-  {
-    "objectID": "reference/jobby.html#usage",
-    "href": "reference/jobby.html#usage",
-    "title": "jobby",
-    "section": "",
-    "text": "jobby  [jobid2 …] [–tsv|–json|–yaml] jobby , [–tsv|–json|–yaml] jobby snakemake.log [–tsv|–json|–yaml] jobby .nextflow.log [–tsv|–json|–yaml]",
-    "crumbs": [
-      "Legacy tools",
-      "jobby"
-    ]
-  },
-  {
-    "objectID": "reference/jobby.html#dependencies",
-    "href": "reference/jobby.html#dependencies",
-    "title": "jobby",
-    "section": "",
-    "text": "Python 3.7+\npandas (required)\nnumpy (required)\nPyYAML (optional, required only for –yaml output)",
-    "crumbs": [
-      "Legacy tools",
-      "jobby"
-    ]
-  },
-  {
-    "objectID": "reference/jobby.html#examples",
-    "href": "reference/jobby.html#examples",
-    "title": "jobby",
-    "section": "",
-    "text": "jobby 12345678 12345679 jobby snakemake.log –json jobby .nextflow.log –yaml jobby 12345678,12345679 –tsv",
-    "crumbs": [
-      "Legacy tools",
-      "jobby"
-    ]
-  },
-  {
-    "objectID": "reference/jobby.html#functions",
-    "href": "reference/jobby.html#functions",
-    "title": "jobby",
-    "section": "",
-    "text": "Name\nDescription\n\n\n\n\nextract_jobids_from_file\nExtract SLURM job IDs from a Snakemake or Nextflow log file.\n\n\nformat_df\nFormat the DataFrame for output based on the requested format.\n\n\nparse_mem_to_gb\nConvert SLURM memory strings like ‘4000M’, ‘4G’, ‘102400K’ to GB as float.\n\n\nparse_time_to_seconds\nConvert SLURM time formats like ‘1-02:03:04’, ‘02:03:04’, ‘37:55.869’, or ‘55.869’ to seconds.\n\n\nrecords_to_df\nConvert a list of job records to a pandas DataFrame.\n\n\n\n\n\njobby.extract_jobids_from_file(filepath)\nExtract SLURM job IDs from a Snakemake or Nextflow log file.\n\n\n\njobby.format_df(df, output_format)\nFormat the DataFrame for output based on the requested format.\n\n\n\njobby.parse_mem_to_gb(mem_str)\nConvert SLURM memory strings like ‘4000M’, ‘4G’, ‘102400K’ to GB as float.\n\n\n\njobby.parse_time_to_seconds(t)\nConvert SLURM time formats like ‘1-02:03:04’, ‘02:03:04’, ‘37:55.869’, or ‘55.869’ to seconds.\n\n\n\njobby.records_to_df(records)\nConvert a list of job records to a pandas DataFrame.",
-    "crumbs": [
-      "Legacy tools",
-      "jobby"
-    ]
-  },
-  {
-    "objectID": "reference/pipeline.html",
-    "href": "reference/pipeline.html",
-    "title": "pipeline",
-    "section": "",
-    "text": "pipeline\npipeline\nHelpers for bioinformatics pipelines\n\ncache\nhpc\nnextflow\nutil",
-    "crumbs": [
-      "Main modules",
-      "pipeline"
-    ]
-  },
-  {
-    "objectID": "reference/gb2gtf.html",
-    "href": "reference/gb2gtf.html",
-    "title": "gb2gtf",
-    "section": "",
-    "text": "gb2gtf\nModule for converting GenBank files to GTF format.\n\n\npython gb2gtf.py sequence.gb &gt; sequence.gtf",
-    "crumbs": [
-      "Legacy tools",
-      "gb2gtf"
-    ]
-  },
-  {
-    "objectID": "reference/gb2gtf.html#usage",
-    "href": "reference/gb2gtf.html#usage",
-    "title": "gb2gtf",
-    "section": "",
-    "text": "python gb2gtf.py sequence.gb &gt; sequence.gtf",
-    "crumbs": [
-      "Legacy tools",
-      "gb2gtf"
-    ]
-  },
-  {
-    "objectID": "reference/versions.html",
-    "href": "reference/versions.html",
-    "title": "versions",
-    "section": "",
-    "text": "versions\nGet information from git tags, commit hashes, and GitHub releases.\n\n\n\n\n\nName\nDescription\n\n\n\n\ncheck_version_increments_by_one\nChecks if the next version increments by exactly 1 digit from the current version.\n\n\nget_current_hash\nGet the current commit hash.\n\n\nget_latest_release_hash\nGet the commit hash of the latest release.\n\n\nget_latest_release_tag\nGet the tag name of the latest release.\n\n\nget_major_minor_version\nExtract the major and minor version from a semantic versioning string.\n\n\nget_releases\nGet a list of releases from GitHub.\n\n\nget_tag_hash\nRetrieve the commit hash associated with a specific tag in a GitHub repository.\n\n\nis_ancestor\nCheck if one commit is an ancestor of another.\n\n\nmatch_semver\nMatch a version string against the semantic versioning pattern.\n\n\n\n\n\nversions.check_version_increments_by_one(\n    current_version,\n    next_version,\n    with_leading_v=False,\n    error_on_false=True,\n    debug=False,\n)\nChecks if the next version increments by exactly 1 digit from the current version.\nEnsures that the next version follows semantic versioning guidelines and increments only one of the major, minor, or patch numbers by 1.\n\n\n\n\n\nName\nType\nDescription\nDefault\n\n\n\n\ncurrent_version\nstr\nThe current version string.\nrequired\n\n\nnext_version\nstr\nThe proposed next version string.\nrequired\n\n\nwith_leading_v\nbool\nIf True, expects the version strings to start with ‘v’. Defaults to False.\nFalse\n\n\nerror_on_false\nbool\nIf True, raises a ValueError when the check fails. Defaults to True.\nTrue\n\n\ndebug\nbool\nIf True, prints debug information. Defaults to False.\nFalse\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nName\nType\nDescription\n\n\n\n\nbool\n\nTrue if the next version increments by exactly one, False otherwise.\n\n\n\n\n\n\n\n\n\nName\nType\nDescription\n\n\n\n\n\nValueError\nIf the next version does not match semantic versioning guidelines or does not increment by exactly one.\n\n\n\n\n\n\n&gt;&gt;&gt; check_version_increments_by_one(\"1.0.0\", \"1.0.1\")\nTrue\n&gt;&gt;&gt; check_version_increments_by_one(\"1.0.0\", \"1.1.0\")\nTrue\n&gt;&gt;&gt; check_version_increments_by_one(\"1.0.0\", \"2.0.0\")\nTrue\n&gt;&gt;&gt; check_version_increments_by_one(\"1.0.0\", \"1.0.2\")\nFalse\n&gt;&gt;&gt; check_version_increments_by_one(\"1.0.0\", \"1.2.0\")\nFalse\n&gt;&gt;&gt; check_version_increments_by_one(\"1.0.0\", \"3.0.0\")\nFalse\n\n\n\n\nversions.get_current_hash()\nGet the current commit hash.\nUses git rev-parse HEAD to get the current commit hash.\n\n\n\n\n\nName\nType\nDescription\n\n\n\n\nstr\n\nThe current commit hash.\n\n\n\n\n\n\nget_latest_release_hash : Get the commit hash of the latest release.\n\n\n\n&gt;&gt;&gt; get_current_hash()\n'abc123def4567890abcdef1234567890abcdef12'\n\n\n\n\nversions.get_latest_release_hash(repo='CCBR/Tools')\nGet the commit hash of the latest release.\nUses git rev-list to get the commit hash of the latest release tag.\n\n\n\n\n\nName\nType\nDescription\nDefault\n\n\n\n\nrepo\nstr\nThe GitHub repository in the format ‘owner/repo’. Default: ‘CCBR/Tools’\n'CCBR/Tools'\n\n\n\n\n\n\n\n\n\nName\nType\nDescription\n\n\n\n\nstr\n\nThe commit hash of the latest release.\n\n\n\n\n\n\n\n\n\nName\nType\nDescription\n\n\n\n\n\nValueError\nIf the tag is not found in the repository commit history.\n\n\n\n\n\n\nget_latest_release_tag: Get the tag name of the latest release.\n\n\n\n&gt;&gt;&gt; get_latest_release_hash()\n'abc123def4567890abcdef1234567890abcdef12'\n\n\n\n\nversions.get_latest_release_tag(repo='CCBR/Tools')\nGet the tag name of the latest release.\nUses the GitHub CLI to retrieve the latest release tag from a repository.\n\n\n\n\n\nName\nType\nDescription\nDefault\n\n\n\n\nargs\nstr\nAdditional arguments to pass to the GitHub CLI command (default is ““).\nrequired\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nName\nType\nDescription\n\n\n\n\n\n\nstr or None: The tag name of the latest release, or None if no latest release is found.\n\n\n\n\n\n\nget_releases: Get a list of releases from GitHub.\n\n\n\n&gt;&gt;&gt; get_latest_release_tag()\n'v1.0.0'\n\n\n\n\nversions.get_major_minor_version(\n    version_str,\n    with_leading_v=False,\n    strict_semver=True,\n)\nExtract the major and minor version from a semantic versioning string.\nSee the semantic versioning guidelines: https://semver.org/\n\n\n\n\n\nName\nType\nDescription\nDefault\n\n\n\n\nversion_str\nstr\nThe version string to extract from.\nrequired\n\n\nwith_leading_v\nbool\nWhether to include a leading ‘v’ in the output.\nFalse\n\n\nstrict_semver\nbool\nIf True, the version string must match the full semantic versioning pattern. Otherwise, a relaxed format with only the major and minor components is allowed.\nTrue\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nName\nType\nDescription\n\n\n\n\n\n\nstr or None: The major and minor version in the format ‘major.minor’, or None if the version string is invalid.\n\n\n\n\n\n\nmatch_semver: Match a version string against the semantic versioning pattern.\n\n\n\n&gt;&gt;&gt; get_major_minor_version(\"1.0.0\")\n'1.0'\n&gt;&gt;&gt; get_major_minor_version(\"2.1.3-alpha\")\n'2.1'\n&gt;&gt;&gt; get_major_minor_version(\"invalid_version\")\nNone\n&gt;&gt;&gt; get_major_minor_version('3.1', strict_semver=False)\n\n\n\n\nversions.get_releases(\n    limit=1,\n    args='',\n    json_fields='name,tagName,isLatest,publishedAt',\n)\nGet a list of releases from GitHub.\nUses the GitHub CLI to retrieve a list of releases from a repository. You will need to install it before you can use this function.\n\n\n\n\n\nName\nType\nDescription\nDefault\n\n\n\n\nlimit\nint\nThe maximum number of releases to retrieve (default is 1).\n1\n\n\nargs\nstr\nAdditional arguments to pass to the GitHub CLI command (default is ““).\n''\n\n\njson_fields\nstr\nThe JSON fields to include in the output (default is “name,tagName,isLatest,publishedAt”).\n'name,tagName,isLatest,publishedAt'\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nName\nType\nDescription\n\n\n\n\nlist\n\nA list of dictionaries containing release information.\n\n\n\n\n\n\nget_latest_release_tag : Get the tag name of the latest release. get_latest_release_hash : Get the commit hash of the latest release.\n\n\n\ngh cli docs: https://cli.github.com/manual/gh_release_list\n\n\n\n&gt;&gt;&gt; get_releases(limit=2)\n[{'name': 'v1.0.0', 'tagName': 'v1.0.0', 'isLatest': True, 'publishedAt': '2021-01-01T00:00:00Z'},\n{'name': 'v0.9.0', 'tagName': 'v0.9.0', 'isLatest': False, 'publishedAt': '2020-12-01T00:00:00Z'}]\n&gt;&gt;&gt; get_releases(limit=2, args=\"--repo CCBR/RENEE\")\n[{'isLatest': True, 'name': 'RENEE 2.5.12', 'publishedAt': '2024-04-12T14:49:11Z', 'tagName': 'v2.5.12'},\n{'isLatest': False, 'name': 'RENEE 2.5.11', 'publishedAt': '2024-01-22T21:02:30Z', 'tagName': 'v2.5.11'}]\n\n\n\n\nversions.get_tag_hash(tag_name, args='', repo='CCBR/Tools')\nRetrieve the commit hash associated with a specific tag in a GitHub repository. Args: tag_name (str): The name of the tag for which the commit hash is to be retrieved. repo (str, optional): The GitHub repository in the format ‘owner/repo’. Defaults to ‘CCBR/Tools’. Returns: str: The commit hash (SHA) associated with the specified tag. Raises: requests.exceptions.RequestException: If there is an issue with the HTTP request. KeyError: If the expected data is not found in the API response.\n\n\n\nversions.is_ancestor(ancestor, descendant)\nCheck if one commit is an ancestor of another.\nUses git merge-base –is-ancestor to determine if the ancestor is an ancestor of the descendant.\n\n\n\n\n\nName\nType\nDescription\nDefault\n\n\n\n\nancestor\nstr\nThe commit hash of the potential ancestor.\nrequired\n\n\ndescendant\nstr\nThe commit hash of the potential descendant.\nrequired\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nName\nType\nDescription\n\n\n\n\nbool\n\nTrue if the ancestor is an ancestor of the descendant, otherwise False.\n\n\n\n\n\n\nget_latest_release_hash : Get the commit hash of the latest release. get_current_hash : Get the commit hash of the current.\n\n\n\n&gt;&gt;&gt; is_ancestor(\"abc123\", \"def456\")\nTrue\n&gt;&gt;&gt; is_ancestor(\"abc123\", \"ghi789\")\nFalse\n\n\n\n\nversions.match_semver(\n    version_str,\n    with_leading_v=False,\n    strict_semver=True,\n    pattern=None,\n)\nMatch a version string against the semantic versioning pattern.\nSee the semantic versioning guidelines: https://semver.org/\n\n\n\n\n\nName\nType\nDescription\nDefault\n\n\n\n\nversion_str\nstr\nThe version string to match against the semantic versioning pattern.\nrequired\n\n\nwith_leading_v\nbool\nIf True, the version string is expected to start with a leading ‘v’.\nFalse\n\n\nstrict_semver\nbool\nIf True, the version string must match the full semantic versioning pattern. Otherwise, a relaxed format with only the major and minor components is allowed.\nTrue\n\n\npattern\nstr\nA custom regex pattern to match against the version string. If None, the default semantic versioning pattern is used.\nNone\n\n\n\nReturns: re.Match or None The match object if the version string matches the semantic versioning pattern, otherwise None.\n\n\n\nget_major_minor_version : Extract the major and minor version from a semantic versioning string.\n\n\n\n&gt;&gt;&gt; match_semver(\"1.0.0\")\n&lt;re.Match object; span=(0, 5), match='1.0.0'&gt;\n&gt;&gt;&gt; match_semver(\"1.0.0-alpha+001\")\n&lt;re.Match object; span=(0, 13), match='1.0.0-alpha+001'&gt;\n&gt;&gt;&gt; match_semver(\"invalid_version\")\nNone",
-    "crumbs": [
-      "Main modules",
-      "versions"
-    ]
-  },
-  {
-    "objectID": "reference/versions.html#functions",
-    "href": "reference/versions.html#functions",
-    "title": "versions",
-    "section": "",
-    "text": "Name\nDescription\n\n\n\n\ncheck_version_increments_by_one\nChecks if the next version increments by exactly 1 digit from the current version.\n\n\nget_current_hash\nGet the current commit hash.\n\n\nget_latest_release_hash\nGet the commit hash of the latest release.\n\n\nget_latest_release_tag\nGet the tag name of the latest release.\n\n\nget_major_minor_version\nExtract the major and minor version from a semantic versioning string.\n\n\nget_releases\nGet a list of releases from GitHub.\n\n\nget_tag_hash\nRetrieve the commit hash associated with a specific tag in a GitHub repository.\n\n\nis_ancestor\nCheck if one commit is an ancestor of another.\n\n\nmatch_semver\nMatch a version string against the semantic versioning pattern.\n\n\n\n\n\nversions.check_version_increments_by_one(\n    current_version,\n    next_version,\n    with_leading_v=False,\n    error_on_false=True,\n    debug=False,\n)\nChecks if the next version increments by exactly 1 digit from the current version.\nEnsures that the next version follows semantic versioning guidelines and increments only one of the major, minor, or patch numbers by 1.\n\n\n\n\n\nName\nType\nDescription\nDefault\n\n\n\n\ncurrent_version\nstr\nThe current version string.\nrequired\n\n\nnext_version\nstr\nThe proposed next version string.\nrequired\n\n\nwith_leading_v\nbool\nIf True, expects the version strings to start with ‘v’. Defaults to False.\nFalse\n\n\nerror_on_false\nbool\nIf True, raises a ValueError when the check fails. Defaults to True.\nTrue\n\n\ndebug\nbool\nIf True, prints debug information. Defaults to False.\nFalse\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nName\nType\nDescription\n\n\n\n\nbool\n\nTrue if the next version increments by exactly one, False otherwise.\n\n\n\n\n\n\n\n\n\nName\nType\nDescription\n\n\n\n\n\nValueError\nIf the next version does not match semantic versioning guidelines or does not increment by exactly one.\n\n\n\n\n\n\n&gt;&gt;&gt; check_version_increments_by_one(\"1.0.0\", \"1.0.1\")\nTrue\n&gt;&gt;&gt; check_version_increments_by_one(\"1.0.0\", \"1.1.0\")\nTrue\n&gt;&gt;&gt; check_version_increments_by_one(\"1.0.0\", \"2.0.0\")\nTrue\n&gt;&gt;&gt; check_version_increments_by_one(\"1.0.0\", \"1.0.2\")\nFalse\n&gt;&gt;&gt; check_version_increments_by_one(\"1.0.0\", \"1.2.0\")\nFalse\n&gt;&gt;&gt; check_version_increments_by_one(\"1.0.0\", \"3.0.0\")\nFalse\n\n\n\n\nversions.get_current_hash()\nGet the current commit hash.\nUses git rev-parse HEAD to get the current commit hash.\n\n\n\n\n\nName\nType\nDescription\n\n\n\n\nstr\n\nThe current commit hash.\n\n\n\n\n\n\nget_latest_release_hash : Get the commit hash of the latest release.\n\n\n\n&gt;&gt;&gt; get_current_hash()\n'abc123def4567890abcdef1234567890abcdef12'\n\n\n\n\nversions.get_latest_release_hash(repo='CCBR/Tools')\nGet the commit hash of the latest release.\nUses git rev-list to get the commit hash of the latest release tag.\n\n\n\n\n\nName\nType\nDescription\nDefault\n\n\n\n\nrepo\nstr\nThe GitHub repository in the format ‘owner/repo’. Default: ‘CCBR/Tools’\n'CCBR/Tools'\n\n\n\n\n\n\n\n\n\nName\nType\nDescription\n\n\n\n\nstr\n\nThe commit hash of the latest release.\n\n\n\n\n\n\n\n\n\nName\nType\nDescription\n\n\n\n\n\nValueError\nIf the tag is not found in the repository commit history.\n\n\n\n\n\n\nget_latest_release_tag: Get the tag name of the latest release.\n\n\n\n&gt;&gt;&gt; get_latest_release_hash()\n'abc123def4567890abcdef1234567890abcdef12'\n\n\n\n\nversions.get_latest_release_tag(repo='CCBR/Tools')\nGet the tag name of the latest release.\nUses the GitHub CLI to retrieve the latest release tag from a repository.\n\n\n\n\n\nName\nType\nDescription\nDefault\n\n\n\n\nargs\nstr\nAdditional arguments to pass to the GitHub CLI command (default is ““).\nrequired\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nName\nType\nDescription\n\n\n\n\n\n\nstr or None: The tag name of the latest release, or None if no latest release is found.\n\n\n\n\n\n\nget_releases: Get a list of releases from GitHub.\n\n\n\n&gt;&gt;&gt; get_latest_release_tag()\n'v1.0.0'\n\n\n\n\nversions.get_major_minor_version(\n    version_str,\n    with_leading_v=False,\n    strict_semver=True,\n)\nExtract the major and minor version from a semantic versioning string.\nSee the semantic versioning guidelines: https://semver.org/\n\n\n\n\n\nName\nType\nDescription\nDefault\n\n\n\n\nversion_str\nstr\nThe version string to extract from.\nrequired\n\n\nwith_leading_v\nbool\nWhether to include a leading ‘v’ in the output.\nFalse\n\n\nstrict_semver\nbool\nIf True, the version string must match the full semantic versioning pattern. Otherwise, a relaxed format with only the major and minor components is allowed.\nTrue\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nName\nType\nDescription\n\n\n\n\n\n\nstr or None: The major and minor version in the format ‘major.minor’, or None if the version string is invalid.\n\n\n\n\n\n\nmatch_semver: Match a version string against the semantic versioning pattern.\n\n\n\n&gt;&gt;&gt; get_major_minor_version(\"1.0.0\")\n'1.0'\n&gt;&gt;&gt; get_major_minor_version(\"2.1.3-alpha\")\n'2.1'\n&gt;&gt;&gt; get_major_minor_version(\"invalid_version\")\nNone\n&gt;&gt;&gt; get_major_minor_version('3.1', strict_semver=False)\n\n\n\n\nversions.get_releases(\n    limit=1,\n    args='',\n    json_fields='name,tagName,isLatest,publishedAt',\n)\nGet a list of releases from GitHub.\nUses the GitHub CLI to retrieve a list of releases from a repository. You will need to install it before you can use this function.\n\n\n\n\n\nName\nType\nDescription\nDefault\n\n\n\n\nlimit\nint\nThe maximum number of releases to retrieve (default is 1).\n1\n\n\nargs\nstr\nAdditional arguments to pass to the GitHub CLI command (default is ““).\n''\n\n\njson_fields\nstr\nThe JSON fields to include in the output (default is “name,tagName,isLatest,publishedAt”).\n'name,tagName,isLatest,publishedAt'\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nName\nType\nDescription\n\n\n\n\nlist\n\nA list of dictionaries containing release information.\n\n\n\n\n\n\nget_latest_release_tag : Get the tag name of the latest release. get_latest_release_hash : Get the commit hash of the latest release.\n\n\n\ngh cli docs: https://cli.github.com/manual/gh_release_list\n\n\n\n&gt;&gt;&gt; get_releases(limit=2)\n[{'name': 'v1.0.0', 'tagName': 'v1.0.0', 'isLatest': True, 'publishedAt': '2021-01-01T00:00:00Z'},\n{'name': 'v0.9.0', 'tagName': 'v0.9.0', 'isLatest': False, 'publishedAt': '2020-12-01T00:00:00Z'}]\n&gt;&gt;&gt; get_releases(limit=2, args=\"--repo CCBR/RENEE\")\n[{'isLatest': True, 'name': 'RENEE 2.5.12', 'publishedAt': '2024-04-12T14:49:11Z', 'tagName': 'v2.5.12'},\n{'isLatest': False, 'name': 'RENEE 2.5.11', 'publishedAt': '2024-01-22T21:02:30Z', 'tagName': 'v2.5.11'}]\n\n\n\n\nversions.get_tag_hash(tag_name, args='', repo='CCBR/Tools')\nRetrieve the commit hash associated with a specific tag in a GitHub repository. Args: tag_name (str): The name of the tag for which the commit hash is to be retrieved. repo (str, optional): The GitHub repository in the format ‘owner/repo’. Defaults to ‘CCBR/Tools’. Returns: str: The commit hash (SHA) associated with the specified tag. Raises: requests.exceptions.RequestException: If there is an issue with the HTTP request. KeyError: If the expected data is not found in the API response.\n\n\n\nversions.is_ancestor(ancestor, descendant)\nCheck if one commit is an ancestor of another.\nUses git merge-base –is-ancestor to determine if the ancestor is an ancestor of the descendant.\n\n\n\n\n\nName\nType\nDescription\nDefault\n\n\n\n\nancestor\nstr\nThe commit hash of the potential ancestor.\nrequired\n\n\ndescendant\nstr\nThe commit hash of the potential descendant.\nrequired\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nName\nType\nDescription\n\n\n\n\nbool\n\nTrue if the ancestor is an ancestor of the descendant, otherwise False.\n\n\n\n\n\n\nget_latest_release_hash : Get the commit hash of the latest release. get_current_hash : Get the commit hash of the current.\n\n\n\n&gt;&gt;&gt; is_ancestor(\"abc123\", \"def456\")\nTrue\n&gt;&gt;&gt; is_ancestor(\"abc123\", \"ghi789\")\nFalse\n\n\n\n\nversions.match_semver(\n    version_str,\n    with_leading_v=False,\n    strict_semver=True,\n    pattern=None,\n)\nMatch a version string against the semantic versioning pattern.\nSee the semantic versioning guidelines: https://semver.org/\n\n\n\n\n\nName\nType\nDescription\nDefault\n\n\n\n\nversion_str\nstr\nThe version string to match against the semantic versioning pattern.\nrequired\n\n\nwith_leading_v\nbool\nIf True, the version string is expected to start with a leading ‘v’.\nFalse\n\n\nstrict_semver\nbool\nIf True, the version string must match the full semantic versioning pattern. Otherwise, a relaxed format with only the major and minor components is allowed.\nTrue\n\n\npattern\nstr\nA custom regex pattern to match against the version string. If None, the default semantic versioning pattern is used.\nNone\n\n\n\nReturns: re.Match or None The match object if the version string matches the semantic versioning pattern, otherwise None.\n\n\n\nget_major_minor_version : Extract the major and minor version from a semantic versioning string.\n\n\n\n&gt;&gt;&gt; match_semver(\"1.0.0\")\n&lt;re.Match object; span=(0, 5), match='1.0.0'&gt;\n&gt;&gt;&gt; match_semver(\"1.0.0-alpha+001\")\n&lt;re.Match object; span=(0, 13), match='1.0.0-alpha+001'&gt;\n&gt;&gt;&gt; match_semver(\"invalid_version\")\nNone",
-    "crumbs": [
-      "Main modules",
-      "versions"
-    ]
-  },
-  {
-    "objectID": "reference/github.html",
-    "href": "reference/github.html",
-    "title": "github",
-    "section": "",
-    "text": "github\nGitHub helper functions\nContributor related functions:\n\nprint_contributor_images - Print contributor profile images for HTML web pages\nget_repo_contributors - Get a list of contributors to a GitHub repository\nget_user_info - Get profile information about a GitHub user\nget_contrib_html - Generates HTML for a GitHub contributor’s profile image and link\n\n\n\n\n\n\nName\nDescription\n\n\n\n\nget_contrib_html\nGenerates HTML for a GitHub contributor’s profile image and link.\n\n\nget_repo_contributors\nGet a list of contributors to a GitHub repository.\n\n\nget_user_info\nGet profile information about a GitHub user.\n\n\nprint_contributor_images\nPrint contributor profile images for HTML web pages\n\n\n\n\n\ngithub.get_contrib_html(contrib, img_attr='{width=100px height=100px}')\nGenerates HTML for a GitHub contributor’s profile image and link.\n\n\n\n\n\nName\nType\nDescription\nDefault\n\n\n\n\ncontrib\ndict\nA dictionary containing contributor information. Expected keys are ‘login’, ‘avatar_url’, and ‘html_url’.\nrequired\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nName\nType\nDescription\n\n\n\n\nstr\n\nA string containing HTML that displays the contributor’s profile image and links to their GitHub profile.\n\n\n\n\n\n\n\ngithub.get_repo_contributors(repo, org='CCBR')\nGet a list of contributors to a GitHub repository.\n\n\n\n\n\nName\nType\nDescription\nDefault\n\n\n\n\nrepo\nstr\nThe name of the repository.\nrequired\n\n\norg\nstr\nThe organization name. Defaults to ‘CCBR’.\n'CCBR'\n\n\n\nReturns: list: A list of contributors to the specified repository.\n\n\n\n\ngithub.get_user_info(user_login)\nGet profile information about a GitHub user.\n\n\n\n\n\nName\nType\nDescription\nDefault\n\n\n\n\nuser_login\nstr\nThe GitHub username of the user.\nrequired\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nName\nType\nDescription\n\n\n\n\ndict\n\nA dictionary containing the user’s profile information.\n\n\n\n\n\n\n\ngithub.print_contributor_images(repo, org='CCBR')\nPrint contributor profile images for HTML web pages\n\n\n\n\n\nName\nType\nDescription\nDefault\n\n\n\n\nrepo\nstr\nThe name of the GitHub repository.\nrequired\n\n\norg\nstr\nThe GitHub organization or user that owns the repository. Defaults to ‘CCBR’.\n'CCBR'\n\n\n\n\n\n\n\n\n\nName\nType\nDescription\n\n\n\n\n\n\nNone",
-    "crumbs": [
-      "Main modules",
-      "github"
-    ]
-  },
-  {
-    "objectID": "reference/github.html#functions",
-    "href": "reference/github.html#functions",
-    "title": "github",
-    "section": "",
-    "text": "Name\nDescription\n\n\n\n\nget_contrib_html\nGenerates HTML for a GitHub contributor’s profile image and link.\n\n\nget_repo_contributors\nGet a list of contributors to a GitHub repository.\n\n\nget_user_info\nGet profile information about a GitHub user.\n\n\nprint_contributor_images\nPrint contributor profile images for HTML web pages\n\n\n\n\n\ngithub.get_contrib_html(contrib, img_attr='{width=100px height=100px}')\nGenerates HTML for a GitHub contributor’s profile image and link.\n\n\n\n\n\nName\nType\nDescription\nDefault\n\n\n\n\ncontrib\ndict\nA dictionary containing contributor information. Expected keys are ‘login’, ‘avatar_url’, and ‘html_url’.\nrequired\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nName\nType\nDescription\n\n\n\n\nstr\n\nA string containing HTML that displays the contributor’s profile image and links to their GitHub profile.\n\n\n\n\n\n\n\ngithub.get_repo_contributors(repo, org='CCBR')\nGet a list of contributors to a GitHub repository.\n\n\n\n\n\nName\nType\nDescription\nDefault\n\n\n\n\nrepo\nstr\nThe name of the repository.\nrequired\n\n\norg\nstr\nThe organization name. Defaults to ‘CCBR’.\n'CCBR'\n\n\n\nReturns: list: A list of contributors to the specified repository.\n\n\n\n\ngithub.get_user_info(user_login)\nGet profile information about a GitHub user.\n\n\n\n\n\nName\nType\nDescription\nDefault\n\n\n\n\nuser_login\nstr\nThe GitHub username of the user.\nrequired\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nName\nType\nDescription\n\n\n\n\ndict\n\nA dictionary containing the user’s profile information.\n\n\n\n\n\n\n\ngithub.print_contributor_images(repo, org='CCBR')\nPrint contributor profile images for HTML web pages\n\n\n\n\n\nName\nType\nDescription\nDefault\n\n\n\n\nrepo\nstr\nThe name of the GitHub repository.\nrequired\n\n\norg\nstr\nThe GitHub organization or user that owns the repository. Defaults to ‘CCBR’.\n'CCBR'\n\n\n\n\n\n\n\n\n\nName\nType\nDescription\n\n\n\n\n\n\nNone",
-    "crumbs": [
-      "Main modules",
-      "github"
-    ]
-  },
-  {
-    "objectID": "LICENSE.html",
-    "href": "LICENSE.html",
-    "title": "CCBR Tools",
-    "section": "",
-    "text": "MIT License\nCopyright (c) 2018 CCR Collaborative Bioinformatics Resource\nPermission is hereby granted, free of charge, to any person obtaining a copy of this software and associated documentation files (the “Software”), to deal in the Software without restriction, including without limitation the rights to use, copy, modify, merge, publish, distribute, sublicense, and/or sell copies of the Software, and to permit persons to whom the Software is furnished to do so, subject to the following conditions:\nThe above copyright notice and this permission notice shall be included in all copies or substantial portions of the Software.\nTHE SOFTWARE IS PROVIDED “AS IS”, WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.",
-    "crumbs": [
-      "Project information",
-      "License"
-    ]
-  },
-  {
-    "objectID": "basic_usage.html",
-    "href": "basic_usage.html",
-    "title": "CLI",
-    "section": "",
-    "text": "ccbr_tools --help\n\n\nUsage: ccbr_tools [OPTIONS] COMMAND [ARGS]...\n\n  Utilities for CCBR Bioinformatics Software\n\n  For more options, run: ccbr_tools [command] --help\n\n  https://ccbr.github.io/Tools/\n\nOptions:\n  -v, --version  Show the version and exit.\n  -h, --help     Show this message and exit.\n\nCommands:\n  send-email  Send an email (works on biowulf)\n  quarto-add  Add a quarto extension\n  install     Install a specific version of a CCBR software package,...\n  cite        Print the citation in the desired format\n  version     Print the version of ccbr_tools\n\nAll installed tools:\n  ccbr_tools\n  gb2gtf\n  hf\n  intersect\n  jobby\n  jobinfo\n  peek\n\n\n\nPython\n\n\nCode\nimport ccbr_tools.shell\nprint(ccbr_tools.shell.shell_run('echo \"Hello, world!\"'))\n\n\nHello, world!\n\n\n\n\n\nCode\nimport ccbr_tools.versions\nversion = ccbr_tools.versions.match_semver('0.2.3')\nversion.groupdict()\n\n\n{'major': '0',\n 'minor': '2',\n 'patch': '3',\n 'prerelease': None,\n 'buildmetadata': None}\n\n\nView the API reference for more information: https://ccbr.github.io/Tools/reference/"
-  },
-  {
-    "objectID": "reference/GSEA.deg2gs.html",
-    "href": "reference/GSEA.deg2gs.html",
-    "title": "GSEA.deg2gs",
-    "section": "",
-    "text": "GSEA.deg2gs\nGSEA.deg2gs\nReads a rnaseq pipeliner *_DEG_all_genes.txt file and outputs a prioritized list of Ensembl gene IDs for ToppFun\nAuthor: Susan Huse\nNIAID Center for Biological Research\nFrederick National Laboratory for Cancer Research\nLeidos Biomedical\n\nv 1.0 - initial code version.\nv 1.1 - updated for new column headers in pipeliner limma_DEG_all_genes.txt\nv 1.2 - top2Excel format is now csv rather than tab-delimited",
-    "crumbs": [
-      "Legacy tools",
-      "GSEA.deg2gs"
-    ]
-  },
-  {
-    "objectID": "reference/pipeline.nextflow.html",
-    "href": "reference/pipeline.nextflow.html",
-    "title": "pipeline.nextflow",
-    "section": "",
-    "text": "pipeline.nextflow\nRun Nextflow workflows in local and HPC environments.\n\ninit(output, pipeline_name=‘pipeline’, **kwargs) Initialize the launch directory by copying the system default config files.\nrun(nextfile_path=None, nextflow_args=None, mode=“local”, pipeline_name=None, debug=False, hpc_options={}) Run a Nextflow workflow.\n\n\n\n\n\n\nName\nDescription\n\n\n\n\ninit\nInitialize the launch directory by copying the system default config files\n\n\nrun\nRun a Nextflow workflow\n\n\n\n\n\npipeline.nextflow.init(output, repo_base, pipeline_name='pipeline')\nInitialize the launch directory by copying the system default config files\n\n\n\npipeline.nextflow.run(\n    nextfile_path,\n    mode='local',\n    force_all=False,\n    pipeline_name=None,\n    nextflow_args=None,\n    debug=False,\n    hpc=get_hpc(),\n)\nRun a Nextflow workflow\n\n\n\n\n\nName\nType\nDescription\nDefault\n\n\n\n\nnextfile_path\nstr\nPath to the Nextflow file.\nrequired\n\n\nnextflow_args\nlist\nAdditional Nextflow arguments. Defaults to an empty list.\nNone\n\n\nmode\nstr\nExecution mode. Defaults to “local”.\n'local'\n\n\n\n\n\n\n\n\n\nName\nType\nDescription\n\n\n\n\n\nValueError\nIf mode is ‘slurm’ but no HPC environment was detected.",
-    "crumbs": [
-      "Pipeline utilities",
-      "pipeline.nextflow"
-    ]
-  },
-  {
-    "objectID": "reference/pipeline.nextflow.html#functions",
-    "href": "reference/pipeline.nextflow.html#functions",
-    "title": "pipeline.nextflow",
-    "section": "",
-    "text": "Name\nDescription\n\n\n\n\ninit\nInitialize the launch directory by copying the system default config files\n\n\nrun\nRun a Nextflow workflow\n\n\n\n\n\npipeline.nextflow.init(output, repo_base, pipeline_name='pipeline')\nInitialize the launch directory by copying the system default config files\n\n\n\npipeline.nextflow.run(\n    nextfile_path,\n    mode='local',\n    force_all=False,\n    pipeline_name=None,\n    nextflow_args=None,\n    debug=False,\n    hpc=get_hpc(),\n)\nRun a Nextflow workflow\n\n\n\n\n\nName\nType\nDescription\nDefault\n\n\n\n\nnextfile_path\nstr\nPath to the Nextflow file.\nrequired\n\n\nnextflow_args\nlist\nAdditional Nextflow arguments. Defaults to an empty list.\nNone\n\n\nmode\nstr\nExecution mode. Defaults to “local”.\n'local'\n\n\n\n\n\n\n\n\n\nName\nType\nDescription\n\n\n\n\n\nValueError\nIf mode is ‘slurm’ but no HPC environment was detected.",
-    "crumbs": [
-      "Pipeline utilities",
-      "pipeline.nextflow"
-    ]
-  },
-  {
-    "objectID": "reference/pipeline.hpc.html",
-    "href": "reference/pipeline.hpc.html",
-    "title": "pipeline.hpc",
-    "section": "",
-    "text": "pipeline.hpc\nClasses for working with different HPC clusters.\nUse get_hpc to retrieve an HPC Cluster instance, which contains default attributes for supported clusters.\n\n\n\n\n\nName\nDescription\n\n\n\n\nBiowulf\nThe Biowulf cluster – child of Cluster\n\n\nCluster\nBase class for an HPC cluster - evaluates to None\n\n\nFRCE\nThe FRCE cluster – child of Cluster\n\n\n\n\n\npipeline.hpc.Biowulf(self)\nThe Biowulf cluster – child of Cluster\n\n\n\n\n\nName\nType\nDescription\n\n\n\n\nname\nstr\nThe name of the cluster.\n\n\nmodules\ndict\nA dictionary mapping module names to their corresponding commands.\n\n\nsingularity_sif_dir\nstr\nThe directory path for Singularity SIF files.\n\n\nenv_vars\nstr\nA string representing the environment variables to be set on the cluster.\n\n\n\n\n\n\n\npipeline.hpc.Cluster(self)\nBase class for an HPC cluster - evaluates to None\n\n\n\n\n\nName\nType\nDescription\n\n\n\n\nname\nstr\nThe name of the cluster.\n\n\nmodules\ndict\nA dictionary containing the modules installed on the cluster. The keys are the module names and the values are the corresponding versions.\n\n\nsingularity_sif_dir\nstr\nThe directory where Singularity SIF files are stored.\n\n\nenv_vars\nstr\nA string representing the environment variables to be set on the cluster.\n\n\n\n\n\n\n\npipeline.hpc.FRCE(self)\nThe FRCE cluster – child of Cluster\n\n\n\n\n\nName\nType\nDescription\n\n\n\n\nname\nstr\nThe name of the cluster.\n\n\nmodules\ndict\nA dictionary mapping module names to their corresponding commands.\n\n\nsingularity_sif_dir\nstr\nThe directory path for Singularity SIF files.\n\n\nenv_vars\nstr\nA string representing the environment variables to be set on the cluster.\n\n\n\n\n\n\n\n\n\n\n\nName\nDescription\n\n\n\n\nget_hpc\nReturns an instance of the High-Performance Computing (HPC) cluster based on the specified HPC name.\n\n\nget_hpcname\nGet the HPC name using scontrol\n\n\nis_loaded\nCheck whether the ccbrpipeliner module is loaded\n\n\nscontrol_show\nRun scontrol show config and parse the output as a dictionary\n\n\n\n\n\npipeline.hpc.get_hpc(debug=False)\nReturns an instance of the High-Performance Computing (HPC) cluster based on the specified HPC name.\nIf the HPC is not known or supported, an instance of the base Cluster class is returned.\n\n\n\n\n\nName\nType\nDescription\nDefault\n\n\n\n\ndebug\nbool\nIf True, uses debug as the HPC name. Defaults to False.\nFalse\n\n\n\n\n\n\n\n\n\nName\nType\nDescription\n\n\n\n\ncluster\nCluster\nAn instance of the HPC cluster.\n\n\n\n\n\n\n&gt;&gt;&gt; get_hpc()\n&gt;&gt;&gt; get_hpc(debug=True)\n\n\n\n\npipeline.hpc.get_hpcname()\nGet the HPC name using scontrol\n\n\n\n\n\nName\nType\nDescription\n\n\n\n\nhpcname\nstr\nThe HPC name (biowulf, frce, or an empty string)\n\n\n\n\n\n\n\npipeline.hpc.is_loaded(module='ccbrpipeliner')\nCheck whether the ccbrpipeliner module is loaded\n\n\n\n\n\nName\nType\nDescription\n\n\n\n\nis_loaded\nbool\nTrue if the module is loaded, False otherwise\n\n\n\n\n\n\n\npipeline.hpc.scontrol_show()\nRun scontrol show config and parse the output as a dictionary\n\n\n\n\n\nName\nType\nDescription\n\n\n\n\nscontrol_dict\ndict\ndictionary containing the output of scontrol show config",
-    "crumbs": [
-      "Pipeline utilities",
-      "pipeline.hpc"
-    ]
-  },
-  {
-    "objectID": "reference/pipeline.hpc.html#classes",
-    "href": "reference/pipeline.hpc.html#classes",
-    "title": "pipeline.hpc",
-    "section": "",
-    "text": "Name\nDescription\n\n\n\n\nBiowulf\nThe Biowulf cluster – child of Cluster\n\n\nCluster\nBase class for an HPC cluster - evaluates to None\n\n\nFRCE\nThe FRCE cluster – child of Cluster\n\n\n\n\n\npipeline.hpc.Biowulf(self)\nThe Biowulf cluster – child of Cluster\n\n\n\n\n\nName\nType\nDescription\n\n\n\n\nname\nstr\nThe name of the cluster.\n\n\nmodules\ndict\nA dictionary mapping module names to their corresponding commands.\n\n\nsingularity_sif_dir\nstr\nThe directory path for Singularity SIF files.\n\n\nenv_vars\nstr\nA string representing the environment variables to be set on the cluster.\n\n\n\n\n\n\n\npipeline.hpc.Cluster(self)\nBase class for an HPC cluster - evaluates to None\n\n\n\n\n\nName\nType\nDescription\n\n\n\n\nname\nstr\nThe name of the cluster.\n\n\nmodules\ndict\nA dictionary containing the modules installed on the cluster. The keys are the module names and the values are the corresponding versions.\n\n\nsingularity_sif_dir\nstr\nThe directory where Singularity SIF files are stored.\n\n\nenv_vars\nstr\nA string representing the environment variables to be set on the cluster.\n\n\n\n\n\n\n\npipeline.hpc.FRCE(self)\nThe FRCE cluster – child of Cluster\n\n\n\n\n\nName\nType\nDescription\n\n\n\n\nname\nstr\nThe name of the cluster.\n\n\nmodules\ndict\nA dictionary mapping module names to their corresponding commands.\n\n\nsingularity_sif_dir\nstr\nThe directory path for Singularity SIF files.\n\n\nenv_vars\nstr\nA string representing the environment variables to be set on the cluster.",
-    "crumbs": [
-      "Pipeline utilities",
-      "pipeline.hpc"
-    ]
-  },
-  {
-    "objectID": "reference/pipeline.hpc.html#functions",
-    "href": "reference/pipeline.hpc.html#functions",
-    "title": "pipeline.hpc",
-    "section": "",
-    "text": "Name\nDescription\n\n\n\n\nget_hpc\nReturns an instance of the High-Performance Computing (HPC) cluster based on the specified HPC name.\n\n\nget_hpcname\nGet the HPC name using scontrol\n\n\nis_loaded\nCheck whether the ccbrpipeliner module is loaded\n\n\nscontrol_show\nRun scontrol show config and parse the output as a dictionary\n\n\n\n\n\npipeline.hpc.get_hpc(debug=False)\nReturns an instance of the High-Performance Computing (HPC) cluster based on the specified HPC name.\nIf the HPC is not known or supported, an instance of the base Cluster class is returned.\n\n\n\n\n\nName\nType\nDescription\nDefault\n\n\n\n\ndebug\nbool\nIf True, uses debug as the HPC name. Defaults to False.\nFalse\n\n\n\n\n\n\n\n\n\nName\nType\nDescription\n\n\n\n\ncluster\nCluster\nAn instance of the HPC cluster.\n\n\n\n\n\n\n&gt;&gt;&gt; get_hpc()\n&gt;&gt;&gt; get_hpc(debug=True)\n\n\n\n\npipeline.hpc.get_hpcname()\nGet the HPC name using scontrol\n\n\n\n\n\nName\nType\nDescription\n\n\n\n\nhpcname\nstr\nThe HPC name (biowulf, frce, or an empty string)\n\n\n\n\n\n\n\npipeline.hpc.is_loaded(module='ccbrpipeliner')\nCheck whether the ccbrpipeliner module is loaded\n\n\n\n\n\nName\nType\nDescription\n\n\n\n\nis_loaded\nbool\nTrue if the module is loaded, False otherwise\n\n\n\n\n\n\n\npipeline.hpc.scontrol_show()\nRun scontrol show config and parse the output as a dictionary\n\n\n\n\n\nName\nType\nDescription\n\n\n\n\nscontrol_dict\ndict\ndictionary containing the output of scontrol show config",
-    "crumbs": [
-      "Pipeline utilities",
-      "pipeline.hpc"
-    ]
-  },
-  {
-    "objectID": "reference/pkg_util.html",
-    "href": "reference/pkg_util.html",
-    "title": "pkg_util",
-    "section": "",
-    "text": "pkg_util\nMiscellaneous utility functions for the package\n\n\n\n\n\nName\nDescription\n\n\n\n\nget_external_scripts\nGet list of standalone scripts included in the package\n\n\nget_package_version\nGet the current version of a package from the metadata.\n\n\nget_project_scripts\nGet a list of CLI tools in the package.\n\n\nget_pyproject_toml\nGet the contents of the package’s pyproject.toml file.\n\n\nget_url_json\nFetches JSON data from a given URL.\n\n\nget_version\nGet the current version of the ccbr_tools package.\n\n\nmsg\nPrints the error message with a timestamp.\n\n\nmsg_box\nDisplays a message box with a given splash message.\n\n\nprint_citation\nPrints the citation for the given citation file in the specified output format.\n\n\nrepo_base\nGet the absolute path to a file in the repository\n\n\n\n\n\npkg_util.get_external_scripts(pkg_name='ccbr_tools')\nGet list of standalone scripts included in the package\n\n\n\n\n\nName\nType\nDescription\nDefault\n\n\n\n\npkg_name\nstr\nThe name of the package. Defaults to “ccbr_tools”.\n'ccbr_tools'\n\n\n\n\n\n\n\n\n\nName\nType\nDescription\n\n\n\n\nscripts\nlist\nA list of standalone scripts included in the package.\n\n\n\n\n\n\n\npkg_util.get_package_version(pkg_name='ccbr_tools')\nGet the current version of a package from the metadata.\n\n\n\n\n\nName\nType\nDescription\nDefault\n\n\n\n\npkg_name\nstr\nName of the package (default: ccbr_tools).\n'ccbr_tools'\n\n\n\n\n\n\n\n\n\nName\nType\nDescription\n\n\n\n\nversion\nstr\nThe version of the package.\n\n\n\n\n\n\n\npkg_util.get_project_scripts(pkg_name='ccbr_tools')\nGet a list of CLI tools in the package.\n\n\n\n\n\nName\nType\nDescription\nDefault\n\n\n\n\npkg_name\nstr\nThe name of the package. Defaults to “ccbr_tools”.\n'ccbr_tools'\n\n\n\n\n\n\n\n\n\nName\nType\nDescription\n\n\n\n\ntools\nlist\nA sorted list of CLI tool names.\n\n\n\n\n\n\n\npkg_util.get_pyproject_toml(pkg_name='ccbr_tools', repo_base=repo_base)\nGet the contents of the package’s pyproject.toml file.\n\n\n\n\n\nName\nType\nDescription\nDefault\n\n\n\n\npkg_name\nstr\nName of the package (default: ccbr_tools).\n'ccbr_tools'\n\n\n\n\n\n\n\n\n\nName\nType\nDescription\n\n\n\n\npyproject\ndict\nThe contents of the pyproject.toml file.\n\n\n\n\n\n\n\npkg_util.get_url_json(url)\nFetches JSON data from a given URL.\n\n\n\n\n\nName\nType\nDescription\nDefault\n\n\n\n\nurl\nstr\nThe URL to fetch the JSON data from.\nrequired\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nName\nType\nDescription\n\n\n\n\ndict\n\nThe JSON data retrieved from the URL if the request is successful, otherwise an empty dictionary.\n\n\n\n\n\n\n\npkg_util.get_version(repo_base=repo_base, debug=False)\nGet the current version of the ccbr_tools package.\n\n\n\n\n\nName\nType\nDescription\nDefault\n\n\n\n\nrepo_base\nfunction\nA function that returns the base path of the repository.\nrepo_base\n\n\ndebug\nbool\nPrint the path to the VERSION file (default: False).\nFalse\n\n\n\n\n\n\n\n\n\nName\nType\nDescription\n\n\n\n\nversion\nstr\nThe version of the package.\n\n\n\n\n\n\n\npkg_util.msg(err_message)\nPrints the error message with a timestamp.\n\n\n\n\n\nName\nType\nDescription\nDefault\n\n\n\n\nerr_message\nstr\nThe error message to be printed.\nrequired\n\n\n\nReturns: None\n\n\n\n\npkg_util.msg_box(splash, errmsg=None)\nDisplays a message box with a given splash message.\n\n\n\n\n\nName\nType\nDescription\nDefault\n\n\n\n\nsplash\nstr\nThe splash message to be displayed.\nrequired\n\n\nerrmsg\nstr\nAn error message to be displayed below the splash message. Defaults to None.\nNone\n\n\n\n\n\n\n\npkg_util.print_citation(\n    citation_file=repo_base('CITATION.cff'),\n    output_format='bibtex',\n)\nPrints the citation for the given citation file in the specified output format.\n\n\n\n\n\nName\nType\nDescription\nDefault\n\n\n\n\ncitation_file\nstr\nThe path to the citation file.\nrepo_base('CITATION.cff')\n\n\noutput_format\nstr\nThe desired output format for the citation.\n'bibtex'\n\n\n\n\n\n\n\npkg_util.repo_base(*paths)\nGet the absolute path to a file in the repository\n\n\n\n\n\nName\nType\nDescription\nDefault\n\n\n\n\n*paths\nstr\nAdditional paths to join with the base path.\n()\n\n\n\n\n\n\n\n\n\nName\nType\nDescription\n\n\n\n\npath\nstr\nThe absolute path to the file in the repository.",
-    "crumbs": [
-      "Main modules",
-      "pkg_util"
-    ]
-  },
-  {
-    "objectID": "reference/pkg_util.html#functions",
-    "href": "reference/pkg_util.html#functions",
-    "title": "pkg_util",
-    "section": "",
-    "text": "Name\nDescription\n\n\n\n\nget_external_scripts\nGet list of standalone scripts included in the package\n\n\nget_package_version\nGet the current version of a package from the metadata.\n\n\nget_project_scripts\nGet a list of CLI tools in the package.\n\n\nget_pyproject_toml\nGet the contents of the package’s pyproject.toml file.\n\n\nget_url_json\nFetches JSON data from a given URL.\n\n\nget_version\nGet the current version of the ccbr_tools package.\n\n\nmsg\nPrints the error message with a timestamp.\n\n\nmsg_box\nDisplays a message box with a given splash message.\n\n\nprint_citation\nPrints the citation for the given citation file in the specified output format.\n\n\nrepo_base\nGet the absolute path to a file in the repository\n\n\n\n\n\npkg_util.get_external_scripts(pkg_name='ccbr_tools')\nGet list of standalone scripts included in the package\n\n\n\n\n\nName\nType\nDescription\nDefault\n\n\n\n\npkg_name\nstr\nThe name of the package. Defaults to “ccbr_tools”.\n'ccbr_tools'\n\n\n\n\n\n\n\n\n\nName\nType\nDescription\n\n\n\n\nscripts\nlist\nA list of standalone scripts included in the package.\n\n\n\n\n\n\n\npkg_util.get_package_version(pkg_name='ccbr_tools')\nGet the current version of a package from the metadata.\n\n\n\n\n\nName\nType\nDescription\nDefault\n\n\n\n\npkg_name\nstr\nName of the package (default: ccbr_tools).\n'ccbr_tools'\n\n\n\n\n\n\n\n\n\nName\nType\nDescription\n\n\n\n\nversion\nstr\nThe version of the package.\n\n\n\n\n\n\n\npkg_util.get_project_scripts(pkg_name='ccbr_tools')\nGet a list of CLI tools in the package.\n\n\n\n\n\nName\nType\nDescription\nDefault\n\n\n\n\npkg_name\nstr\nThe name of the package. Defaults to “ccbr_tools”.\n'ccbr_tools'\n\n\n\n\n\n\n\n\n\nName\nType\nDescription\n\n\n\n\ntools\nlist\nA sorted list of CLI tool names.\n\n\n\n\n\n\n\npkg_util.get_pyproject_toml(pkg_name='ccbr_tools', repo_base=repo_base)\nGet the contents of the package’s pyproject.toml file.\n\n\n\n\n\nName\nType\nDescription\nDefault\n\n\n\n\npkg_name\nstr\nName of the package (default: ccbr_tools).\n'ccbr_tools'\n\n\n\n\n\n\n\n\n\nName\nType\nDescription\n\n\n\n\npyproject\ndict\nThe contents of the pyproject.toml file.\n\n\n\n\n\n\n\npkg_util.get_url_json(url)\nFetches JSON data from a given URL.\n\n\n\n\n\nName\nType\nDescription\nDefault\n\n\n\n\nurl\nstr\nThe URL to fetch the JSON data from.\nrequired\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nName\nType\nDescription\n\n\n\n\ndict\n\nThe JSON data retrieved from the URL if the request is successful, otherwise an empty dictionary.\n\n\n\n\n\n\n\npkg_util.get_version(repo_base=repo_base, debug=False)\nGet the current version of the ccbr_tools package.\n\n\n\n\n\nName\nType\nDescription\nDefault\n\n\n\n\nrepo_base\nfunction\nA function that returns the base path of the repository.\nrepo_base\n\n\ndebug\nbool\nPrint the path to the VERSION file (default: False).\nFalse\n\n\n\n\n\n\n\n\n\nName\nType\nDescription\n\n\n\n\nversion\nstr\nThe version of the package.\n\n\n\n\n\n\n\npkg_util.msg(err_message)\nPrints the error message with a timestamp.\n\n\n\n\n\nName\nType\nDescription\nDefault\n\n\n\n\nerr_message\nstr\nThe error message to be printed.\nrequired\n\n\n\nReturns: None\n\n\n\n\npkg_util.msg_box(splash, errmsg=None)\nDisplays a message box with a given splash message.\n\n\n\n\n\nName\nType\nDescription\nDefault\n\n\n\n\nsplash\nstr\nThe splash message to be displayed.\nrequired\n\n\nerrmsg\nstr\nAn error message to be displayed below the splash message. Defaults to None.\nNone\n\n\n\n\n\n\n\npkg_util.print_citation(\n    citation_file=repo_base('CITATION.cff'),\n    output_format='bibtex',\n)\nPrints the citation for the given citation file in the specified output format.\n\n\n\n\n\nName\nType\nDescription\nDefault\n\n\n\n\ncitation_file\nstr\nThe path to the citation file.\nrepo_base('CITATION.cff')\n\n\noutput_format\nstr\nThe desired output format for the citation.\n'bibtex'\n\n\n\n\n\n\n\npkg_util.repo_base(*paths)\nGet the absolute path to a file in the repository\n\n\n\n\n\nName\nType\nDescription\nDefault\n\n\n\n\n*paths\nstr\nAdditional paths to join with the base path.\n()\n\n\n\n\n\n\n\n\n\nName\nType\nDescription\n\n\n\n\npath\nstr\nThe absolute path to the file in the repository.",
-    "crumbs": [
-      "Main modules",
-      "pkg_util"
-    ]
-  },
-  {
-    "objectID": "reference/intersect.html",
-    "href": "reference/intersect.html",
-    "title": "intersect",
-    "section": "",
-    "text": "intersect\nFind the intersect of two files, returns the inner join\nOriginal author: Skyler Kuhn (@skchronicles)\n\n\nintersect file1 file2",
-    "crumbs": [
-      "Legacy tools",
-      "intersect"
-    ]
-  },
-  {
-    "objectID": "reference/intersect.html#usage",
-    "href": "reference/intersect.html#usage",
-    "title": "intersect",
-    "section": "",
-    "text": "intersect file1 file2",
-    "crumbs": [
-      "Legacy tools",
-      "intersect"
-    ]
-  },
-  {
-    "objectID": "reference/pipeline.cache.html",
-    "href": "reference/pipeline.cache.html",
-    "title": "pipeline.cache",
-    "section": "",
-    "text": "pipeline.cache\nFunctions for singularity cache management\n\n\n\n\n\nName\nDescription\n\n\n\n\ncheck_cache\nCheck if provided SINGULARITY_CACHE is valid. Singularity caches cannot be\n\n\nget_sif_cache_dir\nGet the directory path for SIF cache based on the HPC environment.\n\n\nget_singularity_cachedir\nReturns the singularity cache directory.\n\n\nimage_cache\nAdds Docker Image URIs, or SIF paths to config if singularity cache option is provided.\n\n\n\n\n\npipeline.cache.check_cache(parser, cache, *args, **kwargs)\nCheck if provided SINGULARITY_CACHE is valid. Singularity caches cannot be shared across users (and must be owned by the user). Singularity strictly enforces 0700 user permission on the cache directory and will return a non-zero exit code.\n\n\n\n\n\nName\nType\nDescription\nDefault\n\n\n\n\nparser\nargparse.ArgumentParser\nArgparse parser object.\nrequired\n\n\ncache\nstr\nSingularity cache directory.\nrequired\n\n\n\n\n\n\n\n\n\nName\nType\nDescription\n\n\n\n\nstr\n\nIf singularity cache directory is valid.\n\n\n\n\n\n\n\npipeline.cache.get_sif_cache_dir(hpc=None)\nGet the directory path for SIF cache based on the HPC environment.\n\n\n\n\n\nName\nType\nDescription\nDefault\n\n\n\n\nhpc\nstr\nThe name of the HPC environment. Supported values are “biowulf” and “frce”. Defaults to None.\nNone\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nName\nType\nDescription\n\n\n\n\nstr\n\nThe directory path for the SIF cache. Returns an empty string if the HPC environment is not recognized.\n\n\n\n\n\n\n\npipeline.cache.get_singularity_cachedir(output_dir=None, cache_dir=None)\nReturns the singularity cache directory. If no user-provided cache directory is provided, the default singularity cache is in the output directory.\n\n\n\n\n\nName\nType\nDescription\nDefault\n\n\n\n\noutput_dir\nstr\nThe directory where the output is stored. Defaults to the current working directory if not provided.\nNone\n\n\ncache_dir\nstr\nThe directory where the singularity cache is stored. Defaults to a hidden “.singularity” directory within the output directory if not provided.\nNone\n\n\n\n\n\n\n\n\n\nName\nType\nDescription\n\n\n\n\nstr\n\nThe path to the singularity cache directory.\n\n\n\n\n\n\n\npipeline.cache.image_cache(sub_args, config)\nAdds Docker Image URIs, or SIF paths to config if singularity cache option is provided.\nIf singularity cache option is provided and a local SIF does not exist, a warning is displayed and the image will be pulled from URI in ‘config/containers/images.json’.\n\n\n\n\n\nName\nType\nDescription\nDefault\n\n\n\n\nsub_args\nargparse.Namespace\nParsed arguments for run sub-command.\nrequired\n\n\nconfig\ndict\nDocker Image config dictionary.\nrequired\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nName\nType\nDescription\n\n\n\n\ndict\n\nUpdated config dictionary containing user information (username and home directory).",
-    "crumbs": [
-      "Pipeline utilities",
-      "pipeline.cache"
-    ]
-  },
-  {
-    "objectID": "reference/pipeline.cache.html#functions",
-    "href": "reference/pipeline.cache.html#functions",
-    "title": "pipeline.cache",
-    "section": "",
-    "text": "Name\nDescription\n\n\n\n\ncheck_cache\nCheck if provided SINGULARITY_CACHE is valid. Singularity caches cannot be\n\n\nget_sif_cache_dir\nGet the directory path for SIF cache based on the HPC environment.\n\n\nget_singularity_cachedir\nReturns the singularity cache directory.\n\n\nimage_cache\nAdds Docker Image URIs, or SIF paths to config if singularity cache option is provided.\n\n\n\n\n\npipeline.cache.check_cache(parser, cache, *args, **kwargs)\nCheck if provided SINGULARITY_CACHE is valid. Singularity caches cannot be shared across users (and must be owned by the user). Singularity strictly enforces 0700 user permission on the cache directory and will return a non-zero exit code.\n\n\n\n\n\nName\nType\nDescription\nDefault\n\n\n\n\nparser\nargparse.ArgumentParser\nArgparse parser object.\nrequired\n\n\ncache\nstr\nSingularity cache directory.\nrequired\n\n\n\n\n\n\n\n\n\nName\nType\nDescription\n\n\n\n\nstr\n\nIf singularity cache directory is valid.\n\n\n\n\n\n\n\npipeline.cache.get_sif_cache_dir(hpc=None)\nGet the directory path for SIF cache based on the HPC environment.\n\n\n\n\n\nName\nType\nDescription\nDefault\n\n\n\n\nhpc\nstr\nThe name of the HPC environment. Supported values are “biowulf” and “frce”. Defaults to None.\nNone\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nName\nType\nDescription\n\n\n\n\nstr\n\nThe directory path for the SIF cache. Returns an empty string if the HPC environment is not recognized.\n\n\n\n\n\n\n\npipeline.cache.get_singularity_cachedir(output_dir=None, cache_dir=None)\nReturns the singularity cache directory. If no user-provided cache directory is provided, the default singularity cache is in the output directory.\n\n\n\n\n\nName\nType\nDescription\nDefault\n\n\n\n\noutput_dir\nstr\nThe directory where the output is stored. Defaults to the current working directory if not provided.\nNone\n\n\ncache_dir\nstr\nThe directory where the singularity cache is stored. Defaults to a hidden “.singularity” directory within the output directory if not provided.\nNone\n\n\n\n\n\n\n\n\n\nName\nType\nDescription\n\n\n\n\nstr\n\nThe path to the singularity cache directory.\n\n\n\n\n\n\n\npipeline.cache.image_cache(sub_args, config)\nAdds Docker Image URIs, or SIF paths to config if singularity cache option is provided.\nIf singularity cache option is provided and a local SIF does not exist, a warning is displayed and the image will be pulled from URI in ‘config/containers/images.json’.\n\n\n\n\n\nName\nType\nDescription\nDefault\n\n\n\n\nsub_args\nargparse.Namespace\nParsed arguments for run sub-command.\nrequired\n\n\nconfig\ndict\nDocker Image config dictionary.\nrequired\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nName\nType\nDescription\n\n\n\n\ndict\n\nUpdated config dictionary containing user information (username and home directory).",
-    "crumbs": [
-      "Pipeline utilities",
-      "pipeline.cache"
-    ]
-  },
-  {
-    "objectID": "reference/index.html",
-    "href": "reference/index.html",
-    "title": "API Reference",
-    "section": "",
-    "text": "github\nGitHub helper functions\n\n\npkg_util\nMiscellaneous utility functions for the package\n\n\npipeline\nHelpers for bioinformatics pipelines\n\n\nsend_email\nSend an email with an attachment\n\n\nshell\nUtility functions for shell command execution.\n\n\nsoftware\n\n\n\ntemplates\nTemplate files for CCBR Tools.\n\n\nversions\nGet information from git tags, commit hashes, and GitHub releases.\n\n\n\n\n\n\n\n\n\npipeline.cache\nFunctions for singularity cache management\n\n\npipeline.hpc\nClasses for working with different HPC clusters.\n\n\npipeline.nextflow\nRun Nextflow workflows in local and HPC environments.\n\n\npipeline.util\nPipeline utility functions\n\n\n\n\n\n\n\n\n\nGSEA.deg2gs\nReads a rnaseq pipeliner *_DEG_all_genes.txt file and outputs a prioritized list of Ensembl gene IDs for ToppFun\n\n\nGSEA.multitext2excel\nReads a list of files to import as separate tabs in Excel\n\n\nGSEA.ncbr_huse\nSet of functions supporting the FNL NCBR work\n\n\ngb2gtf\nModule for converting GenBank files to GTF format.\n\n\nhomologfinder.hf\nFinds homologs in human and mouse.\n\n\nintersect\nFind the intersect of two files, returns the inner join\n\n\njobinfo\nGet HPC usage metadata for a list of slurm jobids on biowulf\n\n\njobby\nDisplay job information for past SLURM job IDs.\n\n\npeek\nTake a peek at tab-delimited files",
-    "crumbs": [
-      "Usage",
-      "Python API reference"
-    ]
-  },
-  {
-    "objectID": "reference/index.html#main-modules",
-    "href": "reference/index.html#main-modules",
-    "title": "API Reference",
-    "section": "",
-    "text": "github\nGitHub helper functions\n\n\npkg_util\nMiscellaneous utility functions for the package\n\n\npipeline\nHelpers for bioinformatics pipelines\n\n\nsend_email\nSend an email with an attachment\n\n\nshell\nUtility functions for shell command execution.\n\n\nsoftware\n\n\n\ntemplates\nTemplate files for CCBR Tools.\n\n\nversions\nGet information from git tags, commit hashes, and GitHub releases.",
-    "crumbs": [
-      "Usage",
-      "Python API reference"
-    ]
-  },
-  {
-    "objectID": "reference/index.html#pipeline-utilities",
-    "href": "reference/index.html#pipeline-utilities",
-    "title": "API Reference",
-    "section": "",
-    "text": "pipeline.cache\nFunctions for singularity cache management\n\n\npipeline.hpc\nClasses for working with different HPC clusters.\n\n\npipeline.nextflow\nRun Nextflow workflows in local and HPC environments.\n\n\npipeline.util\nPipeline utility functions",
-    "crumbs": [
-      "Usage",
-      "Python API reference"
-    ]
-  },
-  {
-    "objectID": "reference/index.html#legacy-tools",
-    "href": "reference/index.html#legacy-tools",
-    "title": "API Reference",
-    "section": "",
-    "text": "GSEA.deg2gs\nReads a rnaseq pipeliner *_DEG_all_genes.txt file and outputs a prioritized list of Ensembl gene IDs for ToppFun\n\n\nGSEA.multitext2excel\nReads a list of files to import as separate tabs in Excel\n\n\nGSEA.ncbr_huse\nSet of functions supporting the FNL NCBR work\n\n\ngb2gtf\nModule for converting GenBank files to GTF format.\n\n\nhomologfinder.hf\nFinds homologs in human and mouse.\n\n\nintersect\nFind the intersect of two files, returns the inner join\n\n\njobinfo\nGet HPC usage metadata for a list of slurm jobids on biowulf\n\n\njobby\nDisplay job information for past SLURM job IDs.\n\n\npeek\nTake a peek at tab-delimited files",
-    "crumbs": [
-      "Usage",
-      "Python API reference"
-    ]
-  },
-  {
-    "objectID": "reference/GSEA.ncbr_huse.html",
-    "href": "reference/GSEA.ncbr_huse.html",
-    "title": "GSEA.ncbr_huse",
-    "section": "",
-    "text": "GSEA.ncbr_huse\nGSEA.ncbr_huse\nSet of functions supporting the FNL NCBR work\nAuthor: Susan Huse\nCreated on Mon Aug 6 11:07:30 2018",
-    "crumbs": [
-      "Legacy tools",
-      "GSEA.ncbr_huse"
-    ]
-  },
-  {
-    "objectID": "reference/peek.html",
-    "href": "reference/peek.html",
-    "title": "peek",
-    "section": "",
-    "text": "peek\nTake a peek at tab-delimited files\n\n\npeek &lt;file.tsv&gt; [buffer]\n\n\n\n\n\n\nName\nDescription\n\n\n\n\njustify\nCalculates the spacing for justifying to the right\n\n\nmax_string\nGiven a list of strings, finds the maximum strign length\n\n\npargs\nBasic command-line parser\n\n\npprint\nRe-formats first two lines on file so columns are left justified and values are right justified\n\n\nprint_header\nPrint filenames and divider\n\n\nusage\nPrint usage information and exit program\n\n\n\n\n\npeek.justify(h, d, n, nr)\nCalculates the spacing for justifying to the right\n\n\n\npeek.max_string(data)\nGiven a list of strings, finds the maximum strign length\n\n\n\npeek.pargs()\nBasic command-line parser\n\n\n\npeek.pprint(headlist, data, linelength, fn)\nRe-formats first two lines on file so columns are left justified and values are right justified\n\n\n\npeek.print_header(filename, length)\nPrint filenames and divider\n\n\n\npeek.usage()\nPrint usage information and exit program",
-    "crumbs": [
-      "Legacy tools",
-      "peek"
-    ]
-  },
-  {
-    "objectID": "reference/peek.html#usage",
-    "href": "reference/peek.html#usage",
-    "title": "peek",
-    "section": "",
-    "text": "peek &lt;file.tsv&gt; [buffer]",
-    "crumbs": [
-      "Legacy tools",
-      "peek"
-    ]
-  },
-  {
-    "objectID": "reference/peek.html#functions",
-    "href": "reference/peek.html#functions",
-    "title": "peek",
-    "section": "",
-    "text": "Name\nDescription\n\n\n\n\njustify\nCalculates the spacing for justifying to the right\n\n\nmax_string\nGiven a list of strings, finds the maximum strign length\n\n\npargs\nBasic command-line parser\n\n\npprint\nRe-formats first two lines on file so columns are left justified and values are right justified\n\n\nprint_header\nPrint filenames and divider\n\n\nusage\nPrint usage information and exit program\n\n\n\n\n\npeek.justify(h, d, n, nr)\nCalculates the spacing for justifying to the right\n\n\n\npeek.max_string(data)\nGiven a list of strings, finds the maximum strign length\n\n\n\npeek.pargs()\nBasic command-line parser\n\n\n\npeek.pprint(headlist, data, linelength, fn)\nRe-formats first two lines on file so columns are left justified and values are right justified\n\n\n\npeek.print_header(filename, length)\nPrint filenames and divider\n\n\n\npeek.usage()\nPrint usage information and exit program",
-    "crumbs": [
-      "Legacy tools",
-      "peek"
+      "software"
     ]
   },
   {
@@ -736,7 +791,7 @@
     "href": "CHANGELOG.html",
     "title": "CCBR Tools",
     "section": "",
-    "text": "fixes in ccbr_tools install:\n\nuse relative paths for symlinks within the same directory. (#58, @kelly-sovacool)\n\nccbr_tools install has new options: (#60, @kelly-sovacool)\n\n--type to specify the type of tool to install (e.g. PythonTool, BashTool, Snakemake, or Nextflow).\n--hpc (e.g. biowulf, frce) to specify the HPC environment for debugging purposes.\n\njobby overhaul (#59, @kopardev)\n\nuses saccount to get slurm job information, which should work for any HPC running slurm.\nhas options --tsv, --json, and --yaml to output the job information in those formats.\ncan accept a snakemake log file, nextflow log file, or a list of slurm job IDs as input.",
+    "text": "fixes in ccbr_tools install:\n\nuse relative paths for symlinks within the same directory. (#58, @kelly-sovacool)\n\nccbr_tools install has new options: (#60, @kelly-sovacool)\n\n--type to specify the type of tool to install (e.g. PythonTool, BashTool, Snakemake, or Nextflow).\n--hpc (e.g. biowulf, frce) to specify the HPC environment for debugging purposes.\n\njobby overhaul (#59, @kopardev)\n\nuses saccount to get slurm job information, which should work for any HPC running slurm.\nhas options --tsv, --json, and --yaml to output the job information in those formats.\ncan accept a snakemake log file, nextflow log file, or a list of slurm job IDs as input.\n\nnew utility: module_list to list all loaded modules as JSON or retrieve the version of a specific module. (#63, @kopardev)",
     "crumbs": [
       "Project information",
       "Changelog"
@@ -747,7 +802,7 @@
     "href": "CHANGELOG.html#tools-development-version",
     "title": "CCBR Tools",
     "section": "",
-    "text": "fixes in ccbr_tools install:\n\nuse relative paths for symlinks within the same directory. (#58, @kelly-sovacool)\n\nccbr_tools install has new options: (#60, @kelly-sovacool)\n\n--type to specify the type of tool to install (e.g. PythonTool, BashTool, Snakemake, or Nextflow).\n--hpc (e.g. biowulf, frce) to specify the HPC environment for debugging purposes.\n\njobby overhaul (#59, @kopardev)\n\nuses saccount to get slurm job information, which should work for any HPC running slurm.\nhas options --tsv, --json, and --yaml to output the job information in those formats.\ncan accept a snakemake log file, nextflow log file, or a list of slurm job IDs as input.",
+    "text": "fixes in ccbr_tools install:\n\nuse relative paths for symlinks within the same directory. (#58, @kelly-sovacool)\n\nccbr_tools install has new options: (#60, @kelly-sovacool)\n\n--type to specify the type of tool to install (e.g. PythonTool, BashTool, Snakemake, or Nextflow).\n--hpc (e.g. biowulf, frce) to specify the HPC environment for debugging purposes.\n\njobby overhaul (#59, @kopardev)\n\nuses saccount to get slurm job information, which should work for any HPC running slurm.\nhas options --tsv, --json, and --yaml to output the job information in those formats.\ncan accept a snakemake log file, nextflow log file, or a list of slurm job IDs as input.\n\nnew utility: module_list to list all loaded modules as JSON or retrieve the version of a specific module. (#63, @kopardev)",
     "crumbs": [
       "Project information",
       "Changelog"
@@ -932,7 +987,7 @@
     "href": "index.html#basic-usage",
     "title": "CCBR Tools",
     "section": "Basic usage",
-    "text": "Basic usage\n\nCLI\nccbr_tools --help\n\n\nUsage: ccbr_tools [OPTIONS] COMMAND [ARGS]...\n\n  Utilities for CCBR Bioinformatics Software\n\n  For more options, run: ccbr_tools [command] --help\n\n  https://ccbr.github.io/Tools/\n\nOptions:\n  -v, --version  Show the version and exit.\n  -h, --help     Show this message and exit.\n\nCommands:\n  send-email  Send an email (works on biowulf)\n  quarto-add  Add a quarto extension\n  install     Install a specific version of a CCBR software package,...\n  cite        Print the citation in the desired format\n  version     Print the version of ccbr_tools\n\nAll installed tools:\n  ccbr_tools\n  gb2gtf\n  hf\n  intersect\n  jobby\n  jobinfo\n  peek\n\n\n\n\nPython\n\n\nCode\nimport ccbr_tools.shell\nprint(ccbr_tools.shell.shell_run('echo \"Hello, world!\"'))\n\n\nHello, world!\n\n\n\n\n\nCode\nimport ccbr_tools.versions\nversion = ccbr_tools.versions.match_semver('0.2.3')\nversion.groupdict()\n\n\n{'major': '0',\n 'minor': '2',\n 'patch': '3',\n 'prerelease': None,\n 'buildmetadata': None}\n\n\nView the API reference for more information: https://ccbr.github.io/Tools/reference/",
+    "text": "Basic usage\n\nCLI\nccbr_tools --help\n\n\nUsage: ccbr_tools [OPTIONS] COMMAND [ARGS]...\n\n  Utilities for CCBR Bioinformatics Software\n\n  For more options, run: ccbr_tools [command] --help\n\n  https://ccbr.github.io/Tools/\n\nOptions:\n  -v, --version  Show the version and exit.\n  -h, --help     Show this message and exit.\n\nCommands:\n  send-email  Send an email (works on biowulf)\n  quarto-add  Add a quarto extension\n  install     Install a specific version of a CCBR software package,...\n  cite        Print the citation in the desired format\n  version     Print the version of ccbr_tools\n\nAll installed tools:\n  ccbr_tools\n  gb2gtf\n  hf\n  intersect\n  jobby\n  jobinfo\n  module_list\n  peek\n\n\n\n\nPython\n\n\nCode\nimport ccbr_tools.shell\nprint(ccbr_tools.shell.shell_run('echo \"Hello, world!\"'))\n\n\nHello, world!\n\n\n\n\n\nCode\nimport ccbr_tools.versions\nversion = ccbr_tools.versions.match_semver('0.2.3')\nversion.groupdict()\n\n\n{'major': '0',\n 'minor': '2',\n 'patch': '3',\n 'prerelease': None,\n 'buildmetadata': None}\n\n\nView the API reference for more information: https://ccbr.github.io/Tools/reference/",
     "crumbs": [
       "Home"
     ]
