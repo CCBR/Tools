@@ -5,6 +5,7 @@ import pickle
 import pytest
 
 from ccbr_tools.jobby import (
+    jobby,
     parse_time_to_seconds,
     parse_mem_to_gb,
     extract_jobids_from_file,
@@ -12,6 +13,9 @@ from ccbr_tools.jobby import (
     records_to_df,
     format_df,
 )
+from ccbr_tools.pipeline.hpc import get_hpcname
+
+HPC = get_hpcname()
 
 
 def generate_records():
@@ -80,6 +84,20 @@ def generate_df():
     df_nxf = records_to_df(records_nxf)
     df_smk.to_pickle("tests/data/jobby/df_smk.pkl")
     df_nxf.to_pickle("tests/data/jobby/df_nxf.pkl")
+
+
+@pytest.mark.skipif(HPC != "", reason="HPC is not empty")
+def test_jobby_no_args():
+    with pytest.raises(ValueError) as exc_info:
+        jobby([])
+    assert "No job IDs to process" in str(exc_info.value)
+
+
+@pytest.mark.skipif(HPC != "", reason="HPC is not empty")
+def test_jobby_no_records():
+    with pytest.raises(RuntimeError) as exc_info:
+        jobby(["invalid_job_id"])
+    assert "sacct command not found" in str(exc_info.value)
 
 
 def test_parse_time_to_seconds():

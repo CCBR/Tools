@@ -207,8 +207,14 @@ def get_sacct_info(job_ids):
                 }
                 records.append(record)
 
-        except subprocess.CalledProcessError:
-            warnings.warn(f"❌ Failed to fetch info for JobID {jobid}")
+        except subprocess.CalledProcessError as err:
+            raise RuntimeError(
+                f"❌ Failed to fetch info for JobID {jobid}"
+            ).with_traceback(err.__traceback__) from err
+        except FileNotFoundError as err:
+            raise RuntimeError(
+                "❌ sacct command not found. Is SLURM installed?"
+            ).with_traceback(err.__traceback__) from err
     return records
 
 
