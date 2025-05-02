@@ -290,6 +290,9 @@ def format_df(df, output_format):
 
 
 def jobby(args):
+    if not isinstance(args, list):
+        raise TypeError("Expected a list of arguments")
+
     output_format = "markdown"
     if "--tsv" in args:
         output_format = "tsv"

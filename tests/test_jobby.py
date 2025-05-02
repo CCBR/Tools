@@ -1,4 +1,8 @@
+import contextlib
 import gzip
+import io
+import json
+import os
 import numpy as np
 import pandas as pd
 import pickle
@@ -86,6 +90,12 @@ def generate_df():
     df_nxf.to_pickle("tests/data/jobby/df_nxf.pkl")
 
 
+def test_jobby_no_list():
+    with pytest.raises(TypeError) as exc_info:
+        jobby("50456412")
+    assert "Expected a list of arguments" in str(exc_info.value)
+
+
 @pytest.mark.skipif(HPC != "", reason="HPC is not empty")
 def test_jobby_no_args():
     with pytest.raises(ValueError) as exc_info:
@@ -98,6 +108,44 @@ def test_jobby_no_records():
     with pytest.raises(RuntimeError) as exc_info:
         jobby(["invalid_job_id"])
     assert "sacct command not found" in str(exc_info.value)
+
+
+@pytest.mark.skipif(HPC != "biowulf", reason="only works on biowulf")
+def test_jobby_no_records_biowulf():
+    with pytest.raises(RuntimeError) as exc_info:
+        jobby(["invalid_job_id"])
+    assert "Failed to fetch info for JobID" in str(exc_info.value)
+
+
+@pytest.mark.skipif(
+    HPC != "biowulf" and os.environ.get("USER") != "sovacoollkl",
+    reason="only works for sovacoolkl on biowulf",
+)
+def test_jobby_biowulf():
+    with contextlib.redirect_stdout(io.StringIO()) as stdout:
+        jobby(["--json", "50456412"])
+    out_json = json.loads(stdout.getvalue())
+    assert out_json == [
+        {
+            "JobId": "50456412",
+            "JobName": "picard.name=KO_S4",
+            "JobState": "COMPLETED",
+            "RunTime": "00:00:39",
+            "NumNodes": "1",
+            "NumCPUs": "6",
+            "CPUEfficiency": 17.09,
+            "ReqMemGB": 110.0,
+            "MaxMemUsedGB": 11.02,
+            "ExitCode": 0,
+            "KillSignal": 0,
+            "Timelimit": "04:00:00",
+            "NodeList": "cn1888",
+            "StartTime": "2025-03-12T16:58:45",
+            "EndTime": "2025-03-12T16:59:24",
+            "QueuedTime": "2025-03-12T16:54:50",
+            "WorkDir": "/gpfs/gsfs12/users/sovacoolkl/renee_test_hg38-45",
+        }
+    ]
 
 
 def test_parse_time_to_seconds():
