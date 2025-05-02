@@ -10,6 +10,7 @@
 - `ccbr_tools install` has new options: (#60, @kelly-sovacool)
   - `--type` to specify the type of tool to install (e.g. `PythonTool`, `BashTool`, `Snakemake`, or `Nextflow`).
   - `--hpc` (e.g. `biowulf`, `frce`) to specify the HPC environment for debugging purposes.
+- `spooker` now accepts the path to the pipeline CLI as an optional argument. (#69, @kelly-sovacool)
 
 ### Bug fixes
 
