@@ -112,9 +112,9 @@ def test_jobby_no_records():
 
 @pytest.mark.skipif(HPC != "biowulf", reason="only works on biowulf")
 def test_jobby_no_records_biowulf():
-    with pytest.raises(RuntimeError) as exc_info:
+    with pytest.warns(UserWarning) as exc_info:
         jobby(["invalid_job_id"])
-    assert "Failed to fetch info for JobID" in str(exc_info.value)
+    assert "Failed to fetch info for JobID" in str(exc_info[0].message)
 
 
 @pytest.mark.skipif(
