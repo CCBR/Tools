@@ -791,7 +791,7 @@
     "href": "CHANGELOG.html",
     "title": "CCBR Tools",
     "section": "",
-    "text": "fixes in ccbr_tools install:\n\nuse relative paths for symlinks within the same directory. (#58, @kelly-sovacool)\n\nccbr_tools install has new options: (#60, @kelly-sovacool)\n\n--type to specify the type of tool to install (e.g. PythonTool, BashTool, Snakemake, or Nextflow).\n--hpc (e.g. biowulf, frce) to specify the HPC environment for debugging purposes.\n\njobby overhaul (#59, @kopardev)\n\nuses saccount to get slurm job information, which should work for any HPC running slurm.\nhas options --tsv, --json, and --yaml to output the job information in those formats.\ncan accept a snakemake log file, nextflow log file, or a list of slurm job IDs as input.\n\nnew utility: module_list to list all loaded modules as JSON or retrieve the version of a specific module. (#63, @kopardev)",
+    "text": "jobby overhaul (#59, @kopardev)\n\nUses saccount to get slurm job information, which should work for any HPC running slurm.\nHas options --tsv, --json, and --yaml to output the job information in those formats. If not specified, markdown is used.\nCan accept a snakemake log file, nextflow log file, or a list of slurm job IDs as input.\n\nmodule_list is a new utility to list all loaded modules as JSON or retrieve the version of a specific module. (#63, @kopardev)\nccbr_tools install has new options: (#60, @kelly-sovacool)\n\n--type to specify the type of tool to install (e.g. PythonTool, BashTool, Snakemake, or Nextflow).\n--hpc (e.g. biowulf, frce) to specify the HPC environment for debugging purposes.\n\n\n\n\n\n\nFix ccbr_tools install: use relative paths for symlinks within the same directory. (#58, @kelly-sovacool)",
     "crumbs": [
       "Project information",
       "Changelog"
@@ -802,7 +802,7 @@
     "href": "CHANGELOG.html#tools-development-version",
     "title": "CCBR Tools",
     "section": "",
-    "text": "fixes in ccbr_tools install:\n\nuse relative paths for symlinks within the same directory. (#58, @kelly-sovacool)\n\nccbr_tools install has new options: (#60, @kelly-sovacool)\n\n--type to specify the type of tool to install (e.g. PythonTool, BashTool, Snakemake, or Nextflow).\n--hpc (e.g. biowulf, frce) to specify the HPC environment for debugging purposes.\n\njobby overhaul (#59, @kopardev)\n\nuses saccount to get slurm job information, which should work for any HPC running slurm.\nhas options --tsv, --json, and --yaml to output the job information in those formats.\ncan accept a snakemake log file, nextflow log file, or a list of slurm job IDs as input.\n\nnew utility: module_list to list all loaded modules as JSON or retrieve the version of a specific module. (#63, @kopardev)",
+    "text": "jobby overhaul (#59, @kopardev)\n\nUses saccount to get slurm job information, which should work for any HPC running slurm.\nHas options --tsv, --json, and --yaml to output the job information in those formats. If not specified, markdown is used.\nCan accept a snakemake log file, nextflow log file, or a list of slurm job IDs as input.\n\nmodule_list is a new utility to list all loaded modules as JSON or retrieve the version of a specific module. (#63, @kopardev)\nccbr_tools install has new options: (#60, @kelly-sovacool)\n\n--type to specify the type of tool to install (e.g. PythonTool, BashTool, Snakemake, or Nextflow).\n--hpc (e.g. biowulf, frce) to specify the HPC environment for debugging purposes.\n\n\n\n\n\n\nFix ccbr_tools install: use relative paths for symlinks within the same directory. (#58, @kelly-sovacool)",
     "crumbs": [
       "Project information",
       "Changelog"
@@ -813,7 +813,7 @@
     "href": "CHANGELOG.html#tools-0.3.2",
     "title": "CCBR Tools",
     "section": "Tools 0.3.2",
-    "text": "Tools 0.3.2\n\nfix ccbr_tools install: use the full path to the conda env on biowulf. (#64, @kelly-sovacool)",
+    "text": "Tools 0.3.2\n\nFix ccbr_tools install: use the full path to the conda env on biowulf. (#64, @kelly-sovacool)",
     "crumbs": [
       "Project information",
       "Changelog"
