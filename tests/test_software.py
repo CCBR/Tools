@@ -86,7 +86,7 @@ def test_custom():
     )
     assert (
         result
-        == """conda activate /data/CCBR_Pipeliner/db/PipeDB/Conda/envs/py311
+        == """. "/data/CCBR_Pipeliner/db/PipeDB/Conda/etc/profile.d/conda.sh" && conda activate /data/CCBR_Pipeliner/db/PipeDB/Conda/envs/py311
 pip install git+https://github.com/CCBR/cooltool.git@v1.0.0 -t /data/CCBR_Pipeliner/Tools/cooltool/.v1.0.0
 chmod -R a+rX /data/CCBR_Pipeliner/Tools/cooltool/.v1.0.0
 chown -R :CCBR_Pipeliner /data/CCBR_Pipeliner/Tools/cooltool/.v1.0.0
