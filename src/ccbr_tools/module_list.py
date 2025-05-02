@@ -64,42 +64,13 @@ Example:
 """
 
 
-
-import sys
+import json
 import re
 import subprocess
-import json
+import sys
 
-def get_loaded_modules():
-    try:
-        # Execute 'module list' within a shell and capture stderr
-        result = subprocess.run(
-            "module list",
-            shell=True,
-            stdout=subprocess.PIPE,
-            stderr=subprocess.PIPE,
-            text=True
-        )
-        # 'module list' outputs to stderr
-        output = result.stderr
-        return output
-    except Exception as e:
-        print(f"Error executing 'module list': {e}")
-        return ""
+from .pipeline.hpc import list_modules, parse_modules
 
-def parse_modules(output):
-    modules = {}
-    # Regular expression to match module entries like '1) module_name/version'
-    pattern = re.compile(r'\d+\)\s+([\w\-/\.]+)')
-    matches = pattern.findall(output)
-    for module_info in matches:
-        # Split module name and version
-        if '/' in module_info:
-            name, version = module_info.rsplit('/', 1)
-        else:
-            name, version = module_info, ""
-        modules[name] = version
-    return modules
 
 def print_help():
     help_message = """
@@ -108,36 +79,39 @@ Usage:
   module_list <module>  # Get version of a specific loaded module
   module_list -h | --help  # Show this help message
 """
-    print(help_message.strip())
+    print(help_message, end="")
+
+
+def module_list(module=""):
+    """
+    Get the list of loaded modules or the version of a specific module.
+
+    Args:
+        module (str): The name of the module to check. If empty, all loaded modules are listed.
+    Returns:
+        output (str): JSON string of loaded modules or the version of the specified module.
+    """
+    modules = parse_modules(list_modules())
+    if not module:
+        output = json.dumps(modules, indent=4)
+    else:
+        version = modules.get(module)
+        if version:
+            output = version
+        else:
+            output = "not_loaded"
+    return output
+
 
 def main():
-    args = sys.argv[1:]
-
-    if len(args) == 0:
-        # No arguments provided; print all loaded modules in JSON format
-        output = get_loaded_modules()
-        modules = parse_modules(output)
-        module_list = [{'name': name, 'version': version} for name, version in modules.items()]
-        print(json.dumps(module_list, indent=4))
-    elif len(args) == 1:
-        if args[0] in ("-h", "--help"):
-            # Help flag provided; print help message
-            print_help()
-        else:
-            # Single argument provided; check if the module is loaded
-            module_name = args[0]
-            output = get_loaded_modules()
-            modules = parse_modules(output)
-            version = modules.get(module_name)
-            if version:
-                print(version)
-            else:
-                print("not_loaded")
-    else:
-        # More than one argument provided; print usage information
-        print("Error: Too many arguments provided.")
+    args = sys.argv
+    if "-h" in args or "--help" in args or len(args) > 2:
         print_help()
-        sys.exit(1)
+    else:
+        module = args[1] if len(args) == 2 else ""
+        ml = module_list(module)
+        print(ml)
+
 
 if __name__ == "__main__":
     main()

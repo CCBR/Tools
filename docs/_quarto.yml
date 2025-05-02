@@ -62,6 +62,8 @@ quartodoc:
     - title: Main modules
       contents:
         - github
+        - jobby
+        - module_list
         - pkg_util
         - pipeline
         - send_email
@@ -84,7 +86,6 @@ quartodoc:
         - homologfinder.hf
         - intersect
         - jobinfo
-        - jobby
         - peek
 
 metadata-files:

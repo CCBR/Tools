@@ -6,6 +6,7 @@ which contains default attributes for supported clusters.
 """
 
 import pathlib
+import re
 
 from .cache import get_singularity_cachedir, get_sif_cache_dir
 from ..shell import shell_run
@@ -173,12 +174,52 @@ def scontrol_show():
     return scontrol_dict
 
 
+def list_modules():
+    """
+    Get the list of loaded modules using `module list`
+
+    Returns:
+        loaded_modules (str): The output of `module list`
+    """
+    return shell_run("bash -c 'module list'", check=False)
+
+
+def parse_modules(ml_output):
+    """
+    Parse the output of `module list` to extract module names and versions
+    Args:
+        ml_output (str): The output of `module list`
+    Returns:
+        modules (dict): A dictionary containing module names and their versions
+    Example:
+        >>> ml_output = "1) module_name/version"
+        >>> parse_modules(ml_output)
+        {'module_name': 'version'}
+        >>> parse_modules(list_modules())
+        {'module_name': 'version', ...}
+    """
+    modules = {}
+    # Regular expression to match module entries like '1) module_name/version'
+    pattern = re.compile(r"\d+\)\s+([\w\-/\.]+)")
+    matches = pattern.findall(ml_output)
+    for module_info in matches:
+        # Split module name and version
+        if "/" in module_info:
+            name, version = module_info.rsplit("/", 1)
+        else:
+            name, version = module_info, ""
+        modules[name] = version
+    return modules
+
+
 def is_loaded(module="ccbrpipeliner"):
     """
-    Check whether the ccbrpipeliner module is loaded
+    Check whether a module is loaded
+
+    Args:
+        module (str): The name of the module to check (default: "ccbrpipeliner")
 
     Returns:
         is_loaded (bool): True if the module is loaded, False otherwise
     """
-    output = shell_run("bash -c 'module list'", check=False)
-    return module in output
+    return module in list_modules()
