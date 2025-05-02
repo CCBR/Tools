@@ -8,6 +8,7 @@
   - uses `saccount` to get slurm job information, which should work for any HPC running slurm.
   - has options `--tsv`, `--json`, and `--yaml` to output the job information in those formats.
   - can accept a snakemake log file, nextflow log file, or a list of slurm job IDs as input.
+- new utility: `module_list` to list all loaded modules as JSON or retrieve the version of a specific module. (#63, @kopardev)
 
 ## Tools 0.3.1
 

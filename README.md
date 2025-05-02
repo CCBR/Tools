@@ -67,6 +67,7 @@ ccbr_tools --help
       intersect
       jobby
       jobinfo
+      module_list
       peek
 
 ### Python
@@ -103,6 +104,7 @@ Command-line utilities in CCBR Tools.
 - `intersect`
 - `jobby`
 - `jobinfo`
+- `module_list`
 - `peek`
 
 Run a command with `--help` to learn how to use it.
