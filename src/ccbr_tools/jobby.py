@@ -212,35 +212,8 @@ def get_sacct_info(job_ids):
     return records
 
 
-def jobby(args):
-    output_format = "markdown"
-    if "--tsv" in args:
-        output_format = "tsv"
-        args.remove("--tsv")
-    elif "--json" in args:
-        output_format = "json"
-        args.remove("--json")
-    elif "--yaml" in args:
-        output_format = "yaml"
-        args.remove("--yaml")
-        if yaml is None:
-            raise ImportError(
-                "❌ YAML output requested but PyYAML is not installed. Install with `pip install pyyaml`."
-            )
-
-    # Case: 1 argument and it's a file
-    if len(args) == 1 and os.path.isfile(args[0]):
-        job_ids = extract_jobids_from_file(args[0])
-    else:
-        job_ids = args  # Treat all arguments as job IDs
-
-    if not job_ids:
-        raise ValueError("⚠️ No job IDs to process.")
-
-    records = get_sacct_info(job_ids)
-    if not records:
-        raise ValueError("⚠️ No job data found.")
-
+def records_to_df(records):
+    """Convert a list of job records to a pandas DataFrame."""
     df = pd.DataFrame(records)
 
     # convert Memory to GB
@@ -291,22 +264,60 @@ def jobby(args):
         cols.insert(cols.index("ExitCode") + 1, cols.pop(cols.index("KillSignal")))
         df = df[cols]
 
-    # Output based on requested format
+    return df
+
+
+def format_df(df, output_format):
+    """Format the DataFrame for output based on the requested format."""
+    out_str = ""
     if output_format == "markdown":
-        print(df.to_markdown(index=False))
+        out_str = df.to_markdown(index=False)
     elif output_format == "tsv":
-        print(df.to_csv(sep="\t", index=False))
+        out_str = df.to_csv(sep="\t", index=False)
     elif output_format == "json":
-        print(df.to_json(orient="records", indent=2))
+        out_str = df.to_json(orient="records", indent=2)
     elif output_format == "yaml":
-        print(yaml.dump(df.to_dict(orient="records"), sort_keys=False))
+        out_str = yaml.dump(df.to_dict(orient="records"), sort_keys=False)
     else:
         raise ValueError(f"output format {output_format} not supported")
+    return out_str
+
+
+def jobby(args):
+    output_format = "markdown"
+    if "--tsv" in args:
+        output_format = "tsv"
+        args.remove("--tsv")
+    elif "--json" in args:
+        output_format = "json"
+        args.remove("--json")
+    elif "--yaml" in args:
+        output_format = "yaml"
+        args.remove("--yaml")
+        if yaml is None:
+            raise ImportError(
+                "❌ YAML output requested but PyYAML is not installed. Install with `pip install pyyaml`."
+            )
+
+    # Case: 1 argument and it's a file
+    if len(args) == 1 and os.path.isfile(args[0]):
+        job_ids = extract_jobids_from_file(args[0])
+    else:
+        job_ids = args  # Treat all arguments as job IDs
+
+    if not job_ids:
+        raise ValueError("⚠️ No job IDs to process.")
+
+    records = get_sacct_info(job_ids)
+    if not records:
+        raise ValueError("⚠️ No job data found.")
+
+    df = records_to_df(records)
+    print(format_df(df, output_format))
 
 
 def main():
     args = sys.argv[1:]
-
     if len(args) == 0 or "-h" in args or "--help" in args:
         print("Usage:")
         print("  jobby <jobid1> [jobid2 ...] [--tsv|--json|--yaml]")
