@@ -2,7 +2,6 @@
 
 - fixes in `ccbr_tools install`:
   - use relative paths for symlinks within the same directory. (#58, @kelly-sovacool)
-  - use the full path to the conda env on biowulf. (#64, @kelly-sovacool)
 - `ccbr_tools install` has new options: (#60, @kelly-sovacool)
   - `--type` to specify the type of tool to install (e.g. `PythonTool`, `BashTool`, `Snakemake`, or `Nextflow`).
   - `--hpc` (e.g. `biowulf`, `frce`) to specify the HPC environment for debugging purposes.
@@ -10,6 +9,10 @@
   - uses `saccount` to get slurm job information, which should work for any HPC running slurm.
   - has options `--tsv`, `--json`, and `--yaml` to output the job information in those formats.
   - can accept a snakemake log file, nextflow log file, or a list of slurm job IDs as input.
+
+## Tools 0.3.2
+
+- fix `ccbr_tools install`: use the full path to the conda env on biowulf. (#64, @kelly-sovacool)
 
 ## Tools 0.3.1
 

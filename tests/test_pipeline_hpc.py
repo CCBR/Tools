@@ -1,6 +1,4 @@
 from ccbr_tools.pipeline.hpc import get_hpc
-from ccbr_tools.shell import shell_run
-import subprocess
 
 
 def test_hpc_biowulf():
@@ -14,7 +12,7 @@ def test_hpc_biowulf():
                 "<class 'ccbr_tools.pipeline.hpc.Biowulf'>({'name': 'biowulf'"
             ),
             hpc.CONDA_ACTIVATE
-            == "conda activate /data/CCBR_Pipeliner/db/PipeDB/Conda/envs/py311",
+            == '. "/data/CCBR_Pipeliner/db/PipeDB/Conda/etc/profile.d/conda.sh" && conda activate /data/CCBR_Pipeliner/db/PipeDB/Conda/envs/py311',
         ]
     )
 

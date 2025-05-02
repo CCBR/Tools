@@ -70,7 +70,7 @@ class Biowulf(Cluster):
     GROUP = "CCBR_Pipeliner"
     PIPELINES_HOME = pathlib.Path("/data/CCBR_Pipeliner/Pipelines")
     TOOLS_HOME = pathlib.Path("/data/CCBR_Pipeliner/Tools")
-    CONDA_ACTIVATE = "conda activate /data/CCBR_Pipeliner/db/PipeDB/Conda/envs/py311"
+    CONDA_ACTIVATE = '. "/data/CCBR_Pipeliner/db/PipeDB/Conda/etc/profile.d/conda.sh" && conda activate /data/CCBR_Pipeliner/db/PipeDB/Conda/envs/py311'
 
     def __init__(self):
         super().__init__()
