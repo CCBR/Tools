@@ -1,5 +1,3 @@
-import pathlib
-
 from .pipeline.hpc import Cluster
 from .shell import shell_run
 from .versions import match_semver, get_major_minor_version
@@ -7,14 +5,18 @@ from .versions import match_semver, get_major_minor_version
 
 class Software:
     @staticmethod
-    def create_software(tool_name, version):
+    def create_software(tool_name, version, software_type=None):
         tool_lower = tool_name.lower()
 
-        if tool_lower not in CCBR_SOFTWARE:
-            raise KeyError(
-                f"{tool_name} not found in software list.\t\n{', '.join(CCBR_SOFTWARE.keys())}"
-            )
-        return CCBR_SOFTWARE[tool_lower](tool_name, version)
+        if software_type:
+            software = eval(software_type)(tool_name, version)
+        else:
+            if tool_lower not in CCBR_SOFTWARE:
+                raise KeyError(
+                    f"{tool_name} not found in software list.\t\n{', '.join(CCBR_SOFTWARE.keys())}"
+                )
+            software = CCBR_SOFTWARE[tool_lower](tool_name, version)
+        return software
 
     def __init__(self, name, version):
         self.name = name
@@ -143,8 +145,10 @@ CCBR_SOFTWARE = {
 
 
 SET_SYMLINK = """
+pushd {BASE_PATH}
 rm -if {MAJOR_MINOR_VERSION}
-ln -s {PATH} {MAJOR_MINOR_VERSION}"""
+ln -s {HIDDEN_VERSION} {MAJOR_MINOR_VERSION}
+popd"""
 
 INSTALL_SCRIPT = """{CONDA_ACTIVATE}
 {INSTALL}
@@ -157,12 +161,13 @@ def install(
     version,
     dryrun=True,
     branch_tag=None,
+    software_type=None,
     install_script=INSTALL_SCRIPT,
     symlink_script=SET_SYMLINK,
     debug=False,
 ):
     hpc = Cluster.create_hpc(debug=debug)
-    tool = Software.create_software(tool_name, version)
+    tool = Software.create_software(tool_name, version, software_type=software_type)
 
     script = install_script.format(
         GROUP=hpc.GROUP,
@@ -172,8 +177,9 @@ def install(
     )
     if not tool.is_dev_version:
         script += symlink_script.format(
-            PATH=tool.path(hpc),
-            MAJOR_MINOR_VERSION=tool.base_path(hpc) / tool.major_minor,
+            BASE_PATH=tool.base_path(hpc),
+            HIDDEN_VERSION=tool.hidden_version,
+            MAJOR_MINOR_VERSION=tool.major_minor,
         )
     if dryrun:
         print(script)

@@ -1,6 +1,4 @@
 from ccbr_tools.pipeline.hpc import get_hpc
-from ccbr_tools.shell import shell_run
-import subprocess
 
 
 def test_hpc_biowulf():
