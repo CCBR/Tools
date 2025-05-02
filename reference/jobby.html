@@ -542,8 +542,10 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   <li><a href="#functions" id="toc-functions" class="nav-link" data-scroll-target="#functions">Functions</a>
   <ul class="collapse">
   <li><a href="#ccbr_tools.jobby.extract_jobids_from_file" id="toc-ccbr_tools.jobby.extract_jobids_from_file" class="nav-link" data-scroll-target="#ccbr_tools.jobby.extract_jobids_from_file">extract_jobids_from_file</a></li>
+  <li><a href="#ccbr_tools.jobby.format_df" id="toc-ccbr_tools.jobby.format_df" class="nav-link" data-scroll-target="#ccbr_tools.jobby.format_df">format_df</a></li>
   <li><a href="#ccbr_tools.jobby.parse_mem_to_gb" id="toc-ccbr_tools.jobby.parse_mem_to_gb" class="nav-link" data-scroll-target="#ccbr_tools.jobby.parse_mem_to_gb">parse_mem_to_gb</a></li>
   <li><a href="#ccbr_tools.jobby.parse_time_to_seconds" id="toc-ccbr_tools.jobby.parse_time_to_seconds" class="nav-link" data-scroll-target="#ccbr_tools.jobby.parse_time_to_seconds">parse_time_to_seconds</a></li>
+  <li><a href="#ccbr_tools.jobby.records_to_df" id="toc-ccbr_tools.jobby.records_to_df" class="nav-link" data-scroll-target="#ccbr_tools.jobby.records_to_df">records_to_df</a></li>
   </ul></li>
   </ul></li>
   </ul>
@@ -606,12 +608,20 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <td>Extract SLURM job IDs from a Snakemake or Nextflow log file.</td>
 </tr>
 <tr class="even">
+<td><a href="#ccbr_tools.jobby.format_df">format_df</a></td>
+<td>Format the DataFrame for output based on the requested format.</td>
+</tr>
+<tr class="odd">
 <td><a href="#ccbr_tools.jobby.parse_mem_to_gb">parse_mem_to_gb</a></td>
 <td>Convert SLURM memory strings like ‘4000M’, ‘4G’, ‘102400K’ to GB as float.</td>
 </tr>
-<tr class="odd">
+<tr class="even">
 <td><a href="#ccbr_tools.jobby.parse_time_to_seconds">parse_time_to_seconds</a></td>
 <td>Convert SLURM time formats like ‘1-02:03:04’, ‘02:03:04’, ‘37:55.869’, or ‘55.869’ to seconds.</td>
+</tr>
+<tr class="odd">
+<td><a href="#ccbr_tools.jobby.records_to_df">records_to_df</a></td>
+<td>Convert a list of job records to a pandas DataFrame.</td>
 </tr>
 </tbody>
 </table>
@@ -620,15 +630,25 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <div class="sourceCode" id="cb1"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a>jobby.extract_jobids_from_file(filepath)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <p>Extract SLURM job IDs from a Snakemake or Nextflow log file.</p>
 </section>
+<section id="ccbr_tools.jobby.format_df" class="level3">
+<h3 class="anchored" data-anchor-id="ccbr_tools.jobby.format_df">format_df</h3>
+<div class="sourceCode" id="cb2"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a>jobby.format_df(df, output_format)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p>Format the DataFrame for output based on the requested format.</p>
+</section>
 <section id="ccbr_tools.jobby.parse_mem_to_gb" class="level3">
 <h3 class="anchored" data-anchor-id="ccbr_tools.jobby.parse_mem_to_gb">parse_mem_to_gb</h3>
-<div class="sourceCode" id="cb2"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a>jobby.parse_mem_to_gb(mem_str)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb3"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a>jobby.parse_mem_to_gb(mem_str)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <p>Convert SLURM memory strings like ‘4000M’, ‘4G’, ‘102400K’ to GB as float.</p>
 </section>
 <section id="ccbr_tools.jobby.parse_time_to_seconds" class="level3">
 <h3 class="anchored" data-anchor-id="ccbr_tools.jobby.parse_time_to_seconds">parse_time_to_seconds</h3>
-<div class="sourceCode" id="cb3"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a>jobby.parse_time_to_seconds(t)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb4"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a>jobby.parse_time_to_seconds(t)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <p>Convert SLURM time formats like ‘1-02:03:04’, ‘02:03:04’, ‘37:55.869’, or ‘55.869’ to seconds.</p>
+</section>
+<section id="ccbr_tools.jobby.records_to_df" class="level3">
+<h3 class="anchored" data-anchor-id="ccbr_tools.jobby.records_to_df">records_to_df</h3>
+<div class="sourceCode" id="cb5"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a>jobby.records_to_df(records)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p>Convert a list of job records to a pandas DataFrame.</p>
 
 
 </section>
