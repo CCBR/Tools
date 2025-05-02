@@ -208,9 +208,7 @@ def get_sacct_info(job_ids):
                 records.append(record)
 
         except subprocess.CalledProcessError as err:
-            raise RuntimeError(
-                f"❌ Failed to fetch info for JobID {jobid}"
-            ).with_traceback(err.__traceback__) from err
+            warnings.warn(f"❌ Failed to fetch info for JobID {jobid}")
         except FileNotFoundError as err:
             raise RuntimeError(
                 "❌ sacct command not found. Is SLURM installed?"
@@ -315,11 +313,11 @@ def jobby(args):
         job_ids = args  # Treat all arguments as job IDs
 
     if not job_ids:
-        raise ValueError("⚠️ No job IDs to process.")
+        warnings.warn("⚠️ No job IDs to process.")
 
     records = get_sacct_info(job_ids)
     if not records:
-        raise ValueError("⚠️ No job data found.")
+        warnings.warn("⚠️ No job data found.")
 
     df = records_to_df(records)
     print(format_df(df, output_format))
