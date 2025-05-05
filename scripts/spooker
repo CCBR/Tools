@@ -31,6 +31,7 @@ if [[ "$#" -lt "2" ]];then
     echo "    Argument 1: pipeline outdir"
     echo "    Argument 2: pipeline name"
     echo "    Argument 3: pipeline version (optional)"
+    echo "    Argument 4: pipeline source path (optional)"
     exit 1
 fi
 
@@ -38,14 +39,17 @@ set -o pipefail
 PIPELINE_OUTDIR=$1
 PIPELINE_NAME=$2
 PIPELINE_VERSION=$3
+PIPELINE_PATH=$4
 if [ ${#PIPELINE_VERSION} -eq 0 ]; then
     PIPELINE_VERSION="UNKNOWN"
+fi
+if [ ${#PIPELINE_PATH} -eq 0 ]; then
+    PIPELINE_PATH="UNKNOWN"
 fi
 
 PIPELINE_OUTDIR_SIZE=$(du -bs $PIPELINE_OUTDIR | awk '{print $1}')
 PIPELINE_NAME_UPPER=$(echo "$PIPELINE_NAME" | tr '[:lower:]' '[:upper:]')
 PIPELINE_NAME_LOWER=$(echo "$PIPELINE_NAME" | tr '[:upper:]' '[:lower:]')
-PIPELINE_PATH=$(which $PIPELINE_NAME_LOWER) # TODO this is not guaranteed to be correct
 CCBRPIPELINER_MODULE=$(module list ccbrpipeliner 2>&1 /dev/null | grep ')' | tail -n 1 | sed 's/.*) //')
 if [[ "CCBRPIPELINER_MODULE" == "" ]];then
     CCBRPIPELINER_MODULE="UNKNOWN"
