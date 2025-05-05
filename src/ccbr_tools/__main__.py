@@ -15,6 +15,7 @@ from .pkg_util import (
 from .send_email import send_email_msg
 from .templates import use_quarto_ext, get_quarto_extensions
 from .software import install as install_software
+from .spooker import spooker as run_spooker
 
 
 all_scripts = "All installed tools:\n" + "\n".join(
@@ -201,6 +202,31 @@ def install(tool_name, version_tag, run, branch_tag, software_type, hpc):
         branch_tag=branch_tag,
         software_type=software_type,
         debug=hpc,
+    )
+
+
+@click.command(context_settings=dict(help_option_names=["-h", "--help"]))
+@click.option(
+    "--outdir",
+    "pipeline_outdir",
+    type=click.Path(exists=True),
+    help="Output directory for the pipeline run",
+    required=True,
+)
+@click.option("--name", "pipeline_name", type=str, help="Name of the pipeline")
+@click.option("--version", "pipeline_version", type=str, help="Version of the pipeline")
+@click.option(
+    "--path",
+    "pipeline_path",
+    type=click.Path(exists=True),
+    help="Path to the pipeline source",
+)
+def spooker(pipeline_outdir, pipeline_name, pipeline_version, pipeline_path):
+    spooker(
+        pipeline_outdir,
+        pipeline_name,
+        pipeline_version,
+        pipeline_path,
     )
 
 

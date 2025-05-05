@@ -43,6 +43,8 @@ dependencies = [
     "pandas",
     "pyyaml >= 6.0",
     "requests",
+    "ruamel.yaml",
+    "ruamel.yaml.string",
     "tabulate",
 ]
 
