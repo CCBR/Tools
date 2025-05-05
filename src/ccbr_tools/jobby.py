@@ -312,15 +312,15 @@ def jobby(args):
     else:
         job_ids = args  # Treat all arguments as job IDs
 
-    if not job_ids:
-        warnings.warn("⚠️ No job IDs to process.")
-
-    records = get_sacct_info(job_ids)
-    if records:
-        df = records_to_df(records)
-        print(format_df(df, output_format))
+    if job_ids:
+        records = get_sacct_info(job_ids)
+        if records:
+            df = records_to_df(records)
+            print(format_df(df, output_format))
+        else:
+            warnings.warn("⚠️ No job data found.")
     else:
-        warnings.warn("⚠️ No job data found.")
+        warnings.warn("⚠️ No job IDs to process.")
 
 
 def main():
