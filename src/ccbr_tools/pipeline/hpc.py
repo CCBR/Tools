@@ -43,10 +43,6 @@ class Cluster:
 
     __nonzero__ = __bool__
 
-    def spook(self, tar_archive, subdir=None):
-        dest_dir = self.SPOOK_DIR / subdir if subdir else self.SPOOK_DIR
-        shutil.copy(tar_archive, dest_dir)
-
     @property
     def singularity_sif_dir(self):
         return get_sif_cache_dir(hpc=self.name)

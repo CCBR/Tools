@@ -47,6 +47,7 @@ def spooker(
     pipeline_name: str,
     pipeline_path: str,
     clean=True,
+    debug=False,
 ):
     if not pipeline_outdir.exists():
         raise FileNotFoundError(
@@ -78,8 +79,10 @@ def spooker(
     create_tar_archive(files, tar_filename)
 
     # copy to staging directory
-    Cluster.create_hpc().spook(
-        tar_filename, subdir=f"{get_random_string()}_{metadata['USER']}_{timestamp}"
+    spook(
+        tar_filename,
+        subdir=f"{get_random_string()}_{metadata['USER']}_{timestamp}",
+        hpc=Cluster.create_hpc(debug=debug),
     )
 
     # optional cleanup
@@ -168,6 +171,11 @@ def create_tar_archive(files, tar_filename):
     with tarfile.open(tar_filename, "w:gz") as tar:
         for file in files:
             tar.add(file, arcname=file.basename())
+
+
+def spook(tar_archive, subdir=None, hpc=Cluster.create_hpc()):
+    dest_dir = hpc.SPOOK_DIR / subdir if subdir else hpc.SPOOK_DIR
+    shutil.copy(tar_archive, dest_dir)
 
 
 def main():
