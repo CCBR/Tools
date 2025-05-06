@@ -316,7 +316,7 @@ def jobby(args):
         records = get_sacct_info(job_ids)
         if records:
             df = records_to_df(records)
-            print(format_df(df, output_format))
+            return format_df(df, output_format)
         else:
             warnings.warn("⚠️ No job data found.")
     else:
@@ -332,7 +332,9 @@ def main():
         print("  jobby snakemake.log [--tsv|--json|--yaml]")
         print("  jobby .nextflow.log [--tsv|--json|--yaml]")
     else:
-        jobby(args)
+        jobby_out = jobby(args)
+        if jobby_out:
+            print(jobby_out)
 
 
 if __name__ == "__main__":

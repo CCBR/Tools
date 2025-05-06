@@ -72,10 +72,19 @@ def spooker(
     tree_outfilename = pipeline_outdir / f"{timestamp}.tree.json"
     write_tree(get_tree(pipeline_outdir, args="-J"), tree_outfilename)
 
+    # jobby json
+    log_file = glob_files(
+        pipeline_outdir, patterns=["snakemake.log", ".nextflow.log"]
+    ).pop()
+    jobby_json = jobby([log_file, "--json"])
+    jobby_outfilename = pipeline_outdir / f"{timestamp}.jobby.json"
+    with open(jobby_outfilename, "w") as outfile:
+        outfile.write(jobby_json)
+
     # create tar archive, include log files
     tar_filename = pipeline_outdir / f"{timestamp}.tar.gz"
     files = glob_files(pipeline_outdir)
-    files.update(meta_outfilename, tree_outfilename)
+    files.update({meta_outfilename, tree_outfilename, jobby_outfilename})
     create_tar_archive(files, tar_filename)
 
     # copy to staging directory
@@ -91,6 +100,7 @@ def spooker(
             meta_outfilename,
             tree_outfilename,
             tar_filename,
+            jobby_outfilename,
         ):
             file.unlink()
 
@@ -155,15 +165,15 @@ def glob_files(
     ],
 ):
     return {
-        pathlib.path(f)
+        pathlib.Path(f)
+        for pattern in patterns
         for f in itertools.chain(
             glob.glob(
                 f"{pipeline_outdir}/{pattern}",
             ),
             glob.glob(f"{pipeline_outdir}/**/{pattern}"),
         )
-        for pattern in patterns
-        if pathlib.path(f).is_file()
+        if pathlib.Path(f).is_file()
     }
 
 
