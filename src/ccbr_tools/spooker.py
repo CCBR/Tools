@@ -46,7 +46,6 @@ def spooker(
     pipeline_version: str,
     pipeline_name: str,
     pipeline_path: str,
-    timestamp=get_timestamp(),
     clean=True,
     debug=False,
 ):
@@ -57,12 +56,9 @@ def spooker(
 
     # metadata
     metadata = collect_metadata(
-        pipeline_outdir,
-        pipeline_version,
-        pipeline_name,
-        pipeline_path,
-        timestamp=timestamp,
+        pipeline_outdir, pipeline_version, pipeline_name, pipeline_path
     )
+    timestamp = metadata["DATE"]
     meta_outfilename = pipeline_outdir / f"{timestamp}.yml"
     write_metadata(
         metadata,

@@ -1,4 +1,5 @@
 import pathlib
+import pytest
 import tarfile
 import ruamel.yaml
 
@@ -12,11 +13,12 @@ from ccbr_tools.spooker import (
     create_tar_archive,
     spook,
 )
-
+from ccbr_tools.shell import shell_run
 
 yaml = ruamel.yaml.YAML(typ="rt")
 
 
+@pytest.mark.filterwarnings("ignore:UserWarning")
 def test_spooker():
     out_tarpath = spooker(
         pipeline_outdir=pathlib.Path("tests/data/pipeline_run"),
@@ -43,3 +45,7 @@ def test_spooker():
             len(metadata["DATE"]) == len("2025-05-06T12-47-12"),
         ]
     )
+
+
+def test_spooker_cli():
+    assert "Usage: spooker " in shell_run("spooker --help")
