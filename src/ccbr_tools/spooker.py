@@ -1,3 +1,4 @@
+import click
 import datetime
 import glob
 import itertools
@@ -9,6 +10,35 @@ import tarfile
 
 from .shell import shell_run
 from .pipeline.hpc import Cluster, list_modules, parse_modules
+
+from .pkg_util import get_version, get_random_string, get_timestamp
+
+
+@click.command(context_settings=dict(help_option_names=["-h", "--help"]))
+@click.argument("outdir", type=click.Path(exists=True), default=pathlib.Path.cwd())
+@click.argument("name", type=str, default="")
+@click.argument("version", type=str, default="")
+@click.argument("path", type=click.Path(), default="")
+def cli(outdir, name, version, path):
+    """
+    SPOOKER 👻
+
+    This command is designed to be used as part of the OnComplete/OnSuccess/OnError handlers as part of Snakemake and Nextflow pipelines.
+    It collects metadata about the pipeline run, bundles it into a tarball, and saves it to a common location for later retrieval.
+
+    \b
+    Args:
+        outdir: Output directory for the pipeline run
+        name: Name of the pipeline
+        version: Version of the pipeline
+        path: Path to the pipeline source
+    """
+    spooker(
+        outdir,
+        name,
+        version,
+        path,
+    )
 
 
 def spooker(
@@ -30,27 +60,27 @@ def spooker(
         pipeline_name,
         pipeline_path,
     )
-    date = metadata["DATE"]
-    meta_outfilename = pipeline_outdir / f"{date}.yml"
+    timestamp = metadata["DATE"]
+    meta_outfilename = pipeline_outdir / f"{timestamp}.yml"
     write_metadata(
-        metadat,
+        metadata,
         meta_outfilename,
     )
 
     # tree json
-    tree_outfilename = pipeline_outdir / f"{date}.tree.json"
+    tree_outfilename = pipeline_outdir / f"{timestamp}.tree.json"
     write_tree(get_tree(pipeline_outdir, args="-J"), tree_outfilename)
 
     # create tar archive, include log files
-    tar_filename = pipeline_outdir / f"{date}.tar.gz"
+    tar_filename = pipeline_outdir / f"{timestamp}.tar.gz"
     files = glob_files(pipeline_outdir)
     files.update(meta_outfilename, tree_outfilename)
     create_tar_archive(files, tar_filename)
 
     # copy to staging directory
-    spook_dir = Cluster.create_hpc().SPOOK_DIR
-    if spook_dir.is_dir() and spook_dir.is_writable():
-        shutil.copy(tar_filename, spook_dir)
+    Cluster.create_hpc().spook(
+        tar_filename, subdir=f"{get_random_string()}_{metadata['USER']}_{timestamp}"
+    )
 
     # optional cleanup
     if clean:
@@ -90,7 +120,7 @@ def collect_metadata(
         "pipeline_version": pipeline_version,
         "ccbrpipeliner_module": ccbrpipeliner_version,
         "user": os.environ.get("USER"),
-        "date": datetime.datetime.now().strftime("%Y-%m-%dT%H:%M:%S"),
+        "date": get_timestamp(),
     }
     metadata_caps = {key.upper(): val for key, val in metadata.items()}
     return metadata_caps
@@ -138,3 +168,11 @@ def create_tar_archive(files, tar_filename):
     with tarfile.open(tar_filename, "w:gz") as tar:
         for file in files:
             tar.add(file, arcname=file.basename())
+
+
+def main():
+    cli()
+
+
+if __name__ == "__main__":
+    cli()
