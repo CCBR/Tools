@@ -7,6 +7,7 @@ which contains default attributes for supported clusters.
 
 import pathlib
 import re
+import shutil
 
 from .cache import get_singularity_cachedir, get_sif_cache_dir
 from ..shell import shell_run
@@ -42,13 +43,22 @@ class Cluster:
 
     __nonzero__ = __bool__
 
+    def spook(self, tar_archive, subdir=None):
+        dest_dir = self.SPOOK_DIR / subdir if subdir else self.SPOOK_DIR
+        shutil.copy(tar_archive, dest_dir)
+
     @property
     def singularity_sif_dir(self):
         return get_sif_cache_dir(hpc=self.name)
 
     @staticmethod
     def create_hpc(debug=False):
-        hpc_options = {"biowulf": Biowulf, "frce": FRCE, "unknown": Cluster}
+        hpc_options = {
+            "biowulf": Biowulf,
+            "frce": FRCE,
+            "gha": GitHubActions,
+            "unknown": Cluster,
+        }
         hpc_name = get_hpcname() if not debug else debug
         return hpc_options.get(hpc_name, Cluster)()
 
@@ -84,6 +94,9 @@ class Biowulf(Cluster):
             )
         )
 
+    # def spook(self, tar_archive):
+    #     shell_run(f"spook -f {tar_archive} -d {self.SPOOK_DIR}")
+
 
 class FRCE(Cluster):
     """
@@ -117,7 +130,11 @@ class FRCE(Cluster):
 
 
 class GitHubActions(Cluster):
-    pass
+    SPOOK_DIR = pathlib.Path("tests/data/spooker")
+
+    def __init__(self):
+        super().__init__()
+        self.name = "gha"
 
 
 def get_hpc(debug=False):
@@ -132,13 +149,14 @@ def get_hpc(debug=False):
     Returns:
         cluster (Cluster): An instance of the HPC cluster.
 
+    See Also:
+        `~ccbr_tools.pipeline.hpc.Cluster.create_hpc`: The base class for HPC clusters.
+
     Examples:
         >>> get_hpc()
         >>> get_hpc(debug=True)
     """
-    hpc_options = {"biowulf": Biowulf, "frce": FRCE}
-    hpc_name = get_hpcname() if not debug else debug
-    return hpc_options.get(hpc_name, Cluster)()
+    return Cluster.create_hpc(debug=debug)
 
 
 def get_hpcname():
