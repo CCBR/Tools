@@ -180,4 +180,4 @@ def get_random_string():
 
 
 def get_timestamp():
-    return datetime.datetime.now().strftime("%Y-%m-%dT%H:%M:%S")
+    return datetime.datetime.now().strftime("%Y-%m-%dT%H-%M-%S")
