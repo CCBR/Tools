@@ -10,8 +10,8 @@ import tarfile
 
 from .shell import shell_run
 from .pipeline.hpc import Cluster, list_modules, parse_modules
-
 from .pkg_util import get_version, get_random_string, get_timestamp
+from .jobby import jobby
 
 
 @click.command(context_settings=dict(help_option_names=["-h", "--help"]))
@@ -46,6 +46,7 @@ def spooker(
     pipeline_version: str,
     pipeline_name: str,
     pipeline_path: str,
+    timestamp=get_timestamp(),
     clean=True,
     debug=False,
 ):
@@ -60,8 +61,8 @@ def spooker(
         pipeline_version,
         pipeline_name,
         pipeline_path,
+        timestamp=timestamp,
     )
-    timestamp = metadata["DATE"]
     meta_outfilename = pipeline_outdir / f"{timestamp}.yml"
     write_metadata(
         metadata,
@@ -88,7 +89,7 @@ def spooker(
     create_tar_archive(files, tar_filename)
 
     # copy to staging directory
-    spook(
+    out_tarpath = spook(
         tar_filename,
         subdir=f"{get_random_string()}_{metadata['USER']}_{timestamp}",
         hpc=Cluster.create_hpc(debug=debug),
@@ -103,6 +104,7 @@ def spooker(
             jobby_outfilename,
         ):
             file.unlink()
+    return out_tarpath
 
 
 def collect_metadata(
@@ -110,6 +112,7 @@ def collect_metadata(
     pipeline_version: str,
     pipeline_name: str,
     pipeline_path: str,
+    timestamp=get_timestamp(),
 ):
     """
     Collect metadata for the pipeline run and save it to a file.
@@ -133,13 +136,14 @@ def collect_metadata(
         "pipeline_version": pipeline_version,
         "ccbrpipeliner_module": ccbrpipeliner_version,
         "user": os.environ.get("USER"),
-        "date": get_timestamp(),
+        "date": timestamp,
     }
     metadata_caps = {key.upper(): val for key, val in metadata.items()}
     return metadata_caps
 
 
 def write_metadata(metadata, outfilename):
+    yaml = ruamel.yaml.YAML(typ="rt")
     with open(outfilename, "w") as outfile:
         yaml.dump(metadata, outfile)
 
@@ -149,9 +153,8 @@ def get_tree(pipeline_outdir, args="-J"):
 
 
 def write_tree(tree: str, outfilename):
-    yaml = ruamel.yaml.YAML(typ="rt")
     with open(outfilename, "w") as outfile:
-        yaml.dump(tree, outfile)
+        outfile.write(tree)
 
 
 def glob_files(
@@ -180,12 +183,14 @@ def glob_files(
 def create_tar_archive(files, tar_filename):
     with tarfile.open(tar_filename, "w:gz") as tar:
         for file in files:
-            tar.add(file, arcname=file.basename())
+            tar.add(file, arcname=file.name)
 
 
 def spook(tar_archive, subdir=None, hpc=Cluster.create_hpc()):
     dest_dir = hpc.SPOOK_DIR / subdir if subdir else hpc.SPOOK_DIR
+    dest_dir.mkdir(parents=True, exist_ok=True)
     shutil.copy(tar_archive, dest_dir)
+    return dest_dir / tar_archive.name
 
 
 def main():
