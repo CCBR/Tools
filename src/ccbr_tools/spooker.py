@@ -85,10 +85,10 @@ def spooker(
     create_tar_archive(files, tar_filename)
 
     # copy to staging directory
-    out_tarpath = spook(
+    hpc = Cluster.create_hpc(debug=debug)
+    out_tarpath = hpc.spook(
         tar_filename,
         subdir=f"{get_random_string()}_{metadata['USER']}_{timestamp}",
-        hpc=Cluster.create_hpc(debug=debug),
     )
 
     # optional cleanup
@@ -180,13 +180,6 @@ def create_tar_archive(files, tar_filename):
     with tarfile.open(tar_filename, "w:gz") as tar:
         for file in files:
             tar.add(file, arcname=file.name)
-
-
-def spook(tar_archive, subdir=None, hpc=Cluster.create_hpc()):
-    dest_dir = hpc.SPOOK_DIR / subdir if subdir else hpc.SPOOK_DIR
-    dest_dir.mkdir(parents=True, exist_ok=True)
-    shutil.copy(tar_archive, dest_dir)
-    return dest_dir / tar_archive.name
 
 
 def main():
