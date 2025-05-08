@@ -1,0 +1,592 @@
+[
+  {
+    "type": "directory",
+    "name": "sinclair-dev",
+    "contents": [
+      {
+        "type": "directory",
+        "name": "assets",
+        "contents": [
+          { "type": "file", "name": "contrast_manifest.csv" },
+          {
+            "type": "directory",
+            "name": "img",
+            "contents": [
+              { "type": "file", "name": "scRNA.jpeg" },
+              { "type": "file", "name": "scRNA_process.jpeg" }
+            ]
+          },
+          { "type": "file", "name": "input_manifest_cellranger.csv" },
+          { "type": "file", "name": "input_manifest.csv" },
+          { "type": "file", "name": "params.yml" },
+          { "type": "file", "name": "README.md" },
+          { "type": "file", "name": "schema_input.json" },
+          { "type": "file", "name": "scRNA_GEX.svg" },
+          { "type": "file", "name": "scRNA.svg" },
+          { "type": "file", "name": "slurm_header_biowulf.sh" },
+          { "type": "file", "name": "slurm_header_frce.sh" }
+        ]
+      },
+      {
+        "type": "directory",
+        "name": "benchmark",
+        "contents": [{ "type": "file", "name": "benchmark_iss29.Rmd" }]
+      },
+      {
+        "type": "directory",
+        "name": "bin",
+        "contents": [
+          { "type": "file", "name": "batch_correction_cca.Rmd" },
+          { "type": "file", "name": "batch_correction_harmony.Rmd" },
+          { "type": "file", "name": "batch_correction_integration.Rmd" },
+          { "type": "file", "name": "batch_correction_liger.Rmd" },
+          { "type": "file", "name": "batch_correction_rpca.Rmd" },
+          { "type": "file", "name": "batch_correction_scvi.Rmd" },
+          { "type": "file", "name": "check_samplesheet_input_cellranger.py" },
+          { "type": "file", "name": "check_samplesheet.py" },
+          { "type": "file", "name": "install_biowulf.sh" },
+          { "type": "file", "name": "packageDownload.R" },
+          { "type": "file", "name": "scRNA_functions.R" },
+          { "type": "file", "name": "scvi.R" },
+          { "type": "file", "name": "seurat_merge.Rmd" },
+          { "type": "file", "name": "seurat_preprocess.Rmd" },
+          { "type": "file", "name": "sinclair" },
+          { "type": "file", "name": "source.R" }
+        ]
+      },
+      { "type": "file", "name": "CHANGELOG.md" },
+      { "type": "file", "name": "CITATION.cff" },
+      {
+        "type": "directory",
+        "name": "conf",
+        "contents": [
+          { "type": "file", "name": "base.config" },
+          { "type": "file", "name": "base_stub.config" },
+          { "type": "file", "name": "biowulf.config" },
+          { "type": "file", "name": "ci_stub.config" },
+          { "type": "file", "name": "frce.config" },
+          { "type": "file", "name": "interactive.config" },
+          { "type": "file", "name": "modules.config" },
+          { "type": "file", "name": "Rpack.config" },
+          { "type": "file", "name": "slurm.config" },
+          { "type": "file", "name": "test.config" },
+          { "type": "file", "name": "test_pbmc.config" }
+        ]
+      },
+      {
+        "type": "directory",
+        "name": "docker",
+        "contents": [
+          {
+            "type": "directory",
+            "name": "baser",
+            "contents": [
+              { "type": "file", "name": "Dockerfile" },
+              { "type": "file", "name": "install_packages_v1.0.R" },
+              { "type": "file", "name": "meta.yml" },
+              { "type": "file", "name": "README.md" },
+              { "type": "file", "name": "Rpack_v1.0.config" }
+            ]
+          },
+          { "type": "file", "name": "README.md" },
+          {
+            "type": "directory",
+            "name": "scvi",
+            "contents": [
+              { "type": "file", "name": "Dockerfile" },
+              { "type": "file", "name": "meta.yml" },
+              { "type": "file", "name": "README.md" }
+            ]
+          }
+        ]
+      },
+      {
+        "type": "directory",
+        "name": "docs",
+        "contents": [
+          { "type": "file", "name": "contributing.md" },
+          {
+            "type": "directory",
+            "name": "css",
+            "contents": [{ "type": "file", "name": "custom.css" }]
+          },
+          {
+            "type": "directory",
+            "name": "img",
+            "contents": [
+              { "type": "file", "name": "scRNA_process.svg" },
+              { "type": "file", "name": "scRNA.svg" }
+            ]
+          },
+          { "type": "file", "name": "index.md" },
+          {
+            "type": "directory",
+            "name": "js",
+            "contents": [{ "type": "file", "name": "custom.js" }]
+          },
+          {
+            "type": "directory",
+            "name": "overrides",
+            "contents": [
+              { "type": "file", "name": "footer.html" },
+              { "type": "file", "name": "main.html" }
+            ]
+          },
+          { "type": "file", "name": "params.md" },
+          { "type": "file", "name": "release-guide.md" },
+          { "type": "file", "name": "requirements.txt" },
+          {
+            "type": "directory",
+            "name": "user-guide",
+            "contents": [
+              { "type": "file", "name": "contributions.md" },
+              { "type": "file", "name": "differentialExpression.md" },
+              { "type": "file", "name": "getting-started.md" },
+              { "type": "file", "name": "output.md" },
+              { "type": "file", "name": "preparing-files.md" },
+              { "type": "file", "name": "run.md" },
+              { "type": "file", "name": "test-info.md" },
+              { "type": "file", "name": "troubleshooting.md" }
+            ]
+          }
+        ]
+      },
+      {
+        "type": "directory",
+        "name": "fullWorkflow_202304",
+        "contents": [
+          {
+            "type": "directory",
+            "name": "cellRangerCalls",
+            "contents": [
+              { "type": "file", "name": "basic_gex.bash" },
+              {
+                "type": "directory",
+                "name": "gex_citeseq",
+                "contents": [
+                  { "type": "file", "name": "features.csv" },
+                  { "type": "file", "name": "gex_citeseq.bash" },
+                  { "type": "file", "name": "sample_library.csv" }
+                ]
+              },
+              {
+                "type": "directory",
+                "name": "gex_citeseq_cellhashing",
+                "contents": [
+                  { "type": "file", "name": "features.csv" },
+                  { "type": "file", "name": "gex_citeseq_cellhashing.bash" },
+                  { "type": "file", "name": "sample_library.csv" }
+                ]
+              }
+            ]
+          },
+          { "type": "file", "name": "groups.tab" },
+          {
+            "type": "directory",
+            "name": "markdownFiles",
+            "contents": [
+              { "type": "file", "name": "integrationReport.R" },
+              { "type": "file", "name": "integrationReports.Rmd" },
+              { "type": "file", "name": "scRNA_QC_202209.Rmd" },
+              { "type": "file", "name": "scrna_QC.R" },
+              { "type": "file", "name": "scRNA_QC.Rmd" }
+            ]
+          },
+          {
+            "type": "directory",
+            "name": "multispecies",
+            "contents": [
+              { "type": "file", "name": "runCCA.bash" },
+              { "type": "file", "name": "runHarmony.bash" },
+              { "type": "file", "name": "runRPCA.bash" },
+              { "type": "file", "name": "sampleQC.swarm" },
+              { "type": "file", "name": "setupQC.bash" },
+              {
+                "type": "directory",
+                "name": "workflow",
+                "contents": [
+                  {
+                    "type": "directory",
+                    "name": "scripts",
+                    "contents": [
+                      { "type": "file", "name": "harmony.R" },
+                      { "type": "file", "name": "hashing.R" },
+                      { "type": "file", "name": "integrateBatches.R" },
+                      { "type": "file", "name": "integrationReport.R" },
+                      { "type": "file", "name": "integrationReports.Rmd" },
+                      { "type": "file", "name": "rpca.R" },
+                      { "type": "file", "name": "runSeurat.py" },
+                      { "type": "file", "name": "scrna_QC.R" },
+                      { "type": "file", "name": "scRNA_QC.Rmd" },
+                      { "type": "file", "name": "scRNA.R" }
+                    ]
+                  },
+                  { "type": "file", "name": "Snakefile" }
+                ]
+              }
+            ]
+          },
+          {
+            "type": "directory",
+            "name": "scATAC",
+            "contents": [
+              { "type": "file", "name": "atac2.R" },
+              { "type": "file", "name": "atac.R" }
+            ]
+          },
+          {
+            "type": "directory",
+            "name": "velocyto",
+            "contents": [
+              { "type": "file", "name": "runPerSample.R" },
+              { "type": "file", "name": "runVelo.bash" },
+              { "type": "file", "name": "runVelo.py" }
+            ]
+          },
+          {
+            "type": "directory",
+            "name": "workflow",
+            "contents": [
+              {
+                "type": "directory",
+                "name": "scripts",
+                "contents": [
+                  { "type": "file", "name": "cellHashing_AA_2023.R" },
+                  { "type": "file", "name": "CITESeq_AA_2022.R" },
+                  { "type": "file", "name": "harmony.R" },
+                  { "type": "file", "name": "hashing.R" },
+                  { "type": "file", "name": "integrateBatches.R" },
+                  { "type": "file", "name": "merge.R" },
+                  { "type": "file", "name": "rpca.R" },
+                  { "type": "file", "name": "runCellRanger.py" },
+                  { "type": "file", "name": "runSeurat.py" },
+                  { "type": "file", "name": "scRNA.R" },
+                  { "type": "file", "name": "vdjSnippet.R" }
+                ]
+              },
+              { "type": "file", "name": "Snakefile" }
+            ]
+          }
+        ]
+      },
+      {
+        "type": "directory",
+        "name": "lib",
+        "contents": [{ "type": "file", "name": "Utils.groovy" }]
+      },
+      { "type": "file", "name": "LICENSE" },
+      {
+        "type": "directory",
+        "name": "log",
+        "contents": [{ "type": "file", "name": "spooker.log" }]
+      },
+      { "type": "file", "name": "main.nf" },
+      { "type": "file", "name": "main.py" },
+      { "type": "file", "name": "MANIFEST.in" },
+      { "type": "file", "name": "mkdocs.yml" },
+      {
+        "type": "directory",
+        "name": "modules",
+        "contents": [
+          {
+            "type": "directory",
+            "name": "local",
+            "contents": [
+              { "type": "file", "name": "batch_correction_cca.nf" },
+              { "type": "file", "name": "batch_correction_harmony.nf" },
+              { "type": "file", "name": "batch_correction_integration.nf" },
+              { "type": "file", "name": "batch_correction_liger.nf" },
+              { "type": "file", "name": "batch_correction_rpca.nf" },
+              { "type": "file", "name": "batch_correction_scvi.nf" },
+              { "type": "file", "name": "cellranger_count_gex.nf" },
+              { "type": "file", "name": "samplesheet_check.nf" },
+              { "type": "file", "name": "seurat_merge.nf" },
+              { "type": "file", "name": "seurat_preprocess.nf" }
+            ]
+          }
+        ]
+      },
+      { "type": "file", "name": "nextflow.config" },
+      { "type": "file", "name": "nextflow_schema.json" },
+      { "type": "file", "name": "nf-test.config" },
+      {
+        "type": "directory",
+        "name": "output",
+        "contents": [
+          {
+            "type": "directory",
+            "name": "pipeline_info",
+            "contents": [
+              {
+                "type": "file",
+                "name": "execution_report_2025-04-18_11-22-44.html"
+              },
+              {
+                "type": "file",
+                "name": "execution_report_2025-04-18_11-22-53.html"
+              },
+              {
+                "type": "file",
+                "name": "execution_report_2025-04-18_11-23-26.html"
+              },
+              {
+                "type": "file",
+                "name": "execution_report_2025-04-18_11-33-47.html"
+              },
+              {
+                "type": "file",
+                "name": "execution_report_2025-04-18_11-34-15.html"
+              },
+              {
+                "type": "file",
+                "name": "execution_timeline_2025-04-18_11-22-44.html"
+              },
+              {
+                "type": "file",
+                "name": "execution_timeline_2025-04-18_11-22-53.html"
+              },
+              {
+                "type": "file",
+                "name": "execution_timeline_2025-04-18_11-23-26.html"
+              },
+              {
+                "type": "file",
+                "name": "execution_timeline_2025-04-18_11-33-47.html"
+              },
+              {
+                "type": "file",
+                "name": "execution_timeline_2025-04-18_11-34-15.html"
+              },
+              {
+                "type": "file",
+                "name": "execution_trace_2025-04-18_11-22-44.txt"
+              },
+              {
+                "type": "file",
+                "name": "execution_trace_2025-04-18_11-22-53.txt"
+              },
+              {
+                "type": "file",
+                "name": "execution_trace_2025-04-18_11-23-26.txt"
+              },
+              {
+                "type": "file",
+                "name": "execution_trace_2025-04-18_11-33-47.txt"
+              },
+              {
+                "type": "file",
+                "name": "execution_trace_2025-04-18_11-34-15.txt"
+              },
+              {
+                "type": "file",
+                "name": "pipeline_dag_2025-04-18_11-22-44.svg"
+              },
+              {
+                "type": "file",
+                "name": "pipeline_dag_2025-04-18_11-22-53.svg"
+              },
+              {
+                "type": "file",
+                "name": "pipeline_dag_2025-04-18_11-23-26.svg"
+              },
+              {
+                "type": "file",
+                "name": "pipeline_dag_2025-04-18_11-33-47.svg"
+              },
+              { "type": "file", "name": "pipeline_dag_2025-04-18_11-34-15.svg" }
+            ]
+          }
+        ]
+      },
+      { "type": "file", "name": "pyproject.toml" },
+      { "type": "file", "name": "README.md" },
+      {
+        "type": "directory",
+        "name": "src",
+        "contents": [
+          { "type": "file", "name": "__init__.py" },
+          { "type": "file", "name": "__main__.py" },
+          {
+            "type": "directory",
+            "name": "__pycache__",
+            "contents": [
+              { "type": "file", "name": "__init__.cpython-311.pyc" },
+              { "type": "file", "name": "__main__.cpython-311.pyc" }
+            ]
+          }
+        ]
+      },
+      {
+        "type": "directory",
+        "name": "subworkflows",
+        "contents": [{ "type": "file", "name": "input_check.nf" }]
+      },
+      {
+        "type": "directory",
+        "name": "tests",
+        "contents": [
+          {
+            "type": "directory",
+            "name": "modules",
+            "contents": [
+              {
+                "type": "directory",
+                "name": "local",
+                "contents": [
+                  { "type": "file", "name": "samplesheet_check.nf.test" },
+                  { "type": "file", "name": "samplesheet_check.nf.test.snap" }
+                ]
+              }
+            ]
+          },
+          { "type": "file", "name": "nextflow.config" },
+          { "type": "file", "name": "test_cli.py" },
+          {
+            "type": "directory",
+            "name": "test_dir",
+            "contents": [
+              {
+                "type": "directory",
+                "name": "cellranger_counts",
+                "contents": [
+                  {
+                    "type": "directory",
+                    "name": "sample1",
+                    "contents": [
+                      {
+                        "type": "directory",
+                        "name": "outs",
+                        "contents": [
+                          {
+                            "type": "file",
+                            "name": "filtered_feature_bc_matrix.h5"
+                          }
+                        ]
+                      }
+                    ]
+                  },
+                  {
+                    "type": "directory",
+                    "name": "sample2",
+                    "contents": [
+                      {
+                        "type": "directory",
+                        "name": "outs",
+                        "contents": [
+                          {
+                            "type": "file",
+                            "name": "filtered_feature_bc_matrix.h5"
+                          }
+                        ]
+                      }
+                    ]
+                  },
+                  {
+                    "type": "directory",
+                    "name": "sample3",
+                    "contents": [
+                      {
+                        "type": "directory",
+                        "name": "outs",
+                        "contents": [
+                          {
+                            "type": "file",
+                            "name": "filtered_feature_bc_matrix.h5"
+                          }
+                        ]
+                      }
+                    ]
+                  },
+                  {
+                    "type": "directory",
+                    "name": "sample4",
+                    "contents": [
+                      {
+                        "type": "directory",
+                        "name": "outs",
+                        "contents": [
+                          {
+                            "type": "file",
+                            "name": "filtered_feature_bc_matrix.h5"
+                          }
+                        ]
+                      }
+                    ]
+                  },
+                  {
+                    "type": "directory",
+                    "name": "sample5",
+                    "contents": [
+                      {
+                        "type": "directory",
+                        "name": "outs",
+                        "contents": [
+                          {
+                            "type": "file",
+                            "name": "filtered_feature_bc_matrix.h5"
+                          }
+                        ]
+                      }
+                    ]
+                  }
+                ]
+              },
+              { "type": "file", "name": "contrast_manifest.csv" },
+              { "type": "file", "name": "gex_samplesheet.csv" },
+              { "type": "file", "name": "gex_samplesheet_notunique.csv" },
+              { "type": "file", "name": "README.md" },
+              {
+                "type": "directory",
+                "name": "unit_tests",
+                "contents": [
+                  { "type": "file", "name": "input_manifest_gex_atac.csv" },
+                  { "type": "file", "name": "input_manifest_notunique.csv" }
+                ]
+              }
+            ]
+          },
+          {
+            "type": "directory",
+            "name": "test_pbmc",
+            "contents": [
+              { "type": "file", "name": "contrast_manifest.csv" },
+              { "type": "file", "name": "input_manifest_cellranger.csv" },
+              {
+                "type": "file",
+                "name": "pbmc1-pbmc2_batch_correction_integration.html"
+              }
+            ]
+          }
+        ]
+      },
+      { "type": "file", "name": "VERSION" },
+      {
+        "type": "directory",
+        "name": "work",
+        "contents": [
+          {
+            "type": "directory",
+            "name": "8c",
+            "contents": [
+              {
+                "type": "directory",
+                "name": "02750698d685c85e7a122e1f86838d",
+                "contents": []
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "type": "directory",
+        "name": "workflows",
+        "contents": [
+          { "type": "file", "name": "atac.nf" },
+          { "type": "file", "name": "gex.nf" },
+          { "type": "file", "name": "pre_process.nf" }
+        ]
+      }
+    ]
+  },
+  { "type": "report", "directories": 56, "files": 185 }
+]
