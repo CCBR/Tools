@@ -1,3 +1,12 @@
+"""
+SPOOKER 👻
+
+This command is designed to be used as part of the OnComplete/OnSuccess/OnError handlers as part of Snakemake and Nextflow pipelines.
+It collects metadata about the pipeline run, bundles it into a tarball, and saves it to a common location for later retrieval.
+
+Run `spooker --help` for more information.
+"""
+
 import click
 import datetime
 import glob
@@ -22,7 +31,7 @@ from .jobby import jobby
 @click.argument("path", type=click.Path(), default="")
 def cli(outdir, name, version, path):
     """
-    SPOOKER 👻
+    spooker 👻
 
     This command is designed to be used as part of the OnComplete/OnSuccess/OnError handlers as part of Snakemake and Nextflow pipelines.
     It collects metadata about the pipeline run, bundles it into a tarball, and saves it to a common location for later retrieval.
@@ -50,6 +59,30 @@ def spooker(
     clean=True,
     debug=False,
 ):
+    """
+    Processes a pipeline output directory to generate metadata, tree JSON, and SLURM job log JSON,
+    then stages the file on an HPC cluster.
+
+    Args:
+        pipeline_outdir (pathlib.Path): Path to the pipeline output directory.
+        pipeline_version (str): Version of the pipeline being processed.
+        pipeline_name (str): Name of the pipeline being processed.
+        pipeline_path (str): Path to the pipeline source code or configuration.
+        clean (bool, optional): Whether to delete the generated metadata file after staging. Defaults to True.
+        debug (bool, optional): Whether to enable debug mode for the HPC cluster. Defaults to False.
+
+    Returns:
+        pathlib.Path: Path to the staged metadata file on the HPC cluster.
+
+    Raises:
+        FileNotFoundError: If the pipeline output directory does not exist.
+
+    Notes:
+        - The function collects metadata, generates a tree JSON representation of the pipeline
+          directory, and extracts job log information.
+        - The metadata is written to a compressed JSON file and staged on an HPC cluster.
+        - If `clean` is True, the local metadata file is deleted after staging.
+    """
     pipeline_outdir = (
         pathlib.Path(pipeline_outdir)
         if not isinstance(pipeline_outdir, pathlib.Path)
@@ -132,6 +165,19 @@ def collect_metadata(
 
 
 def get_tree(pipeline_outdir, args="-J"):
+    """
+    Generate a directory tree structure using the `tree` command-line utility
+
+    Args:
+        pipeline_outdir (str): The path to the directory for which the tree
+            structure will be generated.
+        args (str, optional): Additional arguments to pass to the `tree`
+            command. Defaults to "-J" for JSON output.
+
+    Returns:
+        str: The directory tree structure as a string, stripped of any
+        leading or trailing whitespace.
+    """
     return shell_run(f"tree {pipeline_outdir} {args}").strip()
 
 
@@ -145,6 +191,23 @@ def glob_files(
         "runtime_statics*",
     ],
 ):
+    """
+    Collects files from a specified directory and its subdirectories that match a list of patterns.
+
+    Args:
+        pipeline_outdir (str): The base directory to search for files.
+        patterns (list of str, optional): A list of glob patterns to match files. Defaults to:
+            [
+                "snakemake.log",
+                ".nextflow.log",
+                "*.jobby*",
+                "master.log",
+                "runtime_statics*",
+            ].
+
+    Returns:
+        set of pathlib.Path: A set of `pathlib.Path` objects representing the matched files.
+    """
     return {
         pathlib.Path(f)
         for pattern in patterns
@@ -159,6 +222,13 @@ def glob_files(
 
 
 def create_tar_archive(files, tar_filename):
+    """
+    Creates a compressed tar archive (.tar.gz) containing the specified files.
+
+    Args:
+        files (list of pathlib.Path): A list of file paths to include in the archive.
+        tar_filename (str): The name of the output tar.gz file.
+    """
     with tarfile.open(tar_filename, "w:gz") as tar:
         for file in files:
             tar.add(file, arcname=file.name)
