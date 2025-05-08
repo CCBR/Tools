@@ -28,7 +28,6 @@ def test_spooker():
             "jobby_json": '""',
             "pipeline_name": "test_pipeline",
             "pipeline_outdir": "tests/data/pipeline_run",
-            "pipeline_outdir_size": "3005",
             "pipeline_path": "unknown",
             "pipeline_version": "0.1.0",
         }.items()
