@@ -43,11 +43,11 @@ class Cluster:
 
     __nonzero__ = __bool__
 
-    def spook(tar_archive, subdir=None):
+    def spook(self, file, subdir=None):
         dest_dir = self.SPOOK_DIR / subdir if subdir else self.SPOOK_DIR
         dest_dir.mkdir(parents=True, exist_ok=True)
-        shutil.copy(tar_archive, dest_dir)
-        return dest_dir / tar_archive.name
+        shutil.copy(file, dest_dir)
+        return dest_dir / file.name
 
     @property
     def singularity_sif_dir(self):
@@ -96,13 +96,11 @@ class Biowulf(Cluster):
             )
         )
 
-    def spook(tar_archive, subdir=None):
+    def spook(self, file, subdir=None):
         dest_dir = self.SPOOK_DIR / subdir if subdir else self.SPOOK_DIR
         dest_dir.mkdir(parents=True, exist_ok=True)
-        shell_run(
-            f"spook -f {tar_archive} -d {dest_dir} --nosubfolder", capture_output=False
-        )
-        return dest_dir / tar_archive.name
+        shell_run(f"spook -f {file} -d {dest_dir} --nosubfolder", capture_output=False)
+        return dest_dir / file.name
 
 
 class FRCE(Cluster):

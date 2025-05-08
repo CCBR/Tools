@@ -1,10 +1,11 @@
 import click
 import datetime
 import glob
+import gzip
 import itertools
+import json
 import os
 import pathlib
-import ruamel.yaml
 import shutil
 import tarfile
 
@@ -49,6 +50,11 @@ def spooker(
     clean=True,
     debug=False,
 ):
+    pipeline_outdir = (
+        pathlib.Path(pipeline_outdir)
+        if not isinstance(pipeline_outdir, pathlib.Path)
+        else pipeline_outdir
+    )
     if not pipeline_outdir.exists():
         raise FileNotFoundError(
             f"Pipeline output directory does not exist: {pipeline_outdir}"
@@ -58,49 +64,37 @@ def spooker(
     metadata = collect_metadata(
         pipeline_outdir, pipeline_version, pipeline_name, pipeline_path
     )
-    timestamp = metadata["DATE"]
-    meta_outfilename = pipeline_outdir / f"{timestamp}.yml"
-    write_metadata(
-        metadata,
-        meta_outfilename,
-    )
+    timestamp = metadata["date"]
 
     # tree json
-    tree_outfilename = pipeline_outdir / f"{timestamp}.tree.json"
-    write_tree(get_tree(pipeline_outdir, args="-J"), tree_outfilename)
+    tree_str = get_tree(pipeline_outdir, args="-J")
+    metadata["tree_json"] = tree_str
+
+    # TODO: determine nsamples, different logic for each pipeline
+    tree_json = json.loads(tree_str)
 
     # jobby json
     log_file = glob_files(
         pipeline_outdir, patterns=["snakemake.log", ".nextflow.log"]
     ).pop()
-    jobby_json = jobby([log_file, "--json"])
-    jobby_outfilename = pipeline_outdir / f"{timestamp}.jobby.json"
-    with open(jobby_outfilename, "w") as outfile:
-        outfile.write(jobby_json)
+    metadata["jobby_json"] = json.dumps(jobby([log_file, "--json"]))
 
-    # create tar archive, include log files
-    tar_filename = pipeline_outdir / f"{timestamp}.tar.gz"
-    files = glob_files(pipeline_outdir)
-    files.update({meta_outfilename, tree_outfilename, jobby_outfilename})
-    create_tar_archive(files, tar_filename)
+    # write metadata to json
+    meta_outfilename = pipeline_outdir / f"{timestamp}.json.gz"
+    with gzip.open(meta_outfilename, "wt") as outfile:
+        json.dump(metadata, outfile, indent=4)
 
     # copy to staging directory
     hpc = Cluster.create_hpc(debug=debug)
-    out_tarpath = hpc.spook(
-        tar_filename,
-        subdir=f"{get_random_string()}_{metadata['USER']}_{timestamp}",
+    spook_outfilename = hpc.spook(
+        file=meta_outfilename,
+        subdir=f"{get_random_string()}_{metadata['user']}_{timestamp}",
     )
 
     # optional cleanup
     if clean:
-        for file in (
-            meta_outfilename,
-            tree_outfilename,
-            tar_filename,
-            jobby_outfilename,
-        ):
-            file.unlink()
-    return out_tarpath
+        meta_outfilename.unlink()
+    return spook_outfilename
 
 
 def collect_metadata(
@@ -134,23 +128,11 @@ def collect_metadata(
         "user": os.environ.get("USER"),
         "date": timestamp,
     }
-    metadata_caps = {key.upper(): val for key, val in metadata.items()}
-    return metadata_caps
-
-
-def write_metadata(metadata, outfilename):
-    yaml = ruamel.yaml.YAML(typ="rt")
-    with open(outfilename, "w") as outfile:
-        yaml.dump(metadata, outfile)
+    return metadata
 
 
 def get_tree(pipeline_outdir, args="-J"):
     return shell_run(f"tree {pipeline_outdir} {args}").strip()
-
-
-def write_tree(tree: str, outfilename):
-    with open(outfilename, "w") as outfile:
-        outfile.write(tree)
 
 
 def glob_files(
