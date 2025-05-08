@@ -43,6 +43,8 @@ dependencies = [
     "pandas",
     "pyyaml >= 6.0",
     "requests",
+    "ruamel.yaml",
+    "ruamel.yaml.string",
     "tabulate",
 ]
 
@@ -69,6 +71,7 @@ module_list = "ccbr_tools.module_list:main"
 jobinfo = "ccbr_tools.jobinfo:main"
 intersect = "ccbr_tools.intersect:main"
 peek = "ccbr_tools.peek:main"
+spooker = "ccbr_tools.spooker:main"
 
 [project.urls]
 Repository = "https://github.com/CCBR/Tools"
@@ -127,6 +130,5 @@ script-files = [
     "scripts/run_jobby_on_nextflow_log_full_format",
     "scripts/run_jobby_on_snakemake_log",
     "scripts/run_jobby_on_snakemake_log_full_format",
-    "scripts/spooker",
     "scripts/which_vpn.sh"
 ]

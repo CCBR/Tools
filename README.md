@@ -69,6 +69,7 @@ ccbr_tools --help
       jobinfo
       module_list
       peek
+      spooker
 
 ### Python
 
@@ -106,6 +107,7 @@ Command-line utilities in CCBR Tools.
 - `jobinfo`
 - `module_list`
 - `peek`
+- `spooker`
 
 Run a command with `--help` to learn how to use it.
 
@@ -140,7 +142,6 @@ package and do not have any unit tests.
 - [`run_jobby_on_nextflow_log_full_format`](scripts/run_jobby_on_nextflow_log_full_format)
 - [`run_jobby_on_snakemake_log`](scripts/run_jobby_on_snakemake_log)
 - [`run_jobby_on_snakemake_log_full_format`](scripts/run_jobby_on_snakemake_log_full_format)
-- [`spooker`](scripts/spooker)
 - [`which_vpn.sh`](scripts/which_vpn.sh)
 
 ## Help & Contributing

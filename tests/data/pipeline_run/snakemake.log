@@ -1,0 +1,24 @@
+Config file config.json is extended by additional config specified via the command line.
+Building DAG of jobs...
+Using shell: /usr/bin/bash
+Provided cluster nodes: 500
+Job stats:
+job                 count
+----------------  -------
+all                     1
+bam2bw_rnaseq_pe        2
+inner_distance          2
+picard                  2
+preseq                  2
+qualibam                2
+rna_report              1
+rnaseq_multiqc          1
+rsem                    4
+rsem_data_matrix        1
+rsem_merge              1
+rseqc                   2
+star2p                  1
+stats                   2
+tin                     2
+tin_merge               1
+total                  27

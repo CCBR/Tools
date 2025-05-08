@@ -69,6 +69,7 @@ quartodoc:
         - send_email
         - shell
         - software
+        - spooker
         - templates
         - versions
     - title: Pipeline utilities

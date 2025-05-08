@@ -1,0 +1,1890 @@
+[
+  {
+    "type": "directory",
+    "name": "aspen_test_dev",
+    "contents": [
+      { "type": "file", "name": "cluster.json" },
+      { "type": "file", "name": "config.yaml" },
+      { "type": "file", "name": "contrasts.tsv" },
+      { "type": "file", "name": "dryrun_git_commit.txt" },
+      { "type": "file", "name": "dryrun.log" },
+      {
+        "type": "directory",
+        "name": "fastqs",
+        "contents": [
+          {
+            "type": "link",
+            "name": "AU_1.R1.fastq.gz",
+            "target": "/data/CCBR/rawdata/hpcdme/share_data/02_IMR32_AU_R1_S2_R1.fastq.gz",
+            "contents": []
+          },
+          {
+            "type": "link",
+            "name": "AU_1.R2.fastq.gz",
+            "target": "/data/CCBR/rawdata/hpcdme/share_data/02_IMR32_AU_R1_S2_R2.fastq.gz",
+            "contents": []
+          },
+          {
+            "type": "link",
+            "name": "AU_2.R1.fastq.gz",
+            "target": "/data/CCBR/rawdata/hpcdme/share_data/08_IMR32_AU_R2_S8_R1.fastq.gz",
+            "contents": []
+          },
+          {
+            "type": "link",
+            "name": "AU_2.R2.fastq.gz",
+            "target": "/data/CCBR/rawdata/hpcdme/share_data/08_IMR32_AU_R2_S8_R2.fastq.gz",
+            "contents": []
+          },
+          {
+            "type": "link",
+            "name": "DMSO_1.R1.fastq.gz",
+            "target": "/data/CCBR/rawdata/hpcdme/share_data/01_IMR32_DMSO_R1_S1_R1.fastq.gz",
+            "contents": []
+          },
+          {
+            "type": "link",
+            "name": "DMSO_1.R2.fastq.gz",
+            "target": "/data/CCBR/rawdata/hpcdme/share_data/01_IMR32_DMSO_R1_S1_R2.fastq.gz",
+            "contents": []
+          },
+          {
+            "type": "link",
+            "name": "DMSO_2.R1.fastq.gz",
+            "target": "/data/CCBR/rawdata/hpcdme/share_data/07_IMR32_DMSO_R2_S7_R1.fastq.gz",
+            "contents": []
+          },
+          {
+            "type": "link",
+            "name": "DMSO_2.R2.fastq.gz",
+            "target": "/data/CCBR/rawdata/hpcdme/share_data/07_IMR32_DMSO_R2_S7_R2.fastq.gz",
+            "contents": []
+          }
+        ]
+      },
+      {
+        "type": "directory",
+        "name": "logs",
+        "contents": [
+          {
+            "type": "file",
+            "name": "55700415.55710008.trim.replicate=AU_2.err"
+          },
+          {
+            "type": "file",
+            "name": "55700415.55710008.trim.replicate=AU_2.out"
+          },
+          {
+            "type": "file",
+            "name": "55700415.55710011.trim.replicate=DMSO_2.err"
+          },
+          {
+            "type": "file",
+            "name": "55700415.55710011.trim.replicate=DMSO_2.out"
+          },
+          {
+            "type": "file",
+            "name": "55700415.55710023.trim.replicate=DMSO_1.err"
+          },
+          {
+            "type": "file",
+            "name": "55700415.55710023.trim.replicate=DMSO_1.out"
+          },
+          {
+            "type": "file",
+            "name": "55700415.55710027.trim.replicate=AU_1.err"
+          },
+          {
+            "type": "file",
+            "name": "55700415.55710027.trim.replicate=AU_1.out"
+          },
+          { "type": "file", "name": "55700415.55710082.create_BL_index..err" },
+          { "type": "file", "name": "55700415.55710082.create_BL_index..out" },
+          {
+            "type": "file",
+            "name": "55700415.55722891.remove_BL.replicate=AU_2.err"
+          },
+          {
+            "type": "file",
+            "name": "55700415.55722891.remove_BL.replicate=AU_2.out"
+          },
+          {
+            "type": "file",
+            "name": "55700415.55724083.remove_BL.replicate=AU_1.err"
+          },
+          {
+            "type": "file",
+            "name": "55700415.55724083.remove_BL.replicate=AU_1.out"
+          },
+          {
+            "type": "file",
+            "name": "55700415.55724404.remove_BL.replicate=DMSO_1.err"
+          },
+          {
+            "type": "file",
+            "name": "55700415.55724404.remove_BL.replicate=DMSO_1.out"
+          },
+          {
+            "type": "file",
+            "name": "55700415.55725440.remove_BL.replicate=DMSO_2.err"
+          },
+          {
+            "type": "file",
+            "name": "55700415.55725440.remove_BL.replicate=DMSO_2.out"
+          },
+          {
+            "type": "file",
+            "name": "55700415.55726598.align2spikein.replicate=AU_2.err"
+          },
+          {
+            "type": "file",
+            "name": "55700415.55726598.align2spikein.replicate=AU_2.out"
+          },
+          {
+            "type": "file",
+            "name": "55700415.55726601.fastq_screen.replicate=AU_2.err"
+          },
+          {
+            "type": "file",
+            "name": "55700415.55726601.fastq_screen.replicate=AU_2.out"
+          },
+          {
+            "type": "file",
+            "name": "55700415.55726605.align.replicate=AU_2.err"
+          },
+          {
+            "type": "file",
+            "name": "55700415.55726605.align.replicate=AU_2.out"
+          },
+          {
+            "type": "file",
+            "name": "55700415.55729146.fastq_screen.replicate=AU_1.err"
+          },
+          {
+            "type": "file",
+            "name": "55700415.55729146.fastq_screen.replicate=AU_1.out"
+          },
+          {
+            "type": "file",
+            "name": "55700415.55729147.align.replicate=AU_1.err"
+          },
+          {
+            "type": "file",
+            "name": "55700415.55729147.align.replicate=AU_1.out"
+          },
+          {
+            "type": "file",
+            "name": "55700415.55729148.align2spikein.replicate=AU_1.err"
+          },
+          {
+            "type": "file",
+            "name": "55700415.55729148.align2spikein.replicate=AU_1.out"
+          },
+          {
+            "type": "file",
+            "name": "55700415.55729149.fastq_screen.replicate=DMSO_1.err"
+          },
+          {
+            "type": "file",
+            "name": "55700415.55729149.fastq_screen.replicate=DMSO_1.out"
+          },
+          {
+            "type": "file",
+            "name": "55700415.55729150.align2spikein.replicate=DMSO_1.err"
+          },
+          {
+            "type": "file",
+            "name": "55700415.55729150.align2spikein.replicate=DMSO_1.out"
+          },
+          {
+            "type": "file",
+            "name": "55700415.55729152.align.replicate=DMSO_1.err"
+          },
+          {
+            "type": "file",
+            "name": "55700415.55729152.align.replicate=DMSO_1.out"
+          },
+          {
+            "type": "file",
+            "name": "55700415.55731693.align.replicate=DMSO_2.err"
+          },
+          {
+            "type": "file",
+            "name": "55700415.55731693.align.replicate=DMSO_2.out"
+          },
+          {
+            "type": "file",
+            "name": "55700415.55731697.fastq_screen.replicate=DMSO_2.err"
+          },
+          {
+            "type": "file",
+            "name": "55700415.55731697.fastq_screen.replicate=DMSO_2.out"
+          },
+          { "type": "file", "name": "55700415.55731699.fastqc..err" },
+          { "type": "file", "name": "55700415.55731699.fastqc..out" },
+          {
+            "type": "file",
+            "name": "55700415.55731702.align2spikein.replicate=DMSO_2.err"
+          },
+          {
+            "type": "file",
+            "name": "55700415.55731702.align2spikein.replicate=DMSO_2.out"
+          },
+          {
+            "type": "file",
+            "name": "55700415.55735857.atac_fld.replicate=AU_2.err"
+          },
+          {
+            "type": "file",
+            "name": "55700415.55735857.atac_fld.replicate=AU_2.out"
+          },
+          {
+            "type": "file",
+            "name": "55700415.55735861.create_tn5bams.replicate=AU_2.err"
+          },
+          {
+            "type": "file",
+            "name": "55700415.55735861.create_tn5bams.replicate=AU_2.out"
+          },
+          {
+            "type": "file",
+            "name": "55700415.55735864.atac_tss.replicate=AU_2.err"
+          },
+          {
+            "type": "file",
+            "name": "55700415.55735864.atac_tss.replicate=AU_2.out"
+          },
+          {
+            "type": "file",
+            "name": "55700415.55738050.create_bigwigs.replicate=AU_2.err"
+          },
+          {
+            "type": "file",
+            "name": "55700415.55738050.create_bigwigs.replicate=AU_2.out"
+          },
+          {
+            "type": "file",
+            "name": "55700415.55740989.atac_genrich_peakcalling.sample=AU.err"
+          },
+          {
+            "type": "file",
+            "name": "55700415.55740989.atac_genrich_peakcalling.sample=AU.out"
+          },
+          {
+            "type": "file",
+            "name": "55700415.55740990.atac_tss.replicate=AU_1.err"
+          },
+          {
+            "type": "file",
+            "name": "55700415.55740990.atac_tss.replicate=AU_1.out"
+          },
+          {
+            "type": "file",
+            "name": "55700415.55740992.atac_fld.replicate=AU_1.err"
+          },
+          {
+            "type": "file",
+            "name": "55700415.55740992.atac_fld.replicate=AU_1.out"
+          },
+          {
+            "type": "file",
+            "name": "55700415.55740993.atac_macs_peakcalling.sample=AU.err"
+          },
+          {
+            "type": "file",
+            "name": "55700415.55740993.atac_macs_peakcalling.sample=AU.out"
+          },
+          {
+            "type": "file",
+            "name": "55700415.55740994.create_tn5bams.replicate=AU_1.err"
+          },
+          {
+            "type": "file",
+            "name": "55700415.55740994.create_tn5bams.replicate=AU_1.out"
+          },
+          {
+            "type": "file",
+            "name": "55700415.55742365.create_tn5bams.replicate=DMSO_1.err"
+          },
+          {
+            "type": "file",
+            "name": "55700415.55742365.create_tn5bams.replicate=DMSO_1.out"
+          },
+          {
+            "type": "file",
+            "name": "55700415.55742425.atac_tss.replicate=DMSO_1.err"
+          },
+          {
+            "type": "file",
+            "name": "55700415.55742425.atac_tss.replicate=DMSO_1.out"
+          },
+          {
+            "type": "file",
+            "name": "55700415.55742441.atac_fld.replicate=DMSO_1.err"
+          },
+          {
+            "type": "file",
+            "name": "55700415.55742441.atac_fld.replicate=DMSO_1.out"
+          },
+          {
+            "type": "file",
+            "name": "55700415.55743713.create_bigwigs.replicate=AU_1.err"
+          },
+          {
+            "type": "file",
+            "name": "55700415.55743713.create_bigwigs.replicate=AU_1.out"
+          },
+          {
+            "type": "file",
+            "name": "55700415.55744706.atac_genrich_peakcalling_fixed_width.sample=AU.err"
+          },
+          {
+            "type": "file",
+            "name": "55700415.55744706.atac_genrich_peakcalling_fixed_width.sample=AU.out"
+          },
+          {
+            "type": "file",
+            "name": "55700415.55745306.atac_annotate_fixed_width_consensus_peaks.peakcaller=genrich,sample=AU.err"
+          },
+          {
+            "type": "file",
+            "name": "55700415.55745306.atac_annotate_fixed_width_consensus_peaks.peakcaller=genrich,sample=AU.out"
+          },
+          { "type": "file", "name": "55700415.55745987.frip.sample=AU.err" },
+          { "type": "file", "name": "55700415.55745987.frip.sample=AU.out" },
+          {
+            "type": "file",
+            "name": "55700415.55745989.atac_macs_peakcalling_fixed_width.sample=AU.err"
+          },
+          {
+            "type": "file",
+            "name": "55700415.55745989.atac_macs_peakcalling_fixed_width.sample=AU.out"
+          },
+          {
+            "type": "file",
+            "name": "55700415.55746017.create_bigwigs.replicate=DMSO_1.err"
+          },
+          {
+            "type": "file",
+            "name": "55700415.55746017.create_bigwigs.replicate=DMSO_1.out"
+          },
+          {
+            "type": "file",
+            "name": "55700415.55746043.create_tn5bams.replicate=DMSO_2.err"
+          },
+          {
+            "type": "file",
+            "name": "55700415.55746043.create_tn5bams.replicate=DMSO_2.out"
+          },
+          {
+            "type": "file",
+            "name": "55700415.55746044.atac_fld.replicate=DMSO_2.err"
+          },
+          {
+            "type": "file",
+            "name": "55700415.55746044.atac_fld.replicate=DMSO_2.out"
+          },
+          {
+            "type": "file",
+            "name": "55700415.55746045.atac_genrich_peakcalling.sample=DMSO.err"
+          },
+          {
+            "type": "file",
+            "name": "55700415.55746045.atac_genrich_peakcalling.sample=DMSO.out"
+          },
+          {
+            "type": "file",
+            "name": "55700415.55746046.atac_tss.replicate=DMSO_2.err"
+          },
+          {
+            "type": "file",
+            "name": "55700415.55746046.atac_tss.replicate=DMSO_2.out"
+          },
+          {
+            "type": "file",
+            "name": "55700415.55746047.atac_macs_peakcalling.sample=DMSO.err"
+          },
+          {
+            "type": "file",
+            "name": "55700415.55746047.atac_macs_peakcalling.sample=DMSO.out"
+          },
+          {
+            "type": "file",
+            "name": "55700415.55746891.atac_annotate_fixed_width_consensus_peaks.peakcaller=macs2,sample=AU.err"
+          },
+          {
+            "type": "file",
+            "name": "55700415.55746891.atac_annotate_fixed_width_consensus_peaks.peakcaller=macs2,sample=AU.out"
+          },
+          {
+            "type": "file",
+            "name": "55700415.55748924.create_bigwigs.replicate=DMSO_2.err"
+          },
+          {
+            "type": "file",
+            "name": "55700415.55748924.create_bigwigs.replicate=DMSO_2.out"
+          },
+          {
+            "type": "file",
+            "name": "55700415.55749386.atac_genrich_peakcalling_fixed_width.sample=DMSO.err"
+          },
+          {
+            "type": "file",
+            "name": "55700415.55749386.atac_genrich_peakcalling_fixed_width.sample=DMSO.out"
+          },
+          {
+            "type": "file",
+            "name": "55700415.55749449.atac_calculate_regions_of_interest_for_diffatac.peakcaller=genrich.err"
+          },
+          {
+            "type": "file",
+            "name": "55700415.55749449.atac_calculate_regions_of_interest_for_diffatac.peakcaller=genrich.out"
+          },
+          {
+            "type": "file",
+            "name": "55700415.55749458.atac_annotate_fixed_width_consensus_peaks.peakcaller=genrich,sample=DMSO.err"
+          },
+          {
+            "type": "file",
+            "name": "55700415.55749458.atac_annotate_fixed_width_consensus_peaks.peakcaller=genrich,sample=DMSO.out"
+          },
+          {
+            "type": "file",
+            "name": "55700415.55750908.atac_macs_peakcalling_fixed_width.sample=DMSO.err"
+          },
+          {
+            "type": "file",
+            "name": "55700415.55750908.atac_macs_peakcalling_fixed_width.sample=DMSO.out"
+          },
+          { "type": "file", "name": "55700415.55750909.frip.sample=DMSO.err" },
+          { "type": "file", "name": "55700415.55750909.frip.sample=DMSO.out" },
+          {
+            "type": "file",
+            "name": "55700415.55751266.annotate_roi.peakcaller=genrich.err"
+          },
+          {
+            "type": "file",
+            "name": "55700415.55751266.annotate_roi.peakcaller=genrich.out"
+          },
+          {
+            "type": "file",
+            "name": "55700415.55751380.get_counts_table.method=reads,peakcaller=genrich.err"
+          },
+          {
+            "type": "file",
+            "name": "55700415.55751380.get_counts_table.method=reads,peakcaller=genrich.out"
+          },
+          {
+            "type": "file",
+            "name": "55700415.55751382.get_counts_table.method=tn5sites,peakcaller=genrich.err"
+          },
+          {
+            "type": "file",
+            "name": "55700415.55751382.get_counts_table.method=tn5sites,peakcaller=genrich.out"
+          },
+          {
+            "type": "file",
+            "name": "55700415.55751608.atac_calculate_regions_of_interest_for_diffatac.peakcaller=macs2.err"
+          },
+          {
+            "type": "file",
+            "name": "55700415.55751608.atac_calculate_regions_of_interest_for_diffatac.peakcaller=macs2.out"
+          },
+          {
+            "type": "file",
+            "name": "55700415.55751718.atac_annotate_fixed_width_consensus_peaks.peakcaller=macs2,sample=DMSO.err"
+          },
+          {
+            "type": "file",
+            "name": "55700415.55751718.atac_annotate_fixed_width_consensus_peaks.peakcaller=macs2,sample=DMSO.out"
+          },
+          {
+            "type": "file",
+            "name": "55700415.55752005.diffatac.method=reads,peakcaller=genrich.err"
+          },
+          {
+            "type": "file",
+            "name": "55700415.55752005.diffatac.method=reads,peakcaller=genrich.out"
+          },
+          {
+            "type": "file",
+            "name": "55700415.55752223.diffatac.method=tn5sites,peakcaller=genrich.err"
+          },
+          {
+            "type": "file",
+            "name": "55700415.55752223.diffatac.method=tn5sites,peakcaller=genrich.out"
+          },
+          {
+            "type": "file",
+            "name": "55700415.55752389.get_counts_table.method=reads,peakcaller=macs2.err"
+          },
+          {
+            "type": "file",
+            "name": "55700415.55752389.get_counts_table.method=reads,peakcaller=macs2.out"
+          },
+          {
+            "type": "file",
+            "name": "55700415.55752406.annotate_roi.peakcaller=macs2.err"
+          },
+          {
+            "type": "file",
+            "name": "55700415.55752406.annotate_roi.peakcaller=macs2.out"
+          },
+          {
+            "type": "file",
+            "name": "55700415.55752540.get_counts_table.method=tn5sites,peakcaller=macs2.err"
+          },
+          {
+            "type": "file",
+            "name": "55700415.55752540.get_counts_table.method=tn5sites,peakcaller=macs2.out"
+          },
+          {
+            "type": "file",
+            "name": "55700415.55753025.diffatac.method=reads,peakcaller=macs2.err"
+          },
+          {
+            "type": "file",
+            "name": "55700415.55753025.diffatac.method=reads,peakcaller=macs2.out"
+          },
+          {
+            "type": "file",
+            "name": "55700415.55753036.diffatac.method=tn5sites,peakcaller=macs2.err"
+          },
+          {
+            "type": "file",
+            "name": "55700415.55753036.diffatac.method=tn5sites,peakcaller=macs2.out"
+          },
+          {
+            "type": "file",
+            "name": "55700415.55753516.diffatac_aggregate.method=reads,peakcaller=genrich.err"
+          },
+          {
+            "type": "file",
+            "name": "55700415.55753516.diffatac_aggregate.method=reads,peakcaller=genrich.out"
+          },
+          {
+            "type": "file",
+            "name": "55700415.55753521.diffatac_aggregate.method=tn5sites,peakcaller=genrich.err"
+          },
+          {
+            "type": "file",
+            "name": "55700415.55753521.diffatac_aggregate.method=tn5sites,peakcaller=genrich.out"
+          },
+          {
+            "type": "file",
+            "name": "55700415.55754279.diffatac_aggregate.method=reads,peakcaller=macs2.err"
+          },
+          {
+            "type": "file",
+            "name": "55700415.55754279.diffatac_aggregate.method=reads,peakcaller=macs2.out"
+          },
+          {
+            "type": "file",
+            "name": "55700415.55754288.diffatac_aggregate.method=tn5sites,peakcaller=macs2.err"
+          },
+          {
+            "type": "file",
+            "name": "55700415.55754288.diffatac_aggregate.method=tn5sites,peakcaller=macs2.out"
+          },
+          { "type": "file", "name": "55700415.55765384.multiqc..err" },
+          { "type": "file", "name": "55700415.55765384.multiqc..out" },
+          { "type": "file", "name": "snakemake.log.jobby" },
+          { "type": "file", "name": "snakemake.log.jobby.short" }
+        ]
+      },
+      {
+        "type": "directory",
+        "name": "results",
+        "contents": [
+          {
+            "type": "directory",
+            "name": "alignment",
+            "contents": [
+              {
+                "type": "directory",
+                "name": "dedupBam",
+                "contents": [
+                  { "type": "file", "name": "AU_1.dedup.bam" },
+                  { "type": "file", "name": "AU_1.dedup.bam.bai" },
+                  { "type": "file", "name": "AU_2.dedup.bam" },
+                  { "type": "file", "name": "AU_2.dedup.bam.bai" },
+                  { "type": "file", "name": "DMSO_1.dedup.bam" },
+                  { "type": "file", "name": "DMSO_1.dedup.bam.bai" },
+                  { "type": "file", "name": "DMSO_2.dedup.bam" },
+                  { "type": "file", "name": "DMSO_2.dedup.bam.bai" }
+                ]
+              },
+              {
+                "type": "directory",
+                "name": "filteredBam",
+                "contents": [
+                  { "type": "file", "name": "AU_1.filtered.bam" },
+                  { "type": "file", "name": "AU_1.filtered.bam.bai" },
+                  { "type": "file", "name": "AU_2.filtered.bam" },
+                  { "type": "file", "name": "AU_2.filtered.bam.bai" },
+                  { "type": "file", "name": "DMSO_1.filtered.bam" },
+                  { "type": "file", "name": "DMSO_1.filtered.bam.bai" },
+                  { "type": "file", "name": "DMSO_2.filtered.bam" },
+                  { "type": "file", "name": "DMSO_2.filtered.bam.bai" }
+                ]
+              },
+              {
+                "type": "directory",
+                "name": "qsortedBam",
+                "contents": [
+                  { "type": "file", "name": "AU_1.qsorted.bam" },
+                  { "type": "file", "name": "AU_2.qsorted.bam" },
+                  { "type": "file", "name": "DMSO_1.qsorted.bam" },
+                  { "type": "file", "name": "DMSO_2.qsorted.bam" }
+                ]
+              },
+              {
+                "type": "directory",
+                "name": "tagAlign",
+                "contents": [
+                  { "type": "file", "name": "AU_1.tagAlign.gz" },
+                  { "type": "file", "name": "AU_2.tagAlign.gz" },
+                  { "type": "file", "name": "DMSO_1.tagAlign.gz" },
+                  { "type": "file", "name": "DMSO_2.tagAlign.gz" }
+                ]
+              }
+            ]
+          },
+          {
+            "type": "directory",
+            "name": "peaks",
+            "contents": [
+              {
+                "type": "directory",
+                "name": "genrich",
+                "contents": [
+                  {
+                    "type": "directory",
+                    "name": "AU",
+                    "contents": [
+                      { "type": "file", "name": "AU_1.genrich.narrowPeak" },
+                      {
+                        "type": "file",
+                        "name": "AU_1.genrich.unfiltered.narrowPeak"
+                      },
+                      { "type": "file", "name": "AU_2.genrich.narrowPeak" },
+                      {
+                        "type": "file",
+                        "name": "AU_2.genrich.unfiltered.narrowPeak"
+                      },
+                      { "type": "file", "name": "AU.genrich.consensus.bed" },
+                      {
+                        "type": "file",
+                        "name": "AU.genrich.pooled.narrowPeak"
+                      },
+                      {
+                        "type": "file",
+                        "name": "AU.genrich.pooled.unfiltered.narrowPeak"
+                      }
+                    ]
+                  },
+                  { "type": "file", "name": "AU.consensus.genrich.peakfiles" },
+                  { "type": "file", "name": "AU.replicate.genrich.peakfiles" },
+                  {
+                    "type": "directory",
+                    "name": "DiffATAC",
+                    "contents": [
+                      {
+                        "type": "directory",
+                        "name": "reads",
+                        "contents": [
+                          { "type": "file", "name": "all_diff_atacs.html" },
+                          { "type": "file", "name": "all_diff_atacs.tsv" },
+                          { "type": "file", "name": "degs.done" },
+                          { "type": "file", "name": "DMSO_vs_AU.html" },
+                          { "type": "file", "name": "DMSO_vs_AU.tsv" }
+                        ]
+                      },
+                      {
+                        "type": "directory",
+                        "name": "tn5sites",
+                        "contents": [
+                          { "type": "file", "name": "all_diff_atacs.html" },
+                          { "type": "file", "name": "all_diff_atacs.tsv" },
+                          { "type": "file", "name": "degs.done" },
+                          { "type": "file", "name": "DMSO_vs_AU.html" },
+                          { "type": "file", "name": "DMSO_vs_AU.tsv" }
+                        ]
+                      }
+                    ]
+                  },
+                  {
+                    "type": "directory",
+                    "name": "DMSO",
+                    "contents": [
+                      { "type": "file", "name": "DMSO_1.genrich.narrowPeak" },
+                      {
+                        "type": "file",
+                        "name": "DMSO_1.genrich.unfiltered.narrowPeak"
+                      },
+                      { "type": "file", "name": "DMSO_2.genrich.narrowPeak" },
+                      {
+                        "type": "file",
+                        "name": "DMSO_2.genrich.unfiltered.narrowPeak"
+                      },
+                      { "type": "file", "name": "DMSO.genrich.consensus.bed" },
+                      {
+                        "type": "file",
+                        "name": "DMSO.genrich.pooled.narrowPeak"
+                      },
+                      {
+                        "type": "file",
+                        "name": "DMSO.genrich.pooled.unfiltered.narrowPeak"
+                      }
+                    ]
+                  },
+                  {
+                    "type": "file",
+                    "name": "DMSO.consensus.genrich.peakfiles"
+                  },
+                  {
+                    "type": "file",
+                    "name": "DMSO.replicate.genrich.peakfiles"
+                  },
+                  {
+                    "type": "directory",
+                    "name": "fixed_width",
+                    "contents": [
+                      {
+                        "type": "file",
+                        "name": "AU_1.genrich.fixed_width.narrowPeak"
+                      },
+                      {
+                        "type": "file",
+                        "name": "AU_2.genrich.fixed_width.narrowPeak"
+                      },
+                      {
+                        "type": "file",
+                        "name": "AU.genrich.fixed_width.consensus.narrowPeak"
+                      },
+                      {
+                        "type": "file",
+                        "name": "AU.genrich.renormalized.fixed_width.consensus.narrowPeak"
+                      },
+                      {
+                        "type": "file",
+                        "name": "AU.genrich.renormalized.fixed_width.consensus.narrowPeak.annotated.gz"
+                      },
+                      {
+                        "type": "file",
+                        "name": "AU.genrich.renormalized.fixed_width.consensus.narrowPeak.annotation_distribution"
+                      },
+                      {
+                        "type": "file",
+                        "name": "AU.genrich.renormalized.fixed_width.consensus.narrowPeak.annotation_summary"
+                      },
+                      {
+                        "type": "file",
+                        "name": "AU.genrich.renormalized.fixed_width.consensus.narrowPeak.genelist"
+                      },
+                      {
+                        "type": "directory",
+                        "name": "counts",
+                        "contents": [
+                          {
+                            "type": "file",
+                            "name": "ROI.genrich.reads_counts.tsv"
+                          },
+                          {
+                            "type": "file",
+                            "name": "ROI.genrich.reads_scaled_counts.tsv"
+                          },
+                          {
+                            "type": "file",
+                            "name": "ROI.genrich.tn5sites_counts.tsv"
+                          },
+                          {
+                            "type": "file",
+                            "name": "ROI.genrich.tn5sites_scaled_counts.tsv"
+                          }
+                        ]
+                      },
+                      {
+                        "type": "file",
+                        "name": "DMSO_1.genrich.fixed_width.narrowPeak"
+                      },
+                      {
+                        "type": "file",
+                        "name": "DMSO_2.genrich.fixed_width.narrowPeak"
+                      },
+                      {
+                        "type": "file",
+                        "name": "DMSO.genrich.fixed_width.consensus.narrowPeak"
+                      },
+                      {
+                        "type": "file",
+                        "name": "DMSO.genrich.renormalized.fixed_width.consensus.narrowPeak"
+                      },
+                      {
+                        "type": "file",
+                        "name": "DMSO.genrich.renormalized.fixed_width.consensus.narrowPeak.annotated.gz"
+                      },
+                      {
+                        "type": "file",
+                        "name": "DMSO.genrich.renormalized.fixed_width.consensus.narrowPeak.annotation_distribution"
+                      },
+                      {
+                        "type": "file",
+                        "name": "DMSO.genrich.renormalized.fixed_width.consensus.narrowPeak.annotation_summary"
+                      },
+                      {
+                        "type": "file",
+                        "name": "DMSO.genrich.renormalized.fixed_width.consensus.narrowPeak.genelist"
+                      },
+                      { "type": "file", "name": "ROI.genrich.bed" },
+                      {
+                        "type": "file",
+                        "name": "ROI.genrich.bed.annotated.gz"
+                      },
+                      {
+                        "type": "file",
+                        "name": "ROI.genrich.bed.annotation_distribution"
+                      },
+                      {
+                        "type": "file",
+                        "name": "ROI.genrich.bed.annotation_summary"
+                      },
+                      { "type": "file", "name": "ROI.genrich.bed.genelist" },
+                      { "type": "file", "name": "ROI.genrich.gtf" },
+                      { "type": "file", "name": "ROI.genrich.narrowPeak" },
+                      {
+                        "type": "file",
+                        "name": "ROI.genrich.renormalized.narrowPeak"
+                      },
+                      { "type": "file", "name": "Rplots.pdf" }
+                    ]
+                  }
+                ]
+              },
+              {
+                "type": "directory",
+                "name": "macs2",
+                "contents": [
+                  {
+                    "type": "directory",
+                    "name": "AU",
+                    "contents": [
+                      { "type": "file", "name": "AU_1.macs2.narrowPeak" },
+                      {
+                        "type": "file",
+                        "name": "AU_1.macs2.unfiltered.narrowPeak"
+                      },
+                      { "type": "file", "name": "AU_2.macs2.narrowPeak" },
+                      {
+                        "type": "file",
+                        "name": "AU_2.macs2.unfiltered.narrowPeak"
+                      },
+                      { "type": "file", "name": "AU.macs2.consensus.bed" },
+                      { "type": "file", "name": "AU.macs2.pooled.narrowPeak" },
+                      { "type": "file", "name": "AU.macs2.pooled_summits.bed" },
+                      {
+                        "type": "file",
+                        "name": "AU.macs2.pooled.unfiltered.narrowPeak"
+                      }
+                    ]
+                  },
+                  { "type": "file", "name": "AU.consensus.macs2.peakfiles" },
+                  { "type": "file", "name": "AU.replicate.macs2.peakfiles" },
+                  {
+                    "type": "directory",
+                    "name": "DiffATAC",
+                    "contents": [
+                      {
+                        "type": "directory",
+                        "name": "reads",
+                        "contents": [
+                          { "type": "file", "name": "all_diff_atacs.html" },
+                          { "type": "file", "name": "all_diff_atacs.tsv" },
+                          { "type": "file", "name": "degs.done" },
+                          { "type": "file", "name": "DMSO_vs_AU.html" },
+                          { "type": "file", "name": "DMSO_vs_AU.tsv" }
+                        ]
+                      },
+                      {
+                        "type": "directory",
+                        "name": "tn5sites",
+                        "contents": [
+                          { "type": "file", "name": "all_diff_atacs.html" },
+                          { "type": "file", "name": "all_diff_atacs.tsv" },
+                          { "type": "file", "name": "degs.done" },
+                          { "type": "file", "name": "DMSO_vs_AU.html" },
+                          { "type": "file", "name": "DMSO_vs_AU.tsv" }
+                        ]
+                      }
+                    ]
+                  },
+                  {
+                    "type": "directory",
+                    "name": "DMSO",
+                    "contents": [
+                      { "type": "file", "name": "DMSO_1.macs2.narrowPeak" },
+                      {
+                        "type": "file",
+                        "name": "DMSO_1.macs2.unfiltered.narrowPeak"
+                      },
+                      { "type": "file", "name": "DMSO_2.macs2.narrowPeak" },
+                      {
+                        "type": "file",
+                        "name": "DMSO_2.macs2.unfiltered.narrowPeak"
+                      },
+                      { "type": "file", "name": "DMSO.macs2.consensus.bed" },
+                      {
+                        "type": "file",
+                        "name": "DMSO.macs2.pooled.narrowPeak"
+                      },
+                      {
+                        "type": "file",
+                        "name": "DMSO.macs2.pooled_summits.bed"
+                      },
+                      {
+                        "type": "file",
+                        "name": "DMSO.macs2.pooled.unfiltered.narrowPeak"
+                      }
+                    ]
+                  },
+                  { "type": "file", "name": "DMSO.consensus.macs2.peakfiles" },
+                  { "type": "file", "name": "DMSO.replicate.macs2.peakfiles" },
+                  {
+                    "type": "directory",
+                    "name": "fixed_width",
+                    "contents": [
+                      {
+                        "type": "file",
+                        "name": "AU_1.macs2.fixed_width.narrowPeak"
+                      },
+                      {
+                        "type": "file",
+                        "name": "AU_2.macs2.fixed_width.narrowPeak"
+                      },
+                      {
+                        "type": "file",
+                        "name": "AU.macs2.fixed_width.consensus.narrowPeak"
+                      },
+                      {
+                        "type": "file",
+                        "name": "AU.macs2.renormalized.fixed_width.consensus.narrowPeak"
+                      },
+                      {
+                        "type": "file",
+                        "name": "AU.macs2.renormalized.fixed_width.consensus.narrowPeak.annotated.gz"
+                      },
+                      {
+                        "type": "file",
+                        "name": "AU.macs2.renormalized.fixed_width.consensus.narrowPeak.annotation_distribution"
+                      },
+                      {
+                        "type": "file",
+                        "name": "AU.macs2.renormalized.fixed_width.consensus.narrowPeak.annotation_summary"
+                      },
+                      {
+                        "type": "file",
+                        "name": "AU.macs2.renormalized.fixed_width.consensus.narrowPeak.genelist"
+                      },
+                      {
+                        "type": "directory",
+                        "name": "counts",
+                        "contents": [
+                          {
+                            "type": "file",
+                            "name": "ROI.macs2.reads_counts.tsv"
+                          },
+                          {
+                            "type": "file",
+                            "name": "ROI.macs2.reads_scaled_counts.tsv"
+                          },
+                          {
+                            "type": "file",
+                            "name": "ROI.macs2.tn5sites_counts.tsv"
+                          },
+                          {
+                            "type": "file",
+                            "name": "ROI.macs2.tn5sites_scaled_counts.tsv"
+                          }
+                        ]
+                      },
+                      {
+                        "type": "file",
+                        "name": "DMSO_1.macs2.fixed_width.narrowPeak"
+                      },
+                      {
+                        "type": "file",
+                        "name": "DMSO_2.macs2.fixed_width.narrowPeak"
+                      },
+                      {
+                        "type": "file",
+                        "name": "DMSO.macs2.fixed_width.consensus.narrowPeak"
+                      },
+                      {
+                        "type": "file",
+                        "name": "DMSO.macs2.renormalized.fixed_width.consensus.narrowPeak"
+                      },
+                      {
+                        "type": "file",
+                        "name": "DMSO.macs2.renormalized.fixed_width.consensus.narrowPeak.annotated.gz"
+                      },
+                      {
+                        "type": "file",
+                        "name": "DMSO.macs2.renormalized.fixed_width.consensus.narrowPeak.annotation_distribution"
+                      },
+                      {
+                        "type": "file",
+                        "name": "DMSO.macs2.renormalized.fixed_width.consensus.narrowPeak.annotation_summary"
+                      },
+                      {
+                        "type": "file",
+                        "name": "DMSO.macs2.renormalized.fixed_width.consensus.narrowPeak.genelist"
+                      },
+                      { "type": "file", "name": "ROI.macs2.bed" },
+                      { "type": "file", "name": "ROI.macs2.bed.annotated.gz" },
+                      {
+                        "type": "file",
+                        "name": "ROI.macs2.bed.annotation_distribution"
+                      },
+                      {
+                        "type": "file",
+                        "name": "ROI.macs2.bed.annotation_summary"
+                      },
+                      { "type": "file", "name": "ROI.macs2.bed.genelist" },
+                      { "type": "file", "name": "ROI.macs2.gtf" },
+                      { "type": "file", "name": "ROI.macs2.narrowPeak" },
+                      {
+                        "type": "file",
+                        "name": "ROI.macs2.renormalized.narrowPeak"
+                      },
+                      { "type": "file", "name": "Rplots.pdf" }
+                    ]
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "type": "directory",
+            "name": "QC",
+            "contents": [
+              { "type": "file", "name": "AU_1.bowtie2.bam.flagstat" },
+              { "type": "file", "name": "AU_1.bowtie2.log" },
+              { "type": "file", "name": "AU_1.dedup.bam.flagstat" },
+              { "type": "file", "name": "AU_1.dupmetric" },
+              { "type": "file", "name": "AU_1.filtered.bam.flagstat" },
+              { "type": "file", "name": "AU_1.nreads.txt" },
+              { "type": "file", "name": "AU_2.bowtie2.bam.flagstat" },
+              { "type": "file", "name": "AU_2.bowtie2.log" },
+              { "type": "file", "name": "AU_2.dedup.bam.flagstat" },
+              { "type": "file", "name": "AU_2.dupmetric" },
+              { "type": "file", "name": "AU_2.filtered.bam.flagstat" },
+              { "type": "file", "name": "AU_2.nreads.txt" },
+              { "type": "file", "name": "data.tss_nicking_sites.txt" },
+              { "type": "file", "name": "DMSO_1.bowtie2.bam.flagstat" },
+              { "type": "file", "name": "DMSO_1.bowtie2.log" },
+              { "type": "file", "name": "DMSO_1.dedup.bam.flagstat" },
+              { "type": "file", "name": "DMSO_1.dupmetric" },
+              { "type": "file", "name": "DMSO_1.filtered.bam.flagstat" },
+              { "type": "file", "name": "DMSO_1.nreads.txt" },
+              { "type": "file", "name": "DMSO_2.bowtie2.bam.flagstat" },
+              { "type": "file", "name": "DMSO_2.bowtie2.log" },
+              { "type": "file", "name": "DMSO_2.dedup.bam.flagstat" },
+              { "type": "file", "name": "DMSO_2.dupmetric" },
+              { "type": "file", "name": "DMSO_2.filtered.bam.flagstat" },
+              { "type": "file", "name": "DMSO_2.nreads.txt" },
+              {
+                "type": "directory",
+                "name": "fastqc",
+                "contents": [
+                  { "type": "file", "name": "AU_1.R1_fastqc.html" },
+                  { "type": "file", "name": "AU_1.R1_fastqc.zip" },
+                  { "type": "file", "name": "AU_1.R1.noBL_fastqc.html" },
+                  { "type": "file", "name": "AU_1.R1.noBL_fastqc.zip" },
+                  { "type": "file", "name": "AU_1.R2_fastqc.html" },
+                  { "type": "file", "name": "AU_1.R2_fastqc.zip" },
+                  { "type": "file", "name": "AU_1.R2.noBL_fastqc.html" },
+                  { "type": "file", "name": "AU_1.R2.noBL_fastqc.zip" },
+                  { "type": "file", "name": "AU_2.R1_fastqc.html" },
+                  { "type": "file", "name": "AU_2.R1_fastqc.zip" },
+                  { "type": "file", "name": "AU_2.R1.noBL_fastqc.html" },
+                  { "type": "file", "name": "AU_2.R1.noBL_fastqc.zip" },
+                  { "type": "file", "name": "AU_2.R2_fastqc.html" },
+                  { "type": "file", "name": "AU_2.R2_fastqc.zip" },
+                  { "type": "file", "name": "AU_2.R2.noBL_fastqc.html" },
+                  { "type": "file", "name": "AU_2.R2.noBL_fastqc.zip" },
+                  { "type": "file", "name": "DMSO_1.R1_fastqc.html" },
+                  { "type": "file", "name": "DMSO_1.R1_fastqc.zip" },
+                  { "type": "file", "name": "DMSO_1.R1.noBL_fastqc.html" },
+                  { "type": "file", "name": "DMSO_1.R1.noBL_fastqc.zip" },
+                  { "type": "file", "name": "DMSO_1.R2_fastqc.html" },
+                  { "type": "file", "name": "DMSO_1.R2_fastqc.zip" },
+                  { "type": "file", "name": "DMSO_1.R2.noBL_fastqc.html" },
+                  { "type": "file", "name": "DMSO_1.R2.noBL_fastqc.zip" },
+                  { "type": "file", "name": "DMSO_2.R1_fastqc.html" },
+                  { "type": "file", "name": "DMSO_2.R1_fastqc.zip" },
+                  { "type": "file", "name": "DMSO_2.R1.noBL_fastqc.html" },
+                  { "type": "file", "name": "DMSO_2.R1.noBL_fastqc.zip" },
+                  { "type": "file", "name": "DMSO_2.R2_fastqc.html" },
+                  { "type": "file", "name": "DMSO_2.R2_fastqc.zip" },
+                  { "type": "file", "name": "DMSO_2.R2.noBL_fastqc.html" },
+                  { "type": "file", "name": "DMSO_2.R2.noBL_fastqc.zip" }
+                ]
+              },
+              {
+                "type": "directory",
+                "name": "fld",
+                "contents": [
+                  { "type": "file", "name": "AU_1.fld.txt" },
+                  { "type": "file", "name": "AU_2.fld.txt" },
+                  { "type": "file", "name": "DMSO_1.fld.txt" },
+                  { "type": "file", "name": "DMSO_2.fld.txt" }
+                ]
+              },
+              { "type": "file", "name": "FLD_stats_fractions_ratios.tsv" },
+              { "type": "file", "name": "FLD_stats_peaks.tsv" },
+              {
+                "type": "directory",
+                "name": "FQscreen",
+                "contents": [
+                  { "type": "file", "name": "AU_1.R1.noBL_screen.html" },
+                  { "type": "file", "name": "AU_1.R1.noBL_screen.png" },
+                  { "type": "file", "name": "AU_1.R1.noBL_screen.txt" },
+                  { "type": "file", "name": "AU_1.R2.noBL_screen.html" },
+                  { "type": "file", "name": "AU_1.R2.noBL_screen.png" },
+                  { "type": "file", "name": "AU_1.R2.noBL_screen.txt" },
+                  { "type": "file", "name": "AU_2.R1.noBL_screen.html" },
+                  { "type": "file", "name": "AU_2.R1.noBL_screen.png" },
+                  { "type": "file", "name": "AU_2.R1.noBL_screen.txt" },
+                  { "type": "file", "name": "AU_2.R2.noBL_screen.html" },
+                  { "type": "file", "name": "AU_2.R2.noBL_screen.png" },
+                  { "type": "file", "name": "AU_2.R2.noBL_screen.txt" },
+                  { "type": "file", "name": "DMSO_1.R1.noBL_screen.html" },
+                  { "type": "file", "name": "DMSO_1.R1.noBL_screen.png" },
+                  { "type": "file", "name": "DMSO_1.R1.noBL_screen.txt" },
+                  { "type": "file", "name": "DMSO_1.R2.noBL_screen.html" },
+                  { "type": "file", "name": "DMSO_1.R2.noBL_screen.png" },
+                  { "type": "file", "name": "DMSO_1.R2.noBL_screen.txt" },
+                  { "type": "file", "name": "DMSO_2.R1.noBL_screen.html" },
+                  { "type": "file", "name": "DMSO_2.R1.noBL_screen.png" },
+                  { "type": "file", "name": "DMSO_2.R1.noBL_screen.txt" },
+                  { "type": "file", "name": "DMSO_2.R2.noBL_screen.html" },
+                  { "type": "file", "name": "DMSO_2.R2.noBL_screen.png" },
+                  { "type": "file", "name": "DMSO_2.R2.noBL_screen.txt" }
+                ]
+              },
+              {
+                "type": "directory",
+                "name": "frip",
+                "contents": [
+                  { "type": "file", "name": "AU.frip" },
+                  { "type": "file", "name": "DMSO.frip" }
+                ]
+              },
+              { "type": "file", "name": "FRiP_stats.tsv" },
+              { "type": "file", "name": "Genrich_Peak_Annotations_mqc.csv" },
+              { "type": "file", "name": "MACS2_Peak_Annotations_mqc.csv" },
+              {
+                "type": "directory",
+                "name": "multiqc_data",
+                "contents": [
+                  { "type": "file", "name": "multiqc_bowtie2.txt" },
+                  { "type": "file", "name": "multiqc_data.json" },
+                  { "type": "file", "name": "multiqc_fastqc.txt" },
+                  { "type": "file", "name": "multiqc_fastq_screen.txt" },
+                  {
+                    "type": "file",
+                    "name": "multiqc_fld_stats_(fractions_and_ratios).txt"
+                  },
+                  { "type": "file", "name": "multiqc_fld_stats_(peaks).txt" },
+                  { "type": "file", "name": "multiqc_frip_stats.txt" },
+                  { "type": "file", "name": "multiqc_general_stats.txt" },
+                  { "type": "file", "name": "multiqc.log" },
+                  { "type": "file", "name": "multiqc_nrf_pbc_stats.txt" },
+                  { "type": "file", "name": "multiqc_picard_dups.txt" },
+                  { "type": "file", "name": "multiqc_samtools_flagstat.txt" },
+                  { "type": "file", "name": "multiqc_sources.txt" }
+                ]
+              },
+              { "type": "file", "name": "multiqc_report.html" },
+              { "type": "file", "name": "Nreads_mqc.csv" },
+              { "type": "file", "name": "NRF_stats.tsv" },
+              { "type": "file", "name": "NRF_stats.txt" },
+              {
+                "type": "directory",
+                "name": "peak_annotation",
+                "contents": [
+                  {
+                    "type": "file",
+                    "name": "AU_1.genrich.narrowPeak.annotated.gz"
+                  },
+                  {
+                    "type": "file",
+                    "name": "AU_1.genrich.narrowPeak.annotation_distribution"
+                  },
+                  {
+                    "type": "file",
+                    "name": "AU_1.genrich.narrowPeak.annotation_summary"
+                  },
+                  {
+                    "type": "file",
+                    "name": "AU_1.genrich.narrowPeak.genelist"
+                  },
+                  {
+                    "type": "file",
+                    "name": "AU_1.genrich.unfiltered.narrowPeak.annotated.gz"
+                  },
+                  {
+                    "type": "file",
+                    "name": "AU_1.genrich.unfiltered.narrowPeak.annotation_distribution"
+                  },
+                  {
+                    "type": "file",
+                    "name": "AU_1.genrich.unfiltered.narrowPeak.annotation_summary"
+                  },
+                  {
+                    "type": "file",
+                    "name": "AU_1.genrich.unfiltered.narrowPeak.genelist"
+                  },
+                  {
+                    "type": "file",
+                    "name": "AU_1.macs2.narrowPeak.annotated.gz"
+                  },
+                  {
+                    "type": "file",
+                    "name": "AU_1.macs2.narrowPeak.annotation_distribution"
+                  },
+                  {
+                    "type": "file",
+                    "name": "AU_1.macs2.narrowPeak.annotation_summary"
+                  },
+                  { "type": "file", "name": "AU_1.macs2.narrowPeak.genelist" },
+                  {
+                    "type": "file",
+                    "name": "AU_1.macs2.unfiltered.narrowPeak.annotated.gz"
+                  },
+                  {
+                    "type": "file",
+                    "name": "AU_1.macs2.unfiltered.narrowPeak.annotation_distribution"
+                  },
+                  {
+                    "type": "file",
+                    "name": "AU_1.macs2.unfiltered.narrowPeak.annotation_summary"
+                  },
+                  {
+                    "type": "file",
+                    "name": "AU_1.macs2.unfiltered.narrowPeak.genelist"
+                  },
+                  {
+                    "type": "file",
+                    "name": "AU_2.genrich.narrowPeak.annotated.gz"
+                  },
+                  {
+                    "type": "file",
+                    "name": "AU_2.genrich.narrowPeak.annotation_distribution"
+                  },
+                  {
+                    "type": "file",
+                    "name": "AU_2.genrich.narrowPeak.annotation_summary"
+                  },
+                  {
+                    "type": "file",
+                    "name": "AU_2.genrich.narrowPeak.genelist"
+                  },
+                  {
+                    "type": "file",
+                    "name": "AU_2.genrich.unfiltered.narrowPeak.annotated.gz"
+                  },
+                  {
+                    "type": "file",
+                    "name": "AU_2.genrich.unfiltered.narrowPeak.annotation_distribution"
+                  },
+                  {
+                    "type": "file",
+                    "name": "AU_2.genrich.unfiltered.narrowPeak.annotation_summary"
+                  },
+                  {
+                    "type": "file",
+                    "name": "AU_2.genrich.unfiltered.narrowPeak.genelist"
+                  },
+                  {
+                    "type": "file",
+                    "name": "AU_2.macs2.narrowPeak.annotated.gz"
+                  },
+                  {
+                    "type": "file",
+                    "name": "AU_2.macs2.narrowPeak.annotation_distribution"
+                  },
+                  {
+                    "type": "file",
+                    "name": "AU_2.macs2.narrowPeak.annotation_summary"
+                  },
+                  { "type": "file", "name": "AU_2.macs2.narrowPeak.genelist" },
+                  {
+                    "type": "file",
+                    "name": "AU_2.macs2.unfiltered.narrowPeak.annotated.gz"
+                  },
+                  {
+                    "type": "file",
+                    "name": "AU_2.macs2.unfiltered.narrowPeak.annotation_distribution"
+                  },
+                  {
+                    "type": "file",
+                    "name": "AU_2.macs2.unfiltered.narrowPeak.annotation_summary"
+                  },
+                  {
+                    "type": "file",
+                    "name": "AU_2.macs2.unfiltered.narrowPeak.genelist"
+                  },
+                  {
+                    "type": "file",
+                    "name": "AU.genrich.consensus.bed.annotated.gz"
+                  },
+                  {
+                    "type": "file",
+                    "name": "AU.genrich.consensus.bed.annotation_distribution"
+                  },
+                  {
+                    "type": "file",
+                    "name": "AU.genrich.consensus.bed.annotation_summary"
+                  },
+                  {
+                    "type": "file",
+                    "name": "AU.genrich.consensus.bed.genelist"
+                  },
+                  {
+                    "type": "file",
+                    "name": "AU.genrich.pooled.narrowPeak.annotated.gz"
+                  },
+                  {
+                    "type": "file",
+                    "name": "AU.genrich.pooled.narrowPeak.annotation_distribution"
+                  },
+                  {
+                    "type": "file",
+                    "name": "AU.genrich.pooled.narrowPeak.annotation_summary"
+                  },
+                  {
+                    "type": "file",
+                    "name": "AU.genrich.pooled.narrowPeak.genelist"
+                  },
+                  {
+                    "type": "file",
+                    "name": "AU.genrich.pooled.unfiltered.narrowPeak.annotated.gz"
+                  },
+                  {
+                    "type": "file",
+                    "name": "AU.genrich.pooled.unfiltered.narrowPeak.annotation_distribution"
+                  },
+                  {
+                    "type": "file",
+                    "name": "AU.genrich.pooled.unfiltered.narrowPeak.annotation_summary"
+                  },
+                  {
+                    "type": "file",
+                    "name": "AU.genrich.pooled.unfiltered.narrowPeak.genelist"
+                  },
+                  {
+                    "type": "file",
+                    "name": "AU.macs2.consensus.bed.annotated.gz"
+                  },
+                  {
+                    "type": "file",
+                    "name": "AU.macs2.consensus.bed.annotation_distribution"
+                  },
+                  {
+                    "type": "file",
+                    "name": "AU.macs2.consensus.bed.annotation_summary"
+                  },
+                  { "type": "file", "name": "AU.macs2.consensus.bed.genelist" },
+                  {
+                    "type": "file",
+                    "name": "AU.macs2.pooled.narrowPeak.annotated.gz"
+                  },
+                  {
+                    "type": "file",
+                    "name": "AU.macs2.pooled.narrowPeak.annotation_distribution"
+                  },
+                  {
+                    "type": "file",
+                    "name": "AU.macs2.pooled.narrowPeak.annotation_summary"
+                  },
+                  {
+                    "type": "file",
+                    "name": "AU.macs2.pooled.narrowPeak.genelist"
+                  },
+                  {
+                    "type": "file",
+                    "name": "AU.macs2.pooled.unfiltered.narrowPeak.annotated.gz"
+                  },
+                  {
+                    "type": "file",
+                    "name": "AU.macs2.pooled.unfiltered.narrowPeak.annotation_distribution"
+                  },
+                  {
+                    "type": "file",
+                    "name": "AU.macs2.pooled.unfiltered.narrowPeak.annotation_summary"
+                  },
+                  {
+                    "type": "file",
+                    "name": "AU.macs2.pooled.unfiltered.narrowPeak.genelist"
+                  },
+                  {
+                    "type": "file",
+                    "name": "DMSO_1.genrich.narrowPeak.annotated.gz"
+                  },
+                  {
+                    "type": "file",
+                    "name": "DMSO_1.genrich.narrowPeak.annotation_distribution"
+                  },
+                  {
+                    "type": "file",
+                    "name": "DMSO_1.genrich.narrowPeak.annotation_summary"
+                  },
+                  {
+                    "type": "file",
+                    "name": "DMSO_1.genrich.narrowPeak.genelist"
+                  },
+                  {
+                    "type": "file",
+                    "name": "DMSO_1.genrich.unfiltered.narrowPeak.annotated.gz"
+                  },
+                  {
+                    "type": "file",
+                    "name": "DMSO_1.genrich.unfiltered.narrowPeak.annotation_distribution"
+                  },
+                  {
+                    "type": "file",
+                    "name": "DMSO_1.genrich.unfiltered.narrowPeak.annotation_summary"
+                  },
+                  {
+                    "type": "file",
+                    "name": "DMSO_1.genrich.unfiltered.narrowPeak.genelist"
+                  },
+                  {
+                    "type": "file",
+                    "name": "DMSO_1.macs2.narrowPeak.annotated.gz"
+                  },
+                  {
+                    "type": "file",
+                    "name": "DMSO_1.macs2.narrowPeak.annotation_distribution"
+                  },
+                  {
+                    "type": "file",
+                    "name": "DMSO_1.macs2.narrowPeak.annotation_summary"
+                  },
+                  {
+                    "type": "file",
+                    "name": "DMSO_1.macs2.narrowPeak.genelist"
+                  },
+                  {
+                    "type": "file",
+                    "name": "DMSO_1.macs2.unfiltered.narrowPeak.annotated.gz"
+                  },
+                  {
+                    "type": "file",
+                    "name": "DMSO_1.macs2.unfiltered.narrowPeak.annotation_distribution"
+                  },
+                  {
+                    "type": "file",
+                    "name": "DMSO_1.macs2.unfiltered.narrowPeak.annotation_summary"
+                  },
+                  {
+                    "type": "file",
+                    "name": "DMSO_1.macs2.unfiltered.narrowPeak.genelist"
+                  },
+                  {
+                    "type": "file",
+                    "name": "DMSO_2.genrich.narrowPeak.annotated.gz"
+                  },
+                  {
+                    "type": "file",
+                    "name": "DMSO_2.genrich.narrowPeak.annotation_distribution"
+                  },
+                  {
+                    "type": "file",
+                    "name": "DMSO_2.genrich.narrowPeak.annotation_summary"
+                  },
+                  {
+                    "type": "file",
+                    "name": "DMSO_2.genrich.narrowPeak.genelist"
+                  },
+                  {
+                    "type": "file",
+                    "name": "DMSO_2.genrich.unfiltered.narrowPeak.annotated.gz"
+                  },
+                  {
+                    "type": "file",
+                    "name": "DMSO_2.genrich.unfiltered.narrowPeak.annotation_distribution"
+                  },
+                  {
+                    "type": "file",
+                    "name": "DMSO_2.genrich.unfiltered.narrowPeak.annotation_summary"
+                  },
+                  {
+                    "type": "file",
+                    "name": "DMSO_2.genrich.unfiltered.narrowPeak.genelist"
+                  },
+                  {
+                    "type": "file",
+                    "name": "DMSO_2.macs2.narrowPeak.annotated.gz"
+                  },
+                  {
+                    "type": "file",
+                    "name": "DMSO_2.macs2.narrowPeak.annotation_distribution"
+                  },
+                  {
+                    "type": "file",
+                    "name": "DMSO_2.macs2.narrowPeak.annotation_summary"
+                  },
+                  {
+                    "type": "file",
+                    "name": "DMSO_2.macs2.narrowPeak.genelist"
+                  },
+                  {
+                    "type": "file",
+                    "name": "DMSO_2.macs2.unfiltered.narrowPeak.annotated.gz"
+                  },
+                  {
+                    "type": "file",
+                    "name": "DMSO_2.macs2.unfiltered.narrowPeak.annotation_distribution"
+                  },
+                  {
+                    "type": "file",
+                    "name": "DMSO_2.macs2.unfiltered.narrowPeak.annotation_summary"
+                  },
+                  {
+                    "type": "file",
+                    "name": "DMSO_2.macs2.unfiltered.narrowPeak.genelist"
+                  },
+                  {
+                    "type": "file",
+                    "name": "DMSO.genrich.consensus.bed.annotated.gz"
+                  },
+                  {
+                    "type": "file",
+                    "name": "DMSO.genrich.consensus.bed.annotation_distribution"
+                  },
+                  {
+                    "type": "file",
+                    "name": "DMSO.genrich.consensus.bed.annotation_summary"
+                  },
+                  {
+                    "type": "file",
+                    "name": "DMSO.genrich.consensus.bed.genelist"
+                  },
+                  {
+                    "type": "file",
+                    "name": "DMSO.genrich.pooled.narrowPeak.annotated.gz"
+                  },
+                  {
+                    "type": "file",
+                    "name": "DMSO.genrich.pooled.narrowPeak.annotation_distribution"
+                  },
+                  {
+                    "type": "file",
+                    "name": "DMSO.genrich.pooled.narrowPeak.annotation_summary"
+                  },
+                  {
+                    "type": "file",
+                    "name": "DMSO.genrich.pooled.narrowPeak.genelist"
+                  },
+                  {
+                    "type": "file",
+                    "name": "DMSO.genrich.pooled.unfiltered.narrowPeak.annotated.gz"
+                  },
+                  {
+                    "type": "file",
+                    "name": "DMSO.genrich.pooled.unfiltered.narrowPeak.annotation_distribution"
+                  },
+                  {
+                    "type": "file",
+                    "name": "DMSO.genrich.pooled.unfiltered.narrowPeak.annotation_summary"
+                  },
+                  {
+                    "type": "file",
+                    "name": "DMSO.genrich.pooled.unfiltered.narrowPeak.genelist"
+                  },
+                  {
+                    "type": "file",
+                    "name": "DMSO.macs2.consensus.bed.annotated.gz"
+                  },
+                  {
+                    "type": "file",
+                    "name": "DMSO.macs2.consensus.bed.annotation_distribution"
+                  },
+                  {
+                    "type": "file",
+                    "name": "DMSO.macs2.consensus.bed.annotation_summary"
+                  },
+                  {
+                    "type": "file",
+                    "name": "DMSO.macs2.consensus.bed.genelist"
+                  },
+                  {
+                    "type": "file",
+                    "name": "DMSO.macs2.pooled.narrowPeak.annotated.gz"
+                  },
+                  {
+                    "type": "file",
+                    "name": "DMSO.macs2.pooled.narrowPeak.annotation_distribution"
+                  },
+                  {
+                    "type": "file",
+                    "name": "DMSO.macs2.pooled.narrowPeak.annotation_summary"
+                  },
+                  {
+                    "type": "file",
+                    "name": "DMSO.macs2.pooled.narrowPeak.genelist"
+                  },
+                  {
+                    "type": "file",
+                    "name": "DMSO.macs2.pooled.unfiltered.narrowPeak.annotated.gz"
+                  },
+                  {
+                    "type": "file",
+                    "name": "DMSO.macs2.pooled.unfiltered.narrowPeak.annotation_distribution"
+                  },
+                  {
+                    "type": "file",
+                    "name": "DMSO.macs2.pooled.unfiltered.narrowPeak.annotation_summary"
+                  },
+                  {
+                    "type": "file",
+                    "name": "DMSO.macs2.pooled.unfiltered.narrowPeak.genelist"
+                  }
+                ]
+              },
+              {
+                "type": "directory",
+                "name": "preseq",
+                "contents": [
+                  { "type": "file", "name": "AU_1.nrf" },
+                  { "type": "file", "name": "AU_1.preseq" },
+                  { "type": "file", "name": "AU_1.preseq.log" },
+                  { "type": "file", "name": "AU_2.nrf" },
+                  { "type": "file", "name": "AU_2.preseq" },
+                  { "type": "file", "name": "AU_2.preseq.log" },
+                  { "type": "file", "name": "DMSO_1.nrf" },
+                  { "type": "file", "name": "DMSO_1.preseq" },
+                  { "type": "file", "name": "DMSO_1.preseq.log" },
+                  { "type": "file", "name": "DMSO_2.nrf" },
+                  { "type": "file", "name": "DMSO_2.preseq" },
+                  { "type": "file", "name": "DMSO_2.preseq.log" }
+                ]
+              },
+              { "type": "file", "name": "QCStats.tsv" },
+              {
+                "type": "directory",
+                "name": "tss",
+                "contents": [
+                  { "type": "file", "name": "AU_1.tss.txt" },
+                  { "type": "file", "name": "AU_2.tss.txt" },
+                  { "type": "file", "name": "DMSO_1.tss.txt" },
+                  { "type": "file", "name": "DMSO_2.tss.txt" }
+                ]
+              }
+            ]
+          },
+          {
+            "type": "directory",
+            "name": "spikein",
+            "contents": [
+              {
+                "type": "directory",
+                "name": "AU_1",
+                "contents": [{ "type": "file", "name": "AU_1.counts" }]
+              },
+              {
+                "type": "directory",
+                "name": "AU_2",
+                "contents": [{ "type": "file", "name": "AU_2.counts" }]
+              },
+              {
+                "type": "directory",
+                "name": "DMSO_1",
+                "contents": [{ "type": "file", "name": "DMSO_1.counts" }]
+              },
+              {
+                "type": "directory",
+                "name": "DMSO_2",
+                "contents": [{ "type": "file", "name": "DMSO_2.counts" }]
+              },
+              { "type": "file", "name": "scaling_factors.tsv" }
+            ]
+          },
+          {
+            "type": "directory",
+            "name": "tmp",
+            "contents": [
+              {
+                "type": "directory",
+                "name": "BL",
+                "contents": [
+                  { "type": "file", "name": "hg38_blacklist.amb" },
+                  { "type": "file", "name": "hg38_blacklist.ann" },
+                  { "type": "file", "name": "hg38_blacklist.bwt" },
+                  { "type": "file", "name": "hg38_blacklist.pac" },
+                  { "type": "file", "name": "hg38_blacklist.sa" }
+                ]
+              },
+              { "type": "directory", "name": "genrichReads", "contents": [] },
+              {
+                "type": "directory",
+                "name": "trim",
+                "contents": [
+                  { "type": "file", "name": "AU_1.R1.noBL.fastq.gz" },
+                  { "type": "file", "name": "AU_1.R1.trim.fastq.gz" },
+                  { "type": "file", "name": "AU_1.R2.noBL.fastq.gz" },
+                  { "type": "file", "name": "AU_1.R2.trim.fastq.gz" },
+                  { "type": "file", "name": "AU_2.R1.noBL.fastq.gz" },
+                  { "type": "file", "name": "AU_2.R1.trim.fastq.gz" },
+                  { "type": "file", "name": "AU_2.R2.noBL.fastq.gz" },
+                  { "type": "file", "name": "AU_2.R2.trim.fastq.gz" },
+                  { "type": "file", "name": "DMSO_1.R1.noBL.fastq.gz" },
+                  { "type": "file", "name": "DMSO_1.R1.trim.fastq.gz" },
+                  { "type": "file", "name": "DMSO_1.R2.noBL.fastq.gz" },
+                  { "type": "file", "name": "DMSO_1.R2.trim.fastq.gz" },
+                  { "type": "file", "name": "DMSO_2.R1.noBL.fastq.gz" },
+                  { "type": "file", "name": "DMSO_2.R1.trim.fastq.gz" },
+                  { "type": "file", "name": "DMSO_2.R2.noBL.fastq.gz" },
+                  { "type": "file", "name": "DMSO_2.R2.trim.fastq.gz" }
+                ]
+              }
+            ]
+          },
+          {
+            "type": "directory",
+            "name": "visualization",
+            "contents": [
+              {
+                "type": "directory",
+                "name": "reads_bam",
+                "contents": [
+                  { "type": "file", "name": "AU_1.reads.bam" },
+                  { "type": "file", "name": "AU_1.reads.bam.bai" },
+                  { "type": "file", "name": "AU_2.reads.bam" },
+                  { "type": "file", "name": "AU_2.reads.bam.bai" },
+                  { "type": "file", "name": "DMSO_1.reads.bam" },
+                  { "type": "file", "name": "DMSO_1.reads.bam.bai" },
+                  { "type": "file", "name": "DMSO_2.reads.bam" },
+                  { "type": "file", "name": "DMSO_2.reads.bam.bai" }
+                ]
+              },
+              {
+                "type": "directory",
+                "name": "reads_bed",
+                "contents": [
+                  { "type": "file", "name": "AU_1.reads.bed.gz" },
+                  { "type": "file", "name": "AU_2.reads.bed.gz" },
+                  { "type": "file", "name": "DMSO_1.reads.bed.gz" },
+                  { "type": "file", "name": "DMSO_2.reads.bed.gz" }
+                ]
+              },
+              {
+                "type": "directory",
+                "name": "reads_bigwig",
+                "contents": [
+                  { "type": "file", "name": "AU_1.reads.bw" },
+                  { "type": "file", "name": "AU_2.reads.bw" },
+                  { "type": "file", "name": "DMSO_1.reads.bw" },
+                  { "type": "file", "name": "DMSO_2.reads.bw" }
+                ]
+              },
+              {
+                "type": "directory",
+                "name": "tn5sites_bam",
+                "contents": [
+                  { "type": "file", "name": "AU_1.tn5sites.bam" },
+                  { "type": "file", "name": "AU_1.tn5sites.bam.bai" },
+                  { "type": "file", "name": "AU_2.tn5sites.bam" },
+                  { "type": "file", "name": "AU_2.tn5sites.bam.bai" },
+                  { "type": "file", "name": "DMSO_1.tn5sites.bam" },
+                  { "type": "file", "name": "DMSO_1.tn5sites.bam.bai" },
+                  { "type": "file", "name": "DMSO_2.tn5sites.bam" },
+                  { "type": "file", "name": "DMSO_2.tn5sites.bam.bai" }
+                ]
+              },
+              {
+                "type": "directory",
+                "name": "tn5sites_bigwig",
+                "contents": [
+                  { "type": "file", "name": "AU_1.tn5sites.bw" },
+                  { "type": "file", "name": "AU_2.tn5sites.bw" },
+                  { "type": "file", "name": "DMSO_1.tn5sites.bw" },
+                  { "type": "file", "name": "DMSO_2.tn5sites.bw" }
+                ]
+              }
+            ]
+          }
+        ]
+      },
+      { "type": "file", "name": "runinfo.yaml" },
+      { "type": "file", "name": "runslurm_snakemake_report.html" },
+      { "type": "file", "name": "sampleinfo.txt" },
+      { "type": "file", "name": "samples.tsv" },
+      {
+        "type": "directory",
+        "name": "scripts",
+        "contents": [
+          { "type": "file", "name": "_aggregate_motif_enrichments.py" },
+          { "type": "file", "name": "aggregate_results.Rmd" },
+          { "type": "file", "name": "aggregate_results_runner.R" },
+          { "type": "file", "name": "atac_assign_multimappers.py" },
+          { "type": "file", "name": "ccbr_annotate_bed.R" },
+          { "type": "file", "name": "ccbr_annotate_peaks.R" },
+          { "type": "file", "name": "ccbr_atac_bam2FLD.py" },
+          { "type": "file", "name": "ccbr_atac_bam2tn5bed.py" },
+          { "type": "file", "name": "ccbr_atac_genrich_peak_calling.bash" },
+          {
+            "type": "file",
+            "name": "ccbr_atac_get_fixedwidth_consensus_renormalized_peaks.sh"
+          },
+          { "type": "file", "name": "ccbr_atac_macs2_peak_calling.bash" },
+          { "type": "file", "name": "ccbr_atac_motif_enrichment.bash" },
+          { "type": "file", "name": "ccbr_atac_qc.bash" },
+          { "type": "file", "name": "ccbr_atac_tagAlign2TSS.bash" },
+          { "type": "file", "name": "ccbr_atac_trim_align_pe.bash" },
+          { "type": "file", "name": "ccbr_bam2nrf.bash" },
+          { "type": "file", "name": "ccbr_bam_filter_by_mapq.py" },
+          { "type": "file", "name": "ccbr_bowtie2_align_pe.bash" },
+          { "type": "file", "name": "_ccbr_counts2density.py" },
+          { "type": "file", "name": "ccbr_cutadapt_pe.bash" },
+          { "type": "file", "name": "ccbr_frip.bash" },
+          { "type": "file", "name": "ccbr_get_consensus_peaks.py" },
+          { "type": "file", "name": "ccbr_jaccard_pca.bash" },
+          { "type": "file", "name": "ccbr_remove_blacklisted_reads_pe.bash" },
+          {
+            "type": "file",
+            "name": "_compute_downsampling_scaling_factors.py"
+          },
+          { "type": "file", "name": "DESeq2.Rmd" },
+          { "type": "file", "name": "DESeq2_runner.R" },
+          { "type": "file", "name": "_featureCounts_header_fix.py" },
+          {
+            "type": "file",
+            "name": "fixed_width_peakSets_to_consensus_peakSet.R"
+          },
+          { "type": "file", "name": "narrowPeak_normalize_pvalues.R" },
+          { "type": "file", "name": "narrowPeak_to_fixed_width_peakSet.R" },
+          { "type": "file", "name": "_nrf.py" },
+          { "type": "file", "name": "pairwise.Rmd" },
+          { "type": "file", "name": "picardcloud.jar" },
+          { "type": "file", "name": "_print_replicate_scaling_factor.py" },
+          { "type": "file", "name": "_qc_annotated2peakwidthdensity.py" },
+          { "type": "file", "name": "_qc_create_frip_stats_table.bash" },
+          { "type": "file", "name": "_qc_make_qcstats_table.py" },
+          { "type": "file", "name": "_scale_counts.py" },
+          { "type": "file", "name": "script1.py" },
+          { "type": "file", "name": "_transpose.sh" }
+        ]
+      },
+      { "type": "file", "name": "slurm-55700415.out" },
+      { "type": "file", "name": "snakemake.log" },
+      { "type": "file", "name": "snakemake.stats" },
+      { "type": "directory", "name": "stats", "contents": [] },
+      { "type": "file", "name": "submit_script.sbatch" },
+      { "type": "file", "name": "tools.yaml" }
+    ]
+  },
+  { "type": "report", "directories": 51, "files": 635 }
+]
