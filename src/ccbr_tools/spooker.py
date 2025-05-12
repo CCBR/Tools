@@ -100,7 +100,7 @@ def spooker(
     timestamp = metadata["date"]
 
     # tree json
-    tree_str = get_tree(pipeline_outdir, args="-J")
+    tree_str = get_tree(pipeline_outdir)
     metadata["tree_json"] = tree_str
 
     # TODO: determine nsamples, different logic for each pipeline
@@ -164,7 +164,7 @@ def collect_metadata(
     return metadata
 
 
-def get_tree(pipeline_outdir, args="-J"):
+def get_tree(pipeline_outdir, args="-aJ"):
     """
     Generate a directory tree structure using the `tree` command-line utility
 
@@ -172,7 +172,7 @@ def get_tree(pipeline_outdir, args="-J"):
         pipeline_outdir (str): The path to the directory for which the tree
             structure will be generated.
         args (str, optional): Additional arguments to pass to the `tree`
-            command. Defaults to "-J" for JSON output.
+            command. Defaults to "-aJ" for including hidden files and formatting output as JSON
 
     Returns:
         str: The directory tree structure as a string, stripped of any
