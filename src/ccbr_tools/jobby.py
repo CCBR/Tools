@@ -335,7 +335,7 @@ def main():
         print("  jobby .nextflow.log [--tsv|--json|--yaml]")
         print("  jobby -v or --version")
         print("  jobby -h or --help")
-    elif len(args) == 1 and ('-v' in args or '--version' in args):
+    elif len(args) == 1 and ("-v" in args or "--version" in args):
         # read in the file "VERSION" in the current directory
         version_file = os.path.join(os.path.dirname(__file__), "VERSION")
         if os.path.isfile(version_file):
