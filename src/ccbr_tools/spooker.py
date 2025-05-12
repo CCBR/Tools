@@ -19,6 +19,7 @@ import shutil
 import tarfile
 
 from .shell import shell_run
+from .pipeline import count_samples
 from .pipeline.hpc import Cluster, list_modules, parse_modules
 from .pkg_util import get_version, get_random_string, get_timestamp
 from .jobby import jobby
@@ -104,7 +105,8 @@ def spooker(
     metadata["tree_json"] = tree_str
 
     # TODO: determine nsamples, different logic for each pipeline
-    tree_json = json.loads(tree_str)
+    nsamples = count_samples(tree_str, pipeline_name)
+    # tree_json = json.loads(tree_str)
 
     # jobby json
     log_file = glob_files(
