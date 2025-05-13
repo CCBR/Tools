@@ -337,15 +337,11 @@ def main():
         print("  jobby -v or --version")
         print("  jobby -h or --help")
     elif len(args) == 1 and ("-v" in args or "--version" in args):
-        # read in the file "VERSION" in the current directory
-        version_file = os.path.join(os.path.dirname(__file__), "VERSION")
-        if os.path.isfile(version_file):
-            with open(version_file, "r") as f:
-                version = f.read().strip()
-                # add prefix "v" to the version string if not already present
-                if not version.startswith("v"):
-                    version = "v" + version
-            print(f"jobby: ccbr_tools version: {version}")
+        version = get_version()
+        # add prefix "v" to the version string if not already present
+        if not version.startswith("v"):
+            version = f"v{version}"
+        print(f"jobby: ccbr_tools version: {version}")
     else:
         jobby(args)
 
