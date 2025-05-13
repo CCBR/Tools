@@ -276,4 +276,10 @@ def test_format_df():
 
 def test_jobby_version():
     output = shell_run("jobby --version")
-    assert output.startswith("jobby: ccbr_tools version: ")
+    this_version = shell_run("ccbr_tools --version").split()[-1]
+    assert all(
+        [
+            output.startswith("jobby: ccbr_tools version: "),
+            output.strip().endswith(this_version),
+        ]
+    )
