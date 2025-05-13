@@ -37,6 +37,7 @@ EXAMPLES:
     jobby 12345678,12345679 --tsv
 
 """
+from .pkg_util import get_version
 
 import subprocess
 import sys
