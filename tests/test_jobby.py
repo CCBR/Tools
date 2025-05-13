@@ -18,6 +18,7 @@ from ccbr_tools.jobby import (
     format_df,
 )
 from ccbr_tools.pipeline.hpc import get_hpcname
+from ccbr_tools.shell import shell_run
 
 HPC = get_hpcname()
 
@@ -271,3 +272,8 @@ def test_format_df():
         )  # extra newline when files were printed
         assertions.append([actual, expected])
     assert all([actual == expected for actual, expected in assertions])
+
+
+def test_jobby_version():
+    output = shell_run("jobby --version")
+    assert output.startswith("jobby: ccbr_tools version: ")
