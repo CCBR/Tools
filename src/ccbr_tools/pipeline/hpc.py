@@ -102,7 +102,7 @@ class FRCE(Cluster):
     GROUP = "nci-frederick-ccbr-pipelines"
     PIPELINES_HOME = pathlib.Path("/mnt/projects/CCBR-Pipelines/pipelines")
     TOOLS_HOME = pathlib.Path("/mnt/projects/CCBR-Pipelines/tools")
-    CONDA_ACTIVATE = '. "/mnt/projects/CCBR-Pipelines/resources/miniconda3/etc/profile.d/conda.sh" && conda activate py311'
+    CONDA_ACTIVATE = ". '/mnt/projects/CCBR-Pipelines/resources/miniconda3/etc/profile.d/conda.sh' && conda activate py311"
 
     def __init__(self):
         super().__init__()
