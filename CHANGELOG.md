@@ -1,10 +1,8 @@
 ## Tools development version
 
-## Tools 0.4.0
-
 ### New features
 
-- `jobby` overhaul (#59, @kopardev)
+- `jobby` overhaul (#59, #75, @kopardev)
   - Uses `saccount` to get slurm job information, which should work for any HPC running slurm.
   - Has options `--tsv`, `--json`, and `--yaml` to output the job information in those formats. If not specified, markdown is used.
   - Can accept a snakemake log file, nextflow log file, or a list of slurm job IDs as input.
