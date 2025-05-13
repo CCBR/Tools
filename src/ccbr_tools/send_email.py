@@ -49,5 +49,6 @@ def send_email_msg(
         )
     if debug:
         return msg
-    with smtplib.SMTP("localhost") as server:
-        server.send_message(msg)
+    else:
+        with smtplib.SMTP("localhost") as server:
+            server.send_message(msg)

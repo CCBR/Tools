@@ -6,11 +6,13 @@ import tempfile
 
 
 def test_version_flag():
-    assert shell_run("ccbr_tools -v").startswith("ccbr_tools, version ")
+    version = shell_run("ccbr_tools --version")
+    assert version.startswith("ccbr_tools, version ")
 
 
 def test_version_cmd():
-    assert shell_run("ccbr_tools version --debug").startswith("VERSION file path")
+    version = shell_run("ccbr_tools version --debug")
+    assert version.startswith("VERSION file path")
 
 
 def test_help():
