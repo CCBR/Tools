@@ -16,10 +16,10 @@ import os
 import pathlib
 
 from .paths import get_tree, load_tree, get_disk_usage, glob_files
-from .pipeline import count_samples
+from .pipeline import count_pipeline_samples
 from .pipeline.hpc import Cluster, list_modules, parse_modules
 from .pkg_util import get_version, get_random_string, get_timestamp
-from .jobby import jobby
+from .jobby import jobby, get_failed_job_logs
 from .shell import get_groups, shell_run
 
 
@@ -52,8 +52,8 @@ def cli(outdir, name, version, path):
 
 def spooker(
     pipeline_outdir: pathlib.Path,
-    pipeline_version: str,
     pipeline_name: str,
+    pipeline_version: str,
     pipeline_path: str,
     clean=True,
     debug=False,
@@ -103,21 +103,22 @@ def spooker(
     )
     timestamp = metadata["pipeline_metadata"]["date"]
 
-    # jobby json
+    # jobby & logs
     log_file = glob_files(
         pipeline_outdir, patterns=["snakemake.log", ".nextflow.log"]
     ).pop()
-    metadata["jobby"] = json.dumps(jobby([log_file, "--json"]))
-
-    # TODO master job log
-    metadata["master_job_log"] = {"txt": None}
-    # TODO failed jobs logfiles
-    metadata["failed_jobs"] = {}
+    jobby_df = jobby([log_file])
+    metadata["jobby"] = jobby_df.to_json(orient="records", indent=2)
+    with open(log_file, "r") as infile:
+        metadata["master_job_log"] = {"txt": infile.read()}
+    metadata["failed_jobs"] = get_failed_job_logs(jobby_df.to_dict(orient="records"))
 
     # write metadata to json
     meta_outfilename = pipeline_outdir / f"{timestamp}.json.gz"
     with gzip.open(meta_outfilename, "wt") as outfile:
         json.dump(metadata, outfile, indent=4)
+    print(f"Metadata written to {meta_outfilename}")
+    assert meta_outfilename.exists()
 
     # copy to staging directory
     hpc = Cluster.create_hpc(debug=debug)
@@ -125,10 +126,12 @@ def spooker(
         file=meta_outfilename,
         subdir=f"{get_random_string()}_{metadata['pipeline_metadata']['user']}_{timestamp}",
     )
+    assert spook_outfilename.exists()
 
     # optional cleanup
     if clean:
         meta_outfilename.unlink()
+    print(f"Metadata staged to {spook_outfilename}")
     return spook_outfilename
 
 
@@ -156,7 +159,7 @@ def collect_metadata(
         "ccbrpipeliner", "unknown"
     )
     groups = get_groups()
-    nsamples = count_samples(tree_str, pipeline_name)
+    nsamples = count_pipeline_samples(tree_str, pipeline_name)
 
     metadata = {
         "pipeline_name": pipeline_name,

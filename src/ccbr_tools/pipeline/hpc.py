@@ -8,6 +8,7 @@ which contains default attributes for supported clusters.
 import pathlib
 import re
 import shutil
+import subprocess
 
 from .cache import get_singularity_cachedir, get_sif_cache_dir
 from ..shell import shell_run
@@ -96,11 +97,16 @@ class Biowulf(Cluster):
             )
         )
 
-    def spook(self, file, subdir=None):
-        dest_dir = self.SPOOK_DIR / subdir if subdir else self.SPOOK_DIR
-        dest_dir.mkdir(parents=True, exist_ok=True)
-        shell_run(f"spook -f {file} -d {dest_dir} --nosubfolder", capture_output=False)
-        return dest_dir / file.name
+    # def spook(self, file, subdir=None):
+    #     dest_dir = self.SPOOK_DIR / subdir if subdir else self.SPOOK_DIR
+    #     dest_dir.mkdir(parents=True, exist_ok=True)
+    #     outfile = dest_dir / file.name
+    #     try:
+    #         shell_run(f"spook -f {file} -d {dest_dir} --nosubfolder", capture_output=False)
+    #     except subprocess.CalledProcessError as err:
+    #         outfile = super().spook(file, subdir=subdir)
+    #         warnings.warn(f"Error running spook, copying file instead. Original error: {repr(err)}")
+    #     return outfile
 
 
 class FRCE(Cluster):

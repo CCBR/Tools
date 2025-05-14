@@ -20,7 +20,7 @@ import re
 import warnings
 
 
-def count_samples(tree_str, pipeline_name):
+def count_pipeline_samples(tree_str, pipeline_name):
     """
     Count the number of samples in a pipeline run.
 
@@ -46,7 +46,8 @@ def count_samples(tree_str, pipeline_name):
 class Pipeline:
     SAMPLES_PATTERN = None  # must be a regex pattern with exactly one capture group, which excludes slashes
 
-    def count_samples(self, tree_str):
+    @classmethod
+    def count_samples(cls, tree_str):
         """
         Count the number of samples in a pipeline run.
 
@@ -63,10 +64,10 @@ class Pipeline:
         nsamples = math.nan
         try:
             # get unique set of capture groups for all matches
-            nsamples = len(set(re.findall(self.SAMPLES_PATTERN, tree_str)))
+            nsamples = len(set(re.findall(cls.SAMPLES_PATTERN, tree_str)))
         except Exception as err:
             warnings.warn(
-                f"Could not determine number of samples for pipeline {pipeline_name}. See original error message below:\n{repr(err)}"
+                f"Could not determine number of samples. See original error message below:\n{repr(err)}"
             )
         return nsamples
 

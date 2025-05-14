@@ -15,8 +15,8 @@ from ccbr_tools.spooker import spooker
 def test_spooker():
     out_filename = spooker(
         pipeline_outdir=pathlib.Path("tests/data/pipeline_run"),
-        pipeline_version="0.1.0",
         pipeline_name="test_pipeline",
+        pipeline_version="0.1.0",
         pipeline_path="unknown",
         clean=True,
         debug="gha",
