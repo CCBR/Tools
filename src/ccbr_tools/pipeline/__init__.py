@@ -96,7 +96,7 @@ class ESCAPE(Pipeline):
 
 
 class LOGAN(Pipeline):
-    SAMPLES_PATTERN = None  # TODO
+    SAMPLES_PATTERN = r'"name":"([a-zA-Z0-9_\-\.]*.bqsr.bam.bai)"'
 
 
 class RENEE(Pipeline):
