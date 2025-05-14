@@ -1,15 +1,22 @@
 """
 Helpers for bioinformatics pipelines
 
+Submodules:
+
 - [](`~ccbr_tools.pipeline.cache`)
 - [](`~ccbr_tools.pipeline.hpc`)
 - [](`~ccbr_tools.pipeline.nextflow`)
 - [](`~ccbr_tools.pipeline.util`)
+
+Main classes & functions
+
+- [](`~ccbr_tools.pipeline.Pipeline`): Base class for all pipelines.
+- [](`~ccbr_tools.pipeline.create_pipeline`): Create a pipeline object from a pipeline name.
+- [](`~ccbr_tools.pipeline.count_samples`): Count the number of samples in a pipeline run.
 """
 
 import math
 import re
-from ..paths import load_tree
 
 
 def count_samples(tree_str, pipeline_name):

@@ -5,6 +5,8 @@ This command is designed to be used as part of the OnComplete/OnSuccess/OnError 
 It collects metadata about the pipeline run, bundles it into a tarball, and saves it to a common location for later retrieval.
 
 Run `spooker --help` for more information.
+
+See [](`~ccbr_tools.spooker.spooker`) for the main function
 """
 
 import click
