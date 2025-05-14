@@ -41,19 +41,35 @@ pip install git+https://github.com/CCBR/Tools@v0.2.4
 ccbr_tools --help
 ```
 
-    Traceback (most recent call last):
-      File "/opt/hostedtoolcache/Python/3.11.12/x64/bin/ccbr_tools", line 5, in <module>
-        from ccbr_tools.__main__ import main
-      File "/opt/hostedtoolcache/Python/3.11.12/x64/lib/python3.11/site-packages/ccbr_tools/__main__.py", line 17, in <module>
-        from .software import install as install_software
-      File "/opt/hostedtoolcache/Python/3.11.12/x64/lib/python3.11/site-packages/ccbr_tools/software.py", line 1, in <module>
-        from .pipeline.hpc import Cluster
-      File "/opt/hostedtoolcache/Python/3.11.12/x64/lib/python3.11/site-packages/ccbr_tools/pipeline/__init__.py", line 14, in <module>
-        class Pipeline:
-      File "/opt/hostedtoolcache/Python/3.11.12/x64/lib/python3.11/site-packages/ccbr_tools/pipeline/__init__.py", line 18, in Pipeline
-        def create(pipeline_name, pipelines=PIPELINES):
-                                            ^^^^^^^^^
-    NameError: name 'PIPELINES' is not defined
+    Usage: ccbr_tools [OPTIONS] COMMAND [ARGS]...
+
+      Utilities for CCBR Bioinformatics Software
+
+      For more options, run: ccbr_tools [command] --help
+
+      https://ccbr.github.io/Tools/
+
+    Options:
+      -v, --version  Show the version and exit.
+      -h, --help     Show this message and exit.
+
+    Commands:
+      send-email  Send an email (works on biowulf)
+      quarto-add  Add a quarto extension
+      install     Install a specific version of a CCBR software package,...
+      cite        Print the citation in the desired format
+      version     Print the version of ccbr_tools
+
+    All installed tools:
+      ccbr_tools
+      gb2gtf
+      hf
+      intersect
+      jobby
+      jobinfo
+      module_list
+      peek
+      spooker
 
 ### Python
 
@@ -144,34 +160,19 @@ guidelines](https://CCBR.github.io/Tools/CONTRIBUTING).
 
 Please cite this software if you use it in a publication:
 
-Traceback (most recent call last): File
-“/opt/hostedtoolcache/Python/3.11.12/x64/bin/ccbr_tools”, line 5, in
-<module> from ccbr_tools.\_\_main\_\_ import main File
-“/opt/hostedtoolcache/Python/3.11.12/x64/lib/python3.11/site-packages/ccbr_tools/**main**.py”,
-line 17, in <module> from .software import install as install_software
-File
-“/opt/hostedtoolcache/Python/3.11.12/x64/lib/python3.11/site-packages/ccbr_tools/software.py”,
-line 1, in <module> from .pipeline.hpc import Cluster File
-“/opt/hostedtoolcache/Python/3.11.12/x64/lib/python3.11/site-packages/ccbr_tools/pipeline/**init**.py”,
-line 14, in <module> class Pipeline: File
-“/opt/hostedtoolcache/Python/3.11.12/x64/lib/python3.11/site-packages/ccbr_tools/pipeline/**init**.py”,
-line 18, in Pipeline def create(pipeline_name, pipelines=PIPELINES):
-^^^^^^^^^ NameError: name ‘PIPELINES’ is not defined
+> Sovacool K., Koparde V., Kuhn S., Tandon M., and Huse S. (2025). CCBR
+> Tools: Utilities for CCBR Bioinformatics Software (version v0.3.2).
+> DOI: 10.5281/zenodo.13377166 URL: https://ccbr.github.io/Tools/
 
 ### Bibtex entry
 
 ```bibtex
-Traceback (most recent call last):
-  File "/opt/hostedtoolcache/Python/3.11.12/x64/bin/ccbr_tools", line 5, in <module>
-    from ccbr_tools.__main__ import main
-  File "/opt/hostedtoolcache/Python/3.11.12/x64/lib/python3.11/site-packages/ccbr_tools/__main__.py", line 17, in <module>
-    from .software import install as install_software
-  File "/opt/hostedtoolcache/Python/3.11.12/x64/lib/python3.11/site-packages/ccbr_tools/software.py", line 1, in <module>
-    from .pipeline.hpc import Cluster
-  File "/opt/hostedtoolcache/Python/3.11.12/x64/lib/python3.11/site-packages/ccbr_tools/pipeline/__init__.py", line 14, in <module>
-    class Pipeline:
-  File "/opt/hostedtoolcache/Python/3.11.12/x64/lib/python3.11/site-packages/ccbr_tools/pipeline/__init__.py", line 18, in Pipeline
-    def create(pipeline_name, pipelines=PIPELINES):
-                                        ^^^^^^^^^
-NameError: name 'PIPELINES' is not defined
+@misc{YourReferenceHere,
+author = {Sovacool, Kelly and Koparde, Vishal and Kuhn, Skyler and Tandon, Mayank and Huse, Susan},
+doi = {10.5281/zenodo.13377166},
+month = {5},
+title = {CCBR Tools: Utilities for CCBR Bioinformatics Software},
+url = {https://ccbr.github.io/Tools/},
+year = {2025}
+}
 ```
