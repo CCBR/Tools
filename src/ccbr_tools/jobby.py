@@ -38,6 +38,8 @@ EXAMPLES:
 
 """
 
+from .paths import glob_files
+
 import subprocess
 import sys
 import os
@@ -287,24 +289,38 @@ def format_df(df, output_format):
     return out_str
 
 
+def get_failed_job_logs(jobby_dict, complete_state="COMPLETED", success_exit_code=0):
+    return {
+        job["JobID"]: get_job_logs(job)
+        for job in jobby_dict
+        if job["JobState"] != complete_state or job["ExitCode"] != success_exit_code
+    }
+
+
+def get_job_logs(job):
+    job_logs = {}
+    out_files = glob_files(
+        job["WorkDir"], patterns=[f'*{job["JobId"]}*.out', ".command.out"]
+    )
+    err_files = glob_files(
+        job["WorkDir"], patterns=[f'*{job["JobId"]}*.err', ".command.err"]
+    )
+    for key, files in {"out": out_files, "err": err_files}:
+        filepath = next(iter(files), None)
+        if len(files) > 1:
+            warnings.warn(
+                f"⚠️ Multiple {key} files found for job {job['JobId']}. Using {filepath}."
+            )
+        if filepath.exists():
+            job_logs[f"log_{key}_path"] = filepath
+            with open(out, "r") as infile:
+                job_logs[f"log_{key}_txt"] = infile.read()
+    return job_logs
+
+
 def jobby(args):
     if not isinstance(args, list):
         raise TypeError("Expected a list of arguments")
-
-    output_format = "markdown"
-    if "--tsv" in args:
-        output_format = "tsv"
-        args.remove("--tsv")
-    elif "--json" in args:
-        output_format = "json"
-        args.remove("--json")
-    elif "--yaml" in args:
-        output_format = "yaml"
-        args.remove("--yaml")
-        if yaml is None:
-            raise ImportError(
-                "❌ YAML output requested but PyYAML is not installed. Install with `pip install pyyaml`."
-            )
 
     # Case: 1 argument and it's a file
     if len(args) == 1 and os.path.isfile(args[0]):
@@ -316,8 +332,7 @@ def jobby(args):
     if job_ids:
         records = get_sacct_info(job_ids)
         if records:
-            df = records_to_df(records)
-            output = format_df(df, output_format)
+            output = records_to_df(records)
         else:
             warnings.warn("⚠️ No job data found.")
     else:
@@ -334,9 +349,24 @@ def main():
         print("  jobby snakemake.log [--tsv|--json|--yaml]")
         print("  jobby .nextflow.log [--tsv|--json|--yaml]")
     else:
+        output_format = "markdown"  # Default output format
+        if "--tsv" in args:
+            output_format = "tsv"
+            args.remove("--tsv")
+        elif "--json" in args:
+            output_format = "json"
+            args.remove("--json")
+        elif "--yaml" in args:
+            output_format = "yaml"
+            args.remove("--yaml")
+            if yaml is None:
+                raise ImportError(
+                    "❌ YAML output requested but PyYAML is not installed. Install with `pip install pyyaml`."
+                )
         jobby_out = jobby(args)
-        if jobby_out:
-            print(jobby_out)
+        if isinstance(jobby_out, pd.DataFrame):
+            out_str = format_df(jobby_out, output_format)
+            print(out_str)
 
 
 if __name__ == "__main__":

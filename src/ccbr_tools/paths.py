@@ -47,9 +47,9 @@ def load_tree(tree_str):
         # If JSON parsing fails, try to parse it as Python literal
         # This is useful for tree output with trailing commas
         tree_dict = ast.literal_eval(tree_str)
-        warnings.warn(
-            "Tree output has trailing commas, using ast.literal_eval instead of json.loads"
-        )
+        # warnings.warn(
+        #     "Tree output has trailing commas, using ast.literal_eval instead of json.loads"
+        # )
     return tree_dict
 
 
@@ -126,12 +126,7 @@ def glob_files(
     return {
         pathlib.Path(f)
         for pattern in patterns
-        for f in itertools.chain(
-            glob.glob(
-                f"{pipeline_outdir}/{pattern}",
-            ),
-            glob.glob(f"{pipeline_outdir}/**/{pattern}"),
-        )
+        for f in glob.glob(f"{pipeline_outdir}/**/{pattern}", recursive=True)
         if pathlib.Path(f).is_file()
     }
 
