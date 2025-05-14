@@ -14,10 +14,6 @@ import re
 class Pipeline:
     SAMPLES_PATTERN = None
 
-    @classmethod
-    def create(pipeline_name, pipelines=PIPELINES):
-        return PIPELINES.get(pipeline_name.lower(), None)
-
     def count_samples(self, tree_str):
         """
         Count the number of samples in a pipeline run.
@@ -56,6 +52,10 @@ PIPELINES = {
 }
 
 
+def create_pipeline(pipeline_name, pipelines=PIPELINES):
+    return pipelines.get(pipeline_name.lower(), None)
+
+
 def count_samples(tree_str, pipeline_name):
     """
     Count the number of samples in a pipeline run.
@@ -71,7 +71,7 @@ def count_samples(tree_str, pipeline_name):
         `~ccbr_tools.spooker.get_tree`: The function used to generate the tree structure.
     """
     nsamples = math.nan
-    pipeline = Pipeline.create(pipeline_name)
+    pipeline = create_pipeline(pipeline_name)
     if pipeline:
         nsamples = pipeline.count_samples(tree_str)
     else:
