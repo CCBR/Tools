@@ -93,7 +93,7 @@ class CRISPIN(Pipeline):
 
 
 class ESCAPE(Pipeline):
-    SAMPLES_PATTERN = None  # TODO
+    SAMPLES_PATTERN = r'"name":"([a-zA-Z0-9_\-\.]*).Aligned.out.filtered.bam"'
 
 
 class LOGAN(Pipeline):
