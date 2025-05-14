@@ -1,10 +1,13 @@
 import ast
 import glob
+import itertools
 import json
 import math
 import pathlib
 import tarfile
 import warnings
+
+from .shell import shell_run
 
 
 def get_tree(pipeline_outdir, args="-aJ --du"):

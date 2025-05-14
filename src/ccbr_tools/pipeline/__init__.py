@@ -17,6 +17,7 @@ Main classes & functions
 
 import math
 import re
+import warnings
 
 
 def count_samples(tree_str, pipeline_name):
@@ -125,4 +126,13 @@ PIPELINES = {
 
 
 def create_pipeline(pipeline_name, pipelines=PIPELINES):
+    """
+    Retrieves a pipeline class by its name from the provided pipelines dictionary.
+    Args:
+        pipeline_name (str): The name of the pipeline to retrieve.
+        pipelines (dict, optional): A dictionary mapping pipeline names to pipeline functions or objects.
+            Defaults to PIPELINES.
+    Returns:
+        object or None: The pipeline class if found; otherwise, None.
+    """
     return pipelines.get(pipeline_name.lower(), None)

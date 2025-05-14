@@ -1,12 +1,14 @@
+import math
 import pathlib
 import pytest
 from pprint import pprint
 import gzip
 import json
+import subprocess
+import tempfile
 
 
 from ccbr_tools.spooker import spooker
-from ccbr_tools.shell import shell_run
 
 
 @pytest.mark.filterwarnings("ignore:UserWarning")
@@ -25,13 +27,13 @@ def test_spooker():
     assert set(
         {
             "ccbrpipeliner_module": "unknown",
-            "jobby_json": '""',
             "pipeline_name": "test_pipeline",
             "pipeline_outdir": "tests/data/pipeline_run",
+            "pipeline_outdir_size": 4769,
             "pipeline_path": "unknown",
             "pipeline_version": "0.1.0",
         }.items()
-    ).issubset(set(spook_dat.items()))
+    ).issubset(set(spook_dat["pipeline_metadata"].items()))
 
 
 def test_spooker_no_outdir():
@@ -48,4 +50,9 @@ def test_spooker_no_outdir():
 
 
 def test_spooker_cli():
-    assert "Usage: spooker " in shell_run("spooker --help")
+    assert (
+        "Usage: spooker "
+        in subprocess.run(
+            "spooker --help", shell=True, capture_output=True, text=True
+        ).stdout
+    )

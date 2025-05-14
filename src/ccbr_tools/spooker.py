@@ -20,7 +20,7 @@ from .pipeline import count_samples
 from .pipeline.hpc import Cluster, list_modules, parse_modules
 from .pkg_util import get_version, get_random_string, get_timestamp
 from .jobby import jobby
-from .shell import shell_run
+from .shell import get_groups, shell_run
 
 
 @click.command(context_settings=dict(help_option_names=["-h", "--help"]))
@@ -137,8 +137,8 @@ def collect_metadata(
     pipeline_version: str,
     pipeline_name: str,
     pipeline_path: str,
-    timestamp=get_timestamp(),
     tree_str="{}",
+    timestamp=get_timestamp(),
 ):
     """
     Collect metadata for the pipeline run and save it to a file.
@@ -155,9 +155,7 @@ def collect_metadata(
     ccbrpipeliner_version = parse_modules(list_modules()).get(
         "ccbrpipeliner", "unknown"
     )
-    groups = shell_run("groups").strip()
-
-    # TODO: determine nsamples, different logic for each pipeline
+    groups = get_groups()
     nsamples = count_samples(tree_str, pipeline_name)
 
     metadata = {
@@ -168,7 +166,7 @@ def collect_metadata(
         "pipeline_version": pipeline_version,
         "ccbrpipeliner_module": ccbrpipeliner_version,
         "user": os.environ.get("USER"),
-        "uid": os.environ.get("UID"),
+        "uid": shell_run("echo $UID").strip(),
         "groups": groups,
         "date": timestamp,
         "nsamples": nsamples,

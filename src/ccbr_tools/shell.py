@@ -73,3 +73,7 @@ def concat_newline(*args: str):
         string (str): The concatenated string with newline characters between each non-empty argument.
     """
     return "\n".join([arg for arg in args if arg])
+
+
+def get_groups():
+    return shell_run("groups").strip()
