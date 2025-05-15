@@ -35,16 +35,36 @@ def count_pipeline_samples(tree_str, pipeline_name):
         `~ccbr_tools.spooker.get_tree`: The function used to generate the tree structure.
     """
     nsamples = math.nan
+    sample_names = set()
     pipeline = create_pipeline(pipeline_name)
     if pipeline:
+        sample_names = pipeline.get_samples(tree_str)
         nsamples = pipeline.count_samples(tree_str)
     else:
-        warnings.warn(f"Pipeline {pipeline_name} not recognized. Cannot count samples.")
-    return nsamples
+        warnings.warn(
+            f"Pipeline {pipeline_name} not recognized. Cannot retrieve samples."
+        )
+    return nsamples, sample_names
 
 
 class Pipeline:
     SAMPLES_PATTERN = None  # must be a regex pattern with exactly one capture group, which excludes slashes
+
+    @classmethod
+    def get_samples(cls, tree_str):
+        """
+        Get the sample names in a pipeline run.
+
+        Args:
+            tree_str (str): The tree as a JSON string representing the pipeline run output directory (from `tree -aJ` command).
+
+        Returns:
+            set: sample names. Returns an empty set if the pipeline is not recognized.
+
+        See Also:
+            `~ccbr_tools.spooker.get_tree`: The function used to generate the tree structure.
+        """
+        return set(re.findall(cls.SAMPLES_PATTERN, tree_str))
 
     @classmethod
     def count_samples(cls, tree_str):
@@ -64,7 +84,7 @@ class Pipeline:
         nsamples = math.nan
         try:
             # get unique set of capture groups for all matches
-            nsamples = len(set(re.findall(cls.SAMPLES_PATTERN, tree_str)))
+            nsamples = len(cls.get_samples(tree_str))
         except Exception as err:
             warnings.warn(
                 f"Could not determine number of samples. See original error message below:\n{repr(err)}"
@@ -73,19 +93,19 @@ class Pipeline:
 
 
 class ASPEN(Pipeline):
-    SAMPLES_PATTERN = r'"name":"([a-zA-Z0-9_\-\.]*.reads.bam.bai)"'
+    SAMPLES_PATTERN = r'"name":"([a-zA-Z0-9_\-\.]*).reads.bam.bai"'
 
 
 class CARLISLE(Pipeline):
-    SAMPLES_PATTERN = r'"name":"([a-zA-Z0-9_\-\.]*no_dedup.bam.bai)"'
+    SAMPLES_PATTERN = r'"name":"([a-zA-Z0-9_\-\.]*).no_dedup.bam.bai"'
 
 
 class CHAMPAGNE(Pipeline):
-    SAMPLES_PATTERN = r'"name":"([a-zA-Z0-9_\-]*filtered.sorted.bam.bai)"'
+    SAMPLES_PATTERN = r'"name":"([a-zA-Z0-9_\-\.]*).filtered.sorted.bam.bai"'
 
 
 class CHARLIE(Pipeline):
-    SAMPLES_PATTERN = r'"name":"([a-zA-Z0-9_\-\.]*.ciri.bam.csi)"'
+    SAMPLES_PATTERN = r'"name":"([a-zA-Z0-9_\-\.]*).ciri.bam.csi"'
 
 
 class CRISPIN(Pipeline):
@@ -97,19 +117,19 @@ class ESCAPE(Pipeline):
 
 
 class LOGAN(Pipeline):
-    SAMPLES_PATTERN = r'"name":"([a-zA-Z0-9_\-\.]*.bqsr.bam.bai)"'
+    SAMPLES_PATTERN = r'"name":"([a-zA-Z0-9_\-\.]*).bqsr.bam.bai"'
 
 
 class RENEE(Pipeline):
-    SAMPLES_PATTERN = r'"name":"([a-zA-Z0-9_\-\.]*Aligned.toTranscriptome.out.bam)"'
+    SAMPLES_PATTERN = r'"name":"([a-zA-Z0-9_\-\.]*).Aligned.toTranscriptome.out.bam"'
 
 
 class SINCLAIR(Pipeline):
-    SAMPLES_PATTERN = r'"name":"([a-zA-Z0-9_\-\.]*seurat_preprocess.rds)"'
+    SAMPLES_PATTERN = r'"name":"([a-zA-Z0-9_\-\.]*)seurat_preprocess.rds"'
 
 
 class XAVIER(Pipeline):
-    SAMPLES_PATTERN = r'"name":"([a-zA-Z0-9_\-\.]*.input.bam)"'
+    SAMPLES_PATTERN = r'"name":"([a-zA-Z0-9_\-\.]*).input.bam"'
 
 
 PIPELINES = {

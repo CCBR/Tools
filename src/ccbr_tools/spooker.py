@@ -149,6 +149,7 @@ def get_spooker_dict(
 
     # pipeline metadata
     timestamp = get_timestamp()
+    nsamples, sample_names = count_pipeline_samples(tree_str, pipeline_name)
     metadata["pipeline_metadata"] = {
         "pipeline_name": pipeline_name,
         "pipeline_path": str(pipeline_path),
@@ -162,7 +163,8 @@ def get_spooker_dict(
         "uid": shell_run("echo $UID").strip(),
         "groups": get_groups(),
         "date": timestamp,
-        "nsamples": count_pipeline_samples(tree_str, pipeline_name),
+        "nsamples": nsamples,
+        "sample_names": sample_names,
     }
 
     # job logs
