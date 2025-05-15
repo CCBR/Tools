@@ -97,7 +97,7 @@ def spooker(
     hpc = Cluster.create_hpc(debug=debug)
     spook_outfilename = hpc.spook(
         file=meta_outfilename,
-        subdir=f"{get_random_string()}_{metadata['pipeline_metadata']['user']}_{timestamp}",
+        subdir=f"{timestamp}_{metadata['pipeline_metadata']['user']}_{metadata['pipeline_metadata']['pipeline_name']}_{get_random_string()}",
     )
     assert spook_outfilename.exists()
 
@@ -132,78 +132,48 @@ def get_spooker_dict(
             - "failed_jobs": Logs of failed jobs.
     """
     pipeline_outdir = (
-        pathlib.Path(pipeline_outdir)
-        if not isinstance(pipeline_outdir, pathlib.Path)
-        else pipeline_outdir
+        pipeline_outdir
+        if isinstance(pipeline_outdir, pathlib.Path)
+        else pathlib.Path(pipeline_outdir)
     )
     if not pipeline_outdir.exists():
         raise FileNotFoundError(
             f"Pipeline output directory does not exist: {pipeline_outdir}"
         )
-
     metadata = {}
+
     # tree json
     tree_str = get_tree(pipeline_outdir)
-    metadata["outdir_tree"] = tree_str
+    tree_dict = load_tree(tree_str)
+    metadata["outdir_tree"] = tree_dict
 
     # pipeline metadata
-    metadata["pipeline_metadata"] = collect_pipeline_metadata(
-        pipeline_outdir, pipeline_version, pipeline_name, pipeline_path, tree_str
-    )
-    timestamp = metadata["pipeline_metadata"]["date"]
-
-    # jobby & logs
-    log_file = glob_files(
-        pipeline_outdir, patterns=["snakemake.log", ".nextflow.log"]
-    ).pop()
-    jobby_df = jobby([log_file])
-    metadata["jobby"] = jobby_df.to_json(orient="records", indent=2)
-    with open(log_file, "r") as infile:
-        metadata["master_job_log"] = {"txt": infile.read()}
-    metadata["failed_jobs"] = get_failed_job_logs(jobby_df.to_dict(orient="records"))
-    return metadata
-
-
-def collect_pipeline_metadata(
-    pipeline_outdir: pathlib.Path,
-    pipeline_version: str,
-    pipeline_name: str,
-    pipeline_path: str,
-    tree_str="{}",
-    timestamp=get_timestamp(),
-):
-    """
-    Collect metadata for the pipeline run
-
-    Args:
-        pipeline_outdir (pathlib.Path): The output directory for the pipeline run.
-        pipeline_version (str): The version of the pipeline.
-        pipeline_name (str): The name of the pipeline.
-        pipeline_path (str): The path to the pipeline source.
-        tree_str (str, optional): The JSON string representation of the pipeline output directory tree. Defaults to "{}".
-        timestamp (str, optional): The timestamp of the pipeline run. Defaults to using `~ccbr_tools.pkg_util.get_timestamp()`.
-    """
-    tree_dict = load_tree(tree_str)
-    outdir_size = get_disk_usage(tree_dict, pipeline_outdir)
-    ccbrpipeliner_version = parse_modules(list_modules()).get(
-        "ccbrpipeliner", "unknown"
-    )
-    groups = get_groups()
-    nsamples = count_pipeline_samples(tree_str, pipeline_name)
-
-    metadata = {
+    timestamp = get_timestamp()
+    metadata["pipeline_metadata"] = {
         "pipeline_name": pipeline_name,
         "pipeline_path": str(pipeline_path),
         "pipeline_outdir": str(pipeline_outdir),
-        "pipeline_outdir_size": outdir_size,
+        "pipeline_outdir_size": get_disk_usage(tree_dict, pipeline_outdir),
         "pipeline_version": pipeline_version,
-        "ccbrpipeliner_module": ccbrpipeliner_version,
+        "ccbrpipeliner_module": parse_modules(list_modules()).get(
+            "ccbrpipeliner", None
+        ),
         "user": os.environ.get("USER"),
         "uid": shell_run("echo $UID").strip(),
-        "groups": groups,
+        "groups": get_groups(),
         "date": timestamp,
-        "nsamples": nsamples,
+        "nsamples": count_pipeline_samples(tree_str, pipeline_name),
     }
+
+    # job logs
+    log_file = glob_files(
+        pipeline_outdir, patterns=["snakemake.log", ".nextflow.log"]
+    ).pop()
+    with open(log_file, "r") as infile:
+        metadata["master_job_log"] = {"txt": infile.read(), "path": str(log_file)}
+    jobby_dict = jobby([log_file]).to_dict(orient="records")
+    metadata["jobby"] = jobby_dict
+    metadata["failed_jobs"] = get_failed_job_logs(jobby_dict)
     return metadata
 
 
