@@ -28,7 +28,7 @@ def shell_run(command_str, capture_output=True, check=True, shell=True, text=Tru
         '/bin/sh: invalid_command: command not found\n'
     """
     out = subprocess.run(
-        command_str, capture_output=capture_output, shell=shell, text=text, check=check
+        command_str, capture_output=capture_output, check=check, shell=shell, text=text
     )
     if capture_output:
         return_val = concat_newline(out.stdout, out.stderr)

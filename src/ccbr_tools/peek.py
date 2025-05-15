@@ -79,7 +79,7 @@ def pprint(headlist, data, linelength, fn):
 
 
 def peek(filename, buffer, delim="\t"):
-    pargs()
+    # pargs()
 
     # Getting contents of first line
     try:

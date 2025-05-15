@@ -42,6 +42,7 @@ EXAMPLES:
 
 """
 
+from .pkg_util import get_version
 from .paths import glob_files
 
 import itertools
@@ -388,6 +389,14 @@ def main():
         print("  jobby snakemake.log [--tsv|--json|--yaml]")
         print("  jobby .nextflow.log [--tsv|--json|--yaml]")
         print("  jobby .nextflow.log [--outerr] [--include-completed]")
+        print("  jobby -v or --version")
+        print("  jobby -h or --help")
+    elif len(args) == 1 and ("-v" in args or "--version" in args):
+        version = get_version()
+        # add prefix "v" to the version string if not already present
+        if not version.startswith("v"):
+            version = f"v{version}"
+        print(f"jobby: ccbr_tools version: {version}")
     else:
         output_format = "markdown"  # Default output format
         if "--tsv" in args:
