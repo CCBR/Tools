@@ -289,31 +289,34 @@ def format_df(df, output_format):
     return out_str
 
 
-def get_failed_job_logs(jobby_dict, complete_state="COMPLETED", success_exit_code=0):
+def get_failed_job_logs(jobby_dict, completed_state="COMPLETED", success_exit_code=0):
     return {
-        job["JobID"]: get_job_logs(job)
+        job["JobId"]: get_job_logs(job)
         for job in jobby_dict
-        if job["JobState"] != complete_state or job["ExitCode"] != success_exit_code
+        if job["JobState"] != completed_state or job["ExitCode"] != success_exit_code
     }
 
 
 def get_job_logs(job):
-    job_logs = {}
+    job_logs = {k: job.get(k) for k in ("JobName", "JobState", "ExitCode")}
     out_files = glob_files(
         job["WorkDir"], patterns=[f'*{job["JobId"]}*.out', ".command.out"]
     )
     err_files = glob_files(
         job["WorkDir"], patterns=[f'*{job["JobId"]}*.err', ".command.err"]
     )
-    for key, files in {"out": out_files, "err": err_files}:
+    # search for nextflow & snakemake log for this job
+    for key, files in {"out": out_files, "err": err_files}.items():
         filepath = next(iter(files), None)
         if len(files) > 1:
             warnings.warn(
                 f"⚠️ Multiple {key} files found for job {job['JobId']}. Using {filepath}."
             )
-        if filepath.exists():
-            job_logs[f"log_{key}_path"] = filepath
-            with open(out, "r") as infile:
+        if filepath and filepath.exists():
+            job_logs[f"log_{key}_path"] = str(
+                filepath
+            )  # pathlib.Path is not JSON serializable
+            with open(filepath, "r") as infile:
                 job_logs[f"log_{key}_txt"] = infile.read()
     return job_logs
 
