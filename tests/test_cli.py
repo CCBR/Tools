@@ -2,6 +2,7 @@ from ccbr_tools.shell import shell_run
 
 import os
 import pathlib
+import pytest
 import tempfile
 
 is_ci = (
