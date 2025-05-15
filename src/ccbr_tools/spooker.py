@@ -19,7 +19,7 @@ from .paths import get_tree, load_tree, get_disk_usage, glob_files
 from .pipeline import count_pipeline_samples
 from .pipeline.hpc import Cluster, list_modules, parse_modules
 from .pkg_util import get_version, get_random_string, get_timestamp
-from .jobby import jobby, get_failed_job_logs
+from .jobby import jobby
 from .shell import get_groups, shell_run
 
 
@@ -173,9 +173,8 @@ def get_spooker_dict(
     ).pop()
     with open(log_file, "r") as infile:
         metadata["master_job_log"] = {"txt": infile.read(), "path": str(log_file)}
-    jobby_dict = jobby([log_file]).to_dict(orient="records")
-    metadata["jobby"] = jobby_dict
-    metadata["failed_jobs"] = get_failed_job_logs(jobby_dict)
+    jobby_info = jobby([log_file], include_out_err=True)
+    metadata["jobby"] = jobby_info
     return metadata
 
 
