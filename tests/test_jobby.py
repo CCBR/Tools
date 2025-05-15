@@ -8,6 +8,7 @@ import pandas as pd
 import pickle
 import pprint
 import pytest
+import subprocess
 
 from ccbr_tools.jobby import (
     jobby,
@@ -17,6 +18,7 @@ from ccbr_tools.jobby import (
     get_sacct_info,
     records_to_df,
     format_df,
+    get_job_logs,
 )
 from ccbr_tools.pipeline.hpc import get_hpcname
 from ccbr_tools.shell import shell_run
@@ -90,6 +92,25 @@ def generate_df():
     df_nxf = records_to_df(records_nxf)
     df_smk.to_pickle("tests/data/jobby/df_smk.pkl")
     df_nxf.to_pickle("tests/data/jobby/df_nxf.pkl")
+
+
+def test_jobby_cli_version():
+    output = shell_run("jobby --version")
+    this_version = shell_run("ccbr_tools --version").split()[-1]
+    assert all(
+        [
+            output.startswith("jobby: ccbr_tools version: "),
+            output.strip().endswith(this_version),
+        ]
+    )
+
+
+def test_jobby_cli_invalid():
+    out, err = shell_run(
+        "jobby tests/data/jobby/invalid.log --json --outerr --include-completed",
+        concat_output=False,
+    )
+    assert all([out == "", "No job data found" in err])
 
 
 def test_jobby_no_list():
@@ -278,12 +299,12 @@ def test_format_df():
     assert all([actual == expected for actual, expected in assertions])
 
 
-def test_jobby_version():
-    output = shell_run("jobby --version")
-    this_version = shell_run("ccbr_tools --version").split()[-1]
-    assert all(
-        [
-            output.startswith("jobby: ccbr_tools version: "),
-            output.strip().endswith(this_version),
-        ]
-    )
+def test_get_job_logs():
+    assert get_job_logs("abc", "tests/data/pipeline/work") == {
+        "log_err_path": "tests/data/pipeline/work/.command.err",
+        "log_err_txt": "WARNING: Not virtualizing pid namespace by configuration\n"
+        "WARNING: While bind mounting '/gpfs:/gpfs': destination is "
+        "already in the mount point list\n",
+        "log_out_path": "tests/data/pipeline/work/.command.out",
+        "log_out_txt": "",
+    }

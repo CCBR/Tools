@@ -7,7 +7,14 @@ import io
 import subprocess
 
 
-def shell_run(command_str, capture_output=True, check=True, shell=True, text=True):
+def shell_run(
+    command_str,
+    capture_output=True,
+    check=True,
+    shell=True,
+    text=True,
+    concat_output=True,
+):
     """
     Run a shell command and return stdout/stderr
 
@@ -17,6 +24,7 @@ def shell_run(command_str, capture_output=True, check=True, shell=True, text=Tru
         check (bool, optional): Whether to raise an exception if the command returns a non-zero exit status. Defaults to True.
         shell (bool, optional): Whether to run the command through the shell. Defaults to True.
         text (bool, optional): Whether to treat the command's input/output as text. Defaults to True.
+        concat_output (bool, optional): Whether to concatenate stdout and stderr. Defaults to True. If False, returns a tuple of (stdout, stderr).
 
     Returns:
         out (str): The combined stdout and stderr of the command, separated by a newline character.
@@ -30,10 +38,12 @@ def shell_run(command_str, capture_output=True, check=True, shell=True, text=Tru
     out = subprocess.run(
         command_str, capture_output=capture_output, check=check, shell=shell, text=text
     )
+    return_val = ""
     if capture_output:
-        return_val = concat_newline(out.stdout, out.stderr)
-    else:
-        return_val = ""
+        if concat_output:
+            return_val = concat_newline(out.stdout, out.stderr)
+        else:
+            return_val = out.stdout, out.stderr
     return return_val
 
 
