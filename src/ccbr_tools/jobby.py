@@ -355,24 +355,22 @@ def jobby(
 
     output = {}
     if job_ids:
-        records = records_to_df(
-            list(
-                itertools.chain.from_iterable(
-                    [
-                        get_sacct_info(
-                            jobid,
-                            include_out_err=include_out_err,
-                            include_completed=include_completed,
-                            completed_state=completed_state,
-                            success_exit_code=success_exit_code,
-                        )
-                        for jobid in job_ids
-                    ]
-                )
+        records = list(
+            itertools.chain.from_iterable(
+                [
+                    get_sacct_info(
+                        jobid,
+                        include_out_err=include_out_err,
+                        include_completed=include_completed,
+                        completed_state=completed_state,
+                        success_exit_code=success_exit_code,
+                    )
+                    for jobid in job_ids
+                ]
             )
-        ).to_dict(orient="records")
+        )
         if records:
-            output = records
+            output = records_to_df(records).to_dict(orient="records")
         else:
             warnings.warn("⚠️ No job data found.")
     else:
