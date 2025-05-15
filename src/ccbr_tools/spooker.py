@@ -82,42 +82,15 @@ def spooker(
         - The metadata is written to a compressed JSON file and staged on an HPC cluster.
         - If `clean` is True, the local metadata file is deleted after staging.
     """
-    pipeline_outdir = (
-        pathlib.Path(pipeline_outdir)
-        if not isinstance(pipeline_outdir, pathlib.Path)
-        else pipeline_outdir
-    )
-    if not pipeline_outdir.exists():
-        raise FileNotFoundError(
-            f"Pipeline output directory does not exist: {pipeline_outdir}"
-        )
-
-    metadata = {}
-    # tree json
-    tree_str = get_tree(pipeline_outdir)
-    metadata["outdir_tree"] = tree_str
-
-    # pipeline metadata
-    metadata["pipeline_metadata"] = collect_metadata(
-        pipeline_outdir, pipeline_version, pipeline_name, pipeline_path, tree_str
+    metadata = get_spooker_dict(
+        pipeline_outdir, pipeline_name, pipeline_version, pipeline_path
     )
     timestamp = metadata["pipeline_metadata"]["date"]
-
-    # jobby & logs
-    log_file = glob_files(
-        pipeline_outdir, patterns=["snakemake.log", ".nextflow.log"]
-    ).pop()
-    jobby_df = jobby([log_file])
-    metadata["jobby"] = jobby_df.to_json(orient="records", indent=2)
-    with open(log_file, "r") as infile:
-        metadata["master_job_log"] = {"txt": infile.read()}
-    metadata["failed_jobs"] = get_failed_job_logs(jobby_df.to_dict(orient="records"))
 
     # write metadata to json
     meta_outfilename = pipeline_outdir / f"{timestamp}.json.gz"
     with gzip.open(meta_outfilename, "wt") as outfile:
         json.dump(metadata, outfile, indent=4)
-    print(f"Metadata written to {meta_outfilename}")
     assert meta_outfilename.exists()
 
     # copy to staging directory
@@ -135,7 +108,63 @@ def spooker(
     return spook_outfilename
 
 
-def collect_metadata(
+def get_spooker_dict(
+    pipeline_outdir: pathlib.Path,
+    pipeline_name: str,
+    pipeline_version: str,
+    pipeline_path: str,
+):
+    """
+    Generates a metadata dictionary summarizing the state and logs of a pipeline run.
+
+    Args:
+        pipeline_outdir (pathlib.Path): Path to the pipeline output directory.
+        pipeline_name (str): Name of the pipeline.
+        pipeline_version (str): Version of the pipeline.
+        pipeline_path (str): Path to the pipeline definition or script.
+
+    Returns:
+        dict: A dictionary containing:
+            - "outdir_tree": String representation of the output directory tree.
+            - "pipeline_metadata": Metadata about the pipeline run.
+            - "jobby": JSON-formatted job log records.
+            - "master_job_log": Contents of the main job log file.
+            - "failed_jobs": Logs of failed jobs.
+    """
+    pipeline_outdir = (
+        pathlib.Path(pipeline_outdir)
+        if not isinstance(pipeline_outdir, pathlib.Path)
+        else pipeline_outdir
+    )
+    if not pipeline_outdir.exists():
+        raise FileNotFoundError(
+            f"Pipeline output directory does not exist: {pipeline_outdir}"
+        )
+
+    metadata = {}
+    # tree json
+    tree_str = get_tree(pipeline_outdir)
+    metadata["outdir_tree"] = tree_str
+
+    # pipeline metadata
+    metadata["pipeline_metadata"] = collect_pipeline_metadata(
+        pipeline_outdir, pipeline_version, pipeline_name, pipeline_path, tree_str
+    )
+    timestamp = metadata["pipeline_metadata"]["date"]
+
+    # jobby & logs
+    log_file = glob_files(
+        pipeline_outdir, patterns=["snakemake.log", ".nextflow.log"]
+    ).pop()
+    jobby_df = jobby([log_file])
+    metadata["jobby"] = jobby_df.to_json(orient="records", indent=2)
+    with open(log_file, "r") as infile:
+        metadata["master_job_log"] = {"txt": infile.read()}
+    metadata["failed_jobs"] = get_failed_job_logs(jobby_df.to_dict(orient="records"))
+    return metadata
+
+
+def collect_pipeline_metadata(
     pipeline_outdir: pathlib.Path,
     pipeline_version: str,
     pipeline_name: str,
@@ -144,13 +173,14 @@ def collect_metadata(
     timestamp=get_timestamp(),
 ):
     """
-    Collect metadata for the pipeline run and save it to a file.
+    Collect metadata for the pipeline run
 
     Args:
         pipeline_outdir (pathlib.Path): The output directory for the pipeline run.
         pipeline_version (str): The version of the pipeline.
         pipeline_name (str): The name of the pipeline.
         pipeline_path (str): The path to the pipeline source.
+        tree_str (str, optional): The JSON string representation of the pipeline output directory tree. Defaults to "{}".
         timestamp (str, optional): The timestamp of the pipeline run. Defaults to using `~ccbr_tools.pkg_util.get_timestamp()`.
     """
     tree_dict = load_tree(tree_str)
