@@ -28,7 +28,6 @@ def test_spooker():
         "ccbrpipeliner_module": None,
         "pipeline_name": "test_pipeline",
         "pipeline_outdir": "tests/data/pipeline_run",
-        "pipeline_outdir_size": 4769,
         "pipeline_path": "unknown",
         "pipeline_version": "0.1.0",
         "sample_names": [],
