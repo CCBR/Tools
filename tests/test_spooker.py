@@ -23,17 +23,20 @@ def test_spooker():
     )
     with gzip.open(out_filename, "rt") as file:
         spook_dat = json.load(file)
-    pprint(spook_dat)
-    assert set(
-        {
-            "ccbrpipeliner_module": "unknown",
-            "pipeline_name": "test_pipeline",
-            "pipeline_outdir": "tests/data/pipeline_run",
-            "pipeline_outdir_size": 4769,
-            "pipeline_path": "unknown",
-            "pipeline_version": "0.1.0",
-        }.items()
-    ).issubset(set(spook_dat["pipeline_metadata"].items()))
+    # pprint(spook_dat)
+    expected = {
+        "ccbrpipeliner_module": None,
+        "pipeline_name": "test_pipeline",
+        "pipeline_outdir": "tests/data/pipeline_run",
+        "pipeline_outdir_size": 4769,
+        "pipeline_path": "unknown",
+        "pipeline_version": "0.1.0",
+        "sample_names": [],
+    }
+    actual = {
+        k: v for k, v in spook_dat["pipeline_metadata"].items() if k in expected.keys()
+    }
+    assert actual == expected
 
 
 def test_spooker_no_outdir():

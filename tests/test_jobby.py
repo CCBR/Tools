@@ -6,6 +6,7 @@ import os
 import numpy as np
 import pandas as pd
 import pickle
+import pprint
 import pytest
 
 from ccbr_tools.jobby import (
@@ -123,10 +124,9 @@ def test_jobby_no_records_biowulf():
     reason="only works for sovacoolkl on biowulf",
 )
 def test_jobby_biowulf():
-    with contextlib.redirect_stdout(io.StringIO()) as stdout:
-        jobby(["--json", "50456412"])
-    out_json = json.loads(stdout.getvalue())
-    assert out_json == [
+    jobby_out = jobby(["50456412"])
+    pprint.pprint(jobby_out)
+    assert jobby_out == [
         {
             "JobId": "50456412",
             "JobName": "picard.name=KO_S4",
@@ -145,6 +145,10 @@ def test_jobby_biowulf():
             "EndTime": "2025-03-12T16:59:24",
             "QueuedTime": "2025-03-12T16:54:50",
             "WorkDir": "/gpfs/gsfs12/users/sovacoolkl/renee_test_hg38-45",
+            "log_err_path": None,
+            "log_err_txt": None,
+            "log_out_path": None,
+            "log_out_txt": None,
         }
     ]
 
