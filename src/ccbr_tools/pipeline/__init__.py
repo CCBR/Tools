@@ -30,16 +30,16 @@ def count_pipeline_samples(tree_str, pipeline_name):
 
     Returns:
         int: The number of samples in the pipeline run. Returns NaN if the pipeline is not recognized.
+        list: The sample names in the pipeline run. Returns an empty list if the pipeline is not recognized.
 
     See Also:
         `~ccbr_tools.spooker.get_tree`: The function used to generate the tree structure.
     """
     nsamples = math.nan
-    sample_names = set()
+    sample_names = list()
     pipeline = create_pipeline(pipeline_name)
     if pipeline:
-        sample_names = pipeline.get_samples(tree_str)
-        nsamples = pipeline.count_samples(tree_str)
+        nsamples, sample_names = pipeline.count_samples(tree_str)
     else:
         warnings.warn(
             f"Pipeline {pipeline_name} not recognized. Cannot retrieve samples."
@@ -49,22 +49,6 @@ def count_pipeline_samples(tree_str, pipeline_name):
 
 class Pipeline:
     SAMPLES_PATTERN = None  # must be a regex pattern with exactly one capture group, which excludes slashes
-
-    @classmethod
-    def get_samples(cls, tree_str):
-        """
-        Get the sample names in a pipeline run.
-
-        Args:
-            tree_str (str): The tree as a JSON string representing the pipeline run output directory (from `tree -aJ` command).
-
-        Returns:
-            set: sample names. Returns an empty set if the pipeline is not recognized.
-
-        See Also:
-            `~ccbr_tools.spooker.get_tree`: The function used to generate the tree structure.
-        """
-        return set(re.findall(cls.SAMPLES_PATTERN, tree_str))
 
     @classmethod
     def count_samples(cls, tree_str):
@@ -77,19 +61,37 @@ class Pipeline:
 
         Returns:
             int: The number of samples in the pipeline run. Returns NaN if the pipeline is not recognized.
-
+            list: The sample names in the pipeline run. Returns an empty list if the pipeline is not recognized.
         See Also:
             `~ccbr_tools.spooker.get_tree`: The function used to generate the tree structure.
         """
         nsamples = math.nan
+        sample_names = list()
         try:
-            # get unique set of capture groups for all matches
-            nsamples = len(cls.get_samples(tree_str))
+            sample_names = cls.get_samples(tree_str)
+            nsamples = len(sample_names)
         except Exception as err:
             warnings.warn(
                 f"Could not determine number of samples. See original error message below:\n{repr(err)}"
             )
-        return nsamples
+        return nsamples, sample_names
+
+    @classmethod
+    def get_samples(cls, tree_str):
+        """
+        Get the sample names in a pipeline run.
+
+        Args:
+            tree_str (str): The tree as a JSON string representing the pipeline run output directory (from `tree -aJ` command).
+
+        Returns:
+            list: unique sample names
+
+        See Also:
+            `~ccbr_tools.spooker.get_tree`: The function used to generate the tree structure.
+        """
+        # get unique set of capture groups for all matches
+        return sorted(set(re.findall(cls.SAMPLES_PATTERN, tree_str)))
 
 
 class ASPEN(Pipeline):

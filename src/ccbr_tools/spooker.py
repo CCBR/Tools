@@ -82,6 +82,15 @@ def spooker(
         - The metadata is written to a compressed JSON file and staged on an HPC cluster.
         - If `clean` is True, the local metadata file is deleted after staging.
     """
+    pipeline_outdir = (
+        pipeline_outdir
+        if isinstance(pipeline_outdir, pathlib.Path)
+        else pathlib.Path(pipeline_outdir)
+    )
+    if not pipeline_outdir.exists():
+        raise FileNotFoundError(
+            f"Pipeline output directory does not exist: {pipeline_outdir}"
+        )
     metadata = get_spooker_dict(
         pipeline_outdir, pipeline_name, pipeline_version, pipeline_path
     )
@@ -131,15 +140,6 @@ def get_spooker_dict(
             - "master_job_log": Contents of the main job log file.
             - "failed_jobs": Logs of failed jobs.
     """
-    pipeline_outdir = (
-        pipeline_outdir
-        if isinstance(pipeline_outdir, pathlib.Path)
-        else pathlib.Path(pipeline_outdir)
-    )
-    if not pipeline_outdir.exists():
-        raise FileNotFoundError(
-            f"Pipeline output directory does not exist: {pipeline_outdir}"
-        )
     metadata = {}
 
     # tree json
