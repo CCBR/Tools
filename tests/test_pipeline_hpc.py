@@ -12,7 +12,7 @@ def test_hpc_biowulf():
                 "<class 'ccbr_tools.pipeline.hpc.Biowulf'>({'name': 'biowulf'"
             ),
             hpc.CONDA_ACTIVATE
-            == '. "/data/CCBR_Pipeliner/db/PipeDB/Conda/etc/profile.d/conda.sh" && conda activate /data/CCBR_Pipeliner/db/PipeDB/Conda/envs/py311',
+            == ". '/data/CCBR_Pipeliner/db/PipeDB/Conda/etc/profile.d/conda.sh' && conda activate /data/CCBR_Pipeliner/db/PipeDB/Conda/envs/py311",
         ]
     )
 
@@ -26,7 +26,7 @@ def test_hpc_frce():
             "/mnt/projects/CCBR-Pipelines/bin" in hpc.env_vars,
             hpc.singularity_sif_dir == "/mnt/projects/CCBR-Pipelines/SIFs",
             hpc.CONDA_ACTIVATE
-            == '. "/mnt/projects/CCBR-Pipelines/resources/miniconda3/etc/profile.d/conda.sh" && conda activate py311',
+            == ". '/mnt/projects/CCBR-Pipelines/resources/miniconda3/etc/profile.d/conda.sh' && conda activate py311",
         ]
     )
 

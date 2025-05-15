@@ -4,6 +4,7 @@ import pytest
 import tempfile
 
 from ccbr_tools.templates import read_template, use_template, use_quarto_ext
+from ccbr_tools.pipeline.hpc import get_hpc
 
 
 def test_read_template():
@@ -36,6 +37,18 @@ def test_use_template():
             "nextflow run main.nf -stub" in template_str,
         ]
     assert all(assertions)
+
+
+def generate_slurm_template():
+    hpc = get_hpc(debug="biowulf")
+    use_template(
+        "submit_slurm.sh",
+        output_filepath="tests/data/templates/submit_slurm.sh",
+        PIPELINE="CCBR_nxf",
+        MODULES=hpc.modules["nxf"],
+        ENV_VARS=hpc.env_vars,
+        RUN_COMMAND="nextflow run main.nf -stub",
+    )
 
 
 def test_use_template_blanks():

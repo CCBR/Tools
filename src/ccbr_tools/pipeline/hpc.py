@@ -71,7 +71,7 @@ class Biowulf(Cluster):
     GROUP = "CCBR_Pipeliner"
     PIPELINES_HOME = pathlib.Path("/data/CCBR_Pipeliner/Pipelines")
     TOOLS_HOME = pathlib.Path("/data/CCBR_Pipeliner/Tools")
-    CONDA_ACTIVATE = '. "/data/CCBR_Pipeliner/db/PipeDB/Conda/etc/profile.d/conda.sh" && conda activate /data/CCBR_Pipeliner/db/PipeDB/Conda/envs/py311'
+    CONDA_ACTIVATE = ". '/data/CCBR_Pipeliner/db/PipeDB/Conda/etc/profile.d/conda.sh' && conda activate /data/CCBR_Pipeliner/db/PipeDB/Conda/envs/py311"
 
     def __init__(self):
         super().__init__()
@@ -102,7 +102,7 @@ class FRCE(Cluster):
     GROUP = "nci-frederick-ccbr-pipelines"
     PIPELINES_HOME = pathlib.Path("/mnt/projects/CCBR-Pipelines/pipelines")
     TOOLS_HOME = pathlib.Path("/mnt/projects/CCBR-Pipelines/tools")
-    CONDA_ACTIVATE = '. "/mnt/projects/CCBR-Pipelines/resources/miniconda3/etc/profile.d/conda.sh" && conda activate py311'
+    CONDA_ACTIVATE = ". '/mnt/projects/CCBR-Pipelines/resources/miniconda3/etc/profile.d/conda.sh' && conda activate py311"
 
     def __init__(self):
         super().__init__()

@@ -6,11 +6,13 @@ import tempfile
 
 
 def test_version_flag():
-    assert shell_run("ccbr_tools -v").startswith("ccbr_tools, version ")
+    version = shell_run("ccbr_tools --version")
+    assert version.startswith("ccbr_tools, version ")
 
 
 def test_version_cmd():
-    assert shell_run("ccbr_tools version --debug").startswith("VERSION file path")
+    version = shell_run("ccbr_tools version --debug")
+    assert version.startswith("VERSION file path")
 
 
 def test_help():
@@ -79,7 +81,7 @@ def test_install():
     output = shell_run("ccbr_tools install champagne v0.3.0 --hpc biowulf", check=False)
     assert (
         output
-        == """. "/data/CCBR_Pipeliner/db/PipeDB/Conda/etc/profile.d/conda.sh" && conda activate /data/CCBR_Pipeliner/db/PipeDB/Conda/envs/py311
+        == """. '/data/CCBR_Pipeliner/db/PipeDB/Conda/etc/profile.d/conda.sh' && conda activate /data/CCBR_Pipeliner/db/PipeDB/Conda/envs/py311
 pip install git+https://github.com/CCBR/CHAMPAGNE.git@v0.3.0 -t /data/CCBR_Pipeliner/Pipelines/CHAMPAGNE/.v0.3.0
 chmod -R a+rX /data/CCBR_Pipeliner/Pipelines/CHAMPAGNE/.v0.3.0
 chown -R :CCBR_Pipeliner /data/CCBR_Pipeliner/Pipelines/CHAMPAGNE/.v0.3.0
