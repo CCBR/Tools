@@ -106,12 +106,17 @@ def test_jobby_cli_version():
 
 
 def test_jobby_cli_invalid():
+    err_msg = (
+        "sacct: fatal: Bad job/step specified: tests/data/jobby/invalid.log"
+        if HPC == "biowulf"
+        else "sacct command not found"
+    )
     out, err = shell_run(
         "jobby tests/data/jobby/invalid.log --json --outerr --include-completed",
         concat_output=False,
         check=False,
     )
-    assert all([out == "", "sacct command not found" in err])
+    assert all([out == "", err_msg in err])
 
 
 def test_jobby_no_list():
