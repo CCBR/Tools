@@ -10,3 +10,5 @@ contributes:
         light: [flatly, fnl-light.scss]
       toc: true
       code-fold: show
+    revealjs:
+      theme: fnl-light-revealjs.scss

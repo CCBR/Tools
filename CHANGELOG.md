@@ -1,5 +1,7 @@
 ## Tools development version
 
+- Minor documentation improvements. (#81, @kelly-sovacool)
+
 ## Tools 0.4.0
 
 ### New features
