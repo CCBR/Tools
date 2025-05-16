@@ -16,6 +16,7 @@
   - Now bundles all pipeline information into a single gzipped JSON file. (#71, @kelly-sovacool)
     - A tar archive is no longer created, as only one file is now needed.
     - The tree & jobby information are included as strings in the JSON file.
+- New shared conda environment on biowulf: `py3.11-8` for ccbrpipeliner/8. (#79, @kelly-sovacool)
 
 ### Bug fixes
 
