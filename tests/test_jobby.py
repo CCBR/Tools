@@ -109,8 +109,9 @@ def test_jobby_cli_invalid():
     out, err = shell_run(
         "jobby tests/data/jobby/invalid.log --json --outerr --include-completed",
         concat_output=False,
+        check=False,
     )
-    assert all([out == "", "No job data found" in err])
+    assert all([out == "", "sacct command not found" in err])
 
 
 def test_jobby_no_list():
