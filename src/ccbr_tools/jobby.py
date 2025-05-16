@@ -20,11 +20,13 @@ FEATURES:
     - Optionally include job log files and their contents for failed jobs (--outerr), or also for all jobs with --include-completed.
 
 USAGE:
+    ```
     jobby <jobid1> [jobid2 ...] [--tsv|--json|--yaml]
     jobby <jobid1>,<jobid2> [--tsv|--json|--yaml]
     jobby snakemake.log [--tsv|--json|--yaml]
     jobby .nextflow.log [--tsv|--json|--yaml]
     jobby .nextflow.log [--outerr] [--include-completed]
+    ```
 
 DEPENDENCIES:
     - Python 3.7+
@@ -33,13 +35,14 @@ DEPENDENCIES:
     - PyYAML (optional, required only for --yaml output)
 
 EXAMPLES:
+    ```sh
     jobby 12345678 12345679
     jobby snakemake.log --json
     jobby .nextflow.log --yaml
     jobby 12345678,12345679 --tsv
     jobby .nextflow.log --outerr
     jobby .nextflow.log --outerr --include-completed
-
+    ```
 """
 
 from .pkg_util import get_version
@@ -344,6 +347,25 @@ def jobby(
     completed_state="COMPLETED",
     success_exit_code=0,
 ):
+    """
+    Processes a list of job IDs or a file containing job IDs to retrieve job information.
+
+    Parameters:
+        args (list): A list of job IDs or a single-element list containing a file path with job IDs.
+        include_out_err (bool, optional): Whether to include output and error file information. Defaults to False.
+        include_completed (bool, optional): Whether to include completed jobs in the results. Defaults to False.
+        completed_state (str, optional): The state string that indicates a job is completed. Defaults to "COMPLETED".
+        success_exit_code (int, optional): The exit code that indicates a job was successful. Defaults to 0.
+
+    Returns:
+        dict: A list of job records as dictionaries, or an empty dictionary if no jobs are found.
+
+    Raises:
+        TypeError: If 'args' is not a list.
+
+    Warnings:
+        Issues a warning if no job IDs are provided or if no job data is found.
+    """
     if not isinstance(args, list):
         raise TypeError("Expected a list of arguments")
 
