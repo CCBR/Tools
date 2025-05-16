@@ -17,12 +17,14 @@ FEATURES:
     - Queries SLURM using `sacct` to gather job information such as state, runtime, CPU/memory usage, etc.
     - Converts time fields to seconds, memory fields to GB, and calculates CPU efficiency.
     - Supports multiple output formats: Markdown (default), TSV, JSON, and YAML.
+    - Optionally include job log files and their contents for failed jobs (--outerr), or also for all jobs with --include-completed.
 
 USAGE:
     jobby <jobid1> [jobid2 ...] [--tsv|--json|--yaml]
     jobby <jobid1>,<jobid2> [--tsv|--json|--yaml]
     jobby snakemake.log [--tsv|--json|--yaml]
     jobby .nextflow.log [--tsv|--json|--yaml]
+    jobby .nextflow.log [--outerr] [--include-completed]
 
 DEPENDENCIES:
     - Python 3.7+
@@ -35,14 +37,19 @@ EXAMPLES:
     jobby snakemake.log --json
     jobby .nextflow.log --yaml
     jobby 12345678,12345679 --tsv
+    jobby .nextflow.log --outerr
+    jobby .nextflow.log --outerr --include-completed
 
 """
-from .pkg_util import get_version
 
-import subprocess
-import sys
+from .pkg_util import get_version
+from .paths import glob_files
+
+import itertools
 import os
 import re
+import subprocess
+import sys
 import warnings
 
 # Graceful imports
@@ -66,7 +73,7 @@ except ImportError:
     yaml = None  # YAML is optional — we'll check later when needed
 
 # Columns we can extract using sacct
-COLUMNS = {
+SACCT_COLUMNS = {
     "JobID": "JobId",
     "JobName": "JobName",
     "State": "JobState",
@@ -163,58 +170,100 @@ def extract_jobids_from_file(filepath):
     return list(sorted(set(job_ids)))  # deduplicate
 
 
-def get_sacct_info(job_ids):
-    records = []
-    for jobid in job_ids:
-        try:
-            sacct_cmd = [
-                "sacct",
-                "-j",
-                str(jobid),
-                f"--format={','.join(COLUMNS.keys())}",
-                "-P",
-                "--parsable2",
-            ]
-            output = subprocess.check_output(sacct_cmd, text=True).strip().split("\n")
-            header = output[0].split("|")
-            job_records = {}
-
-            for line in output[1:]:
-                parts = line.split("|")
-                record_raw = dict(zip(header, parts))
-
-                base_jobid = record_raw.get("JobID", "").split(".")[0]
-                step_type = record_raw.get("JobID", "")
-
-                if base_jobid not in job_records:
-                    # First time seeing this JobID: store info
-                    job_records[base_jobid] = record_raw
-                else:
-                    # If this is .batch, update resource usage fields
-                    if step_type.endswith(".batch"):
-                        for resource_field in ("MaxRSS", "AveRSS", "MaxVMSize"):
-                            if (
-                                resource_field in record_raw
-                                and record_raw[resource_field]
-                            ):
-                                job_records[base_jobid][resource_field] = record_raw[
-                                    resource_field
-                                ]
-
-            # Now, build the final records list
-            for jobid, record_raw in job_records.items():
-                record = {
-                    new: record_raw.get(old, "N/A") for old, new in COLUMNS.items()
-                }
-                records.append(record)
-
-        except subprocess.CalledProcessError as err:
-            warnings.warn(f"❌ Failed to fetch info for JobID {jobid}")
-        except FileNotFoundError as err:
-            raise RuntimeError(
-                "❌ sacct command not found. Is SLURM installed?"
-            ).with_traceback(err.__traceback__) from err
+def get_sacct_info(
+    jobid,
+    include_out_err=False,
+    include_completed=False,
+    completed_state="COMPLETED",
+    success_exit_code=0,
+):
+    job_records = {}
+    try:
+        sacct_cmd = [
+            "sacct",
+            "-j",
+            str(jobid),
+            f"--format={','.join(SACCT_COLUMNS.keys())}",
+            "-P",
+            "--parsable2",
+        ]
+        output = subprocess.check_output(sacct_cmd, text=True).strip().split("\n")
+        header = output[0].split("|")
+        for line in output[1:]:
+            parts = line.split("|")
+            record_raw = dict(zip(header, parts))
+            base_jobid = record_raw.get("JobID", "").split(".")[0]
+            step_type = record_raw.get("JobID", "")
+            # optionally include job log files & contents
+            if include_out_err:
+                if include_completed or (
+                    record_raw.get("State", "") != completed_state
+                    or int(record_raw.get("ExitCode", "").split(":")[0])
+                    != success_exit_code
+                ):
+                    record_raw.update(
+                        get_job_logs(
+                            job_id=base_jobid, workdir=record_raw.get("WorkDir", None)
+                        )
+                    )
+            if base_jobid not in job_records:
+                # First time seeing this JobID: store info
+                job_records[base_jobid] = record_raw
+            else:
+                # If this is .batch, update resource usage fields
+                if step_type.endswith(".batch"):
+                    for resource_field in ("MaxRSS", "AveRSS", "MaxVMSize"):
+                        if resource_field in record_raw and record_raw[resource_field]:
+                            job_records[base_jobid][resource_field] = record_raw[
+                                resource_field
+                            ]
+    except subprocess.CalledProcessError as err:
+        warnings.warn(f"❌ Failed to fetch info for JobID {jobid}")
+    except FileNotFoundError as err:
+        raise RuntimeError(
+            "❌ sacct command not found. Is SLURM installed?"
+        ).with_traceback(err.__traceback__) from err
+    records = [
+        {
+            new: record_raw.get(old, None)
+            for old, new in itertools.chain(
+                SACCT_COLUMNS.items(),
+                {
+                    k: k
+                    for k in (
+                        "log_out_path",
+                        "log_out_txt",
+                        "log_err_path",
+                        "log_err_txt",
+                    )
+                }.items(),
+            )
+        }
+        for jobid, record_raw in job_records.items()
+    ]
     return records
+
+
+def get_job_logs(job_id, workdir, include_text=True):
+    job_logs = {}
+    if workdir:
+        out_files = glob_files(workdir, patterns=[f"*{job_id}*.out", ".command.out"])
+        err_files = glob_files(workdir, patterns=[f"*{job_id}*.err", ".command.err"])
+        # search for nextflow & snakemake log for this job
+        for key, files in {"out": out_files, "err": err_files}.items():
+            filepath = next(iter(files), None)
+            if len(files) > 1:
+                warnings.warn(
+                    f"⚠️ Multiple {key} files found for job {job_id}. Using {filepath}."
+                )
+            if filepath and filepath.exists():
+                job_logs[f"log_{key}_path"] = str(
+                    filepath
+                )  # pathlib.Path is not JSON serializable
+                if include_text:
+                    with open(filepath, "r") as infile:
+                        job_logs[f"log_{key}_txt"] = infile.read()
+    return job_logs
 
 
 def records_to_df(records):
@@ -288,24 +337,15 @@ def format_df(df, output_format):
     return out_str
 
 
-def jobby(args):
+def jobby(
+    args: list,
+    include_out_err=False,
+    include_completed=False,
+    completed_state="COMPLETED",
+    success_exit_code=0,
+):
     if not isinstance(args, list):
         raise TypeError("Expected a list of arguments")
-
-    output_format = "markdown"
-    if "--tsv" in args:
-        output_format = "tsv"
-        args.remove("--tsv")
-    elif "--json" in args:
-        output_format = "json"
-        args.remove("--json")
-    elif "--yaml" in args:
-        output_format = "yaml"
-        args.remove("--yaml")
-        if yaml is None:
-            raise ImportError(
-                "❌ YAML output requested but PyYAML is not installed. Install with `pip install pyyaml`."
-            )
 
     # Case: 1 argument and it's a file
     if len(args) == 1 and os.path.isfile(args[0]):
@@ -313,15 +353,29 @@ def jobby(args):
     else:
         job_ids = args  # Treat all arguments as job IDs
 
+    output = {}
     if job_ids:
-        records = get_sacct_info(job_ids)
+        records = list(
+            itertools.chain.from_iterable(
+                [
+                    get_sacct_info(
+                        jobid,
+                        include_out_err=include_out_err,
+                        include_completed=include_completed,
+                        completed_state=completed_state,
+                        success_exit_code=success_exit_code,
+                    )
+                    for jobid in job_ids
+                ]
+            )
+        )
         if records:
-            df = records_to_df(records)
-            print(format_df(df, output_format))
+            output = records_to_df(records).to_dict(orient="records")
         else:
             warnings.warn("⚠️ No job data found.")
     else:
         warnings.warn("⚠️ No job IDs to process.")
+    return output
 
 
 def main():
@@ -332,6 +386,7 @@ def main():
         print("  jobby <jobid1>,<jobid2> [--tsv|--json|--yaml]")
         print("  jobby snakemake.log [--tsv|--json|--yaml]")
         print("  jobby .nextflow.log [--tsv|--json|--yaml]")
+        print("  jobby .nextflow.log [--outerr] [--include-completed]")
         print("  jobby -v or --version")
         print("  jobby -h or --help")
     elif len(args) == 1 and ("-v" in args or "--version" in args):
@@ -341,7 +396,36 @@ def main():
             version = f"v{version}"
         print(f"jobby: ccbr_tools version: {version}")
     else:
-        jobby(args)
+        output_format = "markdown"  # Default output format
+        if "--tsv" in args:
+            output_format = "tsv"
+            args.remove("--tsv")
+        elif "--json" in args:
+            output_format = "json"
+            args.remove("--json")
+        elif "--yaml" in args:
+            output_format = "yaml"
+            args.remove("--yaml")
+            if yaml is None:
+                raise ImportError(
+                    "❌ YAML output requested but PyYAML is not installed. Install with `pip install pyyaml`."
+                )
+
+        include_out_err = False
+        if "--outerr" in args:
+            include_out_err = True
+            args.remove("--outerr")
+        include_completed = False
+        if "--include-completed" in args:
+            include_completed = True
+            args.remove("--include-completed")
+
+        jobby_out = jobby(
+            args, include_out_err=include_out_err, include_completed=include_completed
+        )
+        if jobby_out:
+            out_str = format_df(pd.DataFrame(jobby_out), output_format)
+            print(out_str)
 
 
 if __name__ == "__main__":

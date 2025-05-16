@@ -7,6 +7,8 @@ which contains default attributes for supported clusters.
 
 import pathlib
 import re
+import shutil
+import subprocess
 
 from .cache import get_singularity_cachedir, get_sif_cache_dir
 from ..shell import shell_run
@@ -42,19 +44,26 @@ class Cluster:
 
     __nonzero__ = __bool__
 
+    def spook(self, file, subdir=None):
+        dest_dir = self.SPOOK_DIR / subdir if subdir else self.SPOOK_DIR
+        dest_dir.mkdir(parents=True, exist_ok=True)
+        shutil.copy(file, dest_dir)
+        return dest_dir / file.name
+
     @property
     def singularity_sif_dir(self):
         return get_sif_cache_dir(hpc=self.name)
 
     @staticmethod
     def create_hpc(debug=False):
-        hpc_options = {"biowulf": Biowulf, "frce": FRCE}
+        hpc_options = {
+            "biowulf": Biowulf,
+            "frce": FRCE,
+            "gha": GitHubActions,
+            "unknown": Cluster,
+        }
         hpc_name = get_hpcname() if not debug else debug
-        if not hpc_name:
-            raise ValueError(
-                "HPC name not found. This script only works on Biowulf & FRCE."
-            )
-        return hpc_options.get(hpc_name)()
+        return hpc_options.get(hpc_name, Cluster)()
 
 
 class Biowulf(Cluster):
@@ -72,6 +81,7 @@ class Biowulf(Cluster):
     PIPELINES_HOME = pathlib.Path("/data/CCBR_Pipeliner/Pipelines")
     TOOLS_HOME = pathlib.Path("/data/CCBR_Pipeliner/Tools")
     CONDA_ACTIVATE = ". '/data/CCBR_Pipeliner/db/PipeDB/Conda/etc/profile.d/conda.sh' && conda activate /data/CCBR_Pipeliner/db/PipeDB/Conda/envs/py311"
+    SPOOK_DIR = pathlib.Path("/data/CCBR_Pipeliner/userdata_staging")
 
     def __init__(self):
         super().__init__()
@@ -86,6 +96,17 @@ class Biowulf(Cluster):
                 'if ! command -v spooker 2>&1 >/dev/null; then export PATH="$PATH:/data/CCBR_Pipeliner/Tools/ccbr_tools/v0.2/bin/"; fi',
             )
         )
+
+    # def spook(self, file, subdir=None):
+    #     dest_dir = self.SPOOK_DIR / subdir if subdir else self.SPOOK_DIR
+    #     dest_dir.mkdir(parents=True, exist_ok=True)
+    #     outfile = dest_dir / file.name
+    #     try:
+    #         shell_run(f"spook -f {file} -d {dest_dir} --nosubfolder", capture_output=False)
+    #     except subprocess.CalledProcessError as err:
+    #         outfile = super().spook(file, subdir=subdir)
+    #         warnings.warn(f"Error running spook, copying file instead. Original error: {repr(err)}")
+    #     return outfile
 
 
 class FRCE(Cluster):
@@ -103,6 +124,9 @@ class FRCE(Cluster):
     PIPELINES_HOME = pathlib.Path("/mnt/projects/CCBR-Pipelines/pipelines")
     TOOLS_HOME = pathlib.Path("/mnt/projects/CCBR-Pipelines/tools")
     CONDA_ACTIVATE = ". '/mnt/projects/CCBR-Pipelines/resources/miniconda3/etc/profile.d/conda.sh' && conda activate py311"
+    SPOOK_DIR = pathlib.Path(
+        "/mnt/projects/CCBR-Pipelines/pipelines/userdata/ccbrpipeliner"
+    )
 
     def __init__(self):
         super().__init__()
@@ -117,7 +141,11 @@ class FRCE(Cluster):
 
 
 class GitHubActions(Cluster):
-    pass
+    SPOOK_DIR = pathlib.Path("tests/data/spooker")
+
+    def __init__(self):
+        super().__init__()
+        self.name = "gha"
 
 
 def get_hpc(debug=False):
@@ -132,13 +160,14 @@ def get_hpc(debug=False):
     Returns:
         cluster (Cluster): An instance of the HPC cluster.
 
+    See Also:
+        `~ccbr_tools.pipeline.hpc.Cluster.create_hpc`: The base class for HPC clusters.
+
     Examples:
         >>> get_hpc()
         >>> get_hpc(debug=True)
     """
-    hpc_options = {"biowulf": Biowulf, "frce": FRCE}
-    hpc_name = get_hpcname() if not debug else debug
-    return hpc_options.get(hpc_name, Cluster)()
+    return Cluster.create_hpc(debug=debug)
 
 
 def get_hpcname():

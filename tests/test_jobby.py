@@ -6,7 +6,9 @@ import os
 import numpy as np
 import pandas as pd
 import pickle
+import pprint
 import pytest
+import subprocess
 
 from ccbr_tools.jobby import (
     jobby,
@@ -16,6 +18,7 @@ from ccbr_tools.jobby import (
     get_sacct_info,
     records_to_df,
     format_df,
+    get_job_logs,
 )
 from ccbr_tools.pipeline.hpc import get_hpcname
 from ccbr_tools.shell import shell_run
@@ -91,6 +94,31 @@ def generate_df():
     df_nxf.to_pickle("tests/data/jobby/df_nxf.pkl")
 
 
+def test_jobby_cli_version():
+    output = shell_run("jobby --version")
+    this_version = shell_run("ccbr_tools --version").split()[-1]
+    assert all(
+        [
+            output.startswith("jobby: ccbr_tools version: "),
+            output.strip().endswith(this_version),
+        ]
+    )
+
+
+def test_jobby_cli_invalid():
+    err_msg = (
+        "sacct: fatal: Bad job/step specified: tests/data/jobby/invalid.log"
+        if HPC == "biowulf"
+        else "sacct command not found"
+    )
+    out, err = shell_run(
+        "jobby tests/data/jobby/invalid.log --json --outerr --include-completed",
+        concat_output=False,
+        check=False,
+    )
+    assert all([out == "", err_msg in err])
+
+
 def test_jobby_no_list():
     with pytest.raises(TypeError) as exc_info:
         jobby("50456412")
@@ -123,10 +151,9 @@ def test_jobby_no_records_biowulf():
     reason="only works for sovacoolkl on biowulf",
 )
 def test_jobby_biowulf():
-    with contextlib.redirect_stdout(io.StringIO()) as stdout:
-        jobby(["--json", "50456412"])
-    out_json = json.loads(stdout.getvalue())
-    assert out_json == [
+    jobby_out = jobby(["50456412"])
+    pprint.pprint(jobby_out)
+    assert jobby_out == [
         {
             "JobId": "50456412",
             "JobName": "picard.name=KO_S4",
@@ -145,6 +172,10 @@ def test_jobby_biowulf():
             "EndTime": "2025-03-12T16:59:24",
             "QueuedTime": "2025-03-12T16:54:50",
             "WorkDir": "/gpfs/gsfs12/users/sovacoolkl/renee_test_hg38-45",
+            "log_err_path": None,
+            "log_err_txt": None,
+            "log_out_path": None,
+            "log_out_txt": None,
         }
     ]
 
@@ -274,12 +305,12 @@ def test_format_df():
     assert all([actual == expected for actual, expected in assertions])
 
 
-def test_jobby_version():
-    output = shell_run("jobby --version")
-    this_version = shell_run("ccbr_tools --version").split()[-1]
-    assert all(
-        [
-            output.startswith("jobby: ccbr_tools version: "),
-            output.strip().endswith(this_version),
-        ]
-    )
+def test_get_job_logs():
+    assert get_job_logs("abc", "tests/data/pipeline/work") == {
+        "log_err_path": "tests/data/pipeline/work/.command.err",
+        "log_err_txt": "WARNING: Not virtualizing pid namespace by configuration\n"
+        "WARNING: While bind mounting '/gpfs:/gpfs': destination is "
+        "already in the mount point list\n",
+        "log_out_path": "tests/data/pipeline/work/.command.out",
+        "log_out_txt": "",
+    }

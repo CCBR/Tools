@@ -64,11 +64,13 @@ quartodoc:
         - github
         - jobby
         - module_list
+        - paths
         - pkg_util
         - pipeline
         - send_email
         - shell
         - software
+        - spooker
         - templates
         - versions
     - title: Pipeline utilities

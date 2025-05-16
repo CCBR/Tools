@@ -4,7 +4,8 @@ exclude: |
   (?x)(
       ^.*.svg|
       ^assets/|
-      ^src/ccbr_tools/templates/mkdocs-fnl/docs/custom-overrides/
+      ^src/ccbr_tools/templates/mkdocs-fnl/docs/custom-overrides/|
+      ^tests/data/tree/
    )
 repos:
   - repo: https://github.com/pre-commit/pre-commit-hooks

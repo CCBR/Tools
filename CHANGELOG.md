@@ -6,11 +6,16 @@
   - Uses `saccount` to get slurm job information, which should work for any HPC running slurm.
   - Has options `--tsv`, `--json`, and `--yaml` to output the job information in those formats. If not specified, markdown is used.
   - Can accept a snakemake log file, nextflow log file, or a list of slurm job IDs as input.
+  - Can include the job stdout/stderr log files (`--outerr`) for only failed jobs or all jobs (`--include-completed`). (#71, @kelly-sovacool)
 - `module_list` is a new utility to list all loaded modules as JSON or retrieve the version of a specific module. (#63, @kopardev)
 - `ccbr_tools install` has new options: (#60, @kelly-sovacool)
   - `--type` to specify the type of tool to install (e.g. `PythonTool`, `BashTool`, `Snakemake`, or `Nextflow`).
   - `--hpc` (e.g. `biowulf`, `frce`) to specify the HPC environment for debugging purposes.
-- `spooker` now accepts the path to the pipeline CLI as an optional argument. (#69, @kelly-sovacool)
+- `spooker` updates:
+  - Now accepts the path to the pipeline CLI as an optional argument. (#69, @kelly-sovacool)
+  - Now bundles all pipeline information into a single gzipped JSON file. (#71, @kelly-sovacool)
+    - A tar archive is no longer created, as only one file is now needed.
+    - The tree & jobby information are included as strings in the JSON file.
 
 ### Bug fixes
 

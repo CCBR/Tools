@@ -5,12 +5,14 @@ Miscellaneous utility functions for the package
 from cffconvert.cli.create_citation import create_citation
 from cffconvert.cli.validate_or_write_output import validate_or_write_output
 import click
+import datetime
 import importlib.resources
 import importlib.metadata
 import pathlib
 import requests
 from time import localtime, strftime
 import tomllib
+import uuid
 
 
 class CustomClickGroup(click.Group):
@@ -171,3 +173,11 @@ def get_url_json(url):
             f"Failed to fetch data from {url}. Request failed with status code {r.status_code}."
         )
     return data
+
+
+def get_random_string():
+    return str(uuid.uuid4()).split("-")[-1]
+
+
+def get_timestamp():
+    return datetime.datetime.now().strftime("%Y-%m-%dT%H-%M-%S")
