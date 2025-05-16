@@ -80,7 +80,7 @@ class Biowulf(Cluster):
     GROUP = "CCBR_Pipeliner"
     PIPELINES_HOME = pathlib.Path("/data/CCBR_Pipeliner/Pipelines")
     TOOLS_HOME = pathlib.Path("/data/CCBR_Pipeliner/Tools")
-    CONDA_ACTIVATE = ". '/data/CCBR_Pipeliner/db/PipeDB/Conda/etc/profile.d/conda.sh' && conda activate /data/CCBR_Pipeliner/db/PipeDB/Conda/envs/py311"
+    CONDA_ACTIVATE = ". '/data/CCBR_Pipeliner/db/PipeDB/Conda2025/etc/profile.d/conda.sh' && conda activate /data/CCBR_Pipeliner/db/PipeDB/Conda2025/envs/py3.11-8"
     SPOOK_DIR = pathlib.Path("/data/CCBR_Pipeliner/userdata_staging")
 
     def __init__(self):
@@ -93,7 +93,7 @@ class Biowulf(Cluster):
         self.env_vars = "\n".join(
             (
                 f"export SINGULARITY_CACHEDIR={get_singularity_cachedir()}",
-                'if ! command -v spooker 2>&1 >/dev/null; then export PATH="$PATH:/data/CCBR_Pipeliner/Tools/ccbr_tools/v0.2/bin/"; fi',
+                'if ! command -v spooker 2>&1 >/dev/null; then export PATH="$PATH:/data/CCBR_Pipeliner/Tools/ccbr_tools/v0.4/bin/"; fi',
             )
         )
 
