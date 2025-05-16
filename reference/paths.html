@@ -7,7 +7,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 
-<title>homologfinder.hf – CCBR Tools</title>
+<title>paths – CCBR Tools</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -65,8 +65,8 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <script src="../site_libs/quarto-search/fuse.min.js"></script>
 <script src="../site_libs/quarto-search/quarto-search.js"></script>
 <meta name="quarto:offset" content="../">
-<link href="../reference/intersect.html" rel="next">
-<link href="../reference/gb2gtf.html" rel="prev">
+<link href="../reference/pkg_util.html" rel="next">
+<link href="../reference/module_list.html" rel="prev">
 <script src="../site_libs/quarto-html/quarto.js" type="module"></script>
 <script src="../site_libs/quarto-html/tabsets/tabsets.js" type="module"></script>
 <script src="../site_libs/quarto-html/popper.min.js"></script>
@@ -346,7 +346,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
       <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" role="button" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
         <i class="bi bi-layout-text-sidebar-reverse"></i>
       </button>
-        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../reference/GSEA.deg2gs.html">Legacy tools</a></li><li class="breadcrumb-item"><a href="../reference/homologfinder.hf.html">homologfinder.hf</a></li></ol></nav>
+        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../reference/github.html">Main modules</a></li><li class="breadcrumb-item"><a href="../reference/paths.html">paths</a></li></ol></nav>
         <a class="flex-grow-1" role="navigation" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
         </a>
     </div>
@@ -393,7 +393,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../reference/paths.html" class="sidebar-item-text sidebar-link">
+  <a href="../reference/paths.html" class="sidebar-item-text sidebar-link active">
  <span class="menu-text">paths</span></a>
   </div>
 </li>
@@ -517,7 +517,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../reference/homologfinder.hf.html" class="sidebar-item-text sidebar-link active">
+  <a href="../reference/homologfinder.hf.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">homologfinder.hf</span></a>
   </div>
 </li>
@@ -551,46 +551,30 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
     <h2 id="toc-title">On this page</h2>
    
   <ul>
-  <li><a href="#ccbr_tools.homologfinder.hf" id="toc-ccbr_tools.homologfinder.hf" class="nav-link active" data-scroll-target="#ccbr_tools.homologfinder.hf">homologfinder.hf</a>
+  <li><a href="#ccbr_tools.paths" id="toc-ccbr_tools.paths" class="nav-link active" data-scroll-target="#ccbr_tools.paths">paths</a>
   <ul class="collapse">
-  <li><a href="#about" id="toc-about" class="nav-link" data-scroll-target="#about">About</a></li>
-  <li><a href="#usage" id="toc-usage" class="nav-link" data-scroll-target="#usage">Usage</a></li>
-  <li><a href="#examples" id="toc-examples" class="nav-link" data-scroll-target="#examples">Examples</a></li>
   <li><a href="#functions" id="toc-functions" class="nav-link" data-scroll-target="#functions">Functions</a>
   <ul class="collapse">
-  <li><a href="#ccbr_tools.homologfinder.hf.check_help" id="toc-ccbr_tools.homologfinder.hf.check_help" class="nav-link" data-scroll-target="#ccbr_tools.homologfinder.hf.check_help">check_help</a></li>
-  <li><a href="#ccbr_tools.homologfinder.hf.collect_args" id="toc-ccbr_tools.homologfinder.hf.collect_args" class="nav-link" data-scroll-target="#ccbr_tools.homologfinder.hf.collect_args">collect_args</a></li>
-  <li><a href="#ccbr_tools.homologfinder.hf.exit_w_msg" id="toc-ccbr_tools.homologfinder.hf.exit_w_msg" class="nav-link" data-scroll-target="#ccbr_tools.homologfinder.hf.exit_w_msg">exit_w_msg</a></li>
+  <li><a href="#ccbr_tools.paths.create_tar_archive" id="toc-ccbr_tools.paths.create_tar_archive" class="nav-link" data-scroll-target="#ccbr_tools.paths.create_tar_archive">create_tar_archive</a></li>
+  <li><a href="#ccbr_tools.paths.get_tree" id="toc-ccbr_tools.paths.get_tree" class="nav-link" data-scroll-target="#ccbr_tools.paths.get_tree">get_tree</a></li>
+  <li><a href="#ccbr_tools.paths.glob_files" id="toc-ccbr_tools.paths.glob_files" class="nav-link" data-scroll-target="#ccbr_tools.paths.glob_files">glob_files</a></li>
+  <li><a href="#ccbr_tools.paths.load_tree" id="toc-ccbr_tools.paths.load_tree" class="nav-link" data-scroll-target="#ccbr_tools.paths.load_tree">load_tree</a></li>
+  <li><a href="#ccbr_tools.paths.run_du" id="toc-ccbr_tools.paths.run_du" class="nav-link" data-scroll-target="#ccbr_tools.paths.run_du">run_du</a></li>
   </ul></li>
   </ul></li>
   </ul>
-<div class="toc-actions"><ul><li><a href="https://github.com/CCBR/Tools/edit/main/reference/homologfinder.hf.qmd" class="toc-action"><i class="bi bi-github"></i>Edit this page</a></li><li><a href="https://github.com/CCBR/Tools/issues/new" class="toc-action"><i class="bi empty"></i>Report an issue</a></li></ul></div></nav>
+<div class="toc-actions"><ul><li><a href="https://github.com/CCBR/Tools/edit/main/reference/paths.qmd" class="toc-action"><i class="bi bi-github"></i>Edit this page</a></li><li><a href="https://github.com/CCBR/Tools/issues/new" class="toc-action"><i class="bi empty"></i>Report an issue</a></li></ul></div></nav>
     </div>
 <!-- main -->
-<main class="content" id="quarto-document-content"><header id="title-block-header" class="quarto-title-block"><nav class="quarto-page-breadcrumbs quarto-title-breadcrumbs d-none d-lg-block" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../reference/GSEA.deg2gs.html">Legacy tools</a></li><li class="breadcrumb-item"><a href="../reference/homologfinder.hf.html">homologfinder.hf</a></li></ol></nav></header>
+<main class="content" id="quarto-document-content"><header id="title-block-header" class="quarto-title-block"><nav class="quarto-page-breadcrumbs quarto-title-breadcrumbs d-none d-lg-block" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../reference/github.html">Main modules</a></li><li class="breadcrumb-item"><a href="../reference/paths.html">paths</a></li></ol></nav></header>
 
 
 
 
 
-<section id="ccbr_tools.homologfinder.hf" class="level1">
-<h1>homologfinder.hf</h1>
-<p><code>homologfinder.hf</code></p>
-<p>Finds homologs in human and mouse.</p>
-<section id="about" class="level2 doc-section doc-section-about">
-<h2 class="doc-section doc-section-about anchored" data-anchor-id="about">About</h2>
-<p>hf or HomologFinder finds homologs in human and mouse. if the input gene or genelist is human, then it returns mouse homolog(s) and vice versa</p>
-</section>
-<section id="usage" class="level2 doc-section doc-section-usage">
-<h2 class="doc-section doc-section-usage anchored" data-anchor-id="usage">Usage</h2>
-<p>$ hf -h</p>
-</section>
-<section id="examples" class="level2 doc-section doc-section-examples">
-<h2 class="doc-section doc-section-examples anchored" data-anchor-id="examples">Examples</h2>
-<p>$ hf -g ZNF365</p>
-<p>$ hf -l Wdr53,Zfp365</p>
-<p>$ hf -f genelist.txt</p>
-</section>
+<section id="ccbr_tools.paths" class="level1">
+<h1>paths</h1>
+<p><code>paths</code></p>
 <section id="functions" class="level2">
 <h2 class="anchored" data-anchor-id="functions">Functions</h2>
 <table class="caption-top table">
@@ -602,35 +586,235 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </thead>
 <tbody>
 <tr class="odd">
-<td><a href="#ccbr_tools.homologfinder.hf.check_help">check_help</a></td>
-<td>check if usage needs to be printed</td>
+<td><a href="#ccbr_tools.paths.create_tar_archive">create_tar_archive</a></td>
+<td>Creates a compressed tar archive (.tar.gz) containing the specified files.</td>
 </tr>
 <tr class="even">
-<td><a href="#ccbr_tools.homologfinder.hf.collect_args">collect_args</a></td>
-<td>collect all the cli arguments</td>
+<td><a href="#ccbr_tools.paths.get_tree">get_tree</a></td>
+<td>Generate a directory tree structure using the <code>tree</code> command-line utility</td>
 </tr>
 <tr class="odd">
-<td><a href="#ccbr_tools.homologfinder.hf.exit_w_msg">exit_w_msg</a></td>
-<td>Gracefully exit with proper message</td>
+<td><a href="#ccbr_tools.paths.glob_files">glob_files</a></td>
+<td>Collects files from a specified directory and its subdirectories that match a list of patterns.</td>
+</tr>
+<tr class="even">
+<td><a href="#ccbr_tools.paths.load_tree">load_tree</a></td>
+<td>Load a tree structure from a string, attempting to parse it as JSON or</td>
+</tr>
+<tr class="odd">
+<td><a href="#ccbr_tools.paths.run_du">run_du</a></td>
+<td>Calculates the total size of a directory in bytes using the <code>du</code> shell command.</td>
 </tr>
 </tbody>
 </table>
-<section id="ccbr_tools.homologfinder.hf.check_help" class="level3">
-<h3 class="anchored" data-anchor-id="ccbr_tools.homologfinder.hf.check_help">check_help</h3>
-<div class="sourceCode" id="cb1"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a>homologfinder.hf.check_help(parser)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<p>check if usage needs to be printed</p>
+<section id="ccbr_tools.paths.create_tar_archive" class="level3">
+<h3 class="anchored" data-anchor-id="ccbr_tools.paths.create_tar_archive">create_tar_archive</h3>
+<div class="sourceCode" id="cb1"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a>paths.create_tar_archive(files, tar_filename)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p>Creates a compressed tar archive (.tar.gz) containing the specified files.</p>
+<section id="parameters" class="level4 doc-section doc-section-parameters">
+<h4 class="doc-section doc-section-parameters anchored" data-anchor-id="parameters">Parameters</h4>
+<table class="caption-top table">
+<thead>
+<tr class="header">
+<th>Name</th>
+<th>Type</th>
+<th>Description</th>
+<th>Default</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>files</td>
+<td>list of pathlib.Path</td>
+<td>A list of file paths to include in the archive.</td>
+<td><em>required</em></td>
+</tr>
+<tr class="even">
+<td>tar_filename</td>
+<td><a href="https://docs.python.org/3/library/stdtypes.html#str">str</a></td>
+<td>The name of the output tar.gz file.</td>
+<td><em>required</em></td>
+</tr>
+</tbody>
+</table>
 </section>
-<section id="ccbr_tools.homologfinder.hf.collect_args" class="level3">
-<h3 class="anchored" data-anchor-id="ccbr_tools.homologfinder.hf.collect_args">collect_args</h3>
-<div class="sourceCode" id="cb2"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a>homologfinder.hf.collect_args()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<p>collect all the cli arguments</p>
 </section>
-<section id="ccbr_tools.homologfinder.hf.exit_w_msg" class="level3">
-<h3 class="anchored" data-anchor-id="ccbr_tools.homologfinder.hf.exit_w_msg">exit_w_msg</h3>
-<div class="sourceCode" id="cb3"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a>homologfinder.hf.exit_w_msg(message)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<p>Gracefully exit with proper message</p>
+<section id="ccbr_tools.paths.get_tree" class="level3">
+<h3 class="anchored" data-anchor-id="ccbr_tools.paths.get_tree">get_tree</h3>
+<div class="sourceCode" id="cb2"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a>paths.get_tree(pipeline_outdir, args<span class="op">=</span><span class="st">'-aJ --du'</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p>Generate a directory tree structure using the <code>tree</code> command-line utility</p>
+<p>Note: when using -J with –du, the output is not valid JSON due to extra trailing commas. It can be parsed with <code>ast.literal_eval</code> rather than <code>json.loads</code>.</p>
+<section id="parameters-1" class="level4 doc-section doc-section-parameters">
+<h4 class="doc-section doc-section-parameters anchored" data-anchor-id="parameters-1">Parameters</h4>
+<table class="caption-top table">
+<thead>
+<tr class="header">
+<th>Name</th>
+<th>Type</th>
+<th>Description</th>
+<th>Default</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>pipeline_outdir</td>
+<td><a href="https://docs.python.org/3/library/stdtypes.html#str">str</a></td>
+<td>The path to the directory for which the tree structure will be generated.</td>
+<td><em>required</em></td>
+</tr>
+<tr class="even">
+<td>args</td>
+<td><a href="https://docs.python.org/3/library/stdtypes.html#str">str</a></td>
+<td>Additional arguments to pass to the <code>tree</code> command. Defaults to “-aJ” for including hidden files and formatting output as JSON</td>
+<td><code>'-aJ --du'</code></td>
+</tr>
+</tbody>
+</table>
+</section>
+<section id="returns" class="level4 doc-section doc-section-returns">
+<h4 class="doc-section doc-section-returns anchored" data-anchor-id="returns">Returns</h4>
+<table class="caption-top table">
+<colgroup>
+<col style="width: 10%">
+<col style="width: 10%">
+<col style="width: 78%">
+</colgroup>
+<thead>
+<tr class="header">
+<th>Name</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>str</td>
+<td></td>
+<td>The directory tree structure as a string, stripped of any</td>
+</tr>
+<tr class="even">
+<td></td>
+<td></td>
+<td>leading or trailing whitespace.</td>
+</tr>
+</tbody>
+</table>
+</section>
+</section>
+<section id="ccbr_tools.paths.glob_files" class="level3">
+<h3 class="anchored" data-anchor-id="ccbr_tools.paths.glob_files">glob_files</h3>
+<div class="sourceCode" id="cb3"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a>paths.glob_files(</span>
+<span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a>    pipeline_outdir,</span>
+<span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a>    patterns<span class="op">=</span>[<span class="st">'snakemake.log'</span>, <span class="st">'.nextflow.log'</span>, <span class="st">'*.jobby*'</span>, <span class="st">'master.log'</span>, <span class="st">'runtime_statics*'</span>],</span>
+<span id="cb3-4"><a href="#cb3-4" aria-hidden="true" tabindex="-1"></a>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p>Collects files from a specified directory and its subdirectories that match a list of patterns.</p>
+<section id="parameters-2" class="level4 doc-section doc-section-parameters">
+<h4 class="doc-section doc-section-parameters anchored" data-anchor-id="parameters-2">Parameters</h4>
+<table class="caption-top table">
+<thead>
+<tr class="header">
+<th>Name</th>
+<th>Type</th>
+<th>Description</th>
+<th>Default</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>pipeline_outdir</td>
+<td><a href="https://docs.python.org/3/library/stdtypes.html#str">str</a></td>
+<td>The base directory to search for files.</td>
+<td><em>required</em></td>
+</tr>
+<tr class="even">
+<td>patterns</td>
+<td>list of str</td>
+<td>A list of glob patterns to match files. Defaults to: [ “snakemake.log”, “.nextflow.log”, “<em>.jobby</em>”, “master.log”, “runtime_statics*“, ].</td>
+<td><code>['snakemake.log', '.nextflow.log', '*.jobby*', 'master.log', 'runtime_statics*']</code></td>
+</tr>
+</tbody>
+</table>
+</section>
+<section id="returns-1" class="level4 doc-section doc-section-returns">
+<h4 class="doc-section doc-section-returns anchored" data-anchor-id="returns-1">Returns</h4>
+<table class="caption-top table">
+<colgroup>
+<col style="width: 7%">
+<col style="width: 7%">
+<col style="width: 84%">
+</colgroup>
+<thead>
+<tr class="header">
+<th>Name</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td></td>
+<td></td>
+<td>set of pathlib.Path: A set of <code>pathlib.Path</code> objects representing the matched files.</td>
+</tr>
+</tbody>
+</table>
+</section>
+</section>
+<section id="ccbr_tools.paths.load_tree" class="level3">
+<h3 class="anchored" data-anchor-id="ccbr_tools.paths.load_tree">load_tree</h3>
+<div class="sourceCode" id="cb4"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a>paths.load_tree(tree_str)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p>Load a tree structure from a string, attempting to parse it as JSON or Python literal.</p>
+<section id="parameters-3" class="level4 doc-section doc-section-parameters">
+<h4 class="doc-section doc-section-parameters anchored" data-anchor-id="parameters-3">Parameters</h4>
+<table class="caption-top table">
+<thead>
+<tr class="header">
+<th>Name</th>
+<th>Type</th>
+<th>Description</th>
+<th>Default</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>tree_str</td>
+<td><a href="https://docs.python.org/3/library/stdtypes.html#str">str</a></td>
+<td>The string representation of the tree structure.</td>
+<td><em>required</em></td>
+</tr>
+</tbody>
+</table>
+<p>Returns: dict: The parsed tree structure as a dictionary.</p>
+</section>
+</section>
+<section id="ccbr_tools.paths.run_du" class="level3">
+<h3 class="anchored" data-anchor-id="ccbr_tools.paths.run_du">run_du</h3>
+<div class="sourceCode" id="cb5"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a>paths.run_du(dirpath)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p>Calculates the total size of a directory in bytes using the <code>du</code> shell command.</p>
+<section id="parameters-4" class="level4 doc-section doc-section-parameters">
+<h4 class="doc-section doc-section-parameters anchored" data-anchor-id="parameters-4">Parameters</h4>
+<table class="caption-top table">
+<thead>
+<tr class="header">
+<th>Name</th>
+<th>Type</th>
+<th>Description</th>
+<th>Default</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>dirpath</td>
+<td><a href="https://docs.python.org/3/library/stdtypes.html#str">str</a></td>
+<td>Path to the directory whose size is to be calculated.</td>
+<td><em>required</em></td>
+</tr>
+</tbody>
+</table>
+<p>Returns: int or float: The size of the directory in bytes. Returns NaN if the size cannot be determined. Raises: Issues a warning if the directory size cannot be parsed or if the <code>du</code> command fails.</p>
 
 
+</section>
 </section>
 </section>
 </section>
@@ -1050,13 +1234,13 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   </script>
 <nav class="page-navigation">
   <div class="nav-page nav-page-previous">
-      <a href="../reference/gb2gtf.html" class="pagination-link" aria-label="gb2gtf">
-        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text">gb2gtf</span>
+      <a href="../reference/module_list.html" class="pagination-link" aria-label="module_list">
+        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text">module_list</span>
       </a>          
   </div>
   <div class="nav-page nav-page-next">
-      <a href="../reference/intersect.html" class="pagination-link" aria-label="intersect">
-        <span class="nav-page-text">intersect</span> <i class="bi bi-arrow-right-short"></i>
+      <a href="../reference/pkg_util.html" class="pagination-link" aria-label="pkg_util">
+        <span class="nav-page-text">pkg_util</span> <i class="bi bi-arrow-right-short"></i>
       </a>
   </div>
 </nav>
@@ -1068,7 +1252,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </div>   
     <div class="nav-footer-center">
       &nbsp;
-    <div class="toc-actions d-sm-block d-md-none"><ul><li><a href="https://github.com/CCBR/Tools/edit/main/reference/homologfinder.hf.qmd" class="toc-action"><i class="bi bi-github"></i>Edit this page</a></li><li><a href="https://github.com/CCBR/Tools/issues/new" class="toc-action"><i class="bi empty"></i>Report an issue</a></li></ul></div></div>
+    <div class="toc-actions d-sm-block d-md-none"><ul><li><a href="https://github.com/CCBR/Tools/edit/main/reference/paths.qmd" class="toc-action"><i class="bi bi-github"></i>Edit this page</a></li><li><a href="https://github.com/CCBR/Tools/issues/new" class="toc-action"><i class="bi empty"></i>Report an issue</a></li></ul></div></div>
     <div class="nav-footer-right">
       &nbsp;
     </div>

@@ -393,6 +393,12 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
+  <a href="../reference/paths.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">paths</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
   <a href="../reference/pkg_util.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">pkg_util</span></a>
   </div>
@@ -419,6 +425,12 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   <div class="sidebar-item-container"> 
   <a href="../reference/software.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">software</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../reference/spooker.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">spooker</span></a>
   </div>
 </li>
           <li class="sidebar-item">
@@ -581,11 +593,12 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <li>Queries SLURM using <code>sacct</code> to gather job information such as state, runtime, CPU/memory usage, etc.</li>
 <li>Converts time fields to seconds, memory fields to GB, and calculates CPU efficiency.</li>
 <li>Supports multiple output formats: Markdown (default), TSV, JSON, and YAML.</li>
+<li>Optionally include job log files and their contents for failed jobs (–outerr), or also for all jobs with –include-completed.</li>
 </ul>
 </section>
 <section id="usage" class="level2 doc-section doc-section-usage">
 <h2 class="doc-section doc-section-usage anchored" data-anchor-id="usage">USAGE</h2>
-<p>jobby <jobid1> [jobid2 …] [–tsv|–json|–yaml] jobby <jobid1>,<jobid2> [–tsv|–json|–yaml] jobby snakemake.log [–tsv|–json|–yaml] jobby .nextflow.log [–tsv|–json|–yaml]</jobid2></jobid1></jobid1></p>
+<p>jobby <jobid1> [jobid2 …] [–tsv|–json|–yaml] jobby <jobid1>,<jobid2> [–tsv|–json|–yaml] jobby snakemake.log [–tsv|–json|–yaml] jobby .nextflow.log [–tsv|–json|–yaml] jobby .nextflow.log [–outerr] [–include-completed]</jobid2></jobid1></jobid1></p>
 </section>
 <section id="dependencies" class="level2 doc-section doc-section-dependencies">
 <h2 class="doc-section doc-section-dependencies anchored" data-anchor-id="dependencies">DEPENDENCIES</h2>
@@ -598,7 +611,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </section>
 <section id="examples" class="level2 doc-section doc-section-examples">
 <h2 class="doc-section doc-section-examples anchored" data-anchor-id="examples">Examples</h2>
-<p>jobby 12345678 12345679 jobby snakemake.log –json jobby .nextflow.log –yaml jobby 12345678,12345679 –tsv</p>
+<p>jobby 12345678 12345679 jobby snakemake.log –json jobby .nextflow.log –yaml jobby 12345678,12345679 –tsv jobby .nextflow.log –outerr jobby .nextflow.log –outerr –include-completed</p>
 </section>
 <section id="functions" class="level2">
 <h2 class="anchored" data-anchor-id="functions">Functions</h2>

@@ -7,7 +7,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 
-<title>homologfinder.hf – CCBR Tools</title>
+<title>spooker – CCBR Tools</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -65,8 +65,8 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <script src="../site_libs/quarto-search/fuse.min.js"></script>
 <script src="../site_libs/quarto-search/quarto-search.js"></script>
 <meta name="quarto:offset" content="../">
-<link href="../reference/intersect.html" rel="next">
-<link href="../reference/gb2gtf.html" rel="prev">
+<link href="../reference/templates.html" rel="next">
+<link href="../reference/software.html" rel="prev">
 <script src="../site_libs/quarto-html/quarto.js" type="module"></script>
 <script src="../site_libs/quarto-html/tabsets/tabsets.js" type="module"></script>
 <script src="../site_libs/quarto-html/popper.min.js"></script>
@@ -346,7 +346,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
       <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" role="button" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
         <i class="bi bi-layout-text-sidebar-reverse"></i>
       </button>
-        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../reference/GSEA.deg2gs.html">Legacy tools</a></li><li class="breadcrumb-item"><a href="../reference/homologfinder.hf.html">homologfinder.hf</a></li></ol></nav>
+        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../reference/github.html">Main modules</a></li><li class="breadcrumb-item"><a href="../reference/spooker.html">spooker</a></li></ol></nav>
         <a class="flex-grow-1" role="navigation" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
         </a>
     </div>
@@ -429,7 +429,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../reference/spooker.html" class="sidebar-item-text sidebar-link">
+  <a href="../reference/spooker.html" class="sidebar-item-text sidebar-link active">
  <span class="menu-text">spooker</span></a>
   </div>
 </li>
@@ -517,7 +517,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../reference/homologfinder.hf.html" class="sidebar-item-text sidebar-link active">
+  <a href="../reference/homologfinder.hf.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">homologfinder.hf</span></a>
   </div>
 </li>
@@ -551,46 +551,32 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
     <h2 id="toc-title">On this page</h2>
    
   <ul>
-  <li><a href="#ccbr_tools.homologfinder.hf" id="toc-ccbr_tools.homologfinder.hf" class="nav-link active" data-scroll-target="#ccbr_tools.homologfinder.hf">homologfinder.hf</a>
+  <li><a href="#ccbr_tools.spooker" id="toc-ccbr_tools.spooker" class="nav-link active" data-scroll-target="#ccbr_tools.spooker">spooker</a>
   <ul class="collapse">
-  <li><a href="#about" id="toc-about" class="nav-link" data-scroll-target="#about">About</a></li>
-  <li><a href="#usage" id="toc-usage" class="nav-link" data-scroll-target="#usage">Usage</a></li>
-  <li><a href="#examples" id="toc-examples" class="nav-link" data-scroll-target="#examples">Examples</a></li>
   <li><a href="#functions" id="toc-functions" class="nav-link" data-scroll-target="#functions">Functions</a>
   <ul class="collapse">
-  <li><a href="#ccbr_tools.homologfinder.hf.check_help" id="toc-ccbr_tools.homologfinder.hf.check_help" class="nav-link" data-scroll-target="#ccbr_tools.homologfinder.hf.check_help">check_help</a></li>
-  <li><a href="#ccbr_tools.homologfinder.hf.collect_args" id="toc-ccbr_tools.homologfinder.hf.collect_args" class="nav-link" data-scroll-target="#ccbr_tools.homologfinder.hf.collect_args">collect_args</a></li>
-  <li><a href="#ccbr_tools.homologfinder.hf.exit_w_msg" id="toc-ccbr_tools.homologfinder.hf.exit_w_msg" class="nav-link" data-scroll-target="#ccbr_tools.homologfinder.hf.exit_w_msg">exit_w_msg</a></li>
+  <li><a href="#ccbr_tools.spooker.cli" id="toc-ccbr_tools.spooker.cli" class="nav-link" data-scroll-target="#ccbr_tools.spooker.cli">cli</a></li>
+  <li><a href="#ccbr_tools.spooker.get_spooker_dict" id="toc-ccbr_tools.spooker.get_spooker_dict" class="nav-link" data-scroll-target="#ccbr_tools.spooker.get_spooker_dict">get_spooker_dict</a></li>
+  <li><a href="#ccbr_tools.spooker.spooker" id="toc-ccbr_tools.spooker.spooker" class="nav-link" data-scroll-target="#ccbr_tools.spooker.spooker">spooker</a></li>
   </ul></li>
   </ul></li>
   </ul>
-<div class="toc-actions"><ul><li><a href="https://github.com/CCBR/Tools/edit/main/reference/homologfinder.hf.qmd" class="toc-action"><i class="bi bi-github"></i>Edit this page</a></li><li><a href="https://github.com/CCBR/Tools/issues/new" class="toc-action"><i class="bi empty"></i>Report an issue</a></li></ul></div></nav>
+<div class="toc-actions"><ul><li><a href="https://github.com/CCBR/Tools/edit/main/reference/spooker.qmd" class="toc-action"><i class="bi bi-github"></i>Edit this page</a></li><li><a href="https://github.com/CCBR/Tools/issues/new" class="toc-action"><i class="bi empty"></i>Report an issue</a></li></ul></div></nav>
     </div>
 <!-- main -->
-<main class="content" id="quarto-document-content"><header id="title-block-header" class="quarto-title-block"><nav class="quarto-page-breadcrumbs quarto-title-breadcrumbs d-none d-lg-block" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../reference/GSEA.deg2gs.html">Legacy tools</a></li><li class="breadcrumb-item"><a href="../reference/homologfinder.hf.html">homologfinder.hf</a></li></ol></nav></header>
+<main class="content" id="quarto-document-content"><header id="title-block-header" class="quarto-title-block"><nav class="quarto-page-breadcrumbs quarto-title-breadcrumbs d-none d-lg-block" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../reference/github.html">Main modules</a></li><li class="breadcrumb-item"><a href="../reference/spooker.html">spooker</a></li></ol></nav></header>
 
 
 
 
 
-<section id="ccbr_tools.homologfinder.hf" class="level1">
-<h1>homologfinder.hf</h1>
-<p><code>homologfinder.hf</code></p>
-<p>Finds homologs in human and mouse.</p>
-<section id="about" class="level2 doc-section doc-section-about">
-<h2 class="doc-section doc-section-about anchored" data-anchor-id="about">About</h2>
-<p>hf or HomologFinder finds homologs in human and mouse. if the input gene or genelist is human, then it returns mouse homolog(s) and vice versa</p>
-</section>
-<section id="usage" class="level2 doc-section doc-section-usage">
-<h2 class="doc-section doc-section-usage anchored" data-anchor-id="usage">Usage</h2>
-<p>$ hf -h</p>
-</section>
-<section id="examples" class="level2 doc-section doc-section-examples">
-<h2 class="doc-section doc-section-examples anchored" data-anchor-id="examples">Examples</h2>
-<p>$ hf -g ZNF365</p>
-<p>$ hf -l Wdr53,Zfp365</p>
-<p>$ hf -f genelist.txt</p>
-</section>
+<section id="ccbr_tools.spooker" class="level1">
+<h1>spooker</h1>
+<p><code>spooker</code></p>
+<p>SPOOKER 👻</p>
+<p>This command is designed to be used as part of the OnComplete/OnSuccess/OnError handlers as part of Snakemake and Nextflow pipelines. It collects metadata about the pipeline run, bundles it into a tarball, and saves it to a common location for later retrieval.</p>
+<p>Run <code>spooker --help</code> for more information.</p>
+<p>See <a href="../reference/spooker.html#ccbr_tools.spooker.spooker"><code>spooker</code></a> for the main function</p>
 <section id="functions" class="level2">
 <h2 class="anchored" data-anchor-id="functions">Functions</h2>
 <table class="caption-top table">
@@ -602,35 +588,214 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </thead>
 <tbody>
 <tr class="odd">
-<td><a href="#ccbr_tools.homologfinder.hf.check_help">check_help</a></td>
-<td>check if usage needs to be printed</td>
+<td><a href="#ccbr_tools.spooker.cli">cli</a></td>
+<td>spooker 👻</td>
 </tr>
 <tr class="even">
-<td><a href="#ccbr_tools.homologfinder.hf.collect_args">collect_args</a></td>
-<td>collect all the cli arguments</td>
+<td><a href="#ccbr_tools.spooker.get_spooker_dict">get_spooker_dict</a></td>
+<td>Generates a metadata dictionary summarizing the state and logs of a pipeline run.</td>
 </tr>
 <tr class="odd">
-<td><a href="#ccbr_tools.homologfinder.hf.exit_w_msg">exit_w_msg</a></td>
-<td>Gracefully exit with proper message</td>
+<td><a href="#ccbr_tools.spooker.spooker">spooker</a></td>
+<td>Processes a pipeline output directory to generate metadata, tree JSON, and SLURM job log JSON,</td>
 </tr>
 </tbody>
 </table>
-<section id="ccbr_tools.homologfinder.hf.check_help" class="level3">
-<h3 class="anchored" data-anchor-id="ccbr_tools.homologfinder.hf.check_help">check_help</h3>
-<div class="sourceCode" id="cb1"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a>homologfinder.hf.check_help(parser)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<p>check if usage needs to be printed</p>
+<section id="ccbr_tools.spooker.cli" class="level3">
+<h3 class="anchored" data-anchor-id="ccbr_tools.spooker.cli">cli</h3>
+<div class="sourceCode" id="cb1"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a>spooker.cli(outdir, name, version, path)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p>spooker 👻</p>
+<p>This command is designed to be used as part of the OnComplete/OnSuccess/OnError handlers as part of Snakemake and Nextflow pipelines. It collects metadata about the pipeline run, bundles it into a tarball, and saves it to a common location for later retrieval.</p>
+<p> Args: outdir: Output directory for the pipeline run name: Name of the pipeline version: Version of the pipeline path: Path to the pipeline source</p>
 </section>
-<section id="ccbr_tools.homologfinder.hf.collect_args" class="level3">
-<h3 class="anchored" data-anchor-id="ccbr_tools.homologfinder.hf.collect_args">collect_args</h3>
-<div class="sourceCode" id="cb2"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a>homologfinder.hf.collect_args()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<p>collect all the cli arguments</p>
+<section id="ccbr_tools.spooker.get_spooker_dict" class="level3">
+<h3 class="anchored" data-anchor-id="ccbr_tools.spooker.get_spooker_dict">get_spooker_dict</h3>
+<div class="sourceCode" id="cb2"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a>spooker.get_spooker_dict(</span>
+<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a>    pipeline_outdir,</span>
+<span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a>    pipeline_name,</span>
+<span id="cb2-4"><a href="#cb2-4" aria-hidden="true" tabindex="-1"></a>    pipeline_version,</span>
+<span id="cb2-5"><a href="#cb2-5" aria-hidden="true" tabindex="-1"></a>    pipeline_path,</span>
+<span id="cb2-6"><a href="#cb2-6" aria-hidden="true" tabindex="-1"></a>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p>Generates a metadata dictionary summarizing the state and logs of a pipeline run.</p>
+<section id="parameters" class="level4 doc-section doc-section-parameters">
+<h4 class="doc-section doc-section-parameters anchored" data-anchor-id="parameters">Parameters</h4>
+<table class="caption-top table">
+<thead>
+<tr class="header">
+<th>Name</th>
+<th>Type</th>
+<th>Description</th>
+<th>Default</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>pipeline_outdir</td>
+<td><a href="https://docs.python.org/3/library/pathlib.html#module-pathlib">pathlib</a>.<a href="https://docs.python.org/3/library/pathlib.html#pathlib.Path">Path</a></td>
+<td>Path to the pipeline output directory.</td>
+<td><em>required</em></td>
+</tr>
+<tr class="even">
+<td>pipeline_name</td>
+<td><a href="https://docs.python.org/3/library/stdtypes.html#str">str</a></td>
+<td>Name of the pipeline.</td>
+<td><em>required</em></td>
+</tr>
+<tr class="odd">
+<td>pipeline_version</td>
+<td><a href="https://docs.python.org/3/library/stdtypes.html#str">str</a></td>
+<td>Version of the pipeline.</td>
+<td><em>required</em></td>
+</tr>
+<tr class="even">
+<td>pipeline_path</td>
+<td><a href="https://docs.python.org/3/library/stdtypes.html#str">str</a></td>
+<td>Path to the pipeline definition or script.</td>
+<td><em>required</em></td>
+</tr>
+</tbody>
+</table>
 </section>
-<section id="ccbr_tools.homologfinder.hf.exit_w_msg" class="level3">
-<h3 class="anchored" data-anchor-id="ccbr_tools.homologfinder.hf.exit_w_msg">exit_w_msg</h3>
-<div class="sourceCode" id="cb3"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a>homologfinder.hf.exit_w_msg(message)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<p>Gracefully exit with proper message</p>
+<section id="returns" class="level4 doc-section doc-section-returns">
+<h4 class="doc-section doc-section-returns anchored" data-anchor-id="returns">Returns</h4>
+<table class="caption-top table">
+<colgroup>
+<col style="width: 2%">
+<col style="width: 2%">
+<col style="width: 94%">
+</colgroup>
+<thead>
+<tr class="header">
+<th>Name</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>dict</td>
+<td></td>
+<td>A dictionary containing: - “outdir_tree”: String representation of the output directory tree. - “pipeline_metadata”: Metadata about the pipeline run. - “jobby”: JSON-formatted job log records. - “master_job_log”: Contents of the main job log file. - “failed_jobs”: Logs of failed jobs.</td>
+</tr>
+</tbody>
+</table>
+</section>
+</section>
+<section id="ccbr_tools.spooker.spooker" class="level3">
+<h3 class="anchored" data-anchor-id="ccbr_tools.spooker.spooker">spooker</h3>
+<div class="sourceCode" id="cb3"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a>spooker.spooker(</span>
+<span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a>    pipeline_outdir,</span>
+<span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a>    pipeline_name,</span>
+<span id="cb3-4"><a href="#cb3-4" aria-hidden="true" tabindex="-1"></a>    pipeline_version,</span>
+<span id="cb3-5"><a href="#cb3-5" aria-hidden="true" tabindex="-1"></a>    pipeline_path,</span>
+<span id="cb3-6"><a href="#cb3-6" aria-hidden="true" tabindex="-1"></a>    clean<span class="op">=</span><span class="va">True</span>,</span>
+<span id="cb3-7"><a href="#cb3-7" aria-hidden="true" tabindex="-1"></a>    debug<span class="op">=</span><span class="va">False</span>,</span>
+<span id="cb3-8"><a href="#cb3-8" aria-hidden="true" tabindex="-1"></a>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p>Processes a pipeline output directory to generate metadata, tree JSON, and SLURM job log JSON, then stages the file on an HPC cluster.</p>
+<section id="parameters-1" class="level4 doc-section doc-section-parameters">
+<h4 class="doc-section doc-section-parameters anchored" data-anchor-id="parameters-1">Parameters</h4>
+<table class="caption-top table">
+<thead>
+<tr class="header">
+<th>Name</th>
+<th>Type</th>
+<th>Description</th>
+<th>Default</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>pipeline_outdir</td>
+<td><a href="https://docs.python.org/3/library/pathlib.html#module-pathlib">pathlib</a>.<a href="https://docs.python.org/3/library/pathlib.html#pathlib.Path">Path</a></td>
+<td>Path to the pipeline output directory.</td>
+<td><em>required</em></td>
+</tr>
+<tr class="even">
+<td>pipeline_version</td>
+<td><a href="https://docs.python.org/3/library/stdtypes.html#str">str</a></td>
+<td>Version of the pipeline being processed.</td>
+<td><em>required</em></td>
+</tr>
+<tr class="odd">
+<td>pipeline_name</td>
+<td><a href="https://docs.python.org/3/library/stdtypes.html#str">str</a></td>
+<td>Name of the pipeline being processed.</td>
+<td><em>required</em></td>
+</tr>
+<tr class="even">
+<td>pipeline_path</td>
+<td><a href="https://docs.python.org/3/library/stdtypes.html#str">str</a></td>
+<td>Path to the pipeline source code or configuration.</td>
+<td><em>required</em></td>
+</tr>
+<tr class="odd">
+<td>clean</td>
+<td><a href="https://docs.python.org/3/library/functions.html#bool">bool</a></td>
+<td>Whether to delete the generated metadata file after staging. Defaults to True.</td>
+<td><code>True</code></td>
+</tr>
+<tr class="even">
+<td>debug</td>
+<td><a href="https://docs.python.org/3/library/functions.html#bool">bool</a></td>
+<td>Whether to enable debug mode for the HPC cluster. Defaults to False.</td>
+<td><code>False</code></td>
+</tr>
+</tbody>
+</table>
+</section>
+<section id="returns-1" class="level4 doc-section doc-section-returns">
+<h4 class="doc-section doc-section-returns anchored" data-anchor-id="returns-1">Returns</h4>
+<table class="caption-top table">
+<colgroup>
+<col style="width: 9%">
+<col style="width: 9%">
+<col style="width: 80%">
+</colgroup>
+<thead>
+<tr class="header">
+<th>Name</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td></td>
+<td></td>
+<td>pathlib.Path: Path to the staged metadata file on the HPC cluster.</td>
+</tr>
+</tbody>
+</table>
+</section>
+<section id="raises" class="level4 doc-section doc-section-raises">
+<h4 class="doc-section doc-section-raises anchored" data-anchor-id="raises">Raises</h4>
+<table class="caption-top table">
+<thead>
+<tr class="header">
+<th>Name</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td></td>
+<td><a href="https://docs.python.org/3/library/exceptions.html#FileNotFoundError">FileNotFoundError</a></td>
+<td>If the pipeline output directory does not exist.</td>
+</tr>
+</tbody>
+</table>
+</section>
+<section id="notes" class="level4 doc-section doc-section-notes">
+<h4 class="doc-section doc-section-notes anchored" data-anchor-id="notes">Notes</h4>
+<ul>
+<li>The function collects metadata, generates a tree JSON representation of the pipeline directory, and extracts job log information.</li>
+<li>The metadata is written to a compressed JSON file and staged on an HPC cluster.</li>
+<li>If <code>clean</code> is True, the local metadata file is deleted after staging.</li>
+</ul>
 
 
+</section>
 </section>
 </section>
 </section>
@@ -1050,13 +1215,13 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   </script>
 <nav class="page-navigation">
   <div class="nav-page nav-page-previous">
-      <a href="../reference/gb2gtf.html" class="pagination-link" aria-label="gb2gtf">
-        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text">gb2gtf</span>
+      <a href="../reference/software.html" class="pagination-link" aria-label="software">
+        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text">software</span>
       </a>          
   </div>
   <div class="nav-page nav-page-next">
-      <a href="../reference/intersect.html" class="pagination-link" aria-label="intersect">
-        <span class="nav-page-text">intersect</span> <i class="bi bi-arrow-right-short"></i>
+      <a href="../reference/templates.html" class="pagination-link" aria-label="templates">
+        <span class="nav-page-text">templates</span> <i class="bi bi-arrow-right-short"></i>
       </a>
   </div>
 </nav>
@@ -1068,7 +1233,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </div>   
     <div class="nav-footer-center">
       &nbsp;
-    <div class="toc-actions d-sm-block d-md-none"><ul><li><a href="https://github.com/CCBR/Tools/edit/main/reference/homologfinder.hf.qmd" class="toc-action"><i class="bi bi-github"></i>Edit this page</a></li><li><a href="https://github.com/CCBR/Tools/issues/new" class="toc-action"><i class="bi empty"></i>Report an issue</a></li></ul></div></div>
+    <div class="toc-actions d-sm-block d-md-none"><ul><li><a href="https://github.com/CCBR/Tools/edit/main/reference/spooker.qmd" class="toc-action"><i class="bi bi-github"></i>Edit this page</a></li><li><a href="https://github.com/CCBR/Tools/issues/new" class="toc-action"><i class="bi empty"></i>Report an issue</a></li></ul></div></div>
     <div class="nav-footer-right">
       &nbsp;
     </div>

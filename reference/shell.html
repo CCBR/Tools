@@ -393,6 +393,12 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
+  <a href="../reference/paths.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">paths</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
   <a href="../reference/pkg_util.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">pkg_util</span></a>
   </div>
@@ -419,6 +425,12 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   <div class="sidebar-item-container"> 
   <a href="../reference/software.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">software</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../reference/spooker.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">spooker</span></a>
   </div>
 </li>
           <li class="sidebar-item">
@@ -657,7 +669,8 @@ Examples:
 <span id="cb4-4"><a href="#cb4-4" aria-hidden="true" tabindex="-1"></a>    check<span class="op">=</span><span class="va">True</span>,</span>
 <span id="cb4-5"><a href="#cb4-5" aria-hidden="true" tabindex="-1"></a>    shell<span class="op">=</span><span class="va">True</span>,</span>
 <span id="cb4-6"><a href="#cb4-6" aria-hidden="true" tabindex="-1"></a>    text<span class="op">=</span><span class="va">True</span>,</span>
-<span id="cb4-7"><a href="#cb4-7" aria-hidden="true" tabindex="-1"></a>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb4-7"><a href="#cb4-7" aria-hidden="true" tabindex="-1"></a>    concat_output<span class="op">=</span><span class="va">True</span>,</span>
+<span id="cb4-8"><a href="#cb4-8" aria-hidden="true" tabindex="-1"></a>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <pre><code>Run a shell command and return stdout/stderr
 
 Args:
@@ -666,6 +679,7 @@ Args:
     check (bool, optional): Whether to raise an exception if the command returns a non-zero exit status. Defaults to True.
     shell (bool, optional): Whether to run the command through the shell. Defaults to True.
     text (bool, optional): Whether to treat the command's input/output as text. Defaults to True.
+    concat_output (bool, optional): Whether to concatenate stdout and stderr. Defaults to True. If False, returns a tuple of (stdout, stderr).
 
 Returns:
     out (str): The combined stdout and stderr of the command, separated by a newline character.

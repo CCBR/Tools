@@ -431,6 +431,7 @@ ul.task-list li input[type="checkbox"] {
   <li><a href="#jobinfo" id="toc-jobinfo" class="nav-link" data-scroll-target="#jobinfo">jobinfo</a></li>
   <li><a href="#module_list" id="toc-module_list" class="nav-link" data-scroll-target="#module_list">module_list</a></li>
   <li><a href="#peek" id="toc-peek" class="nav-link" data-scroll-target="#peek">peek</a></li>
+  <li><a href="#spooker" id="toc-spooker" class="nav-link" data-scroll-target="#spooker">spooker</a></li>
   </ul></li>
   </ul>
 <div class="toc-actions"><ul><li><a href="https://github.com/CCBR/Tools/edit/main/cli.qmd" class="toc-action"><i class="bi bi-github"></i>Edit this page</a></li><li><a href="https://github.com/CCBR/Tools/issues/new" class="toc-action"><i class="bi empty"></i>Report an issue</a></li></ul></div></nav>
@@ -489,6 +490,7 @@ All installed tools:
   jobinfo
   module_list
   peek
+  spooker
 </code></pre>
 <section id="send-email" class="level3">
 <h3 class="anchored" data-anchor-id="send-email">send-email</h3>
@@ -637,6 +639,7 @@ intersect filename1 filename2 f1ColumnIndex F2ColumnIndex
   jobby &lt;jobid1&gt;,&lt;jobid2&gt; [--tsv|--json|--yaml]
   jobby snakemake.log [--tsv|--json|--yaml]
   jobby .nextflow.log [--tsv|--json|--yaml]
+  jobby .nextflow.log [--outerr] [--include-completed]
   jobby -v or --version
   jobby -h or --help
 </code></pre>
@@ -704,6 +707,27 @@ Assumptions:
 Optional:
     buffer = 40 (default)
      └── Changing buffer will increase/decrease output justification
+</code></pre>
+</section>
+<section id="spooker" class="level3">
+<h3 class="anchored" data-anchor-id="spooker">spooker</h3>
+<pre><code>Usage: spooker [OPTIONS] [OUTDIR] [NAME] [VERSION] [PATH]
+
+  spooker 👻
+
+  This command is designed to be used as part of the
+  OnComplete/OnSuccess/OnError handlers as part of Snakemake and Nextflow
+  pipelines. It collects metadata about the pipeline run, bundles it into a
+  tarball, and saves it to a common location for later retrieval.
+
+  Args:
+      outdir: Output directory for the pipeline run
+      name: Name of the pipeline
+      version: Version of the pipeline
+      path: Path to the pipeline source
+
+Options:
+  -h, --help  Show this message and exit.
 </code></pre>
 
 
