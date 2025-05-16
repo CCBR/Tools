@@ -43,22 +43,11 @@
     "text": "Utilities for CCBR Bioinformatics Software"
   },
   {
-    "objectID": "CHANGELOG.html",
-    "href": "CHANGELOG.html",
+    "objectID": "CHANGELOG.html#tools-0.4.0",
+    "href": "CHANGELOG.html#tools-0.4.0",
     "title": "CCBR Tools",
-    "section": "",
-    "text": "jobby overhaul (#59, #75, @kopardev)\n\nUses saccount to get slurm job information, which should work for any HPC running slurm.\nHas options --tsv, --json, and --yaml to output the job information in those formats. If not specified, markdown is used.\nCan accept a snakemake log file, nextflow log file, or a list of slurm job IDs as input.\nCan include the job stdout/stderr log files (--outerr) for only failed jobs or all jobs (--include-completed). (#71, @kelly-sovacool)\n\nmodule_list is a new utility to list all loaded modules as JSON or retrieve the version of a specific module. (#63, @kopardev)\nccbr_tools install has new options: (#60, @kelly-sovacool)\n\n--type to specify the type of tool to install (e.g. PythonTool, BashTool, Snakemake, or Nextflow).\n--hpc (e.g. biowulf, frce) to specify the HPC environment for debugging purposes.\n\nspooker updates:\n\nNow accepts the path to the pipeline CLI as an optional argument. (#69, @kelly-sovacool)\nNow bundles all pipeline information into a single gzipped JSON file. (#71, @kelly-sovacool)\n\nA tar archive is no longer created, as only one file is now needed.\nThe tree & jobby information are included as strings in the JSON file.\n\n\n\n\n\n\n\nFix ccbr_tools install: use relative paths for symlinks within the same directory. (#58, @kelly-sovacool)",
-    "crumbs": [
-      "Project information",
-      "Changelog"
-    ]
-  },
-  {
-    "objectID": "CHANGELOG.html#tools-development-version",
-    "href": "CHANGELOG.html#tools-development-version",
-    "title": "CCBR Tools",
-    "section": "",
-    "text": "jobby overhaul (#59, #75, @kopardev)\n\nUses saccount to get slurm job information, which should work for any HPC running slurm.\nHas options --tsv, --json, and --yaml to output the job information in those formats. If not specified, markdown is used.\nCan accept a snakemake log file, nextflow log file, or a list of slurm job IDs as input.\nCan include the job stdout/stderr log files (--outerr) for only failed jobs or all jobs (--include-completed). (#71, @kelly-sovacool)\n\nmodule_list is a new utility to list all loaded modules as JSON or retrieve the version of a specific module. (#63, @kopardev)\nccbr_tools install has new options: (#60, @kelly-sovacool)\n\n--type to specify the type of tool to install (e.g. PythonTool, BashTool, Snakemake, or Nextflow).\n--hpc (e.g. biowulf, frce) to specify the HPC environment for debugging purposes.\n\nspooker updates:\n\nNow accepts the path to the pipeline CLI as an optional argument. (#69, @kelly-sovacool)\nNow bundles all pipeline information into a single gzipped JSON file. (#71, @kelly-sovacool)\n\nA tar archive is no longer created, as only one file is now needed.\nThe tree & jobby information are included as strings in the JSON file.\n\n\n\n\n\n\n\nFix ccbr_tools install: use relative paths for symlinks within the same directory. (#58, @kelly-sovacool)",
+    "section": "Tools 0.4.0",
+    "text": "Tools 0.4.0\n\nNew features\n\njobby overhaul (#59, #75, @kopardev)\n\nUses saccount to get slurm job information, which should work for any HPC running slurm.\nHas options --tsv, --json, and --yaml to output the job information in those formats. If not specified, markdown is used.\nCan accept a snakemake log file, nextflow log file, or a list of slurm job IDs as input.\nCan include the job stdout/stderr log files (--outerr) for only failed jobs or all jobs (--include-completed). (#71, @kelly-sovacool)\n\nmodule_list is a new utility to list all loaded modules as JSON or retrieve the version of a specific module. (#63, @kopardev)\nccbr_tools install has new options: (#60, @kelly-sovacool)\n\n--type to specify the type of tool to install (e.g. PythonTool, BashTool, Snakemake, or Nextflow).\n--hpc (e.g. biowulf, frce) to specify the HPC environment for debugging purposes.\n\nspooker updates:\n\nNow accepts the path to the pipeline CLI as an optional argument. (#69, @kelly-sovacool)\nNow bundles all pipeline information into a single gzipped JSON file. (#71, @kelly-sovacool)\n\nA tar archive is no longer created, as only one file is now needed.\nThe tree & jobby information are included as strings in the JSON file.\n\n\nNew shared conda environment on biowulf: py3.11-8 for ccbrpipeliner/8. (#79, @kelly-sovacool)\n\n\n\nBug fixes\n\nFix ccbr_tools install: use relative paths for symlinks within the same directory. (#58, @kelly-sovacool)",
     "crumbs": [
       "Project information",
       "Changelog"
@@ -927,7 +916,7 @@
     "href": "cite.html",
     "title": "CCBR Tools",
     "section": "",
-    "text": "Please cite this software if you use it in a publication:\n\nSovacool K., Koparde V., Kuhn S., Tandon M., and Huse S. (2025). CCBR Tools: Utilities for CCBR Bioinformatics Software (version v0.3.2). DOI: 10.5281/zenodo.13377166 URL: https://ccbr.github.io/Tools/\n\n\nBibtex entry\n@misc{YourReferenceHere,\nauthor = {Sovacool, Kelly and Koparde, Vishal and Kuhn, Skyler and Tandon, Mayank and Huse, Susan},\ndoi = {10.5281/zenodo.13377166},\nmonth = {5},\ntitle = {CCBR Tools: Utilities for CCBR Bioinformatics Software},\nurl = {https://ccbr.github.io/Tools/},\nyear = {2025}\n}",
+    "text": "Please cite this software if you use it in a publication:\n\nSovacool K., Koparde V., Kuhn S., Tandon M., and Huse S. (2025). CCBR Tools: Utilities for CCBR Bioinformatics Software (version v0.4.0). DOI: 10.5281/zenodo.13377166 URL: https://ccbr.github.io/Tools/\n\n\nBibtex entry\n@misc{YourReferenceHere,\nauthor = {Sovacool, Kelly and Koparde, Vishal and Kuhn, Skyler and Tandon, Mayank and Huse, Susan},\ndoi = {10.5281/zenodo.13377166},\nmonth = {5},\ntitle = {CCBR Tools: Utilities for CCBR Bioinformatics Software},\nurl = {https://ccbr.github.io/Tools/},\nyear = {2025}\n}",
     "crumbs": [
       "Project information",
       "Citation"
