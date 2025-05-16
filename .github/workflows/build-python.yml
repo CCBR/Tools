@@ -10,9 +10,6 @@ on:
       - main
       - master
   pull_request:
-    branches:
-      - main
-      - master
 
 env:
   GH_TOKEN: ${{ github.token }}
