@@ -24,23 +24,23 @@ from .shell import get_groups, shell_run
 
 
 @click.command(context_settings=dict(help_option_names=["-h", "--help"]))
-@click.argument("outdir", type=click.Path(exists=True), default=pathlib.Path.cwd())
-@click.argument("name", type=str, default="")
-@click.argument("version", type=str, default="")
-@click.argument("path", type=click.Path(), default="")
+@click.option(
+    "--outdir",
+    type=click.Path(exists=True),
+    default=pathlib.Path.cwd(),
+    help="Output directory for the pipeline run",
+)
+@click.option("--name", type=str, default="", help="Name of the pipeline")
+@click.option("--version", type=str, default="", help="Version of the pipeline")
+@click.option(
+    "--path", type=click.Path(), default="", help="Path to the pipeline source"
+)
 def cli(outdir, name, version, path):
     """
     spooker 👻
 
     This command is designed to be used as part of the OnComplete/OnSuccess/OnError handlers as part of Snakemake and Nextflow pipelines.
     It collects metadata about the pipeline run, bundles it into a tarball, and saves it to a common location for later retrieval.
-
-    \b
-    Args:
-        outdir: Output directory for the pipeline run
-        name: Name of the pipeline
-        version: Version of the pipeline
-        path: Path to the pipeline source
     """
     spooker(
         outdir,
