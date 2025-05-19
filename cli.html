@@ -711,7 +711,7 @@ Optional:
 </section>
 <section id="spooker" class="level3">
 <h3 class="anchored" data-anchor-id="spooker">spooker</h3>
-<pre><code>Usage: spooker [OPTIONS] [OUTDIR] [NAME] [VERSION] [PATH]
+<pre><code>Usage: spooker [OPTIONS]
 
   spooker 👻
 
@@ -720,14 +720,12 @@ Optional:
   pipelines. It collects metadata about the pipeline run, bundles it into a
   tarball, and saves it to a common location for later retrieval.
 
-  Args:
-      outdir: Output directory for the pipeline run
-      name: Name of the pipeline
-      version: Version of the pipeline
-      path: Path to the pipeline source
-
 Options:
-  -h, --help  Show this message and exit.
+  --outdir PATH   Output directory for the pipeline run
+  --name TEXT     Name of the pipeline
+  --version TEXT  Version of the pipeline
+  --path PATH     Path to the pipeline source
+  -h, --help      Show this message and exit.
 </code></pre>
 
 
