@@ -635,11 +635,10 @@ intersect filename1 filename2 f1ColumnIndex F2ColumnIndex
 <section id="jobby" class="level3">
 <h3 class="anchored" data-anchor-id="jobby">jobby</h3>
 <pre><code>Usage:
-  jobby &lt;jobid1&gt; [jobid2 ...] [--tsv|--json|--yaml]
-  jobby &lt;jobid1&gt;,&lt;jobid2&gt; [--tsv|--json|--yaml]
-  jobby snakemake.log [--tsv|--json|--yaml]
-  jobby .nextflow.log [--tsv|--json|--yaml]
-  jobby .nextflow.log [--outerr] [--include-completed]
+  jobby &lt;jobid1&gt; [jobid2 ...] [--tsv|--json|--yaml] [--outerr] [--include-completed]
+  jobby &lt;jobid1&gt;,&lt;jobid2&gt; [--tsv|--json|--yaml] [--outerr] [--include-completed]
+  jobby snakemake.log [--tsv|--json|--yaml] [--outerr] [--include-completed]
+  jobby .nextflow.log [--tsv|--json|--yaml] [--outerr] [--include-completed]
   jobby -v or --version
   jobby -h or --help
 </code></pre>

@@ -594,16 +594,15 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <li>Queries SLURM using <code>sacct</code> to gather job information such as state, runtime, CPU/memory usage, etc.</li>
 <li>Converts time fields to seconds, memory fields to GB, and calculates CPU efficiency.</li>
 <li>Supports multiple output formats: Markdown (default), TSV, JSON, and YAML.</li>
-<li>Optionally include job log files and their contents for failed jobs (–outerr), or also for all jobs with –include-completed.</li>
+<li>Optionally include job log files and their contents for failed jobs (–outerr), or also for all jobs with –include-completed. These columns are never included when the output format is markdown.</li>
 </ul>
 </section>
 <section id="usage" class="level2 doc-section doc-section-usage">
 <h2 class="doc-section doc-section-usage anchored" data-anchor-id="usage">USAGE</h2>
 <pre><code>jobby &lt;jobid1&gt; [jobid2 ...] [--tsv|--json|--yaml]
 jobby &lt;jobid1&gt;,&lt;jobid2&gt; [--tsv|--json|--yaml]
-jobby snakemake.log [--tsv|--json|--yaml]
-jobby .nextflow.log [--tsv|--json|--yaml]
-jobby .nextflow.log [--outerr] [--include-completed]</code></pre>
+jobby snakemake.log [--tsv|--json|--yaml] [--outerr] [--include-completed]
+jobby .nextflow.log [--tsv|--json|--yaml] [--outerr] [--include-completed]</code></pre>
 </section>
 <section id="dependencies" class="level2 doc-section doc-section-dependencies">
 <h2 class="doc-section doc-section-dependencies anchored" data-anchor-id="dependencies">DEPENDENCIES</h2>
