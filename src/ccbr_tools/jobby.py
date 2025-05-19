@@ -17,15 +17,14 @@ FEATURES:
     - Queries SLURM using `sacct` to gather job information such as state, runtime, CPU/memory usage, etc.
     - Converts time fields to seconds, memory fields to GB, and calculates CPU efficiency.
     - Supports multiple output formats: Markdown (default), TSV, JSON, and YAML.
-    - Optionally include job log files and their contents for failed jobs (--outerr), or also for all jobs with --include-completed.
+    - Optionally include job log files and their contents for failed jobs (--outerr), or also for all jobs with --include-completed. These columns are never included when the output format is markdown.
 
 USAGE:
     ```
     jobby <jobid1> [jobid2 ...] [--tsv|--json|--yaml]
     jobby <jobid1>,<jobid2> [--tsv|--json|--yaml]
-    jobby snakemake.log [--tsv|--json|--yaml]
-    jobby .nextflow.log [--tsv|--json|--yaml]
-    jobby .nextflow.log [--outerr] [--include-completed]
+    jobby snakemake.log [--tsv|--json|--yaml] [--outerr] [--include-completed]
+    jobby .nextflow.log [--tsv|--json|--yaml] [--outerr] [--include-completed]
     ```
 
 DEPENDENCIES:
@@ -351,7 +350,10 @@ def format_df(df, output_format):
     """Format the DataFrame for output based on the requested format."""
     out_str = ""
     if output_format == "markdown":
-        out_str = df.to_markdown(index=False)
+        out_str = df.drop(
+            columns=["log_out_path", "log_out_txt", "log_err_path", "log_err_txt"],
+            errors="ignore",
+        ).to_markdown(index=False)
     elif output_format == "tsv":
         out_str = df.to_csv(sep="\t", index=False)
     elif output_format == "json":
@@ -420,11 +422,18 @@ def main():
     args = sys.argv[1:]
     if len(args) == 0 or "-h" in args or "--help" in args:
         print("Usage:")
-        print("  jobby <jobid1> [jobid2 ...] [--tsv|--json|--yaml]")
-        print("  jobby <jobid1>,<jobid2> [--tsv|--json|--yaml]")
-        print("  jobby snakemake.log [--tsv|--json|--yaml]")
-        print("  jobby .nextflow.log [--tsv|--json|--yaml]")
-        print("  jobby .nextflow.log [--outerr] [--include-completed]")
+        print(
+            "  jobby <jobid1> [jobid2 ...] [--tsv|--json|--yaml] [--outerr] [--include-completed]"
+        )
+        print(
+            "  jobby <jobid1>,<jobid2> [--tsv|--json|--yaml] [--outerr] [--include-completed]"
+        )
+        print(
+            "  jobby snakemake.log [--tsv|--json|--yaml] [--outerr] [--include-completed]"
+        )
+        print(
+            "  jobby .nextflow.log [--tsv|--json|--yaml] [--outerr] [--include-completed]"
+        )
         print("  jobby -v or --version")
         print("  jobby -h or --help")
     elif len(args) == 1 and ("-v" in args or "--version" in args):
