@@ -173,6 +173,29 @@ def extract_jobids_from_file(filepath):
     return list(sorted(set(job_ids)))  # deduplicate
 
 
+def list_records(
+    job_ids: list,
+    include_out_err=False,
+    include_completed=False,
+    completed_state="COMPLETED",
+    success_exit_code=0,
+):
+    return list(
+        itertools.chain.from_iterable(
+            [
+                get_sacct_info(
+                    jobid,
+                    include_out_err=include_out_err,
+                    include_completed=include_completed,
+                    completed_state=completed_state,
+                    success_exit_code=success_exit_code,
+                )
+                for jobid in job_ids
+            ]
+        )
+    )
+
+
 def get_sacct_info(
     jobid,
     include_out_err=False,
@@ -377,19 +400,12 @@ def jobby(
 
     output = {}
     if job_ids:
-        records = list(
-            itertools.chain.from_iterable(
-                [
-                    get_sacct_info(
-                        jobid,
-                        include_out_err=include_out_err,
-                        include_completed=include_completed,
-                        completed_state=completed_state,
-                        success_exit_code=success_exit_code,
-                    )
-                    for jobid in job_ids
-                ]
-            )
+        records = list_records(
+            job_ids,
+            include_out_err=include_out_err,
+            include_completed=include_completed,
+            completed_state=completed_state,
+            success_exit_code=success_exit_code,
         )
         if records:
             output = records_to_df(records).to_dict(orient="records")
