@@ -52,6 +52,41 @@ def test_spooker_no_outdir():
 
 
 def test_spooker_cli():
+    out = subprocess.run(
+        "spooker --outdir tests/data/pipeline_run --name test_pipeline --version 0.1.2-dev --path unknown --debug gha",
+        shell=True,
+        check=True,
+        text=True,
+        capture_output=True,
+    ).stdout
+    print("OUT", out)
+    out_filename = out.split()[-1]
+    with gzip.open(out_filename, "rt") as file:
+        spook_dat = json.load(file)
+
+    expected_meta = {
+        "ccbrpipeliner_module": None,
+        "pipeline_name": "test_pipeline",
+        "pipeline_outdir": "tests/data/pipeline_run",
+        "pipeline_path": "unknown",
+        "pipeline_version": "0.1.2-dev",
+        "sample_names": [],
+    }
+    actual_meta = {
+        k: v
+        for k, v in spook_dat["pipeline_metadata"].items()
+        if k in expected_meta.keys()
+    }
+    assert all(
+        [
+            expected_meta == actual_meta,
+            spook_dat.keys()
+            == {"outdir_tree", "pipeline_metadata", "jobby", "master_job_log"},
+        ]
+    )
+
+
+def test_spooker_help():
     assert (
         "Usage: spooker "
         in subprocess.run(

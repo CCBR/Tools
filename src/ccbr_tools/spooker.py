@@ -35,7 +35,13 @@ from .shell import get_groups, shell_run
 @click.option(
     "--path", type=click.Path(), default="", help="Path to the pipeline source"
 )
-def cli(outdir, name, version, path):
+@click.option(
+    "--debug",
+    default=None,
+    help="Enable debug mode for the HPC cluster",
+    hidden=True,
+)
+def cli(outdir, name, version, path, debug):
     """
     spooker 👻
 
@@ -47,6 +53,7 @@ def cli(outdir, name, version, path):
         name,
         version,
         path,
+        debug=debug,
     )
 
 
