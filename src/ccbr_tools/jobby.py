@@ -406,10 +406,18 @@ def main():
     args = sys.argv[1:]
     if len(args) == 0 or "-h" in args or "--help" in args:
         print("Usage:")
-        print("  jobby <jobid1> [jobid2 ...] [--tsv|--json|--yaml] [--outerr] [--include-completed]")
-        print("  jobby <jobid1>,<jobid2> [--tsv|--json|--yaml] [--outerr] [--include-completed]")
-        print("  jobby snakemake.log [--tsv|--json|--yaml] [--outerr] [--include-completed]")
-        print("  jobby .nextflow.log [--tsv|--json|--yaml] [--outerr] [--include-completed]")
+        print(
+            "  jobby <jobid1> [jobid2 ...] [--tsv|--json|--yaml] [--outerr] [--include-completed]"
+        )
+        print(
+            "  jobby <jobid1>,<jobid2> [--tsv|--json|--yaml] [--outerr] [--include-completed]"
+        )
+        print(
+            "  jobby snakemake.log [--tsv|--json|--yaml] [--outerr] [--include-completed]"
+        )
+        print(
+            "  jobby .nextflow.log [--tsv|--json|--yaml] [--outerr] [--include-completed]"
+        )
         print("  jobby -v or --version")
         print("  jobby -h or --help")
     elif len(args) == 1 and ("-v" in args or "--version" in args):
