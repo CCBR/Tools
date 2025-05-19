@@ -15,6 +15,7 @@ from ccbr_tools.jobby import (
     parse_time_to_seconds,
     parse_mem_to_gb,
     extract_jobids_from_file,
+    list_records,
     get_sacct_info,
     records_to_df,
     format_df,
@@ -31,7 +32,7 @@ def generate_records():
     Run this once on biowulf (must be run by sovacoolkl) to generate sacct info
     for downstream tests
     """
-    records_smk = get_sacct_info(
+    records_smk = list_records(
         [
             "50456412",
             "50456444",
@@ -59,9 +60,10 @@ def generate_records():
             "50459203",
             "50459205",
             "50459393",
-        ]
+        ],
+        include_out_err=True,
     )
-    records_nxf = get_sacct_info(
+    records_nxf = list_records(
         [
             "55256481",
             "55256959",
@@ -72,7 +74,8 @@ def generate_records():
             "55257469",
             "55257648",
             "55257961",
-        ]
+        ],
+        include_out_err=True,
     )
     with open("tests/data/jobby/records_smk.pkl", "wb") as f:
         pickle.dump(records_smk, f)
@@ -292,17 +295,20 @@ def test_records_to_df_nxf():
 
 
 def test_format_df():
-    with open("tests/data/jobby/df_nxf.pkl", "rb") as f:
-        df_nxf = pickle.load(f)
+    with open("tests/data/jobby/df_smk.pkl", "rb") as f:
+        df_smk = pickle.load(f)
     assertions = []
-    for output_format in ["tsv", "json", "yaml"]:
-        with gzip.open(f"tests/data/jobby/nextflow.log.{output_format}.gz", "rt") as f:
+    for output_format in ["tsv", "json", "yaml", "markdown"]:
+        with gzip.open(f"tests/data/jobby/snakemake.log.{output_format}.gz", "rt") as f:
             expected = f.read()
         actual = (
-            format_df(df_nxf, output_format) + "\n"
+            format_df(df_smk, output_format) + "\n"
         )  # extra newline when files were printed
         assertions.append([actual, expected])
     assert all([actual == expected for actual, expected in assertions])
+
+
+# def test_format_df_drop_md():
 
 
 def test_get_job_logs():
