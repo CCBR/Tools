@@ -1,3 +1,8 @@
+## Tools development version
+
+- **Breaking change**: Spooker now takes named options rather than positional arguments. (#85, @kelly-sovacool)
+- Minor documentation improvements. (#81, @kelly-sovacool)
+
 ## Tools 0.4.0
 
 ### New features
