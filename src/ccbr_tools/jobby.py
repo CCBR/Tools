@@ -22,9 +22,8 @@ FEATURES:
 USAGE:
     jobby <jobid1> [jobid2 ...] [--tsv|--json|--yaml]
     jobby <jobid1>,<jobid2> [--tsv|--json|--yaml]
-    jobby snakemake.log [--tsv|--json|--yaml]
-    jobby .nextflow.log [--tsv|--json|--yaml]
-    jobby .nextflow.log [--outerr] [--include-completed]
+    jobby snakemake.log [--tsv|--json|--yaml] [--outerr] [--include-completed]
+    jobby .nextflow.log [--tsv|--json|--yaml] [--outerr] [--include-completed]
 
 DEPENDENCIES:
     - Python 3.7+
@@ -325,7 +324,9 @@ def format_df(df, output_format):
     """Format the DataFrame for output based on the requested format."""
     out_str = ""
     if output_format == "markdown":
-        out_str = df.to_markdown(index=False)
+        out_str = df.drop(
+                     columns=["log_out_path", "log_out_txt", "log_err_path", "log_err_txt"],erros="ignore"
+                     ).to_markdown(index=False)
     elif output_format == "tsv":
         out_str = df.to_csv(sep="\t", index=False)
     elif output_format == "json":
