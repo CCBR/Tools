@@ -1,5 +1,7 @@
 ## Tools development version
 
+## Tools 0.4.1
+
 - **Breaking change**: Spooker now takes named options rather than positional arguments. (#85, @kelly-sovacool)
 - jobby now omits log columns when the format is markdown, even if `--outerr` is used. (#86, @kopardev)
 - Minor documentation improvements. (#81, @kelly-sovacool)
