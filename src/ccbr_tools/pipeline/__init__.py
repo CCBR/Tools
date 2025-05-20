@@ -10,9 +10,9 @@ Submodules:
 
 Main classes & functions
 
+- [](`~ccbr_tools.pipeline.count_pipeline_samples`): Count the number of samples in a pipeline run.
 - [](`~ccbr_tools.pipeline.Pipeline`): Base class for all pipelines.
 - [](`~ccbr_tools.pipeline.create_pipeline`): Create a pipeline object from a pipeline name.
-- [](`~ccbr_tools.pipeline.count_samples`): Count the number of samples in a pipeline run.
 """
 
 import math
