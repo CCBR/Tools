@@ -43,22 +43,11 @@
     "text": "Utilities for CCBR Bioinformatics Software"
   },
   {
-    "objectID": "CHANGELOG.html",
-    "href": "CHANGELOG.html",
+    "objectID": "CHANGELOG.html#tools-0.4.1",
+    "href": "CHANGELOG.html#tools-0.4.1",
     "title": "CCBR Tools",
-    "section": "",
-    "text": "Breaking change: Spooker now takes named options rather than positional arguments. (#85, @kelly-sovacool)\njobby now omits log columns when the format is markdown, even if --outerr is used. (#86, @kopardev)\nMinor documentation improvements. (#81, @kelly-sovacool)",
-    "crumbs": [
-      "Project information",
-      "Changelog"
-    ]
-  },
-  {
-    "objectID": "CHANGELOG.html#tools-development-version",
-    "href": "CHANGELOG.html#tools-development-version",
-    "title": "CCBR Tools",
-    "section": "",
-    "text": "Breaking change: Spooker now takes named options rather than positional arguments. (#85, @kelly-sovacool)\njobby now omits log columns when the format is markdown, even if --outerr is used. (#86, @kopardev)\nMinor documentation improvements. (#81, @kelly-sovacool)",
+    "section": "Tools 0.4.1",
+    "text": "Tools 0.4.1\n\nBreaking change: Spooker now takes named options rather than positional arguments. (#85, @kelly-sovacool)\njobby now omits log columns when the format is markdown, even if --outerr is used. (#86, @kopardev)\nMinor documentation improvements. (#81, @kelly-sovacool)",
     "crumbs": [
       "Project information",
       "Changelog"
@@ -938,7 +927,7 @@
     "href": "cite.html",
     "title": "CCBR Tools",
     "section": "",
-    "text": "Please cite this software if you use it in a publication:\n\nSovacool K., Koparde V., Kuhn S., Tandon M., and Huse S. (2025). CCBR Tools: Utilities for CCBR Bioinformatics Software (version v0.4.0). DOI: 10.5281/zenodo.13377166 URL: https://ccbr.github.io/Tools/\n\n\nBibtex entry\n@misc{YourReferenceHere,\nauthor = {Sovacool, Kelly and Koparde, Vishal and Kuhn, Skyler and Tandon, Mayank and Huse, Susan},\ndoi = {10.5281/zenodo.13377166},\nmonth = {5},\ntitle = {CCBR Tools: Utilities for CCBR Bioinformatics Software},\nurl = {https://ccbr.github.io/Tools/},\nyear = {2025}\n}",
+    "text": "Please cite this software if you use it in a publication:\n\nSovacool K., Koparde V., Kuhn S., Tandon M., and Huse S. (2025). CCBR Tools: Utilities for CCBR Bioinformatics Software (version v0.4.1). DOI: 10.5281/zenodo.13377166 URL: https://ccbr.github.io/Tools/\n\n\nBibtex entry\n@misc{YourReferenceHere,\nauthor = {Sovacool, Kelly and Koparde, Vishal and Kuhn, Skyler and Tandon, Mayank and Huse, Susan},\ndoi = {10.5281/zenodo.13377166},\nmonth = {5},\ntitle = {CCBR Tools: Utilities for CCBR Bioinformatics Software},\nurl = {https://ccbr.github.io/Tools/},\nyear = {2025}\n}",
     "crumbs": [
       "Project information",
       "Citation"
