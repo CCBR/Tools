@@ -1,5 +1,7 @@
 ## Tools development version
 
+- fix `ccbr_tools install`: add group write permissions after installation. (#89, @kelly-sovacool)
+
 ## Tools 0.4.1
 
 - **Breaking change**: Spooker now takes named options rather than positional arguments. (#85, @kelly-sovacool)
