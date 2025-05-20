@@ -153,6 +153,7 @@ popd"""
 INSTALL_SCRIPT = """{CONDA_ACTIVATE}
 {INSTALL}
 chmod -R a+rX {PATH}
+chmod -R g+rwX {PATH}
 chown -R :{GROUP} {PATH}"""
 
 
