@@ -1,4 +1,4 @@
-## Tools development version
+## Tools 0.4.2
 
 - Fix `ccbr_tools install`: add group write permissions after installation. (#89, @kelly-sovacool)
 - Updates to `nextflow.run()`: (#90, @kelly-sovacool)
