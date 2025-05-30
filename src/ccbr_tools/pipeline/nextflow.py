@@ -38,15 +38,30 @@ def run(
     hpc_modules="nextflow",
 ):
     """
-    Run a Nextflow workflow
+    Runs a Nextflow workflow with support for local or SLURM (HPC) execution modes.
 
     Args:
-        nextfile_path (str): Path to the Nextflow file.
-        nextflow_args (list, optional): Additional Nextflow arguments. Defaults to an empty list.
-        mode (str, optional): Execution mode. Defaults to "local".
+        nextfile_path (str): Path to the Nextflow workflow file (main.nf), or GitHub repo (CCBR/CHAMPAGNE).
+        mode (str, optional): Execution mode, either "local" or "slurm". Defaults to "local".
+        force_all (bool, optional): If True, disables the Nextflow '-resume' flag to force all processes to rerun. Defaults to False.
+        pipeline_name (str, optional): Name of the pipeline for reporting/logging. Defaults to None.
+        nextflow_args (list, optional): Additional command-line arguments for Nextflow. Defaults to None.
+        debug (bool, optional): If True, prints commands without executing them. Defaults to False.
+        hpc (object, optional): HPC environment object, used for SLURM execution and module loading. Defaults to result of `~ccbr_tools.pipeline.hpc.get_hpc()`.
+        hpc_modules (str, optional): Name(s) of modules to load for Nextflow execution on HPC. Defaults to "nextflow".
 
-    Raises:
-        ValueError: If mode is 'slurm' but no HPC environment was detected.
+    Behavior:
+        - Constructs the Nextflow command with appropriate arguments and profiles.
+        - Adds or removes the '-resume' flag based on force_all.
+        - For SLURM mode, generates a SLURM submission script and submits it via sbatch.
+        - For local mode, optionally loads modules and environment variables before running Nextflow.
+        - Shows a preview of the pipeline execution before running.
+        - Executes the constructed command (unless debug is True).
+
+    See also:
+        - `~ccbr_tools.pipeline.hpc.get_hpc`: Retrieves the HPC environment object.
+        - `~ccbr_tools.shell.shell_run`: Executes shell commands.
+        - `~ccbr_tools.templates.use_template`: Generates files from templates.
     """
     if not pipeline_name:
         pipeline_name = "CCBR-nxf" if nextfile_path.endswith(".nf") else nextfile_path
