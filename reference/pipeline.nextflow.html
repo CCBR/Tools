@@ -77,8 +77,8 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <link href="../site_libs/quarto-html/quarto-syntax-highlighting-dark-9be586040d4c42ef1c12e9fb5fad2cc8.css" rel="stylesheet" class="quarto-color-scheme quarto-color-alternate" id="quarto-text-highlighting-styles">
 <script src="../site_libs/bootstrap/bootstrap.min.js"></script>
 <link href="../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
-<link href="../site_libs/bootstrap/bootstrap-a22f4dbc399d01e3b36cbce7fc64bb0e.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme" id="quarto-bootstrap" data-mode="light">
-<link href="../site_libs/bootstrap/bootstrap-dark-119a9851234411210666d406329475bc.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme quarto-color-alternate" id="quarto-bootstrap" data-mode="dark">
+<link href="../site_libs/bootstrap/bootstrap-7b27e6baf6aa5b44d0ade68a9ec948ae.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme" id="quarto-bootstrap" data-mode="light">
+<link href="../site_libs/bootstrap/bootstrap-dark-17529cee142ed2594943b9704ad98b5b.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme quarto-color-alternate" id="quarto-bootstrap" data-mode="dark">
 <script id="quarto-search-options" type="application/json">{
   "location": "navbar",
   "copy-button": false,
@@ -593,7 +593,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </tr>
 <tr class="even">
 <td><a href="#ccbr_tools.pipeline.nextflow.run">run</a></td>
-<td>Run a Nextflow workflow</td>
+<td>Runs a Nextflow workflow with support for local or SLURM (HPC) execution modes.</td>
 </tr>
 </tbody>
 </table>
@@ -612,8 +612,9 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <span id="cb2-6"><a href="#cb2-6" aria-hidden="true" tabindex="-1"></a>    nextflow_args<span class="op">=</span><span class="va">None</span>,</span>
 <span id="cb2-7"><a href="#cb2-7" aria-hidden="true" tabindex="-1"></a>    debug<span class="op">=</span><span class="va">False</span>,</span>
 <span id="cb2-8"><a href="#cb2-8" aria-hidden="true" tabindex="-1"></a>    hpc<span class="op">=</span>get_hpc(),</span>
-<span id="cb2-9"><a href="#cb2-9" aria-hidden="true" tabindex="-1"></a>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<p>Run a Nextflow workflow</p>
+<span id="cb2-9"><a href="#cb2-9" aria-hidden="true" tabindex="-1"></a>    hpc_modules<span class="op">=</span><span class="st">'nextflow'</span>,</span>
+<span id="cb2-10"><a href="#cb2-10" aria-hidden="true" tabindex="-1"></a>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p>Runs a Nextflow workflow with support for local or SLURM (HPC) execution modes.</p>
 <section id="parameters" class="level4 doc-section doc-section-parameters">
 <h4 class="doc-section doc-section-parameters anchored" data-anchor-id="parameters">Parameters</h4>
 <table class="caption-top table">
@@ -629,42 +630,72 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <tr class="odd">
 <td>nextfile_path</td>
 <td><a href="https://docs.python.org/3/library/stdtypes.html#str">str</a></td>
-<td>Path to the Nextflow file.</td>
+<td>Path to the Nextflow workflow file (main.nf), or GitHub repo (CCBR/CHAMPAGNE).</td>
 <td><em>required</em></td>
 </tr>
 <tr class="even">
-<td>nextflow_args</td>
-<td><a href="https://docs.python.org/3/library/stdtypes.html#list">list</a></td>
-<td>Additional Nextflow arguments. Defaults to an empty list.</td>
+<td>mode</td>
+<td><a href="https://docs.python.org/3/library/stdtypes.html#str">str</a></td>
+<td>Execution mode, either “local” or “slurm”. Defaults to “local”.</td>
+<td><code>'local'</code></td>
+</tr>
+<tr class="odd">
+<td>force_all</td>
+<td><a href="https://docs.python.org/3/library/functions.html#bool">bool</a></td>
+<td>If True, disables the Nextflow ‘-resume’ flag to force all processes to rerun. Defaults to False.</td>
+<td><code>False</code></td>
+</tr>
+<tr class="even">
+<td>pipeline_name</td>
+<td><a href="https://docs.python.org/3/library/stdtypes.html#str">str</a></td>
+<td>Name of the pipeline for reporting/logging. Defaults to None.</td>
 <td><code>None</code></td>
 </tr>
 <tr class="odd">
-<td>mode</td>
+<td>nextflow_args</td>
+<td><a href="https://docs.python.org/3/library/stdtypes.html#list">list</a></td>
+<td>Additional command-line arguments for Nextflow. Defaults to None.</td>
+<td><code>None</code></td>
+</tr>
+<tr class="even">
+<td>debug</td>
+<td><a href="https://docs.python.org/3/library/functions.html#bool">bool</a></td>
+<td>If True, prints commands without executing them. Defaults to False.</td>
+<td><code>False</code></td>
+</tr>
+<tr class="odd">
+<td>hpc</td>
+<td><a href="https://docs.python.org/3/library/functions.html#object">object</a></td>
+<td>HPC environment object, used for SLURM execution and module loading. Defaults to result of <code>~ccbr_tools.pipeline.hpc.get_hpc()</code>.</td>
+<td><code>get_hpc()</code></td>
+</tr>
+<tr class="even">
+<td>hpc_modules</td>
 <td><a href="https://docs.python.org/3/library/stdtypes.html#str">str</a></td>
-<td>Execution mode. Defaults to “local”.</td>
-<td><code>'local'</code></td>
+<td>Name(s) of modules to load for Nextflow execution on HPC. Defaults to “nextflow”.</td>
+<td><code>'nextflow'</code></td>
 </tr>
 </tbody>
 </table>
 </section>
-<section id="raises" class="level4 doc-section doc-section-raises">
-<h4 class="doc-section doc-section-raises anchored" data-anchor-id="raises">Raises</h4>
-<table class="caption-top table">
-<thead>
-<tr class="header">
-<th>Name</th>
-<th>Type</th>
-<th>Description</th>
-</tr>
-</thead>
-<tbody>
-<tr class="odd">
-<td></td>
-<td><a href="https://docs.python.org/3/library/exceptions.html#ValueError">ValueError</a></td>
-<td>If mode is ‘slurm’ but no HPC environment was detected.</td>
-</tr>
-</tbody>
-</table>
+<section id="behavior" class="level4 doc-section doc-section-behavior">
+<h4 class="doc-section doc-section-behavior anchored" data-anchor-id="behavior">Behavior</h4>
+<ul>
+<li>Constructs the Nextflow command with appropriate arguments and profiles.</li>
+<li>Adds or removes the ‘-resume’ flag based on force_all.</li>
+<li>For SLURM mode, generates a SLURM submission script and submits it via sbatch.</li>
+<li>For local mode, optionally loads modules and environment variables before running Nextflow.</li>
+<li>Shows a preview of the pipeline execution before running.</li>
+<li>Executes the constructed command (unless debug is True).</li>
+</ul>
+</section>
+<section id="see-also" class="level4 doc-section doc-section-see-also">
+<h4 class="doc-section doc-section-see-also anchored" data-anchor-id="see-also">See also</h4>
+<ul>
+<li><code>~ccbr_tools.pipeline.hpc.get_hpc</code>: Retrieves the HPC environment object.</li>
+<li><code>~ccbr_tools.shell.shell_run</code>: Executes shell commands.</li>
+<li><code>~ccbr_tools.templates.use_template</code>: Generates files from templates.</li>
+</ul>
 
 
 </section>
