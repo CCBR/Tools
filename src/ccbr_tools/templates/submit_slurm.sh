@@ -9,7 +9,6 @@
 #SBATCH --error "log/slurm_%j.log"
 
 module load {MODULES}
-
 {ENV_VARS}
 
 {RUN_COMMAND}

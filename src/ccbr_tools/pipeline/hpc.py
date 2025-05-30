@@ -28,7 +28,6 @@ class Cluster:
 
     def __init__(self):
         self.name = None
-        self.modules = {"nxf": None, "smk": None}
         self.env_vars = "\n".join(
             (f"export SINGULARITY_CACHEDIR={get_singularity_cachedir()}",)
         )
@@ -86,10 +85,6 @@ class Biowulf(Cluster):
     def __init__(self):
         super().__init__()
         self.name = "biowulf"
-        self.modules = {
-            "nxf": " ".join(["nextflow"]),
-            "smk": " ".join(["snakemake/7", "singularity"]),
-        }
         self.env_vars = "\n".join(
             (
                 f"export SINGULARITY_CACHEDIR={get_singularity_cachedir()}",
@@ -131,7 +126,6 @@ class FRCE(Cluster):
     def __init__(self):
         super().__init__()
         self.name = "frce"
-        self.modules = {"nxf": "nextflow", "smk": "snakemake/7 singularity"}
         self.env_vars = "\n".join(
             (
                 self.env_vars,

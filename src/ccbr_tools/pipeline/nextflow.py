@@ -35,6 +35,7 @@ def run(
     nextflow_args=None,
     debug=False,
     hpc=get_hpc(),
+    hpc_modules="nextflow",
 ):
     """
     Run a Nextflow workflow
@@ -88,13 +89,11 @@ def run(
     )
     # Print a preview before launching the actual run
     if "-preview" not in args_dict.keys():
-        if hpc:
-            hpc_modules = hpc.modules["nxf"]
-            preview_command = (
-                f'bash -c "module load {hpc_modules} && {nextflow_command} -preview"'
-            )
-        else:
-            preview_command = nextflow_command + " -preview"
+        preview_command = (
+            (f'bash -c "module load {hpc_modules} && {nextflow_command} -preview"')
+            if hpc and hpc_modules
+            else nextflow_command + " -preview"
+        )
         msg_box("Pipeline Preview", errmsg=preview_command)
         if not debug:
             shell_run(preview_command, shell=True, check=False, capture_output=False)
@@ -104,7 +103,7 @@ def run(
         use_template(
             "submit_slurm.sh",
             PIPELINE=pipeline_name,
-            MODULES=hpc.modules["nxf"],
+            MODULES=hpc_modules,
             ENV_VARS="\n".join(
                 (
                     hpc.env_vars,
@@ -117,7 +116,6 @@ def run(
         msg_box("Slurm batch job", errmsg=run_command)
     elif mode == "local":
         if hpc:
-            hpc_modules = hpc.modules["nxf"]
             nextflow_command = f'bash -c "module load {hpc_modules} && {hpc.env_vars} && {nextflow_command}"'
         run_command = nextflow_command
     else:
