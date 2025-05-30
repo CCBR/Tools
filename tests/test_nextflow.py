@@ -1,5 +1,7 @@
 import os
 import pathlib
+import pytest
+import subprocess
 import tempfile
 
 from ccbr_tools.pipeline.nextflow import run, init
@@ -42,11 +44,15 @@ def test_nextflow_forceall():
 def test_nextflow_hpc():
     assert all(
         [
-            "module load"
+            "module load nextflow/25 &&"
             in exec_in_context(
-                run, nextfile_path="CCBR/CHAMPAGNE", debug=True, hpc=Biowulf()
+                run,
+                nextfile_path="CCBR/CHAMPAGNE",
+                debug=True,
+                hpc=Biowulf(),
+                hpc_modules="nextflow/25",
             ),
-            "module load"
+            "module load nextflow &&"
             in exec_in_context(
                 run, nextfile_path="CCBR/CHAMPAGNE", debug=True, hpc=FRCE()
             ),
@@ -73,6 +79,17 @@ def test_nextflow_slurm():
                 '#SBATCH -J "CCBR/CHAMPAGNE"' in slurm_txt,
             ]
         )
+
+
+def test_nextflow_preview_error():
+    with pytest.raises(subprocess.CalledProcessError) as err:
+        exec_in_context(
+            run, nextfile_path="tests/data/nextflow/main.nf", debug=False, mode="local"
+        )
+    assert (
+        "Command 'nextflow run tests/data/nextflow/main.nf -resume -preview' returned non-zero exit status 1"
+        in str(err.value)
+    )
 
 
 if __name__ == "__main__":
