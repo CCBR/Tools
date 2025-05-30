@@ -92,11 +92,11 @@ def run(
         preview_command = (
             (f'bash -c "module load {hpc_modules} && {nextflow_command} -preview"')
             if hpc and hpc_modules
-            else nextflow_command + " -preview"
+            else nextflow_command + "-preview"
         )
         msg_box("Pipeline Preview", errmsg=preview_command)
         if not debug:
-            shell_run(preview_command, shell=True, check=False, capture_output=False)
+            shell_run(preview_command, shell=True, check=True, capture_output=False)
 
     if mode == "slurm":
         slurm_filename = "submit_slurm.sh"
