@@ -1,6 +1,10 @@
 ## Tools development version
 
-- fix `ccbr_tools install`: add group write permissions after installation. (#89, @kelly-sovacool)
+- Fix `ccbr_tools install`: add group write permissions after installation. (#89, @kelly-sovacool)
+- Updates to `nextflow.run()`: (#90, @kelly-sovacool)
+  - Allow pipelines to pass in module versions.
+    - This is needed for the next version of champagne which will use nextflow v25 for the new output directive, while other pipelines will continue to use the default nextflow module version.
+  - Ensure `nextflow.run()` stops if the nextflow preview errors out.
 
 ## Tools 0.4.1
 
