@@ -175,7 +175,7 @@ def get_hpcname():
     hpc = scontrol_out["ClusterName"] if "ClusterName" in scontrol_out.keys() else ""
     if hpc == "fnlcr":
         hpc = "frce"
-    if hpc == "": # check hostname
+    if hpc == "":  # check hostname
         hostname = shell_run("hostname", shell=True, capture_output=True, text=True)
         if "helix" in hostname:
             hpc = "helix"
