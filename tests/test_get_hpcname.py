@@ -23,7 +23,9 @@ def test_hpcname_print_output():
 
     printed = captured.getvalue().strip()
     expected = get_hpcname().strip()
-    assert printed == expected, f"Printed output '{printed}' != return value '{expected}'"
+    assert (
+        printed == expected
+    ), f"Printed output '{printed}' != return value '{expected}'"
 
 
 if __name__ == "__main__":
