@@ -37,24 +37,10 @@ Note:
 
 Example:
     $ module_list
-    [
-        {
-            "name": "rclone",
-            "version": "1.70.0-beta"
-        },
-        {
-            "name": "ccbrpipeliner",
-            "version": "7"
-        },
-        {
-            "name": "snakemake",
-            "version": "7.32.4"
-        },
-        {
-            "name": "singularity",
-            "version": "4.2.2"
-        }
-    ]
+    {
+        "ccbrpipeliner": "8",
+        "snakemake": "7"
+    }
 
     $ module_list snakemake
     7.32.4
