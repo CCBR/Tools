@@ -226,16 +226,17 @@ def parse_modules(ml_output):
         {'module_name': 'version', ...}
     """
     modules = {}
-    # Regular expression to match module entries like '1) module_name/version'
-    pattern = re.compile(r"\d+\)\s+([\w\-/\.]+)")
-    matches = pattern.findall(ml_output)
-    for module_info in matches:
-        # Split module name and version
-        if "/" in module_info:
-            name, version = module_info.rsplit("/", 1)
-        else:
-            name, version = module_info, ""
-        modules[name] = version
+    # Pattern to match entries like:
+    # 1) snakemake/7 -> snakemake/7.32.4
+    # 2) ccbrpipeliner/8
+    pattern = re.compile(r"\d+\)\s+([\w\-]+)/([\w\-.]+)(?:\s+->\s+[\w\-]+/([\w\-.]+))?")
+
+    for match in pattern.finditer(ml_output):
+        name = match.group(1)
+        short_version = match.group(2)
+        resolved_version = match.group(3)
+        modules[name] = resolved_version if resolved_version else short_version
+
     return modules
 
 
