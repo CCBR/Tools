@@ -1,6 +1,7 @@
 ## Tools development version
 
-- add standalone script to retrieve HPC cluster name (#92, @kopardev)
+- add standalone script to retrieve HPC cluster name. (#93, @kopardev)
+- `module_list` now retrieves the full module version. (#93, @kopardev)
 
 ## Tools 0.4.2
 
