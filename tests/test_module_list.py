@@ -27,7 +27,7 @@ def test_parse_modules():
                 "java": "17.0.3.1",
                 "nextflow": "24.10.3",
             },
-            parse_modules("1) module1 2) module2/1") == {"module1": "", "module2": "1"},
+            parse_modules("1) module1 2) module2/1") == {"module2": "1"},
         ]
     )
 

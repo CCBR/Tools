@@ -62,6 +62,7 @@ docs = [
 [project.scripts]
 ccbr_tools = "ccbr_tools.__main__:main"
 gb2gtf = "ccbr_tools.gb2gtf:main"
+get_hpcname = "ccbr_tools.pipeline.hpc:main"
 hf = "ccbr_tools.homologfinder.hf:main"
 jobby = "ccbr_tools.jobby:main"
 module_list = "ccbr_tools.module_list:main"
