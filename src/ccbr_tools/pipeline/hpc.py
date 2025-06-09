@@ -175,7 +175,7 @@ def get_hpcname():
     hpc = scontrol_out["ClusterName"] if "ClusterName" in scontrol_out.keys() else ""
     if hpc == "fnlcr":
         hpc = "frce"
-    if hpc == "":  # check hostname
+    if not hpc:  # check hostname
         hostname = shell_run("hostname", shell=True, capture_output=True, text=True)
         if "helix" in hostname:
             hpc = "helix"
@@ -251,3 +251,12 @@ def is_loaded(module="ccbrpipeliner"):
         is_loaded (bool): True if the module is loaded, False otherwise
     """
     return module in list_modules()
+
+
+def main():
+    HPC = get_hpcname()
+    print(f"{HPC}")
+
+
+if __name__ == "__main__":
+    main()
