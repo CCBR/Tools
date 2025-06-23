@@ -139,6 +139,7 @@ CCBR_SOFTWARE = {
     "xavier": Snakemake,
     "spacesavers2": PythonTool,
     "permfix": BashTool,
+    "ccbr_tobias": Snakemake,
     "ccbr_tools": PythonTool,
     "ccbr_actions": PythonTool,
 }
