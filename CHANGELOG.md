@@ -157,7 +157,7 @@ Run a command with `--help` to learn how to use it.
 ### External Scripts
 
 Additional standalone scripts for various common tasks in
-[scripts/](scripts/) are added to the path when this package is
+[scripts/](/scripts/) are added to the path when this package is
 installed. They are less robust than the CLI Utilities included in the
 package and do not have any unit tests.
 

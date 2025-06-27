@@ -19,6 +19,7 @@ jobs:
         uses: lycheeverse/lychee-action@v2
         with:
           fail: false
+          args: --base . --verbose --no-progress --exclude-path 'src/ccbr_tools/templates/**' './**/*.md' './**/*.html' './**/*.rst'
 
       - name: Create Issue From File
         if: steps.lychee.outputs.exit_code != 0
