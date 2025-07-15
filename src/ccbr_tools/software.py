@@ -137,7 +137,7 @@ CCBR_SOFTWARE = {
     "renee": Snakemake,
     "sinclair": Nextflow,
     "xavier": Snakemake,
-    "spacesavers2": PythonTool,
+    "spacesavers2": BashTool,
     "permfix": BashTool,
     "ccbr_tools": PythonTool,
     "ccbr_actions": PythonTool,
