@@ -52,6 +52,7 @@ chown -R :CCBR_Pipeliner /data/CCBR_Pipeliner/Pipelines/CHAMPAGNE/.v0.3.0
 pushd /data/CCBR_Pipeliner/Pipelines/CHAMPAGNE
 rm -if v0.3
 ln -s .v0.3.0 v0.3
+chmod -R g+rwX v0.3
 popd
 """
             in result,
@@ -100,6 +101,7 @@ chown -R :CCBR_Pipeliner /data/CCBR_Pipeliner/Tools/cooltool/.v1.0.0
 pushd /data/CCBR_Pipeliner/Tools/cooltool
 rm -if v1.0
 ln -s .v1.0.0 v1.0
+chmod -R g+rwX v1.0
 popd
 """
             in result,
