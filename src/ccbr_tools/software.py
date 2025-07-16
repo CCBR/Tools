@@ -137,7 +137,7 @@ CCBR_SOFTWARE = {
     "renee": Snakemake,
     "sinclair": Nextflow,
     "xavier": Snakemake,
-    "spacesavers2": PythonTool,
+    "spacesavers2": BashTool,
     "permfix": BashTool,
     "ccbr_tools": PythonTool,
     "ccbr_actions": PythonTool,
@@ -148,6 +148,7 @@ SET_SYMLINK = """
 pushd {BASE_PATH}
 rm -if {MAJOR_MINOR_VERSION}
 ln -s {HIDDEN_VERSION} {MAJOR_MINOR_VERSION}
+chmod -R g+rwX {MAJOR_MINOR_VERSION}
 popd"""
 
 INSTALL_SCRIPT = """{CONDA_ACTIVATE}

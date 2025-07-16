@@ -97,6 +97,7 @@ chown -R :CCBR_Pipeliner /data/CCBR_Pipeliner/Pipelines/CHAMPAGNE/.v0.3.0
 pushd /data/CCBR_Pipeliner/Pipelines/CHAMPAGNE
 rm -if v0.3
 ln -s .v0.3.0 v0.3
+chmod -R g+rwX v0.3
 popd
 """
             ),
