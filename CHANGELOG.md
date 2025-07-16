@@ -1,8 +1,12 @@
 ## Tools development version
 
+- Fixes for `ccbr_tools install`: (#98, @kelly-sovacool)
+  - Correct installation method for `spacesavers2`.
+  - Change symlink permissions so group members can edit them.
+
 ## Tools 0.4.3
 
-- add standalone script to retrieve HPC cluster name. (#93, @kopardev)
+- Add standalone script to retrieve HPC cluster name. (#93, @kopardev)
 - `module_list` now retrieves the full module version. (#93, @kopardev)
 
 ## Tools 0.4.2
