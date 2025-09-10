@@ -36,6 +36,8 @@ def run(
     debug=False,
     hpc=get_hpc(),
     hpc_modules="nextflow",
+    hpc_walltime="1-00:00:00",
+    hpc_memory="1G",
 ):
     """
     Runs a Nextflow workflow with support for local or SLURM (HPC) execution modes.
@@ -116,7 +118,10 @@ def run(
     if mode == "slurm":
         slurm_filename = "submit_slurm.sh"
         use_template(
-            "submit_slurm.sh",
+            slurm_filename,
+            output_filepath=slurm_filename,
+            MEMORY=hpc_memory,
+            WALLTIME=hpc_walltime,
             PIPELINE=pipeline_name,
             MODULES=hpc_modules,
             ENV_VARS="\n".join(
