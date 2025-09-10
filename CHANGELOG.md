@@ -3,6 +3,7 @@
 - Fixes for `ccbr_tools install`: (#98, @kelly-sovacool)
   - Correct installation method for `spacesavers2`.
   - Change symlink permissions so group members can edit them.
+- Allow nextflow pipelines to specify walltime & memory usage for the slurm submission template. (#116, @kelly-sovacool)
 
 ## Tools 0.4.3
 

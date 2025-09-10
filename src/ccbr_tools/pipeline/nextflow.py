@@ -51,6 +51,8 @@ def run(
         debug (bool, optional): If True, prints commands without executing them. Defaults to False.
         hpc (object, optional): HPC environment object, used for SLURM execution and module loading. Defaults to result of `~ccbr_tools.pipeline.hpc.get_hpc()`.
         hpc_modules (str, optional): Name(s) of modules to load for Nextflow execution on HPC. Defaults to "nextflow".
+        hpc_walltime (str, optional): Walltime for SLURM job submission. Defaults to "1-00:00:00".
+        hpc_memory (str, optional): Memory allocation for SLURM job submission. Defaults to "1G".
 
     Behavior:
         - Constructs the Nextflow command with appropriate arguments and profiles.
