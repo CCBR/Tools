@@ -1,7 +1,7 @@
 #!/usr/bin/env bash
 #SBATCH --cpus-per-task=1
-#SBATCH --mem=1g
-#SBATCH --time=1-00:00:00
+#SBATCH --mem={MEMORY}
+#SBATCH --time={WALLTIME}
 #SBATCH --parsable
 #SBATCH -J "{PIPELINE}"
 #SBATCH --mail-type=BEGIN,END,FAIL

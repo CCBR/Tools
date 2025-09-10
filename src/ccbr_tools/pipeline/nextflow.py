@@ -36,6 +36,8 @@ def run(
     debug=False,
     hpc=get_hpc(),
     hpc_modules="nextflow",
+    hpc_walltime="1-00:00:00",
+    hpc_memory="1G",
 ):
     """
     Runs a Nextflow workflow with support for local or SLURM (HPC) execution modes.
@@ -49,6 +51,8 @@ def run(
         debug (bool, optional): If True, prints commands without executing them. Defaults to False.
         hpc (object, optional): HPC environment object, used for SLURM execution and module loading. Defaults to result of `~ccbr_tools.pipeline.hpc.get_hpc()`.
         hpc_modules (str, optional): Name(s) of modules to load for Nextflow execution on HPC. Defaults to "nextflow".
+        hpc_walltime (str, optional): Walltime for SLURM job submission. Defaults to "1-00:00:00".
+        hpc_memory (str, optional): Memory allocation for SLURM job submission. Defaults to "1G".
 
     Behavior:
         - Constructs the Nextflow command with appropriate arguments and profiles.
@@ -116,7 +120,10 @@ def run(
     if mode == "slurm":
         slurm_filename = "submit_slurm.sh"
         use_template(
-            "submit_slurm.sh",
+            slurm_filename,
+            output_filepath=slurm_filename,
+            MEMORY=hpc_memory,
+            WALLTIME=hpc_walltime,
             PIPELINE=pipeline_name,
             MODULES=hpc_modules,
             ENV_VARS="\n".join(
