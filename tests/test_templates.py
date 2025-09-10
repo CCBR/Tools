@@ -23,6 +23,8 @@ def test_use_template():
         use_template(
             "submit_slurm.sh",
             output_filepath=out_filepath,
+            WALLTIME="4-00:00:00",
+            MEMORY="1G",
             PIPELINE="CCBR_nxf",
             MODULES="ccbrpipeliner nextflow",
             ENV_VARS="export HELLO=WORLD",
@@ -32,6 +34,7 @@ def test_use_template():
             template_str = outfile.read()
         assertions = [
             '#SBATCH -J "CCBR_nxf"' in template_str,
+            "#SBATCH --time=4-00:00:00" in template_str,
             "module load ccbrpipeliner nextflow" in template_str,
             "export HELLO=WORLD" in template_str,
             "nextflow run main.nf -stub" in template_str,
@@ -44,6 +47,8 @@ def generate_slurm_template():
     use_template(
         "submit_slurm.sh",
         output_filepath="tests/data/templates/submit_slurm.sh",
+        WALLTIME="1-00:00:00",
+        MEMORY="1G",
         PIPELINE="CCBR_nxf",
         MODULES=hpc.modules["nxf"],
         ENV_VARS=hpc.env_vars,
