@@ -2,7 +2,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
 
 <meta charset="utf-8">
-<meta name="generator" content="quarto-1.7.34">
+<meta name="generator" content="quarto-1.8.25">
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
@@ -69,16 +69,17 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <link href="./cite.html" rel="prev">
 <script src="site_libs/quarto-html/quarto.js" type="module"></script>
 <script src="site_libs/quarto-html/tabsets/tabsets.js" type="module"></script>
+<script src="site_libs/quarto-html/axe/axe-check.js" type="module"></script>
 <script src="site_libs/quarto-html/popper.min.js"></script>
 <script src="site_libs/quarto-html/tippy.umd.min.js"></script>
 <script src="site_libs/quarto-html/anchor.min.js"></script>
 <link href="site_libs/quarto-html/tippy.css" rel="stylesheet">
-<link href="site_libs/quarto-html/quarto-syntax-highlighting-906d934beb27b20839da715fe20e04a2.css" rel="stylesheet" class="quarto-color-scheme" id="quarto-text-highlighting-styles">
-<link href="site_libs/quarto-html/quarto-syntax-highlighting-dark-3990cf59eec6eb64c78649bb62e0fcd1.css" rel="stylesheet" class="quarto-color-scheme quarto-color-alternate" id="quarto-text-highlighting-styles">
+<link href="site_libs/quarto-html/quarto-syntax-highlighting-8ed111f5c04c042f69398f182d5e0115.css" rel="stylesheet" class="quarto-color-scheme" id="quarto-text-highlighting-styles">
+<link href="site_libs/quarto-html/quarto-syntax-highlighting-dark-6bc471e1775f176861ec795db68353b1.css" rel="stylesheet" class="quarto-color-scheme quarto-color-alternate" id="quarto-text-highlighting-styles">
 <script src="site_libs/bootstrap/bootstrap.min.js"></script>
 <link href="site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
-<link href="site_libs/bootstrap/bootstrap-9d91fbfa543dc7c4bd261b17243302d3.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme" id="quarto-bootstrap" data-mode="light">
-<link href="site_libs/bootstrap/bootstrap-dark-d52af08b1f1dfa9f9531496dca1ad4ff.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme quarto-color-alternate" id="quarto-bootstrap" data-mode="dark">
+<link href="site_libs/bootstrap/bootstrap-d292715e8f8da2f561e717d4032bffbf.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme" id="quarto-bootstrap" data-mode="light">
+<link href="site_libs/bootstrap/bootstrap-dark-63f7b746c88c852fb6bf793ac99edb48.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme quarto-color-alternate" id="quarto-bootstrap" data-mode="dark">
 <script id="quarto-search-options" type="application/json">{
   "location": "navbar",
   "copy-button": false,
@@ -276,6 +277,8 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
     <nav class="navbar navbar-expand-lg " data-bs-theme="dark">
       <div class="navbar-container container-fluid">
       <div class="navbar-brand-container mx-auto">
+    <a href="./index.html" class="navbar-brand navbar-brand-logo">
+    </a>
     <a class="navbar-brand" href="./index.html">
     <span class="navbar-title">CCBR Tools</span>
     </a>
@@ -356,6 +359,10 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article page-navbar">
 <!-- sidebar -->
   <nav id="quarto-sidebar" class="sidebar collapse collapse-horizontal quarto-sidebar-collapse-item sidebar-navigation docked overflow-auto">
+    <div class="pt-lg-2 mt-2 text-left sidebar-header sidebar-header-stacked">
+      <a href="./index.html" class="sidebar-logo-link">
+      </a>
+      </div>
     <div class="sidebar-menu-container"> 
     <ul class="list-unstyled mt-1">
         <li class="sidebar-item">
@@ -494,28 +501,28 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <section id="clone-the-repo" class="level3">
 <h3 class="anchored" data-anchor-id="clone-the-repo">Clone the repo</h3>
 <p>If you are a member of <a href="https://github.com/CCBR">CCBR</a>, you can clone this repository to your computer or development environment. Otherwise, you will first need to <a href="https://docs.github.com/en/pull-requests/collaborating-with-pull-requests/working-with-forks/fork-a-repo">fork</a> the repo and clone your fork. You only need to do this step once.</p>
-<div class="sourceCode" id="cb1"><pre class="sourceCode sh code-with-copy"><code class="sourceCode bash"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="fu">git</span> clone https://github.com/CCBR/Tools</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb1"><pre class="sourceCode sh code-with-copy"><code class="sourceCode bash"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="fu">git</span> clone https://github.com/CCBR/Tools</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <blockquote class="blockquote">
 <p>Cloning into ‘Tools’… <br> remote: Enumerating objects: 1136, done. <br> remote: Counting objects: 100% (463/463), done. <br> remote: Compressing objects: 100% (357/357), done. <br> remote: Total 1136 (delta 149), reused 332 (delta 103), pack-reused 673 <br> Receiving objects: 100% (1136/1136), 11.01 MiB | 9.76 MiB/s, done. <br> Resolving deltas: 100% (530/530), done. <br></p>
 </blockquote>
-<div class="sourceCode" id="cb2"><pre class="sourceCode sh code-with-copy"><code class="sourceCode bash"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="bu">cd</span> tools</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb2"><pre class="sourceCode sh code-with-copy"><code class="sourceCode bash"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="bu">cd</span> tools</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </section>
 <section id="if-this-is-your-first-time-cloning-the-repo-you-may-need-to-install-dependencies" class="level3">
 <h3 class="anchored" data-anchor-id="if-this-is-your-first-time-cloning-the-repo-you-may-need-to-install-dependencies">If this is your first time cloning the repo, you may need to install dependencies</h3>
 <ul>
 <li><p>Install the python dependencies with pip</p>
-<div class="sourceCode" id="cb3"><pre class="sourceCode sh code-with-copy"><code class="sourceCode bash"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="ex">pip</span> install .[<span class="pp">[</span><span class="ss">dev,test</span><span class="pp">]</span>]</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div></li>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb3"><pre class="sourceCode sh code-with-copy"><code class="sourceCode bash"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="ex">pip</span> install .[<span class="pp">[</span><span class="ss">dev,test</span><span class="pp">]</span>]</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div></li>
 <li><p>Install <a href="https://pre-commit.com/#install"><code>pre-commit</code></a> if you don’t already have it. Then from the repo’s root directory, run</p>
-<div class="sourceCode" id="cb4"><pre class="sourceCode sh code-with-copy"><code class="sourceCode bash"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="ex">pre-commit</span> install</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb4"><pre class="sourceCode sh code-with-copy"><code class="sourceCode bash"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="ex">pre-commit</span> install</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <p>This will install the repo’s pre-commit hooks. You’ll only need to do this step the first time you clone the repo.</p></li>
 </ul>
 </section>
 <section id="create-a-branch" class="level3">
 <h3 class="anchored" data-anchor-id="create-a-branch">Create a branch</h3>
 <p>Create a Git branch for your pull request (PR). Give the branch a descriptive name for the changes you will make, such as <code>iss-10</code> if it is for a specific issue.</p>
-<div class="sourceCode" id="cb5"><pre class="sourceCode sh code-with-copy"><code class="sourceCode bash"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="co"># create a new branch and switch to it</span></span>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb5"><pre class="sourceCode sh code-with-copy"><code class="sourceCode bash"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="co"># create a new branch and switch to it</span></span>
 <span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a><span class="fu">git</span> branch iss-10</span>
-<span id="cb5-3"><a href="#cb5-3" aria-hidden="true" tabindex="-1"></a><span class="fu">git</span> switch iss-10</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb5-3"><a href="#cb5-3" aria-hidden="true" tabindex="-1"></a><span class="fu">git</span> switch iss-10</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <blockquote class="blockquote">
 <p>Switched to a new branch ‘iss-10’</p>
 </blockquote>
@@ -536,9 +543,9 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <h3 class="anchored" data-anchor-id="commit-and-push-your-changes">Commit and push your changes</h3>
 <p>If you’re not sure how often you should commit or what your commits should consist of, we recommend following the “atomic commits” principle where each commit contains one new feature, fix, or task. Learn more about atomic commits here: <a href="https://www.freshconsulting.com/insights/blog/atomic-commits/" class="uri">https://www.freshconsulting.com/insights/blog/atomic-commits/</a></p>
 <p>First, add the files that you changed to the staging area:</p>
-<div class="sourceCode" id="cb6"><pre class="sourceCode sh code-with-copy"><code class="sourceCode bash"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a><span class="fu">git</span> add path/to/changed/files/</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb6"><pre class="sourceCode sh code-with-copy"><code class="sourceCode bash"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a><span class="fu">git</span> add path/to/changed/files/</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <p>Then make the commit. Your commit message should follow the <a href="https://www.conventionalcommits.org/en/v1.0.0/">Conventional Commits</a> specification. Briefly, each commit should start with one of the approved types such as <code>feat</code>, <code>fix</code>, <code>docs</code>, etc. followed by a description of the commit. Take a look at the <a href="https://www.conventionalcommits.org/en/v1.0.0/#summary">Conventional Commits specification</a> for more detailed information about how to write commit messages.</p>
-<div class="sourceCode" id="cb7"><pre class="sourceCode sh code-with-copy"><code class="sourceCode bash"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a><span class="fu">git</span> commit <span class="at">-m</span> <span class="st">'feat: create function for awesome feature'</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb7"><pre class="sourceCode sh code-with-copy"><code class="sourceCode bash"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a><span class="fu">git</span> commit <span class="at">-m</span> <span class="st">'feat: create function for awesome feature'</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <p>pre-commit will enforce that your commit message and the code changes are styled correctly and will attempt to make corrections if needed.</p>
 <blockquote class="blockquote">
 <p>Check for added large files……………………………………….Passed <br> Fix End of Files…………………………………………………Passed <br> Trim Trailing Whitespace………………………………………….Failed <br></p>
@@ -549,16 +556,16 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </ul>
 </blockquote>
 <p>In the example above, one of the hooks modified a file in the proposed commit, so the pre-commit check failed. You can run <code>git diff</code> to see the changes that pre-commit made and <code>git status</code> to see which files were modified. To proceed with the commit, re-add the modified file(s) and re-run the commit command:</p>
-<div class="sourceCode" id="cb8"><pre class="sourceCode sh code-with-copy"><code class="sourceCode bash"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a><span class="fu">git</span> add path/to/changed/files/file.txt</span>
-<span id="cb8-2"><a href="#cb8-2" aria-hidden="true" tabindex="-1"></a><span class="fu">git</span> commit <span class="at">-m</span> <span class="st">'feat: create function for awesome feature'</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb8"><pre class="sourceCode sh code-with-copy"><code class="sourceCode bash"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a><span class="fu">git</span> add path/to/changed/files/file.txt</span>
+<span id="cb8-2"><a href="#cb8-2" aria-hidden="true" tabindex="-1"></a><span class="fu">git</span> commit <span class="at">-m</span> <span class="st">'feat: create function for awesome feature'</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <p>This time, all the hooks either passed or were skipped (e.g.&nbsp;hooks that only run on R code will not run if no R files were committed). When the pre-commit check is successful, the usual commit success message will appear after the pre-commit messages showing that the commit was created.</p>
 <blockquote class="blockquote">
 <p>Check for added large files……………………………………….Passed <br> Fix End of Files…………………………………………………Passed <br> Trim Trailing Whitespace………………………………………….Passed <br> codespell……………………………………………………….Passed <br> style-files……………………………………(no files to check)Skipped <br> readme-rmd-rendered…………………………….(no files to check)Skipped <br> use-tidy-description……………………………(no files to check)Skipped <br> Conventional Commit………………………………………………Passed <br> &gt; [iss-10 9ff256e] feat: create function for awesome feature <br> 1 file changed, 22 insertions(+), 3 deletions(-) <br></p>
 </blockquote>
 <p>Finally, push your changes to GitHub:</p>
-<div class="sourceCode" id="cb9"><pre class="sourceCode sh code-with-copy"><code class="sourceCode bash"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a><span class="fu">git</span> push</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb9"><pre class="sourceCode sh code-with-copy"><code class="sourceCode bash"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a><span class="fu">git</span> push</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <p>If this is the first time you are pushing this branch, you may have to explicitly set the upstream branch:</p>
-<div class="sourceCode" id="cb10"><pre class="sourceCode sh code-with-copy"><code class="sourceCode bash"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a><span class="fu">git</span> push <span class="at">--set-upstream</span> origin iss-10</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb10"><pre class="sourceCode sh code-with-copy"><code class="sourceCode bash"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a><span class="fu">git</span> push <span class="at">--set-upstream</span> origin iss-10</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <blockquote class="blockquote">
 <p>Enumerating objects: 7, done. <br> Counting objects: 100% (7/7), done. <br> Delta compression using up to 10 threads <br> Compressing objects: 100% (4/4), done. <br> Writing objects: 100% (4/4), 648 bytes | 648.00 KiB/s, done. <br> Total 4 (delta 3), reused 0 (delta 0), pack-reused 0 <br> remote: Resolving deltas: 100% (3/3), completed with 3 local objects. <br> remote: <br> remote: Create a pull request for ‘iss-10’ on GitHub by visiting: <br> remote: https://github.com/CCBR/tools/pull/new/iss-10 <br> remote: <br> To https://github.com/CCBR/tools <br> &gt; <br> &gt; [new branch] iss-10 -&gt; iss-10 <br> branch ‘iss-10’ set up to track ‘origin/iss-10’. <br></p>
 </blockquote>
@@ -591,8 +598,8 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <section id="after-your-pr-has-been-merged" class="level3">
 <h3 class="anchored" data-anchor-id="after-your-pr-has-been-merged">After your PR has been merged</h3>
 <p>After your PR has been merged, update your local clone of the repo by switching to the main branch and pulling the latest changes:</p>
-<div class="sourceCode" id="cb11"><pre class="sourceCode sh code-with-copy"><code class="sourceCode bash"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a><span class="fu">git</span> checkout main</span>
-<span id="cb11-2"><a href="#cb11-2" aria-hidden="true" tabindex="-1"></a><span class="fu">git</span> pull</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb11"><pre class="sourceCode sh code-with-copy"><code class="sourceCode bash"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a><span class="fu">git</span> checkout main</span>
+<span id="cb11-2"><a href="#cb11-2" aria-hidden="true" tabindex="-1"></a><span class="fu">git</span> pull</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <p>It’s a good idea to run <code>git pull</code> before creating a new branch so it will start from the most recent commits in main.</p>
 </section>
 </section>
@@ -675,13 +682,14 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
       e.clearSelection();
     }
     const getTextToCopy = function(trigger) {
-        const codeEl = trigger.previousElementSibling.cloneNode(true);
-        for (const childEl of codeEl.children) {
-          if (isCodeAnnotation(childEl)) {
-            childEl.remove();
-          }
+      const outerScaffold = trigger.parentElement.cloneNode(true);
+      const codeEl = outerScaffold.querySelector('code');
+      for (const childEl of codeEl.children) {
+        if (isCodeAnnotation(childEl)) {
+          childEl.remove();
         }
-        return codeEl.innerText;
+      }
+      return codeEl.innerText;
     }
     const clipboard = new window.ClipboardJS('.code-copy-button:not([data-in-quarto-modal])', {
       text: getTextToCopy
