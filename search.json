@@ -498,7 +498,7 @@
     "href": "CHANGELOG.html",
     "title": "CCBR Tools",
     "section": "",
-    "text": "Use miniforge3 installation on biowulf. (#124, @kelly-sovacool)",
+    "text": "Use miniforge3 installation on biowulf. (#124, @kelly-sovacool)\nThe run_jobby_on_* scripts are now deprecated in favor of using jobby directly. (#123, @kelly-sovacool)",
     "crumbs": [
       "Project information",
       "Changelog"
@@ -509,7 +509,7 @@
     "href": "CHANGELOG.html#tools-development-version",
     "title": "CCBR Tools",
     "section": "",
-    "text": "Use miniforge3 installation on biowulf. (#124, @kelly-sovacool)",
+    "text": "Use miniforge3 installation on biowulf. (#124, @kelly-sovacool)\nThe run_jobby_on_* scripts are now deprecated in favor of using jobby directly. (#123, @kelly-sovacool)",
     "crumbs": [
       "Project information",
       "Changelog"
@@ -1117,7 +1117,7 @@
     "href": "scripts.html",
     "title": "External scripts",
     "section": "",
-    "text": "Additional standalone scripts for various common tasks are added to the path when this package is installed. They are less robust than the CLI Utilities included in the package and do not have any unit tests.\n\nadd_gene_name_to_count_matrix.R\naggregate_data_tables.R\nargparse.bash\ncancel_snakemake_jobs.sh\ncreate_hpc_link.sh\nextract_value_from_json.py\nextract_value_from_yaml.py\nfilter_bam_by_readids.py\nfilter_fastq_by_readids_highmem.py\nfilter_fastq_by_readids_highmem_pe.py\ngather_cluster_stats.sh\ngather_cluster_stats_biowulf.sh\nget_buyin_partition_list.bash\nget_slurm_file_with_error.sh\ngithub_milestones.sh\ngsea_preranked.sh\nkaryoploter.R\nmake_labels_for_pipeliner.sh\nrawcounts2normalizedcounts_DESeq2.R\nrawcounts2normalizedcounts_limmavoom.R\nrun_jobby_on_nextflow_log\nrun_jobby_on_nextflow_log_full_format\nrun_jobby_on_snakemake_log\nrun_jobby_on_snakemake_log_full_format\nwhich_vpn.sh",
+    "text": "Additional standalone scripts for various common tasks are added to the path when this package is installed. They are less robust than the CLI Utilities included in the package and do not have any unit tests.\n\n\n\n\n\n\nWarning\n\n\n\nThe run_jobby_on_* scripts have been deprecated. Please use jobby directly.\n\n\n\nadd_gene_name_to_count_matrix.R\naggregate_data_tables.R\nargparse.bash\ncancel_snakemake_jobs.sh\ncreate_hpc_link.sh\nextract_value_from_json.py\nextract_value_from_yaml.py\nfilter_bam_by_readids.py\nfilter_fastq_by_readids_highmem.py\nfilter_fastq_by_readids_highmem_pe.py\ngather_cluster_stats.sh\ngather_cluster_stats_biowulf.sh\nget_buyin_partition_list.bash\nget_slurm_file_with_error.sh\ngithub_milestones.sh\ngsea_preranked.sh\nkaryoploter.R\nmake_labels_for_pipeliner.sh\nrawcounts2normalizedcounts_DESeq2.R\nrawcounts2normalizedcounts_limmavoom.R\nrun_jobby_on_nextflow_log\nrun_jobby_on_nextflow_log_full_format\nrun_jobby_on_snakemake_log\nrun_jobby_on_snakemake_log_full_format\nwhich_vpn.sh",
     "crumbs": [
       "Usage",
       "External scripts"
