@@ -1,3 +1,8 @@
 #!/usr/bin/env bash
-nextflowlog=$1
-jobby $(awk -F" jobId: " '{print $2}' ${nextflowlog} | awk -F";" '{print $1}' | grep -v "^$" | sort | uniq | tr "\\n" " ")
+SCRIPT=$(basename ${BASH_SOURCE[0]})
+echo """ERROR: ${SCRIPT} is deprecated.
+Please use jobby instead. For usage information, run:
+
+    jobby --help
+""" >&2
+exit 1
