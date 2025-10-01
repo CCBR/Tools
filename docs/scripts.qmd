@@ -5,6 +5,10 @@ title: "External scripts"
 Additional standalone scripts for various common tasks are added to the path when this package is installed.
 They are less robust than the [CLI Utilities](cli) included in the package and do not have any unit tests.
 
+:::{.callout-warning}
+The `run_jobby_on_*` scripts have been deprecated. Please use `jobby` directly.
+:::
+
 ```{python}
 #| echo: false
 #| output: asis
