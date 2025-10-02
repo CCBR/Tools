@@ -121,14 +121,16 @@ def glob_files(
             ].
 
     Returns:
-        set of pathlib.Path: A set of `pathlib.Path` objects representing the matched files.
+        set of pathlib.Path: A set of `pathlib.Path` objects representing the matched files
+        sorted by modification time (newest first)
     """
-    return {
+    files = [
         pathlib.Path(f)
         for pattern in patterns
         for f in glob.glob(f"{pipeline_outdir}/**/{pattern}", recursive=True)
         if pathlib.Path(f).is_file()
-    }
+    ]
+    return sorted(files, key=lambda p: p.stat().st_mtime, reverse=True)
 
 
 def create_tar_archive(files, tar_filename):
