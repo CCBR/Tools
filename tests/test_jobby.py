@@ -313,10 +313,8 @@ def test_format_df():
 
 def test_get_job_logs():
     assert get_job_logs("abc", "tests/data/pipeline/work") == {
-        "log_err_path": "tests/data/pipeline/work/.command.err",
-        "log_err_txt": "WARNING: Not virtualizing pid namespace by configuration\n"
-        "WARNING: While bind mounting '/gpfs:/gpfs': destination is "
-        "already in the mount point list\n",
         "log_out_path": "tests/data/pipeline/work/.command.out",
         "log_out_txt": "",
+        "log_err_path": "tests/data/pipeline/work/.command.err",
+        "log_err_txt": "WARNING: Not virtualizing pid namespace by configuration\\nWARNING: While bind mounting '/gpfs:/gpfs': destination is already in the mount point list\\n",
     }
