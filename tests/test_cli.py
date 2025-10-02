@@ -88,7 +88,7 @@ def test_install():
     output = shell_run("ccbr_tools install champagne v0.3.0 --hpc biowulf", check=False)
     assert all(
         [
-            "conda.sh' && conda activate /" in output,
+            "mamba activate /" in output,
             output.endswith(
                 """pip install git+https://github.com/CCBR/CHAMPAGNE.git@v0.3.0 -t /data/CCBR_Pipeliner/Pipelines/CHAMPAGNE/.v0.3.0
 chmod -R a+rX /data/CCBR_Pipeliner/Pipelines/CHAMPAGNE/.v0.3.0
