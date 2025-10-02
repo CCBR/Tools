@@ -572,6 +572,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   <li><a href="#ccbr_tools.jobby.jobby" id="toc-ccbr_tools.jobby.jobby" class="nav-link" data-scroll-target="#ccbr_tools.jobby.jobby">jobby</a></li>
   <li><a href="#ccbr_tools.jobby.parse_mem_to_gb" id="toc-ccbr_tools.jobby.parse_mem_to_gb" class="nav-link" data-scroll-target="#ccbr_tools.jobby.parse_mem_to_gb">parse_mem_to_gb</a></li>
   <li><a href="#ccbr_tools.jobby.parse_time_to_seconds" id="toc-ccbr_tools.jobby.parse_time_to_seconds" class="nav-link" data-scroll-target="#ccbr_tools.jobby.parse_time_to_seconds">parse_time_to_seconds</a></li>
+  <li><a href="#ccbr_tools.jobby.read_slurm_log" id="toc-ccbr_tools.jobby.read_slurm_log" class="nav-link" data-scroll-target="#ccbr_tools.jobby.read_slurm_log">read_slurm_log</a></li>
   <li><a href="#ccbr_tools.jobby.records_to_df" id="toc-ccbr_tools.jobby.records_to_df" class="nav-link" data-scroll-target="#ccbr_tools.jobby.records_to_df">records_to_df</a></li>
   </ul></li>
   </ul></li>
@@ -660,6 +661,10 @@ jobby .nextflow.log [--tsv|--json|--yaml] [--outerr] [--include-completed]</code
 <td>Convert SLURM time formats like ‘1-02:03:04’, ‘02:03:04’, ‘37:55.869’, or ‘55.869’ to seconds.</td>
 </tr>
 <tr class="even">
+<td><a href="#ccbr_tools.jobby.read_slurm_log">read_slurm_log</a></td>
+<td>Reads the contents of a SLURM log file, escapes all special characters using JSON encoding,</td>
+</tr>
+<tr class="odd">
 <td><a href="#ccbr_tools.jobby.records_to_df">records_to_df</a></td>
 <td>Convert a list of job records to a pandas DataFrame.</td>
 </tr>
@@ -784,9 +789,59 @@ jobby .nextflow.log [--tsv|--json|--yaml] [--outerr] [--include-completed]</code
 <div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb7"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a>jobby.parse_time_to_seconds(t)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <p>Convert SLURM time formats like ‘1-02:03:04’, ‘02:03:04’, ‘37:55.869’, or ‘55.869’ to seconds.</p>
 </section>
+<section id="ccbr_tools.jobby.read_slurm_log" class="level3">
+<h3 class="anchored" data-anchor-id="ccbr_tools.jobby.read_slurm_log">read_slurm_log</h3>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb8"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a>jobby.read_slurm_log(filepath)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<p>Reads the contents of a SLURM log file, escapes all special characters using JSON encoding, and returns the escaped string without the outer quotes.</p>
+<section id="parameters-1" class="level4 doc-section doc-section-parameters">
+<h4 class="doc-section doc-section-parameters anchored" data-anchor-id="parameters-1">Parameters</h4>
+<table class="caption-top table">
+<thead>
+<tr class="header">
+<th>Name</th>
+<th>Type</th>
+<th>Description</th>
+<th>Default</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>filepath</td>
+<td><a href="https://docs.python.org/3/library/stdtypes.html#str">str</a></td>
+<td>Path to the SLURM log file.</td>
+<td><em>required</em></td>
+</tr>
+</tbody>
+</table>
+</section>
+<section id="returns-1" class="level4 doc-section doc-section-returns">
+<h4 class="doc-section doc-section-returns anchored" data-anchor-id="returns-1">Returns</h4>
+<table class="caption-top table">
+<colgroup>
+<col style="width: 7%">
+<col style="width: 7%">
+<col style="width: 84%">
+</colgroup>
+<thead>
+<tr class="header">
+<th>Name</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>str</td>
+<td></td>
+<td>The contents of the file with special characters JSON-escaped and outer quotes removed.</td>
+</tr>
+</tbody>
+</table>
+</section>
+</section>
 <section id="ccbr_tools.jobby.records_to_df" class="level3">
 <h3 class="anchored" data-anchor-id="ccbr_tools.jobby.records_to_df">records_to_df</h3>
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb8"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a>jobby.records_to_df(records)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb9"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a>jobby.records_to_df(records)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <p>Convert a list of job records to a pandas DataFrame.</p>
 
 
