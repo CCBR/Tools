@@ -2,7 +2,7 @@
 
 - Fix how jobby parses slurm stdout/stderr files. (#122, @kopardev, @kelly-sovacool)
 - The `run_jobby_on_*` scripts are now deprecated in favor of using `jobby` directly. (#123, @kelly-sovacool)
-- Use miniforge3 installation on biowulf. (#124, @kelly-sovacool)
+- Use miniforge3 installation on biowulf. (#124, #127, @kelly-sovacool)
 
 ## Tools 0.4.4
 
