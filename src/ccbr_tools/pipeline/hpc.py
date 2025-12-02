@@ -78,7 +78,7 @@ class Biowulf(Cluster):
     GROUP = "CCBR_Pipeliner"
     PIPELINES_HOME = pathlib.Path("/data/CCBR_Pipeliner/Pipelines")
     TOOLS_HOME = pathlib.Path("/data/CCBR_Pipeliner/Tools")
-    CONDA_ACTIVATE = "MAMBA_ROOT_PREFIX='/data/CCBR_Pipeliner/db/PipeDB/miniforge3/' && /data/CCBR_Pipeliner/db/PipeDB/miniforge3/bin/mamba activate /data/CCBR_Pipeliner/db/PipeDB/miniforge3/envs/py3.11-8"
+    CONDA_ACTIVATE = "MAMBA_ROOT_PREFIX='/data/CCBR_Pipeliner/db/PipeDB/miniforge3/' && mamba activate /data/CCBR_Pipeliner/db/PipeDB/miniforge3/envs/py3.11-8"
     SPOOK_DIR = pathlib.Path("/data/CCBR_Pipeliner/userdata_staging")
 
     def __init__(self):
@@ -117,7 +117,7 @@ class FRCE(Cluster):
     GROUP = "nci-frederick-ccbr-pipelines"
     PIPELINES_HOME = pathlib.Path("/mnt/projects/CCBR-Pipelines/pipelines")
     TOOLS_HOME = pathlib.Path("/mnt/projects/CCBR-Pipelines/tools")
-    CONDA_ACTIVATE = "MAMBA_ROOT_PREFIX='/mnt/projects/CCBR-Pipelines/resources/miniconda3/' && /mnt/projects/CCBR-Pipelines/resources/miniconda3/bin/mamba activate py311"
+    CONDA_ACTIVATE = "MAMBA_ROOT_PREFIX='/mnt/projects/CCBR-Pipelines/resources/miniconda3/' && mamba activate py311"
     SPOOK_DIR = pathlib.Path(
         "/mnt/projects/CCBR-Pipelines/pipelines/userdata/ccbrpipeliner"
     )
