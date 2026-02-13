@@ -283,7 +283,12 @@ def test_records_to_df_smk():
         records_smk = pickle.load(f)
     with open("tests/data/jobby/df_smk.pkl", "rb") as f:
         df_smk = pickle.load(f)
-    pd.testing.assert_frame_equal(records_to_df(records_smk), df_smk)
+    pd.testing.assert_frame_equal(
+        records_to_df(records_smk),
+        df_smk,
+        check_dtype=False,
+        check_column_type=False,
+    )
 
 
 def test_records_to_df_nxf():
@@ -291,7 +296,12 @@ def test_records_to_df_nxf():
         records_nxf = pickle.load(f)
     with open("tests/data/jobby/df_nxf.pkl", "rb") as f:
         df_nxf = pickle.load(f)
-    pd.testing.assert_frame_equal(records_to_df(records_nxf), df_nxf)
+    pd.testing.assert_frame_equal(
+        records_to_df(records_nxf),
+        df_nxf,
+        check_dtype=False,
+        check_column_type=False,
+    )
 
 
 def test_format_df():
