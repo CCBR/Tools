@@ -9,6 +9,7 @@ Contributor related functions:
 - [](`~ccbr_tools.github.get_contrib_html`) - Generates HTML for a GitHub contributor's profile image and link
 """
 
+import warnings
 from .pkg_util import get_url_json
 
 
@@ -51,9 +52,14 @@ def get_user_info(user_login):
 
     Returns:
         dict: A dictionary containing the user's profile information.
+              If the user is not found, returns a minimal dict with 'login' and 'name' set to None.
     """
     url = f"https://api.github.com/users/{user_login}"
-    return get_url_json(url)
+    try:
+        return get_url_json(url)
+    except ConnectionError as e:
+        warnings.warn(f"Could not retrieve user info for {user_login}. {str(e)}")
+        return {"login": user_login, "name": None}
 
 
 def get_contrib_html(contrib, img_attr="{width=100px height=100px}"):
