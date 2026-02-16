@@ -1,5 +1,7 @@
 ## Tools development version
 
+- When an invalid GitHub user is passed to `github.get_user_info()`, raise a warning and return a dict with `"name": None`. (#135, @kelly-sovacool)
+
 ## Tools 0.4.5
 
 - Fix how jobby parses slurm stdout/stderr files. (#122, @kopardev, @kelly-sovacool)
