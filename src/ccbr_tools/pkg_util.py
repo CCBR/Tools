@@ -8,6 +8,7 @@ import click
 import datetime
 import importlib.resources
 import importlib.metadata
+import os
 import pathlib
 import requests
 from time import localtime, strftime
@@ -165,7 +166,13 @@ def get_url_json(url):
     Returns:
         dict: The JSON data retrieved from the URL if the request is successful, otherwise an empty dictionary.
     """
-    r = requests.get(url)
+    headers = {}
+    # Use GitHub token for authentication if available and URL is GitHub API
+    gh_token = os.environ.get("GH_TOKEN")
+    if gh_token and "api.github.com" in url:
+        headers["Authorization"] = f"Bearer {gh_token}"
+
+    r = requests.get(url, headers=headers)
     if r.status_code == 200:
         data = r.json()
     else:
