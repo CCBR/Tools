@@ -9,15 +9,15 @@ import ccbr_tools.GSEA.multitext2excel as mt2excel
 
 
 def test_help_deg():
-    assert shell_run("python -m ccbr_tools.GSEA.deg2gs -h").startswith(
+    assert shell_run(f"{sys.executable} -m ccbr_tools.GSEA.deg2gs -h").startswith(
         "usage: deg2gs.py"
     )
 
 
 def test_help_mt2excel():
-    assert shell_run("python -m ccbr_tools.GSEA.multitext2excel -h").startswith(
-        "usage: multitext2excel.py"
-    )
+    assert shell_run(
+        f"{sys.executable} -m ccbr_tools.GSEA.multitext2excel -h"
+    ).startswith("usage: multitext2excel.py")
 
 
 def test_run_cmd():
