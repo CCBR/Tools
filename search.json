@@ -351,22 +351,11 @@
     "text": "On biowulf you can access the latest release of ccbr_tools by loading the ccbrpipeliner module:\nmodule load ccbrpipeliner\nOutside of biowulf, you can install the package with pip:\npip install git+https://github.com/CCBR/Tools\nOr specify any tagged version or branch:\npip install git+https://github.com/CCBR/Tools@v0.2.4"
   },
   {
-    "objectID": "CHANGELOG.html",
-    "href": "CHANGELOG.html",
+    "objectID": "CHANGELOG.html#tools-0.4.6",
+    "href": "CHANGELOG.html#tools-0.4.6",
     "title": "CCBR Tools",
-    "section": "",
-    "text": "When an invalid GitHub user is passed to github.get_user_info(), raise a warning and return a dict with \"name\": None. (#135, @kelly-sovacool)",
-    "crumbs": [
-      "Project information",
-      "Changelog"
-    ]
-  },
-  {
-    "objectID": "CHANGELOG.html#tools-development-version",
-    "href": "CHANGELOG.html#tools-development-version",
-    "title": "CCBR Tools",
-    "section": "",
-    "text": "When an invalid GitHub user is passed to github.get_user_info(), raise a warning and return a dict with \"name\": None. (#135, @kelly-sovacool)",
+    "section": "Tools 0.4.6",
+    "text": "Tools 0.4.6\n\nWhen an invalid GitHub user is passed to github.get_user_info(), raise a warning and return a dict with \"name\": None. (#135, @kelly-sovacool)",
     "crumbs": [
       "Project information",
       "Changelog"
@@ -648,7 +637,7 @@
     "href": "cite.html",
     "title": "CCBR Tools",
     "section": "",
-    "text": "Please cite this software if you use it in a publication:\n\nSovacool K., Koparde V., Kuhn S., Tandon M., and Huse S. (2025). CCBR Tools: Utilities for CCBR Bioinformatics Software (version v0.4.5). DOI: 10.5281/zenodo.13377166 URL: https://ccbr.github.io/Tools/\n\n\nBibtex entry\n@misc{YourReferenceHere,\nauthor = {Sovacool, Kelly and Koparde, Vishal and Kuhn, Skyler and Tandon, Mayank and Huse, Susan},\ndoi = {10.5281/zenodo.13377166},\nmonth = {10},\ntitle = {CCBR Tools: Utilities for CCBR Bioinformatics Software},\nurl = {https://ccbr.github.io/Tools/},\nyear = {2025}\n}",
+    "text": "Please cite this software if you use it in a publication:\n\nSovacool K., Koparde V., Kuhn S., Tandon M., and Huse S. (2026). CCBR Tools: Utilities for CCBR Bioinformatics Software (version v0.4.6). DOI: 10.5281/zenodo.13377166 URL: https://ccbr.github.io/Tools/\n\n\nBibtex entry\n@misc{YourReferenceHere,\nauthor = {Sovacool, Kelly and Koparde, Vishal and Kuhn, Skyler and Tandon, Mayank and Huse, Susan},\ndoi = {10.5281/zenodo.13377166},\nmonth = {2},\ntitle = {CCBR Tools: Utilities for CCBR Bioinformatics Software},\nurl = {https://ccbr.github.io/Tools/},\nyear = {2026}\n}",
     "crumbs": [
       "Project information",
       "Citation"
@@ -659,7 +648,7 @@
     "href": "contributors.html",
     "title": "Contributors",
     "section": "",
-    "text": "Kelly Sovacool, PhD\n\n\n\n\n\n\n\ngithub-actions[bot]\n\n\n\n\n\n\n\nVishal Koparde, PhD\n\n\n\n\n\n\n\nSkyler Kuhn\n\n\n\n\n\n\n\n\n\nSusan Huse\n\n\n\n\n/home/runner/work/Tools/Tools/src/ccbr_tools/github.py:61: UserWarning: Could not retrieve user info for Copilot. Failed to fetch data from https://api.github.com/users/Copilot. Request failed with status code 404.\n  warnings.warn(f\"Could not retrieve user info for {user_login}. {str(e)}\")\n\n\n\n\n\nCopilot\n\n\n\n\n\n\n\nMayank Tandon\n\n\n\n\n\nView the contributors graph on GitHub for more details.",
+    "text": "Kelly Sovacool, PhD\n\n\n\n\n\n\n\ngithub-actions[bot]\n\n\n\n\n\n\n\nVishal Koparde, PhD\n\n\n\n\n\n\n\nSkyler Kuhn\n\n\n\n\n\n\n\n\n\nSusan Huse\n\n\n\n\n\n\n\nCopilot\n\n\n\n\n\n\n\nMayank Tandon\n\n\n\n\n/home/runner/work/Tools/Tools/src/ccbr_tools/github.py:61: UserWarning: Could not retrieve user info for Copilot. Failed to fetch data from https://api.github.com/users/Copilot. Request failed with status code 404.\n  warnings.warn(f\"Could not retrieve user info for {user_login}. {str(e)}\")\n\n\n\nView the contributors graph on GitHub for more details.",
     "crumbs": [
       "Project information",
       "Contributors"
