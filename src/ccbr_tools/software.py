@@ -141,6 +141,7 @@ CCBR_SOFTWARE = {
     "permfix": BashTool,
     "ccbr_tools": PythonTool,
     "ccbr_actions": PythonTool,
+    "parkit": PythonTool,
 }
 
 

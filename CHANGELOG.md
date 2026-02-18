@@ -1,5 +1,7 @@
 ## Tools development version
 
+- Add parkit to the list of CCBR software. (#144, @kelly-sovacool)
+
 ## Tools 0.4.6
 
 - When an invalid GitHub user is passed to `github.get_user_info()`, raise a warning and return a dict with `"name": None`. (#135, @kelly-sovacool)
@@ -141,7 +143,7 @@
 ## Tools 0.1.1
 
 - fix: don't add extra newline to command stdout/stderr for `shell_run()` and `exec_in_context()`. (#10, @kelly-sovacool)
-- minor docuemntation improvements. (#12, @kelly-sovacool)
+- minor documentation improvements. (#12, @kelly-sovacool)
 
 ## Tools 0.1.0
 
@@ -150,7 +152,7 @@ All previous python scripts which included command line utilities have been
 moved to `src/`, and all other scripts have been moved to `scripts/`.
 In both cases, they are available in the path when the package is installed.
 
-Functions which were part of both XAVIER and RENEE are available for re-use in
+Functions which were part of both XAVIER and RENEE are available for reuse in
 other bioinformatics pipelines for tasks such as determining the HPC
 environment, retrieving available genome annotations, and printing citation and
 version information.
