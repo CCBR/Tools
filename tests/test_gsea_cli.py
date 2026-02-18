@@ -7,7 +7,7 @@ import ccbr_tools.GSEA.deg2gs as deg2gs
 import ccbr_tools.GSEA.multitext2excel as mt2excel
 
 
-def test_deg2gs_gsea_pipeliner(tmp_path, monkeypatch):
+def test_deg2gs_gsea_pipeliner(tmp_path, mocker):
     df = pd.DataFrame(
         {
             "gene": ["GeneA", "GeneB", "GeneC"],
@@ -23,37 +23,45 @@ def test_deg2gs_gsea_pipeliner(tmp_path, monkeypatch):
     outfile = "deg.rnk"
     df.to_csv(infile)
 
-    monkeypatch.chdir(tmp_path)
+    # Change to tmp_path directory for the test
+    import os
 
-    monkeypatch.setattr(
-        sys,
-        "argv",
-        [
-            "deg2gs.py",
-            "-i",
-            str(infile),
-            "-o",
-            outfile,
-            "-n",
-            "2",
-            "-p",
-            "0.05",
-            "-q",
-            "0.1",
-            "-m",
-            "gsea",
-            "-f",
-            "pipeliner",
-        ],
-    )
-    deg2gs.main()
+    original_dir = os.getcwd()
+    os.chdir(tmp_path)
+    try:
+        mocker.patch.object(
+            sys,
+            "argv",
+            [
+                "deg2gs.py",
+                "-i",
+                str(infile),
+                "-o",
+                outfile,
+                "-n",
+                "2",
+                "-p",
+                "0.05",
+                "-q",
+                "0.1",
+                "-m",
+                "gsea",
+                "-f",
+                "pipeliner",
+            ],
+        )
+        deg2gs.main()
 
-    output_lines = (tmp_path / outfile).read_text(encoding="utf-8").strip().splitlines()
-    assert output_lines[0].startswith("GeneB\t")
-    assert output_lines[1].startswith("GeneA\t")
+        output_lines = (
+            (tmp_path / outfile).read_text(encoding="utf-8").strip().splitlines()
+        )
+        assert output_lines[0].startswith("GeneB\t")
+        assert output_lines[1].startswith("GeneA\t")
+    finally:
+        os.chdir(original_dir)
 
 
-def test_deg2gs_toppfun_top_table(tmp_path, monkeypatch):
+def test_deg2gs_toppfun_top_table(tmp_path, mocker):
     df = pd.DataFrame(
         {
             "log2FC": [1.5, 2.5],
@@ -69,37 +77,43 @@ def test_deg2gs_toppfun_top_table(tmp_path, monkeypatch):
     outfile = "top.rnk"
     df.to_csv(infile)
 
-    monkeypatch.chdir(tmp_path)
+    # Change to tmp_path directory for the test
+    import os
 
-    monkeypatch.setattr(
-        sys,
-        "argv",
-        [
-            "deg2gs.py",
-            "-i",
-            str(infile),
-            "-o",
-            outfile,
-            "-m",
-            "toppfun",
-            "-f",
-            "topTable",
-            "-n",
-            "10",
-            "-p",
-            "0.05",
-            "-q",
-            "0.1",
-        ],
-    )
-    deg2gs.main()
+    original_dir = os.getcwd()
+    os.chdir(tmp_path)
+    try:
+        mocker.patch.object(
+            sys,
+            "argv",
+            [
+                "deg2gs.py",
+                "-i",
+                str(infile),
+                "-o",
+                outfile,
+                "-m",
+                "toppfun",
+                "-f",
+                "topTable",
+                "-n",
+                "10",
+                "-p",
+                "0.05",
+                "-q",
+                "0.1",
+            ],
+        )
+        deg2gs.main()
 
-    output = (tmp_path / outfile).read_text(encoding="utf-8")
-    assert "TP53" in output
-    assert "BRCA1" in output
+        output = (tmp_path / outfile).read_text(encoding="utf-8")
+        assert "TP53" in output
+        assert "BRCA1" in output
+    finally:
+        os.chdir(original_dir)
 
 
-def test_multitext2excel_writes_sheets(tmp_path, monkeypatch):
+def test_multitext2excel_writes_sheets(tmp_path, mocker):
     pytest.importorskip("openpyxl")
 
     input_dir = tmp_path / "inputs"
@@ -108,7 +122,7 @@ def test_multitext2excel_writes_sheets(tmp_path, monkeypatch):
     (input_dir / "b.txt").write_text("col1\tcol2\n3\t4\n", encoding="utf-8")
 
     outfile = tmp_path / "out.xlsx"
-    monkeypatch.setattr(
+    mocker.patch.object(
         sys,
         "argv",
         [

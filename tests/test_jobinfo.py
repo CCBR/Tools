@@ -39,7 +39,7 @@ def test_time2sec():
     assert time2sec("0-00:01:00") == 60.0
 
 
-def test_get_jobinfo_parses_output(monkeypatch, tmp_path):
+def test_get_jobinfo_parses_output(mocker, tmp_path):
     sample = [
         {
             "jobid": "123",
@@ -82,7 +82,7 @@ def test_get_jobinfo_parses_output(monkeypatch, tmp_path):
     def fake_run(*_args, **_kwargs):
         return DummyProc(json.dumps(sample))
 
-    monkeypatch.setattr("ccbr_tools.jobinfo.subprocess.run", fake_run)
+    mocker.patch("ccbr_tools.jobinfo.subprocess.run", side_effect=fake_run)
     output_path = tmp_path / "jobinfo.tsv"
     args = argparse.Namespace(joblist=["123"], output=str(output_path), failonly=False)
     table = get_jobinfo(args)
