@@ -49,10 +49,7 @@ Example:
     not_loaded
 """
 
-
 import json
-import re
-import subprocess
 import sys
 
 from .pipeline.hpc import list_modules, parse_modules

@@ -1,5 +1,3 @@
-import pytest
-
 import ccbr_tools.peek as peek
 from ccbr_tools.shell import exec_in_context
 

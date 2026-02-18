@@ -118,9 +118,7 @@ def check_cache(parser, cache, *args, **kwargs):
             """\n\t\x1b[6;37;41mFatal: Failed to provided a valid singularity cache!\x1b[0m
         The provided --singularity-cache already exists on the filesystem as a file.
         Please run {} again with a different --singularity-cache location.
-        """.format(
-                sys.argv[0]
-            )
+        """.format(sys.argv[0])
         )
     elif os.path.isdir(cache):
         # Provide cache exists as directory
@@ -136,9 +134,7 @@ def check_cache(parser, cache, *args, **kwargs):
                 The provided --singularity-cache already exists on the filesystem with a different owner.
                 Singularity strictly enforces that the cache directory is not shared across users.
                 Please run {} again with a different --singularity-cache location.
-                """.format(
-                    sys.argv[0]
-                )
+                """.format(sys.argv[0])
             )
 
     return cache
