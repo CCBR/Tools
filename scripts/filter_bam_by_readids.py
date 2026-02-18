@@ -1,8 +1,6 @@
 #!/usr/bin/env python
 import pysam
-import sys
 import argparse
-import os
 
 parser = argparse.ArgumentParser(description="Filter BAM by readids")
 parser.add_argument(
@@ -34,7 +32,7 @@ for read in inBAM.fetch():
     if count % 1000000 == 0:
         print("%d reads read!" % (count))
     qn = read.query_name
-    if not qn in bigdict:
+    if qn not in bigdict:
         bigdict[qn] = list()
     bigdict[qn].append(read)
 inBAM.close()

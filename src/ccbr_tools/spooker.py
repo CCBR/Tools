@@ -18,7 +18,7 @@ import pathlib
 from .paths import get_tree, load_tree, get_disk_usage, glob_files
 from .pipeline import count_pipeline_samples
 from .pipeline.hpc import Cluster, list_modules, parse_modules
-from .pkg_util import get_version, get_random_string, get_timestamp
+from .pkg_util import get_random_string, get_timestamp
 from .jobby import jobby
 from .shell import get_groups, shell_run
 

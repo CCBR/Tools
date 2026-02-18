@@ -3,8 +3,6 @@ import pathlib
 import tempfile
 
 from ccbr_tools.pipeline.cache import (
-    get_sif_cache_dir,
-    get_singularity_cachedir,
     image_cache,
     check_cache,
 )

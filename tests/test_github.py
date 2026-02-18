@@ -1,6 +1,5 @@
 from ccbr_tools.github import print_contributor_images, get_user_info
 import pytest
-import warnings
 from unittest.mock import patch
 
 

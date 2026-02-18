@@ -1,14 +1,10 @@
-import contextlib
 import gzip
-import io
-import json
 import os
 import numpy as np
 import pandas as pd
 import pickle
 import pprint
 import pytest
-import subprocess
 
 from ccbr_tools.jobby import (
     jobby,
@@ -16,7 +12,6 @@ from ccbr_tools.jobby import (
     parse_mem_to_gb,
     extract_jobids_from_file,
     list_records,
-    get_sacct_info,
     records_to_df,
     format_df,
     get_job_logs,
