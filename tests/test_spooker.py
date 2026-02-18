@@ -1,11 +1,8 @@
-import math
 import pathlib
 import pytest
-from pprint import pprint
 import gzip
 import json
 import subprocess
-import tempfile
 
 
 from ccbr_tools.spooker import spooker

@@ -1,4 +1,3 @@
-import pytest
 from ccbr_tools.shell import shell_run
 from ccbr_tools.pipeline.hpc import get_hpcname
 

@@ -10,13 +10,10 @@ __author__ = "Susan Huse"
 __version__ = "1.0.0"
 __copyright__ = "none"
 
-import csv
 import sys
 import os
 import re
-import datetime
 import subprocess
-import pandas as pd
 
 ####################################
 #

@@ -26,7 +26,6 @@ __email__ = "vishal.koparde@nih.gov"
 import argparse
 import importlib.resources
 import pandas as pd
-import pathlib
 import sys
 
 
@@ -143,21 +142,21 @@ def create_homolog_table(
     lookup = dict()
     lookup2 = dict()
     for index, row in df.iterrows():
-        if not row["DB Class Key"] in lookup:
+        if row["DB Class Key"] not in lookup:
             lookup[row["DB Class Key"]] = dict()
             lookup[row["DB Class Key"]]["mouse, laboratory"] = list()
             lookup[row["DB Class Key"]]["human"] = list()
-        if not row["Common Organism Name"] in lookup[row["DB Class Key"]]:
+        if row["Common Organism Name"] not in lookup[row["DB Class Key"]]:
             continue
         lookup[row["DB Class Key"]][row["Common Organism Name"]].append(row["Symbol"])
     for k, v in lookup.items():
         # print(",".join(v["mouse, laboratory"]),",".join(v["human"]),sep="\t")
         for l in v["mouse, laboratory"]:
-            if not l in lookup2:
+            if l not in lookup2:
                 lookup2[l] = list()
             lookup2[l].extend(v["human"])
         for l in v["human"]:
-            if not l in lookup2:
+            if l not in lookup2:
                 lookup2[l] = list()
             lookup2[l].extend(v["mouse, laboratory"])
 

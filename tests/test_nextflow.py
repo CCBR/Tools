@@ -5,7 +5,7 @@ import subprocess
 import tempfile
 
 from ccbr_tools.pipeline.nextflow import run, init
-from ccbr_tools.pipeline.hpc import Biowulf, FRCE, get_hpc
+from ccbr_tools.pipeline.hpc import Biowulf, FRCE
 from ccbr_tools.shell import exec_in_context
 
 

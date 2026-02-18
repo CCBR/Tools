@@ -21,9 +21,9 @@ class Software:
     def __init__(self, name, version):
         self.name = name
         self.version = version
-        assert (
-            self.version_re
-        ), f"Invalid version format '{version}' - Must be a valid semantic version."
+        assert self.version_re, (
+            f"Invalid version format '{version}' - Must be a valid semantic version."
+        )
 
     def __repr__(self):
         return f"{self.__class__.__name__}({self.name}, {self.version})"
