@@ -318,7 +318,7 @@ def git_commit_hash(repo_path):
         # Typecast to fix python3 TypeError (Object of type bytes is not JSON serializable)
         # subprocess.check_output() returns a byte string
         githash = str(githash)
-    except Exception as e:
+    except Exception:
         # Github releases are missing the .git directory,
         # meaning you cannot get a commit hash, set the
         # commit hash to indicate its from a GH release
@@ -498,9 +498,7 @@ def rename(filename):
           sampleName_1.fastq.gz       sampleName_2.fastq.gz
         Please also check that your input files are gzipped?
         If they are not, please gzip them before proceeding again.
-        """.format(
-                filename
-            )
+        """.format(filename)
         )
 
     return filename

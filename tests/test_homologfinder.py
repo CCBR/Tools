@@ -1,5 +1,4 @@
 import argparse
-import pytest
 
 import ccbr_tools.homologfinder.hf as hf
 from ccbr_tools.shell import shell_run
