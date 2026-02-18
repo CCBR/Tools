@@ -13,7 +13,6 @@ import pathlib
 from ..pkg_util import msg_box
 from ..shell import shell_run
 from ..templates import use_template
-from .cache import get_singularity_cachedir
 from .util import copy_config
 from .hpc import get_hpc
 
@@ -92,9 +91,7 @@ def run(
         profiles.add("slurm")
     if hpc:
         profiles.add(hpc.name)
-    if (
-        profiles
-    ):  # only add to the profiles if there are any. there are none when champagne is run on GitHub Actions.
+    if profiles:  # only add to the profiles if there are any. there are none when champagne is run on GitHub Actions.
         args_dict["-profile"] = ",".join(sorted(profiles))
 
     # use -resume by default, or do not use resume if force_all is True

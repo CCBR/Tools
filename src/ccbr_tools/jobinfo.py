@@ -23,7 +23,13 @@ __version__ = "v1.0.0"
 __author__ = "Vishal Koparde"
 __email__ = "vishal.koparde@nih.gov"
 
-import argparse, subprocess, json, os, datetime, time, textwrap, sys
+import argparse
+import subprocess
+import json
+import os
+import datetime
+import time
+import sys
 import pandas as pd
 
 # SHORT_FIELDS used to display on screen

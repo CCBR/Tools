@@ -1,6 +1,5 @@
 import ast
 import glob
-import itertools
 import json
 import math
 import pathlib

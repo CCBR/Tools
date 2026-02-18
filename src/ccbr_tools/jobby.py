@@ -146,7 +146,9 @@ def parse_mem_to_gb(mem_str: str):
         else:
             result = float(mem_str) / (1024 * 1024)  # assume bytes
     except ValueError:
-        warnings.warn(f"❌ Invalid memory format: {mem_str}. Memory will be set to NaN.")
+        warnings.warn(
+            f"❌ Invalid memory format: {mem_str}. Memory will be set to NaN."
+        )
     return result
 
 
@@ -243,7 +245,7 @@ def get_sacct_info(
                             job_records[base_jobid][resource_field] = record_raw[
                                 resource_field
                             ]
-    except subprocess.CalledProcessError as err:
+    except subprocess.CalledProcessError:
         warnings.warn(f"❌ Failed to fetch info for JobID {jobid}")
     except FileNotFoundError as err:
         raise RuntimeError(

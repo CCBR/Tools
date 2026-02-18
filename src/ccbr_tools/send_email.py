@@ -4,6 +4,7 @@ Send an email with an attachment
 
 Intended to run from biowulf
 """
+
 from email.message import EmailMessage
 import os
 import smtplib
