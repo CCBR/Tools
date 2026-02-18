@@ -648,7 +648,7 @@
     "href": "contributors.html",
     "title": "Contributors",
     "section": "",
-    "text": "Kelly Sovacool, PhD\n\n\n\n\n\n\n\ngithub-actions[bot]\n\n\n\n\n\n\n\nVishal Koparde, PhD\n\n\n\n\n\n\n\nSkyler Kuhn\n\n\n\n\n\n\n\n\n\nSusan Huse\n\n\n\n\n/home/runner/work/Tools/Tools/src/ccbr_tools/github.py:61: UserWarning: Could not retrieve user info for Copilot. Failed to fetch data from https://api.github.com/users/Copilot. Request failed with status code 404.\n  warnings.warn(f\"Could not retrieve user info for {user_login}. {str(e)}\")\n\n\n\n\n\nCopilot\n\n\n\n\n\n\n\nMayank Tandon\n\n\n\n\n\nView the contributors graph on GitHub for more details.",
+    "text": "Kelly Sovacool, PhD\n\n\n\n\n\n\n\ngithub-actions[bot]\n\n\n\n\n\n\n\nVishal Koparde, PhD\n\n\n\n\n\n\n\nSkyler Kuhn\n\n\n\n\n\n\n\n\n\nSusan Huse\n\n\n\n\n\n\n\nCopilot\n\n\n\n\n\n\n\nMayank Tandon\n\n\n\n\n/home/runner/work/Tools/Tools/src/ccbr_tools/github.py:61: UserWarning: Could not retrieve user info for Copilot. Failed to fetch data from https://api.github.com/users/Copilot. Request failed with status code 404.\n  warnings.warn(f\"Could not retrieve user info for {user_login}. {str(e)}\")\n\n\n\nView the contributors graph on GitHub for more details.",
     "crumbs": [
       "Project information",
       "Contributors"
