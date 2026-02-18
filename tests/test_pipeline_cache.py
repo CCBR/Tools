@@ -9,21 +9,13 @@ from ccbr_tools.pipeline.cache import (
 
 
 def test_get_sif_cache_dir():
-    assertions = [
-        "'CCBR_Pipeliner/SIFs' in get_sif_cache_dir('biowulf')",
-        "'CCBR-Pipelines/SIFs' in get_sif_cache_dir('frce')",
-    ]
-    errors = [assertion for assertion in assertions if not eval(assertion)]
-    assert not errors, "errors occurred:\n{}".format("\n".join(errors))
+    assert "CCBR_Pipeliner/SIFs" in get_sif_cache_dir("biowulf")
+    assert "CCBR-Pipelines/SIFs" in get_sif_cache_dir("frce")
 
 
 def test_get_singularity_cachedir():
-    assertions = [
-        "get_singularity_cachedir('outdir') == 'outdir/.singularity'",
-        "get_singularity_cachedir('outdir', 'cache') == 'cache'",
-    ]
-    errors = [assertion for assertion in assertions if not eval(assertion)]
-    assert not errors, "errors occurred:\n{}".format("\n".join(errors))
+    assert get_singularity_cachedir("outdir") == "outdir/.singularity"
+    assert get_singularity_cachedir("outdir", "cache") == "cache"
 
 
 def test_image_cache():
