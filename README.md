@@ -62,6 +62,7 @@ ccbr_tools --help
 
     All installed tools:
       ccbr_tools
+      detect-absolute-paths
       gb2gtf
       get_hpcname
       hf
@@ -101,6 +102,7 @@ View the API reference for more information:
 Command-line utilities in CCBR Tools.
 
 - `ccbr_tools`
+- `detect-absolute-paths`
 - `gb2gtf`
 - `get_hpcname`
 - `hf`
