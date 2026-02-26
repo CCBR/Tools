@@ -26,11 +26,21 @@ some_path = "/absolute/path/to/file" # abs-path:ignore
 import click
 
 
+def word_is_absolute_path(word):
+    """
+    Detect if a word starts with a slash (indicating an absolute path)
+
+    Standalone / and // are not considered absolute paths as they are often used
+    in pathlib to delimited paths and as comments in groovy/nextflow
+    """
+    return word.startswith("/") and not any([word == "/", word == "//"])
+
+
 def line_contains_absolute_path(line):
     """
     Detect absolute paths in a line of text
     """
-    return any([word.startswith("/") for word in line.split()])
+    return any([word_is_absolute_path(word) for word in line.split()])
 
 
 def line_contains_ignore(line):
