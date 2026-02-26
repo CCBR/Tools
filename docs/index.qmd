@@ -1,14 +1,14 @@
 
-{{< include badges.qmd >}}
+{{< include _badges.qmd >}}
 
 ## Installation
 
-{{< include install.qmd >}}
+{{< include _install.qmd >}}
 
 ## Basic usage
 
-{{< include basic_usage.qmd >}}
+{{< include _basic_usage.qmd >}}
 
 ## Help & Contributing
 
-{{< include help.qmd >}}
+{{< include _help.qmd >}}
