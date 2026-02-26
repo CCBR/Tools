@@ -1,5 +1,26 @@
 """
 Detect absolute file paths
+
+Any instances of absolute paths (i.e. paths starting with "/") in the given files will be detected and printed to the console, and an error will be raised at the end if any are found.
+
+## Usage with pre-commit
+
+Add this to your `.pre-commit-config.yaml` file:
+
+```yaml
+- repo: https://github.com/CCBR/Tools
+  rev: v0.5.0
+  hooks:
+    - id: detect-absolute-paths
+```
+
+## Ignoring specific lines
+
+You can ignore specific lines by including the string "abs-path:ignore" in the line, e.g.:
+```python
+some_path = "/absolute/path/to/file" # abs-path:ignore
+```
+
 """
 
 import click

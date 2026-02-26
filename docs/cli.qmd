@@ -26,6 +26,20 @@ for cmd in commands:
 
 ```
 
+## Pre-commit hooks
+
+View the [reference guide on pre-commit hooks](./reference/hooks.qmd) for more information on how to use them.
+
+```{python}
+#| echo: false
+#| output: asis
+from ccbr_tools.shell import shell_run
+help_msg = shell_run("ccbr-hooks --help")
+print("```")
+print(help_msg)
+print("```", end = '\n\n')
+```
+
 ## Additional utilities
 
 ```{python}

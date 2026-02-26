@@ -10,6 +10,35 @@ ccbr_tools --help
 !ccbr_tools --help
 ```
 
+### Pre-commit hooks
+
+Add the hooks to your `.pre-commit-config.yaml` file:
+
+```{python}
+#| echo: false
+#| output: asis
+from ccbr_tools.shell import shell_run
+help_msg = shell_run("ccbr-hooks --help")
+
+# get list of ccbr-hook
+help_lst = help_msg.split('\n\n')
+commands_idx = [idx for idx,ele in enumerate(help_lst) if ele.startswith('Commands:')][0]
+commands = [cmd.split()[0] for cmd in help_lst[commands_idx].split('\n')[1:] if cmd.strip()]
+
+# print example pre-commit-config
+print("\n".join((
+    "```yaml",
+    " - repo: https://github.com/CCBR/Tools",
+    "   rev: v0.5.0",
+    "   hooks:"
+)))
+for cmd in commands:
+    print(f"     - id: {cmd}", end = '\n')
+print("```", end = '\n\n')
+```
+
+View the [reference guide on pre-commit hooks](./reference/hooks.qmd) for more information.
+
 ### Python
 
 ```{python}
@@ -22,5 +51,4 @@ version = ccbr_tools.versions.match_semver('0.2.3')
 version.groupdict()
 ```
 
-View the API reference for more information:
-<https://ccbr.github.io/Tools/reference/>
+View the [API reference](https://ccbr.github.io/Tools/reference/) for more information.

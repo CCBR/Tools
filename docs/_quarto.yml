@@ -79,6 +79,10 @@ quartodoc:
         - pipeline.hpc
         - pipeline.nextflow
         - pipeline.util
+    - title: Pre-commit hooks
+      contents:
+        - hooks
+        - hooks.detect_absolute_paths
     - title: Legacy tools
       contents:
         - GSEA.deg2gs
