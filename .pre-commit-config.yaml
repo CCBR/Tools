@@ -14,6 +14,7 @@ repos:
         name: Detect absolute paths
         entry: ccbr-hooks detect-absolute-paths
         language: python
+        types: [text]
   - repo: https://github.com/pre-commit/pre-commit-hooks
     rev: v1.2.3
     hooks:
