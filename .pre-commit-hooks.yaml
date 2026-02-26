@@ -1,5 +1,5 @@
 - id: detect-absolute-paths
   name: detect absolute paths
   description: Detect absolute file paths in the given files.
-  entry: detect-absolute-paths
+  entry: ccbr-hooks detect-absolute-paths
   language: python

@@ -32,19 +32,22 @@ def file_contains_absolute_path(file):
     return detected
 
 
-def detect_absolute_paths(files):
+def raise_error_if_abs_paths_detected(files):
     """
-    Detect absolute paths in the given files
+    Raise an error if absolute paths are detected in the given files
     """
-    return [file_contains_absolute_path(file) for file in files]
+    if any([file_contains_absolute_path(file) for file in files]):
+        raise click.ClickException("Absolute paths detected in the above files.")
 
 
 @click.command()
 @click.argument("files", nargs=-1, type=click.Path(exists=True))
-def main(files):
-    if any(detect_absolute_paths(files)):
-        raise click.ClickException("Absolute paths detected in the above files.")
+def detect_absolute_paths(files):
+    """
+    Detect absolute file paths in the given files and raise an error if any are found.
+    """
+    raise_error_if_abs_paths_detected(files)
 
 
 if __name__ == "__main__":
-    main()
+    detect_absolute_paths()
