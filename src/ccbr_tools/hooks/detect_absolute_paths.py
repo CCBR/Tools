@@ -1,5 +1,5 @@
 """
-Detect absolute paths
+Detect absolute file paths
 """
 
 import click
@@ -9,18 +9,27 @@ def line_contains_absolute_path(line):
     """
     Detect absolute paths in a line of text
     """
-    # TODO more intelligent detection of absolute paths
     return any([word.startswith("/") for word in line.split()])
 
 
+def line_contains_ignore(line):
+    """
+    Detect if a line contains the string "abs-path:ignore"
+    """
+    return "abs-path:ignore" in line
+
+
 def file_contains_absolute_path(file):
-    """Detect absolute paths in a file"""
+    """
+    Detect absolute paths in a file
+    """
+    detected = False
     with open(file, "r") as f:
         for line in f:
-            if line_contains_absolute_path(line):
+            if not line_contains_ignore(line) and line_contains_absolute_path(line):
                 print(f"Absolute path detected in {file}: {line.strip()}")
-                return True
-    return False
+                detected = True
+    return detected
 
 
 def detect_absolute_paths(files):
