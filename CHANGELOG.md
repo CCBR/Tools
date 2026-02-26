@@ -1,6 +1,7 @@
 ## Tools development version
 
 - Add parkit to the list of CCBR software. (#144, @kelly-sovacool)
+- New pre-commit hook: `ccbr-hooks detect-absolute-paths`. (#147, @kelly-sovacool)
 
 ## Tools 0.4.6
 
