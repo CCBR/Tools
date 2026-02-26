@@ -82,14 +82,21 @@ def test_nextflow_slurm():
 
 
 def test_nextflow_preview_error():
-    with pytest.raises(subprocess.CalledProcessError) as err:
-        exec_in_context(
-            run, nextfile_path="tests/data/nextflow/main.nf", debug=False, mode="local"
+    with tempfile.TemporaryDirectory() as tmp_dir:
+        current_wd = os.getcwd()
+        os.chdir(tmp_dir)
+        with pytest.raises(subprocess.CalledProcessError) as err:
+            exec_in_context(
+                run,
+                nextfile_path="tests/data/nextflow/main.nf",
+                debug=False,
+                mode="local",
+            )
+        os.chdir(current_wd)
+        assert (
+            "Command 'nextflow run tests/data/nextflow/main.nf -resume -preview' returned non-zero exit status 1"
+            in str(err.value)
         )
-    assert (
-        "Command 'nextflow run tests/data/nextflow/main.nf -resume -preview' returned non-zero exit status 1"
-        in str(err.value)
-    )
 
 
 if __name__ == "__main__":
