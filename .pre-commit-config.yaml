@@ -5,9 +5,16 @@ exclude: |
       ^.*.svg|
       ^assets/|
       ^src/ccbr_tools/templates/mkdocs-fnl/docs/custom-overrides/|
-      ^tests/data/tree/
+      ^tests/data/
    )
 repos:
+  - repo: local
+    hooks:
+      - id: detect-absolute-paths
+        name: Detect absolute paths
+        entry: ccbr-hooks detect-absolute-paths
+        language: python
+        types: [text]
   - repo: https://github.com/pre-commit/pre-commit-hooks
     rev: v1.2.3
     hooks:
@@ -31,7 +38,7 @@ repos:
       - id: ruff-format
   # general linting
   - repo: https://github.com/pre-commit/mirrors-prettier
-    rev: "v3.1.0"
+    rev: v3.1.0
     hooks:
       - id: prettier
         additional_dependencies:

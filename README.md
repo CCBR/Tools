@@ -61,6 +61,7 @@ ccbr_tools --help
       version     Print the version of ccbr_tools
 
     All installed tools:
+      ccbr-hooks
       ccbr_tools
       gb2gtf
       get_hpcname
@@ -71,6 +72,20 @@ ccbr_tools --help
       module_list
       peek
       spooker
+
+### Pre-commit hooks
+
+Add the hooks to your `.pre-commit-config.yaml` file:
+
+```yaml
+- repo: https://github.com/CCBR/Tools
+  rev: v0.5.0
+  hooks:
+    - id: detect-absolute-paths
+```
+
+View the [reference guide on pre-commit hooks](./reference/hooks.qmd)
+for more information.
 
 ### Python
 
@@ -93,13 +108,14 @@ version.groupdict()
      'prerelease': None,
      'buildmetadata': None}
 
-View the API reference for more information:
-<https://ccbr.github.io/Tools/reference/>
+View the [API reference](https://ccbr.github.io/Tools/reference/) for
+more information.
 
 ## CLI Utilities
 
 Command-line utilities in CCBR Tools.
 
+- `ccbr-hooks`
 - `ccbr_tools`
 - `gb2gtf`
 - `get_hpcname`
