@@ -453,6 +453,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   <li><a href="#basic-usage" id="toc-basic-usage" class="nav-link" data-scroll-target="#basic-usage">Basic usage</a>
   <ul class="collapse">
   <li><a href="#cli" id="toc-cli" class="nav-link" data-scroll-target="#cli">CLI</a></li>
+  <li><a href="#pre-commit-hooks" id="toc-pre-commit-hooks" class="nav-link" data-scroll-target="#pre-commit-hooks">Pre-commit hooks</a></li>
   <li><a href="#python" id="toc-python" class="nav-link" data-scroll-target="#python">Python</a></li>
   </ul></li>
   <li><a href="#help-contributing" id="toc-help-contributing" class="nav-link" data-scroll-target="#help-contributing">Help &amp; Contributing</a></li>
@@ -482,7 +483,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <section id="cli" class="level3">
 <h3 class="anchored" data-anchor-id="cli">CLI</h3>
 <div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb4"><pre class="sourceCode sh code-with-copy"><code class="sourceCode bash"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="ex">ccbr_tools</span> <span class="at">--help</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
-<div id="3d5bab5d" class="cell" data-execution_count="1">
+<div id="3c4002f6" class="cell" data-execution_count="1">
 <div class="cell-output cell-output-stdout">
 <pre><code>Usage: ccbr_tools [OPTIONS] COMMAND [ARGS]...
 
@@ -504,6 +505,7 @@ Commands:
   version     Print the version of ccbr_tools
 
 All installed tools:
+  ccbr-hooks
   ccbr_tools
   gb2gtf
   get_hpcname
@@ -517,27 +519,36 @@ All installed tools:
 </div>
 </div>
 </section>
+<section id="pre-commit-hooks" class="level3">
+<h3 class="anchored" data-anchor-id="pre-commit-hooks">Pre-commit hooks</h3>
+<p>Add the hooks to your <code>.pre-commit-config.yaml</code> file:</p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb6"><pre class="sourceCode yaml code-with-copy"><code class="sourceCode yaml"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a><span class="at"> </span><span class="kw">-</span><span class="at"> </span><span class="fu">repo</span><span class="kw">:</span><span class="at"> https://github.com/CCBR/Tools</span></span>
+<span id="cb6-2"><a href="#cb6-2" aria-hidden="true" tabindex="-1"></a><span class="at">   </span><span class="fu">rev</span><span class="kw">:</span><span class="at"> v0.5.0</span></span>
+<span id="cb6-3"><a href="#cb6-3" aria-hidden="true" tabindex="-1"></a><span class="at">   </span><span class="fu">hooks</span><span class="kw">:</span></span>
+<span id="cb6-4"><a href="#cb6-4" aria-hidden="true" tabindex="-1"></a><span class="at">     </span><span class="kw">-</span><span class="at"> </span><span class="fu">id</span><span class="kw">:</span><span class="at"> detect-absolute-paths</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<p>View the <a href="./reference/hooks.html">reference guide on pre-commit hooks</a> for more information.</p>
+</section>
 <section id="python" class="level3">
 <h3 class="anchored" data-anchor-id="python">Python</h3>
-<div id="06e6677c" class="cell" data-execution_count="2">
+<div id="15759c58" class="cell" data-execution_count="3">
 <details open="" class="code-fold">
 <summary>Code</summary>
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb6"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> ccbr_tools.shell</span>
-<span id="cb6-2"><a href="#cb6-2" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(ccbr_tools.shell.shell_run(<span class="st">'echo "Hello, world!"'</span>))</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb7"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> ccbr_tools.shell</span>
+<span id="cb7-2"><a href="#cb7-2" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(ccbr_tools.shell.shell_run(<span class="st">'echo "Hello, world!"'</span>))</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </details>
 <div class="cell-output cell-output-stdout">
 <pre><code>Hello, world!
 </code></pre>
 </div>
 </div>
-<div id="89e2a2b3" class="cell" data-execution_count="3">
+<div id="3f85d12b" class="cell" data-execution_count="4">
 <details open="" class="code-fold">
 <summary>Code</summary>
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb8"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> ccbr_tools.versions</span>
-<span id="cb8-2"><a href="#cb8-2" aria-hidden="true" tabindex="-1"></a>version <span class="op">=</span> ccbr_tools.versions.match_semver(<span class="st">'0.2.3'</span>)</span>
-<span id="cb8-3"><a href="#cb8-3" aria-hidden="true" tabindex="-1"></a>version.groupdict()</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb9"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> ccbr_tools.versions</span>
+<span id="cb9-2"><a href="#cb9-2" aria-hidden="true" tabindex="-1"></a>version <span class="op">=</span> ccbr_tools.versions.match_semver(<span class="st">'0.2.3'</span>)</span>
+<span id="cb9-3"><a href="#cb9-3" aria-hidden="true" tabindex="-1"></a>version.groupdict()</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </details>
-<div class="cell-output cell-output-display" data-execution_count="3">
+<div class="cell-output cell-output-display" data-execution_count="4">
 <pre><code>{'major': '0',
  'minor': '2',
  'patch': '3',
@@ -545,7 +556,7 @@ All installed tools:
  'buildmetadata': None}</code></pre>
 </div>
 </div>
-<p>View the API reference for more information: <a href="https://ccbr.github.io/Tools/reference/" class="uri">https://ccbr.github.io/Tools/reference/</a></p>
+<p>View the <a href="https://ccbr.github.io/Tools/reference/">API reference</a> for more information.</p>
 </section>
 </section>
 <section id="help-contributing" class="level2">

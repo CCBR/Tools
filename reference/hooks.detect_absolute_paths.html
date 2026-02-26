@@ -7,7 +7,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 
-<title>basic_usage – CCBR Tools</title>
+<title>hooks.detect_absolute_paths – CCBR Tools</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -58,26 +58,28 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </style>
 
 
-<script src="site_libs/quarto-nav/quarto-nav.js"></script>
-<script src="site_libs/quarto-nav/headroom.min.js"></script>
-<script src="site_libs/clipboard/clipboard.min.js"></script>
-<script src="site_libs/quarto-search/autocomplete.umd.js"></script>
-<script src="site_libs/quarto-search/fuse.min.js"></script>
-<script src="site_libs/quarto-search/quarto-search.js"></script>
-<meta name="quarto:offset" content="./">
-<script src="site_libs/quarto-html/quarto.js" type="module"></script>
-<script src="site_libs/quarto-html/tabsets/tabsets.js" type="module"></script>
-<script src="site_libs/quarto-html/axe/axe-check.js" type="module"></script>
-<script src="site_libs/quarto-html/popper.min.js"></script>
-<script src="site_libs/quarto-html/tippy.umd.min.js"></script>
-<script src="site_libs/quarto-html/anchor.min.js"></script>
-<link href="site_libs/quarto-html/tippy.css" rel="stylesheet">
-<link href="site_libs/quarto-html/quarto-syntax-highlighting-c89f6317fe89a694856f0a1a75e35489.css" rel="stylesheet" class="quarto-color-scheme" id="quarto-text-highlighting-styles">
-<link href="site_libs/quarto-html/quarto-syntax-highlighting-dark-8268e69142ae309f9f0395a3144e9e65.css" rel="stylesheet" class="quarto-color-scheme quarto-color-alternate" id="quarto-text-highlighting-styles">
-<script src="site_libs/bootstrap/bootstrap.min.js"></script>
-<link href="site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
-<link href="site_libs/bootstrap/bootstrap-5b3bef7862828814ed6d67e9819c6da0.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme" id="quarto-bootstrap" data-mode="light">
-<link href="site_libs/bootstrap/bootstrap-dark-0c590a0556135605211297d82d137e9f.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme quarto-color-alternate" id="quarto-bootstrap" data-mode="dark">
+<script src="../site_libs/quarto-nav/quarto-nav.js"></script>
+<script src="../site_libs/quarto-nav/headroom.min.js"></script>
+<script src="../site_libs/clipboard/clipboard.min.js"></script>
+<script src="../site_libs/quarto-search/autocomplete.umd.js"></script>
+<script src="../site_libs/quarto-search/fuse.min.js"></script>
+<script src="../site_libs/quarto-search/quarto-search.js"></script>
+<meta name="quarto:offset" content="../">
+<link href="../reference/GSEA.deg2gs.html" rel="next">
+<link href="../reference/hooks.html" rel="prev">
+<script src="../site_libs/quarto-html/quarto.js" type="module"></script>
+<script src="../site_libs/quarto-html/tabsets/tabsets.js" type="module"></script>
+<script src="../site_libs/quarto-html/axe/axe-check.js" type="module"></script>
+<script src="../site_libs/quarto-html/popper.min.js"></script>
+<script src="../site_libs/quarto-html/tippy.umd.min.js"></script>
+<script src="../site_libs/quarto-html/anchor.min.js"></script>
+<link href="../site_libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="../site_libs/quarto-html/quarto-syntax-highlighting-c89f6317fe89a694856f0a1a75e35489.css" rel="stylesheet" class="quarto-color-scheme" id="quarto-text-highlighting-styles">
+<link href="../site_libs/quarto-html/quarto-syntax-highlighting-dark-8268e69142ae309f9f0395a3144e9e65.css" rel="stylesheet" class="quarto-color-scheme quarto-color-alternate" id="quarto-text-highlighting-styles">
+<script src="../site_libs/bootstrap/bootstrap.min.js"></script>
+<link href="../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+<link href="../site_libs/bootstrap/bootstrap-5b3bef7862828814ed6d67e9819c6da0.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme" id="quarto-bootstrap" data-mode="light">
+<link href="../site_libs/bootstrap/bootstrap-dark-0c590a0556135605211297d82d137e9f.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme quarto-color-alternate" id="quarto-bootstrap" data-mode="dark">
 <script id="quarto-search-options" type="application/json">{
   "location": "navbar",
   "copy-button": false,
@@ -108,7 +110,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 
 </head>
 
-<body class="nav-fixed quarto-dark"><script id="quarto-html-before-body" type="application/javascript">
+<body class="nav-sidebar docked nav-fixed quarto-dark"><script id="quarto-html-before-body" type="application/javascript">
     const toggleBodyColorMode = (bsSheetEl) => {
       const mode = bsSheetEl.getAttribute("data-mode");
       const bodyEl = window.document.querySelector("body");
@@ -275,7 +277,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
     <nav class="navbar navbar-expand-lg " data-bs-theme="dark">
       <div class="navbar-container container-fluid">
       <div class="navbar-brand-container mx-auto">
-    <a class="navbar-brand" href="./index.html">
+    <a class="navbar-brand" href="../index.html">
     <span class="navbar-title">CCBR Tools</span>
     </a>
   </div>
@@ -291,39 +293,39 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
     </a>
     <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="nav-menu-docs">    
         <li>
-    <a class="dropdown-item" href="./index.html">
+    <a class="dropdown-item" href="../index.html">
  <span class="dropdown-text">Home</span></a>
   </li>  
         <li><hr class="dropdown-divider"></li>
         <li class="dropdown-header">Usage</li>
         <li>
-    <a class="dropdown-item" href="./cli.html">
+    <a class="dropdown-item" href="../cli.html">
  <span class="dropdown-text">Command line interface</span></a>
   </li>  
         <li>
-    <a class="dropdown-item" href="./scripts.html">
+    <a class="dropdown-item" href="../scripts.html">
  <span class="dropdown-text">External scripts</span></a>
   </li>  
         <li><hr class="dropdown-divider"></li>
         <li class="dropdown-header">Project information</li>
         <li>
-    <a class="dropdown-item" href="./cite.html">
+    <a class="dropdown-item" href="../cite.html">
  <span class="dropdown-text">Citation</span></a>
   </li>  
         <li>
-    <a class="dropdown-item" href="./CONTRIBUTING.html">
+    <a class="dropdown-item" href="../CONTRIBUTING.html">
  <span class="dropdown-text">Contributing</span></a>
   </li>  
         <li>
-    <a class="dropdown-item" href="./contributors.html">
+    <a class="dropdown-item" href="../contributors.html">
  <span class="dropdown-text">Contributors</span></a>
   </li>  
         <li>
-    <a class="dropdown-item" href="./LICENSE.html">
+    <a class="dropdown-item" href="../LICENSE.html">
  <span class="dropdown-text">License</span></a>
   </li>  
         <li>
-    <a class="dropdown-item" href="./CHANGELOG.html">
+    <a class="dropdown-item" href="../CHANGELOG.html">
  <span class="dropdown-text">Changelog</span></a>
   </li>  
     </ul>
@@ -340,109 +342,361 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </div>
       </div> <!-- /container-fluid -->
     </nav>
+  <nav class="quarto-secondary-nav">
+    <div class="container-fluid d-flex">
+      <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" role="button" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
+        <i class="bi bi-layout-text-sidebar-reverse"></i>
+      </button>
+        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../reference/hooks.html">Pre-commit hooks</a></li><li class="breadcrumb-item"><a href="../reference/hooks.detect_absolute_paths.html">hooks.detect_absolute_paths</a></li></ol></nav>
+        <a class="flex-grow-1" role="navigation" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
+        </a>
+    </div>
+  </nav>
 </header>
 <!-- content -->
 <div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article page-navbar">
 <!-- sidebar -->
+  <nav id="quarto-sidebar" class="sidebar collapse collapse-horizontal quarto-sidebar-collapse-item sidebar-navigation docked overflow-auto">
+    <div class="sidebar-menu-container"> 
+    <ul class="list-unstyled mt-1">
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../reference/index.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">API Reference</span></a>
+  </div>
+</li>
+        <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-1" role="navigation" aria-expanded="true">
+ <span class="menu-text">Main modules</span></a>
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-1" role="navigation" aria-expanded="true" aria-label="Toggle section">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-1" class="collapse list-unstyled sidebar-section depth1 show">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../reference/github.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">github</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../reference/jobby.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">jobby</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../reference/module_list.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">module_list</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../reference/paths.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">paths</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../reference/pkg_util.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">pkg_util</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../reference/pipeline.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">pipeline</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../reference/send_email.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">send_email</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../reference/shell.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">shell</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../reference/software.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">software</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../reference/spooker.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">spooker</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../reference/templates.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">templates</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../reference/versions.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">versions</span></a>
+  </div>
+</li>
+      </ul>
+  </li>
+        <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-2" role="navigation" aria-expanded="true">
+ <span class="menu-text">Pipeline utilities</span></a>
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-2" role="navigation" aria-expanded="true" aria-label="Toggle section">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-2" class="collapse list-unstyled sidebar-section depth1 show">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../reference/pipeline.cache.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">pipeline.cache</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../reference/pipeline.hpc.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">pipeline.hpc</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../reference/pipeline.nextflow.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">pipeline.nextflow</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../reference/pipeline.util.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">pipeline.util</span></a>
+  </div>
+</li>
+      </ul>
+  </li>
+        <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-3" role="navigation" aria-expanded="true">
+ <span class="menu-text">Pre-commit hooks</span></a>
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-3" role="navigation" aria-expanded="true" aria-label="Toggle section">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-3" class="collapse list-unstyled sidebar-section depth1 show">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../reference/hooks.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">hooks</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../reference/hooks.detect_absolute_paths.html" class="sidebar-item-text sidebar-link active">
+ <span class="menu-text">hooks.detect_absolute_paths</span></a>
+  </div>
+</li>
+      </ul>
+  </li>
+        <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-4" role="navigation" aria-expanded="true">
+ <span class="menu-text">Legacy tools</span></a>
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-4" role="navigation" aria-expanded="true" aria-label="Toggle section">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-4" class="collapse list-unstyled sidebar-section depth1 show">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../reference/GSEA.deg2gs.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">GSEA.deg2gs</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../reference/GSEA.multitext2excel.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">GSEA.multitext2excel</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../reference/GSEA.ncbr_huse.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">GSEA.ncbr_huse</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../reference/gb2gtf.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">gb2gtf</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../reference/homologfinder.hf.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">homologfinder.hf</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../reference/intersect.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">intersect</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../reference/jobinfo.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">jobinfo</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../reference/peek.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">peek</span></a>
+  </div>
+</li>
+      </ul>
+  </li>
+    </ul>
+    </div>
+</nav>
+<div id="quarto-sidebar-glass" class="quarto-sidebar-collapse-item" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item"></div>
 <!-- margin-sidebar -->
     <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
         <nav id="TOC" role="doc-toc" class="toc-active">
     <h2 id="toc-title">On this page</h2>
    
   <ul>
-  <li><a href="#python" id="toc-python" class="nav-link active" data-scroll-target="#python">Python</a></li>
+  <li><a href="#ccbr_tools.hooks.detect_absolute_paths" id="toc-ccbr_tools.hooks.detect_absolute_paths" class="nav-link active" data-scroll-target="#ccbr_tools.hooks.detect_absolute_paths">hooks.detect_absolute_paths</a>
+  <ul class="collapse">
+  <li><a href="#usage-with-pre-commit" id="toc-usage-with-pre-commit" class="nav-link" data-scroll-target="#usage-with-pre-commit">Usage with pre-commit</a></li>
+  <li><a href="#ignoring-specific-lines" id="toc-ignoring-specific-lines" class="nav-link" data-scroll-target="#ignoring-specific-lines">Ignoring specific lines</a></li>
+  <li><a href="#functions" id="toc-functions" class="nav-link" data-scroll-target="#functions">Functions</a>
+  <ul class="collapse">
+  <li><a href="#ccbr_tools.hooks.detect_absolute_paths.detect_absolute_paths" id="toc-ccbr_tools.hooks.detect_absolute_paths.detect_absolute_paths" class="nav-link" data-scroll-target="#ccbr_tools.hooks.detect_absolute_paths.detect_absolute_paths">detect_absolute_paths</a></li>
+  <li><a href="#ccbr_tools.hooks.detect_absolute_paths.file_contains_absolute_path" id="toc-ccbr_tools.hooks.detect_absolute_paths.file_contains_absolute_path" class="nav-link" data-scroll-target="#ccbr_tools.hooks.detect_absolute_paths.file_contains_absolute_path">file_contains_absolute_path</a></li>
+  <li><a href="#ccbr_tools.hooks.detect_absolute_paths.file_is_text" id="toc-ccbr_tools.hooks.detect_absolute_paths.file_is_text" class="nav-link" data-scroll-target="#ccbr_tools.hooks.detect_absolute_paths.file_is_text">file_is_text</a></li>
+  <li><a href="#ccbr_tools.hooks.detect_absolute_paths.line_contains_absolute_path" id="toc-ccbr_tools.hooks.detect_absolute_paths.line_contains_absolute_path" class="nav-link" data-scroll-target="#ccbr_tools.hooks.detect_absolute_paths.line_contains_absolute_path">line_contains_absolute_path</a></li>
+  <li><a href="#ccbr_tools.hooks.detect_absolute_paths.line_contains_ignore" id="toc-ccbr_tools.hooks.detect_absolute_paths.line_contains_ignore" class="nav-link" data-scroll-target="#ccbr_tools.hooks.detect_absolute_paths.line_contains_ignore">line_contains_ignore</a></li>
+  <li><a href="#ccbr_tools.hooks.detect_absolute_paths.raise_error_if_abs_paths_detected" id="toc-ccbr_tools.hooks.detect_absolute_paths.raise_error_if_abs_paths_detected" class="nav-link" data-scroll-target="#ccbr_tools.hooks.detect_absolute_paths.raise_error_if_abs_paths_detected">raise_error_if_abs_paths_detected</a></li>
+  <li><a href="#ccbr_tools.hooks.detect_absolute_paths.word_is_absolute_path" id="toc-ccbr_tools.hooks.detect_absolute_paths.word_is_absolute_path" class="nav-link" data-scroll-target="#ccbr_tools.hooks.detect_absolute_paths.word_is_absolute_path">word_is_absolute_path</a></li>
+  </ul></li>
+  </ul></li>
   </ul>
-<div class="toc-actions"><ul><li><a href="https://github.com/CCBR/Tools/edit/main/basic_usage.qmd" class="toc-action"><i class="bi bi-github"></i>Edit this page</a></li><li><a href="https://github.com/CCBR/Tools/issues/new" class="toc-action"><i class="bi empty"></i>Report an issue</a></li></ul></div></nav>
+<div class="toc-actions"><ul><li><a href="https://github.com/CCBR/Tools/edit/main/reference/hooks.detect_absolute_paths.qmd" class="toc-action"><i class="bi bi-github"></i>Edit this page</a></li><li><a href="https://github.com/CCBR/Tools/issues/new" class="toc-action"><i class="bi empty"></i>Report an issue</a></li></ul></div></nav>
     </div>
 <!-- main -->
-<main class="content" id="quarto-document-content">
-
-
-<header id="title-block-header" class="quarto-title-block default">
-<div class="quarto-title">
-<h1 class="title">CLI</h1>
-</div>
+<main class="content" id="quarto-document-content"><header id="title-block-header" class="quarto-title-block"><nav class="quarto-page-breadcrumbs quarto-title-breadcrumbs d-none d-lg-block" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../reference/hooks.html">Pre-commit hooks</a></li><li class="breadcrumb-item"><a href="../reference/hooks.detect_absolute_paths.html">hooks.detect_absolute_paths</a></li></ol></nav></header>
 
 
 
-<div class="quarto-title-meta">
-
-    
-  
-    
-  </div>
-  
 
 
-</header>
+<section id="ccbr_tools.hooks.detect_absolute_paths" class="level1">
+<h1>hooks.detect_absolute_paths</h1>
+<p><code>hooks.detect_absolute_paths</code></p>
+<p>Detect absolute file paths</p>
+<p>Any instances of absolute paths (i.e.&nbsp;paths starting with “/”) in the given files will be detected and printed to the console (unless “abs-path:ignore” is included). An error will be raised at the end if any are found.</p>
+<section id="usage-with-pre-commit" class="level2">
+<h2 class="anchored" data-anchor-id="usage-with-pre-commit">Usage with pre-commit</h2>
+<p>Add this to your <code>.pre-commit-config.yaml</code> file:</p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb1"><pre class="sourceCode yaml code-with-copy"><code class="sourceCode yaml"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="kw">-</span><span class="at"> </span><span class="fu">repo</span><span class="kw">:</span><span class="at"> https://github.com/CCBR/Tools</span></span>
+<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="at">  </span><span class="fu">rev</span><span class="kw">:</span><span class="at"> v0.5.0</span></span>
+<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a><span class="at">  </span><span class="fu">hooks</span><span class="kw">:</span></span>
+<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a><span class="at">    </span><span class="kw">-</span><span class="at"> </span><span class="fu">id</span><span class="kw">:</span><span class="at"> detect-absolute-paths</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</section>
+<section id="ignoring-specific-lines" class="level2">
+<h2 class="anchored" data-anchor-id="ignoring-specific-lines">Ignoring specific lines</h2>
+<p>You can ignore specific lines by including the string “abs-path:ignore” in the line, e.g.:</p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb2"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a>some_path <span class="op">=</span> <span class="st">"/absolute/path/to/file"</span> <span class="co"># abs-path:ignore</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</section>
+<section id="functions" class="level2">
+<h2 class="anchored" data-anchor-id="functions">Functions</h2>
+<table class="caption-top table">
+<thead>
+<tr class="header">
+<th>Name</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td><a href="#ccbr_tools.hooks.detect_absolute_paths.detect_absolute_paths">detect_absolute_paths</a></td>
+<td>Detect absolute file paths in the given files and raise an error if any are found.</td>
+</tr>
+<tr class="even">
+<td><a href="#ccbr_tools.hooks.detect_absolute_paths.file_contains_absolute_path">file_contains_absolute_path</a></td>
+<td>Detect absolute paths in a file</td>
+</tr>
+<tr class="odd">
+<td><a href="#ccbr_tools.hooks.detect_absolute_paths.file_is_text">file_is_text</a></td>
+<td>Detect whether a file is likely text based on its MIME type.</td>
+</tr>
+<tr class="even">
+<td><a href="#ccbr_tools.hooks.detect_absolute_paths.line_contains_absolute_path">line_contains_absolute_path</a></td>
+<td>Detect absolute paths in a line of text</td>
+</tr>
+<tr class="odd">
+<td><a href="#ccbr_tools.hooks.detect_absolute_paths.line_contains_ignore">line_contains_ignore</a></td>
+<td>Detect if a line contains the string “abs-path:ignore”</td>
+</tr>
+<tr class="even">
+<td><a href="#ccbr_tools.hooks.detect_absolute_paths.raise_error_if_abs_paths_detected">raise_error_if_abs_paths_detected</a></td>
+<td>Raise an error if absolute paths are detected in the given files</td>
+</tr>
+<tr class="odd">
+<td><a href="#ccbr_tools.hooks.detect_absolute_paths.word_is_absolute_path">word_is_absolute_path</a></td>
+<td>Detect if a word starts with a slash (indicating an absolute path)</td>
+</tr>
+</tbody>
+</table>
+<section id="ccbr_tools.hooks.detect_absolute_paths.detect_absolute_paths" class="level3">
+<h3 class="anchored" data-anchor-id="ccbr_tools.hooks.detect_absolute_paths.detect_absolute_paths">detect_absolute_paths</h3>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb3"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a>hooks.detect_absolute_paths.detect_absolute_paths(files)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<p>Detect absolute file paths in the given files and raise an error if any are found.</p>
+</section>
+<section id="ccbr_tools.hooks.detect_absolute_paths.file_contains_absolute_path" class="level3">
+<h3 class="anchored" data-anchor-id="ccbr_tools.hooks.detect_absolute_paths.file_contains_absolute_path">file_contains_absolute_path</h3>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb4"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a>hooks.detect_absolute_paths.file_contains_absolute_path(<span class="bu">file</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<p>Detect absolute paths in a file</p>
+</section>
+<section id="ccbr_tools.hooks.detect_absolute_paths.file_is_text" class="level3">
+<h3 class="anchored" data-anchor-id="ccbr_tools.hooks.detect_absolute_paths.file_is_text">file_is_text</h3>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb5"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a>hooks.detect_absolute_paths.file_is_text(<span class="bu">file</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<p>Detect whether a file is likely text based on its MIME type.</p>
+</section>
+<section id="ccbr_tools.hooks.detect_absolute_paths.line_contains_absolute_path" class="level3">
+<h3 class="anchored" data-anchor-id="ccbr_tools.hooks.detect_absolute_paths.line_contains_absolute_path">line_contains_absolute_path</h3>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb6"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a>hooks.detect_absolute_paths.line_contains_absolute_path(line)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<p>Detect absolute paths in a line of text</p>
+</section>
+<section id="ccbr_tools.hooks.detect_absolute_paths.line_contains_ignore" class="level3">
+<h3 class="anchored" data-anchor-id="ccbr_tools.hooks.detect_absolute_paths.line_contains_ignore">line_contains_ignore</h3>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb7"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a>hooks.detect_absolute_paths.line_contains_ignore(line)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<p>Detect if a line contains the string “abs-path:ignore”</p>
+</section>
+<section id="ccbr_tools.hooks.detect_absolute_paths.raise_error_if_abs_paths_detected" class="level3">
+<h3 class="anchored" data-anchor-id="ccbr_tools.hooks.detect_absolute_paths.raise_error_if_abs_paths_detected">raise_error_if_abs_paths_detected</h3>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb8"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a>hooks.detect_absolute_paths.raise_error_if_abs_paths_detected(files)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<p>Raise an error if absolute paths are detected in the given files</p>
+</section>
+<section id="ccbr_tools.hooks.detect_absolute_paths.word_is_absolute_path" class="level3">
+<h3 class="anchored" data-anchor-id="ccbr_tools.hooks.detect_absolute_paths.word_is_absolute_path">word_is_absolute_path</h3>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb9"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a>hooks.detect_absolute_paths.word_is_absolute_path(word)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<p>Detect if a word starts with a slash (indicating an absolute path)</p>
+<p>Standalone / and // are not considered absolute paths as they are often used in pathlib to delimited paths and as comments in groovy/nextflow</p>
 
 
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb1"><pre class="sourceCode sh code-with-copy"><code class="sourceCode bash"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="ex">ccbr_tools</span> <span class="at">--help</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
-<div id="783cef33" class="cell" data-execution_count="1">
-<div class="cell-output cell-output-stdout">
-<pre><code>Usage: ccbr_tools [OPTIONS] COMMAND [ARGS]...
-
-  Utilities for CCBR Bioinformatics Software
-
-  For more options, run: ccbr_tools [command] --help
-
-  https://ccbr.github.io/Tools/
-
-Options:
-  -v, --version  Show the version and exit.
-  -h, --help     Show this message and exit.
-
-Commands:
-  send-email  Send an email (works on biowulf)
-  quarto-add  Add a quarto extension
-  install     Install a specific version of a CCBR software package,...
-  cite        Print the citation in the desired format
-  version     Print the version of ccbr_tools
-
-All installed tools:
-  ccbr_tools
-  gb2gtf
-  get_hpcname
-  hf
-  intersect
-  jobby
-  jobinfo
-  module_list
-  peek
-  spooker</code></pre>
-</div>
-</div>
-<section id="python" class="level3">
-<h3 class="anchored" data-anchor-id="python">Python</h3>
-<div id="1a0bf9da" class="cell" data-execution_count="2">
-<details open="" class="code-fold">
-<summary>Code</summary>
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb3"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> ccbr_tools.shell</span>
-<span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(ccbr_tools.shell.shell_run(<span class="st">'echo "Hello, world!"'</span>))</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
-</details>
-<div class="cell-output cell-output-stdout">
-<pre><code>Hello, world!
-</code></pre>
-</div>
-</div>
-<div id="21f75cde" class="cell" data-execution_count="3">
-<details open="" class="code-fold">
-<summary>Code</summary>
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb5"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> ccbr_tools.versions</span>
-<span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a>version <span class="op">=</span> ccbr_tools.versions.match_semver(<span class="st">'0.2.3'</span>)</span>
-<span id="cb5-3"><a href="#cb5-3" aria-hidden="true" tabindex="-1"></a>version.groupdict()</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
-</details>
-<div class="cell-output cell-output-display" data-execution_count="3">
-<pre><code>{'major': '0',
- 'minor': '2',
- 'patch': '3',
- 'prerelease': None,
- 'buildmetadata': None}</code></pre>
-</div>
-</div>
-<p>View the API reference for more information: <a href="https://ccbr.github.io/Tools/reference/" class="uri">https://ccbr.github.io/Tools/reference/</a></p>
-
-
+</section>
+</section>
 </section>
 
 </main> <!-- /main -->
@@ -859,6 +1113,18 @@ All installed tools:
     }
   });
   </script>
+<nav class="page-navigation">
+  <div class="nav-page nav-page-previous">
+      <a href="../reference/hooks.html" class="pagination-link" aria-label="hooks">
+        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text">hooks</span>
+      </a>          
+  </div>
+  <div class="nav-page nav-page-next">
+      <a href="../reference/GSEA.deg2gs.html" class="pagination-link" aria-label="GSEA.deg2gs">
+        <span class="nav-page-text">GSEA.deg2gs</span> <i class="bi bi-arrow-right-short"></i>
+      </a>
+  </div>
+</nav>
 </div> <!-- /content -->
 <footer class="footer">
   <div class="nav-footer">
@@ -867,7 +1133,7 @@ All installed tools:
 </div>   
     <div class="nav-footer-center">
       &nbsp;
-    <div class="toc-actions d-sm-block d-md-none"><ul><li><a href="https://github.com/CCBR/Tools/edit/main/basic_usage.qmd" class="toc-action"><i class="bi bi-github"></i>Edit this page</a></li><li><a href="https://github.com/CCBR/Tools/issues/new" class="toc-action"><i class="bi empty"></i>Report an issue</a></li></ul></div></div>
+    <div class="toc-actions d-sm-block d-md-none"><ul><li><a href="https://github.com/CCBR/Tools/edit/main/reference/hooks.detect_absolute_paths.qmd" class="toc-action"><i class="bi bi-github"></i>Edit this page</a></li><li><a href="https://github.com/CCBR/Tools/issues/new" class="toc-action"><i class="bi empty"></i>Report an issue</a></li></ul></div></div>
     <div class="nav-footer-right">
       &nbsp;
     </div>

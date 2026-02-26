@@ -1,17 +1,14 @@
 [
   {
-    "objectID": "badges.html",
-    "href": "badges.html",
-    "title": "CCBR Tools",
+    "objectID": "scripts.html",
+    "href": "scripts.html",
+    "title": "External scripts",
     "section": "",
-    "text": "Utilities for CCBR Bioinformatics Software"
-  },
-  {
-    "objectID": "basic_usage.html",
-    "href": "basic_usage.html",
-    "title": "CLI",
-    "section": "",
-    "text": "ccbr_tools --help\n\n\nUsage: ccbr_tools [OPTIONS] COMMAND [ARGS]...\n\n  Utilities for CCBR Bioinformatics Software\n\n  For more options, run: ccbr_tools [command] --help\n\n  https://ccbr.github.io/Tools/\n\nOptions:\n  -v, --version  Show the version and exit.\n  -h, --help     Show this message and exit.\n\nCommands:\n  send-email  Send an email (works on biowulf)\n  quarto-add  Add a quarto extension\n  install     Install a specific version of a CCBR software package,...\n  cite        Print the citation in the desired format\n  version     Print the version of ccbr_tools\n\nAll installed tools:\n  ccbr_tools\n  gb2gtf\n  get_hpcname\n  hf\n  intersect\n  jobby\n  jobinfo\n  module_list\n  peek\n  spooker\n\n\n\nPython\n\n\nCode\nimport ccbr_tools.shell\nprint(ccbr_tools.shell.shell_run('echo \"Hello, world!\"'))\n\n\nHello, world!\n\n\n\n\n\nCode\nimport ccbr_tools.versions\nversion = ccbr_tools.versions.match_semver('0.2.3')\nversion.groupdict()\n\n\n{'major': '0',\n 'minor': '2',\n 'patch': '3',\n 'prerelease': None,\n 'buildmetadata': None}\n\n\nView the API reference for more information: https://ccbr.github.io/Tools/reference/"
+    "text": "Additional standalone scripts for various common tasks are added to the path when this package is installed. They are less robust than the CLI Utilities included in the package and do not have any unit tests.\n\n\n\n\n\n\nWarning\n\n\n\nThe run_jobby_on_* scripts have been deprecated. Please use jobby directly.\n\n\n\nadd_gene_name_to_count_matrix.R\naggregate_data_tables.R\nargparse.bash\ncancel_snakemake_jobs.sh\ncreate_hpc_link.sh\nextract_value_from_json.py\nextract_value_from_yaml.py\nfilter_bam_by_readids.py\nfilter_fastq_by_readids_highmem.py\nfilter_fastq_by_readids_highmem_pe.py\ngather_cluster_stats.sh\ngather_cluster_stats_biowulf.sh\nget_buyin_partition_list.bash\nget_slurm_file_with_error.sh\ngithub_milestones.sh\ngsea_preranked.sh\nkaryoploter.R\nmake_labels_for_pipeliner.sh\nrawcounts2normalizedcounts_DESeq2.R\nrawcounts2normalizedcounts_limmavoom.R\nrun_jobby_on_nextflow_log\nrun_jobby_on_nextflow_log_full_format\nrun_jobby_on_snakemake_log\nrun_jobby_on_snakemake_log_full_format\nwhich_vpn.sh",
+    "crumbs": [
+      "Usage",
+      "External scripts"
+    ]
   },
   {
     "objectID": "reference/pipeline.nextflow.html",
@@ -245,36 +242,91 @@
     ]
   },
   {
-    "objectID": "reference/github.html",
-    "href": "reference/github.html",
-    "title": "github",
+    "objectID": "reference/hooks.detect_absolute_paths.html",
+    "href": "reference/hooks.detect_absolute_paths.html",
+    "title": "hooks.detect_absolute_paths",
     "section": "",
-    "text": "github\nGitHub helper functions\nContributor related functions:\n\nprint_contributor_images - Print contributor profile images for HTML web pages\nget_repo_contributors - Get a list of contributors to a GitHub repository\nget_user_info - Get profile information about a GitHub user\nget_contrib_html - Generates HTML for a GitHub contributor’s profile image and link\n\n\n\n\n\n\nName\nDescription\n\n\n\n\nget_contrib_html\nGenerates HTML for a GitHub contributor’s profile image and link.\n\n\nget_repo_contributors\nGet a list of contributors to a GitHub repository.\n\n\nget_user_info\nGet profile information about a GitHub user.\n\n\nprint_contributor_images\nPrint contributor profile images for HTML web pages\n\n\n\n\n\ngithub.get_contrib_html(contrib, img_attr='{width=100px height=100px}')\nGenerates HTML for a GitHub contributor’s profile image and link.\n\n\n\n\n\nName\nType\nDescription\nDefault\n\n\n\n\ncontrib\ndict\nA dictionary containing contributor information. Expected keys are ‘login’, ‘avatar_url’, and ‘html_url’.\nrequired\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nName\nType\nDescription\n\n\n\n\nstr\n\nA string containing HTML that displays the contributor’s profile image and links to their GitHub profile.\n\n\n\n\n\n\n\ngithub.get_repo_contributors(repo, org='CCBR')\nGet a list of contributors to a GitHub repository.\n\n\n\n\n\nName\nType\nDescription\nDefault\n\n\n\n\nrepo\nstr\nThe name of the repository.\nrequired\n\n\norg\nstr\nThe organization name. Defaults to ‘CCBR’.\n'CCBR'\n\n\n\nReturns: list: A list of contributors to the specified repository.\n\n\n\n\ngithub.get_user_info(user_login)\nGet profile information about a GitHub user.\n\n\n\n\n\nName\nType\nDescription\nDefault\n\n\n\n\nuser_login\nstr\nThe GitHub username of the user.\nrequired\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nName\nType\nDescription\n\n\n\n\ndict\n\nA dictionary containing the user’s profile information. If the user is not found, returns a minimal dict with ‘login’ and ‘name’ set to None.\n\n\n\n\n\n\n\ngithub.print_contributor_images(repo, org='CCBR')\nPrint contributor profile images for HTML web pages\n\n\n\n\n\nName\nType\nDescription\nDefault\n\n\n\n\nrepo\nstr\nThe name of the GitHub repository.\nrequired\n\n\norg\nstr\nThe GitHub organization or user that owns the repository. Defaults to ‘CCBR’.\n'CCBR'\n\n\n\n\n\n\n\n\n\nName\nType\nDescription\n\n\n\n\n\n\nNone",
+    "text": "hooks.detect_absolute_paths\nDetect absolute file paths\nAny instances of absolute paths (i.e. paths starting with “/”) in the given files will be detected and printed to the console (unless “abs-path:ignore” is included). An error will be raised at the end if any are found.\n\n\nAdd this to your .pre-commit-config.yaml file:\n- repo: https://github.com/CCBR/Tools\n  rev: v0.5.0\n  hooks:\n    - id: detect-absolute-paths\n\n\n\nYou can ignore specific lines by including the string “abs-path:ignore” in the line, e.g.:\nsome_path = \"/absolute/path/to/file\" # abs-path:ignore\n\n\n\n\n\n\nName\nDescription\n\n\n\n\ndetect_absolute_paths\nDetect absolute file paths in the given files and raise an error if any are found.\n\n\nfile_contains_absolute_path\nDetect absolute paths in a file\n\n\nfile_is_text\nDetect whether a file is likely text based on its MIME type.\n\n\nline_contains_absolute_path\nDetect absolute paths in a line of text\n\n\nline_contains_ignore\nDetect if a line contains the string “abs-path:ignore”\n\n\nraise_error_if_abs_paths_detected\nRaise an error if absolute paths are detected in the given files\n\n\nword_is_absolute_path\nDetect if a word starts with a slash (indicating an absolute path)\n\n\n\n\n\nhooks.detect_absolute_paths.detect_absolute_paths(files)\nDetect absolute file paths in the given files and raise an error if any are found.\n\n\n\nhooks.detect_absolute_paths.file_contains_absolute_path(file)\nDetect absolute paths in a file\n\n\n\nhooks.detect_absolute_paths.file_is_text(file)\nDetect whether a file is likely text based on its MIME type.\n\n\n\nhooks.detect_absolute_paths.line_contains_absolute_path(line)\nDetect absolute paths in a line of text\n\n\n\nhooks.detect_absolute_paths.line_contains_ignore(line)\nDetect if a line contains the string “abs-path:ignore”\n\n\n\nhooks.detect_absolute_paths.raise_error_if_abs_paths_detected(files)\nRaise an error if absolute paths are detected in the given files\n\n\n\nhooks.detect_absolute_paths.word_is_absolute_path(word)\nDetect if a word starts with a slash (indicating an absolute path)\nStandalone / and // are not considered absolute paths as they are often used in pathlib to delimited paths and as comments in groovy/nextflow",
     "crumbs": [
-      "Main modules",
-      "github"
+      "Pre-commit hooks",
+      "hooks.detect_absolute_paths"
     ]
   },
   {
-    "objectID": "reference/github.html#functions",
-    "href": "reference/github.html#functions",
-    "title": "github",
+    "objectID": "reference/hooks.detect_absolute_paths.html#usage-with-pre-commit",
+    "href": "reference/hooks.detect_absolute_paths.html#usage-with-pre-commit",
+    "title": "hooks.detect_absolute_paths",
     "section": "",
-    "text": "Name\nDescription\n\n\n\n\nget_contrib_html\nGenerates HTML for a GitHub contributor’s profile image and link.\n\n\nget_repo_contributors\nGet a list of contributors to a GitHub repository.\n\n\nget_user_info\nGet profile information about a GitHub user.\n\n\nprint_contributor_images\nPrint contributor profile images for HTML web pages\n\n\n\n\n\ngithub.get_contrib_html(contrib, img_attr='{width=100px height=100px}')\nGenerates HTML for a GitHub contributor’s profile image and link.\n\n\n\n\n\nName\nType\nDescription\nDefault\n\n\n\n\ncontrib\ndict\nA dictionary containing contributor information. Expected keys are ‘login’, ‘avatar_url’, and ‘html_url’.\nrequired\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nName\nType\nDescription\n\n\n\n\nstr\n\nA string containing HTML that displays the contributor’s profile image and links to their GitHub profile.\n\n\n\n\n\n\n\ngithub.get_repo_contributors(repo, org='CCBR')\nGet a list of contributors to a GitHub repository.\n\n\n\n\n\nName\nType\nDescription\nDefault\n\n\n\n\nrepo\nstr\nThe name of the repository.\nrequired\n\n\norg\nstr\nThe organization name. Defaults to ‘CCBR’.\n'CCBR'\n\n\n\nReturns: list: A list of contributors to the specified repository.\n\n\n\n\ngithub.get_user_info(user_login)\nGet profile information about a GitHub user.\n\n\n\n\n\nName\nType\nDescription\nDefault\n\n\n\n\nuser_login\nstr\nThe GitHub username of the user.\nrequired\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nName\nType\nDescription\n\n\n\n\ndict\n\nA dictionary containing the user’s profile information. If the user is not found, returns a minimal dict with ‘login’ and ‘name’ set to None.\n\n\n\n\n\n\n\ngithub.print_contributor_images(repo, org='CCBR')\nPrint contributor profile images for HTML web pages\n\n\n\n\n\nName\nType\nDescription\nDefault\n\n\n\n\nrepo\nstr\nThe name of the GitHub repository.\nrequired\n\n\norg\nstr\nThe GitHub organization or user that owns the repository. Defaults to ‘CCBR’.\n'CCBR'\n\n\n\n\n\n\n\n\n\nName\nType\nDescription\n\n\n\n\n\n\nNone",
+    "text": "Add this to your .pre-commit-config.yaml file:\n- repo: https://github.com/CCBR/Tools\n  rev: v0.5.0\n  hooks:\n    - id: detect-absolute-paths",
     "crumbs": [
-      "Main modules",
-      "github"
+      "Pre-commit hooks",
+      "hooks.detect_absolute_paths"
     ]
   },
   {
-    "objectID": "reference/software.html",
-    "href": "reference/software.html",
-    "title": "software",
+    "objectID": "reference/hooks.detect_absolute_paths.html#ignoring-specific-lines",
+    "href": "reference/hooks.detect_absolute_paths.html#ignoring-specific-lines",
+    "title": "hooks.detect_absolute_paths",
     "section": "",
-    "text": "software\nsoftware",
+    "text": "You can ignore specific lines by including the string “abs-path:ignore” in the line, e.g.:\nsome_path = \"/absolute/path/to/file\" # abs-path:ignore",
+    "crumbs": [
+      "Pre-commit hooks",
+      "hooks.detect_absolute_paths"
+    ]
+  },
+  {
+    "objectID": "reference/hooks.detect_absolute_paths.html#functions",
+    "href": "reference/hooks.detect_absolute_paths.html#functions",
+    "title": "hooks.detect_absolute_paths",
+    "section": "",
+    "text": "Name\nDescription\n\n\n\n\ndetect_absolute_paths\nDetect absolute file paths in the given files and raise an error if any are found.\n\n\nfile_contains_absolute_path\nDetect absolute paths in a file\n\n\nfile_is_text\nDetect whether a file is likely text based on its MIME type.\n\n\nline_contains_absolute_path\nDetect absolute paths in a line of text\n\n\nline_contains_ignore\nDetect if a line contains the string “abs-path:ignore”\n\n\nraise_error_if_abs_paths_detected\nRaise an error if absolute paths are detected in the given files\n\n\nword_is_absolute_path\nDetect if a word starts with a slash (indicating an absolute path)\n\n\n\n\n\nhooks.detect_absolute_paths.detect_absolute_paths(files)\nDetect absolute file paths in the given files and raise an error if any are found.\n\n\n\nhooks.detect_absolute_paths.file_contains_absolute_path(file)\nDetect absolute paths in a file\n\n\n\nhooks.detect_absolute_paths.file_is_text(file)\nDetect whether a file is likely text based on its MIME type.\n\n\n\nhooks.detect_absolute_paths.line_contains_absolute_path(line)\nDetect absolute paths in a line of text\n\n\n\nhooks.detect_absolute_paths.line_contains_ignore(line)\nDetect if a line contains the string “abs-path:ignore”\n\n\n\nhooks.detect_absolute_paths.raise_error_if_abs_paths_detected(files)\nRaise an error if absolute paths are detected in the given files\n\n\n\nhooks.detect_absolute_paths.word_is_absolute_path(word)\nDetect if a word starts with a slash (indicating an absolute path)\nStandalone / and // are not considered absolute paths as they are often used in pathlib to delimited paths and as comments in groovy/nextflow",
+    "crumbs": [
+      "Pre-commit hooks",
+      "hooks.detect_absolute_paths"
+    ]
+  },
+  {
+    "objectID": "reference/gb2gtf.html",
+    "href": "reference/gb2gtf.html",
+    "title": "gb2gtf",
+    "section": "",
+    "text": "gb2gtf\nModule for converting GenBank files to GTF format.\n\n\npython gb2gtf.py sequence.gb &gt; sequence.gtf",
+    "crumbs": [
+      "Legacy tools",
+      "gb2gtf"
+    ]
+  },
+  {
+    "objectID": "reference/gb2gtf.html#usage",
+    "href": "reference/gb2gtf.html#usage",
+    "title": "gb2gtf",
+    "section": "",
+    "text": "python gb2gtf.py sequence.gb &gt; sequence.gtf",
+    "crumbs": [
+      "Legacy tools",
+      "gb2gtf"
+    ]
+  },
+  {
+    "objectID": "reference/shell.html",
+    "href": "reference/shell.html",
+    "title": "shell",
+    "section": "",
+    "text": "shell\nUtility functions for shell command execution.\n\n\n\n\n\nName\nDescription\n\n\n\n\nconcat_newline\nConcatenates strings with a newline character between non-empty arguments\n\n\nexec_in_context\nExecutes a function in a context manager and captures the output from stdout and stderr.\n\n\nshell_run\nRun a shell command and return stdout/stderr\n\n\n\n\n\nshell.concat_newline(*args)\nConcatenates strings with a newline character between non-empty arguments\n\n\n\n\n\nName\nType\nDescription\nDefault\n\n\n\n\n*args\nstr\nVariable length argument list of strings to be concatenated.\n()\n\n\n\n\n\n\n\n\n\nName\nType\nDescription\n\n\n\n\nstring\nstr\nThe concatenated string with newline characters between each non-empty argument.\n\n\n\n\n\n\n\nshell.exec_in_context(func, *args, **kwargs)\nExecutes a function in a context manager and captures the output from stdout and stderr.\n\nArgs:\n    func (func): The function to be executed.\n    *args: Variable length argument list to be passed to the function.\n    **kwargs: Arbitrary keyword arguments to be passed to the function.\n\nReturns:\n    out (str): The combined output from both stdout and stderr.\n\nExamples:\n    &gt;&gt;&gt; exec_in_context(print, \"Hello, World!\")\n    'Hello, World!\n’\n\n\n\nshell.shell_run(\n    command_str,\n    capture_output=True,\n    check=True,\n    shell=True,\n    text=True,\n    concat_output=True,\n)\nRun a shell command and return stdout/stderr\n\nArgs:\n    command_str (str): The shell command to be executed.\n    capture_output (bool, optional): Whether to capture the command's output. Defaults to True.\n    check (bool, optional): Whether to raise an exception if the command returns a non-zero exit status. Defaults to True.\n    shell (bool, optional): Whether to run the command through the shell. Defaults to True.\n    text (bool, optional): Whether to treat the command's input/output as text. Defaults to True.\n    concat_output (bool, optional): Whether to concatenate stdout and stderr. Defaults to True. If False, returns a tuple of (stdout, stderr).\n\nReturns:\n    out (str): The combined stdout and stderr of the command, separated by a newline character.\n\nExamples:\n    &gt;&gt;&gt; shell_run(\"echo Hello, World!\")\n    'Hello, World!\n’ &gt;&gt;&gt; shell_run(“invalid_command”) ‘/bin/sh: invalid_command: command not found’",
     "crumbs": [
       "Main modules",
-      "software"
+      "shell"
+    ]
+  },
+  {
+    "objectID": "reference/shell.html#functions",
+    "href": "reference/shell.html#functions",
+    "title": "shell",
+    "section": "",
+    "text": "Name\nDescription\n\n\n\n\nconcat_newline\nConcatenates strings with a newline character between non-empty arguments\n\n\nexec_in_context\nExecutes a function in a context manager and captures the output from stdout and stderr.\n\n\nshell_run\nRun a shell command and return stdout/stderr\n\n\n\n\n\nshell.concat_newline(*args)\nConcatenates strings with a newline character between non-empty arguments\n\n\n\n\n\nName\nType\nDescription\nDefault\n\n\n\n\n*args\nstr\nVariable length argument list of strings to be concatenated.\n()\n\n\n\n\n\n\n\n\n\nName\nType\nDescription\n\n\n\n\nstring\nstr\nThe concatenated string with newline characters between each non-empty argument.\n\n\n\n\n\n\n\nshell.exec_in_context(func, *args, **kwargs)\nExecutes a function in a context manager and captures the output from stdout and stderr.\n\nArgs:\n    func (func): The function to be executed.\n    *args: Variable length argument list to be passed to the function.\n    **kwargs: Arbitrary keyword arguments to be passed to the function.\n\nReturns:\n    out (str): The combined output from both stdout and stderr.\n\nExamples:\n    &gt;&gt;&gt; exec_in_context(print, \"Hello, World!\")\n    'Hello, World!\n’\n\n\n\nshell.shell_run(\n    command_str,\n    capture_output=True,\n    check=True,\n    shell=True,\n    text=True,\n    concat_output=True,\n)\nRun a shell command and return stdout/stderr\n\nArgs:\n    command_str (str): The shell command to be executed.\n    capture_output (bool, optional): Whether to capture the command's output. Defaults to True.\n    check (bool, optional): Whether to raise an exception if the command returns a non-zero exit status. Defaults to True.\n    shell (bool, optional): Whether to run the command through the shell. Defaults to True.\n    text (bool, optional): Whether to treat the command's input/output as text. Defaults to True.\n    concat_output (bool, optional): Whether to concatenate stdout and stderr. Defaults to True. If False, returns a tuple of (stdout, stderr).\n\nReturns:\n    out (str): The combined stdout and stderr of the command, separated by a newline character.\n\nExamples:\n    &gt;&gt;&gt; shell_run(\"echo Hello, World!\")\n    'Hello, World!\n’ &gt;&gt;&gt; shell_run(“invalid_command”) ‘/bin/sh: invalid_command: command not found’",
+    "crumbs": [
+      "Main modules",
+      "shell"
     ]
   },
   {
@@ -304,7 +356,7 @@
     "href": "reference/index.html",
     "title": "API Reference",
     "section": "",
-    "text": "github\nGitHub helper functions\n\n\njobby\nDisplay job information for past SLURM job IDs.\n\n\nmodule_list\nmodule_list\n\n\npaths\n\n\n\npkg_util\nMiscellaneous utility functions for the package\n\n\npipeline\nHelpers for bioinformatics pipelines\n\n\nsend_email\nSend an email with an attachment\n\n\nshell\nUtility functions for shell command execution.\n\n\nsoftware\n\n\n\nspooker\nSPOOKER 👻\n\n\ntemplates\nTemplate files for CCBR Tools.\n\n\nversions\nGet information from git tags, commit hashes, and GitHub releases.\n\n\n\n\n\n\n\n\n\npipeline.cache\nFunctions for singularity cache management\n\n\npipeline.hpc\nClasses for working with different HPC clusters.\n\n\npipeline.nextflow\nRun Nextflow workflows in local and HPC environments.\n\n\npipeline.util\nPipeline utility functions\n\n\n\n\n\n\n\n\n\nGSEA.deg2gs\nReads a rnaseq pipeliner *_DEG_all_genes.txt file and outputs a prioritized list of Ensembl gene IDs for ToppFun\n\n\nGSEA.multitext2excel\nReads a list of files to import as separate tabs in Excel\n\n\nGSEA.ncbr_huse\nSet of functions supporting the FNL NCBR work\n\n\ngb2gtf\nModule for converting GenBank files to GTF format.\n\n\nhomologfinder.hf\nFinds homologs in human and mouse.\n\n\nintersect\nFind the intersect of two files, returns the inner join\n\n\njobinfo\nGet HPC usage metadata for a list of slurm jobids on biowulf\n\n\npeek\nTake a peek at tab-delimited files",
+    "text": "github\nGitHub helper functions\n\n\njobby\nDisplay job information for past SLURM job IDs.\n\n\nmodule_list\nmodule_list\n\n\npaths\n\n\n\npkg_util\nMiscellaneous utility functions for the package\n\n\npipeline\nHelpers for bioinformatics pipelines\n\n\nsend_email\nSend an email with an attachment\n\n\nshell\nUtility functions for shell command execution.\n\n\nsoftware\n\n\n\nspooker\nSPOOKER 👻\n\n\ntemplates\nTemplate files for CCBR Tools.\n\n\nversions\nGet information from git tags, commit hashes, and GitHub releases.\n\n\n\n\n\n\n\n\n\npipeline.cache\nFunctions for singularity cache management\n\n\npipeline.hpc\nClasses for working with different HPC clusters.\n\n\npipeline.nextflow\nRun Nextflow workflows in local and HPC environments.\n\n\npipeline.util\nPipeline utility functions\n\n\n\n\n\n\n\n\n\nhooks\nPre-commit hooks for CCBR Bioinformatics Software, intended for use with the pre-commit framework (https://pre-commit.com/).\n\n\nhooks.detect_absolute_paths\nDetect absolute file paths\n\n\n\n\n\n\n\n\n\nGSEA.deg2gs\nReads a rnaseq pipeliner *_DEG_all_genes.txt file and outputs a prioritized list of Ensembl gene IDs for ToppFun\n\n\nGSEA.multitext2excel\nReads a list of files to import as separate tabs in Excel\n\n\nGSEA.ncbr_huse\nSet of functions supporting the FNL NCBR work\n\n\ngb2gtf\nModule for converting GenBank files to GTF format.\n\n\nhomologfinder.hf\nFinds homologs in human and mouse.\n\n\nintersect\nFind the intersect of two files, returns the inner join\n\n\njobinfo\nGet HPC usage metadata for a list of slurm jobids on biowulf\n\n\npeek\nTake a peek at tab-delimited files",
     "crumbs": [
       "Usage",
       "Python API reference"
@@ -333,6 +385,17 @@
     ]
   },
   {
+    "objectID": "reference/index.html#pre-commit-hooks",
+    "href": "reference/index.html#pre-commit-hooks",
+    "title": "API Reference",
+    "section": "",
+    "text": "hooks\nPre-commit hooks for CCBR Bioinformatics Software, intended for use with the pre-commit framework (https://pre-commit.com/).\n\n\nhooks.detect_absolute_paths\nDetect absolute file paths",
+    "crumbs": [
+      "Usage",
+      "Python API reference"
+    ]
+  },
+  {
     "objectID": "reference/index.html#legacy-tools",
     "href": "reference/index.html#legacy-tools",
     "title": "API Reference",
@@ -344,18 +407,11 @@
     ]
   },
   {
-    "objectID": "install.html",
-    "href": "install.html",
-    "title": "CCBR Tools",
-    "section": "",
-    "text": "On biowulf you can access the latest release of ccbr_tools by loading the ccbrpipeliner module:\nmodule load ccbrpipeliner\nOutside of biowulf, you can install the package with pip:\npip install git+https://github.com/CCBR/Tools\nOr specify any tagged version or branch:\npip install git+https://github.com/CCBR/Tools@v0.2.4"
-  },
-  {
     "objectID": "CHANGELOG.html",
     "href": "CHANGELOG.html",
     "title": "CCBR Tools",
     "section": "",
-    "text": "Add parkit to the list of CCBR software. (#144, @kelly-sovacool)",
+    "text": "Add parkit to the list of CCBR software. (#144, @kelly-sovacool)\nNew pre-commit hook: ccbr-hooks detect-absolute-paths. (#147, @kelly-sovacool)",
     "crumbs": [
       "Project information",
       "Changelog"
@@ -366,7 +422,7 @@
     "href": "CHANGELOG.html#tools-development-version",
     "title": "CCBR Tools",
     "section": "",
-    "text": "Add parkit to the list of CCBR software. (#144, @kelly-sovacool)",
+    "text": "Add parkit to the list of CCBR software. (#144, @kelly-sovacool)\nNew pre-commit hook: ccbr-hooks detect-absolute-paths. (#147, @kelly-sovacool)",
     "crumbs": [
       "Project information",
       "Changelog"
@@ -639,7 +695,7 @@
     "href": "index.html#basic-usage",
     "title": "CCBR Tools",
     "section": "Basic usage",
-    "text": "Basic usage\n\nCLI\nccbr_tools --help\n\n\nUsage: ccbr_tools [OPTIONS] COMMAND [ARGS]...\n\n  Utilities for CCBR Bioinformatics Software\n\n  For more options, run: ccbr_tools [command] --help\n\n  https://ccbr.github.io/Tools/\n\nOptions:\n  -v, --version  Show the version and exit.\n  -h, --help     Show this message and exit.\n\nCommands:\n  send-email  Send an email (works on biowulf)\n  quarto-add  Add a quarto extension\n  install     Install a specific version of a CCBR software package,...\n  cite        Print the citation in the desired format\n  version     Print the version of ccbr_tools\n\nAll installed tools:\n  ccbr_tools\n  gb2gtf\n  get_hpcname\n  hf\n  intersect\n  jobby\n  jobinfo\n  module_list\n  peek\n  spooker\n\n\n\n\nPython\n\n\nCode\nimport ccbr_tools.shell\nprint(ccbr_tools.shell.shell_run('echo \"Hello, world!\"'))\n\n\nHello, world!\n\n\n\n\n\nCode\nimport ccbr_tools.versions\nversion = ccbr_tools.versions.match_semver('0.2.3')\nversion.groupdict()\n\n\n{'major': '0',\n 'minor': '2',\n 'patch': '3',\n 'prerelease': None,\n 'buildmetadata': None}\n\n\nView the API reference for more information: https://ccbr.github.io/Tools/reference/",
+    "text": "Basic usage\n\nCLI\nccbr_tools --help\n\n\nUsage: ccbr_tools [OPTIONS] COMMAND [ARGS]...\n\n  Utilities for CCBR Bioinformatics Software\n\n  For more options, run: ccbr_tools [command] --help\n\n  https://ccbr.github.io/Tools/\n\nOptions:\n  -v, --version  Show the version and exit.\n  -h, --help     Show this message and exit.\n\nCommands:\n  send-email  Send an email (works on biowulf)\n  quarto-add  Add a quarto extension\n  install     Install a specific version of a CCBR software package,...\n  cite        Print the citation in the desired format\n  version     Print the version of ccbr_tools\n\nAll installed tools:\n  ccbr-hooks\n  ccbr_tools\n  gb2gtf\n  get_hpcname\n  hf\n  intersect\n  jobby\n  jobinfo\n  module_list\n  peek\n  spooker\n\n\n\n\nPre-commit hooks\nAdd the hooks to your .pre-commit-config.yaml file:\n - repo: https://github.com/CCBR/Tools\n   rev: v0.5.0\n   hooks:\n     - id: detect-absolute-paths\nView the reference guide on pre-commit hooks for more information.\n\n\nPython\n\n\nCode\nimport ccbr_tools.shell\nprint(ccbr_tools.shell.shell_run('echo \"Hello, world!\"'))\n\n\nHello, world!\n\n\n\n\n\nCode\nimport ccbr_tools.versions\nversion = ccbr_tools.versions.match_semver('0.2.3')\nversion.groupdict()\n\n\n{'major': '0',\n 'minor': '2',\n 'patch': '3',\n 'prerelease': None,\n 'buildmetadata': None}\n\n\nView the API reference for more information.",
     "crumbs": [
       "Home"
     ]
@@ -721,13 +777,6 @@
     ]
   },
   {
-    "objectID": "help.html",
-    "href": "help.html",
-    "title": "CCBR Tools",
-    "section": "",
-    "text": "Come across a bug? Open an issue and include a minimal reproducible example.\nHave a question? Ask it in discussions.\nWant to contribute to this project? Check out the contributing guidelines."
-  },
-  {
     "objectID": "reference/versions.html",
     "href": "reference/versions.html",
     "title": "versions",
@@ -750,47 +799,47 @@
     ]
   },
   {
-    "objectID": "reference/shell.html",
-    "href": "reference/shell.html",
-    "title": "shell",
+    "objectID": "reference/hooks.html",
+    "href": "reference/hooks.html",
+    "title": "hooks",
     "section": "",
-    "text": "shell\nUtility functions for shell command execution.\n\n\n\n\n\nName\nDescription\n\n\n\n\nconcat_newline\nConcatenates strings with a newline character between non-empty arguments\n\n\nexec_in_context\nExecutes a function in a context manager and captures the output from stdout and stderr.\n\n\nshell_run\nRun a shell command and return stdout/stderr\n\n\n\n\n\nshell.concat_newline(*args)\nConcatenates strings with a newline character between non-empty arguments\n\n\n\n\n\nName\nType\nDescription\nDefault\n\n\n\n\n*args\nstr\nVariable length argument list of strings to be concatenated.\n()\n\n\n\n\n\n\n\n\n\nName\nType\nDescription\n\n\n\n\nstring\nstr\nThe concatenated string with newline characters between each non-empty argument.\n\n\n\n\n\n\n\nshell.exec_in_context(func, *args, **kwargs)\nExecutes a function in a context manager and captures the output from stdout and stderr.\n\nArgs:\n    func (func): The function to be executed.\n    *args: Variable length argument list to be passed to the function.\n    **kwargs: Arbitrary keyword arguments to be passed to the function.\n\nReturns:\n    out (str): The combined output from both stdout and stderr.\n\nExamples:\n    &gt;&gt;&gt; exec_in_context(print, \"Hello, World!\")\n    'Hello, World!\n’\n\n\n\nshell.shell_run(\n    command_str,\n    capture_output=True,\n    check=True,\n    shell=True,\n    text=True,\n    concat_output=True,\n)\nRun a shell command and return stdout/stderr\n\nArgs:\n    command_str (str): The shell command to be executed.\n    capture_output (bool, optional): Whether to capture the command's output. Defaults to True.\n    check (bool, optional): Whether to raise an exception if the command returns a non-zero exit status. Defaults to True.\n    shell (bool, optional): Whether to run the command through the shell. Defaults to True.\n    text (bool, optional): Whether to treat the command's input/output as text. Defaults to True.\n    concat_output (bool, optional): Whether to concatenate stdout and stderr. Defaults to True. If False, returns a tuple of (stdout, stderr).\n\nReturns:\n    out (str): The combined stdout and stderr of the command, separated by a newline character.\n\nExamples:\n    &gt;&gt;&gt; shell_run(\"echo Hello, World!\")\n    'Hello, World!\n’ &gt;&gt;&gt; shell_run(“invalid_command”) ‘/bin/sh: invalid_command: command not found’",
+    "text": "hooks\nhooks\nPre-commit hooks for CCBR Bioinformatics Software, intended for use with the pre-commit framework (https://pre-commit.com/).\n\ndetect-absolute-paths",
+    "crumbs": [
+      "Pre-commit hooks",
+      "hooks"
+    ]
+  },
+  {
+    "objectID": "reference/software.html",
+    "href": "reference/software.html",
+    "title": "software",
+    "section": "",
+    "text": "software\nsoftware",
     "crumbs": [
       "Main modules",
-      "shell"
+      "software"
     ]
   },
   {
-    "objectID": "reference/shell.html#functions",
-    "href": "reference/shell.html#functions",
-    "title": "shell",
+    "objectID": "reference/github.html",
+    "href": "reference/github.html",
+    "title": "github",
     "section": "",
-    "text": "Name\nDescription\n\n\n\n\nconcat_newline\nConcatenates strings with a newline character between non-empty arguments\n\n\nexec_in_context\nExecutes a function in a context manager and captures the output from stdout and stderr.\n\n\nshell_run\nRun a shell command and return stdout/stderr\n\n\n\n\n\nshell.concat_newline(*args)\nConcatenates strings with a newline character between non-empty arguments\n\n\n\n\n\nName\nType\nDescription\nDefault\n\n\n\n\n*args\nstr\nVariable length argument list of strings to be concatenated.\n()\n\n\n\n\n\n\n\n\n\nName\nType\nDescription\n\n\n\n\nstring\nstr\nThe concatenated string with newline characters between each non-empty argument.\n\n\n\n\n\n\n\nshell.exec_in_context(func, *args, **kwargs)\nExecutes a function in a context manager and captures the output from stdout and stderr.\n\nArgs:\n    func (func): The function to be executed.\n    *args: Variable length argument list to be passed to the function.\n    **kwargs: Arbitrary keyword arguments to be passed to the function.\n\nReturns:\n    out (str): The combined output from both stdout and stderr.\n\nExamples:\n    &gt;&gt;&gt; exec_in_context(print, \"Hello, World!\")\n    'Hello, World!\n’\n\n\n\nshell.shell_run(\n    command_str,\n    capture_output=True,\n    check=True,\n    shell=True,\n    text=True,\n    concat_output=True,\n)\nRun a shell command and return stdout/stderr\n\nArgs:\n    command_str (str): The shell command to be executed.\n    capture_output (bool, optional): Whether to capture the command's output. Defaults to True.\n    check (bool, optional): Whether to raise an exception if the command returns a non-zero exit status. Defaults to True.\n    shell (bool, optional): Whether to run the command through the shell. Defaults to True.\n    text (bool, optional): Whether to treat the command's input/output as text. Defaults to True.\n    concat_output (bool, optional): Whether to concatenate stdout and stderr. Defaults to True. If False, returns a tuple of (stdout, stderr).\n\nReturns:\n    out (str): The combined stdout and stderr of the command, separated by a newline character.\n\nExamples:\n    &gt;&gt;&gt; shell_run(\"echo Hello, World!\")\n    'Hello, World!\n’ &gt;&gt;&gt; shell_run(“invalid_command”) ‘/bin/sh: invalid_command: command not found’",
+    "text": "github\nGitHub helper functions\nContributor related functions:\n\nprint_contributor_images - Print contributor profile images for HTML web pages\nget_repo_contributors - Get a list of contributors to a GitHub repository\nget_user_info - Get profile information about a GitHub user\nget_contrib_html - Generates HTML for a GitHub contributor’s profile image and link\n\n\n\n\n\n\nName\nDescription\n\n\n\n\nget_contrib_html\nGenerates HTML for a GitHub contributor’s profile image and link.\n\n\nget_repo_contributors\nGet a list of contributors to a GitHub repository.\n\n\nget_user_info\nGet profile information about a GitHub user.\n\n\nprint_contributor_images\nPrint contributor profile images for HTML web pages\n\n\n\n\n\ngithub.get_contrib_html(contrib, img_attr='{width=100px height=100px}')\nGenerates HTML for a GitHub contributor’s profile image and link.\n\n\n\n\n\nName\nType\nDescription\nDefault\n\n\n\n\ncontrib\ndict\nA dictionary containing contributor information. Expected keys are ‘login’, ‘avatar_url’, and ‘html_url’.\nrequired\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nName\nType\nDescription\n\n\n\n\nstr\n\nA string containing HTML that displays the contributor’s profile image and links to their GitHub profile.\n\n\n\n\n\n\n\ngithub.get_repo_contributors(repo, org='CCBR')\nGet a list of contributors to a GitHub repository.\n\n\n\n\n\nName\nType\nDescription\nDefault\n\n\n\n\nrepo\nstr\nThe name of the repository.\nrequired\n\n\norg\nstr\nThe organization name. Defaults to ‘CCBR’.\n'CCBR'\n\n\n\nReturns: list: A list of contributors to the specified repository.\n\n\n\n\ngithub.get_user_info(user_login)\nGet profile information about a GitHub user.\n\n\n\n\n\nName\nType\nDescription\nDefault\n\n\n\n\nuser_login\nstr\nThe GitHub username of the user.\nrequired\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nName\nType\nDescription\n\n\n\n\ndict\n\nA dictionary containing the user’s profile information. If the user is not found, returns a minimal dict with ‘login’ and ‘name’ set to None.\n\n\n\n\n\n\n\ngithub.print_contributor_images(repo, org='CCBR')\nPrint contributor profile images for HTML web pages\n\n\n\n\n\nName\nType\nDescription\nDefault\n\n\n\n\nrepo\nstr\nThe name of the GitHub repository.\nrequired\n\n\norg\nstr\nThe GitHub organization or user that owns the repository. Defaults to ‘CCBR’.\n'CCBR'\n\n\n\n\n\n\n\n\n\nName\nType\nDescription\n\n\n\n\n\n\nNone",
     "crumbs": [
       "Main modules",
-      "shell"
+      "github"
     ]
   },
   {
-    "objectID": "reference/gb2gtf.html",
-    "href": "reference/gb2gtf.html",
-    "title": "gb2gtf",
+    "objectID": "reference/github.html#functions",
+    "href": "reference/github.html#functions",
+    "title": "github",
     "section": "",
-    "text": "gb2gtf\nModule for converting GenBank files to GTF format.\n\n\npython gb2gtf.py sequence.gb &gt; sequence.gtf",
+    "text": "Name\nDescription\n\n\n\n\nget_contrib_html\nGenerates HTML for a GitHub contributor’s profile image and link.\n\n\nget_repo_contributors\nGet a list of contributors to a GitHub repository.\n\n\nget_user_info\nGet profile information about a GitHub user.\n\n\nprint_contributor_images\nPrint contributor profile images for HTML web pages\n\n\n\n\n\ngithub.get_contrib_html(contrib, img_attr='{width=100px height=100px}')\nGenerates HTML for a GitHub contributor’s profile image and link.\n\n\n\n\n\nName\nType\nDescription\nDefault\n\n\n\n\ncontrib\ndict\nA dictionary containing contributor information. Expected keys are ‘login’, ‘avatar_url’, and ‘html_url’.\nrequired\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nName\nType\nDescription\n\n\n\n\nstr\n\nA string containing HTML that displays the contributor’s profile image and links to their GitHub profile.\n\n\n\n\n\n\n\ngithub.get_repo_contributors(repo, org='CCBR')\nGet a list of contributors to a GitHub repository.\n\n\n\n\n\nName\nType\nDescription\nDefault\n\n\n\n\nrepo\nstr\nThe name of the repository.\nrequired\n\n\norg\nstr\nThe organization name. Defaults to ‘CCBR’.\n'CCBR'\n\n\n\nReturns: list: A list of contributors to the specified repository.\n\n\n\n\ngithub.get_user_info(user_login)\nGet profile information about a GitHub user.\n\n\n\n\n\nName\nType\nDescription\nDefault\n\n\n\n\nuser_login\nstr\nThe GitHub username of the user.\nrequired\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nName\nType\nDescription\n\n\n\n\ndict\n\nA dictionary containing the user’s profile information. If the user is not found, returns a minimal dict with ‘login’ and ‘name’ set to None.\n\n\n\n\n\n\n\ngithub.print_contributor_images(repo, org='CCBR')\nPrint contributor profile images for HTML web pages\n\n\n\n\n\nName\nType\nDescription\nDefault\n\n\n\n\nrepo\nstr\nThe name of the GitHub repository.\nrequired\n\n\norg\nstr\nThe GitHub organization or user that owns the repository. Defaults to ‘CCBR’.\n'CCBR'\n\n\n\n\n\n\n\n\n\nName\nType\nDescription\n\n\n\n\n\n\nNone",
     "crumbs": [
-      "Legacy tools",
-      "gb2gtf"
-    ]
-  },
-  {
-    "objectID": "reference/gb2gtf.html#usage",
-    "href": "reference/gb2gtf.html#usage",
-    "title": "gb2gtf",
-    "section": "",
-    "text": "python gb2gtf.py sequence.gb &gt; sequence.gtf",
-    "crumbs": [
-      "Legacy tools",
-      "gb2gtf"
+      "Main modules",
+      "github"
     ]
   },
   {
@@ -1106,7 +1155,7 @@
     "href": "cli.html",
     "title": "Command line interface",
     "section": "",
-    "text": "Usage: ccbr_tools [OPTIONS] COMMAND [ARGS]...\n\n  Utilities for CCBR Bioinformatics Software\n\n  For more options, run: ccbr_tools [command] --help\n\n  https://ccbr.github.io/Tools/\n\nOptions:\n  -v, --version  Show the version and exit.\n  -h, --help     Show this message and exit.\n\nCommands:\n  send-email  Send an email (works on biowulf)\n  quarto-add  Add a quarto extension\n  install     Install a specific version of a CCBR software package,...\n  cite        Print the citation in the desired format\n  version     Print the version of ccbr_tools\n\nAll installed tools:\n  ccbr_tools\n  gb2gtf\n  get_hpcname\n  hf\n  intersect\n  jobby\n  jobinfo\n  module_list\n  peek\n  spooker\n\n\n\nUsage: ccbr_tools send-email [OPTIONS] [TO_ADDRESS] [TEXT]\n\n  Send an email (works on biowulf)\n\n  Arguments:\n      to_address    The email address of the recipient\n      text          The plain text content of the email\n\nOptions:\n  -s, --subject TEXT      The subject line of the email\n  -a, --attach-html PATH  The file path to the HTML attachment\n  -r, --from-addr TEXT    The email address of the sender\n  -d, --debug             Return the Email Message object without sending the\n                          email\n  -h, --help              Show this message and exit.\n\n\n\n\nUsage: ccbr_tools quarto-add [OPTIONS] EXT_NAME\n\n  Add a quarto extension\n\n  Arguments:\n      ext_name    The name of the extension in ccbr_tools\n\n  Examples:\n      ccbr_tools quarto-add fnl\n\nOptions:\n  -h, --help  Show this message and exit.\n\n  Available extensions: fnl\n\n\n\n\nUsage: ccbr_tools install [OPTIONS] TOOL_NAME VERSION_TAG\n\n  Install a specific version of a CCBR software package, tool, or pipeline on\n  a supported HPC.\n\n  Args:\n      tool_name (str): The name of the software package to install.\n      version_tag (str): The version tag to install.\n\nOptions:\n  --run          Execute the install script; otherwise, just print it. It is a\n                 good idea to dry-run this script first to ensure the commands\n                 are correct, then run again with --run.\n  --branch TEXT  Branch or tag to install from GitHub. Use this option if the\n                 version is not a tag, e.g. for testing development versions.\n  --type TEXT    Type of software to install. Must be a class in\n                 `ccbr_tools.software`. If not specified, the type will be\n                 determined automatically (i.e. for CCBR software).\n  --hpc TEXT     HPC to install on. If not specified, the HPC will be detected\n                 automatically.\n  -h, --help     Show this message and exit.\n\n\n\n\nUsage: ccbr_tools cite [OPTIONS] CITATION_FILE\n\n  Print the citation in the desired format\n\n  citation_file : Path to a file in Citation File Format (CFF) [default: the\n  CFF for ccbr_tools]\n\nOptions:\n  -f, --output-format [apalike|bibtex|cff|codemeta|endnote|ris|schema.org|zenodo]\n                                  Output format for the citation\n  -h, --help                      Show this message and exit.\n\n\n\n\nUsage: ccbr_tools version [OPTIONS]\n\n  Print the version of ccbr_tools\n\nOptions:\n  -d, --debug  Print the path to the VERSION file\n  -h, --help   Show this message and exit.",
+    "text": "Usage: ccbr_tools [OPTIONS] COMMAND [ARGS]...\n\n  Utilities for CCBR Bioinformatics Software\n\n  For more options, run: ccbr_tools [command] --help\n\n  https://ccbr.github.io/Tools/\n\nOptions:\n  -v, --version  Show the version and exit.\n  -h, --help     Show this message and exit.\n\nCommands:\n  send-email  Send an email (works on biowulf)\n  quarto-add  Add a quarto extension\n  install     Install a specific version of a CCBR software package,...\n  cite        Print the citation in the desired format\n  version     Print the version of ccbr_tools\n\nAll installed tools:\n  ccbr-hooks\n  ccbr_tools\n  gb2gtf\n  get_hpcname\n  hf\n  intersect\n  jobby\n  jobinfo\n  module_list\n  peek\n  spooker\n\n\n\nUsage: ccbr_tools send-email [OPTIONS] [TO_ADDRESS] [TEXT]\n\n  Send an email (works on biowulf)\n\n  Arguments:\n      to_address    The email address of the recipient\n      text          The plain text content of the email\n\nOptions:\n  -s, --subject TEXT      The subject line of the email\n  -a, --attach-html PATH  The file path to the HTML attachment\n  -r, --from-addr TEXT    The email address of the sender\n  -d, --debug             Return the Email Message object without sending the\n                          email\n  -h, --help              Show this message and exit.\n\n\n\n\nUsage: ccbr_tools quarto-add [OPTIONS] EXT_NAME\n\n  Add a quarto extension\n\n  Arguments:\n      ext_name    The name of the extension in ccbr_tools\n\n  Examples:\n      ccbr_tools quarto-add fnl\n\nOptions:\n  -h, --help  Show this message and exit.\n\n  Available extensions: fnl\n\n\n\n\nUsage: ccbr_tools install [OPTIONS] TOOL_NAME VERSION_TAG\n\n  Install a specific version of a CCBR software package, tool, or pipeline on\n  a supported HPC.\n\n  Args:\n      tool_name (str): The name of the software package to install.\n      version_tag (str): The version tag to install.\n\nOptions:\n  --run          Execute the install script; otherwise, just print it. It is a\n                 good idea to dry-run this script first to ensure the commands\n                 are correct, then run again with --run.\n  --branch TEXT  Branch or tag to install from GitHub. Use this option if the\n                 version is not a tag, e.g. for testing development versions.\n  --type TEXT    Type of software to install. Must be a class in\n                 `ccbr_tools.software`. If not specified, the type will be\n                 determined automatically (i.e. for CCBR software).\n  --hpc TEXT     HPC to install on. If not specified, the HPC will be detected\n                 automatically.\n  -h, --help     Show this message and exit.\n\n\n\n\nUsage: ccbr_tools cite [OPTIONS] CITATION_FILE\n\n  Print the citation in the desired format\n\n  citation_file : Path to a file in Citation File Format (CFF) [default: the\n  CFF for ccbr_tools]\n\nOptions:\n  -f, --output-format [apalike|bibtex|cff|codemeta|endnote|ris|schema.org|zenodo]\n                                  Output format for the citation\n  -h, --help                      Show this message and exit.\n\n\n\n\nUsage: ccbr_tools version [OPTIONS]\n\n  Print the version of ccbr_tools\n\nOptions:\n  -d, --debug  Print the path to the VERSION file\n  -h, --help   Show this message and exit.",
     "crumbs": [
       "Usage",
       "Command line interface"
@@ -1117,7 +1166,18 @@
     "href": "cli.html#main-cli",
     "title": "Command line interface",
     "section": "",
-    "text": "Usage: ccbr_tools [OPTIONS] COMMAND [ARGS]...\n\n  Utilities for CCBR Bioinformatics Software\n\n  For more options, run: ccbr_tools [command] --help\n\n  https://ccbr.github.io/Tools/\n\nOptions:\n  -v, --version  Show the version and exit.\n  -h, --help     Show this message and exit.\n\nCommands:\n  send-email  Send an email (works on biowulf)\n  quarto-add  Add a quarto extension\n  install     Install a specific version of a CCBR software package,...\n  cite        Print the citation in the desired format\n  version     Print the version of ccbr_tools\n\nAll installed tools:\n  ccbr_tools\n  gb2gtf\n  get_hpcname\n  hf\n  intersect\n  jobby\n  jobinfo\n  module_list\n  peek\n  spooker\n\n\n\nUsage: ccbr_tools send-email [OPTIONS] [TO_ADDRESS] [TEXT]\n\n  Send an email (works on biowulf)\n\n  Arguments:\n      to_address    The email address of the recipient\n      text          The plain text content of the email\n\nOptions:\n  -s, --subject TEXT      The subject line of the email\n  -a, --attach-html PATH  The file path to the HTML attachment\n  -r, --from-addr TEXT    The email address of the sender\n  -d, --debug             Return the Email Message object without sending the\n                          email\n  -h, --help              Show this message and exit.\n\n\n\n\nUsage: ccbr_tools quarto-add [OPTIONS] EXT_NAME\n\n  Add a quarto extension\n\n  Arguments:\n      ext_name    The name of the extension in ccbr_tools\n\n  Examples:\n      ccbr_tools quarto-add fnl\n\nOptions:\n  -h, --help  Show this message and exit.\n\n  Available extensions: fnl\n\n\n\n\nUsage: ccbr_tools install [OPTIONS] TOOL_NAME VERSION_TAG\n\n  Install a specific version of a CCBR software package, tool, or pipeline on\n  a supported HPC.\n\n  Args:\n      tool_name (str): The name of the software package to install.\n      version_tag (str): The version tag to install.\n\nOptions:\n  --run          Execute the install script; otherwise, just print it. It is a\n                 good idea to dry-run this script first to ensure the commands\n                 are correct, then run again with --run.\n  --branch TEXT  Branch or tag to install from GitHub. Use this option if the\n                 version is not a tag, e.g. for testing development versions.\n  --type TEXT    Type of software to install. Must be a class in\n                 `ccbr_tools.software`. If not specified, the type will be\n                 determined automatically (i.e. for CCBR software).\n  --hpc TEXT     HPC to install on. If not specified, the HPC will be detected\n                 automatically.\n  -h, --help     Show this message and exit.\n\n\n\n\nUsage: ccbr_tools cite [OPTIONS] CITATION_FILE\n\n  Print the citation in the desired format\n\n  citation_file : Path to a file in Citation File Format (CFF) [default: the\n  CFF for ccbr_tools]\n\nOptions:\n  -f, --output-format [apalike|bibtex|cff|codemeta|endnote|ris|schema.org|zenodo]\n                                  Output format for the citation\n  -h, --help                      Show this message and exit.\n\n\n\n\nUsage: ccbr_tools version [OPTIONS]\n\n  Print the version of ccbr_tools\n\nOptions:\n  -d, --debug  Print the path to the VERSION file\n  -h, --help   Show this message and exit.",
+    "text": "Usage: ccbr_tools [OPTIONS] COMMAND [ARGS]...\n\n  Utilities for CCBR Bioinformatics Software\n\n  For more options, run: ccbr_tools [command] --help\n\n  https://ccbr.github.io/Tools/\n\nOptions:\n  -v, --version  Show the version and exit.\n  -h, --help     Show this message and exit.\n\nCommands:\n  send-email  Send an email (works on biowulf)\n  quarto-add  Add a quarto extension\n  install     Install a specific version of a CCBR software package,...\n  cite        Print the citation in the desired format\n  version     Print the version of ccbr_tools\n\nAll installed tools:\n  ccbr-hooks\n  ccbr_tools\n  gb2gtf\n  get_hpcname\n  hf\n  intersect\n  jobby\n  jobinfo\n  module_list\n  peek\n  spooker\n\n\n\nUsage: ccbr_tools send-email [OPTIONS] [TO_ADDRESS] [TEXT]\n\n  Send an email (works on biowulf)\n\n  Arguments:\n      to_address    The email address of the recipient\n      text          The plain text content of the email\n\nOptions:\n  -s, --subject TEXT      The subject line of the email\n  -a, --attach-html PATH  The file path to the HTML attachment\n  -r, --from-addr TEXT    The email address of the sender\n  -d, --debug             Return the Email Message object without sending the\n                          email\n  -h, --help              Show this message and exit.\n\n\n\n\nUsage: ccbr_tools quarto-add [OPTIONS] EXT_NAME\n\n  Add a quarto extension\n\n  Arguments:\n      ext_name    The name of the extension in ccbr_tools\n\n  Examples:\n      ccbr_tools quarto-add fnl\n\nOptions:\n  -h, --help  Show this message and exit.\n\n  Available extensions: fnl\n\n\n\n\nUsage: ccbr_tools install [OPTIONS] TOOL_NAME VERSION_TAG\n\n  Install a specific version of a CCBR software package, tool, or pipeline on\n  a supported HPC.\n\n  Args:\n      tool_name (str): The name of the software package to install.\n      version_tag (str): The version tag to install.\n\nOptions:\n  --run          Execute the install script; otherwise, just print it. It is a\n                 good idea to dry-run this script first to ensure the commands\n                 are correct, then run again with --run.\n  --branch TEXT  Branch or tag to install from GitHub. Use this option if the\n                 version is not a tag, e.g. for testing development versions.\n  --type TEXT    Type of software to install. Must be a class in\n                 `ccbr_tools.software`. If not specified, the type will be\n                 determined automatically (i.e. for CCBR software).\n  --hpc TEXT     HPC to install on. If not specified, the HPC will be detected\n                 automatically.\n  -h, --help     Show this message and exit.\n\n\n\n\nUsage: ccbr_tools cite [OPTIONS] CITATION_FILE\n\n  Print the citation in the desired format\n\n  citation_file : Path to a file in Citation File Format (CFF) [default: the\n  CFF for ccbr_tools]\n\nOptions:\n  -f, --output-format [apalike|bibtex|cff|codemeta|endnote|ris|schema.org|zenodo]\n                                  Output format for the citation\n  -h, --help                      Show this message and exit.\n\n\n\n\nUsage: ccbr_tools version [OPTIONS]\n\n  Print the version of ccbr_tools\n\nOptions:\n  -d, --debug  Print the path to the VERSION file\n  -h, --help   Show this message and exit.",
+    "crumbs": [
+      "Usage",
+      "Command line interface"
+    ]
+  },
+  {
+    "objectID": "cli.html#pre-commit-hooks",
+    "href": "cli.html#pre-commit-hooks",
+    "title": "Command line interface",
+    "section": "Pre-commit hooks",
+    "text": "Pre-commit hooks\nView the reference guide on pre-commit hooks for more information on how to use them.\nUsage: ccbr-hooks [OPTIONS] COMMAND [ARGS]...\n\n  Pre-commit hooks for CCBR Bioinformatics Software\n\n  For more options, run: ccbr_hooks [command] --help\n\n  https://ccbr.github.io/Tools/hooks\n\nOptions:\n  -v, --version  Show the version and exit.\n  -h, --help     Show this message and exit.\n\nCommands:\n  detect-absolute-paths  Detect absolute file paths in the given files...",
     "crumbs": [
       "Usage",
       "Command line interface"
@@ -1128,21 +1188,10 @@
     "href": "cli.html#additional-utilities",
     "title": "Command line interface",
     "section": "Additional utilities",
-    "text": "Additional utilities\n\ngb2gtf\nConvert GenBank files to GTF format.\n\nUsage: gb2gtf sequence.gb &gt; sequence.gtf\n\n\n\n\nget_hpcname\n\n\n\n\nhf\n\nFinds homologs in human and mouse.\n\nAbout:\n    hf or HomologFinder finds homologs in human and mouse.\n    if the input gene or genelist is human, then it returns mouse homolog(s) and vice versa\n\nUsage:\n    $ hf -h\n\nExamples:\n    $ hf -g ZNF365\n\n    $ hf -l Wdr53,Zfp365\n\n    $ hf -f genelist.txt\n\n\nusage: hf [-h] [-v] [-g GENE] [-l GENELIST] [-f GENELISTFILE]\n\nGet Human2Mouse (or Mouse2Human) homolog gene or genelist\n\noptions:\n  -h, --help            show this help message and exit\n  -v, --version         show program's version number and exit\n  -g GENE, --gene GENE  single gene name\n  -l GENELIST, --genelist GENELIST\n                        comma separated gene list\n  -f GENELISTFILE, --genelistfile GENELISTFILE\n                        genelist in file (one gene per line)\n\n\n\nintersect\nUSAGE:\nintersect filename1 filename2 f1ColumnIndex F2ColumnIndex\n    --Ex. intersect file1 file2 0 0\n\n\n\njobby\nUsage:\n  jobby &lt;jobid1&gt; [jobid2 ...] [--tsv|--json|--yaml] [--outerr] [--include-completed]\n  jobby &lt;jobid1&gt;,&lt;jobid2&gt; [--tsv|--json|--yaml] [--outerr] [--include-completed]\n  jobby snakemake.log [--tsv|--json|--yaml] [--outerr] [--include-completed]\n  jobby .nextflow.log [--tsv|--json|--yaml] [--outerr] [--include-completed]\n  jobby -v or --version\n  jobby -h or --help\n\n\n\njobinfo\n\nGet HPC usage metadata for a list of slurm jobids on biowulf\n\nAbout:\n    This wrapper script works only on BIOWULF!\n    This script usage the \"dashboard_cli\" utility on biowulf to get HPC usage metadata\n    for a list of slurm jobids. These slurm jobids can be either provided at command\n    line or extracted from a snakemake.log file. Using snakemake.log file option together\n    with --failonly option lists path to the STDERR files for failed jobs. This can be\n    very useful to debug failed Snakemake workflows.\n\nUSAGE:\n    $ jobinfo -h\n\nExample:\n    $ jobinfo -j 123456,7891011\n    $ jobinfo -s /path/to/snakemake.log\n    $ jobinfo -j 123456,7891011 -o /path/to/report.tsv\n    $ jobinfo -s /path/to/snakemake.log --failonly\n\nusage: jobinfo [-h] [-v] [-j JOBLIST] [-s SNAKEMAKELOG] [-o OUTPUT] [-f]\n\nGet slurm job information using slurm job id or snakemake.log file\n\noptions:\n  -h, --help            show this help message and exit\n  -v, --version         show program's version number and exit\n  -j JOBLIST, --joblist JOBLIST\n                        comma separated list of jobids. Cannot be used\n                        together with -s option.\n  -s SNAKEMAKELOG, --snakemakelog SNAKEMAKELOG\n                        snakemake.log file. Slurm jobids are extracted from\n                        here. Cannot be used together with -j option.\n  -o OUTPUT, --output OUTPUT\n                        Path to output file. All jobs (all states) and all\n                        columns are reported in output file.\n  -f, --failonly        output FAILED jobs only (onscreen). Path to the STDERR\n                        files for failed jobs. All jobs are reported with -o\n                        option.\n\n\n\nmodule_list\n\nUsage:\n  module_list           # List all loaded modules in JSON format\n  module_list &lt;module&gt;  # Get version of a specific loaded module\n  module_list -h | --help  # Show this help message\n\n\n\npeek\nUSAGE: peek &lt;file.tsv&gt; [buffer]\n\nAssumptions:\n    Input file is tab delimited\n     └── Globbing supported: *.txt\n\nOptional:\n    buffer = 40 (default)\n     └── Changing buffer will increase/decrease output justification\n\n\n\nspooker\nUsage: spooker [OPTIONS]\n\n  spooker 👻\n\n  This command is designed to be used as part of the\n  OnComplete/OnSuccess/OnError handlers as part of Snakemake and Nextflow\n  pipelines. It collects metadata about the pipeline run, bundles it into a\n  tarball, and saves it to a common location for later retrieval.\n\nOptions:\n  --outdir PATH   Output directory for the pipeline run\n  --name TEXT     Name of the pipeline\n  --version TEXT  Version of the pipeline\n  --path PATH     Path to the pipeline source\n  -h, --help      Show this message and exit.",
+    "text": "Additional utilities\n\nccbr-hooks\nUsage: ccbr-hooks [OPTIONS] COMMAND [ARGS]...\n\n  Pre-commit hooks for CCBR Bioinformatics Software\n\n  For more options, run: ccbr_hooks [command] --help\n\n  https://ccbr.github.io/Tools/hooks\n\nOptions:\n  -v, --version  Show the version and exit.\n  -h, --help     Show this message and exit.\n\nCommands:\n  detect-absolute-paths  Detect absolute file paths in the given files...\n\n\n\ngb2gtf\nConvert GenBank files to GTF format.\n\nUsage: gb2gtf sequence.gb &gt; sequence.gtf\n\n\n\n\nget_hpcname\n\n\n\n\nhf\n\nFinds homologs in human and mouse.\n\nAbout:\n    hf or HomologFinder finds homologs in human and mouse.\n    if the input gene or genelist is human, then it returns mouse homolog(s) and vice versa\n\nUsage:\n    $ hf -h\n\nExamples:\n    $ hf -g ZNF365\n\n    $ hf -l Wdr53,Zfp365\n\n    $ hf -f genelist.txt\n\n\nusage: hf [-h] [-v] [-g GENE] [-l GENELIST] [-f GENELISTFILE]\n\nGet Human2Mouse (or Mouse2Human) homolog gene or genelist\n\noptions:\n  -h, --help            show this help message and exit\n  -v, --version         show program's version number and exit\n  -g GENE, --gene GENE  single gene name\n  -l GENELIST, --genelist GENELIST\n                        comma separated gene list\n  -f GENELISTFILE, --genelistfile GENELISTFILE\n                        genelist in file (one gene per line)\n\n\n\nintersect\nUSAGE:\nintersect filename1 filename2 f1ColumnIndex F2ColumnIndex\n    --Ex. intersect file1 file2 0 0\n\n\n\njobby\nUsage:\n  jobby &lt;jobid1&gt; [jobid2 ...] [--tsv|--json|--yaml] [--outerr] [--include-completed]\n  jobby &lt;jobid1&gt;,&lt;jobid2&gt; [--tsv|--json|--yaml] [--outerr] [--include-completed]\n  jobby snakemake.log [--tsv|--json|--yaml] [--outerr] [--include-completed]\n  jobby .nextflow.log [--tsv|--json|--yaml] [--outerr] [--include-completed]\n  jobby -v or --version\n  jobby -h or --help\n\n\n\njobinfo\n\nGet HPC usage metadata for a list of slurm jobids on biowulf\n\nAbout:\n    This wrapper script works only on BIOWULF!\n    This script usage the \"dashboard_cli\" utility on biowulf to get HPC usage metadata\n    for a list of slurm jobids. These slurm jobids can be either provided at command\n    line or extracted from a snakemake.log file. Using snakemake.log file option together\n    with --failonly option lists path to the STDERR files for failed jobs. This can be\n    very useful to debug failed Snakemake workflows.\n\nUSAGE:\n    $ jobinfo -h\n\nExample:\n    $ jobinfo -j 123456,7891011\n    $ jobinfo -s /path/to/snakemake.log\n    $ jobinfo -j 123456,7891011 -o /path/to/report.tsv\n    $ jobinfo -s /path/to/snakemake.log --failonly\n\nusage: jobinfo [-h] [-v] [-j JOBLIST] [-s SNAKEMAKELOG] [-o OUTPUT] [-f]\n\nGet slurm job information using slurm job id or snakemake.log file\n\noptions:\n  -h, --help            show this help message and exit\n  -v, --version         show program's version number and exit\n  -j JOBLIST, --joblist JOBLIST\n                        comma separated list of jobids. Cannot be used\n                        together with -s option.\n  -s SNAKEMAKELOG, --snakemakelog SNAKEMAKELOG\n                        snakemake.log file. Slurm jobids are extracted from\n                        here. Cannot be used together with -j option.\n  -o OUTPUT, --output OUTPUT\n                        Path to output file. All jobs (all states) and all\n                        columns are reported in output file.\n  -f, --failonly        output FAILED jobs only (onscreen). Path to the STDERR\n                        files for failed jobs. All jobs are reported with -o\n                        option.\n\n\n\nmodule_list\n\nUsage:\n  module_list           # List all loaded modules in JSON format\n  module_list &lt;module&gt;  # Get version of a specific loaded module\n  module_list -h | --help  # Show this help message\n\n\n\npeek\nUSAGE: peek &lt;file.tsv&gt; [buffer]\n\nAssumptions:\n    Input file is tab delimited\n     └── Globbing supported: *.txt\n\nOptional:\n    buffer = 40 (default)\n     └── Changing buffer will increase/decrease output justification\n\n\n\nspooker\nUsage: spooker [OPTIONS]\n\n  spooker 👻\n\n  This command is designed to be used as part of the\n  OnComplete/OnSuccess/OnError handlers as part of Snakemake and Nextflow\n  pipelines. It collects metadata about the pipeline run, bundles it into a\n  tarball, and saves it to a common location for later retrieval.\n\nOptions:\n  --outdir PATH   Output directory for the pipeline run\n  --name TEXT     Name of the pipeline\n  --version TEXT  Version of the pipeline\n  --path PATH     Path to the pipeline source\n  -h, --help      Show this message and exit.",
     "crumbs": [
       "Usage",
       "Command line interface"
-    ]
-  },
-  {
-    "objectID": "scripts.html",
-    "href": "scripts.html",
-    "title": "External scripts",
-    "section": "",
-    "text": "Additional standalone scripts for various common tasks are added to the path when this package is installed. They are less robust than the CLI Utilities included in the package and do not have any unit tests.\n\n\n\n\n\n\nWarning\n\n\n\nThe run_jobby_on_* scripts have been deprecated. Please use jobby directly.\n\n\n\nadd_gene_name_to_count_matrix.R\naggregate_data_tables.R\nargparse.bash\ncancel_snakemake_jobs.sh\ncreate_hpc_link.sh\nextract_value_from_json.py\nextract_value_from_yaml.py\nfilter_bam_by_readids.py\nfilter_fastq_by_readids_highmem.py\nfilter_fastq_by_readids_highmem_pe.py\ngather_cluster_stats.sh\ngather_cluster_stats_biowulf.sh\nget_buyin_partition_list.bash\nget_slurm_file_with_error.sh\ngithub_milestones.sh\ngsea_preranked.sh\nkaryoploter.R\nmake_labels_for_pipeliner.sh\nrawcounts2normalizedcounts_DESeq2.R\nrawcounts2normalizedcounts_limmavoom.R\nrun_jobby_on_nextflow_log\nrun_jobby_on_nextflow_log_full_format\nrun_jobby_on_snakemake_log\nrun_jobby_on_snakemake_log_full_format\nwhich_vpn.sh",
-    "crumbs": [
-      "Usage",
-      "External scripts"
     ]
   }
 ]

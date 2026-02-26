@@ -423,8 +423,10 @@ ul.task-list li input[type="checkbox"] {
   <li><a href="#cite" id="toc-cite" class="nav-link" data-scroll-target="#cite">cite</a></li>
   <li><a href="#version" id="toc-version" class="nav-link" data-scroll-target="#version">version</a></li>
   </ul></li>
+  <li><a href="#pre-commit-hooks" id="toc-pre-commit-hooks" class="nav-link" data-scroll-target="#pre-commit-hooks">Pre-commit hooks</a></li>
   <li><a href="#additional-utilities" id="toc-additional-utilities" class="nav-link" data-scroll-target="#additional-utilities">Additional utilities</a>
   <ul class="collapse">
+  <li><a href="#ccbr-hooks" id="toc-ccbr-hooks" class="nav-link" data-scroll-target="#ccbr-hooks">ccbr-hooks</a></li>
   <li><a href="#gb2gtf" id="toc-gb2gtf" class="nav-link" data-scroll-target="#gb2gtf">gb2gtf</a></li>
   <li><a href="#get_hpcname" id="toc-get_hpcname" class="nav-link" data-scroll-target="#get_hpcname">get_hpcname</a></li>
   <li><a href="#hf" id="toc-hf" class="nav-link" data-scroll-target="#hf">hf</a></li>
@@ -484,6 +486,7 @@ Commands:
   version     Print the version of ccbr_tools
 
 All installed tools:
+  ccbr-hooks
   ccbr_tools
   gb2gtf
   get_hpcname
@@ -584,8 +587,45 @@ Options:
 </code></pre>
 </section>
 </section>
+<section id="pre-commit-hooks" class="level2">
+<h2 class="anchored" data-anchor-id="pre-commit-hooks">Pre-commit hooks</h2>
+<p>View the <a href="./reference/hooks.html">reference guide on pre-commit hooks</a> for more information on how to use them.</p>
+<pre><code>Usage: ccbr-hooks [OPTIONS] COMMAND [ARGS]...
+
+  Pre-commit hooks for CCBR Bioinformatics Software
+
+  For more options, run: ccbr_hooks [command] --help
+
+  https://ccbr.github.io/Tools/hooks
+
+Options:
+  -v, --version  Show the version and exit.
+  -h, --help     Show this message and exit.
+
+Commands:
+  detect-absolute-paths  Detect absolute file paths in the given files...
+</code></pre>
+</section>
 <section id="additional-utilities" class="level2">
 <h2 class="anchored" data-anchor-id="additional-utilities">Additional utilities</h2>
+<section id="ccbr-hooks" class="level3">
+<h3 class="anchored" data-anchor-id="ccbr-hooks">ccbr-hooks</h3>
+<pre><code>Usage: ccbr-hooks [OPTIONS] COMMAND [ARGS]...
+
+  Pre-commit hooks for CCBR Bioinformatics Software
+
+  For more options, run: ccbr_hooks [command] --help
+
+  https://ccbr.github.io/Tools/hooks
+
+Options:
+  -v, --version  Show the version and exit.
+  -h, --help     Show this message and exit.
+
+Commands:
+  detect-absolute-paths  Detect absolute file paths in the given files...
+</code></pre>
+</section>
 <section id="gb2gtf" class="level3">
 <h3 class="anchored" data-anchor-id="gb2gtf">gb2gtf</h3>
 <pre><code>Convert GenBank files to GTF format.
