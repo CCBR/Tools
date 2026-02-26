@@ -25,6 +25,8 @@ class Cluster:
         env_vars (str): A string representing the environment variables to be set on the cluster.
     """
 
+    SPOOK_DIR = pathlib.Path("/tmp/spook")
+
     def __init__(self):
         self.name = None
         self.env_vars = "\n".join(
