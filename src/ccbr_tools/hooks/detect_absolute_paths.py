@@ -24,6 +24,8 @@ some_path = "/absolute/path/to/file" # abs-path:ignore
 
 """
 
+import mimetypes
+
 import click
 
 
@@ -36,7 +38,14 @@ def word_is_absolute_path(word):
     """
     return any(
         [word.startswith("/"), word.startswith("'/"), word.startswith('"/')]
-    ) and not any([word == "/", word == "//", word == '"/",', word == '"//",'])
+    ) and not any(
+        [
+            word == "/",  # FP from pathlib. abs-path:ignore
+            word == "//",  # FP from groovy comments. abs-path:ignore
+            word == "/*",  # FP from multiline groovy comments. abs-path:ignore
+            word == "/$",  # FP from nextflow scripts. abs-path:ignore
+        ]
+    )
 
 
 def line_contains_absolute_path(line):
@@ -58,11 +67,12 @@ def file_contains_absolute_path(file):
     Detect absolute paths in a file
     """
     detected = False
-    with open(file, "r") as f:
-        for line in f:
-            if not line_contains_ignore(line) and line_contains_absolute_path(line):
-                print(f"Absolute path detected in {file}: {line.strip()}")
-                detected = True
+    if file_is_text(file):
+        with open(file, "r") as f:
+            for line in f:
+                if not line_contains_ignore(line) and line_contains_absolute_path(line):
+                    print(f"Absolute path detected in {file}: {line.strip()}")
+                    detected = True
     return detected
 
 
@@ -72,6 +82,14 @@ def raise_error_if_abs_paths_detected(files):
     """
     if any([file_contains_absolute_path(file) for file in files]):
         raise click.ClickException("Absolute paths detected in the above files.")
+
+
+def file_is_text(file):
+    """
+    Detect whether a file is likely text based on its MIME type.
+    """
+    mime_type, _ = mimetypes.guess_type(str(file))
+    return mime_type is None or mime_type.startswith("text/")
 
 
 @click.command()

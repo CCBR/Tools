@@ -77,6 +77,23 @@ def test_detect_absolute_paths_lscratch_line():
     assert hooks.file_contains_absolute_path(target)
 
 
+def test_file_is_text_with_unknown_extension(tmp_path):
+    target = tmp_path / "notes.unknown"
+    target.write_text("/tmp/file\n", encoding="utf-8")
+
+    assert hooks.file_is_text(target)
+
+
+def test_file_contains_absolute_path_skips_non_text(tmp_path, capsys):
+    target = tmp_path / "image.png"
+    target.write_bytes(b"/tmp/file\n")
+
+    assert not hooks.file_contains_absolute_path(target)
+
+    captured = capsys.readouterr()
+    assert captured.out == ""
+
+
 def test_hooks_cli_help():
     runner = CliRunner()
 
