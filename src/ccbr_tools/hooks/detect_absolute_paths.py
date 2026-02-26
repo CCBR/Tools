@@ -36,14 +36,14 @@ def detect_absolute_paths(files):
     """
     Detect absolute paths in the given files
     """
-    detected = sum([file_contains_absolute_path(file) for file in files])
-    return detected
+    return [file_contains_absolute_path(file) for file in files]
 
 
 @click.command()
 @click.argument("files", nargs=-1, type=click.Path(exists=True))
 def main(files):
-    return detect_absolute_paths(files)
+    if any(detect_absolute_paths(files)):
+        raise click.ClickException("Absolute paths detected in the above files.")
 
 
 if __name__ == "__main__":
