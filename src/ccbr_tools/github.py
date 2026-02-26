@@ -26,7 +26,8 @@ def print_contributor_images(repo, org="CCBR"):
     """
     contribs = get_repo_contributors(repo, org)
     for contrib in contribs:
-        print(get_contrib_html(contrib))
+        if not contrib["html_url"].startswith("https://github.com/apps/"):
+            print(get_contrib_html(contrib))
 
 
 def get_repo_contributors(repo, org="CCBR"):
