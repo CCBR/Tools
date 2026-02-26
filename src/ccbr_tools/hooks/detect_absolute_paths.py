@@ -1,7 +1,8 @@
 """
 Detect absolute file paths
 
-Any instances of absolute paths (i.e. paths starting with "/") in the given files will be detected and printed to the console, and an error will be raised at the end if any are found.
+Any instances of absolute paths (i.e. paths starting with "/") in the given files will be detected and printed to the console (unless "abs-path:ignore" is included).
+An error will be raised at the end if any are found.
 
 ## Usage with pre-commit
 
@@ -33,7 +34,9 @@ def word_is_absolute_path(word):
     Standalone / and // are not considered absolute paths as they are often used
     in pathlib to delimited paths and as comments in groovy/nextflow
     """
-    return word.startswith("/") and not any([word == "/", word == "//"])
+    return any(
+        [word.startswith("/"), word.startswith("'/"), word.startswith('"/')]
+    ) and not any([word == "/", word == "//", word == '"/",', word == '"//",'])
 
 
 def line_contains_absolute_path(line):

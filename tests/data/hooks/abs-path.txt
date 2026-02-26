@@ -1,0 +1,1 @@
+process.scratch = '/lscratch/$SLURM_JOB_ID'

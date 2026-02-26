@@ -5,7 +5,7 @@ exclude: |
       ^.*.svg|
       ^assets/|
       ^src/ccbr_tools/templates/mkdocs-fnl/docs/custom-overrides/|
-      ^tests/data/tree/
+      ^tests/data/
    )
 repos:
   - repo: local

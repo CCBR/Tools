@@ -1,5 +1,7 @@
+import runpy
 import shutil
 import subprocess
+import sys
 from pathlib import Path
 
 import pytest
@@ -10,20 +12,20 @@ import ccbr_tools.hooks.__main__ as hooks_main
 
 
 def test_line_contains_absolute_path():
-    assert hooks.line_contains_absolute_path("/tmp/file") is True
-    assert hooks.line_contains_absolute_path("relative/path") is False
+    assert hooks.line_contains_absolute_path("/tmp/file")
+    assert not hooks.line_contains_absolute_path("relative/path")
 
 
 def test_line_contains_ignore():
-    assert hooks.line_contains_ignore("value # abs-path:ignore") is True
-    assert hooks.line_contains_ignore("no ignore tag") is False
+    assert hooks.line_contains_ignore("value # abs-path:ignore")
+    assert not hooks.line_contains_ignore("no ignore tag")
 
 
 def test_file_contains_absolute_path_reports(tmp_path, capsys):
     target = tmp_path / "sample.txt"
     target.write_text("/tmp/file\n", encoding="utf-8")
 
-    assert hooks.file_contains_absolute_path(target) is True
+    assert hooks.file_contains_absolute_path(target)
 
     captured = capsys.readouterr()
     assert "Absolute path detected in" in captured.out
@@ -33,7 +35,7 @@ def test_file_contains_absolute_path_ignores_tag(tmp_path, capsys):
     target = tmp_path / "sample.txt"
     target.write_text("/tmp/file # abs-path:ignore\n", encoding="utf-8")
 
-    assert hooks.file_contains_absolute_path(target) is False
+    assert not hooks.file_contains_absolute_path(target)
 
     captured = capsys.readouterr()
     assert captured.out == ""
@@ -70,6 +72,11 @@ def test_detect_absolute_paths_cli(tmp_path):
     assert result.output == ""
 
 
+def test_detect_absolute_paths_lscratch_line():
+    target = Path(__file__).resolve().parent / "data" / "hooks" / "abs-path.txt"
+    assert hooks.file_contains_absolute_path(target)
+
+
 def test_hooks_cli_help():
     runner = CliRunner()
 
@@ -79,12 +86,26 @@ def test_hooks_cli_help():
     assert "Pre-commit hooks for CCBR Bioinformatics Software" in result.output
 
 
+def test_hooks_cli_callback_smoke():
+    assert hooks_main.cli.callback() is None
+
+
 def test_hooks_main_invokes_cli(mocker):
     mock_cli = mocker.patch.object(hooks_main, "cli")
 
     hooks_main.main()
 
     mock_cli.assert_called_once_with(prog_name="ccbr-hooks")
+
+
+def test_hooks_main_module_entrypoint(monkeypatch):
+    monkeypatch.setattr(sys, "argv", ["ccbr-hooks", "--help"])
+    sys.modules.pop("ccbr_tools.hooks.__main__", None)
+
+    try:
+        runpy.run_module("ccbr_tools.hooks.__main__", run_name="__main__")
+    except SystemExit as exc:
+        assert exc.code == 0
 
 
 def test_pre_commit_try_repo_detect_absolute_paths(tmp_path):
@@ -131,3 +152,12 @@ def test_pre_commit_try_repo_detect_absolute_paths(tmp_path):
         text=True,
     )
     assert result.returncode == 0
+
+
+def test_detect_absolute_paths_module_entrypoint(monkeypatch):
+    monkeypatch.setattr(sys, "argv", ["detect-absolute-paths"])
+
+    try:
+        runpy.run_path(str(Path(hooks.__file__)), run_name="__main__")
+    except SystemExit as exc:
+        assert exc.code == 0
