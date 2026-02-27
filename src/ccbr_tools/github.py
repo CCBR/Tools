@@ -13,20 +13,25 @@ import warnings
 from .pkg_util import get_url_json
 
 
-def print_contributor_images(repo, org="CCBR"):
+def print_contributor_images(repo, org="CCBR", exclude_bots=True):
     """
     Print contributor profile images for HTML web pages
 
     Args:
         repo (str): The name of the GitHub repository.
         org (str): The GitHub organization or user that owns the repository. Defaults to 'CCBR'.
+        exclude_bots (bool): Whether to exclude GitHub app contributors (bots). Defaults to True.
 
     Returns:
         None
     """
     contribs = get_repo_contributors(repo, org)
     for contrib in contribs:
-        print(get_contrib_html(contrib))
+        if (
+            not contrib["html_url"].startswith("https://github.com/apps/")
+            or not exclude_bots
+        ):
+            print(get_contrib_html(contrib))
 
 
 def get_repo_contributors(repo, org="CCBR"):
