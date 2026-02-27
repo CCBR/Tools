@@ -2,6 +2,7 @@
 
 - Add parkit to the list of CCBR software. (#144, @kelly-sovacool)
 - New pre-commit hook: `ccbr-hooks detect-absolute-paths`. (#147, @kelly-sovacool)
+- Do not include app/bot contributors in `github.get_repo_contributors()`. (#148, @kelly-sovacool)
 
 ## Tools 0.4.6
 
