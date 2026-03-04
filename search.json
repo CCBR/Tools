@@ -674,7 +674,7 @@
     "href": "index.html#installation",
     "title": "CCBR Tools",
     "section": "Installation",
-    "text": "Installation\nOn biowulf you can access the latest release of ccbr_tools by loading the ccbrpipeliner module:\nmodule load ccbrpipeliner\nOutside of biowulf, you can install the package with pip:\npip install git+https://github.com/CCBR/Tools\nOr specify any tagged version or branch:\npip install git+https://github.com/CCBR/Tools@v0.2.4",
+    "text": "Installation\nOn biowulf you can access the latest release of ccbr_tools by loading the ccbrpipeliner module:\nmodule load ccbrpipeliner\nOutside of biowulf, you can install the package with pip:\npip install git+https://github.com/CCBR/Tools\nOr specify any tagged version or branch:\npip install git+https://github.com/CCBR/Tools@latest",
     "crumbs": [
       "Home"
     ]
