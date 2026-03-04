@@ -5,18 +5,18 @@ title: "CCBR Tools 🛠️"
 
 <!-- README.md is generated from README.qmd. Please edit that file -->
 
-{{< include docs/badges.qmd >}}
+{{< include docs/_badges.qmd >}}
 
 View the website for more detailed documentation:
 <https://CCBR.github.io/Tools>
 
 ## Installation
 
-{{< include docs/install.qmd >}}
+{{< include docs/_install.qmd >}}
 
 ## Basic usage
 
-{{< include docs/basic_usage.qmd >}}
+{{< include docs/_basic_usage.qmd >}}
 
 ## CLI Utilities
 
@@ -46,7 +46,7 @@ print('\n'.join([f"  - [`{Path(script).name}`]({script})" for script in get_pypr
 
 ## Help & Contributing
 
-{{< include docs/help.qmd >}}
+{{< include docs/_help.qmd >}}
 
 ## Citation
 

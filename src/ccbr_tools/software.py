@@ -21,9 +21,9 @@ class Software:
     def __init__(self, name, version):
         self.name = name
         self.version = version
-        assert (
-            self.version_re
-        ), f"Invalid version format '{version}' - Must be a valid semantic version."
+        assert self.version_re, (
+            f"Invalid version format '{version}' - Must be a valid semantic version."
+        )
 
     def __repr__(self):
         return f"{self.__class__.__name__}({self.name}, {self.version})"
@@ -137,11 +137,12 @@ CCBR_SOFTWARE = {
     "renee": Snakemake,
     "sinclair": Nextflow,
     "xavier": Snakemake,
-    "spacesavers2": PythonTool,
+    "spacesavers2": BashTool,
     "permfix": BashTool,
     "ccbr_tobias": Snakemake,
     "ccbr_tools": PythonTool,
     "ccbr_actions": PythonTool,
+    "parkit": PythonTool,
 }
 
 
@@ -149,6 +150,7 @@ SET_SYMLINK = """
 pushd {BASE_PATH}
 rm -if {MAJOR_MINOR_VERSION}
 ln -s {HIDDEN_VERSION} {MAJOR_MINOR_VERSION}
+chmod -R g+rwX {MAJOR_MINOR_VERSION}
 popd"""
 
 INSTALL_SCRIPT = """{CONDA_ACTIVATE}

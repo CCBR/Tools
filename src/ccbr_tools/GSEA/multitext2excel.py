@@ -31,13 +31,7 @@ import glob
 import argparse
 from argparse import RawTextHelpFormatter
 from .ncbr_huse import (
-    run_cmd,
-    run_os_cmd,
-    un_gzip,
     send_update,
-    err_out,
-    fasta_count,
-    fasta_list,
 )
 
 
@@ -61,11 +55,13 @@ from .ncbr_huse import (
 
 def main():
     # Usage statement
-    parseStr = 'Reads a list of files and imports them each into a separate tab in one Excel spreadsheet.\n\n\
+    parseStr = (
+        'Reads a list of files and imports them each into a separate tab in one Excel spreadsheet.\n\n\
     Usage:\n\
         multitext2excel.py -o outfile -d directory -p filepattern -k delimiter -s namesplitter\n\
     Example:\n\
         multitext2excel.py -o MyResults.xlsx -d analysis -p ".txt" -k "\t" -s "."\n'
+    )
 
     parser = argparse.ArgumentParser(
         description=parseStr, formatter_class=RawTextHelpFormatter

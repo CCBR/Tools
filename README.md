@@ -61,6 +61,7 @@ ccbr_tools --help
       version     Print the version of ccbr_tools
 
     All installed tools:
+      ccbr-hooks
       ccbr_tools
       gb2gtf
       get_hpcname
@@ -71,6 +72,20 @@ ccbr_tools --help
       module_list
       peek
       spooker
+
+### Pre-commit hooks
+
+Add the hooks to your `.pre-commit-config.yaml` file:
+
+```yaml
+- repo: https://github.com/CCBR/Tools
+  rev: v0.5.0
+  hooks:
+    - id: detect-absolute-paths
+```
+
+View the [reference guide on pre-commit hooks](./reference/hooks.qmd)
+for more information.
 
 ### Python
 
@@ -93,13 +108,14 @@ version.groupdict()
      'prerelease': None,
      'buildmetadata': None}
 
-View the API reference for more information:
-<https://ccbr.github.io/Tools/reference/>
+View the [API reference](https://ccbr.github.io/Tools/reference/) for
+more information.
 
 ## CLI Utilities
 
 Command-line utilities in CCBR Tools.
 
+- `ccbr-hooks`
 - `ccbr_tools`
 - `gb2gtf`
 - `get_hpcname`
@@ -162,8 +178,8 @@ guidelines](https://CCBR.github.io/Tools/CONTRIBUTING).
 
 Please cite this software if you use it in a publication:
 
-> Sovacool K., Koparde V., Kuhn S., Tandon M., and Huse S. (2025). CCBR
-> Tools: Utilities for CCBR Bioinformatics Software (version v0.4.3).
+> Sovacool K., Koparde V., Kuhn S., Tandon M., and Huse S. (2026). CCBR
+> Tools: Utilities for CCBR Bioinformatics Software (version v0.5.0).
 > DOI: 10.5281/zenodo.13377166 URL: https://ccbr.github.io/Tools/
 
 ### Bibtex entry
@@ -172,9 +188,9 @@ Please cite this software if you use it in a publication:
 @misc{YourReferenceHere,
 author = {Sovacool, Kelly and Koparde, Vishal and Kuhn, Skyler and Tandon, Mayank and Huse, Susan},
 doi = {10.5281/zenodo.13377166},
-month = {6},
+month = {3},
 title = {CCBR Tools: Utilities for CCBR Bioinformatics Software},
 url = {https://ccbr.github.io/Tools/},
-year = {2025}
+year = {2026}
 }
 ```

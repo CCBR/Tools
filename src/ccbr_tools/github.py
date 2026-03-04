@@ -9,23 +9,29 @@ Contributor related functions:
 - [](`~ccbr_tools.github.get_contrib_html`) - Generates HTML for a GitHub contributor's profile image and link
 """
 
+import warnings
 from .pkg_util import get_url_json
 
 
-def print_contributor_images(repo, org="CCBR"):
+def print_contributor_images(repo, org="CCBR", exclude_bots=True):
     """
     Print contributor profile images for HTML web pages
 
     Args:
         repo (str): The name of the GitHub repository.
         org (str): The GitHub organization or user that owns the repository. Defaults to 'CCBR'.
+        exclude_bots (bool): Whether to exclude GitHub app contributors (bots). Defaults to True.
 
     Returns:
         None
     """
     contribs = get_repo_contributors(repo, org)
     for contrib in contribs:
-        print(get_contrib_html(contrib))
+        if (
+            not contrib["html_url"].startswith("https://github.com/apps/")
+            or not exclude_bots
+        ):
+            print(get_contrib_html(contrib))
 
 
 def get_repo_contributors(repo, org="CCBR"):
@@ -51,9 +57,14 @@ def get_user_info(user_login):
 
     Returns:
         dict: A dictionary containing the user's profile information.
+              If the user is not found, returns a minimal dict with 'login' and 'name' set to None.
     """
     url = f"https://api.github.com/users/{user_login}"
-    return get_url_json(url)
+    try:
+        return get_url_json(url)
+    except ConnectionError as e:
+        warnings.warn(f"Could not retrieve user info for {user_login}. {str(e)}")
+        return {"login": user_login, "name": None}
 
 
 def get_contrib_html(contrib, img_attr="{width=100px height=100px}"):

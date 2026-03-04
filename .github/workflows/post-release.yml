@@ -19,4 +19,4 @@ jobs:
       - uses: CCBR/actions/post-release@main
         with:
           github-token: ${{ github.token }}
-          update-sliding-branch: true
+          update-sliding-tags: true

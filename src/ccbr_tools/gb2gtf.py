@@ -9,9 +9,6 @@ Usage:
 # Usage:python gb2gtf.py sequence.gb  > sequence.gtf
 
 import sys
-from Bio.Seq import Seq
-from Bio.SeqRecord import SeqRecord
-from Bio.SeqFeature import SeqFeature, FeatureLocation
 from Bio import SeqIO
 import Bio
 

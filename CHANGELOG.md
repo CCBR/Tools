@@ -1,8 +1,31 @@
 ## Tools development version
 
+## Tools 0.5.0
+
+- Add parkit to the list of CCBR software. (#144, @kelly-sovacool)
+- New pre-commit hook: `ccbr-hooks detect-absolute-paths`. (#147, @kelly-sovacool)
+- Do not include app/bot contributors in `github.get_repo_contributors()`. (#148, @kelly-sovacool)
+
+## Tools 0.4.6
+
+- When an invalid GitHub user is passed to `github.get_user_info()`, raise a warning and return a dict with `"name": None`. (#135, @kelly-sovacool)
+
+## Tools 0.4.5
+
+- Fix how jobby parses slurm stdout/stderr files. (#122, @kopardev, @kelly-sovacool)
+- The `run_jobby_on_*` scripts are now deprecated in favor of using `jobby` directly. (#123, @kelly-sovacool)
+- Use miniforge3 installation on biowulf. (#124, #127, @kelly-sovacool)
+
+## Tools 0.4.4
+
+- Fixes for `ccbr_tools install`: (#98, @kelly-sovacool)
+  - Correct installation method for `spacesavers2`.
+  - Change symlink permissions so group members can edit them.
+- Allow nextflow pipelines to specify walltime & memory usage for the slurm submission template. (#116, @kelly-sovacool)
+
 ## Tools 0.4.3
 
-- add standalone script to retrieve HPC cluster name. (#93, @kopardev)
+- Add standalone script to retrieve HPC cluster name. (#93, @kopardev)
 - `module_list` now retrieves the full module version. (#93, @kopardev)
 
 ## Tools 0.4.2
@@ -124,7 +147,7 @@
 ## Tools 0.1.1
 
 - fix: don't add extra newline to command stdout/stderr for `shell_run()` and `exec_in_context()`. (#10, @kelly-sovacool)
-- minor docuemntation improvements. (#12, @kelly-sovacool)
+- minor documentation improvements. (#12, @kelly-sovacool)
 
 ## Tools 0.1.0
 
@@ -133,7 +156,7 @@ All previous python scripts which included command line utilities have been
 moved to `src/`, and all other scripts have been moved to `scripts/`.
 In both cases, they are available in the path when the package is installed.
 
-Functions which were part of both XAVIER and RENEE are available for re-use in
+Functions which were part of both XAVIER and RENEE are available for reuse in
 other bioinformatics pipelines for tasks such as determining the HPC
 environment, retrieving available genome annotations, and printing citation and
 version information.
@@ -157,7 +180,7 @@ Run a command with `--help` to learn how to use it.
 ### External Scripts
 
 Additional standalone scripts for various common tasks in
-[scripts/](scripts/) are added to the path when this package is
+[scripts/](/scripts/) are added to the path when this package is
 installed. They are less robust than the CLI Utilities included in the
 package and do not have any unit tests.
 

@@ -1,0 +1,30 @@
+name: links
+
+on:
+  repository_dispatch:
+  workflow_dispatch:
+  schedule:
+    - cron: "00 11 5 * *"
+
+jobs:
+  linkChecker:
+    runs-on: ubuntu-latest
+    permissions:
+      issues: write # required for peter-evans/create-issue-from-file
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Link Checker
+        id: lychee
+        uses: lycheeverse/lychee-action@v2
+        with:
+          fail: false
+          args: --verbose --no-progress --exclude-path 'src/ccbr_tools/templates/**' './**/*.md' './**/*.html' './**/*.rst'
+
+      - name: Create Issue From File
+        if: steps.lychee.outputs.exit_code == 2
+        uses: peter-evans/create-issue-from-file@v5
+        with:
+          title: Link Checker Report
+          content-filepath: ./lychee/out.md
+          labels: report, automated issue

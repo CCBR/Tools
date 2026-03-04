@@ -1,3 +1,8 @@
 #!/usr/bin/env bash
-snakemakelog=$1
-jobby $(grep --color=never "^Submitted .* with external jobid" $snakemakelog | awk '{{print $NF}}'  | sed "s/['.]//g" | sort | uniq | tr "\\n" " ")
+SCRIPT=$(basename ${BASH_SOURCE[0]})
+echo """ERROR: ${SCRIPT} is deprecated.
+Please use jobby instead. For usage information, run:
+
+    jobby --help
+""" >&2
+exit 1

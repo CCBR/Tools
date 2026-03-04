@@ -48,6 +48,7 @@ from .pkg_util import get_version
 from .paths import glob_files
 
 import itertools
+import json
 import os
 import re
 import subprocess
@@ -145,7 +146,9 @@ def parse_mem_to_gb(mem_str: str):
         else:
             result = float(mem_str) / (1024 * 1024)  # assume bytes
     except ValueError:
-        warnings.warn(f"❌ Invalid memory format: {mem_str}. Memory will be set to NaN.")
+        warnings.warn(
+            f"❌ Invalid memory format: {mem_str}. Memory will be set to NaN."
+        )
     return result
 
 
@@ -242,7 +245,7 @@ def get_sacct_info(
                             job_records[base_jobid][resource_field] = record_raw[
                                 resource_field
                             ]
-    except subprocess.CalledProcessError as err:
+    except subprocess.CalledProcessError:
         warnings.warn(f"❌ Failed to fetch info for JobID {jobid}")
     except FileNotFoundError as err:
         raise RuntimeError(
@@ -269,6 +272,26 @@ def get_sacct_info(
     return records
 
 
+def read_slurm_log(filepath):
+    """
+    Reads the contents of a SLURM log file, escapes all special characters using JSON encoding,
+    and returns the escaped string without the outer quotes.
+
+    Args:
+        filepath (str): Path to the SLURM log file.
+
+    Returns:
+        str: The contents of the file with special characters JSON-escaped and outer quotes removed.
+    """
+    with open(filepath, "r") as infile:
+        content = infile.read()
+        # JSON-escape all special characters (quotes, tabs, newlines, etc.)
+        safe_content = json.dumps(content)
+        # remove the outer quotes since json.dumps returns a JSON string literal
+        safe_content = safe_content[1:-1]
+    return safe_content
+
+
 def get_job_logs(job_id, workdir, include_text=True):
     job_logs = {}
     if workdir:
@@ -286,8 +309,7 @@ def get_job_logs(job_id, workdir, include_text=True):
                     filepath
                 )  # pathlib.Path is not JSON serializable
                 if include_text:
-                    with open(filepath, "r") as infile:
-                        job_logs[f"log_{key}_txt"] = infile.read()
+                    job_logs[f"log_{key}_txt"] = read_slurm_log(filepath)
     return job_logs
 
 

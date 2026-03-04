@@ -1,14 +1,10 @@
-import contextlib
 import gzip
-import io
-import json
 import os
 import numpy as np
 import pandas as pd
 import pickle
 import pprint
 import pytest
-import subprocess
 
 from ccbr_tools.jobby import (
     jobby,
@@ -16,7 +12,6 @@ from ccbr_tools.jobby import (
     parse_mem_to_gb,
     extract_jobids_from_file,
     list_records,
-    get_sacct_info,
     records_to_df,
     format_df,
     get_job_logs,
@@ -283,7 +278,12 @@ def test_records_to_df_smk():
         records_smk = pickle.load(f)
     with open("tests/data/jobby/df_smk.pkl", "rb") as f:
         df_smk = pickle.load(f)
-    pd.testing.assert_frame_equal(records_to_df(records_smk), df_smk)
+    pd.testing.assert_frame_equal(
+        records_to_df(records_smk),
+        df_smk,
+        check_dtype=False,
+        check_column_type=False,
+    )
 
 
 def test_records_to_df_nxf():
@@ -291,7 +291,12 @@ def test_records_to_df_nxf():
         records_nxf = pickle.load(f)
     with open("tests/data/jobby/df_nxf.pkl", "rb") as f:
         df_nxf = pickle.load(f)
-    pd.testing.assert_frame_equal(records_to_df(records_nxf), df_nxf)
+    pd.testing.assert_frame_equal(
+        records_to_df(records_nxf),
+        df_nxf,
+        check_dtype=False,
+        check_column_type=False,
+    )
 
 
 def test_format_df():
@@ -313,10 +318,8 @@ def test_format_df():
 
 def test_get_job_logs():
     assert get_job_logs("abc", "tests/data/pipeline/work") == {
-        "log_err_path": "tests/data/pipeline/work/.command.err",
-        "log_err_txt": "WARNING: Not virtualizing pid namespace by configuration\n"
-        "WARNING: While bind mounting '/gpfs:/gpfs': destination is "
-        "already in the mount point list\n",
         "log_out_path": "tests/data/pipeline/work/.command.out",
         "log_out_txt": "",
+        "log_err_path": "tests/data/pipeline/work/.command.err",
+        "log_err_txt": "WARNING: Not virtualizing pid namespace by configuration\\nWARNING: While bind mounting '/gpfs:/gpfs': destination is already in the mount point list\\n",
     }

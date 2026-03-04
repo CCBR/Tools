@@ -3,21 +3,19 @@ from ccbr_tools.shell import shell_run
 import pytest
 import sys
 
-import ccbr_tools.GSEA.deg2gs as deg2gs
 import ccbr_tools.GSEA.ncbr_huse as ncbr_huse
-import ccbr_tools.GSEA.multitext2excel as mt2excel
 
 
 def test_help_deg():
-    assert shell_run("python -m ccbr_tools.GSEA.deg2gs -h").startswith(
+    assert shell_run(f"{sys.executable} -m ccbr_tools.GSEA.deg2gs -h").startswith(
         "usage: deg2gs.py"
     )
 
 
 def test_help_mt2excel():
-    assert shell_run("python -m ccbr_tools.GSEA.multitext2excel -h").startswith(
-        "usage: multitext2excel.py"
-    )
+    assert shell_run(
+        f"{sys.executable} -m ccbr_tools.GSEA.multitext2excel -h"
+    ).startswith("usage: multitext2excel.py")
 
 
 def test_run_cmd():

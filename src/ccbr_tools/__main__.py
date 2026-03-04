@@ -212,10 +212,8 @@ cli.add_command(version)
 
 
 def main():
-    cli()
+    cli(prog_name="ccbr_tools")
 
-
-cli(prog_name="ccbr_tools")
 
 if __name__ == "__main__":
     main()

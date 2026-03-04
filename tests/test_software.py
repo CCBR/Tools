@@ -44,7 +44,7 @@ def test_install():
     )
     assert all(
         [
-            "conda.sh' && conda activate /" in result,
+            "mamba activate /" in result,
             """pip install git+https://github.com/CCBR/CHAMPAGNE.git@v0.3.0 -t /data/CCBR_Pipeliner/Pipelines/CHAMPAGNE/.v0.3.0
 chmod -R a+rX /data/CCBR_Pipeliner/Pipelines/CHAMPAGNE/.v0.3.0
 chmod -R g+rwX /data/CCBR_Pipeliner/Pipelines/CHAMPAGNE/.v0.3.0
@@ -52,6 +52,7 @@ chown -R :CCBR_Pipeliner /data/CCBR_Pipeliner/Pipelines/CHAMPAGNE/.v0.3.0
 pushd /data/CCBR_Pipeliner/Pipelines/CHAMPAGNE
 rm -if v0.3
 ln -s .v0.3.0 v0.3
+chmod -R g+rwX v0.3
 popd
 """
             in result,
@@ -70,7 +71,7 @@ def test_install_dev():
     )
     assert all(
         [
-            "conda.sh' && conda activate /" in result,
+            "mamba activate /" in result,
             """pip install git+https://github.com/CCBR/CHAMPAGNE.git@main -t /data/CCBR_Pipeliner/Pipelines/CHAMPAGNE/.v0.3.0-dev
 chmod -R a+rX /data/CCBR_Pipeliner/Pipelines/CHAMPAGNE/.v0.3.0-dev
 chmod -R g+rwX /data/CCBR_Pipeliner/Pipelines/CHAMPAGNE/.v0.3.0-dev
@@ -92,7 +93,7 @@ def test_custom():
     )
     assert all(
         [
-            "conda.sh' && conda activate /" in result,
+            "mamba activate /" in result,
             """pip install git+https://github.com/CCBR/cooltool.git@v1.0.0 -t /data/CCBR_Pipeliner/Tools/cooltool/.v1.0.0
 chmod -R a+rX /data/CCBR_Pipeliner/Tools/cooltool/.v1.0.0
 chmod -R g+rwX /data/CCBR_Pipeliner/Tools/cooltool/.v1.0.0
@@ -100,6 +101,7 @@ chown -R :CCBR_Pipeliner /data/CCBR_Pipeliner/Tools/cooltool/.v1.0.0
 pushd /data/CCBR_Pipeliner/Tools/cooltool
 rm -if v1.0
 ln -s .v1.0.0 v1.0
+chmod -R g+rwX v1.0
 popd
 """
             in result,

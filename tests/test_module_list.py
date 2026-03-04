@@ -1,8 +1,5 @@
-import pytest
-
 from ccbr_tools.shell import shell_run
-from ccbr_tools.pipeline.hpc import parse_modules, list_modules, get_hpcname, is_loaded
-from ccbr_tools.module_list import module_list
+from ccbr_tools.pipeline.hpc import parse_modules, is_loaded
 
 
 def test_module_list_cli():

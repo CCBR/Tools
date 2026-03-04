@@ -15,7 +15,7 @@ def test_hpc_biowulf():
             hpc.__repr__().startswith(
                 "<class 'ccbr_tools.pipeline.hpc.Biowulf'>({'name': 'biowulf'"
             ),
-            "conda.sh' && conda activate /" in hpc.CONDA_ACTIVATE,
+            "mamba activate /" in hpc.CONDA_ACTIVATE,
         ]
     )
 
@@ -28,7 +28,7 @@ def test_hpc_frce():
             hpc.name == "frce",
             "/mnt/projects/CCBR-Pipelines/bin" in hpc.env_vars,
             hpc.singularity_sif_dir == "/mnt/projects/CCBR-Pipelines/SIFs",
-            "conda.sh' && conda activate " in hpc.CONDA_ACTIVATE,
+            "mamba activate " in hpc.CONDA_ACTIVATE,
         ]
     )
 
@@ -57,9 +57,9 @@ def test_hpcname_print_output():
 
     printed = captured.getvalue().strip()
     expected = get_hpcname().strip()
-    assert (
-        printed == expected
-    ), f"Printed output '{printed}' != return value '{expected}'"
+    assert printed == expected, (
+        f"Printed output '{printed}' != return value '{expected}'"
+    )
 
 
 def test_hpcname_cli():
