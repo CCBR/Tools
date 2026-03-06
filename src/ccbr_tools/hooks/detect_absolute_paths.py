@@ -41,8 +41,9 @@ def word_is_absolute_path(word):
     ) and not any(
         [
             word == "/",  # FP from pathlib. abs-path:ignore
-            word == "//",  # FP from groovy comments. abs-path:ignore
+            word.startswith("//"),  # FP from groovy comments. abs-path:ignore
             word == "/*",  # FP from multiline groovy comments. abs-path:ignore
+            word.startswith("/*--"),  # FP from CSS comments. abs-path:ignore
             word == "/$",  # FP from nextflow scripts. abs-path:ignore
         ]
     )
