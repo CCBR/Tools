@@ -14,6 +14,7 @@ import sys
 import os
 import re
 import subprocess
+import MySQLdb
 
 ####################################
 #
@@ -109,35 +110,35 @@ def err_out(errMsg, log=None):
 #
 def pause_for_input(txt, contkey="y", quitkey="q", log=None):
     # tally the number of tries
-    ans_cnt = 0
+    answer_cnt = 0
 
     # loop for the user to enter input, give them a few tries
     while True:
         # wait for the input
-        ans = input(txt)
+        answer = input(txt)
 
         # check if valid continue or quit keys
-        if quitkey is not None and ans == quitkey:
+        if quitkey is not None and answer == quitkey:
             err_out("User elected to quit.  Exiting...\n", log)
 
         # if none, just return the input
         if contkey is None:
-            return ans
+            return answer
 
         # if there is a contkey, then be sure it is correctly typed
-        elif ans == contkey:
-            return ans
+        elif answer == contkey:
+            return answer
 
         else:
-            # give them additional help and increment the answer count
+            # give them additional help and increment the answerwer count
             reminder = "Note: only {} to continue and {} to quit are valid options.\nPlease try again.\n".format(
                 contkey, quitkey
             )
-            if ans_cnt == 0:
+            if answer_cnt == 0:
                 txt = "\n" + txt + "\n" + reminder
 
             # Otherwise 3 strikes and exit from the loop
-            if ans_cnt == 2:
+            if answer_cnt == 2:
                 err_out(
                     "User failed to continue ({}) or quit ({}) three times in a row.  Exiting...".format(
                         contkey, quitkey
@@ -145,7 +146,7 @@ def pause_for_input(txt, contkey="y", quitkey="q", log=None):
                     log,
                 )
 
-            ans_cnt = ans_cnt + 1
+            answer_cnt = answer_cnt + 1
 
 
 #

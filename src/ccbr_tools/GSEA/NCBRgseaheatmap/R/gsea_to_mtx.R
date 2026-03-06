@@ -23,7 +23,7 @@
 #' Use colname to set the appropriate column name for GSEA results derived from outside of pipeliner.
 #'
 #' @param dirlist a list of GSEA directories of interest, containing the results for multiple gene sets
-#' @param db the geneset database to include, e.g., GO or Path, as imbedded in the output GSEA directory names
+#' @param db the geneset database to include, e.g., GO or Path, as embedded in the output GSEA directory names
 #' @param q minimum FDR / q-value cutoff for including genesets in the output matrix
 #' @param preN maximum number of rows to include from each input GSEA analysis (pairwise comparison)
 #' @param postN maximum number of rows to include in the final merged matrix.
@@ -50,29 +50,55 @@
 #' dev.off()
 #'
 #' @export
-gsea_to_mtx <- function(dirlist, db="GO", q=0.1, preN=25, postN=NULL, colname="GseaPreranked") {
+gsea_to_mtx <- function(
+  dirlist,
+  db = "GO",
+  q = 0.1,
+  preN = 25,
+  postN = NULL,
+  colname = "GseaPreranked"
+) {
   # read the directories,
   # double check that there are at least two valid GSEA db directories
-  dirlist = dirlist[grep(paste("", db, colname, sep="."), dirlist)]
-  if(length(dirlist) < 2) {print("Insufficient GSEA directories to create heatmap"); return(NULL)}
+  dirlist = dirlist[grep(paste("", db, colname, sep = "."), dirlist)]
+  if (length(dirlist) < 2) {
+    print("Insufficient GSEA directories to create heatmap")
+    return(NULL)
+  }
 
   # set the list of normalized enrichment scores across all comparisons
   nes_list <- list()
   allRows <- c()
 
   # Step through the directories and import each matrix, filter
-  for(d in dirlist) {
+  for (d in dirlist) {
     # print(d)
-    comparison = gsub(paste("", db, "GseaPreranked", "*$", sep="."), "", basename(d))
+    comparison = gsub(
+      paste("", db, "GseaPreranked", "*$", sep = "."),
+      "",
+      basename(d)
+    )
 
     # pull gsea_report_for_na_neg_1536947190154.xls and gsea_report_for_pos_neg_1536947190154.xls
-    xlsfiles <- list.files(path=d, pattern="gsea_report_for_na", full.names=TRUE)
+    xlsfiles <- list.files(
+      path = d,
+      pattern = "gsea_report_for_na",
+      full.names = TRUE
+    )
     xlsfiles = xlsfiles[grepl(".xls", xlsfiles)]
 
     # These are actually tab delimited files, not Excel formatted
     # import and grab the name, score, q
-    neg <- as.data.frame(read.table(xlsfiles[1], header=TRUE, sep="\t"))[, c("NAME", "NES", "FDR.q.val")]
-    pos <- as.data.frame(read.table(xlsfiles[2], header=TRUE, sep="\t"))[, c("NAME", "NES", "FDR.q.val")]
+    neg <- as.data.frame(read.table(
+      xlsfiles[1],
+      header = TRUE,
+      sep = "\t"
+    ))[, c("NAME", "NES", "FDR.q.val")]
+    pos <- as.data.frame(read.table(
+      xlsfiles[2],
+      header = TRUE,
+      sep = "\t"
+    ))[, c("NAME", "NES", "FDR.q.val")]
 
     df <- rbind(pos, neg)
     colnames(df) <- c("Name", comparison, paste0("qFDR_", comparison))
@@ -83,54 +109,59 @@ gsea_to_mtx <- function(dirlist, db="GO", q=0.1, preN=25, postN=NULL, colname="G
     # We need to individually decide the top preN rows,
     # but have to keep everything in the matrix, so that if it is not q-significant here, but is elsewhere
     # we have the NES value for it.
-    theRows <- dfq[,1]
-    if (! is.null(preN)) {
-      df <- df[order(df[,3]),]
+    theRows <- dfq[, 1]
+    if (!is.null(preN)) {
+      df <- df[order(df[, 3]), ]
 
-      if(length(theRows) > preN) {
+      if (length(theRows) > preN) {
         theRows <- theRows[1:preN]
       }
     }
     # print(df)
 
     # create a list for merge later
-    if(length(theRows) > 0) {
+    if (length(theRows) > 0) {
       nes_list[[comparison]] <- df
       allRows <- union(allRows, theRows)
     }
   }
 
   # merge all
-  first=TRUE
-  for(x in nes_list) {
-    if(first) {
+  first = TRUE
+  for (x in nes_list) {
+    if (first) {
       mergedDF <- x
       first <- FALSE
     } else {
-      mergedDF <- merge(mergedDF, x, by="Name", all=TRUE)
+      mergedDF <- merge(mergedDF, x, by = "Name", all = TRUE)
     }
   }
 
   # Set the rownames and remove the gene sets from the data
   rownames(mergedDF) <- mergedDF$Name
   mergedDF <- mergedDF[, 2:ncol(mergedDF)]
-  mergedDF <- mergedDF[allRows,]
+  mergedDF <- mergedDF[allRows, ]
 
   # find qsig rows
-  qcols <- colnames(mergedDF)[grepl("^qFDR_", colnames(mergedDF), perl=TRUE)]
-  dcols <- colnames(mergedDF)[! colnames(mergedDF) %in% qcols]
+  qcols <- colnames(mergedDF)[grepl("^qFDR_", colnames(mergedDF), perl = TRUE)]
+  dcols <- colnames(mergedDF)[!colnames(mergedDF) %in% qcols]
 
   # limit to postN rows if appropriate
   # sort the ones that are significant by how many columns are significant
-  get_qrows <- function(x,q) { x[is.na(x)] <- 1; sum(x < q) }
-  if(! is.null(postN)) {
+  get_qrows <- function(x, q) {
+    x[is.na(x)] <- 1
+    sum(x < q)
+  }
+  if (!is.null(postN)) {
     if (nrow(mergedDF) > postN) {
-      qrows <- apply(mergedDF[,qcols], 1, function(x){get_qrows(x, q)})
-      mergedDF <- mergedDF[names(sort(qrows, decreasing=TRUE)),]
-      mergedDF <- mergedDF[1:postN,]
+      qrows <- apply(mergedDF[, qcols], 1, function(x) {
+        get_qrows(x, q)
+      })
+      mergedDF <- mergedDF[names(sort(qrows, decreasing = TRUE)), ]
+      mergedDF <- mergedDF[1:postN, ]
     }
   }
 
   # return the results as a list, including the matrix, the data columns and the q-value columns
-  return(list(mtx = as.matrix(mergedDF), dcols=dcols, qcols=qcols))
+  return(list(mtx = as.matrix(mergedDF), dcols = dcols, qcols = qcols))
 }
