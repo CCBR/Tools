@@ -14,7 +14,11 @@ import sys
 import os
 import re
 import subprocess
-import MySQLdb
+
+try:
+    import MySQLdb
+except ImportError:  # Optional dependency, only needed for con_db
+    MySQLdb = None
 
 ####################################
 #
@@ -66,6 +70,11 @@ def un_gzip(fname, logfn):
 # Read ~/.my.cnf and connect to an SQL database
 #
 def con_db(host_name, db_name, port_number):
+    if MySQLdb is None:
+        raise ModuleNotFoundError(
+            "MySQLdb is required for database connections. Install mysqlclient."
+        )
+
     with open(os.path.expanduser("~/.my.cnf")) as f:
         ## [client]
         ## user="user_name"
