@@ -15,6 +15,7 @@ repos:
         entry: ccbr-hooks detect-absolute-paths
         language: python
         types: [text]
+        args: ["--ignore-paths", "tests/**"]
   - repo: https://github.com/pre-commit/pre-commit-hooks
     rev: v1.2.3
     hooks:
@@ -28,7 +29,13 @@ repos:
     rev: v2.4.1
     hooks:
       - id: codespell
-        args: [-I, .github/WORDLIST]
+        args:
+          [
+            -I,
+            .github/WORDLIST,
+            --skip,
+            "*human_mouse_homolog_lookup.txt,*.rpt",
+          ]
   # Python formatting
   - repo: https://github.com/astral-sh/ruff-pre-commit
     rev: v0.14.10
