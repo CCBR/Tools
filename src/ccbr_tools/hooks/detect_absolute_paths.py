@@ -40,6 +40,8 @@ detect-absolute-paths **/*.txt --ignore-paths-file .abs-ignore
 """
 
 import mimetypes
+import os
+import pathlib
 
 import click
 import pathspec
@@ -99,7 +101,29 @@ def raise_error_if_abs_paths_detected(files, ignored_patterns=None):
     """
     if ignored_patterns:
         spec = pathspec.PathSpec.from_lines("gitwildmatch", ignored_patterns)
-        files = [file for file in files if not spec.match_file(file)]
+        files = [pathlib.Path(file) for file in files]
+        common_root = None
+        if files:
+            common_root = pathlib.Path(os.path.commonpath([str(f) for f in files]))
+
+        filtered_files = []
+        for file in files:
+            match_targets = []
+            if common_root is not None:
+                try:
+                    match_targets.append(file.relative_to(common_root))
+                except ValueError:
+                    pass
+            match_targets.append(file)
+
+            parts = file.parts
+            for idx in range(1, len(parts)):
+                match_targets.append(pathlib.Path(*parts[idx:]))
+
+            if any(spec.match_file(target.as_posix()) for target in match_targets):
+                continue
+            filtered_files.append(file)
+        files = filtered_files
 
     if any([file_contains_absolute_path(file) for file in files]):
         raise click.ClickException("Absolute paths detected in the above files.")
