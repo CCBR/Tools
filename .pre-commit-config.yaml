@@ -15,6 +15,7 @@ repos:
         entry: ccbr-hooks detect-absolute-paths
         language: python
         types: [text]
+        args: ["--ignore-paths", "tests/**"]
   - repo: https://github.com/pre-commit/pre-commit-hooks
     rev: v1.2.3
     hooks:

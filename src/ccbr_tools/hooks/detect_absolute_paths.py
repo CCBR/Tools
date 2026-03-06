@@ -22,11 +22,27 @@ You can ignore specific lines by including the string "abs-path:ignore" in the l
 some_path = "/absolute/path/to/file" # abs-path:ignore
 ```
 
+## Ignoring specific files
+
+You can ignore files using gitignore-style patterns:
+
+Via CLI:
+```bash
+detect-absolute-paths file1.txt file2.log --ignore-paths "*.log"
+detect-absolute-paths **/*.txt --ignore-paths "*.log" --ignore-paths "test_*.py"
+```
+
+Via ignore file:
+```bash
+detect-absolute-paths **/*.txt --ignore-paths-file .abs-ignore
+```
+
 """
 
 import mimetypes
 
 import click
+import pathspec
 
 
 def word_is_absolute_path(word):
@@ -36,9 +52,9 @@ def word_is_absolute_path(word):
     Standalone / and // are not considered absolute paths as they are often used
     in pathlib to delimited paths and as comments in groovy/nextflow
     """
-    return any(
-        [word.startswith("/"), word.startswith("'/"), word.startswith('"/')]
-    ) and not any(
+    word = word.strip().lstrip("([{").rstrip(",:;)]}").strip("'\"")
+
+    return word.startswith("/") and not any(
         [
             word == "/",  # FP from pathlib. abs-path:ignore
             word.startswith("//"),  # FP from groovy comments. abs-path:ignore
@@ -77,12 +93,35 @@ def file_contains_absolute_path(file):
     return detected
 
 
-def raise_error_if_abs_paths_detected(files):
+def raise_error_if_abs_paths_detected(files, ignored_patterns=None):
     """
     Raise an error if absolute paths are detected in the given files
     """
+    if ignored_patterns:
+        spec = pathspec.PathSpec.from_lines("gitwildmatch", ignored_patterns)
+        files = [file for file in files if not spec.match_file(file)]
+
     if any([file_contains_absolute_path(file) for file in files]):
         raise click.ClickException("Absolute paths detected in the above files.")
+
+
+def load_ignored_paths(ignored_paths_file):
+    """
+    Load ignored file paths/patterns from a file, one per line.
+    Supports gitignore-style wildcards.
+    """
+    if not ignored_paths_file:
+        return []
+
+    patterns = []
+    with open(ignored_paths_file, "r") as f:
+        for line in f:
+            stripped = line.strip()
+            if not stripped or stripped.startswith("#"):
+                continue
+            patterns.append(stripped)
+
+    return patterns
 
 
 def file_is_text(file):
@@ -95,11 +134,24 @@ def file_is_text(file):
 
 @click.command()
 @click.argument("files", nargs=-1, type=click.Path(exists=True))
-def detect_absolute_paths(files):
+@click.option(
+    "--ignore-paths-file",
+    type=click.Path(exists=True, dir_okay=False, readable=True),
+    required=False,
+    help="Optional file with file patterns to ignore (gitignore-style, one per line).",
+)
+@click.option(
+    "--ignore-paths",
+    multiple=True,
+    help="File patterns to ignore (gitignore-style). Can be specified multiple times.",
+)
+def detect_absolute_paths(files, ignore_paths_file, ignore_paths):
     """
     Detect absolute file paths in the given files and raise an error if any are found.
     """
-    raise_error_if_abs_paths_detected(files)
+    patterns = list(ignore_paths) if ignore_paths else []
+    patterns.extend(load_ignored_paths(ignore_paths_file))
+    raise_error_if_abs_paths_detected(files, patterns)
 
 
 if __name__ == "__main__":
