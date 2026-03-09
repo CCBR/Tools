@@ -8,13 +8,10 @@ exclude: |
       ^tests/data/
    )
 repos:
-  - repo: local
+  - repo: https://github.com/CCBR/Tools
+    rev: v0.5
     hooks:
       - id: detect-absolute-paths
-        name: Detect absolute paths
-        entry: ccbr-hooks detect-absolute-paths
-        language: python
-        types: [text]
         args: ["--ignore-paths", "tests/**"]
   - repo: https://github.com/pre-commit/pre-commit-hooks
     rev: v1.2.3
