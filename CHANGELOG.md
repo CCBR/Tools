@@ -1,3 +1,5 @@
+## Tools development version
+
 ## Tools 0.5.1
 
 - New arguments for `ccbr-hooks detect-absolute-paths`: `--ignore-paths` and `--ignore-paths-file`. (#154, @kelly-sovacool)
