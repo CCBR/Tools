@@ -139,7 +139,7 @@ def pause_for_input(txt, contkey="y", quitkey="q", log=None):
             return answer
 
         else:
-            # give them additional help and increment the answerwer count
+            # give them additional help and increment the answer count
             reminder = "Note: only {} to continue and {} to quit are valid options.\nPlease try again.\n".format(
                 contkey, quitkey
             )

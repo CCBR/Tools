@@ -6,6 +6,6 @@ cmd="gh"
 
 reponame=$(gh repo view --json name -q ".name")
 
-gh label create LowPriority --color "#F4C445" --repo "$repo" --force
-gh label create MediumPriority --color "#0AB5F4" --repo "$repo" --force
-gh label create HighPriority --color "#58E30B" --repo "$repo" --force
+gh label create LowPriority --color "#F4C445" --repo "$reponame" --force
+gh label create MediumPriority --color "#0AB5F4" --repo "$reponame" --force
+gh label create HighPriority --color "#58E30B" --repo "$reponame" --force
