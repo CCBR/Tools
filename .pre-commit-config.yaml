@@ -8,13 +8,11 @@ exclude: |
       ^tests/data/
    )
 repos:
-  - repo: local
+  - repo: https://github.com/CCBR/Tools
+    rev: v0.5
     hooks:
       - id: detect-absolute-paths
-        name: Detect absolute paths
-        entry: ccbr-hooks detect-absolute-paths
-        language: python
-        types: [text]
+        args: ["--ignore-paths", "tests/**"]
   - repo: https://github.com/pre-commit/pre-commit-hooks
     rev: v1.2.3
     hooks:
@@ -28,7 +26,19 @@ repos:
     rev: v2.4.1
     hooks:
       - id: codespell
-        args: [-I, .github/WORDLIST]
+        args:
+          [
+            -I,
+            .github/WORDLIST,
+            --skip,
+            "*human_mouse_homolog_lookup.txt,*.rpt",
+          ]
+  # Quarto formatting
+  # - repo: https://github.com/jolars/panache
+  #   rev: v2.13.0
+  #   hooks:
+  #     - id: panache-format
+  #     - id: panache-lint
   # Python formatting
   - repo: https://github.com/astral-sh/ruff-pre-commit
     rev: v0.14.10

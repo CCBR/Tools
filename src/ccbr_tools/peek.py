@@ -26,7 +26,7 @@ def pargs():
     if "-h" in sys.argv or "--help" in sys.argv or len(sys.argv) == 1:
         usage()
     try:
-        fname = sys.argv[1]
+        sys.argv[1]
     except IndexError:
         usage()
     return

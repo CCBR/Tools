@@ -11,7 +11,7 @@ gsea_to_mtx(dirlist, db = "GO", q = 0.1, preN = 25, postN = NULL,
 \arguments{
 \item{dirlist}{a list of GSEA directories of interest, containing the results for multiple gene sets}
 
-\item{db}{the geneset database to include, e.g., GO or Path, as imbedded in the output GSEA directory names}
+\item{db}{the geneset database to include, e.g., GO or Path, as embedded in the output GSEA directory names}
 
 \item{q}{minimum FDR / q-value cutoff for including genesets in the output matrix}
 

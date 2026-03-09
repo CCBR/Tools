@@ -1,5 +1,7 @@
 ## Tools development version
 
+- New arguments for `ccbr-hooks detect-absolute-paths`: `--ignore-paths` and `--ignore-paths-file`. (#154, @kelly-sovacool)
+
 ## Tools 0.5.0
 
 - Add parkit to the list of CCBR software. (#144, @kelly-sovacool)

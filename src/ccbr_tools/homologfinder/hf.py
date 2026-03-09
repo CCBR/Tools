@@ -151,14 +151,14 @@ def create_homolog_table(
         lookup[row["DB Class Key"]][row["Common Organism Name"]].append(row["Symbol"])
     for k, v in lookup.items():
         # print(",".join(v["mouse, laboratory"]),",".join(v["human"]),sep="\t")
-        for l in v["mouse, laboratory"]:
-            if l not in lookup2:
-                lookup2[l] = list()
-            lookup2[l].extend(v["human"])
-        for l in v["human"]:
-            if l not in lookup2:
-                lookup2[l] = list()
-            lookup2[l].extend(v["mouse, laboratory"])
+        for gene_symbol in v["mouse, laboratory"]:
+            if gene_symbol not in lookup2:
+                lookup2[gene_symbol] = list()
+            lookup2[gene_symbol].extend(v["human"])
+        for gene_symbol in v["human"]:
+            if gene_symbol not in lookup2:
+                lookup2[gene_symbol] = list()
+            lookup2[gene_symbol].extend(v["mouse, laboratory"])
 
     for k, v in lookup2.items():
         print(k, ",".join(v), sep="\t")
