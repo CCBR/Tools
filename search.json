@@ -246,7 +246,7 @@
     "href": "reference/hooks.detect_absolute_paths.html",
     "title": "hooks.detect_absolute_paths",
     "section": "",
-    "text": "hooks.detect_absolute_paths\nDetect absolute file paths\nAny instances of absolute paths (i.e. paths starting with “/”) in the given files will be detected and printed to the console (unless “abs-path:ignore” is included). An error will be raised at the end if any are found.\n\n\nAdd this to your .pre-commit-config.yaml file:\n- repo: https://github.com/CCBR/Tools\n  rev: v0.5.0\n  hooks:\n    - id: detect-absolute-paths\n\n\n\nYou can ignore specific lines by including the string “abs-path:ignore” in the line, e.g.:\nsome_path = \"/absolute/path/to/file\" # abs-path:ignore\n\n\n\n\n\n\nName\nDescription\n\n\n\n\ndetect_absolute_paths\nDetect absolute file paths in the given files and raise an error if any are found.\n\n\nfile_contains_absolute_path\nDetect absolute paths in a file\n\n\nfile_is_text\nDetect whether a file is likely text based on its MIME type.\n\n\nline_contains_absolute_path\nDetect absolute paths in a line of text\n\n\nline_contains_ignore\nDetect if a line contains the string “abs-path:ignore”\n\n\nraise_error_if_abs_paths_detected\nRaise an error if absolute paths are detected in the given files\n\n\nword_is_absolute_path\nDetect if a word starts with a slash (indicating an absolute path)\n\n\n\n\n\nhooks.detect_absolute_paths.detect_absolute_paths(files)\nDetect absolute file paths in the given files and raise an error if any are found.\n\n\n\nhooks.detect_absolute_paths.file_contains_absolute_path(file)\nDetect absolute paths in a file\n\n\n\nhooks.detect_absolute_paths.file_is_text(file)\nDetect whether a file is likely text based on its MIME type.\n\n\n\nhooks.detect_absolute_paths.line_contains_absolute_path(line)\nDetect absolute paths in a line of text\n\n\n\nhooks.detect_absolute_paths.line_contains_ignore(line)\nDetect if a line contains the string “abs-path:ignore”\n\n\n\nhooks.detect_absolute_paths.raise_error_if_abs_paths_detected(files)\nRaise an error if absolute paths are detected in the given files\n\n\n\nhooks.detect_absolute_paths.word_is_absolute_path(word)\nDetect if a word starts with a slash (indicating an absolute path)\nStandalone / and // are not considered absolute paths as they are often used in pathlib to delimited paths and as comments in groovy/nextflow",
+    "text": "hooks.detect_absolute_paths\nDetect absolute file paths\nAny instances of absolute paths (i.e. paths starting with “/”) in the given files will be detected and printed to the console (unless “abs-path:ignore” is included). An error will be raised at the end if any are found.\n\n\nAdd this to your .pre-commit-config.yaml file:\n- repo: https://github.com/CCBR/Tools\n  rev: v0.5.0\n  hooks:\n    - id: detect-absolute-paths\n\n\n\nYou can ignore specific lines by including the string “abs-path:ignore” in the line, e.g.:\nsome_path = \"/absolute/path/to/file\" # abs-path:ignore\n\n\n\nYou can ignore files using gitignore-style patterns:\nVia CLI:\ndetect-absolute-paths file1.txt file2.log --ignore-paths \"*.log\"\ndetect-absolute-paths **/*.txt --ignore-paths \"*.log\" --ignore-paths \"test_*.py\"\nVia ignore file:\ndetect-absolute-paths **/*.txt --ignore-paths-file .abs-ignore\n\n\n\n\n\n\nName\nDescription\n\n\n\n\ndetect_absolute_paths\nDetect absolute file paths in the given files and raise an error if any are found.\n\n\nfile_contains_absolute_path\nDetect absolute paths in a file\n\n\nfile_is_text\nDetect whether a file is likely text based on its MIME type.\n\n\nline_contains_absolute_path\nDetect absolute paths in a line of text\n\n\nline_contains_ignore\nDetect if a line contains the string “abs-path:ignore”\n\n\nload_ignored_paths\nLoad ignored file paths/patterns from a file, one per line.\n\n\nraise_error_if_abs_paths_detected\nRaise an error if absolute paths are detected in the given files\n\n\nword_is_absolute_path\nDetect if a word starts with a slash (indicating an absolute path)\n\n\n\n\n\nhooks.detect_absolute_paths.detect_absolute_paths(\n    files,\n    ignore_paths_file,\n    ignore_paths,\n)\nDetect absolute file paths in the given files and raise an error if any are found.\n\n\n\nhooks.detect_absolute_paths.file_contains_absolute_path(file)\nDetect absolute paths in a file\n\n\n\nhooks.detect_absolute_paths.file_is_text(file)\nDetect whether a file is likely text based on its MIME type.\n\n\n\nhooks.detect_absolute_paths.line_contains_absolute_path(line)\nDetect absolute paths in a line of text\n\n\n\nhooks.detect_absolute_paths.line_contains_ignore(line)\nDetect if a line contains the string “abs-path:ignore”\n\n\n\nhooks.detect_absolute_paths.load_ignored_paths(ignored_paths_file)\nLoad ignored file paths/patterns from a file, one per line. Supports gitignore-style wildcards.\n\n\n\nhooks.detect_absolute_paths.raise_error_if_abs_paths_detected(\n    files,\n    ignored_patterns=None,\n)\nRaise an error if absolute paths are detected in the given files\n\n\n\nhooks.detect_absolute_paths.word_is_absolute_path(word)\nDetect if a word starts with a slash (indicating an absolute path)\nStandalone / and // are not considered absolute paths as they are often used in pathlib to delimited paths and as comments in groovy/nextflow",
     "crumbs": [
       "Pre-commit hooks",
       "hooks.detect_absolute_paths"
@@ -275,11 +275,22 @@
     ]
   },
   {
+    "objectID": "reference/hooks.detect_absolute_paths.html#ignoring-specific-files",
+    "href": "reference/hooks.detect_absolute_paths.html#ignoring-specific-files",
+    "title": "hooks.detect_absolute_paths",
+    "section": "",
+    "text": "You can ignore files using gitignore-style patterns:\nVia CLI:\ndetect-absolute-paths file1.txt file2.log --ignore-paths \"*.log\"\ndetect-absolute-paths **/*.txt --ignore-paths \"*.log\" --ignore-paths \"test_*.py\"\nVia ignore file:\ndetect-absolute-paths **/*.txt --ignore-paths-file .abs-ignore",
+    "crumbs": [
+      "Pre-commit hooks",
+      "hooks.detect_absolute_paths"
+    ]
+  },
+  {
     "objectID": "reference/hooks.detect_absolute_paths.html#functions",
     "href": "reference/hooks.detect_absolute_paths.html#functions",
     "title": "hooks.detect_absolute_paths",
     "section": "",
-    "text": "Name\nDescription\n\n\n\n\ndetect_absolute_paths\nDetect absolute file paths in the given files and raise an error if any are found.\n\n\nfile_contains_absolute_path\nDetect absolute paths in a file\n\n\nfile_is_text\nDetect whether a file is likely text based on its MIME type.\n\n\nline_contains_absolute_path\nDetect absolute paths in a line of text\n\n\nline_contains_ignore\nDetect if a line contains the string “abs-path:ignore”\n\n\nraise_error_if_abs_paths_detected\nRaise an error if absolute paths are detected in the given files\n\n\nword_is_absolute_path\nDetect if a word starts with a slash (indicating an absolute path)\n\n\n\n\n\nhooks.detect_absolute_paths.detect_absolute_paths(files)\nDetect absolute file paths in the given files and raise an error if any are found.\n\n\n\nhooks.detect_absolute_paths.file_contains_absolute_path(file)\nDetect absolute paths in a file\n\n\n\nhooks.detect_absolute_paths.file_is_text(file)\nDetect whether a file is likely text based on its MIME type.\n\n\n\nhooks.detect_absolute_paths.line_contains_absolute_path(line)\nDetect absolute paths in a line of text\n\n\n\nhooks.detect_absolute_paths.line_contains_ignore(line)\nDetect if a line contains the string “abs-path:ignore”\n\n\n\nhooks.detect_absolute_paths.raise_error_if_abs_paths_detected(files)\nRaise an error if absolute paths are detected in the given files\n\n\n\nhooks.detect_absolute_paths.word_is_absolute_path(word)\nDetect if a word starts with a slash (indicating an absolute path)\nStandalone / and // are not considered absolute paths as they are often used in pathlib to delimited paths and as comments in groovy/nextflow",
+    "text": "Name\nDescription\n\n\n\n\ndetect_absolute_paths\nDetect absolute file paths in the given files and raise an error if any are found.\n\n\nfile_contains_absolute_path\nDetect absolute paths in a file\n\n\nfile_is_text\nDetect whether a file is likely text based on its MIME type.\n\n\nline_contains_absolute_path\nDetect absolute paths in a line of text\n\n\nline_contains_ignore\nDetect if a line contains the string “abs-path:ignore”\n\n\nload_ignored_paths\nLoad ignored file paths/patterns from a file, one per line.\n\n\nraise_error_if_abs_paths_detected\nRaise an error if absolute paths are detected in the given files\n\n\nword_is_absolute_path\nDetect if a word starts with a slash (indicating an absolute path)\n\n\n\n\n\nhooks.detect_absolute_paths.detect_absolute_paths(\n    files,\n    ignore_paths_file,\n    ignore_paths,\n)\nDetect absolute file paths in the given files and raise an error if any are found.\n\n\n\nhooks.detect_absolute_paths.file_contains_absolute_path(file)\nDetect absolute paths in a file\n\n\n\nhooks.detect_absolute_paths.file_is_text(file)\nDetect whether a file is likely text based on its MIME type.\n\n\n\nhooks.detect_absolute_paths.line_contains_absolute_path(line)\nDetect absolute paths in a line of text\n\n\n\nhooks.detect_absolute_paths.line_contains_ignore(line)\nDetect if a line contains the string “abs-path:ignore”\n\n\n\nhooks.detect_absolute_paths.load_ignored_paths(ignored_paths_file)\nLoad ignored file paths/patterns from a file, one per line. Supports gitignore-style wildcards.\n\n\n\nhooks.detect_absolute_paths.raise_error_if_abs_paths_detected(\n    files,\n    ignored_patterns=None,\n)\nRaise an error if absolute paths are detected in the given files\n\n\n\nhooks.detect_absolute_paths.word_is_absolute_path(word)\nDetect if a word starts with a slash (indicating an absolute path)\nStandalone / and // are not considered absolute paths as they are often used in pathlib to delimited paths and as comments in groovy/nextflow",
     "crumbs": [
       "Pre-commit hooks",
       "hooks.detect_absolute_paths"
@@ -404,6 +415,28 @@
     "crumbs": [
       "Usage",
       "Python API reference"
+    ]
+  },
+  {
+    "objectID": "CHANGELOG.html",
+    "href": "CHANGELOG.html",
+    "title": "CCBR Tools",
+    "section": "",
+    "text": "New arguments for ccbr-hooks detect-absolute-paths: --ignore-paths and --ignore-paths-file. (#154, @kelly-sovacool)",
+    "crumbs": [
+      "Project information",
+      "Changelog"
+    ]
+  },
+  {
+    "objectID": "CHANGELOG.html#tools-development-version",
+    "href": "CHANGELOG.html#tools-development-version",
+    "title": "CCBR Tools",
+    "section": "",
+    "text": "New arguments for ccbr-hooks detect-absolute-paths: --ignore-paths and --ignore-paths-file. (#154, @kelly-sovacool)",
+    "crumbs": [
+      "Project information",
+      "Changelog"
     ]
   },
   {

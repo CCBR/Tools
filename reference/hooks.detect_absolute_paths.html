@@ -579,6 +579,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   <ul class="collapse">
   <li><a href="#usage-with-pre-commit" id="toc-usage-with-pre-commit" class="nav-link" data-scroll-target="#usage-with-pre-commit">Usage with pre-commit</a></li>
   <li><a href="#ignoring-specific-lines" id="toc-ignoring-specific-lines" class="nav-link" data-scroll-target="#ignoring-specific-lines">Ignoring specific lines</a></li>
+  <li><a href="#ignoring-specific-files" id="toc-ignoring-specific-files" class="nav-link" data-scroll-target="#ignoring-specific-files">Ignoring specific files</a></li>
   <li><a href="#functions" id="toc-functions" class="nav-link" data-scroll-target="#functions">Functions</a>
   <ul class="collapse">
   <li><a href="#ccbr_tools.hooks.detect_absolute_paths.detect_absolute_paths" id="toc-ccbr_tools.hooks.detect_absolute_paths.detect_absolute_paths" class="nav-link" data-scroll-target="#ccbr_tools.hooks.detect_absolute_paths.detect_absolute_paths">detect_absolute_paths</a></li>
@@ -586,6 +587,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   <li><a href="#ccbr_tools.hooks.detect_absolute_paths.file_is_text" id="toc-ccbr_tools.hooks.detect_absolute_paths.file_is_text" class="nav-link" data-scroll-target="#ccbr_tools.hooks.detect_absolute_paths.file_is_text">file_is_text</a></li>
   <li><a href="#ccbr_tools.hooks.detect_absolute_paths.line_contains_absolute_path" id="toc-ccbr_tools.hooks.detect_absolute_paths.line_contains_absolute_path" class="nav-link" data-scroll-target="#ccbr_tools.hooks.detect_absolute_paths.line_contains_absolute_path">line_contains_absolute_path</a></li>
   <li><a href="#ccbr_tools.hooks.detect_absolute_paths.line_contains_ignore" id="toc-ccbr_tools.hooks.detect_absolute_paths.line_contains_ignore" class="nav-link" data-scroll-target="#ccbr_tools.hooks.detect_absolute_paths.line_contains_ignore">line_contains_ignore</a></li>
+  <li><a href="#ccbr_tools.hooks.detect_absolute_paths.load_ignored_paths" id="toc-ccbr_tools.hooks.detect_absolute_paths.load_ignored_paths" class="nav-link" data-scroll-target="#ccbr_tools.hooks.detect_absolute_paths.load_ignored_paths">load_ignored_paths</a></li>
   <li><a href="#ccbr_tools.hooks.detect_absolute_paths.raise_error_if_abs_paths_detected" id="toc-ccbr_tools.hooks.detect_absolute_paths.raise_error_if_abs_paths_detected" class="nav-link" data-scroll-target="#ccbr_tools.hooks.detect_absolute_paths.raise_error_if_abs_paths_detected">raise_error_if_abs_paths_detected</a></li>
   <li><a href="#ccbr_tools.hooks.detect_absolute_paths.word_is_absolute_path" id="toc-ccbr_tools.hooks.detect_absolute_paths.word_is_absolute_path" class="nav-link" data-scroll-target="#ccbr_tools.hooks.detect_absolute_paths.word_is_absolute_path">word_is_absolute_path</a></li>
   </ul></li>
@@ -618,6 +620,15 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <p>You can ignore specific lines by including the string “abs-path:ignore” in the line, e.g.:</p>
 <div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb2"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a>some_path <span class="op">=</span> <span class="st">"/absolute/path/to/file"</span> <span class="co"># abs-path:ignore</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </section>
+<section id="ignoring-specific-files" class="level2">
+<h2 class="anchored" data-anchor-id="ignoring-specific-files">Ignoring specific files</h2>
+<p>You can ignore files using gitignore-style patterns:</p>
+<p>Via CLI:</p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb3"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="ex">detect-absolute-paths</span> file1.txt file2.log <span class="at">--ignore-paths</span> <span class="st">"*.log"</span></span>
+<span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a><span class="ex">detect-absolute-paths</span> <span class="pp">**</span>/<span class="pp">*</span>.txt <span class="at">--ignore-paths</span> <span class="st">"*.log"</span> <span class="at">--ignore-paths</span> <span class="st">"test_*.py"</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<p>Via ignore file:</p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb4"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="ex">detect-absolute-paths</span> <span class="pp">**</span>/<span class="pp">*</span>.txt <span class="at">--ignore-paths-file</span> .abs-ignore</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</section>
 <section id="functions" class="level2">
 <h2 class="anchored" data-anchor-id="functions">Functions</h2>
 <table class="caption-top table">
@@ -649,10 +660,14 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <td>Detect if a line contains the string “abs-path:ignore”</td>
 </tr>
 <tr class="even">
+<td><a href="#ccbr_tools.hooks.detect_absolute_paths.load_ignored_paths">load_ignored_paths</a></td>
+<td>Load ignored file paths/patterns from a file, one per line.</td>
+</tr>
+<tr class="odd">
 <td><a href="#ccbr_tools.hooks.detect_absolute_paths.raise_error_if_abs_paths_detected">raise_error_if_abs_paths_detected</a></td>
 <td>Raise an error if absolute paths are detected in the given files</td>
 </tr>
-<tr class="odd">
+<tr class="even">
 <td><a href="#ccbr_tools.hooks.detect_absolute_paths.word_is_absolute_path">word_is_absolute_path</a></td>
 <td>Detect if a word starts with a slash (indicating an absolute path)</td>
 </tr>
@@ -660,37 +675,49 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </table>
 <section id="ccbr_tools.hooks.detect_absolute_paths.detect_absolute_paths" class="level3">
 <h3 class="anchored" data-anchor-id="ccbr_tools.hooks.detect_absolute_paths.detect_absolute_paths">detect_absolute_paths</h3>
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb3"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a>hooks.detect_absolute_paths.detect_absolute_paths(files)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb5"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a>hooks.detect_absolute_paths.detect_absolute_paths(</span>
+<span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a>    files,</span>
+<span id="cb5-3"><a href="#cb5-3" aria-hidden="true" tabindex="-1"></a>    ignore_paths_file,</span>
+<span id="cb5-4"><a href="#cb5-4" aria-hidden="true" tabindex="-1"></a>    ignore_paths,</span>
+<span id="cb5-5"><a href="#cb5-5" aria-hidden="true" tabindex="-1"></a>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <p>Detect absolute file paths in the given files and raise an error if any are found.</p>
 </section>
 <section id="ccbr_tools.hooks.detect_absolute_paths.file_contains_absolute_path" class="level3">
 <h3 class="anchored" data-anchor-id="ccbr_tools.hooks.detect_absolute_paths.file_contains_absolute_path">file_contains_absolute_path</h3>
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb4"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a>hooks.detect_absolute_paths.file_contains_absolute_path(<span class="bu">file</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb6"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a>hooks.detect_absolute_paths.file_contains_absolute_path(<span class="bu">file</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <p>Detect absolute paths in a file</p>
 </section>
 <section id="ccbr_tools.hooks.detect_absolute_paths.file_is_text" class="level3">
 <h3 class="anchored" data-anchor-id="ccbr_tools.hooks.detect_absolute_paths.file_is_text">file_is_text</h3>
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb5"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a>hooks.detect_absolute_paths.file_is_text(<span class="bu">file</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb7"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a>hooks.detect_absolute_paths.file_is_text(<span class="bu">file</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <p>Detect whether a file is likely text based on its MIME type.</p>
 </section>
 <section id="ccbr_tools.hooks.detect_absolute_paths.line_contains_absolute_path" class="level3">
 <h3 class="anchored" data-anchor-id="ccbr_tools.hooks.detect_absolute_paths.line_contains_absolute_path">line_contains_absolute_path</h3>
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb6"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a>hooks.detect_absolute_paths.line_contains_absolute_path(line)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb8"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a>hooks.detect_absolute_paths.line_contains_absolute_path(line)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <p>Detect absolute paths in a line of text</p>
 </section>
 <section id="ccbr_tools.hooks.detect_absolute_paths.line_contains_ignore" class="level3">
 <h3 class="anchored" data-anchor-id="ccbr_tools.hooks.detect_absolute_paths.line_contains_ignore">line_contains_ignore</h3>
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb7"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a>hooks.detect_absolute_paths.line_contains_ignore(line)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb9"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a>hooks.detect_absolute_paths.line_contains_ignore(line)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <p>Detect if a line contains the string “abs-path:ignore”</p>
+</section>
+<section id="ccbr_tools.hooks.detect_absolute_paths.load_ignored_paths" class="level3">
+<h3 class="anchored" data-anchor-id="ccbr_tools.hooks.detect_absolute_paths.load_ignored_paths">load_ignored_paths</h3>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb10"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a>hooks.detect_absolute_paths.load_ignored_paths(ignored_paths_file)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<p>Load ignored file paths/patterns from a file, one per line. Supports gitignore-style wildcards.</p>
 </section>
 <section id="ccbr_tools.hooks.detect_absolute_paths.raise_error_if_abs_paths_detected" class="level3">
 <h3 class="anchored" data-anchor-id="ccbr_tools.hooks.detect_absolute_paths.raise_error_if_abs_paths_detected">raise_error_if_abs_paths_detected</h3>
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb8"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a>hooks.detect_absolute_paths.raise_error_if_abs_paths_detected(files)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb11"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a>hooks.detect_absolute_paths.raise_error_if_abs_paths_detected(</span>
+<span id="cb11-2"><a href="#cb11-2" aria-hidden="true" tabindex="-1"></a>    files,</span>
+<span id="cb11-3"><a href="#cb11-3" aria-hidden="true" tabindex="-1"></a>    ignored_patterns<span class="op">=</span><span class="va">None</span>,</span>
+<span id="cb11-4"><a href="#cb11-4" aria-hidden="true" tabindex="-1"></a>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <p>Raise an error if absolute paths are detected in the given files</p>
 </section>
 <section id="ccbr_tools.hooks.detect_absolute_paths.word_is_absolute_path" class="level3">
 <h3 class="anchored" data-anchor-id="ccbr_tools.hooks.detect_absolute_paths.word_is_absolute_path">word_is_absolute_path</h3>
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb9"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a>hooks.detect_absolute_paths.word_is_absolute_path(word)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb12"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb12-1"><a href="#cb12-1" aria-hidden="true" tabindex="-1"></a>hooks.detect_absolute_paths.word_is_absolute_path(word)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <p>Detect if a word starts with a slash (indicating an absolute path)</p>
 <p>Standalone / and // are not considered absolute paths as they are often used in pathlib to delimited paths and as comments in groovy/nextflow</p>
 
