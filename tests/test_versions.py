@@ -86,7 +86,7 @@ def test_get_major_minor():
             get_major_minor_version("1.0.0") == "1.0",
             get_major_minor_version("2.1.3-alpha") == "2.1",
             get_major_minor_version("v1.0.0", with_leading_v=True) == "v1.0",
-            get_major_minor_version("invalid_version") == None,
+            get_major_minor_version("invalid_version") is None,
             get_major_minor_version("1.2.3.4.5.6") == "1.2",
         ]
     )
@@ -98,7 +98,7 @@ def test_get_major_minor_nonsemantic():
             get_major_minor_version("1.0", strict_semver=False) == "1.0",
             get_major_minor_version("v3.4", with_leading_v=True, strict_semver=False)
             == "v3.4",
-            get_major_minor_version("3.a", strict_semver=False) == None,
+            get_major_minor_version("3.a", strict_semver=False) is None,
         ]
     )
 

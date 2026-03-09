@@ -38,7 +38,7 @@ def test_tmp_dir():
         [
             get_tmp_dir("", "./out", hpc="biowulf").startswith("/lscratch"),
             get_tmp_dir("", "./out", hpc="frce").startswith("./out"),
-            get_tmp_dir("", "./out", hpc="none") == None,
+            get_tmp_dir("", "./out", hpc="none") is None,
         ]
     )
 

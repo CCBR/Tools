@@ -52,9 +52,9 @@ def gb2gtf(args):
         feats = [feat for feat in rec.features]
         for feat in feats:
             #        print(feat)
-            l = feat.location
-            start = l.start
-            end = l.end
+            location = feat.location
+            start = location.start
+            end = location.end
             if feat.location.strand == 1:
                 strand = "+"
             else:
@@ -72,10 +72,10 @@ def gb2gtf(args):
                 q = feat.qualifiers
                 try:
                     gene = q["gene"][0]
-                except:
+                except KeyError:
                     try:
                         gene = q["locus_tag"][0]
-                    except:
+                    except KeyError:
                         exit("Something fishy!")
 
                 x = 'gene_name "%s"; gene_id "%s"' % (gene, gene)
@@ -97,10 +97,10 @@ def gb2gtf(args):
                 q = feat.qualifiers
                 try:
                     gene = q["gene"][0]
-                except:
+                except KeyError:
                     try:
                         gene = q["locus_tag"][0]
-                    except:
+                    except KeyError:
                         exit("Something fishy!")
                 x = (
                     'gene_name "%s"; gene_id "%s"; transcript_id "%s"; transcript_name "%s"'
@@ -109,8 +109,8 @@ def gb2gtf(args):
                 gffstring.append(x)
                 print("\t".join(gffstring) + ";")
                 gffstring[2] = "exon"
-                if isinstance(l, Bio.SeqFeature.CompoundLocation):
-                    parts = l.parts
+                if isinstance(location, Bio.SeqFeature.CompoundLocation):
+                    parts = location.parts
                     # lenparts=len(parts)
                     for i, part in enumerate(parts):
                         j = i + 1

@@ -30,4 +30,4 @@ def test_parse_modules():
 
 
 def test_is_loaded():
-    assert is_loaded("not_a_module") == False
+    assert not is_loaded("not_a_module")

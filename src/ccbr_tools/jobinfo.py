@@ -283,7 +283,7 @@ def get_jobinfo(args):
                     index=False,
                     columns=LONG_FIELDS.split(","),
                 )
-        except:
+        except OSError:
             msg = "File is not writable: {}".format(args.output)
             exit_w_msg(msg)
     return p1_table
