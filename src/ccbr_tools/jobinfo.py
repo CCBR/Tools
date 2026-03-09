@@ -14,9 +14,9 @@ USAGE:
 
 Example:
     $ jobinfo -j 123456,7891011
-    $ jobinfo -s /path/to/snakemake.log
-    $ jobinfo -j 123456,7891011 -o /path/to/report.tsv
-    $ jobinfo -s /path/to/snakemake.log --failonly
+    $ jobinfo -s path/to/snakemake.log
+    $ jobinfo -j 123456,7891011 -o path/to/report.tsv
+    $ jobinfo -s path/to/snakemake.log --failonly
 """
 
 __version__ = "v1.0.0"
@@ -215,9 +215,8 @@ def time2sec(timestr):
 
 
 def get_jobinfo(args):
-    # cmd = '/usr/local/bin/dashboard_cli jobs --joblist ' + ",".join(args.joblist[0:10]) + " --archive --json --fields " + LONG_FIELDS
     cmd = (
-        "/usr/local/bin/dashboard_cli jobs --joblist "
+        "/usr/local/bin/dashboard_cli jobs --joblist "  # abs-path:ignore
         + ",".join(args.joblist)
         + " --archive --json --fields "
         + LONG_FIELDS

@@ -18,27 +18,37 @@ suppressPackageStartupMessages(library("argparse"))
 # create parser object
 parser <- ArgumentParser()
 
-parser$add_argument("-r", "--rawcountsmatrix",
+parser$add_argument(
+  "-r",
+  "--rawcountsmatrix",
   type = "character",
   help = "file with raw counts matrix",
   required = TRUE
 )
-parser$add_argument("-c", "--coldata",
+parser$add_argument(
+  "-c",
+  "--coldata",
   type = "character",
   help = "two tab delimited columns.. sample_name and condition",
   required = FALSE
 )
-parser$add_argument("-i", "--indexcols",
+parser$add_argument(
+  "-i",
+  "--indexcols",
   type = "character",
   help = "comma separated list of columns that do not contain any counts eg. ensemblID, geneName, etc., ie., columns to be excluded from normalization by included in the output file.",
   required = TRUE
 )
-parser$add_argument("-x", "--excludecols",
+parser$add_argument(
+  "-x",
+  "--excludecols",
   type = "character",
   help = "comma separated list of columns in the input that should be excluded from the output file.",
   required = FALSE
 )
-parser$add_argument("-o", "--outfile",
+parser$add_argument(
+  "-o",
+  "--outfile",
   type = "character",
   help = "name of outfile",
   required = TRUE
@@ -64,11 +74,11 @@ outfile <- args$outfil
 
 
 if (debug == 1) {
-  rawcountsmatrix <- "/Volumes/CCBR/projects/ccbr1060/Hg38_shRNA_hybrid/HGHY2DRXY_analysis_v2/results/all_raw_counts_counts.tsv"
-  coldata <- "/Volumes/CCBR/projects/ccbr1060/Hg38_shRNA_hybrid/HGHY2DRXY_analysis_v2/results/all_raw_counts_counts.coldata"
+  rawcountsmatrix <- "ccbr1060/Hg38_shRNA_hybrid/HGHY2DRXY_analysis_v2/results/all_raw_counts_counts.tsv"
+  coldata <- "ccbr1060/Hg38_shRNA_hybrid/HGHY2DRXY_analysis_v2/results/all_raw_counts_counts.coldata"
   indexcols <- unlist(strsplit("ensemblID,gene_name,mRNA_length", ","))
   excludecols <- unlist(strsplit("596-7-2_p1", ","))
-  outfile <- "/Volumes/CCBR/projects/ccbr1060/Hg38_shRNA_hybrid/HGHY2DRXY_analysis_v2/results/all_DESeq2_normalized_counts.tsv"
+  outfile <- "ccbr1060/Hg38_shRNA_hybrid/HGHY2DRXY_analysis_v2/results/all_DESeq2_normalized_counts.tsv"
 }
 
 

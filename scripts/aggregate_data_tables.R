@@ -34,12 +34,15 @@ readfile <- function(filename, indexcols, datacol, samplename) {
     colnames(d) <- cols
     return(d)
   } else {
-    stop(sprintf("Required columns: %s are missing in file %s", reqdcols, filename))
+    stop(sprintf(
+      "Required columns: %s are missing in file %s",
+      reqdcols,
+      filename
+    ))
   }
 }
 
 debug <- 0
-
 
 
 # create parser object
@@ -48,27 +51,37 @@ parser <- ArgumentParser()
 # specify our desired options
 # by default ArgumentParser will add an help option
 
-parser$add_argument("-l", "--filelist",
+parser$add_argument(
+  "-l",
+  "--filelist",
   type = "character",
   help = "comma separated list of files",
   required = TRUE
 )
-parser$add_argument("-i", "--indexcols",
+parser$add_argument(
+  "-i",
+  "--indexcols",
   type = "character",
   help = "comma separated list of columns to use as index while merging. These need to exist in all files provided in the -l option.",
   required = TRUE
 )
-parser$add_argument("-c", "--datacol",
+parser$add_argument(
+  "-c",
+  "--datacol",
   type = "character",
   help = "column to be extracted from all samples and aggregated in the outputfile. Should exist in all files provided to -l. Its name will be replaced by corresponding value in -s argument.",
   required = TRUE
 )
-parser$add_argument("-s", "--samplenames",
+parser$add_argument(
+  "-s",
+  "--samplenames",
   type = "character",
   help = "comma separated list of sample names. Need to be unique. Will replace datacol (-c) when reported in the output file. ",
   required = TRUE
 )
-parser$add_argument("-o", "--outfile",
+parser$add_argument(
+  "-o",
+  "--outfile",
   type = "character",
   help = "aggregated outfile",
   required = TRUE
@@ -84,11 +97,14 @@ samplenames <- unlist(strsplit(args$samplenames, ","))
 outfile <- args$outfile
 
 if (debug == 1) {
-  filelist <- unlist(strsplit("/Volumes/CCBR/projects/ccbr1060/Hg38_shRNA_hybrid/HGHY2DRXY_analysis/results/596-7-2/STAR/withChimericJunctions/a.tsv,/Volumes/CCBR/projects/ccbr1060/Hg38_shRNA_hybrid/HGHY2DRXY_analysis/results/596-7-2/STAR/withChimericJunctions/b.tsv", ","))
+  filelist <- unlist(strsplit(
+    "ccbr1060/Hg38_shRNA_hybrid/HGHY2DRXY_analysis/results/596-7-2/STAR/withChimericJunctions/a.tsv,ccbr1060/Hg38_shRNA_hybrid/HGHY2DRXY_analysis/results/596-7-2/STAR/withChimericJunctions/b.tsv",
+    ","
+  ))
   indexcols <- unlist(strsplit("ensemblID,gene_name,mRNA_length", ","))
   datacol <- "tpm"
   samplenames <- unlist(strsplit("A,B", ","))
-  outfile <- "/Volumes/CCBR/projects/ccbr1060/Hg38_shRNA_hybrid/HGHY2DRXY_analysis/results/596-7-2/STAR/withChimericJunctions/test.tpm.tsv"
+  outfile <- "ccbr1060/Hg38_shRNA_hybrid/HGHY2DRXY_analysis/results/596-7-2/STAR/withChimericJunctions/test.tpm.tsv"
 }
 
 # 2 or more files required
@@ -97,7 +113,9 @@ if (length(filelist) <= 1) {
 }
 # nfiles and nsamplenames should match
 if (length(unique(filelist)) != length(unique(samplenames))) {
-  stop(sprintf("Number of files need to match number of samplenames. Duplicate files and samplenames not allowed!"))
+  stop(sprintf(
+    "Number of files need to match number of samplenames. Duplicate files and samplenames not allowed!"
+  ))
 }
 
 for (f in filelist) {

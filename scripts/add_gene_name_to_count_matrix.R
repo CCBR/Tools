@@ -9,7 +9,7 @@
 #
 # Rscript add_gene_name_to_count_matrix.R \
 #  -r rsem.raw_counts_matrix.tsv.tmp \
-#  -g /data/RBL_NCI/Wolin/mESC_slam_analysis/resources/mm10/mm10_plus_45S_plus_5S.v2.genes.gtf \
+#  -g mESC_slam_analysis/resources/mm10/mm10_plus_45S_plus_5S.v2.genes.gtf \
 #  -o rsem.raw_counts_matrix.tsv
 #
 suppressPackageStartupMessages(library("argparse"))
@@ -20,17 +20,23 @@ parser <- ArgumentParser()
 # specify our desired options
 # by default ArgumentParser will add an help option
 
-parser$add_argument("-r", "--rawcountsmatrix",
+parser$add_argument(
+  "-r",
+  "--rawcountsmatrix",
   type = "character",
   help = "file with raw counts matrix with gene_id column",
   required = TRUE
 )
-parser$add_argument("-g", "--gtf",
+parser$add_argument(
+  "-g",
+  "--gtf",
   type = "character",
   help = "GTF file with gene_name and gene_id",
   required = TRUE
 )
-parser$add_argument("-o", "--outfile",
+parser$add_argument(
+  "-o",
+  "--outfile",
   type = "character",
   help = "count matrix with gene_name column included",
   required = TRUE
@@ -43,10 +49,23 @@ library("rtracklayer")
 library("tidyverse")
 gtf2 <- rtracklayer::import(args$gtf)
 gtf2 <- as.data.frame(gtf2)
-unique(data.frame(gene_id = gtf2$gene_id, gene_name = gtf2$gene_name)) %>% drop_na() -> lookuptable
+unique(data.frame(gene_id = gtf2$gene_id, gene_name = gtf2$gene_name)) %>%
+  drop_na() -> lookuptable
 
-in_df <- read.csv(args$rawcountsmatrix, sep = "\t", header = TRUE, check.names = FALSE)
+in_df <- read.csv(
+  args$rawcountsmatrix,
+  sep = "\t",
+  header = TRUE,
+  check.names = FALSE
+)
 
 out_df <- merge(in_df, lookuptable, by = c("gene_id"))
 
-write.table(out_df, file = args$outfile, sep = "\t", quote = FALSE, row.names = FALSE, col.names = TRUE)
+write.table(
+  out_df,
+  file = args$outfile,
+  sep = "\t",
+  quote = FALSE,
+  row.names = FALSE,
+  col.names = TRUE
+)

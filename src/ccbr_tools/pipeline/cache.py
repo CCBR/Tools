@@ -45,9 +45,9 @@ def get_sif_cache_dir(hpc=None):
     """
     sif_dir = ""
     if hpc == "biowulf":
-        sif_dir = "/data/CCBR_Pipeliner/SIFs"
+        sif_dir = "/data/CCBR_Pipeliner/SIFs"  # abs-path:ignore
     elif hpc == "frce":
-        sif_dir = "/mnt/projects/CCBR-Pipelines/SIFs"
+        sif_dir = "/mnt/projects/CCBR-Pipelines/SIFs"  # abs-path:ignore
     return sif_dir
 
 
