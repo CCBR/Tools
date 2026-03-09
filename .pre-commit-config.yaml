@@ -33,6 +33,12 @@ repos:
             --skip,
             "*human_mouse_homolog_lookup.txt,*.rpt",
           ]
+  # Quarto formatting
+  # - repo: https://github.com/jolars/panache
+  #   rev: v2.13.0
+  #   hooks:
+  #     - id: panache-format
+  #     - id: panache-lint
   # Python formatting
   - repo: https://github.com/astral-sh/ruff-pre-commit
     rev: v0.14.10
