@@ -13,10 +13,9 @@ def test_init():
     with tempfile.TemporaryDirectory() as tmp_dir:
         init(
             output=tmp_dir,
-            repo_base=lambda f: pathlib.Path(__file__).absolute().parent
-            / "data"
-            / "pipeline"
-            / f,
+            repo_base=lambda f: (
+                pathlib.Path(__file__).absolute().parent / "data" / "pipeline" / f
+            ),
             pipeline_name="test_pipeline",
         )
         assert all(
