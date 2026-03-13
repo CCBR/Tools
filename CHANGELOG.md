@@ -1,5 +1,7 @@
 ## Tools development version
 
+- `ccbr-hooks detect-absolute-paths`: Reduce false positives caused by `/dev/shm`. (#157, @kelly-sovacool)
+
 ## Tools 0.5.1
 
 - New arguments for `ccbr-hooks detect-absolute-paths`: `--ignore-paths` and `--ignore-paths-file`. (#154, @kelly-sovacool)
