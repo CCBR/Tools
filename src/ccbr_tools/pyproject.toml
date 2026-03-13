@@ -118,7 +118,6 @@ script-files = [
     "scripts/aggregate_data_tables.R",
     "scripts/argparse.bash",
     "scripts/cancel_snakemake_jobs.sh",
-    "scripts/create_hpc_link.sh",
     "scripts/extract_value_from_json.py",
     "scripts/extract_value_from_yaml.py",
     "scripts/filter_bam_by_readids.py",
