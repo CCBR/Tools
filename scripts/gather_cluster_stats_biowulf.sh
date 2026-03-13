@@ -51,7 +51,7 @@ else
 	done < ${jobid}.data
 	rm -f ${jobid}.data
 	st=${jobdataarray["submit_time"]}
-	jobdataarray["human_submit_time"]=$(date -d @$st|sed "s/ /_/g")
+	jobdataarray["human_submit_time"]=$(date -d @$st|sed "s| |_|g")
 	jobdataarray["alloc_node_partition"]=$(node2runpartition ${jobdataarray["alloc_node"]} "")
 	jobdataarray["run_node_partition"]=$(node2runpartition ${jobdataarray["node_list"]} ${jobdataarray["partition"]})
 fi
