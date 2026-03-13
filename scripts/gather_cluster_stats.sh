@@ -102,7 +102,7 @@ END {
 	jobdataarray["start"]=$(get_secondline_variable "Start")
 	jobdataarray["end"]=$(get_secondline_variable "End")
 	st=${jobdataarray["submit_time"]}
-	jobdataarray["human_submit_time"]=$(date -d @$st|sed "s/ /_/g")
+	jobdataarray["human_submit_time"]=$(date -d @$st|sed "s| |_|g")
 	jobdataarray["state"]=$(get_secondline_variable "State")
 	qt=$(echo ${jobdataarray["start"]} ${jobdataarray["submit_time"]}|awk '{print $1-$2}')
 	rt=$(echo ${jobdataarray["end"]} ${jobdataarray["submit_time"]}|awk '{print $1-$2}')

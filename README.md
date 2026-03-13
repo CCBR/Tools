@@ -140,7 +140,6 @@ package and do not have any unit tests.
 - [`aggregate_data_tables.R`](scripts/aggregate_data_tables.R)
 - [`argparse.bash`](scripts/argparse.bash)
 - [`cancel_snakemake_jobs.sh`](scripts/cancel_snakemake_jobs.sh)
-- [`create_hpc_link.sh`](scripts/create_hpc_link.sh)
 - [`extract_value_from_json.py`](scripts/extract_value_from_json.py)
 - [`extract_value_from_yaml.py`](scripts/extract_value_from_yaml.py)
 - [`filter_bam_by_readids.py`](scripts/filter_bam_by_readids.py)
@@ -179,7 +178,7 @@ guidelines](https://CCBR.github.io/Tools/CONTRIBUTING).
 Please cite this software if you use it in a publication:
 
 > Sovacool K., Koparde V., Kuhn S., Tandon M., and Huse S. (2026). CCBR
-> Tools: Utilities for CCBR Bioinformatics Software (version v0.5.0).
+> Tools: Utilities for CCBR Bioinformatics Software (version v0.5.1).
 > DOI: 10.5281/zenodo.13377166 URL: https://ccbr.github.io/Tools/
 
 ### Bibtex entry

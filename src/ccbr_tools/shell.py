@@ -33,7 +33,7 @@ def shell_run(
         >>> shell_run("echo Hello, World!")
         'Hello, World!\n'
         >>> shell_run("invalid_command")
-        '/bin/sh: invalid_command: command not found\n'
+        'invalid_command: command not found\n'
     """
     out = subprocess.run(
         command_str, capture_output=capture_output, check=check, shell=shell, text=text
