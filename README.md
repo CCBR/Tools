@@ -140,7 +140,6 @@ package and do not have any unit tests.
 - [`aggregate_data_tables.R`](scripts/aggregate_data_tables.R)
 - [`argparse.bash`](scripts/argparse.bash)
 - [`cancel_snakemake_jobs.sh`](scripts/cancel_snakemake_jobs.sh)
-- [`create_hpc_link.sh`](scripts/create_hpc_link.sh)
 - [`extract_value_from_json.py`](scripts/extract_value_from_json.py)
 - [`extract_value_from_yaml.py`](scripts/extract_value_from_yaml.py)
 - [`filter_bam_by_readids.py`](scripts/filter_bam_by_readids.py)
