@@ -7,6 +7,9 @@ exclude: |
       ^src/ccbr_tools/templates/mkdocs-fnl/docs/custom-overrides/|
       ^tests/data/
    )
+ci:
+  skip: [detect-absolute-paths]
+
 repos:
   - repo: local
     hooks:
