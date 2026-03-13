@@ -7,11 +7,18 @@ exclude: |
       ^src/ccbr_tools/templates/mkdocs-fnl/docs/custom-overrides/|
       ^tests/data/
    )
+ci:
+  skip: [detect-absolute-paths]
+
 repos:
-  - repo: https://github.com/CCBR/Tools
-    rev: v0.5.1
+  - repo: local
     hooks:
       - id: detect-absolute-paths
+        name: detect absolute paths
+        entry: ccbr-hooks detect-absolute-paths
+        language: python
+        additional_dependencies: ["."]
+        types: [text]
         exclude: |
           (?x)^(
               .gitignore|
