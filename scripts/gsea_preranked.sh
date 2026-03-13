@@ -39,4 +39,4 @@ java -cp ~/bin/gsea-3.0.jar -Xmx4g xtools.gsea.GseaPreranked -gmx $GMT -rnk $RNK
     -set_max $MAX -set_min $MIN -zip_report false -gui false
 
 
-#java -cp ~/bin/gsea-3.0.jar -Xmx512m xtools.gsea.GseaPreranked -gmx /Users/husesm/FNL/Projects/Reference/GeneSets_Mouse/MousePath_Co-expression_gmt.gmt -norm meandiv -nperm 100 -rnk /Users/husesm/FNL/Projects/Colitis/NCBR-4/analysis/gsea/KO_Th17_NoTGFb.rnk -scoring_scheme classic -rpt_label KO_Th17_NoTGFb -create_svgs false -make_sets true -plot_top_x 20 -rnd_seed timestamp -set_max 500000 -set_min 15 -zip_report false -out /Users/husesm/FNL/Projects/Colitis/NCBR-4/analysis/gsea -gui false
+#java -cp ~/bin/gsea-3.0.jar -Xmx512m xtools.gsea.GseaPreranked -gmx ./Projects/Reference/GeneSets_Mouse/MousePath_Co-expression_gmt.gmt -norm meandiv -nperm 100 -rnk ./Projects/Colitis/NCBR-4/analysis/gsea/KO_Th17_NoTGFb.rnk -scoring_scheme classic -rpt_label KO_Th17_NoTGFb -create_svgs false -make_sets true -plot_top_x 20 -rnd_seed timestamp -set_max 500000 -set_min 15 -zip_report false -out ./Projects/Colitis/NCBR-4/analysis/gsea -gui false
