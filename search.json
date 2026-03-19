@@ -422,7 +422,7 @@
     "href": "CHANGELOG.html",
     "title": "CCBR Tools",
     "section": "",
-    "text": "ccbr-hooks detect-absolute-paths: Reduce false positives caused by /dev/shm. (#157, @kelly-sovacool)",
+    "text": "ccbr-hooks detect-absolute-paths: Reduce false positives caused by /dev/shm and language comments. (#157, @kelly-sovacool)",
     "crumbs": [
       "Project information",
       "Changelog"
@@ -433,7 +433,7 @@
     "href": "CHANGELOG.html#tools-development-version",
     "title": "CCBR Tools",
     "section": "",
-    "text": "ccbr-hooks detect-absolute-paths: Reduce false positives caused by /dev/shm. (#157, @kelly-sovacool)",
+    "text": "ccbr-hooks detect-absolute-paths: Reduce false positives caused by /dev/shm and language comments. (#157, @kelly-sovacool)",
     "crumbs": [
       "Project information",
       "Changelog"
