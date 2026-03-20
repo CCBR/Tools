@@ -1,0 +1,10 @@
+overrides:
+  - files:
+      - "*.cff"
+      - ".prettierrc"
+    options:
+      tabWidth: 2
+  - files:
+      - "*.md"
+    options:
+      tabWidth: 4
