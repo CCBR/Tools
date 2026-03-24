@@ -1,5 +1,7 @@
 ## Tools development version
 
+## Tools 0.5.2
+
 - `ccbr-hooks detect-absolute-paths`: Reduce false positives caused by `/dev/shm` and language comments. (#157, @kelly-sovacool)
 
 ## Tools 0.5.1
