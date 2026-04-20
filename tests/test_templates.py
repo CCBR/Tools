@@ -53,7 +53,7 @@ def test_use_template_blanks(tmp_path):
             "submit_slurm.sh",
             output_filepath=out_filepath,
         )
-    assert str(exc_info.value) == "'MODULES'"
+    assert str(exc_info.value) == "'MEMORY'"
 
 
 def test_use_quarto_ext(tmp_path):
