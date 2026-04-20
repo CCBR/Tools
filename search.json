@@ -11,6 +11,28 @@
     ]
   },
   {
+    "objectID": "CHANGELOG.html",
+    "href": "CHANGELOG.html",
+    "title": "CCBR Tools",
+    "section": "",
+    "text": "ccbr-hooks detect-absolute-paths: Reduce false positives caused by /dev/null. (#174, @kelly-sovacool)",
+    "crumbs": [
+      "Project information",
+      "Changelog"
+    ]
+  },
+  {
+    "objectID": "CHANGELOG.html#tools-development-version",
+    "href": "CHANGELOG.html#tools-development-version",
+    "title": "CCBR Tools",
+    "section": "",
+    "text": "ccbr-hooks detect-absolute-paths: Reduce false positives caused by /dev/null. (#174, @kelly-sovacool)",
+    "crumbs": [
+      "Project information",
+      "Changelog"
+    ]
+  },
+  {
     "objectID": "CHANGELOG.html#tools-0.5.2",
     "href": "CHANGELOG.html#tools-0.5.2",
     "title": "CCBR Tools",
