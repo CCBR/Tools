@@ -58,9 +58,9 @@ def word_is_absolute_path(word):
 
     return word.startswith("/") and not any(
         [
-            word == "/dev/null",
-            word.startswith("/dev/shm"),
             word == "/",  # FP from pathlib. abs-path:ignore
+            word.startswith("/dev/null"),
+            word.startswith("/dev/shm"),
             word.startswith("//"),  # FP from groovy comments. abs-path:ignore
             word.startswith("/*"),  # FP from CSS & groovy comments. abs-path:ignore
             word.startswith("/$"),  # FP from nextflow scripts. abs-path:ignore

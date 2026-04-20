@@ -37,6 +37,8 @@ def test_word_is_absolute_path():
     assert not hooks.word_is_absolute_path("//")  # groovy comments
     assert not hooks.word_is_absolute_path("/*")  # groovy multiline comments
     assert not hooks.word_is_absolute_path("/*--")  # CSS comments
+    assert not hooks.word_is_absolute_path("/dev/null")  # common shell redirection
+    assert not hooks.word_is_absolute_path("/dev/shm")  # common shell redirection
     assert not hooks.word_is_absolute_path("/$")  # nextflow script
 
 
