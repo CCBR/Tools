@@ -95,12 +95,8 @@ def generate_df():
 def test_jobby_cli_version():
     output = shell_run("jobby --version")
     this_version = shell_run("ccbr_tools --version").split()[-1]
-    assert all(
-        [
-            output.startswith("jobby: ccbr_tools version: "),
-            output.strip().endswith(this_version),
-        ]
-    )
+    assert output.startswith("jobby: ccbr_tools version: ")
+    assert output.strip().endswith(this_version)
 
 
 def test_jobby_cli_invalid():
@@ -114,7 +110,8 @@ def test_jobby_cli_invalid():
         concat_output=False,
         check=False,
     )
-    assert all([out == "", err_msg in err])
+    assert out == ""
+    assert err_msg in err
 
 
 def test_jobby_no_list():
@@ -190,7 +187,11 @@ def test_parse_time_to_seconds():
     ]
     with pytest.warns(UserWarning):
         results.append(parse_time_to_seconds("invalid") is np.nan)
-    assert all(results)
+    assert results[0]
+    assert results[1]
+    assert results[2]
+    assert results[3]
+    assert results[4]
 
 
 def test_parse_mem_to_gb():
@@ -205,7 +206,11 @@ def test_parse_mem_to_gb():
     ]
     with pytest.warns(UserWarning):
         results.append(parse_mem_to_gb("invalid") is np.nan)
-    assert all(results)
+    assert results[0]
+    assert results[1]
+    assert results[2]
+    assert results[3]
+    assert results[4]
 
 
 def test_assertions():
@@ -213,12 +218,8 @@ def test_assertions():
         parse_time_to_seconds(False)
     with pytest.raises(AssertionError) as exc2:
         parse_mem_to_gb(0)
-    assert all(
-        [
-            str(exc1.value) == "Input must be a string",
-            str(exc2.value) == "Input must be a string",
-        ]
-    )
+    assert str(exc1.value) == "Input must be a string"
+    assert str(exc2.value) == "Input must be a string"
 
 
 def test_extract_jobids_snakemake():
@@ -310,7 +311,12 @@ def test_format_df():
             format_df(df_smk, output_format) + "\n"
         )  # extra newline when files were printed
         assertions.append([actual, expected])
-    assert all([actual == expected for actual, expected in assertions])
+    assert [actual == expected for actual, expected in assertions] == [
+        True,
+        True,
+        True,
+        True,
+    ]
 
 
 # def test_format_df_drop_md():

@@ -6,28 +6,30 @@ import pytest
 
 
 def test_python():
-    assert all(
-        [
-            Software.create_software("ccbr_tools", "v0.3.2").url
-            == "https://github.com/CCBR/tools.git",
-            Software.create_software("ccbr_actions", "v0.1.2").url
-            == "https://github.com/CCBR/actions.git",
-            Software.create_software("ccbr_actions", "v1.0.0-dev").install(
-                hpc=Biowulf, branch_tag="main"
-            )
-            == "pip install git+https://github.com/CCBR/actions.git@main -t /data/CCBR_Pipeliner/Tools/ccbr_actions/.v1.0.0-dev",
-        ]
+    assert (
+        Software.create_software("ccbr_tools", "v0.3.2").url
+        == "https://github.com/CCBR/tools.git"
+    )
+    assert (
+        Software.create_software("ccbr_actions", "v0.1.2").url
+        == "https://github.com/CCBR/actions.git"
+    )
+    assert (
+        Software.create_software("ccbr_actions", "v1.0.0-dev").install(
+            hpc=Biowulf, branch_tag="main"
+        )
+        == "pip install git+https://github.com/CCBR/actions.git@main -t /data/CCBR_Pipeliner/Tools/ccbr_actions/.v1.0.0-dev"
     )
 
 
 def test_pipelines():
-    assert all(
-        [
-            Software.create_software("CHAMPAGNE", "v0.3.0").install(hpc=Biowulf)
-            == "pip install git+https://github.com/CCBR/CHAMPAGNE.git@v0.3.0 -t /data/CCBR_Pipeliner/Pipelines/CHAMPAGNE/.v0.3.0",
-            Software.create_software("XAVIER", "v3.0.1").install(hpc=Biowulf)
-            == "git clone --depth 1 --single-branch --branch v3.0.1 https://github.com/CCBR/XAVIER.git /data/CCBR_Pipeliner/Pipelines/XAVIER/.v3.0.1",
-        ]
+    assert (
+        Software.create_software("CHAMPAGNE", "v0.3.0").install(hpc=Biowulf)
+        == "pip install git+https://github.com/CCBR/CHAMPAGNE.git@v0.3.0 -t /data/CCBR_Pipeliner/Pipelines/CHAMPAGNE/.v0.3.0"
+    )
+    assert (
+        Software.create_software("XAVIER", "v3.0.1").install(hpc=Biowulf)
+        == "git clone --depth 1 --single-branch --branch v3.0.1 https://github.com/CCBR/XAVIER.git /data/CCBR_Pipeliner/Pipelines/XAVIER/.v3.0.1"
     )
 
 
@@ -42,10 +44,9 @@ def test_install():
     result = exec_in_context(
         install, tool_name="CHAMPAGNE", version="v0.3.0", dryrun=True, debug="biowulf"
     )
-    assert all(
-        [
-            "mamba activate /" in result,
-            """pip install git+https://github.com/CCBR/CHAMPAGNE.git@v0.3.0 -t /data/CCBR_Pipeliner/Pipelines/CHAMPAGNE/.v0.3.0
+    assert "mamba activate /" in result
+    assert (
+        """pip install git+https://github.com/CCBR/CHAMPAGNE.git@v0.3.0 -t /data/CCBR_Pipeliner/Pipelines/CHAMPAGNE/.v0.3.0
 chmod -R a+rX /data/CCBR_Pipeliner/Pipelines/CHAMPAGNE/.v0.3.0
 chmod -R g+rwX /data/CCBR_Pipeliner/Pipelines/CHAMPAGNE/.v0.3.0
 chown -R :CCBR_Pipeliner /data/CCBR_Pipeliner/Pipelines/CHAMPAGNE/.v0.3.0
@@ -55,8 +56,7 @@ ln -s .v0.3.0 v0.3
 chmod -R g+rwX v0.3
 popd
 """
-            in result,
-        ]
+        in result
     )
 
 
@@ -69,16 +69,14 @@ def test_install_dev():
         dryrun=True,
         debug="biowulf",
     )
-    assert all(
-        [
-            "mamba activate /" in result,
-            """pip install git+https://github.com/CCBR/CHAMPAGNE.git@main -t /data/CCBR_Pipeliner/Pipelines/CHAMPAGNE/.v0.3.0-dev
+    assert "mamba activate /" in result
+    assert (
+        """pip install git+https://github.com/CCBR/CHAMPAGNE.git@main -t /data/CCBR_Pipeliner/Pipelines/CHAMPAGNE/.v0.3.0-dev
 chmod -R a+rX /data/CCBR_Pipeliner/Pipelines/CHAMPAGNE/.v0.3.0-dev
 chmod -R g+rwX /data/CCBR_Pipeliner/Pipelines/CHAMPAGNE/.v0.3.0-dev
 chown -R :CCBR_Pipeliner /data/CCBR_Pipeliner/Pipelines/CHAMPAGNE/.v0.3.0-dev
 """
-            in result,
-        ]
+        in result
     )
 
 
@@ -91,10 +89,9 @@ def test_custom():
         software_type="PythonTool",
         debug="biowulf",
     )
-    assert all(
-        [
-            "mamba activate /" in result,
-            """pip install git+https://github.com/CCBR/cooltool.git@v1.0.0 -t /data/CCBR_Pipeliner/Tools/cooltool/.v1.0.0
+    assert "mamba activate /" in result
+    assert (
+        """pip install git+https://github.com/CCBR/cooltool.git@v1.0.0 -t /data/CCBR_Pipeliner/Tools/cooltool/.v1.0.0
 chmod -R a+rX /data/CCBR_Pipeliner/Tools/cooltool/.v1.0.0
 chmod -R g+rwX /data/CCBR_Pipeliner/Tools/cooltool/.v1.0.0
 chown -R :CCBR_Pipeliner /data/CCBR_Pipeliner/Tools/cooltool/.v1.0.0
@@ -104,8 +101,7 @@ ln -s .v1.0.0 v1.0
 chmod -R g+rwX v1.0
 popd
 """
-            in result,
-        ]
+        in result
     )
 
 

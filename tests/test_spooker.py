@@ -1,4 +1,3 @@
-import pathlib
 import pytest
 import gzip
 import json
@@ -9,9 +8,10 @@ from ccbr_tools.spooker import spooker
 
 
 @pytest.mark.filterwarnings("ignore:UserWarning")
-def test_spooker():
+def test_spooker(data_dir_rel):
+    pipeline_outdir = data_dir_rel / "pipeline_run"
     out_filename = spooker(
-        pipeline_outdir=pathlib.Path("tests/data/pipeline_run"),
+        pipeline_outdir=pipeline_outdir,
         pipeline_name="test_pipeline",
         pipeline_version="0.1.0",
         pipeline_path="unknown",
@@ -24,7 +24,7 @@ def test_spooker():
     expected = {
         "ccbrpipeliner_module": None,
         "pipeline_name": "test_pipeline",
-        "pipeline_outdir": "tests/data/pipeline_run",
+        "pipeline_outdir": str(pipeline_outdir),
         "pipeline_path": "unknown",
         "pipeline_version": "0.1.0",
         "sample_names": [],
@@ -35,10 +35,10 @@ def test_spooker():
     assert actual == expected
 
 
-def test_spooker_no_outdir():
+def test_spooker_no_outdir(data_dir_rel):
     with pytest.raises(FileNotFoundError) as exc_info:
         spooker(
-            pipeline_outdir=pathlib.Path("tests/data/pipeline_run/does_not_exist"),
+            pipeline_outdir=data_dir_rel / "pipeline_run" / "does_not_exist",
             pipeline_version="0.1.0",
             pipeline_name="test_pipeline",
             pipeline_path="unknown",
@@ -48,9 +48,10 @@ def test_spooker_no_outdir():
     assert str(exc_info.value).startswith("Pipeline output directory does not exist")
 
 
-def test_spooker_cli():
+def test_spooker_cli(data_dir_rel):
+    pipeline_outdir = data_dir_rel / "pipeline_run"
     out = subprocess.run(
-        "spooker --outdir tests/data/pipeline_run --name test_pipeline --version 0.1.2-dev --path unknown --debug gha",
+        f"spooker --outdir {pipeline_outdir} --name test_pipeline --version 0.1.2-dev --path unknown --debug gha",
         shell=True,
         check=True,
         text=True,
@@ -64,7 +65,7 @@ def test_spooker_cli():
     expected_meta = {
         "ccbrpipeliner_module": None,
         "pipeline_name": "test_pipeline",
-        "pipeline_outdir": "tests/data/pipeline_run",
+        "pipeline_outdir": str(pipeline_outdir),
         "pipeline_path": "unknown",
         "pipeline_version": "0.1.2-dev",
         "sample_names": [],
@@ -74,13 +75,13 @@ def test_spooker_cli():
         for k, v in spook_dat["pipeline_metadata"].items()
         if k in expected_meta.keys()
     }
-    assert all(
-        [
-            expected_meta == actual_meta,
-            spook_dat.keys()
-            == {"outdir_tree", "pipeline_metadata", "jobby", "master_job_log"},
-        ]
-    )
+    assert expected_meta == actual_meta
+    assert spook_dat.keys() == {
+        "outdir_tree",
+        "pipeline_metadata",
+        "jobby",
+        "master_job_log",
+    }
 
 
 def test_spooker_help():

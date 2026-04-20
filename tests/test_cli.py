@@ -3,7 +3,6 @@ from ccbr_tools.shell import shell_run
 import os
 import pathlib
 import pytest
-import tempfile
 
 is_ci = (
     os.environ.get("CI", "false") == "true"
@@ -71,26 +70,23 @@ def test_help_send_email():
     )
 
 
-def test_quarto_add():
-    with tempfile.TemporaryDirectory() as tmp_dir:
-        current_wd = os.getcwd()
-        os.chdir(tmp_dir)
+def test_quarto_add(tmp_path):
+    current_wd = pathlib.Path.cwd()
+    try:
+        os.chdir(tmp_path)
         shell_run("ccbr_tools quarto-add fnl")
-        assertions = [
-            (pathlib.Path("_extensions") / "fnl").is_dir(),
-            len(os.listdir(pathlib.Path("_extensions") / "fnl")) > 0,
-        ]
+        extension_dir = pathlib.Path("_extensions") / "fnl"
+        assert extension_dir.is_dir()
+        assert len(os.listdir(extension_dir)) > 0
+    finally:
         os.chdir(current_wd)
-    assert all(assertions)
 
 
 def test_install():
     output = shell_run("ccbr_tools install champagne v0.3.0 --hpc biowulf", check=False)
-    assert all(
-        [
-            "mamba activate /" in output,
-            output.endswith(
-                """pip install git+https://github.com/CCBR/CHAMPAGNE.git@v0.3.0 -t /data/CCBR_Pipeliner/Pipelines/CHAMPAGNE/.v0.3.0
+    assert "mamba activate /" in output
+    assert output.endswith(
+        """pip install git+https://github.com/CCBR/CHAMPAGNE.git@v0.3.0 -t /data/CCBR_Pipeliner/Pipelines/CHAMPAGNE/.v0.3.0
 chmod -R a+rX /data/CCBR_Pipeliner/Pipelines/CHAMPAGNE/.v0.3.0
 chmod -R g+rwX /data/CCBR_Pipeliner/Pipelines/CHAMPAGNE/.v0.3.0
 chown -R :CCBR_Pipeliner /data/CCBR_Pipeliner/Pipelines/CHAMPAGNE/.v0.3.0
@@ -100,6 +96,4 @@ ln -s .v0.3.0 v0.3
 chmod -R g+rwX v0.3
 popd
 """
-            ),
-        ]
     )
