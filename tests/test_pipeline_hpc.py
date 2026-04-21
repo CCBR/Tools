@@ -7,30 +7,22 @@ from ccbr_tools.shell import shell_run
 
 def test_hpc_biowulf():
     hpc = get_hpc(debug="biowulf")
-    assert all(
-        [
-            hpc,
-            hpc.name == "biowulf",
-            hpc.singularity_sif_dir == "/data/CCBR_Pipeliner/SIFs",
-            hpc.__repr__().startswith(
-                "<class 'ccbr_tools.pipeline.hpc.Biowulf'>({'name': 'biowulf'"
-            ),
-            "mamba activate /" in hpc.CONDA_ACTIVATE,
-        ]
+    assert hpc
+    assert hpc.name == "biowulf"
+    assert hpc.singularity_sif_dir == "/data/CCBR_Pipeliner/SIFs"
+    assert hpc.__repr__().startswith(
+        "<class 'ccbr_tools.pipeline.hpc.Biowulf'>({'name': 'biowulf'"
     )
+    assert "mamba activate /" in hpc.CONDA_ACTIVATE
 
 
 def test_hpc_frce():
     hpc = get_hpc(debug="frce")
-    assert all(
-        [
-            hpc,
-            hpc.name == "frce",
-            "/mnt/projects/CCBR-Pipelines/bin" in hpc.env_vars,
-            hpc.singularity_sif_dir == "/mnt/projects/CCBR-Pipelines/SIFs",
-            "mamba activate " in hpc.CONDA_ACTIVATE,
-        ]
-    )
+    assert hpc
+    assert hpc.name == "frce"
+    assert "/mnt/projects/CCBR-Pipelines/bin" in hpc.env_vars
+    assert hpc.singularity_sif_dir == "/mnt/projects/CCBR-Pipelines/SIFs"
+    assert "mamba activate " in hpc.CONDA_ACTIVATE
 
 
 def test_hpc_none():

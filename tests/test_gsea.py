@@ -26,8 +26,8 @@ def test_run_os_cmd():
     assert not ncbr_huse.run_os_cmd(["echo", "hello"], sys.stdout, True)
 
 
-def test_un_gzip():
-    assert not ncbr_huse.un_gzip("tests/data/file.txt", sys.stdout)
+def test_un_gzip(data_dir_rel):
+    assert not ncbr_huse.un_gzip(str(data_dir_rel / "file.txt"), sys.stdout)
 
 
 def test_send_update():
@@ -40,19 +40,11 @@ def test_err_out():
     assert str(exc_info.value) == "custom error"
 
 
-def test_fasta_count():
-    assert all(
-        [
-            ncbr_huse.fasta_count("tests/data/file.fa") == 2,
-            ncbr_huse.fasta_count("tests/data/file.txt") == 0,
-        ]
-    )
+def test_fasta_count(data_dir_rel):
+    assert ncbr_huse.fasta_count(str(data_dir_rel / "file.fa")) == 2
+    assert ncbr_huse.fasta_count(str(data_dir_rel / "file.txt")) == 0
 
 
-def test_fasta_list():
-    assert all(
-        [
-            ncbr_huse.fasta_list("tests/data/file.fa") == ["a", "b"],
-            ncbr_huse.fasta_list("tests/data/file.txt") == [],
-        ]
-    )
+def test_fasta_list(data_dir_rel):
+    assert ncbr_huse.fasta_list(str(data_dir_rel / "file.fa")) == ["a", "b"]
+    assert ncbr_huse.fasta_list(str(data_dir_rel / "file.txt")) == []

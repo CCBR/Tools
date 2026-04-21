@@ -10,10 +10,6 @@ def test_shell_run():
 
 
 def test_concat_newline():
-    assert all(
-        [
-            concat_newline("hello", "world") == "hello\nworld",
-            concat_newline("goodbye", "") == "goodbye",
-            concat_newline() == "",
-        ]
-    )
+    assert concat_newline("hello", "world") == "hello\nworld"
+    assert concat_newline("goodbye", "") == "goodbye"
+    assert concat_newline() == ""

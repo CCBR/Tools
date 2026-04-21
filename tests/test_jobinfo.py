@@ -25,14 +25,10 @@ def test_check_host():
 
 
 def test_mem2gb():
-    assert all(
-        [
-            mem2gb("0") == 0.0,
-            mem2gb("3.5 GB") == 3.5,
-            mem2gb("1024 MB") == 1.0,
-            mem2gb("1048576 KB") == 1.0,
-        ]
-    )
+    assert mem2gb("0") == 0.0
+    assert mem2gb("3.5 GB") == 3.5
+    assert mem2gb("1024 MB") == 1.0
+    assert mem2gb("1048576 KB") == 1.0
 
 
 def test_time2sec():
