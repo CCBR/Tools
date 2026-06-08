@@ -13,7 +13,7 @@ Enhance the `ccbr tools install` command to support the complete release deploym
 **Current:** Only creates major.minor symlink
 **Change:** Fix `rm -if` to `rm -f` and prepare for latest symlink handling
 
-```python
+````python
 # BEFORE
 SET_SYMLINK = """
 pushd {BASE_PATH}
@@ -53,7 +53,7 @@ chown -R :{GROUP} {PATH}"""
 # AFTER
 INSTALL_SCRIPT = """{CONDA_ACTIVATE}
 {INSTALL}"""
-```
+````
 
 #### Change 1.4: Add FINAL_PERMISSIONS Template
 
