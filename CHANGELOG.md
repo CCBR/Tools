@@ -1,4 +1,6 @@
-## Tools development version
+## Tools 0.5.4
+
+- `ccbr_tools install`: Add `latest` symlink support and final read-only permission model. Creates complete symlink chain (`latest → v{major}.{minor} → .v{version}`) and applies read-only permissions (`u-w,g-w,o-w,a+rX`) to deployed code. Uses atomic symlink operations to prevent race conditions. (#187, @kopardev)
 
 ## Tools 0.5.3
 
