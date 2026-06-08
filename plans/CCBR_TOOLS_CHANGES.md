@@ -132,8 +132,8 @@ def install(
 
 Test cases:
 
-1. Verify `SET_SYMLINK` deletes old symlink before creating new one
-2. Verify `LATEST_SYMLINK` deletes old latest symlink before creating new one
+1. Verify `SET_SYMLINK` replaces/updates an existing major.minor symlink atomically (`ln -sfn`)
+2. Verify `LATEST_SYMLINK` replaces/updates an existing latest symlink atomically (`ln -sfn`)
 3. Verify `FINAL_PERMISSIONS` applies correct chmod flags recursively
 4. Verify script output for non-dev versions includes all three symlink/permission steps
 5. Verify script output for dev versions excludes symlink/permission steps
