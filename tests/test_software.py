@@ -150,7 +150,9 @@ class TestSymlinkTemplates:
             BASE_PATH="/data/CCBR_Pipeliner/Pipelines/RENEE",
         )
         assert "chown -R :CCBR_Pipeliner /data/CCBR_Pipeliner/Pipelines/RENEE" in script
-        assert "chmod -R u-w,g-w,o-w,a+rX /data/CCBR_Pipeliner/Pipelines/RENEE" in script
+        assert (
+            "chmod -R u-w,g-w,o-w,a+rX /data/CCBR_Pipeliner/Pipelines/RENEE" in script
+        )
 
     def test_final_permissions_flags(self):
         """Verify FINAL_PERMISSIONS uses correct permission flags."""
@@ -197,8 +199,7 @@ class TestInstallSymlinkChain:
         )
         assert "chown -R :CCBR_Pipeliner /data/CCBR_Pipeliner/Pipelines/RENEE" in result
         assert (
-            "chmod -R u-w,g-w,o-w,a+rX /data/CCBR_Pipeliner/Pipelines/RENEE"
-            in result
+            "chmod -R u-w,g-w,o-w,a+rX /data/CCBR_Pipeliner/Pipelines/RENEE" in result
         )
 
     def test_install_symlink_order(self):
@@ -214,9 +215,9 @@ class TestInstallSymlinkChain:
         latest_pos = result.find("ln -sfn v2.7 latest")
         perms_pos = result.find("chmod -R u-w,g-w,o-w,a+rX")
 
-        assert (
-            major_minor_pos < latest_pos < perms_pos
-        ), "Symlinks must be created before permissions are applied"
+        assert major_minor_pos < latest_pos < perms_pos, (
+            "Symlinks must be created before permissions are applied"
+        )
 
     def test_install_no_intermediate_permissions(self):
         """Verify install does not apply intermediate permissions."""
@@ -297,7 +298,4 @@ class TestBashToolInstall:
             dryrun=True,
             debug="biowulf",
         )
-        assert (
-            "chmod -R u-w,g-w,o-w,a+rX /data/CCBR_Pipeliner/Tools/permfix"
-            in result
-        )
+        assert "chmod -R u-w,g-w,o-w,a+rX /data/CCBR_Pipeliner/Tools/permfix" in result

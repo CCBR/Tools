@@ -1,6 +1,7 @@
 # Changes Required in ccbr_tools
 
 ## Summary
+
 Enhance the `ccbr tools install` command to support the complete release deployment workflow including latest symlink management and final permission locking.
 
 ## Files to Modify
@@ -8,6 +9,7 @@ Enhance the `ccbr tools install` command to support the complete release deploym
 ### 1. `src/ccbr_tools/software.py`
 
 #### Change 1.1: Update SET_SYMLINK Template
+
 **Current:** Only creates major.minor symlink
 **Change:** Fix `rm -if` to `rm -f` and prepare for latest symlink handling
 
@@ -29,6 +31,7 @@ popd"""
 ```
 
 #### Change 1.2: Add LATEST_SYMLINK Template
+
 **New template:** Creates and manages the latest symlink pointing to major.minor version
 
 ```python
@@ -40,6 +43,7 @@ popd"""
 ```
 
 #### Change 1.3: Update INSTALL_SCRIPT Template
+
 **Current:** Applies group-writable permissions during install
 **Change:** Remove intermediate permissions; apply strict final permissions only
 
@@ -57,6 +61,7 @@ INSTALL_SCRIPT = """{CONDA_ACTIVATE}
 ```
 
 #### Change 1.4: Add FINAL_PERMISSIONS Template
+
 **New template:** Applies read-only permissions to the entire deployment
 
 ```python
@@ -66,6 +71,7 @@ chmod -R u-w,g-w,o-w,a+rX {BASE_PATH}"""
 ```
 
 #### Change 1.5: Update install() Function
+
 **Current:** Only creates major.minor symlink
 **Change:** Add latest symlink creation and final permissions
 
@@ -91,7 +97,7 @@ def install(
         INSTALL=tool.install(hpc, branch_tag=branch_tag),
         PATH=tool.path(hpc),
     )
-    
+
     if not tool.is_dev_version:
         # Create major.minor symlink
         script += symlink_script.format(
@@ -99,19 +105,19 @@ def install(
             HIDDEN_VERSION=tool.hidden_version,
             MAJOR_MINOR_VERSION=tool.major_minor,
         )
-        
+
         # Create latest symlink
         script += latest_symlink_script.format(
             BASE_PATH=tool.base_path(hpc),
             MAJOR_MINOR_VERSION=tool.major_minor,
         )
-        
+
         # Apply final permissions
         script += final_permissions_script.format(
             GROUP=hpc.GROUP,
             BASE_PATH=tool.base_path(hpc),
         )
-    
+
     if dryrun:
         print(script)
     else:
@@ -121,9 +127,11 @@ def install(
 ## Testing Requirements
 
 ### Unit Tests
+
 **File:** `tests/test_software.py` (or create if doesn't exist)
 
 Test cases:
+
 1. Verify `SET_SYMLINK` deletes old symlink before creating new one
 2. Verify `LATEST_SYMLINK` deletes old latest symlink before creating new one
 3. Verify `FINAL_PERMISSIONS` applies correct chmod flags recursively
@@ -131,15 +139,18 @@ Test cases:
 5. Verify script output for dev versions excludes symlink/permission steps
 
 ### Integration Tests
+
 **Prerequisites:** Test in a safe sandbox directory
 
 Test cases:
+
 1. Run install for a non-dev version and verify symlink chain
 2. Run install again with different patch version and verify latest points to new version
 3. Verify permissions are read-only (`u-w,g-w,o-w,a+rX`)
 4. Verify quick rollback works (`rm -f latest && ln -s v2.6 latest`)
 
 ### Manual Verification
+
 ```bash
 # After running: ccbr tools install RENEE v2.7.6
 readlink -f /data/CCBR_Pipeliner/Pipelines/RENEE/latest
@@ -176,10 +187,12 @@ ls -ld /data/CCBR_Pipeliner/Pipelines/RENEE/
 ## Backwards Compatibility
 
 **Impact:** Non-breaking change
+
 - Existing versions without latest symlink continue to work
 - Running install multiple times is safe (idempotent due to `rm -f`)
 - Previous deployments remain read-only; can coexist with new ones
 
 **Migration:** No action required for existing deployments
+
 - Old symlink structure (without latest) continues to work
 - `latest` symlink added on next release deployment
