@@ -25,10 +25,8 @@ popd"""
 # AFTER
 SET_SYMLINK = """
 pushd {BASE_PATH}
-rm -f {MAJOR_MINOR_VERSION}
-ln -s {HIDDEN_VERSION} {MAJOR_MINOR_VERSION}
+ln -sfn {HIDDEN_VERSION} {MAJOR_MINOR_VERSION}
 popd"""
-```
 
 #### Change 1.2: Add LATEST_SYMLINK Template
 
