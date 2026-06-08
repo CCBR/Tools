@@ -17,7 +17,7 @@ This plan standardizes the deployment process for all CCBR pipelines and tools, 
     └── ...
 ```
 
-## Release Process (5 Steps)
+## Release Process (6 Steps)
 
 ### Step 1: Clone Release Tag to Hidden Version Directory
 
