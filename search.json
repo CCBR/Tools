@@ -55,22 +55,11 @@
     ]
   },
   {
-    "objectID": "CHANGELOG.html",
-    "href": "CHANGELOG.html",
-    "title": "CCBR Tools",
-    "section": "",
-    "text": "pkg_util: Lazy-import cffconvert to fix rpds ABI mismatch on Python 3.12. (#182, @kopardev)\nccbr-hooks detect-absolute-paths: Reduce false positives caused by /dev/null. (#174, @kelly-sovacool)",
-    "crumbs": [
-      "Project information",
-      "Changelog"
-    ]
-  },
-  {
     "objectID": "CHANGELOG.html#tools-0.5.3",
     "href": "CHANGELOG.html#tools-0.5.3",
     "title": "CCBR Tools",
-    "section": "",
-    "text": "pkg_util: Lazy-import cffconvert to fix rpds ABI mismatch on Python 3.12. (#182, @kopardev)\nccbr-hooks detect-absolute-paths: Reduce false positives caused by /dev/null. (#174, @kelly-sovacool)",
+    "section": "Tools 0.5.3",
+    "text": "Tools 0.5.3\n\npkg_util: Lazy-import cffconvert to fix rpds ABI mismatch on Python 3.12. (#182, @kopardev)\nccbr-hooks detect-absolute-paths: Reduce false positives caused by /dev/null. (#174, @kelly-sovacool)",
     "crumbs": [
       "Project information",
       "Changelog"
