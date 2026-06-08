@@ -55,6 +55,28 @@
     ]
   },
   {
+    "objectID": "CHANGELOG.html",
+    "href": "CHANGELOG.html",
+    "title": "CCBR Tools",
+    "section": "",
+    "text": "ccbr_tools install: Add latest symlink support and final read-only permission model. Creates complete symlink chain (latest → v{major}.{minor} → .v{version}) and applies read-only permissions (u-w,g-w,o-w,a+rX) to deployed code. Uses atomic symlink operations to prevent race conditions. (#187, @kopardev)",
+    "crumbs": [
+      "Project information",
+      "Changelog"
+    ]
+  },
+  {
+    "objectID": "CHANGELOG.html#tools-0.5.4",
+    "href": "CHANGELOG.html#tools-0.5.4",
+    "title": "CCBR Tools",
+    "section": "",
+    "text": "ccbr_tools install: Add latest symlink support and final read-only permission model. Creates complete symlink chain (latest → v{major}.{minor} → .v{version}) and applies read-only permissions (u-w,g-w,o-w,a+rX) to deployed code. Uses atomic symlink operations to prevent race conditions. (#187, @kopardev)",
+    "crumbs": [
+      "Project information",
+      "Changelog"
+    ]
+  },
+  {
     "objectID": "CHANGELOG.html#tools-0.5.3",
     "href": "CHANGELOG.html#tools-0.5.3",
     "title": "CCBR Tools",

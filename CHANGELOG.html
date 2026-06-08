@@ -416,7 +416,7 @@ ul.task-list li input[type="checkbox"] {
     <h2 id="toc-title">On this page</h2>
    
   <ul>
-  <li><a href="#tools-development-version" id="toc-tools-development-version" class="nav-link active" data-scroll-target="#tools-development-version">Tools development version</a></li>
+  <li><a href="#tools-0.5.4" id="toc-tools-0.5.4" class="nav-link active" data-scroll-target="#tools-0.5.4">Tools 0.5.4</a></li>
   <li><a href="#tools-0.5.3" id="toc-tools-0.5.3" class="nav-link" data-scroll-target="#tools-0.5.3">Tools 0.5.3</a></li>
   <li><a href="#tools-0.5.2" id="toc-tools-0.5.2" class="nav-link" data-scroll-target="#tools-0.5.2">Tools 0.5.2</a></li>
   <li><a href="#tools-0.5.1" id="toc-tools-0.5.1" class="nav-link" data-scroll-target="#tools-0.5.1">Tools 0.5.1</a></li>
@@ -460,8 +460,11 @@ ul.task-list li input[type="checkbox"] {
 
 
 
-<section id="tools-development-version" class="level2">
-<h2 class="anchored" data-anchor-id="tools-development-version">Tools development version</h2>
+<section id="tools-0.5.4" class="level2">
+<h2 class="anchored" data-anchor-id="tools-0.5.4">Tools 0.5.4</h2>
+<ul>
+<li><code>ccbr_tools install</code>: Add <code>latest</code> symlink support and final read-only permission model. Creates complete symlink chain (<code>latest → v{major}.{minor} → .v{version}</code>) and applies read-only permissions (<code>u-w,g-w,o-w,a+rX</code>) to deployed code. Uses atomic symlink operations to prevent race conditions. (#187, <span class="citation" data-cites="kopardev">@kopardev</span>)</li>
+</ul>
 </section>
 <section id="tools-0.5.3" class="level2">
 <h2 class="anchored" data-anchor-id="tools-0.5.3">Tools 0.5.3</h2>
