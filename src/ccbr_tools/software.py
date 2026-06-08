@@ -202,4 +202,4 @@ def install(
     if dryrun:
         print(script)
     else:
-        shell_run(script, shell=True, capture_output=False)
+        shell_run(f"bash -e << 'EOF'\n{script}\nEOF", shell=True, capture_output=False)
