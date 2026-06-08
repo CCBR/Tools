@@ -100,7 +100,7 @@ chmod -R u-w,g-w,o-w,a+rX /data/CCBR_Pipeliner/Pipelines/RENEE/
 - No one can modify, delete, or rename anything under `/data/CCBR_Pipeliner/Pipelines/RENEE/`
 - Prevents accidental modifications; requires `sudo` or explicit `chmod` to update
 
-### Step 7: Verify Symlink Chain & Deployment
+### Step 6: Verify Symlink Chain & Deployment
 
 **Action:** Confirm the full chain resolves and works correctly
 
