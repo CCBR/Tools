@@ -13,7 +13,7 @@ Enhance the `ccbr tools install` command to support the complete release deploym
 **Current:** Only creates major.minor symlink
 **Change:** Fix `rm -if` to `rm -f` and prepare for latest symlink handling
 
-```python
+````python
 # BEFORE
 SET_SYMLINK = """
 pushd {BASE_PATH}
@@ -25,22 +25,17 @@ popd"""
 # AFTER
 SET_SYMLINK = """
 pushd {BASE_PATH}
-rm -f {MAJOR_MINOR_VERSION}
-ln -s {HIDDEN_VERSION} {MAJOR_MINOR_VERSION}
+ln -sfn {HIDDEN_VERSION} {MAJOR_MINOR_VERSION}
 popd"""
-```
 
 #### Change 1.2: Add LATEST_SYMLINK Template
 
 **New template:** Creates and manages the latest symlink pointing to major.minor version
 
-```python
 LATEST_SYMLINK = """
 pushd {BASE_PATH}
-rm -f latest
-ln -s {MAJOR_MINOR_VERSION} latest
+ln -sfn {MAJOR_MINOR_VERSION} latest
 popd"""
-```
 
 #### Change 1.3: Update INSTALL_SCRIPT Template
 
@@ -58,7 +53,7 @@ chown -R :{GROUP} {PATH}"""
 # AFTER
 INSTALL_SCRIPT = """{CONDA_ACTIVATE}
 {INSTALL}"""
-```
+````
 
 #### Change 1.4: Add FINAL_PERMISSIONS Template
 
@@ -132,8 +127,8 @@ def install(
 
 Test cases:
 
-1. Verify `SET_SYMLINK` deletes old symlink before creating new one
-2. Verify `LATEST_SYMLINK` deletes old latest symlink before creating new one
+1. Verify `SET_SYMLINK` replaces/updates an existing major.minor symlink atomically (`ln -sfn`)
+2. Verify `LATEST_SYMLINK` replaces/updates an existing latest symlink atomically (`ln -sfn`)
 3. Verify `FINAL_PERMISSIONS` applies correct chmod flags recursively
 4. Verify script output for non-dev versions includes all three symlink/permission steps
 5. Verify script output for dev versions excludes symlink/permission steps

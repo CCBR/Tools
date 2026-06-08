@@ -17,7 +17,7 @@ This plan standardizes the deployment process for all CCBR pipelines and tools, 
     └── ...
 ```
 
-## Release Process (5 Steps)
+## Release Process (6 Steps)
 
 ### Step 1: Clone Release Tag to Hidden Version Directory
 
@@ -100,7 +100,7 @@ chmod -R u-w,g-w,o-w,a+rX /data/CCBR_Pipeliner/Pipelines/RENEE/
 - No one can modify, delete, or rename anything under `/data/CCBR_Pipeliner/Pipelines/RENEE/`
 - Prevents accidental modifications; requires `sudo` or explicit `chmod` to update
 
-### Step 7: Verify Symlink Chain & Deployment
+### Step 6: Verify Symlink Chain & Deployment
 
 **Action:** Confirm the full chain resolves and works correctly
 
@@ -161,17 +161,17 @@ ccbr tools install RENEE v2.7.6
 Internally executes:
 
 1. Clone into `.v2.7.6`
-2. Delete `v2.7` symlink if exists
-3. Create `v2.7` symlink
-4. Delete `latest` symlink if exists
-5. Create `latest` symlink
-6. Recursively apply permissions and ownership
+2. Atomically create/update `v2.7` → `.v2.7.6` (`ln -sfn`)
+3. Atomically create/update `latest` → `v2.7` (`ln -sfn`)
+4. Recursively apply ownership (`chown -R :CCBR_Pipeliner`)
+5. Recursively apply read-only permissions (`chmod -R u-w,g-w,o-w,a+rX`)
 
 ## Implementation Notes
 
 - **Non-Dev Versions Only:** Symlink creation only occurs for releases (not dev/pre-release versions)
-- **Idempotent:** Can be run multiple times safely; always deletes old symlinks before creating new ones
+- **Idempotent:** Can be run multiple times safely; symlinks are replaced atomically via `ln -sfn`
 - **Atomic:** All steps happen in sequence; failures halt the process
+- **Reversible:** Symlinks can be quickly reverted without removing source code
 - **Reversible:** Symlinks can be quickly reverted without removing source code
 
 ## Multi-Version Support
