@@ -2,8 +2,6 @@
 Miscellaneous utility functions for the package
 """
 
-from cffconvert.cli.create_citation import create_citation
-from cffconvert.cli.validate_or_write_output import validate_or_write_output
 import click
 import datetime
 import importlib.resources
@@ -125,6 +123,9 @@ def print_citation(citation_file=repo_base("CITATION.cff"), output_format="bibte
         citation_file (str): The path to the citation file.
         output_format (str): The desired output format for the citation.
     """
+    from cffconvert.cli.create_citation import create_citation
+    from cffconvert.cli.validate_or_write_output import validate_or_write_output
+
     citation = create_citation(citation_file, None)
     # click.echo(citation._implementation.cffobj['message'])
     validate_or_write_output(None, output_format, False, citation)
