@@ -160,8 +160,8 @@ ln -sfn {MAJOR_MINOR_VERSION} latest
 popd"""
 
 FINAL_PERMISSIONS = """
-chown -R :{GROUP} {PATH}
-chmod -R u-w,g-w,o-w,a+rX {PATH}"""
+chown -R :{GROUP} {BASE_PATH}
+chmod -R u-w,g-w,o-w,a+rX {BASE_PATH}"""
 
 
 def install(
@@ -197,7 +197,7 @@ def install(
         )
         script += final_permissions_script.format(
             GROUP=hpc.GROUP,
-            PATH=tool.path(hpc),
+            BASE_PATH=tool.base_path(hpc),
         )
     if dryrun:
         print(script)
