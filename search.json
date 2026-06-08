@@ -66,8 +66,8 @@
     ]
   },
   {
-    "objectID": "CHANGELOG.html#tools-development-version",
-    "href": "CHANGELOG.html#tools-development-version",
+    "objectID": "CHANGELOG.html#tools-0.5.3",
+    "href": "CHANGELOG.html#tools-0.5.3",
     "title": "CCBR Tools",
     "section": "",
     "text": "pkg_util: Lazy-import cffconvert to fix rpds ABI mismatch on Python 3.12. (#182, @kopardev)\nccbr-hooks detect-absolute-paths: Reduce false positives caused by /dev/null. (#174, @kelly-sovacool)",
@@ -1137,7 +1137,7 @@
     "href": "cite.html",
     "title": "CCBR Tools",
     "section": "",
-    "text": "Please cite this software if you use it in a publication:\n\nSovacool K., Koparde V., Kuhn S., Tandon M., and Huse S. (2026). CCBR Tools: Utilities for CCBR Bioinformatics Software (version v0.5.2). DOI: 10.5281/zenodo.13377166 URL: https://ccbr.github.io/Tools/\n\n\nBibtex entry\n@misc{YourReferenceHere,\nauthor = {Sovacool, Kelly and Koparde, Vishal and Kuhn, Skyler and Tandon, Mayank and Huse, Susan},\ndoi = {10.5281/zenodo.13377166},\nmonth = {3},\ntitle = {CCBR Tools: Utilities for CCBR Bioinformatics Software},\nurl = {https://ccbr.github.io/Tools/},\nyear = {2026}\n}",
+    "text": "Please cite this software if you use it in a publication:\n\nSovacool K., Koparde V., Kuhn S., Tandon M., and Huse S. (2026). CCBR Tools: Utilities for CCBR Bioinformatics Software (version v0.5.3). DOI: 10.5281/zenodo.13377166 URL: https://ccbr.github.io/Tools/\n\n\nBibtex entry\n@misc{YourReferenceHere,\nauthor = {Sovacool, Kelly and Koparde, Vishal and Kuhn, Skyler and Tandon, Mayank and Huse, Susan},\ndoi = {10.5281/zenodo.13377166},\nmonth = {6},\ntitle = {CCBR Tools: Utilities for CCBR Bioinformatics Software},\nurl = {https://ccbr.github.io/Tools/},\nyear = {2026}\n}",
     "crumbs": [
       "Project information",
       "Citation"
