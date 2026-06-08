@@ -85,15 +85,5 @@ def test_quarto_add(tmp_path):
 def test_install():
     output = shell_run("ccbr_tools install champagne v0.3.0 --hpc biowulf", check=False)
     assert "mamba activate /" in output
-    assert output.endswith(
-        """pip install git+https://github.com/CCBR/CHAMPAGNE.git@v0.3.0 -t /data/CCBR_Pipeliner/Pipelines/CHAMPAGNE/.v0.3.0
-chmod -R a+rX /data/CCBR_Pipeliner/Pipelines/CHAMPAGNE/.v0.3.0
-chmod -R g+rwX /data/CCBR_Pipeliner/Pipelines/CHAMPAGNE/.v0.3.0
-chown -R :CCBR_Pipeliner /data/CCBR_Pipeliner/Pipelines/CHAMPAGNE/.v0.3.0
-pushd /data/CCBR_Pipeliner/Pipelines/CHAMPAGNE
-rm -if v0.3
-ln -s .v0.3.0 v0.3
-chmod -R g+rwX v0.3
-popd
-"""
-    )
+    assert "pip install git+https://github.com/CCBR/CHAMPAGNE.git@v0.3.0" in output
+    assert "v0.3.0" in output

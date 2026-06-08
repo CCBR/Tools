@@ -16,7 +16,7 @@ This plan standardizes the deployment process for all CCBR pipelines and tools, 
     └── ...
 ```
 
-## Release Process (6 Steps)
+## Release Process (5 Steps)
 
 ### Step 1: Clone Release Tag to Hidden Version Directory
 **Action:** Clone the specific version tag into `.v{VERSION}` directory
@@ -25,37 +25,29 @@ git clone --depth 1 --branch v2.7.6 https://github.com/CCBR/RENEE.git .v2.7.6
 ```
 **Group:** `CCBR_Pipeliner`
 
-### Step 2: Delete Existing Major.Minor Symlink
-**Action:** Remove old `v{MAJOR}.{MINOR}` symlink if it exists
+### Step 2: Create Major.Minor Symlink
+**Action:** Atomically create/update symlink from `v{MAJOR}.{MINOR}` → `.v{VERSION}`
 ```bash
 cd /data/CCBR_Pipeliner/Pipelines/RENEE/
-rm -f v2.7
+ln -sfn .v2.7.6 v2.7
 ```
-**Purpose:** Ensures clean state before creating new symlink; prevents stale links
-**Note:** `-f` flag silently succeeds if file doesn't exist
+**Purpose:** Allows multiple patch versions under one major.minor ref; atomic operation prevents race conditions
+**Note:** `-sfn` flag replaces existing link and handles non-existent files safely
 
-### Step 3: Create Major.Minor Symlink
-**Action:** Create symlink from `v{MAJOR}.{MINOR}` → `.v{VERSION}`
+### Step 3: Create Latest Symlink
+**Action:** Atomically create/update symlink from `latest` → `v{MAJOR}.{MINOR}`
 ```bash
-ln -s .v2.7.6 v2.7
+ln -sfn v2.7 latest
 ```
-**Purpose:** Allows multiple patch versions under one major.minor ref
+**Purpose:** Single user-facing entry point that points to the active major.minor version; atomic operation prevents race conditions
 
-### Step 4: Delete Existing Latest Symlink
-**Action:** Remove old `latest` symlink if it exists
+### Step 4: Verify Symlink Chain
+**Action:** Confirm the full chain resolves correctly
 ```bash
-rm -f latest
+readlink -f latest  # should resolve to /data/.../RENEE/.v2.7.6
 ```
-**Purpose:** Ensures clean state before creating new symlink; prevents stale links
 
-### Step 5: Create Latest Symlink
-**Action:** Create symlink from `latest` → `v{MAJOR}.{MINOR}`
-```bash
-ln -s v2.7 latest
-```
-**Purpose:** Single user-facing entry point that points to the active major.minor version
-
-### Step 6: Apply Final Permissions & Ownership
+### Step 5: Apply Final Permissions & Ownership
 **Action:** Recursively lock down permissions and set group ownership
 ```bash
 chown -R :CCBR_Pipeliner /data/CCBR_Pipeliner/Pipelines/RENEE/
@@ -66,9 +58,9 @@ chmod -R u-w,g-w,o-w,a+rX /data/CCBR_Pipeliner/Pipelines/RENEE/
 
 `chown -R :CCBR_Pipeliner`:
 - Changes group ownership to `CCBR_Pipeliner` for:
-  - All files in `.v2.7.6/`, `v2.7/`, `latest/`
-  - All subdirectories in `.v2.7.6/`
-  - All symlinks (`v2.7`, `latest`)
+  - All files in `.v2.7.6/` and all subdirectories
+  - Symlink targets (the directories/files they point to), not the symlinks themselves
+  - Note: On most systems, symlink ownership doesn't affect access (target permissions are used)
 
 `chmod -R u-w,g-w,o-w,a+rX`:
 - **Files**: 

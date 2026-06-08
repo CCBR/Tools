@@ -1,5 +1,7 @@
 ## Tools development version
 
+- `ccbr_tools install`: Add `latest` symlink support and final read-only permission model. Creates complete symlink chain (`latest → v{major}.{minor} → .v{version}`) and applies read-only permissions (`u-w,g-w,o-w,a+rX`) to deployed code. Uses atomic symlink operations to prevent race conditions. (#187, @kopardev)
+
 ## Tools 0.5.3
 
 - `pkg_util`: Lazy-import cffconvert to fix rpds ABI mismatch on Python 3.12. (#182, @kopardev)

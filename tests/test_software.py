@@ -54,12 +54,10 @@ def test_install():
     assert (
         """pip install git+https://github.com/CCBR/CHAMPAGNE.git@v0.3.0 -t /data/CCBR_Pipeliner/Pipelines/CHAMPAGNE/.v0.3.0
 pushd /data/CCBR_Pipeliner/Pipelines/CHAMPAGNE
-rm -f v0.3
-ln -s .v0.3.0 v0.3
+ln -sfn .v0.3.0 v0.3
 popd
 pushd /data/CCBR_Pipeliner/Pipelines/CHAMPAGNE
-rm -f latest
-ln -s v0.3 latest
+ln -sfn v0.3 latest
 popd
 chown -R :CCBR_Pipeliner /data/CCBR_Pipeliner/Pipelines/CHAMPAGNE
 chmod -R u-w,g-w,o-w,a+rX /data/CCBR_Pipeliner/Pipelines/CHAMPAGNE
@@ -100,12 +98,10 @@ def test_custom():
     assert (
         """pip install git+https://github.com/CCBR/cooltool.git@v1.0.0 -t /data/CCBR_Pipeliner/Tools/cooltool/.v1.0.0
 pushd /data/CCBR_Pipeliner/Tools/cooltool
-rm -f v1.0
-ln -s .v1.0.0 v1.0
+ln -sfn .v1.0.0 v1.0
 popd
 pushd /data/CCBR_Pipeliner/Tools/cooltool
-rm -f latest
-ln -s v1.0 latest
+ln -sfn v1.0 latest
 popd
 chown -R :CCBR_Pipeliner /data/CCBR_Pipeliner/Tools/cooltool
 chmod -R u-w,g-w,o-w,a+rX /data/CCBR_Pipeliner/Tools/cooltool
@@ -117,37 +113,35 @@ chmod -R u-w,g-w,o-w,a+rX /data/CCBR_Pipeliner/Tools/cooltool
 def test_unsupported():
     with pytest.raises(KeyError) as exc_info:
         Software.create_software("unsupported_tool", "v1.0.0")
-        assert str(exc_info.value).startswith(
-            "unsupported_tool not found in software list"
-        )
+    assert "unsupported_tool not found in software list" in str(exc_info.value)
 
 
 class TestSymlinkTemplates:
     """Tests for symlink and permission templates."""
 
     def test_set_symlink_template(self):
-        """Verify SET_SYMLINK template creates major.minor symlink with rm -f."""
+        """Verify SET_SYMLINK template creates major.minor symlink atomically."""
         script = SET_SYMLINK.format(
             BASE_PATH="/data/test",
             HIDDEN_VERSION=".v2.7.6",
             MAJOR_MINOR_VERSION="v2.7",
         )
-        assert "rm -f v2.7" in script
-        assert "ln -s .v2.7.6 v2.7" in script
+        assert "ln -sfn .v2.7.6 v2.7" in script
         assert "pushd /data/test" in script
         assert "popd" in script
+        assert "rm -f" not in script
         assert "chmod" not in script
 
     def test_latest_symlink_template(self):
-        """Verify LATEST_SYMLINK template creates latest symlink with rm -f."""
+        """Verify LATEST_SYMLINK template creates latest symlink atomically."""
         script = LATEST_SYMLINK.format(
             BASE_PATH="/data/test",
             MAJOR_MINOR_VERSION="v2.7",
         )
-        assert "rm -f latest" in script
-        assert "ln -s v2.7 latest" in script
+        assert "ln -sfn v2.7 latest" in script
         assert "pushd /data/test" in script
         assert "popd" in script
+        assert "rm -f" not in script
 
     def test_final_permissions_template(self):
         """Verify FINAL_PERMISSIONS applies correct chmod and chown."""
@@ -179,8 +173,7 @@ class TestInstallSymlinkChain:
             dryrun=True,
             debug="biowulf",
         )
-        assert "rm -f v2.7" in result
-        assert "ln -s .v2.7.6 v2.7" in result
+        assert "ln -sfn .v2.7.6 v2.7" in result
 
     def test_install_creates_latest_symlink(self):
         """Verify install creates latest symlink pointing to major.minor."""
@@ -191,8 +184,7 @@ class TestInstallSymlinkChain:
             dryrun=True,
             debug="biowulf",
         )
-        assert "rm -f latest" in result
-        assert "ln -s v2.7 latest" in result
+        assert "ln -sfn v2.7 latest" in result
 
     def test_install_applies_final_permissions(self):
         """Verify install applies final permissions recursively."""
@@ -218,8 +210,8 @@ class TestInstallSymlinkChain:
             dryrun=True,
             debug="biowulf",
         )
-        major_minor_pos = result.find("ln -s .v2.7.6 v2.7")
-        latest_pos = result.find("ln -s v2.7 latest")
+        major_minor_pos = result.find("ln -sfn .v2.7.6 v2.7")
+        latest_pos = result.find("ln -sfn v2.7 latest")
         perms_pos = result.find("chmod -R u-w,g-w,o-w,a+rX")
 
         assert (
@@ -250,14 +242,13 @@ class TestInstallSymlinkChain:
             dryrun=True,
             debug="biowulf",
         )
-        assert "rm -f latest" not in result
-        assert "ln -s" not in result
+        assert "ln -sfn" not in result
         assert "chmod" not in result
         assert "chown" not in result
 
 
 class TestRENEEPipelineInstall:
-    """Integration tests for RENEE pipeline installation."""
+    """Unit tests for RENEE pipeline install script generation."""
 
     def test_renee_snakemake_path(self):
         """Verify RENEE uses correct pipeline path."""
@@ -284,7 +275,7 @@ class TestRENEEPipelineInstall:
 
 
 class TestBashToolInstall:
-    """Integration tests for BashTool installation (e.g., permfix)."""
+    """Unit tests for BashTool install script generation (e.g., permfix)."""
 
     def test_bashtool_latest_symlink(self):
         """Verify BashTool also creates latest symlink."""
@@ -295,8 +286,7 @@ class TestBashToolInstall:
             dryrun=True,
             debug="biowulf",
         )
-        assert "rm -f latest" in result
-        assert "ln -s v1.2 latest" in result
+        assert "ln -sfn v1.2 latest" in result
 
     def test_bashtool_final_permissions(self):
         """Verify BashTool applies final permissions."""
