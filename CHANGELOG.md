@@ -1,5 +1,7 @@
 ## Tools development version
 
+## Tools 0.5.3
+
 - `pkg_util`: Lazy-import cffconvert to fix rpds ABI mismatch on Python 3.12. (#182, @kopardev)
 - `ccbr-hooks detect-absolute-paths`: Reduce false positives caused by `/dev/null`. (#174, @kelly-sovacool)
 
