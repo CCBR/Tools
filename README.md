@@ -178,7 +178,7 @@ guidelines](https://CCBR.github.io/Tools/CONTRIBUTING).
 Please cite this software if you use it in a publication:
 
 > Sovacool K., Koparde V., Kuhn S., Tandon M., and Huse S. (2026). CCBR
-> Tools: Utilities for CCBR Bioinformatics Software (version v0.5.2).
+> Tools: Utilities for CCBR Bioinformatics Software (version v0.5.3).
 > DOI: 10.5281/zenodo.13377166 URL: https://ccbr.github.io/Tools/
 
 ### Bibtex entry
@@ -187,7 +187,7 @@ Please cite this software if you use it in a publication:
 @misc{YourReferenceHere,
 author = {Sovacool, Kelly and Koparde, Vishal and Kuhn, Skyler and Tandon, Mayank and Huse, Susan},
 doi = {10.5281/zenodo.13377166},
-month = {3},
+month = {6},
 title = {CCBR Tools: Utilities for CCBR Bioinformatics Software},
 url = {https://ccbr.github.io/Tools/},
 year = {2026}
