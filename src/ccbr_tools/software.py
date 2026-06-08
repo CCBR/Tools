@@ -148,16 +148,22 @@ CCBR_SOFTWARE = {
 
 SET_SYMLINK = """
 pushd {BASE_PATH}
-rm -if {MAJOR_MINOR_VERSION}
+rm -f {MAJOR_MINOR_VERSION}
 ln -s {HIDDEN_VERSION} {MAJOR_MINOR_VERSION}
-chmod -R g+rwX {MAJOR_MINOR_VERSION}
 popd"""
 
 INSTALL_SCRIPT = """{CONDA_ACTIVATE}
-{INSTALL}
-chmod -R a+rX {PATH}
-chmod -R g+rwX {PATH}
-chown -R :{GROUP} {PATH}"""
+{INSTALL}"""
+
+LATEST_SYMLINK = """
+pushd {BASE_PATH}
+rm -f latest
+ln -s {MAJOR_MINOR_VERSION} latest
+popd"""
+
+FINAL_PERMISSIONS = """
+chown -R :{GROUP} {BASE_PATH}
+chmod -R u-w,g-w,o-w,a+rX {BASE_PATH}"""
 
 
 def install(
@@ -168,6 +174,8 @@ def install(
     software_type=None,
     install_script=INSTALL_SCRIPT,
     symlink_script=SET_SYMLINK,
+    latest_symlink_script=LATEST_SYMLINK,
+    final_permissions_script=FINAL_PERMISSIONS,
     debug=False,
 ):
     hpc = Cluster.create_hpc(debug=debug)
@@ -184,6 +192,14 @@ def install(
             BASE_PATH=tool.base_path(hpc),
             HIDDEN_VERSION=tool.hidden_version,
             MAJOR_MINOR_VERSION=tool.major_minor,
+        )
+        script += latest_symlink_script.format(
+            BASE_PATH=tool.base_path(hpc),
+            MAJOR_MINOR_VERSION=tool.major_minor,
+        )
+        script += final_permissions_script.format(
+            GROUP=hpc.GROUP,
+            BASE_PATH=tool.base_path(hpc),
         )
     if dryrun:
         print(script)
