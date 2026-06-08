@@ -34,13 +34,10 @@ popd"""
 
 **New template:** Creates and manages the latest symlink pointing to major.minor version
 
-```python
 LATEST_SYMLINK = """
 pushd {BASE_PATH}
-rm -f latest
-ln -s {MAJOR_MINOR_VERSION} latest
+ln -sfn {MAJOR_MINOR_VERSION} latest
 popd"""
-```
 
 #### Change 1.3: Update INSTALL_SCRIPT Template
 
