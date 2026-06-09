@@ -1,12 +1,19 @@
 ## Tools development version
 
+## Tools 0.6.0
+
+Bug fixes for two critical issues in the `ccbr_tools install` command: (#191, @kopardev, @copilot)
+
+1. **Mamba Activation Error Suppression** — Suppress misleading error messages when mamba environment activation fails (non-critical operation)
+2. **Fix Permissions Scope** — Apply `chown` and `chmod` only to the newly-installed version folder, not the entire parent directory
+
 ## Tools 0.5.4
 
 - `ccbr_tools install`: Add `latest` symlink support and final read-only permission model. Creates complete symlink chain (`latest → v{major}.{minor} → .v{version}`) and applies read-only permissions (`u-w,g-w,o-w,a+rX`) to deployed code. Uses atomic symlink operations to prevent race conditions. (#187, @kopardev)
 
 ## Tools 0.5.3
 
-- `pkg_util`: Lazy-import cffconvert to fix rpds ABI mismatch on Python 3.12. (#182, @kopardev)
+- `pkg_util`: Lazy-import cffconvert to fix rpds ABI mismatch on Python 3.12. (#182, @kopardev, @copilot)
 - `ccbr-hooks detect-absolute-paths`: Reduce false positives caused by `/dev/null`. (#174, @kelly-sovacool)
 
 ## Tools 0.5.2
