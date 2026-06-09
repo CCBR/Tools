@@ -149,9 +149,13 @@ class TestSymlinkTemplates:
             GROUP="CCBR_Pipeliner",
             PATH="/data/CCBR_Pipeliner/Pipelines/RENEE/.v2.7.6",
         )
-        assert "chown -R :CCBR_Pipeliner /data/CCBR_Pipeliner/Pipelines/RENEE/.v2.7.6" in script
         assert (
-            "chmod -R u-w,g-w,o-w,a+rX /data/CCBR_Pipeliner/Pipelines/RENEE/.v2.7.6" in script
+            "chown -R :CCBR_Pipeliner /data/CCBR_Pipeliner/Pipelines/RENEE/.v2.7.6"
+            in script
+        )
+        assert (
+            "chmod -R u-w,g-w,o-w,a+rX /data/CCBR_Pipeliner/Pipelines/RENEE/.v2.7.6"
+            in script
         )
 
     def test_final_permissions_flags(self):
@@ -197,9 +201,13 @@ class TestInstallSymlinkChain:
             dryrun=True,
             debug="biowulf",
         )
-        assert "chown -R :CCBR_Pipeliner /data/CCBR_Pipeliner/Pipelines/RENEE/.v2.7.6" in result
         assert (
-            "chmod -R u-w,g-w,o-w,a+rX /data/CCBR_Pipeliner/Pipelines/RENEE/.v2.7.6" in result
+            "chown -R :CCBR_Pipeliner /data/CCBR_Pipeliner/Pipelines/RENEE/.v2.7.6"
+            in result
+        )
+        assert (
+            "chmod -R u-w,g-w,o-w,a+rX /data/CCBR_Pipeliner/Pipelines/RENEE/.v2.7.6"
+            in result
         )
 
     def test_install_symlink_order(self):
@@ -298,4 +306,7 @@ class TestBashToolInstall:
             dryrun=True,
             debug="biowulf",
         )
-        assert "chmod -R u-w,g-w,o-w,a+rX /data/CCBR_Pipeliner/Tools/permfix/.v1.2.3" in result
+        assert (
+            "chmod -R u-w,g-w,o-w,a+rX /data/CCBR_Pipeliner/Tools/permfix/.v1.2.3"
+            in result
+        )
