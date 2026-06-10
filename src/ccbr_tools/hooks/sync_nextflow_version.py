@@ -49,7 +49,6 @@ def update_manifest_version(config_text: str, version: str) -> tuple[str, bool]:
 
         if not in_manifest and MANIFEST_BLOCK_PATTERN.match(line_content):
             in_manifest = True
-            manifest_depth = line_content.count("{") - line_content.count("}")
 
         if in_manifest and not found_manifest_version:
             match = MANIFEST_VERSION_PATTERN.match(line_content)
@@ -101,6 +100,4 @@ def sync_nextflow_version():
 
         if changed:
             nextflow_config.write_text(updated_text, encoding="utf-8")
-            click.echo(
-                f"Updated {nextflow_config.name} manifest.version to {version}."
-            )
+            click.echo(f"Updated {nextflow_config.name} manifest.version to {version}.")

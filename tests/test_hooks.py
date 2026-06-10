@@ -524,18 +524,26 @@ manifest {
         encoding="utf-8",
     )
 
-    with runner.isolated_filesystem(temp_dir=tmp_path):
+    with runner.isolated_filesystem(temp_dir=str(tmp_path)) as cwd:
+        Path(cwd, "VERSION").write_text(
+            version_file.read_text(encoding="utf-8"), encoding="utf-8"
+        )
+        Path(cwd, "nextflow.config").write_text(
+            config_file.read_text(encoding="utf-8"), encoding="utf-8"
+        )
         result = runner.invoke(sync_nextflow_version)
 
     assert result.exit_code == 0
-    assert 'version = "1.2.3"' in config_file.read_text(encoding="utf-8")
+    assert 'version = "1.2.3"' in Path(cwd, "nextflow.config").read_text(
+        encoding="utf-8"
+    )
 
 
 def test_sync_nextflow_version_cli_skips_when_nextflow_config_missing(tmp_path):
     runner = CliRunner()
-    (tmp_path / "VERSION").write_text("1.2.3\n", encoding="utf-8")
 
-    with runner.isolated_filesystem(temp_dir=tmp_path):
+    with runner.isolated_filesystem(temp_dir=str(tmp_path)):
+        Path("VERSION").write_text("1.2.3\n", encoding="utf-8")
         result = runner.invoke(sync_nextflow_version)
 
     assert result.exit_code == 0
@@ -544,16 +552,15 @@ def test_sync_nextflow_version_cli_skips_when_nextflow_config_missing(tmp_path):
 
 def test_sync_nextflow_version_cli_fails_when_version_missing(tmp_path):
     runner = CliRunner()
-    (tmp_path / "nextflow.config").write_text(
-        """
+    with runner.isolated_filesystem(temp_dir=str(tmp_path)):
+        Path("nextflow.config").write_text(
+            """
 manifest {
     version = "0.1.0-dev"
 }
 """,
-        encoding="utf-8",
-    )
-
-    with runner.isolated_filesystem(temp_dir=tmp_path):
+            encoding="utf-8",
+        )
         result = runner.invoke(sync_nextflow_version)
 
     assert result.exit_code != 0
