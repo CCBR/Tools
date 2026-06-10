@@ -7,7 +7,7 @@ Add this to your `.pre-commit-config.yaml` file:
 
 ```yaml
 - repo: https://github.com/CCBR/Tools
-  rev: v0.6.1
+  rev: v0.7.0
   hooks:
     - id: sync-nextflow-version
 ```
