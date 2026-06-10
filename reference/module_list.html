@@ -80,8 +80,8 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <link href="../site_libs/quarto-html/quarto-syntax-highlighting-dark-95d86bad09a6ca11867430c4d25546ae.css" rel="stylesheet" class="quarto-color-scheme quarto-color-alternate" id="quarto-text-highlighting-styles">
 <script src="../site_libs/bootstrap/bootstrap.min.js"></script>
 <link href="../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
-<link href="../site_libs/bootstrap/bootstrap-d1914d400ded38e38378bab928404dac.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme" id="quarto-bootstrap" data-mode="light">
-<link href="../site_libs/bootstrap/bootstrap-dark-bc5f45c3f4f1882e8470d59c104addda.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme quarto-color-alternate" id="quarto-bootstrap" data-mode="dark">
+<link href="../site_libs/bootstrap/bootstrap-f5617e33543362d376b6fe1cb875ae04.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme" id="quarto-bootstrap" data-mode="light">
+<link href="../site_libs/bootstrap/bootstrap-dark-b57f8cc648fd7b6c040ab6e093daf68a.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme quarto-color-alternate" id="quarto-bootstrap" data-mode="dark">
 <script id="quarto-search-options" type="application/json">{
   "location": "navbar",
   "copy-button": false,
@@ -584,7 +584,9 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   <li><a href="#example" id="toc-example" class="nav-link" data-scroll-target="#example">Example</a></li>
   <li><a href="#functions" id="toc-functions" class="nav-link" data-scroll-target="#functions">Functions</a>
   <ul class="collapse">
+  <li><a href="#ccbr_tools.module_list.main" id="toc-ccbr_tools.module_list.main" class="nav-link" data-scroll-target="#ccbr_tools.module_list.main">main</a></li>
   <li><a href="#ccbr_tools.module_list.module_list" id="toc-ccbr_tools.module_list.module_list" class="nav-link" data-scroll-target="#ccbr_tools.module_list.module_list">module_list</a></li>
+  <li><a href="#ccbr_tools.module_list.print_help" id="toc-ccbr_tools.module_list.print_help" class="nav-link" data-scroll-target="#ccbr_tools.module_list.print_help">print_help</a></li>
   </ul></li>
   </ul></li>
   </ul>
@@ -642,14 +644,27 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </thead>
 <tbody>
 <tr class="odd">
+<td><a href="#ccbr_tools.module_list.main">main</a></td>
+<td>Run the CLI.</td>
+</tr>
+<tr class="even">
 <td><a href="#ccbr_tools.module_list.module_list">module_list</a></td>
 <td>Get the list of loaded modules or the version of a specific module.</td>
 </tr>
+<tr class="odd">
+<td><a href="#ccbr_tools.module_list.print_help">print_help</a></td>
+<td>Print the CLI help text.</td>
+</tr>
 </tbody>
 </table>
+<section id="ccbr_tools.module_list.main" class="level3">
+<h3 class="anchored" data-anchor-id="ccbr_tools.module_list.main">main</h3>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb1"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a>module_list.main()</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<p>Run the CLI.</p>
+</section>
 <section id="ccbr_tools.module_list.module_list" class="level3">
 <h3 class="anchored" data-anchor-id="ccbr_tools.module_list.module_list">module_list</h3>
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb1"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a>module_list.module_list(module<span class="op">=</span><span class="st">''</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb2"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a>module_list.module_list(module<span class="op">=</span><span class="st">''</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <p>Get the list of loaded modules or the version of a specific module.</p>
 <section id="parameters" class="level4 doc-section doc-section-parameters">
 <h4 class="doc-section doc-section-parameters anchored" data-anchor-id="parameters">Parameters</h4>
@@ -672,9 +687,14 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </tbody>
 </table>
 <p>Returns: output (str): JSON string of loaded modules or the version of the specified module.</p>
-
-
 </section>
+</section>
+<section id="ccbr_tools.module_list.print_help" class="level3">
+<h3 class="anchored" data-anchor-id="ccbr_tools.module_list.print_help">print_help</h3>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb3"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a>module_list.print_help()</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<p>Print the CLI help text.</p>
+
+
 </section>
 </section>
 </section>

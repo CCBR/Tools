@@ -79,8 +79,8 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <link href="../site_libs/quarto-html/quarto-syntax-highlighting-dark-95d86bad09a6ca11867430c4d25546ae.css" rel="stylesheet" class="quarto-color-scheme quarto-color-alternate" id="quarto-text-highlighting-styles">
 <script src="../site_libs/bootstrap/bootstrap.min.js"></script>
 <link href="../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
-<link href="../site_libs/bootstrap/bootstrap-d1914d400ded38e38378bab928404dac.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme" id="quarto-bootstrap" data-mode="light">
-<link href="../site_libs/bootstrap/bootstrap-dark-bc5f45c3f4f1882e8470d59c104addda.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme quarto-color-alternate" id="quarto-bootstrap" data-mode="dark">
+<link href="../site_libs/bootstrap/bootstrap-f5617e33543362d376b6fe1cb875ae04.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme" id="quarto-bootstrap" data-mode="light">
+<link href="../site_libs/bootstrap/bootstrap-dark-b57f8cc648fd7b6c040ab6e093daf68a.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme quarto-color-alternate" id="quarto-bootstrap" data-mode="dark">
 <script id="quarto-search-options" type="application/json">{
   "location": "navbar",
   "copy-button": false,
@@ -582,8 +582,10 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   <li><a href="#functions" id="toc-functions" class="nav-link" data-scroll-target="#functions">Functions</a>
   <ul class="collapse">
   <li><a href="#ccbr_tools.peek.justify" id="toc-ccbr_tools.peek.justify" class="nav-link" data-scroll-target="#ccbr_tools.peek.justify">justify</a></li>
+  <li><a href="#ccbr_tools.peek.main" id="toc-ccbr_tools.peek.main" class="nav-link" data-scroll-target="#ccbr_tools.peek.main">main</a></li>
   <li><a href="#ccbr_tools.peek.max_string" id="toc-ccbr_tools.peek.max_string" class="nav-link" data-scroll-target="#ccbr_tools.peek.max_string">max_string</a></li>
   <li><a href="#ccbr_tools.peek.pargs" id="toc-ccbr_tools.peek.pargs" class="nav-link" data-scroll-target="#ccbr_tools.peek.pargs">pargs</a></li>
+  <li><a href="#ccbr_tools.peek.peek" id="toc-ccbr_tools.peek.peek" class="nav-link" data-scroll-target="#ccbr_tools.peek.peek">peek</a></li>
   <li><a href="#ccbr_tools.peek.pprint" id="toc-ccbr_tools.peek.pprint" class="nav-link" data-scroll-target="#ccbr_tools.peek.pprint">pprint</a></li>
   <li><a href="#ccbr_tools.peek.print_header" id="toc-ccbr_tools.peek.print_header" class="nav-link" data-scroll-target="#ccbr_tools.peek.print_header">print_header</a></li>
   <li><a href="#ccbr_tools.peek.usage" id="toc-ccbr_tools.peek.usage" class="nav-link" data-scroll-target="#ccbr_tools.peek.usage">usage</a></li>
@@ -622,12 +624,20 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <td>Calculates the spacing for justifying to the right</td>
 </tr>
 <tr class="even">
+<td><a href="#ccbr_tools.peek.main">main</a></td>
+<td>Run the CLI.</td>
+</tr>
+<tr class="odd">
 <td><a href="#ccbr_tools.peek.max_string">max_string</a></td>
 <td>Given a list of strings, finds the maximum strign length</td>
 </tr>
-<tr class="odd">
+<tr class="even">
 <td><a href="#ccbr_tools.peek.pargs">pargs</a></td>
 <td>Basic command-line parser</td>
+</tr>
+<tr class="odd">
+<td><a href="#ccbr_tools.peek.peek">peek</a></td>
+<td>Peek at the input data.</td>
 </tr>
 <tr class="even">
 <td><a href="#ccbr_tools.peek.pprint">pprint</a></td>
@@ -648,29 +658,39 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb1"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a>peek.justify(h, d, n, nr)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <p>Calculates the spacing for justifying to the right</p>
 </section>
+<section id="ccbr_tools.peek.main" class="level3">
+<h3 class="anchored" data-anchor-id="ccbr_tools.peek.main">main</h3>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb2"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a>peek.main()</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<p>Run the CLI.</p>
+</section>
 <section id="ccbr_tools.peek.max_string" class="level3">
 <h3 class="anchored" data-anchor-id="ccbr_tools.peek.max_string">max_string</h3>
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb2"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a>peek.max_string(data)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb3"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a>peek.max_string(data)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <p>Given a list of strings, finds the maximum strign length</p>
 </section>
 <section id="ccbr_tools.peek.pargs" class="level3">
 <h3 class="anchored" data-anchor-id="ccbr_tools.peek.pargs">pargs</h3>
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb3"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a>peek.pargs()</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb4"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a>peek.pargs()</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <p>Basic command-line parser</p>
+</section>
+<section id="ccbr_tools.peek.peek" class="level3">
+<h3 class="anchored" data-anchor-id="ccbr_tools.peek.peek">peek</h3>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb5"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a>peek.peek(filename, <span class="bu">buffer</span>, delim<span class="op">=</span><span class="st">'</span><span class="ch">\t</span><span class="st">'</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<p>Peek at the input data.</p>
 </section>
 <section id="ccbr_tools.peek.pprint" class="level3">
 <h3 class="anchored" data-anchor-id="ccbr_tools.peek.pprint">pprint</h3>
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb4"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a>peek.pprint(headlist, data, linelength, fn)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb6"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a>peek.pprint(headlist, data, linelength, fn)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <p>Re-formats first two lines on file so columns are left justified and values are right justified</p>
 </section>
 <section id="ccbr_tools.peek.print_header" class="level3">
 <h3 class="anchored" data-anchor-id="ccbr_tools.peek.print_header">print_header</h3>
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb5"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a>peek.print_header(filename, length)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb7"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a>peek.print_header(filename, length)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <p>Print filenames and divider</p>
 </section>
 <section id="ccbr_tools.peek.usage" class="level3">
 <h3 class="anchored" data-anchor-id="ccbr_tools.peek.usage">usage</h3>
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb6"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a>peek.usage()</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb8"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a>peek.usage()</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <p>Print usage information and exit program</p>
 
 

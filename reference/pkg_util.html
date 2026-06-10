@@ -80,8 +80,8 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <link href="../site_libs/quarto-html/quarto-syntax-highlighting-dark-95d86bad09a6ca11867430c4d25546ae.css" rel="stylesheet" class="quarto-color-scheme quarto-color-alternate" id="quarto-text-highlighting-styles">
 <script src="../site_libs/bootstrap/bootstrap.min.js"></script>
 <link href="../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
-<link href="../site_libs/bootstrap/bootstrap-d1914d400ded38e38378bab928404dac.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme" id="quarto-bootstrap" data-mode="light">
-<link href="../site_libs/bootstrap/bootstrap-dark-bc5f45c3f4f1882e8470d59c104addda.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme quarto-color-alternate" id="quarto-bootstrap" data-mode="dark">
+<link href="../site_libs/bootstrap/bootstrap-f5617e33543362d376b6fe1cb875ae04.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme" id="quarto-bootstrap" data-mode="light">
+<link href="../site_libs/bootstrap/bootstrap-dark-b57f8cc648fd7b6c040ab6e093daf68a.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme quarto-color-alternate" id="quarto-bootstrap" data-mode="dark">
 <script id="quarto-search-options" type="application/json">{
   "location": "navbar",
   "copy-button": false,
@@ -585,6 +585,8 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   <li><a href="#ccbr_tools.pkg_util.get_package_version" id="toc-ccbr_tools.pkg_util.get_package_version" class="nav-link" data-scroll-target="#ccbr_tools.pkg_util.get_package_version">get_package_version</a></li>
   <li><a href="#ccbr_tools.pkg_util.get_project_scripts" id="toc-ccbr_tools.pkg_util.get_project_scripts" class="nav-link" data-scroll-target="#ccbr_tools.pkg_util.get_project_scripts">get_project_scripts</a></li>
   <li><a href="#ccbr_tools.pkg_util.get_pyproject_toml" id="toc-ccbr_tools.pkg_util.get_pyproject_toml" class="nav-link" data-scroll-target="#ccbr_tools.pkg_util.get_pyproject_toml">get_pyproject_toml</a></li>
+  <li><a href="#ccbr_tools.pkg_util.get_random_string" id="toc-ccbr_tools.pkg_util.get_random_string" class="nav-link" data-scroll-target="#ccbr_tools.pkg_util.get_random_string">get_random_string</a></li>
+  <li><a href="#ccbr_tools.pkg_util.get_timestamp" id="toc-ccbr_tools.pkg_util.get_timestamp" class="nav-link" data-scroll-target="#ccbr_tools.pkg_util.get_timestamp">get_timestamp</a></li>
   <li><a href="#ccbr_tools.pkg_util.get_url_json" id="toc-ccbr_tools.pkg_util.get_url_json" class="nav-link" data-scroll-target="#ccbr_tools.pkg_util.get_url_json">get_url_json</a></li>
   <li><a href="#ccbr_tools.pkg_util.get_version" id="toc-ccbr_tools.pkg_util.get_version" class="nav-link" data-scroll-target="#ccbr_tools.pkg_util.get_version">get_version</a></li>
   <li><a href="#ccbr_tools.pkg_util.msg" id="toc-ccbr_tools.pkg_util.msg" class="nav-link" data-scroll-target="#ccbr_tools.pkg_util.msg">msg</a></li>
@@ -632,6 +634,14 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <tr class="even">
 <td><a href="#ccbr_tools.pkg_util.get_pyproject_toml">get_pyproject_toml</a></td>
 <td>Get the contents of the package’s pyproject.toml file.</td>
+</tr>
+<tr class="odd">
+<td><a href="#ccbr_tools.pkg_util.get_random_string">get_random_string</a></td>
+<td>Return a random string.</td>
+</tr>
+<tr class="even">
+<td><a href="#ccbr_tools.pkg_util.get_timestamp">get_timestamp</a></td>
+<td>Return the current timestamp.</td>
 </tr>
 <tr class="odd">
 <td><a href="#ccbr_tools.pkg_util.get_url_json">get_url_json</a></td>
@@ -839,9 +849,19 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </table>
 </section>
 </section>
+<section id="ccbr_tools.pkg_util.get_random_string" class="level3">
+<h3 class="anchored" data-anchor-id="ccbr_tools.pkg_util.get_random_string">get_random_string</h3>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb5"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a>pkg_util.get_random_string()</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<p>Return a random string.</p>
+</section>
+<section id="ccbr_tools.pkg_util.get_timestamp" class="level3">
+<h3 class="anchored" data-anchor-id="ccbr_tools.pkg_util.get_timestamp">get_timestamp</h3>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb6"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a>pkg_util.get_timestamp()</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<p>Return the current timestamp.</p>
+</section>
 <section id="ccbr_tools.pkg_util.get_url_json" class="level3">
 <h3 class="anchored" data-anchor-id="ccbr_tools.pkg_util.get_url_json">get_url_json</h3>
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb5"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a>pkg_util.get_url_json(url)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb7"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a>pkg_util.get_url_json(url)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <p>Fetches JSON data from a given URL.</p>
 <section id="parameters-4" class="level4 doc-section doc-section-parameters">
 <h4 class="doc-section doc-section-parameters anchored" data-anchor-id="parameters-4">Parameters</h4>
@@ -891,7 +911,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </section>
 <section id="ccbr_tools.pkg_util.get_version" class="level3">
 <h3 class="anchored" data-anchor-id="ccbr_tools.pkg_util.get_version">get_version</h3>
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb6"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a>pkg_util.get_version(repo_base<span class="op">=</span>repo_base, debug<span class="op">=</span><span class="va">False</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb8"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a>pkg_util.get_version(repo_base<span class="op">=</span>repo_base, debug<span class="op">=</span><span class="va">False</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <p>Get the current version of the ccbr_tools package.</p>
 <section id="parameters-5" class="level4 doc-section doc-section-parameters">
 <h4 class="doc-section doc-section-parameters anchored" data-anchor-id="parameters-5">Parameters</h4>
@@ -942,7 +962,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </section>
 <section id="ccbr_tools.pkg_util.msg" class="level3">
 <h3 class="anchored" data-anchor-id="ccbr_tools.pkg_util.msg">msg</h3>
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb7"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a>pkg_util.msg(err_message)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb9"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a>pkg_util.msg(err_message)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <p>Prints the error message with a timestamp.</p>
 <section id="parameters-6" class="level4 doc-section doc-section-parameters">
 <h4 class="doc-section doc-section-parameters anchored" data-anchor-id="parameters-6">Parameters</h4>
@@ -969,7 +989,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </section>
 <section id="ccbr_tools.pkg_util.msg_box" class="level3">
 <h3 class="anchored" data-anchor-id="ccbr_tools.pkg_util.msg_box">msg_box</h3>
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb8"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a>pkg_util.msg_box(splash, errmsg<span class="op">=</span><span class="va">None</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb10"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a>pkg_util.msg_box(splash, errmsg<span class="op">=</span><span class="va">None</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <p>Displays a message box with a given splash message.</p>
 <section id="parameters-7" class="level4 doc-section doc-section-parameters">
 <h4 class="doc-section doc-section-parameters anchored" data-anchor-id="parameters-7">Parameters</h4>
@@ -1001,10 +1021,10 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </section>
 <section id="ccbr_tools.pkg_util.print_citation" class="level3">
 <h3 class="anchored" data-anchor-id="ccbr_tools.pkg_util.print_citation">print_citation</h3>
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb9"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a>pkg_util.print_citation(</span>
-<span id="cb9-2"><a href="#cb9-2" aria-hidden="true" tabindex="-1"></a>    citation_file<span class="op">=</span>repo_base(<span class="st">'CITATION.cff'</span>),</span>
-<span id="cb9-3"><a href="#cb9-3" aria-hidden="true" tabindex="-1"></a>    output_format<span class="op">=</span><span class="st">'bibtex'</span>,</span>
-<span id="cb9-4"><a href="#cb9-4" aria-hidden="true" tabindex="-1"></a>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb11"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a>pkg_util.print_citation(</span>
+<span id="cb11-2"><a href="#cb11-2" aria-hidden="true" tabindex="-1"></a>    citation_file<span class="op">=</span>repo_base(<span class="st">'CITATION.cff'</span>),</span>
+<span id="cb11-3"><a href="#cb11-3" aria-hidden="true" tabindex="-1"></a>    output_format<span class="op">=</span><span class="st">'bibtex'</span>,</span>
+<span id="cb11-4"><a href="#cb11-4" aria-hidden="true" tabindex="-1"></a>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <p>Prints the citation for the given citation file in the specified output format.</p>
 <section id="parameters-8" class="level4 doc-section doc-section-parameters">
 <h4 class="doc-section doc-section-parameters anchored" data-anchor-id="parameters-8">Parameters</h4>
@@ -1036,7 +1056,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </section>
 <section id="ccbr_tools.pkg_util.repo_base" class="level3">
 <h3 class="anchored" data-anchor-id="ccbr_tools.pkg_util.repo_base">repo_base</h3>
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb10"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a>pkg_util.repo_base(<span class="op">*</span>paths)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb12"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb12-1"><a href="#cb12-1" aria-hidden="true" tabindex="-1"></a>pkg_util.repo_base(<span class="op">*</span>paths)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <p>Get the absolute path to a file in the repository</p>
 <section id="parameters-9" class="level4 doc-section doc-section-parameters">
 <h4 class="doc-section doc-section-parameters anchored" data-anchor-id="parameters-9">Parameters</h4>

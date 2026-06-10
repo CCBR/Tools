@@ -80,8 +80,8 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <link href="../site_libs/quarto-html/quarto-syntax-highlighting-dark-95d86bad09a6ca11867430c4d25546ae.css" rel="stylesheet" class="quarto-color-scheme quarto-color-alternate" id="quarto-text-highlighting-styles">
 <script src="../site_libs/bootstrap/bootstrap.min.js"></script>
 <link href="../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
-<link href="../site_libs/bootstrap/bootstrap-d1914d400ded38e38378bab928404dac.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme" id="quarto-bootstrap" data-mode="light">
-<link href="../site_libs/bootstrap/bootstrap-dark-bc5f45c3f4f1882e8470d59c104addda.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme quarto-color-alternate" id="quarto-bootstrap" data-mode="dark">
+<link href="../site_libs/bootstrap/bootstrap-f5617e33543362d376b6fe1cb875ae04.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme" id="quarto-bootstrap" data-mode="light">
+<link href="../site_libs/bootstrap/bootstrap-dark-b57f8cc648fd7b6c040ab6e093daf68a.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme quarto-color-alternate" id="quarto-bootstrap" data-mode="dark">
 <script id="quarto-search-options" type="application/json">{
   "location": "navbar",
   "copy-button": false,
@@ -582,6 +582,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   <li><a href="#functions" id="toc-functions" class="nav-link" data-scroll-target="#functions">Functions</a>
   <ul class="collapse">
   <li><a href="#ccbr_tools.paths.create_tar_archive" id="toc-ccbr_tools.paths.create_tar_archive" class="nav-link" data-scroll-target="#ccbr_tools.paths.create_tar_archive">create_tar_archive</a></li>
+  <li><a href="#ccbr_tools.paths.get_disk_usage" id="toc-ccbr_tools.paths.get_disk_usage" class="nav-link" data-scroll-target="#ccbr_tools.paths.get_disk_usage">get_disk_usage</a></li>
   <li><a href="#ccbr_tools.paths.get_tree" id="toc-ccbr_tools.paths.get_tree" class="nav-link" data-scroll-target="#ccbr_tools.paths.get_tree">get_tree</a></li>
   <li><a href="#ccbr_tools.paths.glob_files" id="toc-ccbr_tools.paths.glob_files" class="nav-link" data-scroll-target="#ccbr_tools.paths.glob_files">glob_files</a></li>
   <li><a href="#ccbr_tools.paths.load_tree" id="toc-ccbr_tools.paths.load_tree" class="nav-link" data-scroll-target="#ccbr_tools.paths.load_tree">load_tree</a></li>
@@ -616,18 +617,22 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <td>Creates a compressed tar archive (.tar.gz) containing the specified files.</td>
 </tr>
 <tr class="even">
+<td><a href="#ccbr_tools.paths.get_disk_usage">get_disk_usage</a></td>
+<td>Get disk usage.</td>
+</tr>
+<tr class="odd">
 <td><a href="#ccbr_tools.paths.get_tree">get_tree</a></td>
 <td>Generate a directory tree structure using the <code>tree</code> command-line utility</td>
 </tr>
-<tr class="odd">
+<tr class="even">
 <td><a href="#ccbr_tools.paths.glob_files">glob_files</a></td>
 <td>Collects files from a specified directory and its subdirectories that match a list of patterns.</td>
 </tr>
-<tr class="even">
+<tr class="odd">
 <td><a href="#ccbr_tools.paths.load_tree">load_tree</a></td>
 <td>Load a tree structure from a string, attempting to parse it as JSON or</td>
 </tr>
-<tr class="odd">
+<tr class="even">
 <td><a href="#ccbr_tools.paths.run_du">run_du</a></td>
 <td>Calculates the total size of a directory in bytes using the <code>du</code> shell command.</td>
 </tr>
@@ -665,9 +670,14 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </table>
 </section>
 </section>
+<section id="ccbr_tools.paths.get_disk_usage" class="level3">
+<h3 class="anchored" data-anchor-id="ccbr_tools.paths.get_disk_usage">get_disk_usage</h3>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb2"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a>paths.get_disk_usage(tree_dict, pipeline_outdir)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<p>Get disk usage.</p>
+</section>
 <section id="ccbr_tools.paths.get_tree" class="level3">
 <h3 class="anchored" data-anchor-id="ccbr_tools.paths.get_tree">get_tree</h3>
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb2"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a>paths.get_tree(pipeline_outdir, args<span class="op">=</span><span class="st">'-aJ --du'</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb3"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a>paths.get_tree(pipeline_outdir, args<span class="op">=</span><span class="st">'-aJ --du'</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <p>Generate a directory tree structure using the <code>tree</code> command-line utility</p>
 <p>Note: when using -J with –du, the output is not valid JSON due to extra trailing commas. It can be parsed with <code>ast.literal_eval</code> rather than <code>json.loads</code>.</p>
 <section id="parameters-1" class="level4 doc-section doc-section-parameters">
@@ -729,10 +739,10 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </section>
 <section id="ccbr_tools.paths.glob_files" class="level3">
 <h3 class="anchored" data-anchor-id="ccbr_tools.paths.glob_files">glob_files</h3>
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb3"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a>paths.glob_files(</span>
-<span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a>    pipeline_outdir,</span>
-<span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a>    patterns<span class="op">=</span>[<span class="st">'snakemake.log'</span>, <span class="st">'.nextflow.log'</span>, <span class="st">'*.jobby*'</span>, <span class="st">'master.log'</span>, <span class="st">'runtime_statics*'</span>],</span>
-<span id="cb3-4"><a href="#cb3-4" aria-hidden="true" tabindex="-1"></a>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb4"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a>paths.glob_files(</span>
+<span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a>    pipeline_outdir,</span>
+<span id="cb4-3"><a href="#cb4-3" aria-hidden="true" tabindex="-1"></a>    patterns<span class="op">=</span>[<span class="st">'snakemake.log'</span>, <span class="st">'.nextflow.log'</span>, <span class="st">'*.jobby*'</span>, <span class="st">'master.log'</span>, <span class="st">'runtime_statics*'</span>],</span>
+<span id="cb4-4"><a href="#cb4-4" aria-hidden="true" tabindex="-1"></a>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <p>Collects files from a specified directory and its subdirectories that match a list of patterns.</p>
 <section id="parameters-2" class="level4 doc-section doc-section-parameters">
 <h4 class="doc-section doc-section-parameters anchored" data-anchor-id="parameters-2">Parameters</h4>
@@ -788,7 +798,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </section>
 <section id="ccbr_tools.paths.load_tree" class="level3">
 <h3 class="anchored" data-anchor-id="ccbr_tools.paths.load_tree">load_tree</h3>
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb4"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a>paths.load_tree(tree_str)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb5"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a>paths.load_tree(tree_str)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <p>Load a tree structure from a string, attempting to parse it as JSON or Python literal.</p>
 <section id="parameters-3" class="level4 doc-section doc-section-parameters">
 <h4 class="doc-section doc-section-parameters anchored" data-anchor-id="parameters-3">Parameters</h4>
@@ -815,7 +825,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </section>
 <section id="ccbr_tools.paths.run_du" class="level3">
 <h3 class="anchored" data-anchor-id="ccbr_tools.paths.run_du">run_du</h3>
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb5"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a>paths.run_du(dirpath)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb6"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a>paths.run_du(dirpath)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <p>Calculates the total size of a directory in bytes using the <code>du</code> shell command.</p>
 <section id="parameters-4" class="level4 doc-section doc-section-parameters">
 <h4 class="doc-section doc-section-parameters anchored" data-anchor-id="parameters-4">Parameters</h4>

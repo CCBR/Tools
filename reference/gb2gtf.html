@@ -23,6 +23,41 @@ ul.task-list li input[type="checkbox"] {
   margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
   vertical-align: middle;
 }
+/* CSS for syntax highlighting */
+html { -webkit-text-size-adjust: 100%; }
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+div.sourceCode { margin: 1em 0; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+  }
+pre.numberSource { margin-left: 3em;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
 </style>
 
 
@@ -45,8 +80,8 @@ ul.task-list li input[type="checkbox"] {
 <link href="../site_libs/quarto-html/quarto-syntax-highlighting-dark-95d86bad09a6ca11867430c4d25546ae.css" rel="stylesheet" class="quarto-color-scheme quarto-color-alternate" id="quarto-text-highlighting-styles">
 <script src="../site_libs/bootstrap/bootstrap.min.js"></script>
 <link href="../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
-<link href="../site_libs/bootstrap/bootstrap-d1914d400ded38e38378bab928404dac.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme" id="quarto-bootstrap" data-mode="light">
-<link href="../site_libs/bootstrap/bootstrap-dark-bc5f45c3f4f1882e8470d59c104addda.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme quarto-color-alternate" id="quarto-bootstrap" data-mode="dark">
+<link href="../site_libs/bootstrap/bootstrap-f5617e33543362d376b6fe1cb875ae04.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme" id="quarto-bootstrap" data-mode="light">
+<link href="../site_libs/bootstrap/bootstrap-dark-b57f8cc648fd7b6c040ab6e093daf68a.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme quarto-color-alternate" id="quarto-bootstrap" data-mode="dark">
 <script id="quarto-search-options" type="application/json">{
   "location": "navbar",
   "copy-button": false,
@@ -545,6 +580,12 @@ ul.task-list li input[type="checkbox"] {
   <li><a href="#ccbr_tools.gb2gtf" id="toc-ccbr_tools.gb2gtf" class="nav-link active" data-scroll-target="#ccbr_tools.gb2gtf">gb2gtf</a>
   <ul class="collapse">
   <li><a href="#usage" id="toc-usage" class="nav-link" data-scroll-target="#usage">Usage</a></li>
+  <li><a href="#functions" id="toc-functions" class="nav-link" data-scroll-target="#functions">Functions</a>
+  <ul class="collapse">
+  <li><a href="#ccbr_tools.gb2gtf.check_args" id="toc-ccbr_tools.gb2gtf.check_args" class="nav-link" data-scroll-target="#ccbr_tools.gb2gtf.check_args">check_args</a></li>
+  <li><a href="#ccbr_tools.gb2gtf.gb2gtf" id="toc-ccbr_tools.gb2gtf.gb2gtf" class="nav-link" data-scroll-target="#ccbr_tools.gb2gtf.gb2gtf">gb2gtf</a></li>
+  <li><a href="#ccbr_tools.gb2gtf.main" id="toc-ccbr_tools.gb2gtf.main" class="nav-link" data-scroll-target="#ccbr_tools.gb2gtf.main">main</a></li>
+  </ul></li>
   </ul></li>
   </ul>
 <div class="toc-actions"><ul><li><a href="https://github.com/CCBR/Tools/edit/main/reference/gb2gtf.qmd" class="toc-action"><i class="bi bi-github"></i>Edit this page</a></li><li><a href="https://github.com/CCBR/Tools/issues/new" class="toc-action"><i class="bi empty"></i>Report an issue</a></li></ul></div></nav>
@@ -563,8 +604,48 @@ ul.task-list li input[type="checkbox"] {
 <section id="usage" class="level2 doc-section doc-section-usage">
 <h2 class="doc-section doc-section-usage anchored" data-anchor-id="usage">Usage</h2>
 <p>python gb2gtf.py sequence.gb &gt; sequence.gtf</p>
+</section>
+<section id="functions" class="level2">
+<h2 class="anchored" data-anchor-id="functions">Functions</h2>
+<table class="caption-top table">
+<thead>
+<tr class="header">
+<th>Name</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td><a href="#ccbr_tools.gb2gtf.check_args">check_args</a></td>
+<td>Validate the CLI arguments.</td>
+</tr>
+<tr class="even">
+<td><a href="#ccbr_tools.gb2gtf.gb2gtf">gb2gtf</a></td>
+<td>Convert a GenBank file to GTF output.</td>
+</tr>
+<tr class="odd">
+<td><a href="#ccbr_tools.gb2gtf.main">main</a></td>
+<td>Run the CLI.</td>
+</tr>
+</tbody>
+</table>
+<section id="ccbr_tools.gb2gtf.check_args" class="level3">
+<h3 class="anchored" data-anchor-id="ccbr_tools.gb2gtf.check_args">check_args</h3>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb1"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a>gb2gtf.check_args(args)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<p>Validate the CLI arguments.</p>
+</section>
+<section id="ccbr_tools.gb2gtf.gb2gtf" class="level3">
+<h3 class="anchored" data-anchor-id="ccbr_tools.gb2gtf.gb2gtf">gb2gtf</h3>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb2"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a>gb2gtf.gb2gtf(args)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<p>Convert a GenBank file to GTF output.</p>
+</section>
+<section id="ccbr_tools.gb2gtf.main" class="level3">
+<h3 class="anchored" data-anchor-id="ccbr_tools.gb2gtf.main">main</h3>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb3"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a>gb2gtf.main()</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<p>Run the CLI.</p>
 
 
+</section>
 </section>
 </section>
 

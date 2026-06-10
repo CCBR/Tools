@@ -80,8 +80,8 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <link href="../site_libs/quarto-html/quarto-syntax-highlighting-dark-95d86bad09a6ca11867430c4d25546ae.css" rel="stylesheet" class="quarto-color-scheme quarto-color-alternate" id="quarto-text-highlighting-styles">
 <script src="../site_libs/bootstrap/bootstrap.min.js"></script>
 <link href="../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
-<link href="../site_libs/bootstrap/bootstrap-d1914d400ded38e38378bab928404dac.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme" id="quarto-bootstrap" data-mode="light">
-<link href="../site_libs/bootstrap/bootstrap-dark-bc5f45c3f4f1882e8470d59c104addda.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme quarto-color-alternate" id="quarto-bootstrap" data-mode="dark">
+<link href="../site_libs/bootstrap/bootstrap-f5617e33543362d376b6fe1cb875ae04.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme" id="quarto-bootstrap" data-mode="light">
+<link href="../site_libs/bootstrap/bootstrap-dark-b57f8cc648fd7b6c040ab6e093daf68a.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme quarto-color-alternate" id="quarto-bootstrap" data-mode="dark">
 <script id="quarto-search-options" type="application/json">{
   "location": "navbar",
   "copy-button": false,
@@ -585,7 +585,16 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   <li><a href="#functions" id="toc-functions" class="nav-link" data-scroll-target="#functions">Functions</a>
   <ul class="collapse">
   <li><a href="#ccbr_tools.jobinfo.check_help" id="toc-ccbr_tools.jobinfo.check_help" class="nav-link" data-scroll-target="#ccbr_tools.jobinfo.check_help">check_help</a></li>
+  <li><a href="#ccbr_tools.jobinfo.check_host" id="toc-ccbr_tools.jobinfo.check_host" class="nav-link" data-scroll-target="#ccbr_tools.jobinfo.check_host">check_host</a></li>
+  <li><a href="#ccbr_tools.jobinfo.check_int_set_zero" id="toc-ccbr_tools.jobinfo.check_int_set_zero" class="nav-link" data-scroll-target="#ccbr_tools.jobinfo.check_int_set_zero">check_int_set_zero</a></li>
+  <li><a href="#ccbr_tools.jobinfo.collect_args" id="toc-ccbr_tools.jobinfo.collect_args" class="nav-link" data-scroll-target="#ccbr_tools.jobinfo.collect_args">collect_args</a></li>
   <li><a href="#ccbr_tools.jobinfo.exit_w_msg" id="toc-ccbr_tools.jobinfo.exit_w_msg" class="nav-link" data-scroll-target="#ccbr_tools.jobinfo.exit_w_msg">exit_w_msg</a></li>
+  <li><a href="#ccbr_tools.jobinfo.filter_rows" id="toc-ccbr_tools.jobinfo.filter_rows" class="nav-link" data-scroll-target="#ccbr_tools.jobinfo.filter_rows">filter_rows</a></li>
+  <li><a href="#ccbr_tools.jobinfo.get_jobinfo" id="toc-ccbr_tools.jobinfo.get_jobinfo" class="nav-link" data-scroll-target="#ccbr_tools.jobinfo.get_jobinfo">get_jobinfo</a></li>
+  <li><a href="#ccbr_tools.jobinfo.main" id="toc-ccbr_tools.jobinfo.main" class="nav-link" data-scroll-target="#ccbr_tools.jobinfo.main">main</a></li>
+  <li><a href="#ccbr_tools.jobinfo.mem2gb" id="toc-ccbr_tools.jobinfo.mem2gb" class="nav-link" data-scroll-target="#ccbr_tools.jobinfo.mem2gb">mem2gb</a></li>
+  <li><a href="#ccbr_tools.jobinfo.print2screen" id="toc-ccbr_tools.jobinfo.print2screen" class="nav-link" data-scroll-target="#ccbr_tools.jobinfo.print2screen">print2screen</a></li>
+  <li><a href="#ccbr_tools.jobinfo.time2sec" id="toc-ccbr_tools.jobinfo.time2sec" class="nav-link" data-scroll-target="#ccbr_tools.jobinfo.time2sec">time2sec</a></li>
   </ul></li>
   </ul></li>
   </ul>
@@ -629,8 +638,44 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <td>check if usage needs to be printed</td>
 </tr>
 <tr class="even">
+<td><a href="#ccbr_tools.jobinfo.check_host">check_host</a></td>
+<td>Validate that the current host is supported.</td>
+</tr>
+<tr class="odd">
+<td><a href="#ccbr_tools.jobinfo.check_int_set_zero">check_int_set_zero</a></td>
+<td>Convert an empty string to zero or cast it to an integer.</td>
+</tr>
+<tr class="even">
+<td><a href="#ccbr_tools.jobinfo.collect_args">collect_args</a></td>
+<td>Parse the CLI arguments.</td>
+</tr>
+<tr class="odd">
 <td><a href="#ccbr_tools.jobinfo.exit_w_msg">exit_w_msg</a></td>
 <td>Gracefully exit with proper message</td>
+</tr>
+<tr class="even">
+<td><a href="#ccbr_tools.jobinfo.filter_rows">filter_rows</a></td>
+<td>Filter rows.</td>
+</tr>
+<tr class="odd">
+<td><a href="#ccbr_tools.jobinfo.get_jobinfo">get_jobinfo</a></td>
+<td>Retrieve job information from dashboard_cli.</td>
+</tr>
+<tr class="even">
+<td><a href="#ccbr_tools.jobinfo.main">main</a></td>
+<td>Run the CLI.</td>
+</tr>
+<tr class="odd">
+<td><a href="#ccbr_tools.jobinfo.mem2gb">mem2gb</a></td>
+<td>Convert a memory string to gigabytes.</td>
+</tr>
+<tr class="even">
+<td><a href="#ccbr_tools.jobinfo.print2screen">print2screen</a></td>
+<td>Print the job table to the screen.</td>
+</tr>
+<tr class="odd">
+<td><a href="#ccbr_tools.jobinfo.time2sec">time2sec</a></td>
+<td>Convert a SLURM time string to seconds.</td>
 </tr>
 </tbody>
 </table>
@@ -639,10 +684,55 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb1"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a>jobinfo.check_help(parser)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <p>check if usage needs to be printed</p>
 </section>
+<section id="ccbr_tools.jobinfo.check_host" class="level3">
+<h3 class="anchored" data-anchor-id="ccbr_tools.jobinfo.check_host">check_host</h3>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb2"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a>jobinfo.check_host()</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<p>Validate that the current host is supported.</p>
+</section>
+<section id="ccbr_tools.jobinfo.check_int_set_zero" class="level3">
+<h3 class="anchored" data-anchor-id="ccbr_tools.jobinfo.check_int_set_zero">check_int_set_zero</h3>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb3"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a>jobinfo.check_int_set_zero(s)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<p>Convert an empty string to zero or cast it to an integer.</p>
+</section>
+<section id="ccbr_tools.jobinfo.collect_args" class="level3">
+<h3 class="anchored" data-anchor-id="ccbr_tools.jobinfo.collect_args">collect_args</h3>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb4"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a>jobinfo.collect_args()</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<p>Parse the CLI arguments.</p>
+</section>
 <section id="ccbr_tools.jobinfo.exit_w_msg" class="level3">
 <h3 class="anchored" data-anchor-id="ccbr_tools.jobinfo.exit_w_msg">exit_w_msg</h3>
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb2"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a>jobinfo.exit_w_msg(message)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb5"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a>jobinfo.exit_w_msg(message)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <p>Gracefully exit with proper message</p>
+</section>
+<section id="ccbr_tools.jobinfo.filter_rows" class="level3">
+<h3 class="anchored" data-anchor-id="ccbr_tools.jobinfo.filter_rows">filter_rows</h3>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb6"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a>jobinfo.filter_rows(func)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<p>Filter rows.</p>
+</section>
+<section id="ccbr_tools.jobinfo.get_jobinfo" class="level3">
+<h3 class="anchored" data-anchor-id="ccbr_tools.jobinfo.get_jobinfo">get_jobinfo</h3>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb7"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a>jobinfo.get_jobinfo(args)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<p>Retrieve job information from dashboard_cli.</p>
+</section>
+<section id="ccbr_tools.jobinfo.main" class="level3">
+<h3 class="anchored" data-anchor-id="ccbr_tools.jobinfo.main">main</h3>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb8"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a>jobinfo.main()</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<p>Run the CLI.</p>
+</section>
+<section id="ccbr_tools.jobinfo.mem2gb" class="level3">
+<h3 class="anchored" data-anchor-id="ccbr_tools.jobinfo.mem2gb">mem2gb</h3>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb9"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a>jobinfo.mem2gb(memstr)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<p>Convert a memory string to gigabytes.</p>
+</section>
+<section id="ccbr_tools.jobinfo.print2screen" class="level3">
+<h3 class="anchored" data-anchor-id="ccbr_tools.jobinfo.print2screen">print2screen</h3>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb10"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a>jobinfo.print2screen(t, args)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<p>Print the job table to the screen.</p>
+</section>
+<section id="ccbr_tools.jobinfo.time2sec" class="level3">
+<h3 class="anchored" data-anchor-id="ccbr_tools.jobinfo.time2sec">time2sec</h3>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb11"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a>jobinfo.time2sec(timestr)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<p>Convert a SLURM time string to seconds.</p>
 
 
 </section>

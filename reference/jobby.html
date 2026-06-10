@@ -80,8 +80,8 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <link href="../site_libs/quarto-html/quarto-syntax-highlighting-dark-95d86bad09a6ca11867430c4d25546ae.css" rel="stylesheet" class="quarto-color-scheme quarto-color-alternate" id="quarto-text-highlighting-styles">
 <script src="../site_libs/bootstrap/bootstrap.min.js"></script>
 <link href="../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
-<link href="../site_libs/bootstrap/bootstrap-d1914d400ded38e38378bab928404dac.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme" id="quarto-bootstrap" data-mode="light">
-<link href="../site_libs/bootstrap/bootstrap-dark-bc5f45c3f4f1882e8470d59c104addda.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme quarto-color-alternate" id="quarto-bootstrap" data-mode="dark">
+<link href="../site_libs/bootstrap/bootstrap-f5617e33543362d376b6fe1cb875ae04.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme" id="quarto-bootstrap" data-mode="light">
+<link href="../site_libs/bootstrap/bootstrap-dark-b57f8cc648fd7b6c040ab6e093daf68a.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme quarto-color-alternate" id="quarto-bootstrap" data-mode="dark">
 <script id="quarto-search-options" type="application/json">{
   "location": "navbar",
   "copy-button": false,
@@ -588,7 +588,11 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   <ul class="collapse">
   <li><a href="#ccbr_tools.jobby.extract_jobids_from_file" id="toc-ccbr_tools.jobby.extract_jobids_from_file" class="nav-link" data-scroll-target="#ccbr_tools.jobby.extract_jobids_from_file">extract_jobids_from_file</a></li>
   <li><a href="#ccbr_tools.jobby.format_df" id="toc-ccbr_tools.jobby.format_df" class="nav-link" data-scroll-target="#ccbr_tools.jobby.format_df">format_df</a></li>
+  <li><a href="#ccbr_tools.jobby.get_job_logs" id="toc-ccbr_tools.jobby.get_job_logs" class="nav-link" data-scroll-target="#ccbr_tools.jobby.get_job_logs">get_job_logs</a></li>
+  <li><a href="#ccbr_tools.jobby.get_sacct_info" id="toc-ccbr_tools.jobby.get_sacct_info" class="nav-link" data-scroll-target="#ccbr_tools.jobby.get_sacct_info">get_sacct_info</a></li>
   <li><a href="#ccbr_tools.jobby.jobby" id="toc-ccbr_tools.jobby.jobby" class="nav-link" data-scroll-target="#ccbr_tools.jobby.jobby">jobby</a></li>
+  <li><a href="#ccbr_tools.jobby.list_records" id="toc-ccbr_tools.jobby.list_records" class="nav-link" data-scroll-target="#ccbr_tools.jobby.list_records">list_records</a></li>
+  <li><a href="#ccbr_tools.jobby.main" id="toc-ccbr_tools.jobby.main" class="nav-link" data-scroll-target="#ccbr_tools.jobby.main">main</a></li>
   <li><a href="#ccbr_tools.jobby.parse_mem_to_gb" id="toc-ccbr_tools.jobby.parse_mem_to_gb" class="nav-link" data-scroll-target="#ccbr_tools.jobby.parse_mem_to_gb">parse_mem_to_gb</a></li>
   <li><a href="#ccbr_tools.jobby.parse_time_to_seconds" id="toc-ccbr_tools.jobby.parse_time_to_seconds" class="nav-link" data-scroll-target="#ccbr_tools.jobby.parse_time_to_seconds">parse_time_to_seconds</a></li>
   <li><a href="#ccbr_tools.jobby.read_slurm_log" id="toc-ccbr_tools.jobby.read_slurm_log" class="nav-link" data-scroll-target="#ccbr_tools.jobby.read_slurm_log">read_slurm_log</a></li>
@@ -668,8 +672,24 @@ jobby .nextflow.log [--tsv|--json|--yaml] [--outerr] [--include-completed]</code
 <td>Format the DataFrame for output based on the requested format.</td>
 </tr>
 <tr class="odd">
+<td><a href="#ccbr_tools.jobby.get_job_logs">get_job_logs</a></td>
+<td>Get job log paths and contents.</td>
+</tr>
+<tr class="even">
+<td><a href="#ccbr_tools.jobby.get_sacct_info">get_sacct_info</a></td>
+<td>Get sacct records for a job ID.</td>
+</tr>
+<tr class="odd">
 <td><a href="#ccbr_tools.jobby.jobby">jobby</a></td>
 <td>Processes a list of job IDs or a file containing job IDs to retrieve job information.</td>
+</tr>
+<tr class="even">
+<td><a href="#ccbr_tools.jobby.list_records">list_records</a></td>
+<td>List job records for the given job IDs.</td>
+</tr>
+<tr class="odd">
+<td><a href="#ccbr_tools.jobby.main">main</a></td>
+<td>Run the CLI.</td>
 </tr>
 <tr class="even">
 <td><a href="#ccbr_tools.jobby.parse_mem_to_gb">parse_mem_to_gb</a></td>
@@ -699,15 +719,31 @@ jobby .nextflow.log [--tsv|--json|--yaml] [--outerr] [--include-completed]</code
 <div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb4"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a>jobby.format_df(df, output_format)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <p>Format the DataFrame for output based on the requested format.</p>
 </section>
+<section id="ccbr_tools.jobby.get_job_logs" class="level3">
+<h3 class="anchored" data-anchor-id="ccbr_tools.jobby.get_job_logs">get_job_logs</h3>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb5"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a>jobby.get_job_logs(job_id, workdir, include_text<span class="op">=</span><span class="va">True</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<p>Get job log paths and contents.</p>
+</section>
+<section id="ccbr_tools.jobby.get_sacct_info" class="level3">
+<h3 class="anchored" data-anchor-id="ccbr_tools.jobby.get_sacct_info">get_sacct_info</h3>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb6"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a>jobby.get_sacct_info(</span>
+<span id="cb6-2"><a href="#cb6-2" aria-hidden="true" tabindex="-1"></a>    jobid,</span>
+<span id="cb6-3"><a href="#cb6-3" aria-hidden="true" tabindex="-1"></a>    include_out_err<span class="op">=</span><span class="va">False</span>,</span>
+<span id="cb6-4"><a href="#cb6-4" aria-hidden="true" tabindex="-1"></a>    include_completed<span class="op">=</span><span class="va">False</span>,</span>
+<span id="cb6-5"><a href="#cb6-5" aria-hidden="true" tabindex="-1"></a>    completed_state<span class="op">=</span><span class="st">'COMPLETED'</span>,</span>
+<span id="cb6-6"><a href="#cb6-6" aria-hidden="true" tabindex="-1"></a>    success_exit_code<span class="op">=</span><span class="dv">0</span>,</span>
+<span id="cb6-7"><a href="#cb6-7" aria-hidden="true" tabindex="-1"></a>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<p>Get sacct records for a job ID.</p>
+</section>
 <section id="ccbr_tools.jobby.jobby" class="level3">
 <h3 class="anchored" data-anchor-id="ccbr_tools.jobby.jobby">jobby</h3>
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb5"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a>jobby.jobby(</span>
-<span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a>    args,</span>
-<span id="cb5-3"><a href="#cb5-3" aria-hidden="true" tabindex="-1"></a>    include_out_err<span class="op">=</span><span class="va">False</span>,</span>
-<span id="cb5-4"><a href="#cb5-4" aria-hidden="true" tabindex="-1"></a>    include_completed<span class="op">=</span><span class="va">False</span>,</span>
-<span id="cb5-5"><a href="#cb5-5" aria-hidden="true" tabindex="-1"></a>    completed_state<span class="op">=</span><span class="st">'COMPLETED'</span>,</span>
-<span id="cb5-6"><a href="#cb5-6" aria-hidden="true" tabindex="-1"></a>    success_exit_code<span class="op">=</span><span class="dv">0</span>,</span>
-<span id="cb5-7"><a href="#cb5-7" aria-hidden="true" tabindex="-1"></a>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb7"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a>jobby.jobby(</span>
+<span id="cb7-2"><a href="#cb7-2" aria-hidden="true" tabindex="-1"></a>    args,</span>
+<span id="cb7-3"><a href="#cb7-3" aria-hidden="true" tabindex="-1"></a>    include_out_err<span class="op">=</span><span class="va">False</span>,</span>
+<span id="cb7-4"><a href="#cb7-4" aria-hidden="true" tabindex="-1"></a>    include_completed<span class="op">=</span><span class="va">False</span>,</span>
+<span id="cb7-5"><a href="#cb7-5" aria-hidden="true" tabindex="-1"></a>    completed_state<span class="op">=</span><span class="st">'COMPLETED'</span>,</span>
+<span id="cb7-6"><a href="#cb7-6" aria-hidden="true" tabindex="-1"></a>    success_exit_code<span class="op">=</span><span class="dv">0</span>,</span>
+<span id="cb7-7"><a href="#cb7-7" aria-hidden="true" tabindex="-1"></a>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <p>Processes a list of job IDs or a file containing job IDs to retrieve job information.</p>
 <section id="parameters" class="level4 doc-section doc-section-parameters">
 <h4 class="doc-section doc-section-parameters anchored" data-anchor-id="parameters">Parameters</h4>
@@ -798,19 +834,35 @@ jobby .nextflow.log [--tsv|--json|--yaml] [--outerr] [--include-completed]</code
 </table>
 </section>
 </section>
+<section id="ccbr_tools.jobby.list_records" class="level3">
+<h3 class="anchored" data-anchor-id="ccbr_tools.jobby.list_records">list_records</h3>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb8"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a>jobby.list_records(</span>
+<span id="cb8-2"><a href="#cb8-2" aria-hidden="true" tabindex="-1"></a>    job_ids,</span>
+<span id="cb8-3"><a href="#cb8-3" aria-hidden="true" tabindex="-1"></a>    include_out_err<span class="op">=</span><span class="va">False</span>,</span>
+<span id="cb8-4"><a href="#cb8-4" aria-hidden="true" tabindex="-1"></a>    include_completed<span class="op">=</span><span class="va">False</span>,</span>
+<span id="cb8-5"><a href="#cb8-5" aria-hidden="true" tabindex="-1"></a>    completed_state<span class="op">=</span><span class="st">'COMPLETED'</span>,</span>
+<span id="cb8-6"><a href="#cb8-6" aria-hidden="true" tabindex="-1"></a>    success_exit_code<span class="op">=</span><span class="dv">0</span>,</span>
+<span id="cb8-7"><a href="#cb8-7" aria-hidden="true" tabindex="-1"></a>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<p>List job records for the given job IDs.</p>
+</section>
+<section id="ccbr_tools.jobby.main" class="level3">
+<h3 class="anchored" data-anchor-id="ccbr_tools.jobby.main">main</h3>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb9"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a>jobby.main()</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<p>Run the CLI.</p>
+</section>
 <section id="ccbr_tools.jobby.parse_mem_to_gb" class="level3">
 <h3 class="anchored" data-anchor-id="ccbr_tools.jobby.parse_mem_to_gb">parse_mem_to_gb</h3>
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb6"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a>jobby.parse_mem_to_gb(mem_str)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb10"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a>jobby.parse_mem_to_gb(mem_str)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <p>Convert SLURM memory strings like ‘4000M’, ‘4G’, ‘102400K’ to GB as float.</p>
 </section>
 <section id="ccbr_tools.jobby.parse_time_to_seconds" class="level3">
 <h3 class="anchored" data-anchor-id="ccbr_tools.jobby.parse_time_to_seconds">parse_time_to_seconds</h3>
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb7"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a>jobby.parse_time_to_seconds(t)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb11"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a>jobby.parse_time_to_seconds(t)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <p>Convert SLURM time formats like ‘1-02:03:04’, ‘02:03:04’, ‘37:55.869’, or ‘55.869’ to seconds.</p>
 </section>
 <section id="ccbr_tools.jobby.read_slurm_log" class="level3">
 <h3 class="anchored" data-anchor-id="ccbr_tools.jobby.read_slurm_log">read_slurm_log</h3>
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb8"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a>jobby.read_slurm_log(filepath)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb12"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb12-1"><a href="#cb12-1" aria-hidden="true" tabindex="-1"></a>jobby.read_slurm_log(filepath)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <p>Reads the contents of a SLURM log file, escapes all special characters using JSON encoding, and returns the escaped string without the outer quotes.</p>
 <section id="parameters-1" class="level4 doc-section doc-section-parameters">
 <h4 class="doc-section doc-section-parameters anchored" data-anchor-id="parameters-1">Parameters</h4>
@@ -860,7 +912,7 @@ jobby .nextflow.log [--tsv|--json|--yaml] [--outerr] [--include-completed]</code
 </section>
 <section id="ccbr_tools.jobby.records_to_df" class="level3">
 <h3 class="anchored" data-anchor-id="ccbr_tools.jobby.records_to_df">records_to_df</h3>
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb9"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a>jobby.records_to_df(records)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb13"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb13-1"><a href="#cb13-1" aria-hidden="true" tabindex="-1"></a>jobby.records_to_df(records)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <p>Convert a list of job records to a pandas DataFrame.</p>
 
 

@@ -80,8 +80,8 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <link href="../site_libs/quarto-html/quarto-syntax-highlighting-dark-95d86bad09a6ca11867430c4d25546ae.css" rel="stylesheet" class="quarto-color-scheme quarto-color-alternate" id="quarto-text-highlighting-styles">
 <script src="../site_libs/bootstrap/bootstrap.min.js"></script>
 <link href="../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
-<link href="../site_libs/bootstrap/bootstrap-d1914d400ded38e38378bab928404dac.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme" id="quarto-bootstrap" data-mode="light">
-<link href="../site_libs/bootstrap/bootstrap-dark-bc5f45c3f4f1882e8470d59c104addda.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme quarto-color-alternate" id="quarto-bootstrap" data-mode="dark">
+<link href="../site_libs/bootstrap/bootstrap-f5617e33543362d376b6fe1cb875ae04.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme" id="quarto-bootstrap" data-mode="light">
+<link href="../site_libs/bootstrap/bootstrap-dark-b57f8cc648fd7b6c040ab6e093daf68a.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme quarto-color-alternate" id="quarto-bootstrap" data-mode="dark">
 <script id="quarto-search-options" type="application/json">{
   "location": "navbar",
   "copy-button": false,
@@ -583,6 +583,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   <ul class="collapse">
   <li><a href="#ccbr_tools.shell.concat_newline" id="toc-ccbr_tools.shell.concat_newline" class="nav-link" data-scroll-target="#ccbr_tools.shell.concat_newline">concat_newline</a></li>
   <li><a href="#ccbr_tools.shell.exec_in_context" id="toc-ccbr_tools.shell.exec_in_context" class="nav-link" data-scroll-target="#ccbr_tools.shell.exec_in_context">exec_in_context</a></li>
+  <li><a href="#ccbr_tools.shell.get_groups" id="toc-ccbr_tools.shell.get_groups" class="nav-link" data-scroll-target="#ccbr_tools.shell.get_groups">get_groups</a></li>
   <li><a href="#ccbr_tools.shell.shell_run" id="toc-ccbr_tools.shell.shell_run" class="nav-link" data-scroll-target="#ccbr_tools.shell.shell_run">shell_run</a></li>
   </ul></li>
   </ul></li>
@@ -619,6 +620,10 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <td>Executes a function in a context manager and captures the output from stdout and stderr.</td>
 </tr>
 <tr class="odd">
+<td><a href="#ccbr_tools.shell.get_groups">get_groups</a></td>
+<td>Return the current user group names.</td>
+</tr>
+<tr class="even">
 <td><a href="#ccbr_tools.shell.shell_run">shell_run</a></td>
 <td>Run a shell command and return stdout/stderr</td>
 </tr>
@@ -687,16 +692,21 @@ Examples:
     'Hello, World!</code></pre>
 <p>’</p>
 </section>
+<section id="ccbr_tools.shell.get_groups" class="level3">
+<h3 class="anchored" data-anchor-id="ccbr_tools.shell.get_groups">get_groups</h3>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb4"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a>shell.get_groups()</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<p>Return the current user group names.</p>
+</section>
 <section id="ccbr_tools.shell.shell_run" class="level3">
 <h3 class="anchored" data-anchor-id="ccbr_tools.shell.shell_run">shell_run</h3>
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb4"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a>shell.shell_run(</span>
-<span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a>    command_str,</span>
-<span id="cb4-3"><a href="#cb4-3" aria-hidden="true" tabindex="-1"></a>    capture_output<span class="op">=</span><span class="va">True</span>,</span>
-<span id="cb4-4"><a href="#cb4-4" aria-hidden="true" tabindex="-1"></a>    check<span class="op">=</span><span class="va">True</span>,</span>
-<span id="cb4-5"><a href="#cb4-5" aria-hidden="true" tabindex="-1"></a>    shell<span class="op">=</span><span class="va">True</span>,</span>
-<span id="cb4-6"><a href="#cb4-6" aria-hidden="true" tabindex="-1"></a>    text<span class="op">=</span><span class="va">True</span>,</span>
-<span id="cb4-7"><a href="#cb4-7" aria-hidden="true" tabindex="-1"></a>    concat_output<span class="op">=</span><span class="va">True</span>,</span>
-<span id="cb4-8"><a href="#cb4-8" aria-hidden="true" tabindex="-1"></a>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb5"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a>shell.shell_run(</span>
+<span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a>    command_str,</span>
+<span id="cb5-3"><a href="#cb5-3" aria-hidden="true" tabindex="-1"></a>    capture_output<span class="op">=</span><span class="va">True</span>,</span>
+<span id="cb5-4"><a href="#cb5-4" aria-hidden="true" tabindex="-1"></a>    check<span class="op">=</span><span class="va">True</span>,</span>
+<span id="cb5-5"><a href="#cb5-5" aria-hidden="true" tabindex="-1"></a>    shell<span class="op">=</span><span class="va">True</span>,</span>
+<span id="cb5-6"><a href="#cb5-6" aria-hidden="true" tabindex="-1"></a>    text<span class="op">=</span><span class="va">True</span>,</span>
+<span id="cb5-7"><a href="#cb5-7" aria-hidden="true" tabindex="-1"></a>    concat_output<span class="op">=</span><span class="va">True</span>,</span>
+<span id="cb5-8"><a href="#cb5-8" aria-hidden="true" tabindex="-1"></a>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <pre><code>Run a shell command and return stdout/stderr
 
 Args:

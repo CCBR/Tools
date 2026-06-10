@@ -23,6 +23,41 @@ ul.task-list li input[type="checkbox"] {
   margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
   vertical-align: middle;
 }
+/* CSS for syntax highlighting */
+html { -webkit-text-size-adjust: 100%; }
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+div.sourceCode { margin: 1em 0; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+  }
+pre.numberSource { margin-left: 3em;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
 </style>
 
 
@@ -45,8 +80,8 @@ ul.task-list li input[type="checkbox"] {
 <link href="../site_libs/quarto-html/quarto-syntax-highlighting-dark-95d86bad09a6ca11867430c4d25546ae.css" rel="stylesheet" class="quarto-color-scheme quarto-color-alternate" id="quarto-text-highlighting-styles">
 <script src="../site_libs/bootstrap/bootstrap.min.js"></script>
 <link href="../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
-<link href="../site_libs/bootstrap/bootstrap-d1914d400ded38e38378bab928404dac.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme" id="quarto-bootstrap" data-mode="light">
-<link href="../site_libs/bootstrap/bootstrap-dark-bc5f45c3f4f1882e8470d59c104addda.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme quarto-color-alternate" id="quarto-bootstrap" data-mode="dark">
+<link href="../site_libs/bootstrap/bootstrap-f5617e33543362d376b6fe1cb875ae04.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme" id="quarto-bootstrap" data-mode="light">
+<link href="../site_libs/bootstrap/bootstrap-dark-b57f8cc648fd7b6c040ab6e093daf68a.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme quarto-color-alternate" id="quarto-bootstrap" data-mode="dark">
 <script id="quarto-search-options" type="application/json">{
   "location": "navbar",
   "copy-button": false,
@@ -542,7 +577,21 @@ ul.task-list li input[type="checkbox"] {
     <h2 id="toc-title">On this page</h2>
    
   <ul>
-  <li><a href="#ccbr_tools.GSEA.ncbr_huse" id="toc-ccbr_tools.GSEA.ncbr_huse" class="nav-link active" data-scroll-target="#ccbr_tools.GSEA.ncbr_huse">GSEA.ncbr_huse</a></li>
+  <li><a href="#ccbr_tools.GSEA.ncbr_huse" id="toc-ccbr_tools.GSEA.ncbr_huse" class="nav-link active" data-scroll-target="#ccbr_tools.GSEA.ncbr_huse">GSEA.ncbr_huse</a>
+  <ul class="collapse">
+  <li><a href="#functions" id="toc-functions" class="nav-link" data-scroll-target="#functions">Functions</a>
+  <ul class="collapse">
+  <li><a href="#ccbr_tools.GSEA.ncbr_huse.con_db" id="toc-ccbr_tools.GSEA.ncbr_huse.con_db" class="nav-link" data-scroll-target="#ccbr_tools.GSEA.ncbr_huse.con_db">con_db</a></li>
+  <li><a href="#ccbr_tools.GSEA.ncbr_huse.err_out" id="toc-ccbr_tools.GSEA.ncbr_huse.err_out" class="nav-link" data-scroll-target="#ccbr_tools.GSEA.ncbr_huse.err_out">err_out</a></li>
+  <li><a href="#ccbr_tools.GSEA.ncbr_huse.fasta_count" id="toc-ccbr_tools.GSEA.ncbr_huse.fasta_count" class="nav-link" data-scroll-target="#ccbr_tools.GSEA.ncbr_huse.fasta_count">fasta_count</a></li>
+  <li><a href="#ccbr_tools.GSEA.ncbr_huse.fasta_list" id="toc-ccbr_tools.GSEA.ncbr_huse.fasta_list" class="nav-link" data-scroll-target="#ccbr_tools.GSEA.ncbr_huse.fasta_list">fasta_list</a></li>
+  <li><a href="#ccbr_tools.GSEA.ncbr_huse.pause_for_input" id="toc-ccbr_tools.GSEA.ncbr_huse.pause_for_input" class="nav-link" data-scroll-target="#ccbr_tools.GSEA.ncbr_huse.pause_for_input">pause_for_input</a></li>
+  <li><a href="#ccbr_tools.GSEA.ncbr_huse.run_cmd" id="toc-ccbr_tools.GSEA.ncbr_huse.run_cmd" class="nav-link" data-scroll-target="#ccbr_tools.GSEA.ncbr_huse.run_cmd">run_cmd</a></li>
+  <li><a href="#ccbr_tools.GSEA.ncbr_huse.run_os_cmd" id="toc-ccbr_tools.GSEA.ncbr_huse.run_os_cmd" class="nav-link" data-scroll-target="#ccbr_tools.GSEA.ncbr_huse.run_os_cmd">run_os_cmd</a></li>
+  <li><a href="#ccbr_tools.GSEA.ncbr_huse.send_update" id="toc-ccbr_tools.GSEA.ncbr_huse.send_update" class="nav-link" data-scroll-target="#ccbr_tools.GSEA.ncbr_huse.send_update">send_update</a></li>
+  <li><a href="#ccbr_tools.GSEA.ncbr_huse.un_gzip" id="toc-ccbr_tools.GSEA.ncbr_huse.un_gzip" class="nav-link" data-scroll-target="#ccbr_tools.GSEA.ncbr_huse.un_gzip">un_gzip</a></li>
+  </ul></li>
+  </ul></li>
   </ul>
 <div class="toc-actions"><ul><li><a href="https://github.com/CCBR/Tools/edit/main/reference/GSEA.ncbr_huse.qmd" class="toc-action"><i class="bi bi-github"></i>Edit this page</a></li><li><a href="https://github.com/CCBR/Tools/issues/new" class="toc-action"><i class="bi empty"></i>Report an issue</a></li></ul></div></nav>
     </div>
@@ -559,8 +608,102 @@ ul.task-list li input[type="checkbox"] {
 <p>Set of functions supporting the FNL NCBR work</p>
 <p>Author: Susan Huse</p>
 <p>Created on Mon Aug 6 11:07:30 2018</p>
+<section id="functions" class="level2">
+<h2 class="anchored" data-anchor-id="functions">Functions</h2>
+<table class="caption-top table">
+<thead>
+<tr class="header">
+<th>Name</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td><a href="#ccbr_tools.GSEA.ncbr_huse.con_db">con_db</a></td>
+<td>Connect to the database.</td>
+</tr>
+<tr class="even">
+<td><a href="#ccbr_tools.GSEA.ncbr_huse.err_out">err_out</a></td>
+<td>Exit with an error message.</td>
+</tr>
+<tr class="odd">
+<td><a href="#ccbr_tools.GSEA.ncbr_huse.fasta_count">fasta_count</a></td>
+<td>Count FASTA records in a file.</td>
+</tr>
+<tr class="even">
+<td><a href="#ccbr_tools.GSEA.ncbr_huse.fasta_list">fasta_list</a></td>
+<td>List FASTA record identifiers.</td>
+</tr>
+<tr class="odd">
+<td><a href="#ccbr_tools.GSEA.ncbr_huse.pause_for_input">pause_for_input</a></td>
+<td>Pause until the user provides a valid response.</td>
+</tr>
+<tr class="even">
+<td><a href="#ccbr_tools.GSEA.ncbr_huse.run_cmd">run_cmd</a></td>
+<td>Run a shell command and capture its output.</td>
+</tr>
+<tr class="odd">
+<td><a href="#ccbr_tools.GSEA.ncbr_huse.run_os_cmd">run_os_cmd</a></td>
+<td>Run an operating-system command.</td>
+</tr>
+<tr class="even">
+<td><a href="#ccbr_tools.GSEA.ncbr_huse.send_update">send_update</a></td>
+<td>Send a status update.</td>
+</tr>
+<tr class="odd">
+<td><a href="#ccbr_tools.GSEA.ncbr_huse.un_gzip">un_gzip</a></td>
+<td>Decompress a gzipped file.</td>
+</tr>
+</tbody>
+</table>
+<section id="ccbr_tools.GSEA.ncbr_huse.con_db" class="level3">
+<h3 class="anchored" data-anchor-id="ccbr_tools.GSEA.ncbr_huse.con_db">con_db</h3>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb1"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a>GSEA.ncbr_huse.con_db(host_name, db_name, port_number)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<p>Connect to the database.</p>
+</section>
+<section id="ccbr_tools.GSEA.ncbr_huse.err_out" class="level3">
+<h3 class="anchored" data-anchor-id="ccbr_tools.GSEA.ncbr_huse.err_out">err_out</h3>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb2"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a>GSEA.ncbr_huse.err_out(errMsg, log<span class="op">=</span><span class="va">None</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<p>Exit with an error message.</p>
+</section>
+<section id="ccbr_tools.GSEA.ncbr_huse.fasta_count" class="level3">
+<h3 class="anchored" data-anchor-id="ccbr_tools.GSEA.ncbr_huse.fasta_count">fasta_count</h3>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb3"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a>GSEA.ncbr_huse.fasta_count(fastaFile)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<p>Count FASTA records in a file.</p>
+</section>
+<section id="ccbr_tools.GSEA.ncbr_huse.fasta_list" class="level3">
+<h3 class="anchored" data-anchor-id="ccbr_tools.GSEA.ncbr_huse.fasta_list">fasta_list</h3>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb4"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a>GSEA.ncbr_huse.fasta_list(fastaFile)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<p>List FASTA record identifiers.</p>
+</section>
+<section id="ccbr_tools.GSEA.ncbr_huse.pause_for_input" class="level3">
+<h3 class="anchored" data-anchor-id="ccbr_tools.GSEA.ncbr_huse.pause_for_input">pause_for_input</h3>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb5"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a>GSEA.ncbr_huse.pause_for_input(txt, contkey<span class="op">=</span><span class="st">'y'</span>, quitkey<span class="op">=</span><span class="st">'q'</span>, log<span class="op">=</span><span class="va">None</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<p>Pause until the user provides a valid response.</p>
+</section>
+<section id="ccbr_tools.GSEA.ncbr_huse.run_cmd" class="level3">
+<h3 class="anchored" data-anchor-id="ccbr_tools.GSEA.ncbr_huse.run_cmd">run_cmd</h3>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb6"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a>GSEA.ncbr_huse.run_cmd(theCommand, fn, dorun)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<p>Run a shell command and capture its output.</p>
+</section>
+<section id="ccbr_tools.GSEA.ncbr_huse.run_os_cmd" class="level3">
+<h3 class="anchored" data-anchor-id="ccbr_tools.GSEA.ncbr_huse.run_os_cmd">run_os_cmd</h3>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb7"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a>GSEA.ncbr_huse.run_os_cmd(theCommand, fn, dorun)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<p>Run an operating-system command.</p>
+</section>
+<section id="ccbr_tools.GSEA.ncbr_huse.send_update" class="level3">
+<h3 class="anchored" data-anchor-id="ccbr_tools.GSEA.ncbr_huse.send_update">send_update</h3>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb8"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a>GSEA.ncbr_huse.send_update(updateStr, log<span class="op">=</span><span class="va">None</span>, quiet<span class="op">=</span><span class="va">False</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<p>Send a status update.</p>
+</section>
+<section id="ccbr_tools.GSEA.ncbr_huse.un_gzip" class="level3">
+<h3 class="anchored" data-anchor-id="ccbr_tools.GSEA.ncbr_huse.un_gzip">un_gzip</h3>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb9"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a>GSEA.ncbr_huse.un_gzip(fname, logfn)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<p>Decompress a gzipped file.</p>
 
 
+</section>
+</section>
 </section>
 
 </main> <!-- /main -->

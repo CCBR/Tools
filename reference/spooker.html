@@ -80,8 +80,8 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <link href="../site_libs/quarto-html/quarto-syntax-highlighting-dark-95d86bad09a6ca11867430c4d25546ae.css" rel="stylesheet" class="quarto-color-scheme quarto-color-alternate" id="quarto-text-highlighting-styles">
 <script src="../site_libs/bootstrap/bootstrap.min.js"></script>
 <link href="../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
-<link href="../site_libs/bootstrap/bootstrap-d1914d400ded38e38378bab928404dac.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme" id="quarto-bootstrap" data-mode="light">
-<link href="../site_libs/bootstrap/bootstrap-dark-bc5f45c3f4f1882e8470d59c104addda.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme quarto-color-alternate" id="quarto-bootstrap" data-mode="dark">
+<link href="../site_libs/bootstrap/bootstrap-f5617e33543362d376b6fe1cb875ae04.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme" id="quarto-bootstrap" data-mode="light">
+<link href="../site_libs/bootstrap/bootstrap-dark-b57f8cc648fd7b6c040ab6e093daf68a.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme quarto-color-alternate" id="quarto-bootstrap" data-mode="dark">
 <script id="quarto-search-options" type="application/json">{
   "location": "navbar",
   "copy-button": false,
@@ -583,6 +583,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   <ul class="collapse">
   <li><a href="#ccbr_tools.spooker.cli" id="toc-ccbr_tools.spooker.cli" class="nav-link" data-scroll-target="#ccbr_tools.spooker.cli">cli</a></li>
   <li><a href="#ccbr_tools.spooker.get_spooker_dict" id="toc-ccbr_tools.spooker.get_spooker_dict" class="nav-link" data-scroll-target="#ccbr_tools.spooker.get_spooker_dict">get_spooker_dict</a></li>
+  <li><a href="#ccbr_tools.spooker.main" id="toc-ccbr_tools.spooker.main" class="nav-link" data-scroll-target="#ccbr_tools.spooker.main">main</a></li>
   <li><a href="#ccbr_tools.spooker.spooker" id="toc-ccbr_tools.spooker.spooker" class="nav-link" data-scroll-target="#ccbr_tools.spooker.spooker">spooker</a></li>
   </ul></li>
   </ul></li>
@@ -622,6 +623,10 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <td>Generates a metadata dictionary summarizing the state and logs of a pipeline run.</td>
 </tr>
 <tr class="odd">
+<td><a href="#ccbr_tools.spooker.main">main</a></td>
+<td>Run the CLI.</td>
+</tr>
+<tr class="even">
 <td><a href="#ccbr_tools.spooker.spooker">spooker</a></td>
 <td>Processes a pipeline output directory to generate metadata, tree JSON, and SLURM job log JSON,</td>
 </tr>
@@ -706,16 +711,21 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </table>
 </section>
 </section>
+<section id="ccbr_tools.spooker.main" class="level3">
+<h3 class="anchored" data-anchor-id="ccbr_tools.spooker.main">main</h3>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb3"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a>spooker.main()</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<p>Run the CLI.</p>
+</section>
 <section id="ccbr_tools.spooker.spooker" class="level3">
 <h3 class="anchored" data-anchor-id="ccbr_tools.spooker.spooker">spooker</h3>
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb3"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a>spooker.spooker(</span>
-<span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a>    pipeline_outdir,</span>
-<span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a>    pipeline_name,</span>
-<span id="cb3-4"><a href="#cb3-4" aria-hidden="true" tabindex="-1"></a>    pipeline_version,</span>
-<span id="cb3-5"><a href="#cb3-5" aria-hidden="true" tabindex="-1"></a>    pipeline_path,</span>
-<span id="cb3-6"><a href="#cb3-6" aria-hidden="true" tabindex="-1"></a>    clean<span class="op">=</span><span class="va">True</span>,</span>
-<span id="cb3-7"><a href="#cb3-7" aria-hidden="true" tabindex="-1"></a>    debug<span class="op">=</span><span class="va">False</span>,</span>
-<span id="cb3-8"><a href="#cb3-8" aria-hidden="true" tabindex="-1"></a>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb4"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a>spooker.spooker(</span>
+<span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a>    pipeline_outdir,</span>
+<span id="cb4-3"><a href="#cb4-3" aria-hidden="true" tabindex="-1"></a>    pipeline_name,</span>
+<span id="cb4-4"><a href="#cb4-4" aria-hidden="true" tabindex="-1"></a>    pipeline_version,</span>
+<span id="cb4-5"><a href="#cb4-5" aria-hidden="true" tabindex="-1"></a>    pipeline_path,</span>
+<span id="cb4-6"><a href="#cb4-6" aria-hidden="true" tabindex="-1"></a>    clean<span class="op">=</span><span class="va">True</span>,</span>
+<span id="cb4-7"><a href="#cb4-7" aria-hidden="true" tabindex="-1"></a>    debug<span class="op">=</span><span class="va">False</span>,</span>
+<span id="cb4-8"><a href="#cb4-8" aria-hidden="true" tabindex="-1"></a>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <p>Processes a pipeline output directory to generate metadata, tree JSON, and SLURM job log JSON, then stages the file on an HPC cluster.</p>
 <section id="parameters-1" class="level4 doc-section doc-section-parameters">
 <h4 class="doc-section doc-section-parameters anchored" data-anchor-id="parameters-1">Parameters</h4>

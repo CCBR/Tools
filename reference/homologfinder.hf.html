@@ -80,8 +80,8 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <link href="../site_libs/quarto-html/quarto-syntax-highlighting-dark-95d86bad09a6ca11867430c4d25546ae.css" rel="stylesheet" class="quarto-color-scheme quarto-color-alternate" id="quarto-text-highlighting-styles">
 <script src="../site_libs/bootstrap/bootstrap.min.js"></script>
 <link href="../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
-<link href="../site_libs/bootstrap/bootstrap-d1914d400ded38e38378bab928404dac.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme" id="quarto-bootstrap" data-mode="light">
-<link href="../site_libs/bootstrap/bootstrap-dark-bc5f45c3f4f1882e8470d59c104addda.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme quarto-color-alternate" id="quarto-bootstrap" data-mode="dark">
+<link href="../site_libs/bootstrap/bootstrap-f5617e33543362d376b6fe1cb875ae04.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme" id="quarto-bootstrap" data-mode="light">
+<link href="../site_libs/bootstrap/bootstrap-dark-b57f8cc648fd7b6c040ab6e093daf68a.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme quarto-color-alternate" id="quarto-bootstrap" data-mode="dark">
 <script id="quarto-search-options" type="application/json">{
   "location": "navbar",
   "copy-button": false,
@@ -586,7 +586,14 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   <ul class="collapse">
   <li><a href="#ccbr_tools.homologfinder.hf.check_help" id="toc-ccbr_tools.homologfinder.hf.check_help" class="nav-link" data-scroll-target="#ccbr_tools.homologfinder.hf.check_help">check_help</a></li>
   <li><a href="#ccbr_tools.homologfinder.hf.collect_args" id="toc-ccbr_tools.homologfinder.hf.collect_args" class="nav-link" data-scroll-target="#ccbr_tools.homologfinder.hf.collect_args">collect_args</a></li>
+  <li><a href="#ccbr_tools.homologfinder.hf.create_homolog_table" id="toc-ccbr_tools.homologfinder.hf.create_homolog_table" class="nav-link" data-scroll-target="#ccbr_tools.homologfinder.hf.create_homolog_table">create_homolog_table</a></li>
   <li><a href="#ccbr_tools.homologfinder.hf.exit_w_msg" id="toc-ccbr_tools.homologfinder.hf.exit_w_msg" class="nav-link" data-scroll-target="#ccbr_tools.homologfinder.hf.exit_w_msg">exit_w_msg</a></li>
+  <li><a href="#ccbr_tools.homologfinder.hf.hf" id="toc-ccbr_tools.homologfinder.hf.hf" class="nav-link" data-scroll-target="#ccbr_tools.homologfinder.hf.hf">hf</a></li>
+  <li><a href="#ccbr_tools.homologfinder.hf.main" id="toc-ccbr_tools.homologfinder.hf.main" class="nav-link" data-scroll-target="#ccbr_tools.homologfinder.hf.main">main</a></li>
+  <li><a href="#ccbr_tools.homologfinder.hf.print_results" id="toc-ccbr_tools.homologfinder.hf.print_results" class="nav-link" data-scroll-target="#ccbr_tools.homologfinder.hf.print_results">print_results</a></li>
+  <li><a href="#ccbr_tools.homologfinder.hf.process_args" id="toc-ccbr_tools.homologfinder.hf.process_args" class="nav-link" data-scroll-target="#ccbr_tools.homologfinder.hf.process_args">process_args</a></li>
+  <li><a href="#ccbr_tools.homologfinder.hf.process_genelist" id="toc-ccbr_tools.homologfinder.hf.process_genelist" class="nav-link" data-scroll-target="#ccbr_tools.homologfinder.hf.process_genelist">process_genelist</a></li>
+  <li><a href="#ccbr_tools.homologfinder.hf.read_lookup" id="toc-ccbr_tools.homologfinder.hf.read_lookup" class="nav-link" data-scroll-target="#ccbr_tools.homologfinder.hf.read_lookup">read_lookup</a></li>
   </ul></li>
   </ul></li>
   </ul>
@@ -636,8 +643,36 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <td>collect all the cli arguments</td>
 </tr>
 <tr class="odd">
+<td><a href="#ccbr_tools.homologfinder.hf.create_homolog_table">create_homolog_table</a></td>
+<td>Create the homolog lookup table.</td>
+</tr>
+<tr class="even">
 <td><a href="#ccbr_tools.homologfinder.hf.exit_w_msg">exit_w_msg</a></td>
 <td>Gracefully exit with proper message</td>
+</tr>
+<tr class="odd">
+<td><a href="#ccbr_tools.homologfinder.hf.hf">hf</a></td>
+<td>Run the homolog finder lookup.</td>
+</tr>
+<tr class="even">
+<td><a href="#ccbr_tools.homologfinder.hf.main">main</a></td>
+<td>Run the CLI.</td>
+</tr>
+<tr class="odd">
+<td><a href="#ccbr_tools.homologfinder.hf.print_results">print_results</a></td>
+<td>Print the homolog finder results.</td>
+</tr>
+<tr class="even">
+<td><a href="#ccbr_tools.homologfinder.hf.process_args">process_args</a></td>
+<td>Process CLI arguments into a gene list.</td>
+</tr>
+<tr class="odd">
+<td><a href="#ccbr_tools.homologfinder.hf.process_genelist">process_genelist</a></td>
+<td>Expand a gene list with homologs from the lookup table.</td>
+</tr>
+<tr class="even">
+<td><a href="#ccbr_tools.homologfinder.hf.read_lookup">read_lookup</a></td>
+<td>Read the homolog lookup table.</td>
 </tr>
 </tbody>
 </table>
@@ -651,10 +686,47 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb2"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a>homologfinder.hf.collect_args()</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <p>collect all the cli arguments</p>
 </section>
+<section id="ccbr_tools.homologfinder.hf.create_homolog_table" class="level3">
+<h3 class="anchored" data-anchor-id="ccbr_tools.homologfinder.hf.create_homolog_table">create_homolog_table</h3>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb3"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a>homologfinder.hf.create_homolog_table(</span>
+<span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a>    rpt_file<span class="op">=</span>importlib.resources.files(__package__) <span class="op">/</span> <span class="st">'HOM_MouseHumanSequence.rpt'</span>,</span>
+<span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<p>Create the homolog lookup table.</p>
+</section>
 <section id="ccbr_tools.homologfinder.hf.exit_w_msg" class="level3">
 <h3 class="anchored" data-anchor-id="ccbr_tools.homologfinder.hf.exit_w_msg">exit_w_msg</h3>
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb3"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a>homologfinder.hf.exit_w_msg(message)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb4"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a>homologfinder.hf.exit_w_msg(message)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <p>Gracefully exit with proper message</p>
+</section>
+<section id="ccbr_tools.homologfinder.hf.hf" class="level3">
+<h3 class="anchored" data-anchor-id="ccbr_tools.homologfinder.hf.hf">hf</h3>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb5"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a>homologfinder.hf.hf(args)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<p>Run the homolog finder lookup.</p>
+</section>
+<section id="ccbr_tools.homologfinder.hf.main" class="level3">
+<h3 class="anchored" data-anchor-id="ccbr_tools.homologfinder.hf.main">main</h3>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb6"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a>homologfinder.hf.main()</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<p>Run the CLI.</p>
+</section>
+<section id="ccbr_tools.homologfinder.hf.print_results" class="level3">
+<h3 class="anchored" data-anchor-id="ccbr_tools.homologfinder.hf.print_results">print_results</h3>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb7"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a>homologfinder.hf.print_results(result)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<p>Print the homolog finder results.</p>
+</section>
+<section id="ccbr_tools.homologfinder.hf.process_args" class="level3">
+<h3 class="anchored" data-anchor-id="ccbr_tools.homologfinder.hf.process_args">process_args</h3>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb8"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a>homologfinder.hf.process_args(args, lookup)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<p>Process CLI arguments into a gene list.</p>
+</section>
+<section id="ccbr_tools.homologfinder.hf.process_genelist" class="level3">
+<h3 class="anchored" data-anchor-id="ccbr_tools.homologfinder.hf.process_genelist">process_genelist</h3>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb9"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a>homologfinder.hf.process_genelist(gl, lookup)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<p>Expand a gene list with homologs from the lookup table.</p>
+</section>
+<section id="ccbr_tools.homologfinder.hf.read_lookup" class="level3">
+<h3 class="anchored" data-anchor-id="ccbr_tools.homologfinder.hf.read_lookup">read_lookup</h3>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb10"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a>homologfinder.hf.read_lookup()</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<p>Read the homolog lookup table.</p>
 
 
 </section>
