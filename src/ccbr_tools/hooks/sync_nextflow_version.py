@@ -7,7 +7,7 @@ Add this to your `.pre-commit-config.yaml` file:
 
 ```yaml
 - repo: https://github.com/CCBR/Tools
-  rev: v0.5.0
+  rev: v0.6.1
   hooks:
     - id: sync-nextflow-version
 ```
@@ -50,6 +50,7 @@ def update_manifest_version(config_text: str, version: str) -> tuple[str, bool]:
         if not in_manifest and MANIFEST_BLOCK_PATTERN.match(line_content):
             in_manifest = True
 
+        updated_line = line
         if in_manifest and not found_manifest_version:
             match = MANIFEST_VERSION_PATTERN.match(line_content)
             if match:
@@ -57,20 +58,14 @@ def update_manifest_version(config_text: str, version: str) -> tuple[str, bool]:
                     f"{match.group(1)}{match.group(2)}{version}"
                     f"{match.group(2)}{match.group(4)}{newline}"
                 )
-                updated_lines.append(updated_line)
                 found_manifest_version = True
                 changed = updated_line != line
-                manifest_depth += line_content.count("{") - line_content.count("}")
-                if manifest_depth <= 0:
-                    in_manifest = False
-                continue
 
-        updated_lines.append(line)
+        updated_lines.append(updated_line)
 
         if in_manifest:
             manifest_depth += line_content.count("{") - line_content.count("}")
-            if manifest_depth <= 0:
-                in_manifest = False
+            in_manifest = manifest_depth > 0
 
     if not found_manifest_version:
         raise ValueError("Could not find manifest.version in nextflow.config.")
@@ -88,16 +83,10 @@ def sync_nextflow_version():
 
     if not nextflow_config.exists():
         click.echo("Skipping sync-nextflow-version: nextflow.config not found.")
-    elif not version_file.exists():
-        raise click.ClickException("VERSION file not found at repository root.")
     else:
         version = version_file.read_text(encoding="utf-8").strip()
         config_text = nextflow_config.read_text(encoding="utf-8")
-        try:
-            updated_text, changed = update_manifest_version(config_text, version)
-        except ValueError as error:
-            raise click.ClickException(str(error)) from error
-
+        updated_text, changed = update_manifest_version(config_text, version)
         if changed:
             nextflow_config.write_text(updated_text, encoding="utf-8")
             click.echo(f"Updated {nextflow_config.name} manifest.version to {version}.")

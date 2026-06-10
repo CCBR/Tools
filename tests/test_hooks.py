@@ -564,7 +564,44 @@ manifest {
         result = runner.invoke(sync_nextflow_version)
 
     assert result.exit_code != 0
-    assert "VERSION file not found" in result.output
+    assert isinstance(result.exception, FileNotFoundError)
+
+
+def test_sync_nextflow_version_cli_propagates_manifest_version_error(tmp_path):
+    runner = CliRunner()
+
+    with runner.isolated_filesystem(temp_dir=str(tmp_path)):
+        Path("VERSION").write_text("1.2.3\n", encoding="utf-8")
+        Path("nextflow.config").write_text(
+            """
+manifest {
+    name = "CCBR/example"
+}
+""",
+            encoding="utf-8",
+        )
+        result = runner.invoke(sync_nextflow_version)
+
+    assert result.exit_code != 0
+    assert isinstance(result.exception, ValueError)
+
+
+def test_sync_nextflow_version_cli_skips_write_when_version_is_current(tmp_path):
+    runner = CliRunner()
+
+    with runner.isolated_filesystem(temp_dir=str(tmp_path)) as cwd:
+        Path("VERSION").write_text("1.2.3\n", encoding="utf-8")
+        original_text = """
+manifest {
+    version = "1.2.3"
+}
+"""
+        Path("nextflow.config").write_text(original_text, encoding="utf-8")
+        result = runner.invoke(sync_nextflow_version)
+
+    assert result.exit_code == 0
+    assert result.output == ""
+    assert Path(cwd, "nextflow.config").read_text(encoding="utf-8") == original_text
 
 
 def test_file_is_text_with_unknown_extension(tmp_path):
