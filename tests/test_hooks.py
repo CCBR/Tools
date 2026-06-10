@@ -9,6 +9,10 @@ from click.testing import CliRunner
 
 from ccbr_tools.hooks import detect_absolute_paths as hooks
 import ccbr_tools.hooks.__main__ as hooks_main
+from ccbr_tools.hooks.sync_nextflow_version import (
+    sync_nextflow_version,
+    update_manifest_version,
+)
 
 
 def test_word_is_absolute_path():
@@ -466,6 +470,96 @@ def test_ignore_paths_only_file_no_cli(tmp_path):
     assert result.exit_code == 0
 
 
+def test_update_manifest_version_updates_manifest_entry():
+    config_text = """
+manifest {
+    name = "CCBR/example"
+    version = "0.1.0-dev"
+}
+"""
+
+    updated_text, changed = update_manifest_version(config_text, "1.2.3")
+
+    assert changed
+    assert 'version = "1.2.3"' in updated_text
+
+
+def test_update_manifest_version_preserves_existing_value():
+    config_text = """
+manifest {
+    version = "1.2.3"
+}
+"""
+
+    updated_text, changed = update_manifest_version(config_text, "1.2.3")
+
+    assert not changed
+    assert updated_text == config_text
+
+
+def test_update_manifest_version_raises_when_manifest_version_missing():
+    config_text = """
+manifest {
+    name = "CCBR/example"
+}
+"""
+
+    with pytest.raises(ValueError, match="manifest.version"):
+        update_manifest_version(config_text, "1.2.3")
+
+
+def test_sync_nextflow_version_cli_updates_repo_root_file(tmp_path):
+    runner = CliRunner()
+    version_file = tmp_path / "VERSION"
+    version_file.write_text("1.2.3\n", encoding="utf-8")
+
+    config_file = tmp_path / "nextflow.config"
+    config_file.write_text(
+        """
+manifest {
+    name = "CCBR/example"
+    version = "0.1.0-dev"
+}
+""",
+        encoding="utf-8",
+    )
+
+    with runner.isolated_filesystem(temp_dir=tmp_path):
+        result = runner.invoke(sync_nextflow_version)
+
+    assert result.exit_code == 0
+    assert 'version = "1.2.3"' in config_file.read_text(encoding="utf-8")
+
+
+def test_sync_nextflow_version_cli_skips_when_nextflow_config_missing(tmp_path):
+    runner = CliRunner()
+    (tmp_path / "VERSION").write_text("1.2.3\n", encoding="utf-8")
+
+    with runner.isolated_filesystem(temp_dir=tmp_path):
+        result = runner.invoke(sync_nextflow_version)
+
+    assert result.exit_code == 0
+    assert "nextflow.config not found" in result.output
+
+
+def test_sync_nextflow_version_cli_fails_when_version_missing(tmp_path):
+    runner = CliRunner()
+    (tmp_path / "nextflow.config").write_text(
+        """
+manifest {
+    version = "0.1.0-dev"
+}
+""",
+        encoding="utf-8",
+    )
+
+    with runner.isolated_filesystem(temp_dir=tmp_path):
+        result = runner.invoke(sync_nextflow_version)
+
+    assert result.exit_code != 0
+    assert "VERSION file not found" in result.output
+
+
 def test_file_is_text_with_unknown_extension(tmp_path):
     target = tmp_path / "notes.unknown"
     target.write_text("/tmp/file\n", encoding="utf-8")
@@ -490,6 +584,7 @@ def test_hooks_cli_help():
 
     assert result.exit_code == 0
     assert "Pre-commit hooks for CCBR Bioinformatics Software" in result.output
+    assert "sync-nextflow-version" in result.output
 
 
 def test_hooks_cli_callback_smoke():
