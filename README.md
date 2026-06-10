@@ -79,7 +79,7 @@ Add the hooks to your `.pre-commit-config.yaml` file:
 
 ```yaml
 - repo: https://github.com/CCBR/Tools
-  rev: v0.5.0
+  rev: v0.7.0
   hooks:
     - id: detect-absolute-paths
     - id: sync-nextflow-version
@@ -179,7 +179,7 @@ guidelines](https://CCBR.github.io/Tools/CONTRIBUTING).
 Please cite this software if you use it in a publication:
 
 > Sovacool K., Koparde V., Kuhn S., Tandon M., and Huse S. (2026). CCBR
-> Tools: Utilities for CCBR Bioinformatics Software (version v0.5.3).
+> Tools: Utilities for CCBR Bioinformatics Software (version v0.7.0).
 > DOI: 10.5281/zenodo.13377166 URL: https://ccbr.github.io/Tools/
 
 ### Bibtex entry
