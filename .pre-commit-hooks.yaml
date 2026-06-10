@@ -9,5 +9,5 @@
   description: Sync manifest.version in nextflow.config from the VERSION file.
   entry: ccbr-hooks sync-nextflow-version
   language: python
-  always_run: true
+  files: ^(VERSION|nextflow\.config)$
   pass_filenames: false
