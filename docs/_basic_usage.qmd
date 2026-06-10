@@ -29,7 +29,7 @@ commands = [cmd.split()[0] for cmd in help_lst[commands_idx].split('\n')[1:] if 
 print("\n".join((
     "```yaml",
     " - repo: https://github.com/CCBR/Tools",
-    "   rev: v0.5.0",
+    "   rev: v0.7.0",
     "   hooks:"
 )))
 for cmd in commands:
