@@ -4,3 +4,10 @@
   entry: ccbr-hooks detect-absolute-paths
   language: python
   types: [text]
+- id: sync-nextflow-version
+  name: sync nextflow version
+  description: Sync manifest.version in nextflow.config from the VERSION file.
+  entry: ccbr-hooks sync-nextflow-version
+  language: python
+  files: ^(VERSION|nextflow\.config)$
+  pass_filenames: false
