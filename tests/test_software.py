@@ -12,6 +12,7 @@ import pytest
 
 
 def test_python():
+    """Test python."""
     assert (
         Software.create_software("ccbr_tools", "v0.3.2").url
         == "https://github.com/CCBR/tools.git"
@@ -29,6 +30,7 @@ def test_python():
 
 
 def test_pipelines():
+    """Test pipelines."""
     assert (
         Software.create_software("CHAMPAGNE", "v0.3.0").install(hpc=Biowulf)
         == "pip install git+https://github.com/CCBR/CHAMPAGNE.git@v0.3.0 -t /data/CCBR_Pipeliner/Pipelines/CHAMPAGNE/.v0.3.0"
@@ -40,6 +42,7 @@ def test_pipelines():
 
 
 def test_bash():
+    """Test bash."""
     assert (
         Software.create_software("permfix", "v1.2.3").install(Biowulf)
         == "git clone --depth 1 --single-branch --branch v1.2.3 https://github.com/CCBR/permfix.git /data/CCBR_Pipeliner/Tools/permfix/.v1.2.3"
@@ -47,6 +50,7 @@ def test_bash():
 
 
 def test_install():
+    """Test install."""
     result = exec_in_context(
         install, tool_name="CHAMPAGNE", version="v0.3.0", dryrun=True, debug="biowulf"
     )
@@ -67,6 +71,7 @@ chmod -R u-w,g-w,o-w,a+rX /data/CCBR_Pipeliner/Pipelines/CHAMPAGNE/.v0.3.0
 
 
 def test_install_dev():
+    """Test install dev."""
     result = exec_in_context(
         install,
         tool_name="CHAMPAGNE",
@@ -86,6 +91,7 @@ def test_install_dev():
 
 
 def test_custom():
+    """Test custom."""
     result = exec_in_context(
         install,
         tool_name="cooltool",
@@ -111,6 +117,7 @@ chmod -R u-w,g-w,o-w,a+rX /data/CCBR_Pipeliner/Tools/cooltool/.v1.0.0
 
 
 def test_unsupported():
+    """Test unsupported."""
     with pytest.raises(KeyError) as exc_info:
         Software.create_software("unsupported_tool", "v1.0.0")
     assert "unsupported_tool not found in software list" in str(exc_info.value)

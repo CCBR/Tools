@@ -55,6 +55,7 @@ from .ncbr_huse import (
 
 def main():
     # Usage statement
+    """Run the CLI."""
     parseStr = (
         'Reads a list of files and imports them each into a separate tab in one Excel spreadsheet.\n\n\
     Usage:\n\

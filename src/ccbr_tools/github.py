@@ -60,11 +60,12 @@ def get_user_info(user_login):
               If the user is not found, returns a minimal dict with 'login' and 'name' set to None.
     """
     url = f"https://api.github.com/users/{user_login}"
+    user_info = {"login": user_login, "name": None}
     try:
-        return get_url_json(url)
+        user_info = get_url_json(url)
     except ConnectionError as e:
         warnings.warn(f"Could not retrieve user info for {user_login}. {str(e)}")
-        return {"login": user_login, "name": None}
+    return user_info
 
 
 def get_contrib_html(contrib, img_attr="{width=100px height=100px}"):

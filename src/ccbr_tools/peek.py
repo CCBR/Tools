@@ -82,6 +82,7 @@ def peek(filename, buffer, delim="\t"):
     # pargs()
 
     # Getting contents of first line
+    """Peek at the input data."""
     try:
         fh = open(filename, "r")
     except IOError as e:
@@ -110,6 +111,7 @@ def peek(filename, buffer, delim="\t"):
 
 def main():
     # Checking command-line usage before parsing
+    """Run the CLI."""
     pargs()
 
     try:

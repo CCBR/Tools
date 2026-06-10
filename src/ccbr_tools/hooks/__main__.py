@@ -33,6 +33,7 @@ cli.add_command(sync_nextflow_version)
 
 
 def main():
+    """Run the CLI."""
     cli(prog_name="ccbr-hooks")
 
 

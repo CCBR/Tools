@@ -13,26 +13,31 @@ from ccbr_tools.versions import (
 
 
 def test_get_releases():
+    """Test get releases."""
     assert match_semver(get_releases(limit=1)[0]["tagName"], with_leading_v=True)
 
 
 def test_get_latest_release_tag():
+    """Test get latest release tag."""
     assert match_semver(get_latest_release_tag(), with_leading_v=True)
 
 
 def test_get_latest_release_hash():
+    """Test get latest release hash."""
     assert len(get_latest_release_hash()) > 7
     assert len(get_latest_release_hash(repo="CCBR/actions")) > 7
     assert get_latest_release_hash(repo="CCBR/CCBR_NextflowTemplate") == ""
 
 
 def test_get_tag_hash():
+    """Test get tag hash."""
     assert len(get_tag_hash("v0.1.0")) > 7
     assert len(get_tag_hash("v0.2.0", repo="CCBR/actions")) > 7
     assert get_tag_hash("notATag", repo="CCBR/CCBR_NextflowTemplate") == ""
 
 
 def test_version_increment():
+    """Test version increment."""
     assert check_version_increments_by_one("v0.1.0", "v0.2.0", with_leading_v=True)
     assert check_version_increments_by_one("0.1.0", "0.1.1", with_leading_v=False)
     assert check_version_increments_by_one(
@@ -41,6 +46,7 @@ def test_version_increment():
 
 
 def test_version_increment_error():
+    """Test version increment error."""
     messages = []
     with pytest.raises(ValueError) as exc_info:
         check_version_increments_by_one("v0.1.0", "v0.2.1", with_leading_v=True)
@@ -73,6 +79,7 @@ def test_version_increment_error():
 
 
 def test_get_major_minor():
+    """Test get major minor."""
     assert get_major_minor_version("1.0.0") == "1.0"
     assert get_major_minor_version("2.1.3-alpha") == "2.1"
     assert get_major_minor_version("v1.0.0", with_leading_v=True) == "v1.0"
@@ -81,6 +88,7 @@ def test_get_major_minor():
 
 
 def test_get_major_minor_nonsemantic():
+    """Test get major minor nonsemantic."""
     assert get_major_minor_version("1.0", strict_semver=False) == "1.0"
     assert (
         get_major_minor_version("v3.4", with_leading_v=True, strict_semver=False)
@@ -90,6 +98,7 @@ def test_get_major_minor_nonsemantic():
 
 
 def test_is_ancestor():
+    """Test is ancestor."""
     assert is_ancestor("v0.1.0", "v0.1.1")
     assert is_ancestor("d620b61", "6cf677a")
     assert is_ancestor("d620b61\n", "\n6cf677a")

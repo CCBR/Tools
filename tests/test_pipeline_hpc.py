@@ -6,6 +6,7 @@ from ccbr_tools.shell import shell_run
 
 
 def test_hpc_biowulf():
+    """Test hpc biowulf."""
     hpc = get_hpc(debug="biowulf")
     assert hpc
     assert hpc.name == "biowulf"
@@ -17,6 +18,7 @@ def test_hpc_biowulf():
 
 
 def test_hpc_frce():
+    """Test hpc frce."""
     hpc = get_hpc(debug="frce")
     assert hpc
     assert hpc.name == "frce"
@@ -26,22 +28,26 @@ def test_hpc_frce():
 
 
 def test_hpc_none():
+    """Test hpc none."""
     hpc = get_hpc(debug=" ")
     assert not any([hpc, hpc.name, hpc.singularity_sif_dir])
 
 
 def test_hpcname_type():
+    """Test hpcname type."""
     hpcname = get_hpcname()
     assert isinstance(hpcname, str), "Expected hpcname to be a string"
 
 
 def test_hpcname_expected_values():
+    """Test hpcname expected values."""
     hpcname = get_hpcname().strip().lower()
     if hpcname:
         assert hpcname in ["biowulf", "frce", "helix"], f"Unexpected hpcname: {hpcname}"
 
 
 def test_hpcname_print_output():
+    """Test hpcname print output."""
     captured = io.StringIO()
     sys.stdout = captured
     print(get_hpcname())
@@ -55,6 +61,7 @@ def test_hpcname_print_output():
 
 
 def test_hpcname_cli():
+    """Test hpcname cli."""
     out = shell_run("get_hpcname", shell=True, capture_output=True, text=True).strip()
     assert not out
 

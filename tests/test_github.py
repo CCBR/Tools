@@ -3,6 +3,7 @@ import pytest
 
 
 def test_print_contributor_images():
+    """Test print contributor images."""
     assert not print_contributor_images(repo="actions", org="CCBR")
 
 

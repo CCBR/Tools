@@ -33,6 +33,7 @@ except ImportError:  # Optional dependency, only needed for con_db
 def run_cmd(theCommand, fn, dorun):
     # Run the given command, x is a list of command parameters
     # if dorun = false, just send out the notification of the next python step
+    """Run a shell command and capture its output."""
     print(" ".join(theCommand) + "\n")
     fn.write(" ".join(theCommand) + "\n")
     fn.flush()
@@ -46,6 +47,7 @@ def run_cmd(theCommand, fn, dorun):
 def run_os_cmd(theCommand, fn, dorun):
     # Run the given command, x is a list of command parameters
     # if dorun = false, just send out the notification of the next python step
+    """Run an operating-system command."""
     theCommandStr = " ".join(theCommand)
     print(theCommandStr + "\n")
     fn.write(theCommandStr + "\n")
@@ -60,6 +62,7 @@ def run_os_cmd(theCommand, fn, dorun):
 def un_gzip(fname, logfn):
     # If rerunning and the previous step has already been compressed,
     # need to uncompress it before you can rerun the command
+    """Decompress a gzipped file."""
     gzip_name = fname + ".gz"
     if (not os.path.isfile(fname)) and os.path.isfile(gzip_name):
         ungz_cmd = ["gunzip", gzip_name]
@@ -70,6 +73,7 @@ def un_gzip(fname, logfn):
 # Read ~/.my.cnf and connect to an SQL database
 #
 def con_db(host_name, db_name, port_number):
+    """Connect to the database."""
     if MySQLdb is None:
         raise ModuleNotFoundError(
             "MySQLdb is required for database connections. Install mysqlclient."
@@ -96,6 +100,7 @@ def con_db(host_name, db_name, port_number):
 # Print updates to screen and log file
 #
 def send_update(updateStr, log=None, quiet=False):
+    """Send a status update."""
     if not quiet:
         print(updateStr)
 
@@ -108,6 +113,7 @@ def send_update(updateStr, log=None, quiet=False):
 # Log error message and exit
 #
 def err_out(errMsg, log=None):
+    """Exit with an error message."""
     if log is not None:
         log.write(errMsg)
 
@@ -118,11 +124,13 @@ def err_out(errMsg, log=None):
 # Pause for user to be ready to continue, use contkey=None to get any input
 #
 def pause_for_input(txt, contkey="y", quitkey="q", log=None):
+    """Pause until the user provides a valid response."""
     # tally the number of tries
     answer_cnt = 0
+    result = None
 
     # loop for the user to enter input, give them a few tries
-    while True:
+    while result is None:
         # wait for the input
         answer = input(txt)
 
@@ -132,11 +140,11 @@ def pause_for_input(txt, contkey="y", quitkey="q", log=None):
 
         # if none, just return the input
         if contkey is None:
-            return answer
+            result = answer
 
         # if there is a contkey, then be sure it is correctly typed
         elif answer == contkey:
-            return answer
+            result = answer
 
         else:
             # give them additional help and increment the answer count
@@ -156,12 +164,14 @@ def pause_for_input(txt, contkey="y", quitkey="q", log=None):
                 )
 
             answer_cnt = answer_cnt + 1
+    return result
 
 
 #
 # Count sequences in a fasta file
 #
 def fasta_count(fastaFile):
+    """Count FASTA records in a file."""
     seqcount = 0
     for line in open(fastaFile, "r"):
         if re.match(">", line):
@@ -173,6 +183,7 @@ def fasta_count(fastaFile):
 # Count sequences in a fasta file
 #
 def fasta_list(fastaFile):
+    """List FASTA record identifiers."""
     seqs = []
     for line in open(fastaFile, "r"):
         if re.match(">", line):

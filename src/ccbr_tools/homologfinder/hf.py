@@ -94,6 +94,7 @@ def collect_args():
 
 
 def process_genelist(gl, lookup):
+    """Expand a gene list with homologs from the lookup table."""
     result = []
     for g in gl:
         if g in lookup:
@@ -102,6 +103,7 @@ def process_genelist(gl, lookup):
 
 
 def process_args(args, lookup):
+    """Process CLI arguments into a gene list."""
     if args.gene:
         r = process_genelist([args.gene], lookup)
     if args.genelist:
@@ -116,11 +118,13 @@ def process_args(args, lookup):
 
 
 def print_results(result):
+    """Print the homolog finder results."""
     for g in result:
         print(g)
 
 
 def read_lookup():
+    """Read the homolog lookup table."""
     lookup = dict()
     lookup_filepath = (
         importlib.resources.files(__package__) / "human_mouse_homolog_lookup.txt"
@@ -135,6 +139,7 @@ def read_lookup():
 def create_homolog_table(
     rpt_file=importlib.resources.files(__package__) / "HOM_MouseHumanSequence.rpt",
 ):
+    """Create the homolog lookup table."""
     cols = ["DB Class Key", "Common Organism Name", "Symbol"]
     df = pd.read_csv(rpt_file, usecols=cols, sep="\t")
     # human-mouse homologs file --> HOM_MouseHumanSequence.rpt
@@ -146,9 +151,10 @@ def create_homolog_table(
             lookup[row["DB Class Key"]] = dict()
             lookup[row["DB Class Key"]]["mouse, laboratory"] = list()
             lookup[row["DB Class Key"]]["human"] = list()
-        if row["Common Organism Name"] not in lookup[row["DB Class Key"]]:
-            continue
-        lookup[row["DB Class Key"]][row["Common Organism Name"]].append(row["Symbol"])
+        if row["Common Organism Name"] in lookup[row["DB Class Key"]]:
+            lookup[row["DB Class Key"]][row["Common Organism Name"]].append(
+                row["Symbol"]
+            )
     for k, v in lookup.items():
         # print(",".join(v["mouse, laboratory"]),",".join(v["human"]),sep="\t")
         for gene_symbol in v["mouse, laboratory"]:
@@ -165,10 +171,12 @@ def create_homolog_table(
 
 
 def hf(args):
+    """Run the homolog finder lookup."""
     return process_args(args, read_lookup())
 
 
 def main():
+    """Run the CLI."""
     args = collect_args()
     results = hf(args)
     print_results(results)

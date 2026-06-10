@@ -186,6 +186,7 @@ def get_spooker_dict(
 
 
 def main():
+    """Run the CLI."""
     cli()
 
 

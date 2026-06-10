@@ -4,6 +4,7 @@ import ccbr_tools.__main__ as main_mod
 
 
 def test_cli_version_command(mocker):
+    """Test cli version command."""
     runner = CliRunner()
     mock_get_version = mocker.patch.object(
         main_mod, "get_version", return_value="1.2.3"
@@ -17,6 +18,7 @@ def test_cli_version_command(mocker):
 
 
 def test_cli_cite_command(mocker, tmp_path):
+    """Test cli cite command."""
     runner = CliRunner()
     citation_file = tmp_path / "CITATION.cff"
     citation_file.write_text("cff-version: 1.2.0\nmessage: test\n", encoding="utf-8")
@@ -32,6 +34,7 @@ def test_cli_cite_command(mocker, tmp_path):
 
 
 def test_cli_send_email_command(mocker):
+    """Test cli send email command."""
     runner = CliRunner()
     mock_send_email = mocker.patch.object(main_mod, "send_email_msg")
 
@@ -56,6 +59,7 @@ def test_cli_send_email_command(mocker):
 
 
 def test_cli_quarto_add_command(mocker):
+    """Test cli quarto add command."""
     runner = CliRunner()
     mock_use_quarto_ext = mocker.patch.object(main_mod, "use_quarto_ext")
 
@@ -66,6 +70,7 @@ def test_cli_quarto_add_command(mocker):
 
 
 def test_cli_install_command(mocker):
+    """Test cli install command."""
     runner = CliRunner()
     mock_install = mocker.patch.object(main_mod, "install_software")
 

@@ -53,6 +53,7 @@ def load_tree(tree_str):
 
 
 def get_disk_usage(tree_dict, pipeline_outdir):
+    """Get disk usage."""
     try:
         report = next(
             (

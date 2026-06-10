@@ -51,7 +51,8 @@ def read_template(template_name):
     template_files = importlib.resources.files(__package__)
     template_path = template_files / template_name
     with open(template_path, "rt") as template_file:
-        return template_file.read()
+        template = template_file.read()
+    return template
 
 
 def use_template(template_name, output_filepath=None, **kwargs: str):

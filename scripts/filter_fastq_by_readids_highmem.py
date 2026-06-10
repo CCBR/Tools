@@ -5,6 +5,7 @@ import os
 
 
 def get_sname(s):
+    """Return the sample name from the input path."""
     sname = s.name
     sname = sname.split()[0]
     return sname

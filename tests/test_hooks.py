@@ -17,6 +17,7 @@ from ccbr_tools.hooks.sync_nextflow_version import (
 
 def test_word_is_absolute_path():
     # Basic absolute paths
+    """Test word is absolute path."""
     assert hooks.word_is_absolute_path("/tmp/file")
     assert hooks.word_is_absolute_path("/usr/local/bin")
     assert hooks.word_is_absolute_path("/home/user/data")
@@ -47,6 +48,7 @@ def test_word_is_absolute_path():
 
 
 def test_line_contains_absolute_path():
+    """Test line contains absolute path."""
     assert hooks.line_contains_absolute_path("/tmp/file")
     assert not hooks.line_contains_absolute_path("relative/path")
 
@@ -60,11 +62,13 @@ def test_line_contains_absolute_path():
 
 
 def test_line_contains_ignore():
+    """Test line contains ignore."""
     assert hooks.line_contains_ignore("value # abs-path:ignore")
     assert not hooks.line_contains_ignore("no ignore tag")
 
 
 def test_file_contains_absolute_path_reports(tmp_path, capsys):
+    """Test file contains absolute path reports."""
     target = tmp_path / "sample.txt"
     target.write_text("/tmp/file\n", encoding="utf-8")
 
@@ -75,6 +79,7 @@ def test_file_contains_absolute_path_reports(tmp_path, capsys):
 
 
 def test_file_contains_absolute_path_ignores_tag(tmp_path, capsys):
+    """Test file contains absolute path ignores tag."""
     target = tmp_path / "sample.txt"
     target.write_text("/tmp/file # abs-path:ignore\n", encoding="utf-8")
 
@@ -85,6 +90,7 @@ def test_file_contains_absolute_path_ignores_tag(tmp_path, capsys):
 
 
 def test_raise_error_if_abs_paths_detected(tmp_path):
+    """Test raise error if abs paths detected."""
     with_abs = tmp_path / "with_abs.txt"
     with_abs.write_text("/tmp/file\n", encoding="utf-8")
 
@@ -98,6 +104,7 @@ def test_raise_error_if_abs_paths_detected(tmp_path):
 
 
 def test_detect_absolute_paths_cli(tmp_path):
+    """Test detect absolute paths cli."""
     runner = CliRunner()
 
     with_abs = tmp_path / "with_abs.txt"
@@ -116,16 +123,19 @@ def test_detect_absolute_paths_cli(tmp_path):
 
 
 def test_detect_absolute_paths_lscratch_line():
+    """Test detect absolute paths lscratch line."""
     target = Path(__file__).resolve().parent / "data" / "hooks" / "abs-path.txt"
     assert hooks.file_contains_absolute_path(target)
 
 
 def test_load_ignored_paths_returns_empty_for_none():
+    """Test load ignored paths returns empty for none."""
     result = hooks.load_ignored_paths(None)
     assert result == []
 
 
 def test_load_ignored_paths_loads_patterns(tmp_path):
+    """Test load ignored paths loads patterns."""
     ignore_file = tmp_path / "ignore.txt"
     ignore_file.write_text(
         "# This is a comment\n"
@@ -148,6 +158,7 @@ def test_load_ignored_paths_loads_patterns(tmp_path):
 
 def test_raise_error_if_abs_paths_detected_with_ignored_patterns(tmp_path):
     # Create test files
+    """Test raise error if abs paths detected with ignored patterns."""
     file1 = tmp_path / "file1.log"
     file1.write_text("/tmp/file\n", encoding="utf-8")
 
@@ -173,6 +184,7 @@ def test_raise_error_if_abs_paths_detected_with_ignored_patterns(tmp_path):
 
 def test_raise_error_if_abs_paths_detected_with_directory_pattern(tmp_path):
     # Create nested structure
+    """Test raise error if abs paths detected with directory pattern."""
     build_dir = tmp_path / "build"
     build_dir.mkdir()
     build_file = build_dir / "output.txt"
@@ -198,6 +210,7 @@ def test_raise_error_if_abs_paths_detected_with_directory_pattern(tmp_path):
 
 def test_raise_error_if_abs_paths_detected_with_glob_patterns(tmp_path):
     # Create test files
+    """Test raise error if abs paths detected with glob patterns."""
     test1 = tmp_path / "test_foo.py"
     test1.write_text("/tmp/file\n", encoding="utf-8")
 
@@ -225,6 +238,7 @@ def test_raise_error_if_abs_paths_detected_with_glob_patterns(tmp_path):
 
 
 def test_detect_absolute_paths_cli_with_ignore_paths_file(tmp_path):
+    """Test detect absolute paths cli with ignore paths file."""
     runner = CliRunner()
 
     # Create test files
@@ -260,6 +274,7 @@ def test_detect_absolute_paths_cli_with_ignore_paths_file(tmp_path):
 
 
 def test_detect_absolute_paths_cli_with_ignore_paths_option(tmp_path):
+    """Test detect absolute paths cli with ignore paths option."""
     runner = CliRunner()
 
     # Create test files
@@ -306,6 +321,7 @@ def test_detect_absolute_paths_cli_with_ignore_paths_option(tmp_path):
 
 
 def test_detect_absolute_paths_cli_with_both_file_and_cli_patterns(tmp_path):
+    """Test detect absolute paths cli with both file and cli patterns."""
     runner = CliRunner()
 
     # Create test files
@@ -471,6 +487,7 @@ def test_ignore_paths_only_file_no_cli(tmp_path):
 
 
 def test_update_manifest_version_updates_manifest_entry():
+    """Test update manifest version updates manifest entry."""
     config_text = """
 manifest {
     name = "CCBR/example"
@@ -485,6 +502,7 @@ manifest {
 
 
 def test_update_manifest_version_preserves_existing_value():
+    """Test update manifest version preserves existing value."""
     config_text = """
 manifest {
     version = "1.2.3"
@@ -498,6 +516,7 @@ manifest {
 
 
 def test_update_manifest_version_raises_when_manifest_version_missing():
+    """Test update manifest version raises when manifest version missing."""
     config_text = """
 manifest {
     name = "CCBR/example"
@@ -509,6 +528,7 @@ manifest {
 
 
 def test_sync_nextflow_version_cli_updates_repo_root_file(tmp_path):
+    """Test sync nextflow version cli updates repo root file."""
     runner = CliRunner()
     version_file = tmp_path / "VERSION"
     version_file.write_text("1.2.3\n", encoding="utf-8")
@@ -540,6 +560,7 @@ manifest {
 
 
 def test_sync_nextflow_version_cli_skips_when_nextflow_config_missing(tmp_path):
+    """Test sync nextflow version cli skips when nextflow config missing."""
     runner = CliRunner()
 
     with runner.isolated_filesystem(temp_dir=str(tmp_path)):
@@ -551,6 +572,7 @@ def test_sync_nextflow_version_cli_skips_when_nextflow_config_missing(tmp_path):
 
 
 def test_sync_nextflow_version_cli_fails_when_version_missing(tmp_path):
+    """Test sync nextflow version cli fails when version missing."""
     runner = CliRunner()
     with runner.isolated_filesystem(temp_dir=str(tmp_path)):
         Path("nextflow.config").write_text(
@@ -568,6 +590,7 @@ manifest {
 
 
 def test_sync_nextflow_version_cli_propagates_manifest_version_error(tmp_path):
+    """Test sync nextflow version cli propagates manifest version error."""
     runner = CliRunner()
 
     with runner.isolated_filesystem(temp_dir=str(tmp_path)):
@@ -587,6 +610,7 @@ manifest {
 
 
 def test_sync_nextflow_version_cli_skips_write_when_version_is_current(tmp_path):
+    """Test sync nextflow version cli skips write when version is current."""
     runner = CliRunner()
 
     with runner.isolated_filesystem(temp_dir=str(tmp_path)) as cwd:
@@ -605,6 +629,7 @@ manifest {
 
 
 def test_file_is_text_with_unknown_extension(tmp_path):
+    """Test file is text with unknown extension."""
     target = tmp_path / "notes.unknown"
     target.write_text("/tmp/file\n", encoding="utf-8")
 
@@ -612,6 +637,7 @@ def test_file_is_text_with_unknown_extension(tmp_path):
 
 
 def test_file_contains_absolute_path_skips_non_text(tmp_path, capsys):
+    """Test file contains absolute path skips non text."""
     target = tmp_path / "image.png"
     target.write_bytes(b"/tmp/file\n")
 
@@ -622,6 +648,7 @@ def test_file_contains_absolute_path_skips_non_text(tmp_path, capsys):
 
 
 def test_hooks_cli_help():
+    """Test hooks cli help."""
     runner = CliRunner()
 
     result = runner.invoke(hooks_main.cli, ["--help"])
@@ -632,10 +659,12 @@ def test_hooks_cli_help():
 
 
 def test_hooks_cli_callback_smoke():
+    """Test hooks cli callback smoke."""
     assert hooks_main.cli.callback() is None
 
 
 def test_hooks_main_invokes_cli(mocker):
+    """Test hooks main invokes cli."""
     mock_cli = mocker.patch.object(hooks_main, "cli")
 
     hooks_main.main()
@@ -644,6 +673,7 @@ def test_hooks_main_invokes_cli(mocker):
 
 
 def test_hooks_main_module_entrypoint(monkeypatch):
+    """Test hooks main module entrypoint."""
     monkeypatch.setattr(sys, "argv", ["ccbr-hooks", "--help"])
     sys.modules.pop("ccbr_tools.hooks.__main__", None)
 
@@ -654,6 +684,7 @@ def test_hooks_main_module_entrypoint(monkeypatch):
 
 
 def test_pre_commit_try_repo_detect_absolute_paths(tmp_path):
+    """Test pre commit try repo detect absolute paths."""
     if shutil.which("pre-commit") is None:
         pytest.skip("pre-commit is not installed")
 
@@ -700,6 +731,7 @@ def test_pre_commit_try_repo_detect_absolute_paths(tmp_path):
 
 
 def test_detect_absolute_paths_module_entrypoint(monkeypatch):
+    """Test detect absolute paths module entrypoint."""
     monkeypatch.setattr(sys, "argv", ["detect-absolute-paths"])
 
     try:

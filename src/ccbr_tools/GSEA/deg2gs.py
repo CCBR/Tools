@@ -38,6 +38,7 @@ from .ncbr_huse import send_update, err_out
 ####################################
 def filter_by_p(x, nhits, pvalue, qvalue):
     # Filter the data to nhits, pvalue, qvalue
+    """Filter rows by p-value."""
     x.sort_values(by=["p"], inplace=True)
     x = x[(x["p"] <= pvalue) & (x["q"] <= qvalue)]
     if x.shape[0] > nhits:
@@ -54,6 +55,7 @@ def filter_by_p(x, nhits, pvalue, qvalue):
 
 def main():
     # Usage statement
+    """Run the CLI."""
     parseStr = "Reads RNASeq differential expression output files\n\
 and outputs a prioritized list of genes for use in GSEA or ToppFun.\n\
 Will filter by both p and fdr values, and export up to nhits values.\n\

@@ -6,6 +6,7 @@ from .versions import match_semver, get_major_minor_version
 class Software:
     @staticmethod
     def create_software(tool_name, version, software_type=None):
+        """Create a software object for the requested tool."""
         tool_lower = tool_name.lower()
 
         if software_type:
@@ -29,48 +30,58 @@ class Software:
         return f"{self.__class__.__name__}({self.name}, {self.version})"
 
     def path(self, hpc: Cluster):
+        """Return the installation path."""
         hidden_dir = self.hidden_version
         return hpc.TOOLS_HOME / self.name / hidden_dir
 
     def base_path(self, hpc: Cluster):
+        """Return the base installation path."""
         return hpc.TOOLS_HOME / self.name
 
     @property
     def version_re(self):
+        """Return the semantic-version match."""
         return match_semver(self.version, with_leading_v=True)
 
     @property
     def major_minor(self):
+        """Return the major and minor version."""
         version_mm = get_major_minor_version(self.version, with_leading_v=True)
         assert version_mm
         return version_mm
 
     @property
     def hidden_version(self):
+        """Return the hidden version directory name."""
         return f".{self.version}"
 
     @property
     def is_dev_version(self):
+        """Return whether the version is a development release."""
         return self.version_re.group("prerelease") or self.version_re.group(
             "buildmetadata"
         )
 
     @property
     def url(self):
+        """Return the repository URL."""
         return f"https://github.com/CCBR/{self.name}.git"
 
     def install(self, hpc: Cluster, branch_tag=None):
+        """Return the install command."""
         raise NotImplementedError("Subclasses should implement this method")
 
 
 class Installer:
     @staticmethod
     def python(software: Software, hpc: Cluster, branch_tag=None):
+        """Return the Python install command."""
         tag = software.version if not branch_tag else branch_tag
         return f"pip install git+{software.url}@{tag} -t {software.path(hpc)}"
 
     @staticmethod
     def bash(software: Software, hpc: Cluster, branch_tag=None):
+        """Return the Bash install command."""
         tag = software.version if not branch_tag else branch_tag
         return f"git clone --depth 1 --single-branch --branch {tag} {software.url} {software.path(hpc)}"
 
@@ -81,10 +92,12 @@ class PythonTool(Software):
         self.repo_name = name.replace("ccbr_", "")
 
     def install(self, hpc: Cluster, branch_tag=None):
+        """Return the install command."""
         return Installer.python(self, hpc, branch_tag=branch_tag)
 
     @property
     def url(self):
+        """Return the repository URL."""
         return f"https://github.com/CCBR/{self.repo_name}.git"
 
 
@@ -93,6 +106,7 @@ class BashTool(Software):
         super(BashTool, self).__init__(name, version)
 
     def install(self, hpc: Cluster, branch_tag=None):
+        """Return the install command."""
         return Installer.bash(self, hpc, branch_tag=branch_tag)
 
 
@@ -101,13 +115,16 @@ class Nextflow(Software):
         super(Nextflow, self).__init__(name.upper(), version)
 
     def path(self, hpc: Cluster):
+        """Return the installation path."""
         hidden_dir = self.hidden_version
         return hpc.PIPELINES_HOME / self.name / hidden_dir
 
     def base_path(self, hpc: Cluster):
+        """Return the base installation path."""
         return hpc.PIPELINES_HOME / self.name
 
     def install(self, hpc: Cluster, branch_tag=None):
+        """Return the install command."""
         return Installer.python(self, hpc, branch_tag=branch_tag)
 
 
@@ -116,13 +133,16 @@ class Snakemake(Software):
         super(Snakemake, self).__init__(name.upper(), version)
 
     def path(self, hpc: Cluster):
+        """Return the installation path."""
         hidden_dir = self.hidden_version
         return hpc.PIPELINES_HOME / self.name / hidden_dir
 
     def base_path(self, hpc: Cluster):
+        """Return the base installation path."""
         return hpc.PIPELINES_HOME / self.name
 
     def install(self, hpc: Cluster, branch_tag=None):
+        """Return the install command."""
         return Installer.bash(self, hpc, branch_tag=branch_tag)
 
 
@@ -176,6 +196,7 @@ def install(
     final_permissions_script=FINAL_PERMISSIONS,
     debug=False,
 ):
+    """Return the install command."""
     hpc = Cluster.create_hpc(debug=debug)
     tool = Software.create_software(tool_name, version, software_type=software_type)
 

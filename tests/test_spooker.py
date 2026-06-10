@@ -9,6 +9,7 @@ from ccbr_tools.spooker import spooker
 
 @pytest.mark.filterwarnings("ignore:UserWarning")
 def test_spooker(data_dir_rel):
+    """Test spooker."""
     pipeline_outdir = data_dir_rel / "pipeline_run"
     out_filename = spooker(
         pipeline_outdir=pipeline_outdir,
@@ -36,6 +37,7 @@ def test_spooker(data_dir_rel):
 
 
 def test_spooker_no_outdir(data_dir_rel):
+    """Test spooker no outdir."""
     with pytest.raises(FileNotFoundError) as exc_info:
         spooker(
             pipeline_outdir=data_dir_rel / "pipeline_run" / "does_not_exist",
@@ -49,6 +51,7 @@ def test_spooker_no_outdir(data_dir_rel):
 
 
 def test_spooker_cli(data_dir_rel):
+    """Test spooker cli."""
     pipeline_outdir = data_dir_rel / "pipeline_run"
     out = subprocess.run(
         f"spooker --outdir {pipeline_outdir} --name test_pipeline --version 0.1.2-dev --path unknown --debug gha",
@@ -85,6 +88,7 @@ def test_spooker_cli(data_dir_rel):
 
 
 def test_spooker_help():
+    """Test spooker help."""
     assert (
         "Usage: spooker "
         in subprocess.run(

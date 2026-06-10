@@ -14,6 +14,7 @@ import Bio
 
 
 def main():
+    """Run the CLI."""
     if check_args(sys.argv):
         gb2gtf(sys.argv)
 
@@ -25,6 +26,7 @@ Usage: gb2gtf sequence.gb > sequence.gtf
 
 
 def check_args(args):
+    """Validate the CLI arguments."""
     valid_usage = True
     if len(args) < 2 or "-h" in args or "--help" in args:
         print(usage_msg)
@@ -34,6 +36,7 @@ def check_args(args):
 
 def gb2gtf(args):
     # get all sequence records for the specified genbank file
+    """Convert a GenBank file to GTF output."""
     recs = [rec for rec in SeqIO.parse(args[1], "genbank")]
 
     # print the number of sequence records that were extracted
@@ -126,10 +129,6 @@ def gb2gtf(args):
                     y = x + "; exon_number 1"
                     gffstring[8] = y
                     print("\t".join(gffstring) + ";")
-
-            #            print(j,part)
-            else:
-                continue
 
             # else:
 

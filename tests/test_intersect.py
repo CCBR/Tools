@@ -4,6 +4,7 @@ from ccbr_tools.shell import exec_in_context
 
 
 def test_intersect(data_dir_rel):
+    """Test intersect."""
     out = exec_in_context(
         ccbr_tools.intersect.run_intersect,
         [
@@ -18,6 +19,7 @@ def test_intersect(data_dir_rel):
 
 
 def test_intersect_err(data_dir_rel):
+    """Test intersect err."""
     with pytest.raises(IndexError) as exc_info:
         exec_in_context(
             ccbr_tools.intersect.run_intersect,
@@ -33,6 +35,7 @@ def test_intersect_err(data_dir_rel):
 
 
 def test_intersect_help(data_dir_rel):
+    """Test intersect help."""
     out = exec_in_context(
         ccbr_tools.intersect.run_intersect,
         [
@@ -48,6 +51,7 @@ def test_intersect_help(data_dir_rel):
 
 
 def test_intersect_usage():
+    """Test intersect usage."""
     with pytest.raises(SystemExit):
         out = exec_in_context(ccbr_tools.intersect.run_intersect, [])
         assert out.startswith("INCORRECT USAGE:")

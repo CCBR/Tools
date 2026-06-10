@@ -56,6 +56,7 @@ from .pipeline.hpc import list_modules, parse_modules
 
 
 def print_help():
+    """Print the CLI help text."""
     help_message = """
 Usage:
   module_list           # List all loaded modules in JSON format
@@ -87,6 +88,7 @@ def module_list(module=""):
 
 
 def main():
+    """Run the CLI."""
     args = sys.argv
     if "-h" in args or "--help" in args or len(args) > 2:
         print_help()

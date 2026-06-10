@@ -60,6 +60,7 @@ def check_help(parser):
 
 
 def check_host():
+    """Validate that the current host is supported."""
     if (
         os.environ.get("HOSTNAME") == "biowulf.nih.gov"
         or os.environ.get("HOSTNAME") == "helix.nih.gov"
@@ -71,6 +72,7 @@ def check_host():
 
 def collect_args():
     # create parser
+    """Parse the CLI arguments."""
     parser = argparse.ArgumentParser(
         description="Get slurm job information using slurm job id or snakemake.log file"
     )
@@ -149,18 +151,23 @@ def collect_args():
 
 
 def mem2gb(memstr):
+    """Convert a memory string to gigabytes."""
+    result = None
     if memstr == "0":
-        return float("0")
-    value, unit = memstr.split()
-    if unit == "GB":
-        return float(value)
-    elif unit == "MB":
-        return float(value) / 1024
-    elif unit == "KB":
-        return float(value) / 1024 / 1024
+        result = float("0")
+    else:
+        value, unit = memstr.split()
+        if unit == "GB":
+            result = float(value)
+        elif unit == "MB":
+            result = float(value) / 1024
+        elif unit == "KB":
+            result = float(value) / 1024 / 1024
+    return result
 
 
 def check_int_set_zero(s):
+    """Convert an empty string to zero or cast it to an integer."""
     if s == "":
         s = 0
     else:
@@ -169,6 +176,7 @@ def check_int_set_zero(s):
 
 
 def time2sec(timestr):
+    """Convert a SLURM time string to seconds."""
     debug = 0
     dayHMSstr_list = timestr.split("-")
     if debug == 1:
@@ -215,6 +223,7 @@ def time2sec(timestr):
 
 
 def get_jobinfo(args):
+    """Retrieve job information from dashboard_cli."""
     cmd = (
         "/usr/local/bin/dashboard_cli jobs --joblist "  # abs-path:ignore
         + ",".join(args.joblist)
@@ -289,7 +298,10 @@ def get_jobinfo(args):
 
 
 def filter_rows(func):
+    """Filter rows."""
+
     def wrapper(t, args):
+        """Filter rows before invoking the wrapped function."""
         if args.failonly:
             t = t[t["state"].isin(FAILONLY.split(","))]
         func(t, args)
@@ -299,6 +311,7 @@ def filter_rows(func):
 
 @filter_rows
 def print2screen(t, args):
+    """Print the job table to the screen."""
     onscreenfields = SHORT_FIELDS
     if args.failonly:
         onscreenfields = FAILONLY_FIELDS
@@ -312,6 +325,7 @@ def print2screen(t, args):
 
 def main():
     # collect all arguments
+    """Run the CLI."""
     args = collect_args()
     # check host
     check_host()

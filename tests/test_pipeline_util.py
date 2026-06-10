@@ -16,6 +16,7 @@ from ccbr_tools.pkg_util import repo_base
 
 
 def test_copy_config(tmp_path, data_dir):
+    """Test copy config."""
     copy_config(
         ("file.txt", "file2.txt"),
         repo_base=lambda f: data_dir / f,
@@ -27,33 +28,39 @@ def test_copy_config(tmp_path, data_dir):
 
 
 def test_tmp_dir():
+    """Test tmp dir."""
     assert get_tmp_dir("", "./out", hpc="biowulf").startswith("/lscratch")
     assert get_tmp_dir("", "./out", hpc="frce").startswith("./out")
     assert get_tmp_dir("", "./out", hpc="none") is None
 
 
 def test_get_mtime(data_dir):
+    """Test get mtime."""
     mtime = _get_file_mtime(data_dir / "file.txt")
     assert len(mtime) == 12
     assert mtime.isdigit()
 
 
 def test_get_genomes_dict():
+    """Test get genomes dict."""
     d = get_genomes_dict(repo_base)
     assert d == {}
 
 
 def test_md5sum(data_dir):
+    """Test md5sum."""
     assert md5sum(data_dir / "file.txt") == "47ece2e49e5c0333677fc34e044d8257"
     assert md5sum(data_dir / "file2.txt") == "04ab3457e5e52c208c1af0139ad47d25"
 
 
 def test_permissions(data_dir):
+    """Test permissions."""
     abspath = permissions(argparse.ArgumentParser(), data_dir / "file.txt", os.R_OK)
     assert abspath.endswith("tests/data/file.txt")
 
 
 def test_exists(data_dir):
+    """Test exists."""
     assertions = [
         pathlib.Path(p).exists() == exists(p)
         for p in [data_dir / "file.txt", data_dir / "file2.txt", "not/a/path"]
@@ -64,5 +71,6 @@ def test_exists(data_dir):
 
 
 def test_which():
+    """Test which."""
     assert which("ls")
     assert not which("unknown")
