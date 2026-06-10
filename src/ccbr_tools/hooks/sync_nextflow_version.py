@@ -19,7 +19,7 @@ from pathlib import Path
 import click
 
 MANIFEST_BLOCK_PATTERN = re.compile(r"^\s*manifest\s*\{\s*(?://.*)?$")
-MANIFEST_VERSION_PATTERN = re.compile(r"^(\s*version\s*=\s*)(.*)$")
+MANIFEST_VERSION_PATTERN = re.compile(r"^(\s*version\s*=\s*)(.*?)(\s*(?://.*)?)$")
 
 
 def update_manifest_version(config_text: str, version: str) -> tuple[str, bool]:
@@ -54,7 +54,7 @@ def update_manifest_version(config_text: str, version: str) -> tuple[str, bool]:
         if in_manifest and not found_manifest_version:
             match = MANIFEST_VERSION_PATTERN.match(line_content)
             if match:
-                updated_line = f'{match.group(1)}"{version}"{newline}'
+                updated_line = f'{match.group(1)}"{version}"{match.group(3)}{newline}'
                 found_manifest_version = True
                 changed = updated_line != line
 
