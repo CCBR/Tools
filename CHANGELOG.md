@@ -1,4 +1,4 @@
-## Tools development version
+## Tools 0.7.0
 
 - New pre-commit hook: `ccbr-hooks sync-nextflow-version`. Syncs `manifest.version` in `nextflow.config` from the repo `VERSION` file. (#193, @kelly-sovacool, @copilot)
 
