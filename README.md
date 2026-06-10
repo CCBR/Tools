@@ -82,6 +82,7 @@ Add the hooks to your `.pre-commit-config.yaml` file:
   rev: v0.5.0
   hooks:
     - id: detect-absolute-paths
+    - id: sync-nextflow-version
 ```
 
 View the [reference guide on pre-commit hooks](./reference/hooks.qmd)

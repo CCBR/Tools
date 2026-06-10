@@ -8,6 +8,7 @@ from ..pkg_util import (
     CustomClickGroup,
 )
 from .detect_absolute_paths import detect_absolute_paths
+from .sync_nextflow_version import sync_nextflow_version
 
 
 @click.group(
@@ -28,6 +29,7 @@ def cli():
 
 
 cli.add_command(detect_absolute_paths)
+cli.add_command(sync_nextflow_version)
 
 
 def main():
