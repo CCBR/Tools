@@ -533,10 +533,10 @@ manifest {
         )
         result = runner.invoke(sync_nextflow_version)
 
-    assert result.exit_code == 0
-    assert 'version = "1.2.3"' in Path(cwd, "nextflow.config").read_text(
-        encoding="utf-8"
-    )
+        assert result.exit_code == 0
+        assert 'version = "1.2.3"' in Path(cwd, "nextflow.config").read_text(
+            encoding="utf-8"
+        )
 
 
 def test_sync_nextflow_version_cli_skips_when_nextflow_config_missing(tmp_path):
@@ -599,9 +599,9 @@ manifest {
         Path("nextflow.config").write_text(original_text, encoding="utf-8")
         result = runner.invoke(sync_nextflow_version)
 
-    assert result.exit_code == 0
-    assert result.output == ""
-    assert Path(cwd, "nextflow.config").read_text(encoding="utf-8") == original_text
+        assert result.exit_code == 0
+        assert result.output == ""
+        assert Path(cwd, "nextflow.config").read_text(encoding="utf-8") == original_text
 
 
 def test_file_is_text_with_unknown_extension(tmp_path):
