@@ -2,6 +2,7 @@ from ccbr_tools.send_email import send_email_msg
 
 
 def test_send_email_no_attach():
+    """Test send email no attach."""
     assert {
         "Subject": "test email from python",
         "From": "${USER}@hpc.nih.gov",
@@ -13,6 +14,7 @@ def test_send_email_no_attach():
 
 
 def test_send_email_attach():
+    """Test send email attach."""
     assert {
         "Subject": "test email from python",
         "From": "${USER}@hpc.nih.gov",

@@ -3,10 +3,12 @@ import pytest
 
 
 def test_repo_base():
+    """Test repo base."""
     assert str(repo_base()).endswith("ccbr_tools")
 
 
 def test_get_url_json():
+    """Test get url json."""
     with pytest.raises(ConnectionError) as exc_info:
         url = "https://api.github.com/users/"
         get_url_json(url)

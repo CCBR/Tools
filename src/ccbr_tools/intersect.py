@@ -12,6 +12,7 @@ import sys
 
 
 def indexFile(filename, joinindex, header):
+    """Index a tab-delimited file by the join column."""
     fh = open(filename, "r")
     filedict = {}
     if header == 1:
@@ -28,6 +29,7 @@ def indexFile(filename, joinindex, header):
 
 
 def intersect(fileDict, file2, joinindex, header):
+    """Print the intersecting rows between two files."""
     fh2 = open(file2, "r")
     counter = 0
 
@@ -42,22 +44,19 @@ def intersect(fileDict, file2, joinindex, header):
         linelist = line.strip().replace('"', "").split("\t")
         # print(linelist)
         joinon = linelist[joinindex]
-        try:
-            fileDict[joinon]
-        except KeyError:
-            continue  # joinon key is not in the file1, go to next line in file
-
-        counter += 1
-        intersection = (
-            "\t".join(fileDict[joinon]).rstrip("\n") + "\t" + "\t".join(linelist)
-        )
-        print(intersection)
+        if joinon in fileDict:
+            counter += 1
+            intersection = (
+                "\t".join(fileDict[joinon]).rstrip("\n") + "\t" + "\t".join(linelist)
+            )
+            print(intersection)
 
     # print(counter)
     fh2.close()
 
 
 def run_intersect(args):
+    """Run the intersect command."""
     usage_str = "USAGE:\nintersect filename1 filename2 f1ColumnIndex F2ColumnIndex\n\t--Ex. intersect file1 file2 0 0"
     # Join on column count starts at 0
     if "--help" in args or "-h" in args:
@@ -82,6 +81,7 @@ def run_intersect(args):
 
 
 def main():
+    """Run the CLI."""
     run_intersect(sys.argv)
 
 

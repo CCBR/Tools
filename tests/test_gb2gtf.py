@@ -5,6 +5,7 @@ from ccbr_tools.shell import exec_in_context
 
 
 def test_check_args():
+    """Test check args."""
     test_cases = [
         (["", "test"], True),
         (["test"], False),
@@ -17,12 +18,14 @@ def test_check_args():
 
 
 def test_gb2gtf_err(data_dir_rel):
+    """Test gb2gtf err."""
     with pytest.raises(SystemExit) as exc_info:
         gb2gtf.gb2gtf(["", str(data_dir_rel / "sequence_U49845.gb")])
     assert str(exc_info.value) == "Something fishy!"
 
 
 def test_gb2gtf(data_dir_rel):
+    """Test gb2gtf."""
     out = exec_in_context(
         gb2gtf.gb2gtf, ["", str(data_dir_rel / "sequence_AF165912.gb")]
     )

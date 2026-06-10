@@ -8,6 +8,7 @@ import ccbr_tools.GSEA.multitext2excel as mt2excel
 
 
 def test_deg2gs_gsea_pipeliner(tmp_path, mocker):
+    """Test deg2gs gsea pipeliner."""
     df = pd.DataFrame(
         {
             "gene": ["GeneA", "GeneB", "GeneC"],
@@ -62,6 +63,7 @@ def test_deg2gs_gsea_pipeliner(tmp_path, mocker):
 
 
 def test_deg2gs_toppfun_top_table(tmp_path, mocker):
+    """Test deg2gs toppfun top table."""
     df = pd.DataFrame(
         {
             "log2FC": [1.5, 2.5],
@@ -114,6 +116,7 @@ def test_deg2gs_toppfun_top_table(tmp_path, mocker):
 
 
 def test_multitext2excel_writes_sheets(tmp_path, mocker):
+    """Test multitext2excel writes sheets."""
     pytest.importorskip("openpyxl")
 
     input_dir = tmp_path / "inputs"

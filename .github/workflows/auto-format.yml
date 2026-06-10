@@ -32,11 +32,10 @@ jobs:
           owner: ${{ github.repository_owner }}
 
       - uses: actions/checkout@v6
-        if: github.event_name == 'pull_request'
         with:
           fetch-depth: 0
           token: ${{ steps.generate-token.outputs.token }}
-          ref: ${{ github.head_ref && github.event_name == 'pull_request' || github.ref_name }}
+          ref: ${{ github.event_name == 'pull_request' && github.head_ref || github.ref_name }}
 
       - name: git config
         run: |
@@ -61,6 +60,7 @@ jobs:
         uses: pre-commit/action@v3.0.1
         continue-on-error: true
       - name: commit & push
+        if: ${{ github.event_name == 'pull_request' }}
         run: |
           git config --global user.name "github-actions[bot]"
           git config --global user.email "41898282+github-actions[bot]@users.noreply.github.com"

@@ -17,6 +17,7 @@ from urllib.parse import urlparse
 
 class CustomClickGroup(click.Group):
     def format_epilog(self, ctx, formatter):
+        """Format the Click epilog text."""
         if self.epilog:
             formatter.write_paragraph()
             for line in self.epilog.split("\n"):
@@ -56,7 +57,8 @@ def get_version(repo_base=repo_base, debug=False):
     if debug:
         print("VERSION file path:", version_path)
     with open(version_path, "r") as infile:
-        return infile.read().strip().lstrip("v")
+        version = infile.read().strip().lstrip("v")
+    return version
 
 
 def get_package_version(pkg_name="ccbr_tools"):
@@ -187,8 +189,10 @@ def get_url_json(url):
 
 
 def get_random_string():
+    """Return a random string."""
     return str(uuid.uuid4()).split("-")[-1]
 
 
 def get_timestamp():
+    """Return the current timestamp."""
     return datetime.datetime.now().strftime("%Y-%m-%dT%H-%M-%S")

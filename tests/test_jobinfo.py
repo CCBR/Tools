@@ -8,23 +8,27 @@ from ccbr_tools.jobinfo import get_jobinfo, check_host, mem2gb, time2sec
 
 
 def test_jobinfo_cli():
+    """Test jobinfo cli."""
     out = shell_run(f"{sys.executable} -m ccbr_tools.jobinfo -j 123456")
     assert "This script only works on BIOWULF!" in out
 
 
 def test_jobinfo():
+    """Test jobinfo."""
     with pytest.raises(SystemExit) as exc_info:
         get_jobinfo(argparse.Namespace(joblist=["job1", "job2"]))
     assert str(exc_info.value) == "" and type(exc_info.value) is SystemExit
 
 
 def test_check_host():
+    """Test check host."""
     with pytest.raises(SystemExit) as exc_info:
         check_host()
     assert str(exc_info.value) == "" and type(exc_info.value) is SystemExit
 
 
 def test_mem2gb():
+    """Test mem2gb."""
     assert mem2gb("0") == 0.0
     assert mem2gb("3.5 GB") == 3.5
     assert mem2gb("1024 MB") == 1.0
@@ -32,10 +36,12 @@ def test_mem2gb():
 
 
 def test_time2sec():
+    """Test time2sec."""
     assert time2sec("0-00:01:00") == 60.0
 
 
 def test_get_jobinfo_parses_output(mocker, tmp_path):
+    """Test get jobinfo parses output."""
     sample = [
         {
             "jobid": "123",
@@ -76,6 +82,7 @@ def test_get_jobinfo_parses_output(mocker, tmp_path):
             self.stdout = stdout
 
     def fake_run(*_args, **_kwargs):
+        """Mock subprocess.run for testing."""
         return DummyProc(json.dumps(sample))
 
     mocker.patch("ccbr_tools.jobinfo.subprocess.run", side_effect=fake_run)

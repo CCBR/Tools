@@ -124,9 +124,11 @@ def raise_error_if_abs_paths_detected(files, ignored_patterns=None):
             for idx in range(1, len(parts)):
                 match_targets.append(pathlib.Path(*parts[idx:]))
 
-            if any(spec.match_file(target.as_posix()) for target in match_targets):
-                continue
-            filtered_files.append(file)
+            is_ignored = any(
+                spec.match_file(target.as_posix()) for target in match_targets
+            )
+            if not is_ignored:
+                filtered_files.append(file)
         files = filtered_files
 
     if any([file_contains_absolute_path(file) for file in files]):
@@ -138,16 +140,13 @@ def load_ignored_paths(ignored_paths_file):
     Load ignored file paths/patterns from a file, one per line.
     Supports gitignore-style wildcards.
     """
-    if not ignored_paths_file:
-        return []
-
     patterns = []
-    with open(ignored_paths_file, "r") as f:
-        for line in f:
-            stripped = line.strip()
-            if not stripped or stripped.startswith("#"):
-                continue
-            patterns.append(stripped)
+    if ignored_paths_file:
+        with open(ignored_paths_file, "r") as f:
+            for line in f:
+                stripped = line.strip()
+                if stripped and not stripped.startswith("#"):
+                    patterns.append(stripped)
 
     return patterns
 

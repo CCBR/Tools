@@ -3,12 +3,14 @@ from ccbr_tools.pipeline.hpc import get_hpcname
 
 
 def test_scripts_help():
+    """Test scripts help."""
     assert "extract value for key from JSON" in shell_run(
         "extract_value_from_json.py --help"
     )
 
 
 def test_which_vpn():
+    """Test which vpn."""
     which_vpn = shell_run("which_vpn.sh", check=False)
     hpc = get_hpcname()
     if hpc == "biowulf":

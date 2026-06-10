@@ -212,6 +212,7 @@ cli.add_command(version)
 
 
 def main():
+    """Run the CLI."""
     cli(prog_name="ccbr_tools")
 
 

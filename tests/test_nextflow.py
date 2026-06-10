@@ -9,6 +9,7 @@ from ccbr_tools.shell import exec_in_context
 
 
 def test_init(tmp_path, data_dir):
+    """Test init."""
     init(
         output=tmp_path,
         repo_base=lambda f: data_dir / "pipeline" / f,
@@ -21,11 +22,13 @@ def test_init(tmp_path, data_dir):
 
 
 def test_nextflow_basic():
+    """Test nextflow basic."""
     output = exec_in_context(run, nextfile_path="CCBR/CHAMPAGNE", debug=True)
     assert "nextflow run CCBR/CHAMPAGNE" in output and "-resume" in output
 
 
 def test_nextflow_forceall():
+    """Test nextflow forceall."""
     output = exec_in_context(
         run, nextfile_path="CCBR/CHAMPAGNE", debug=True, force_all=True
     )
@@ -33,6 +36,7 @@ def test_nextflow_forceall():
 
 
 def test_nextflow_hpc():
+    """Test nextflow hpc."""
     assert "module load nextflow/25 &&" in exec_in_context(
         run,
         nextfile_path="CCBR/CHAMPAGNE",
@@ -46,6 +50,7 @@ def test_nextflow_hpc():
 
 
 def test_nextflow_slurm(tmp_path):
+    """Test nextflow slurm."""
     current_wd = pathlib.Path.cwd()
     try:
         os.chdir(tmp_path)
@@ -62,6 +67,7 @@ def test_nextflow_slurm(tmp_path):
 
 
 def test_nextflow_preview_error(tmp_path, data_dir_rel):
+    """Test nextflow preview error."""
     current_wd = pathlib.Path.cwd()
     try:
         os.chdir(tmp_path)

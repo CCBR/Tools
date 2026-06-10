@@ -86,4 +86,5 @@ def concat_newline(*args: str):
 
 
 def get_groups():
+    """Return the current user group names."""
     return shell_run("groups").strip()

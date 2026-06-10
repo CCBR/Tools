@@ -93,6 +93,7 @@ def generate_df():
 
 
 def test_jobby_cli_version():
+    """Test jobby cli version."""
     output = shell_run("jobby --version")
     this_version = shell_run("ccbr_tools --version").split()[-1]
     assert output.startswith("jobby: ccbr_tools version: ")
@@ -100,6 +101,7 @@ def test_jobby_cli_version():
 
 
 def test_jobby_cli_invalid():
+    """Test jobby cli invalid."""
     err_msg = (
         "sacct: fatal: Bad job/step specified: tests/data/jobby/invalid.log"
         if HPC == "biowulf"
@@ -115,6 +117,7 @@ def test_jobby_cli_invalid():
 
 
 def test_jobby_no_list():
+    """Test jobby no list."""
     with pytest.raises(TypeError) as exc_info:
         jobby("50456412")
     assert "Expected a list of arguments" in str(exc_info.value)
@@ -122,6 +125,7 @@ def test_jobby_no_list():
 
 @pytest.mark.skipif(HPC != "", reason="HPC is not empty")
 def test_jobby_no_args():
+    """Test jobby no args."""
     with pytest.warns(UserWarning) as exc_info:
         jobby([])
     assert "No job IDs to process" in str(exc_info[0].message)
@@ -129,6 +133,7 @@ def test_jobby_no_args():
 
 @pytest.mark.skipif(HPC != "", reason="HPC is not empty")
 def test_jobby_no_records():
+    """Test jobby no records."""
     with pytest.raises(RuntimeError) as exc_info:
         jobby(["invalid_job_id"])
     assert "sacct command not found" in str(exc_info.value)
@@ -136,6 +141,7 @@ def test_jobby_no_records():
 
 @pytest.mark.skipif(HPC != "biowulf", reason="only works on biowulf")
 def test_jobby_no_records_biowulf():
+    """Test jobby no records biowulf."""
     with pytest.warns(UserWarning) as exc_info:
         jobby(["invalid_job_id"])
     assert "Failed to fetch info for JobID" in str(exc_info[0].message)
@@ -146,6 +152,7 @@ def test_jobby_no_records_biowulf():
     reason="only works for sovacoolkl on biowulf",
 )
 def test_jobby_biowulf():
+    """Test jobby biowulf."""
     jobby_out = jobby(["50456412"])
     pprint.pprint(jobby_out)
     assert jobby_out == [
@@ -176,6 +183,7 @@ def test_jobby_biowulf():
 
 
 def test_parse_time_to_seconds():
+    """Test parse time to seconds."""
     results = [
         parse_time_to_seconds(t) == expected
         for t, expected in [
@@ -195,6 +203,7 @@ def test_parse_time_to_seconds():
 
 
 def test_parse_mem_to_gb():
+    """Test parse mem to gb."""
     results = [
         parse_mem_to_gb(mem_str) == expected
         for mem_str, expected in [
@@ -214,6 +223,7 @@ def test_parse_mem_to_gb():
 
 
 def test_assertions():
+    """Test assertions."""
     with pytest.raises(AssertionError) as exc1:
         parse_time_to_seconds(False)
     with pytest.raises(AssertionError) as exc2:
@@ -223,6 +233,7 @@ def test_assertions():
 
 
 def test_extract_jobids_snakemake():
+    """Test extract jobids snakemake."""
     assert extract_jobids_from_file("tests/data/jobby/snakemake.log") == [
         "50456412",
         "50456444",
@@ -254,6 +265,7 @@ def test_extract_jobids_snakemake():
 
 
 def test_extract_jobids_nextflow():
+    """Test extract jobids nextflow."""
     assert extract_jobids_from_file("tests/data/jobby/nextflow.log") == [
         "55256481",
         "55256959",
@@ -269,12 +281,14 @@ def test_extract_jobids_nextflow():
 
 @pytest.mark.filterwarnings("ignore:File not found")
 def test_extract_jobids_empty():
+    """Test extract jobids empty."""
     with pytest.warns(UserWarning):
         output = extract_jobids_from_file("not_a_file")
     assert output == []
 
 
 def test_records_to_df_smk():
+    """Test records to df smk."""
     with open("tests/data/jobby/records_smk.pkl", "rb") as f:
         records_smk = pickle.load(f)
     with open("tests/data/jobby/df_smk.pkl", "rb") as f:
@@ -288,6 +302,7 @@ def test_records_to_df_smk():
 
 
 def test_records_to_df_nxf():
+    """Test records to df nxf."""
     with open("tests/data/jobby/records_nxf.pkl", "rb") as f:
         records_nxf = pickle.load(f)
     with open("tests/data/jobby/df_nxf.pkl", "rb") as f:
@@ -301,6 +316,7 @@ def test_records_to_df_nxf():
 
 
 def test_format_df():
+    """Test format df."""
     with open("tests/data/jobby/df_smk.pkl", "rb") as f:
         df_smk = pickle.load(f)
     assertions = []
@@ -323,6 +339,7 @@ def test_format_df():
 
 
 def test_get_job_logs():
+    """Test get job logs."""
     assert get_job_logs("abc", "tests/data/pipeline/work") == {
         "log_out_path": "tests/data/pipeline/work/.command.out",
         "log_out_txt": "",

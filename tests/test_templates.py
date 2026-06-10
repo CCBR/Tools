@@ -7,12 +7,14 @@ from ccbr_tools.pipeline.hpc import get_hpc
 
 
 def test_read_template():
+    """Test read template."""
     template_str = read_template("submit_slurm.sh")
     assert template_str.startswith("#!/usr/bin/env bash")
     assert template_str.endswith("{RUN_COMMAND}\n")
 
 
 def test_use_template(tmp_path):
+    """Test use template."""
     out_filepath = tmp_path / "test.sh"
     use_template(
         "submit_slurm.sh",
@@ -33,6 +35,7 @@ def test_use_template(tmp_path):
 
 
 def generate_slurm_template():
+    """Generate a sample SLURM template for testing."""
     hpc = get_hpc(debug="biowulf")
     use_template(
         "submit_slurm.sh",
@@ -47,6 +50,7 @@ def generate_slurm_template():
 
 
 def test_use_template_blanks(tmp_path):
+    """Test use template blanks."""
     out_filepath = tmp_path / "test.sh"
     with pytest.raises(KeyError) as exc_info:
         use_template(
@@ -57,6 +61,7 @@ def test_use_template_blanks(tmp_path):
 
 
 def test_use_quarto_ext(tmp_path):
+    """Test use quarto ext."""
     current_wd = pathlib.Path.cwd()
     try:
         os.chdir(tmp_path)
@@ -70,6 +75,7 @@ def test_use_quarto_ext(tmp_path):
 
 
 def test_use_quarto_ext_error():
+    """Test use quarto ext error."""
     with pytest.raises(FileNotFoundError) as exc_info:
         use_quarto_ext("not_a_real_extension")
     assert str(exc_info.value).startswith("not_a_real_extension does not exist")

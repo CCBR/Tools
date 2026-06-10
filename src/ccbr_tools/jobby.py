@@ -162,14 +162,13 @@ def extract_jobids_from_file(filepath):
                 match_snakemake = re.search(r"external jobid\s+['\"](\d+)['\"]", line)
                 if match_snakemake:
                     job_ids.append(match_snakemake.group(1))
-                    continue  # no need to check further if matched
-
-                # Match Nextflow pattern: (JOB ID: 12345)
-                match_nextflow = re.search(
-                    r"\[Task submitter\].*?>\s*jobId:\s*(\d+);", line
-                )
-                if match_nextflow:
-                    job_ids.append(match_nextflow.group(1))
+                else:
+                    # Match Nextflow pattern: (JOB ID: 12345)
+                    match_nextflow = re.search(
+                        r"\[Task submitter\].*?>\s*jobId:\s*(\d+);", line
+                    )
+                    if match_nextflow:
+                        job_ids.append(match_nextflow.group(1))
     except FileNotFoundError:
         warnings.warn(f"❌ File not found: {filepath}")
     return list(sorted(set(job_ids)))  # deduplicate
@@ -182,6 +181,7 @@ def list_records(
     completed_state="COMPLETED",
     success_exit_code=0,
 ):
+    """List job records for the given job IDs."""
     return list(
         itertools.chain.from_iterable(
             [
@@ -205,6 +205,7 @@ def get_sacct_info(
     completed_state="COMPLETED",
     success_exit_code=0,
 ):
+    """Get sacct records for a job ID."""
     job_records = {}
     try:
         sacct_cmd = [
@@ -293,6 +294,7 @@ def read_slurm_log(filepath):
 
 
 def get_job_logs(job_id, workdir, include_text=True):
+    """Get job log paths and contents."""
     job_logs = {}
     if workdir:
         out_files = glob_files(workdir, patterns=[f"*{job_id}*.out", ".command.out"])
@@ -441,6 +443,7 @@ def jobby(
 
 
 def main():
+    """Run the CLI."""
     args = sys.argv[1:]
     if len(args) == 0 or "-h" in args or "--help" in args:
         print("Usage:")

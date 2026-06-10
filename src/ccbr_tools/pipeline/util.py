@@ -117,11 +117,11 @@ def md5sum(filename, first_block_only=False, blocksize=65536):
             # calculating an MD5 checksum of thousand or
             # millions of file.
             hasher.update(buf)
-            return hasher.hexdigest()
-        while len(buf) > 0:
+        else:
             # Calculate MD5 checksum of entire file
-            hasher.update(buf)
-            buf = fh.read(blocksize)
+            while len(buf) > 0:
+                hasher.update(buf)
+                buf = fh.read(blocksize)
 
     return hasher.hexdigest()
 
@@ -166,10 +166,9 @@ def standard_input(parser, path, *args, **kwargs):
         # Standard input provided, set path as an
         # empty string to prevent searching of '-'
         path = ""
-        return path
-
-    # Checks for positional arguments as paths
-    path = permissions(parser, path, *args, **kwargs)
+    else:
+        # Checks for positional arguments as paths
+        path = permissions(parser, path, *args, **kwargs)
 
     return path
 
@@ -216,13 +215,14 @@ def which(cmd, path=None):
     if path is None:
         path = os.environ["PATH"].split(os.pathsep)
 
+    found = False
     for prefix in path:
         filename = os.path.join(prefix, cmd)
         executable = os.access(filename, os.X_OK)
         is_not_directory = os.path.isfile(filename)
         if executable and is_not_directory:
-            return True
-    return False
+            found = True
+    return found
 
 
 def err(*message, **kwargs):
@@ -465,14 +465,11 @@ def rename(filename):
         "_2.f(ast)?q.gz$": ".R2.fastq.gz",
     }
 
-    if filename.endswith(".R1.fastq.gz") or filename.endswith(".R2.fastq.gz"):
-        # Filename is already in the correct format
-        return filename
-
-    converted = False
+    converted = filename.endswith(".R1.fastq.gz") or filename.endswith(".R2.fastq.gz")
+    renamed_filename = filename
     for regex, new_ext in extensions.items():
-        matched = re.search(regex, filename)
-        if matched:
+        matched = re.search(regex, renamed_filename)
+        if matched and not converted:
             # regex matches with a pattern in extensions
             converted = True
             # Try to get substring for named group lane, retain this in new file extension
@@ -484,8 +481,7 @@ def rename(filename):
             except IndexError:
                 pass  # Does not contain the named group lane
 
-            filename = re.sub(regex, new_ext, filename)
-            break  # only rename once
+            renamed_filename = re.sub(regex, new_ext, renamed_filename)
 
     if not converted:
         raise NameError(
@@ -501,7 +497,7 @@ def rename(filename):
         """.format(filename)
         )
 
-    return filename
+    return renamed_filename
 
 
 def copy_config(
@@ -545,6 +541,8 @@ def read_config_yml(file):
 
 
 def update_config(config, overwrite_config):
+    """Update config."""
+
     def _update(d, u):
         for key, value in u.items():
             if isinstance(value, collections.abc.Mapping):

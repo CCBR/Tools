@@ -5,12 +5,14 @@ import os
 
 
 def get_sname(s):
+    """Return the sample name from the input path."""
     sname = s.name
     sname = sname.split()[0]
     return sname
 
 
 def fixoutfilename(f):
+    """Return the normalized output filename."""
     outfqfilename = f
     dummy = outfqfilename.strip().split(".")
     if dummy[-1] == "gz":

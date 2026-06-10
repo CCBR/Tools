@@ -45,6 +45,7 @@ class Cluster:
     __nonzero__ = __bool__
 
     def spook(self, file, subdir=None):
+        """Inspect the HPC execution environment."""
         dest_dir = self.SPOOK_DIR / subdir if subdir else self.SPOOK_DIR
         dest_dir.mkdir(parents=True, exist_ok=True)
         shutil.copy(file, dest_dir)
@@ -52,10 +53,12 @@ class Cluster:
 
     @property
     def singularity_sif_dir(self):
+        """Singularity sif dir."""
         return get_sif_cache_dir(hpc=self.name)
 
     @staticmethod
     def create_hpc(debug=False):
+        """Create hpc."""
         hpc_options = {
             "biowulf": Biowulf,
             "frce": FRCE,
@@ -255,6 +258,7 @@ def is_loaded(module="ccbrpipeliner"):
 
 
 def main():
+    """Run the CLI."""
     HPC = get_hpcname()
     print(f"{HPC}")
 

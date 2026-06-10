@@ -36,6 +36,7 @@ def send_email_msg(
     msg["Subject"] = subject
     msg["From"] = from_addr
     msg["To"] = to_address
+    result = None
 
     if text:
         msg.set_content(text)
@@ -49,7 +50,8 @@ def send_email_msg(
             subtype="html",
         )
     if debug:
-        return msg
+        result = msg
     else:
         with smtplib.SMTP("localhost") as server:
             server.send_message(msg)
+    return result
