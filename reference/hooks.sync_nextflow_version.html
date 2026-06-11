@@ -7,7 +7,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 
-<title>shell – CCBR Tools</title>
+<title>hooks.sync_nextflow_version – CCBR Tools</title>
 <style>
 /* Default styles provided by pandoc.
 ** See https://pandoc.org/MANUAL.html#variables-for-html for config info.
@@ -68,8 +68,8 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <script src="../site_libs/quarto-search/fuse.min.js"></script>
 <script src="../site_libs/quarto-search/quarto-search.js"></script>
 <meta name="quarto:offset" content="../">
-<link href="../reference/software.html" rel="next">
-<link href="../reference/send_email.html" rel="prev">
+<link href="../reference/GSEA.deg2gs.html" rel="next">
+<link href="../reference/hooks.detect_absolute_paths.html" rel="prev">
 <script src="../site_libs/quarto-html/quarto.js" type="module"></script>
 <script src="../site_libs/quarto-html/tabsets/tabsets.js" type="module"></script>
 <script src="../site_libs/quarto-html/popper.min.js"></script>
@@ -349,7 +349,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
       <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" role="button" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
         <i class="bi bi-layout-text-sidebar-reverse"></i>
       </button>
-        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../reference/github.html">Main modules</a></li><li class="breadcrumb-item"><a href="../reference/shell.html">shell</a></li></ol></nav>
+        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../reference/hooks.html">Pre-commit hooks</a></li><li class="breadcrumb-item"><a href="../reference/hooks.sync_nextflow_version.html">hooks.sync_nextflow_version</a></li></ol></nav>
         <a class="flex-grow-1" role="navigation" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
         </a>
     </div>
@@ -420,7 +420,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../reference/shell.html" class="sidebar-item-text sidebar-link active">
+  <a href="../reference/shell.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">shell</span></a>
   </div>
 </li>
@@ -508,7 +508,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../reference/hooks.sync_nextflow_version.html" class="sidebar-item-text sidebar-link">
+  <a href="../reference/hooks.sync_nextflow_version.html" class="sidebar-item-text sidebar-link active">
  <span class="menu-text">hooks.sync_nextflow_version</span></a>
   </div>
 </li>
@@ -583,30 +583,38 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
     <h2 id="toc-title">On this page</h2>
    
   <ul>
-  <li><a href="#ccbr_tools.shell" id="toc-ccbr_tools.shell" class="nav-link active" data-scroll-target="#ccbr_tools.shell">shell</a>
+  <li><a href="#ccbr_tools.hooks.sync_nextflow_version" id="toc-ccbr_tools.hooks.sync_nextflow_version" class="nav-link active" data-scroll-target="#ccbr_tools.hooks.sync_nextflow_version">hooks.sync_nextflow_version</a>
   <ul class="collapse">
+  <li><a href="#usage-with-pre-commit" id="toc-usage-with-pre-commit" class="nav-link" data-scroll-target="#usage-with-pre-commit">Usage with pre-commit</a></li>
   <li><a href="#functions" id="toc-functions" class="nav-link" data-scroll-target="#functions">Functions</a>
   <ul class="collapse">
-  <li><a href="#ccbr_tools.shell.concat_newline" id="toc-ccbr_tools.shell.concat_newline" class="nav-link" data-scroll-target="#ccbr_tools.shell.concat_newline">concat_newline</a></li>
-  <li><a href="#ccbr_tools.shell.exec_in_context" id="toc-ccbr_tools.shell.exec_in_context" class="nav-link" data-scroll-target="#ccbr_tools.shell.exec_in_context">exec_in_context</a></li>
-  <li><a href="#ccbr_tools.shell.get_groups" id="toc-ccbr_tools.shell.get_groups" class="nav-link" data-scroll-target="#ccbr_tools.shell.get_groups">get_groups</a></li>
-  <li><a href="#ccbr_tools.shell.shell_run" id="toc-ccbr_tools.shell.shell_run" class="nav-link" data-scroll-target="#ccbr_tools.shell.shell_run">shell_run</a></li>
+  <li><a href="#ccbr_tools.hooks.sync_nextflow_version.sync_nextflow_version" id="toc-ccbr_tools.hooks.sync_nextflow_version.sync_nextflow_version" class="nav-link" data-scroll-target="#ccbr_tools.hooks.sync_nextflow_version.sync_nextflow_version">sync_nextflow_version</a></li>
+  <li><a href="#ccbr_tools.hooks.sync_nextflow_version.update_manifest_version" id="toc-ccbr_tools.hooks.sync_nextflow_version.update_manifest_version" class="nav-link" data-scroll-target="#ccbr_tools.hooks.sync_nextflow_version.update_manifest_version">update_manifest_version</a></li>
   </ul></li>
   </ul></li>
   </ul>
-<div class="toc-actions"><ul><li><a href="https://github.com/CCBR/Tools/edit/main/reference/shell.qmd" class="toc-action"><i class="bi bi-github"></i>Edit this page</a></li><li><a href="https://github.com/CCBR/Tools/issues/new" class="toc-action"><i class="bi empty"></i>Report an issue</a></li></ul></div></nav>
+<div class="toc-actions"><ul><li><a href="https://github.com/CCBR/Tools/edit/main/reference/hooks.sync_nextflow_version.qmd" class="toc-action"><i class="bi bi-github"></i>Edit this page</a></li><li><a href="https://github.com/CCBR/Tools/issues/new" class="toc-action"><i class="bi empty"></i>Report an issue</a></li></ul></div></nav>
     </div>
 <!-- main -->
-<main class="content" id="quarto-document-content"><header id="title-block-header" class="quarto-title-block"><nav class="quarto-page-breadcrumbs quarto-title-breadcrumbs d-none d-lg-block" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../reference/github.html">Main modules</a></li><li class="breadcrumb-item"><a href="../reference/shell.html">shell</a></li></ol></nav></header>
+<main class="content" id="quarto-document-content"><header id="title-block-header" class="quarto-title-block"><nav class="quarto-page-breadcrumbs quarto-title-breadcrumbs d-none d-lg-block" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../reference/hooks.html">Pre-commit hooks</a></li><li class="breadcrumb-item"><a href="../reference/hooks.sync_nextflow_version.html">hooks.sync_nextflow_version</a></li></ol></nav></header>
 
 
 
 
 
-<section id="ccbr_tools.shell" class="level1">
-<h1>shell</h1>
-<p><code>shell</code></p>
-<p>Utility functions for shell command execution.</p>
+<section id="ccbr_tools.hooks.sync_nextflow_version" class="level1">
+<h1>hooks.sync_nextflow_version</h1>
+<p><code>hooks.sync_nextflow_version</code></p>
+<p>Synchronize <code>manifest.version</code> in <code>nextflow.config</code> with the repo <code>VERSION</code> file.</p>
+<p>Whenever the <code>VERSION</code> file is updated, the <code>manifest.version</code> entry in <code>nextflow.config</code> will be updated to match it.</p>
+<section id="usage-with-pre-commit" class="level2">
+<h2 class="anchored" data-anchor-id="usage-with-pre-commit">Usage with pre-commit</h2>
+<p>Add this to your <code>.pre-commit-config.yaml</code> file:</p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb1"><pre class="sourceCode yaml code-with-copy"><code class="sourceCode yaml"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="kw">-</span><span class="at"> </span><span class="fu">repo</span><span class="kw">:</span><span class="at"> https://github.com/CCBR/Tools</span></span>
+<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="at">  </span><span class="fu">rev</span><span class="kw">:</span><span class="at"> v0.7.0</span></span>
+<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a><span class="at">  </span><span class="fu">hooks</span><span class="kw">:</span></span>
+<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a><span class="at">    </span><span class="kw">-</span><span class="at"> </span><span class="fu">id</span><span class="kw">:</span><span class="at"> sync-nextflow-version</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</section>
 <section id="functions" class="level2">
 <h2 class="anchored" data-anchor-id="functions">Functions</h2>
 <table class="caption-top table">
@@ -618,27 +626,24 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </thead>
 <tbody>
 <tr class="odd">
-<td><a href="#ccbr_tools.shell.concat_newline">concat_newline</a></td>
-<td>Concatenates strings with a newline character between non-empty arguments</td>
+<td><a href="#ccbr_tools.hooks.sync_nextflow_version.sync_nextflow_version">sync_nextflow_version</a></td>
+<td>Synchronize <code>manifest.version</code> in repo-root <code>nextflow.config</code> with <code>VERSION</code>.</td>
 </tr>
 <tr class="even">
-<td><a href="#ccbr_tools.shell.exec_in_context">exec_in_context</a></td>
-<td>Executes a function in a context manager and captures the output from stdout and stderr.</td>
-</tr>
-<tr class="odd">
-<td><a href="#ccbr_tools.shell.get_groups">get_groups</a></td>
-<td>Return the current user group names.</td>
-</tr>
-<tr class="even">
-<td><a href="#ccbr_tools.shell.shell_run">shell_run</a></td>
-<td>Run a shell command and return stdout/stderr</td>
+<td><a href="#ccbr_tools.hooks.sync_nextflow_version.update_manifest_version">update_manifest_version</a></td>
+<td>Update <code>manifest.version</code> in a nextflow config string.</td>
 </tr>
 </tbody>
 </table>
-<section id="ccbr_tools.shell.concat_newline" class="level3">
-<h3 class="anchored" data-anchor-id="ccbr_tools.shell.concat_newline">concat_newline</h3>
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb1"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a>shell.concat_newline(<span class="op">*</span>args)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
-<p>Concatenates strings with a newline character between non-empty arguments</p>
+<section id="ccbr_tools.hooks.sync_nextflow_version.sync_nextflow_version" class="level3">
+<h3 class="anchored" data-anchor-id="ccbr_tools.hooks.sync_nextflow_version.sync_nextflow_version">sync_nextflow_version</h3>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb2"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a>hooks.sync_nextflow_version.sync_nextflow_version()</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<p>Synchronize <code>manifest.version</code> in repo-root <code>nextflow.config</code> with <code>VERSION</code>.</p>
+</section>
+<section id="ccbr_tools.hooks.sync_nextflow_version.update_manifest_version" class="level3">
+<h3 class="anchored" data-anchor-id="ccbr_tools.hooks.sync_nextflow_version.update_manifest_version">update_manifest_version</h3>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb3"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a>hooks.sync_nextflow_version.update_manifest_version(config_text, version)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<p>Update <code>manifest.version</code> in a nextflow config string.</p>
 <section id="parameters" class="level4 doc-section doc-section-parameters">
 <h4 class="doc-section doc-section-parameters anchored" data-anchor-id="parameters">Parameters</h4>
 <table class="caption-top table">
@@ -652,10 +657,16 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </thead>
 <tbody>
 <tr class="odd">
-<td>*args</td>
+<td>config_text</td>
 <td><a href="https://docs.python.org/3/library/stdtypes.html#str">str</a></td>
-<td>Variable length argument list of strings to be concatenated.</td>
-<td><code>()</code></td>
+<td>Text from a <code>nextflow.config</code> file.</td>
+<td><em>required</em></td>
+</tr>
+<tr class="even">
+<td>version</td>
+<td><a href="https://docs.python.org/3/library/stdtypes.html#str">str</a></td>
+<td>Version string to write into <code>manifest.version</code>.</td>
+<td><em>required</em></td>
 </tr>
 </tbody>
 </table>
@@ -672,66 +683,34 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </thead>
 <tbody>
 <tr class="odd">
-<td>string</td>
-<td><a href="https://docs.python.org/3/library/stdtypes.html#str">str</a></td>
-<td>The concatenated string with newline characters between each non-empty argument.</td>
+<td></td>
+<td><a href="https://docs.python.org/3/library/stdtypes.html#tuple">tuple</a>[<a href="https://docs.python.org/3/library/stdtypes.html#str">str</a>, <a href="https://docs.python.org/3/library/functions.html#bool">bool</a>]</td>
+<td>A tuple containing the updated config text and whether the text changed.</td>
 </tr>
 </tbody>
 </table>
 </section>
+<section id="raises" class="level4 doc-section doc-section-raises">
+<h4 class="doc-section doc-section-raises anchored" data-anchor-id="raises">Raises</h4>
+<table class="caption-top table">
+<thead>
+<tr class="header">
+<th>Name</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td></td>
+<td><a href="https://docs.python.org/3/library/exceptions.html#ValueError">ValueError</a></td>
+<td>If the config does not contain <code>manifest.version</code>.</td>
+</tr>
+</tbody>
+</table>
+
+
 </section>
-<section id="ccbr_tools.shell.exec_in_context" class="level3">
-<h3 class="anchored" data-anchor-id="ccbr_tools.shell.exec_in_context">exec_in_context</h3>
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb2"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a>shell.exec_in_context(func, <span class="op">*</span>args, <span class="op">**</span>kwargs)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
-<pre><code>Executes a function in a context manager and captures the output from stdout and stderr.
-
-Args:
-    func (func): The function to be executed.
-    *args: Variable length argument list to be passed to the function.
-    **kwargs: Arbitrary keyword arguments to be passed to the function.
-
-Returns:
-    out (str): The combined output from both stdout and stderr.
-
-Examples:
-    &gt;&gt;&gt; exec_in_context(print, "Hello, World!")
-    'Hello, World!</code></pre>
-<p>’</p>
-</section>
-<section id="ccbr_tools.shell.get_groups" class="level3">
-<h3 class="anchored" data-anchor-id="ccbr_tools.shell.get_groups">get_groups</h3>
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb4"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a>shell.get_groups()</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
-<p>Return the current user group names.</p>
-</section>
-<section id="ccbr_tools.shell.shell_run" class="level3">
-<h3 class="anchored" data-anchor-id="ccbr_tools.shell.shell_run">shell_run</h3>
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb5"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a>shell.shell_run(</span>
-<span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a>    command_str,</span>
-<span id="cb5-3"><a href="#cb5-3" aria-hidden="true" tabindex="-1"></a>    capture_output<span class="op">=</span><span class="va">True</span>,</span>
-<span id="cb5-4"><a href="#cb5-4" aria-hidden="true" tabindex="-1"></a>    check<span class="op">=</span><span class="va">True</span>,</span>
-<span id="cb5-5"><a href="#cb5-5" aria-hidden="true" tabindex="-1"></a>    shell<span class="op">=</span><span class="va">True</span>,</span>
-<span id="cb5-6"><a href="#cb5-6" aria-hidden="true" tabindex="-1"></a>    text<span class="op">=</span><span class="va">True</span>,</span>
-<span id="cb5-7"><a href="#cb5-7" aria-hidden="true" tabindex="-1"></a>    concat_output<span class="op">=</span><span class="va">True</span>,</span>
-<span id="cb5-8"><a href="#cb5-8" aria-hidden="true" tabindex="-1"></a>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
-<pre><code>Run a shell command and return stdout/stderr
-
-Args:
-    command_str (str): The shell command to be executed.
-    capture_output (bool, optional): Whether to capture the command's output. Defaults to True.
-    check (bool, optional): Whether to raise an exception if the command returns a non-zero exit status. Defaults to True.
-    shell (bool, optional): Whether to run the command through the shell. Defaults to True.
-    text (bool, optional): Whether to treat the command's input/output as text. Defaults to True.
-    concat_output (bool, optional): Whether to concatenate stdout and stderr. Defaults to True. If False, returns a tuple of (stdout, stderr).
-
-Returns:
-    out (str): The combined stdout and stderr of the command, separated by a newline character.
-
-Examples:
-    &gt;&gt;&gt; shell_run("echo Hello, World!")
-    'Hello, World!</code></pre>
-<p>’ &gt;&gt;&gt; shell_run(“invalid_command”) ‘invalid_command: command not found’</p>
-
-
 </section>
 </section>
 </section>
@@ -1152,13 +1131,13 @@ Examples:
   </script>
 <nav class="page-navigation">
   <div class="nav-page nav-page-previous">
-      <a href="../reference/send_email.html" class="pagination-link" aria-label="send_email">
-        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text">send_email</span>
+      <a href="../reference/hooks.detect_absolute_paths.html" class="pagination-link" aria-label="hooks.detect_absolute_paths">
+        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text">hooks.detect_absolute_paths</span>
       </a>          
   </div>
   <div class="nav-page nav-page-next">
-      <a href="../reference/software.html" class="pagination-link" aria-label="software">
-        <span class="nav-page-text">software</span> <i class="bi bi-arrow-right-short"></i>
+      <a href="../reference/GSEA.deg2gs.html" class="pagination-link" aria-label="GSEA.deg2gs">
+        <span class="nav-page-text">GSEA.deg2gs</span> <i class="bi bi-arrow-right-short"></i>
       </a>
   </div>
 </nav>
@@ -1170,7 +1149,7 @@ Examples:
 </div>   
     <div class="nav-footer-center">
       &nbsp;
-    <div class="toc-actions d-sm-block d-md-none"><ul><li><a href="https://github.com/CCBR/Tools/edit/main/reference/shell.qmd" class="toc-action"><i class="bi bi-github"></i>Edit this page</a></li><li><a href="https://github.com/CCBR/Tools/issues/new" class="toc-action"><i class="bi empty"></i>Report an issue</a></li></ul></div></div>
+    <div class="toc-actions d-sm-block d-md-none"><ul><li><a href="https://github.com/CCBR/Tools/edit/main/reference/hooks.sync_nextflow_version.qmd" class="toc-action"><i class="bi bi-github"></i>Edit this page</a></li><li><a href="https://github.com/CCBR/Tools/issues/new" class="toc-action"><i class="bi empty"></i>Report an issue</a></li></ul></div></div>
     <div class="nav-footer-right">
       &nbsp;
     </div>
