@@ -83,6 +83,7 @@ quartodoc:
       contents:
         - hooks
         - hooks.detect_absolute_paths
+        - hooks.sync_nextflow_version
     - title: Legacy tools
       contents:
         - GSEA.deg2gs
