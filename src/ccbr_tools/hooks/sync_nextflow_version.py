@@ -1,6 +1,8 @@
 """
 Synchronize `manifest.version` in `nextflow.config` with the repo `VERSION` file.
 
+Whenever the `VERSION` file is updated, the `manifest.version` entry in `nextflow.config` will be updated to match it.
+
 ## Usage with pre-commit
 
 Add this to your `.pre-commit-config.yaml` file:
