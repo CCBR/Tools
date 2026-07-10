@@ -13,7 +13,7 @@ Template files for CCBR Tools.
 
 Quarto HTML format with FNL branding guidelines
 
-First run `ccbr_tools quarto-add fnl`, then modify your `_quarto.yml` file with the following:
+First run `ccbr_tools quarto-add fnl` (which runs `quarto use template CCBR/quarto-fnl`), then modify your `_quarto.yml` file with the following:
 
 ```yaml
 website:
@@ -30,8 +30,7 @@ format: fnl-html
 """
 
 import importlib.resources
-import pathlib
-import shutil
+import subprocess
 
 
 def read_template(template_name):
@@ -98,22 +97,20 @@ def get_quarto_extensions():
 
 def use_quarto_ext(ext_name):
     """
-    Use a Quarto extension
+    Use a Quarto extension from the CCBR GitHub organization.
+
+    Runs `quarto use template CCBR/quarto-{ext_name}`.
 
     Args:
-        ext_name (str): The name of the extension in ccbr_tools
+        ext_name (str): The name of the Quarto extension (e.g. "fnl" for CCBR/quarto-fnl).
+
+    Raises:
+        subprocess.CalledProcessError: If the quarto command fails.
 
     Examples:
         >>> use_quarto_ext("fnl")
     """
-    ext_dir = importlib.resources.files(__package__) / "_extensions"
-    template_dir = ext_dir / ext_name
-    if not template_dir.exists() and not (template_dir / "_extension.yml").is_file():
-        raise FileNotFoundError(
-            f"{ext_name} does not exist. Available extensions: {', '.join(get_quarto_extensions())}"
-        )
-    out_dir = pathlib.Path("_extensions")
-    if not out_dir.exists():
-        out_dir.mkdir()
-    shutil.copytree(template_dir, out_dir / ext_name, dirs_exist_ok=True)
-    print(f"Copied {ext_name} to {out_dir}")
+    subprocess.run(
+        ["quarto", "use", "template", f"CCBR/quarto-{ext_name}"],
+        check=True,
+    )
