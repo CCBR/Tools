@@ -55,7 +55,7 @@ ccbr_tools --help
 
     Commands:
       send-email  Send an email (works on biowulf)
-      quarto-add  Add a quarto extension
+      quarto-add  Add a quarto extension from the CCBR GitHub organization.
       install     Install a specific version of a CCBR software package,...
       cite        Print the citation in the desired format
       version     Print the version of ccbr_tools
