@@ -1,6 +1,7 @@
 #!/usr/bin/env python
 import argparse
 import os
+import sys
 
 import HTSeq
 
@@ -53,26 +54,24 @@ parser.add_argument(
     help="complement the readid list, ie., include readids NOT in the list",
 )
 args = parser.parse_args()
-rids = set(map(lambda x: x.strip(), open(args.readids, "r").readlines()))
-sequences = dict((get_sname(s), s) for s in HTSeq.FastqReader(args.infq))
-sequences2 = dict((get_sname(s), s) for s in HTSeq.FastqReader(args.infq2))
+with open(args.readids, "r") as _fh:
+    rids = {x.strip() for x in _fh}
+sequences = {get_sname(s): s for s in HTSeq.FastqReader(args.infq)}
+sequences2 = {get_sname(s): s for s in HTSeq.FastqReader(args.infq2)}
 if len(set(sequences.keys())) != len(
     set(sequences.keys()).intersection(set(sequences2.keys()))
 ):
     print("readids differ between input paired end mates")
-    exit()
+    sys.exit()
 if args.complement:
     rids = set(sequences.keys()) - rids
 outfqfilename = fixoutfilename(args.outfq)
-outfqfile = open(outfqfilename, "w")
 outfqfilename2 = fixoutfilename(args.outfq2)
-outfqfile2 = open(outfqfilename2, "w")
-for rid in rids:
-    s = sequences[rid]
-    s.write_to_fastq_file(outfqfile)
-    s = sequences2[rid]
-    s.write_to_fastq_file(outfqfile2)
-outfqfile.close()
-outfqfile2.close()
+with open(outfqfilename, "w") as outfqfile, open(outfqfilename2, "w") as outfqfile2:
+    for rid in rids:
+        s = sequences[rid]
+        s.write_to_fastq_file(outfqfile)
+        s = sequences2[rid]
+        s.write_to_fastq_file(outfqfile2)
 os.system("pigz -p4 -f " + outfqfilename)
 os.system("pigz -p4 -f " + outfqfilename2)

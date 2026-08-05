@@ -130,12 +130,12 @@ def main():
     firstsplitter = args.firstsplitter
     indir = args.indir
 
-    thedate = str(datetime.datetime.now()).split()[0]
+    thedate = str(datetime.datetime.now(tz=datetime.timezone.utc)).split()[0]
     thedate = re.sub("-", "", thedate)
 
     # Set up the log file
-    log = open("multitext2excel" + ".log", "a")
-    log.write("\n" + str(datetime.datetime.now()) + "\n")
+    log = open("multitext2excel" + ".log", "a")  # noqa: SIM115
+    log.write("\n" + str(datetime.datetime.now(tz=datetime.timezone.utc)) + "\n")
     log.write(" ".join(sys.argv) + "\n")
     log.write("multitext2excel.py version " + __version__ + "\n")
     log.flush()
@@ -167,7 +167,7 @@ def main():
         f"multitext2excel.py successfully completed.  {outfile.name} written.",
         log,
     )
-    send_update(str(datetime.datetime.now()) + "\n", log)
+    send_update(str(datetime.datetime.now(tz=datetime.timezone.utc)) + "\n", log)
     log.close()
 
 

@@ -86,7 +86,7 @@ def run_du(dirpath):
     """
     try:
         dir_size = int(shell_run(f"du -bs {dirpath}").split("\t")[0])
-    except Exception as e:
+    except Exception as e:  # noqa: BLE001
         warnings.warn(
             f"Error parsing directory size with du command for {dirpath}:\n{e}"
         )
@@ -96,13 +96,7 @@ def run_du(dirpath):
 
 def glob_files(
     pipeline_outdir,
-    patterns=[
-        "snakemake.log",
-        ".nextflow.log",
-        "*.jobby*",
-        "master.log",
-        "runtime_statics*",
-    ],
+    patterns=None,
 ):
     """
     Collects files from a specified directory and its subdirectories that match a list of patterns.
@@ -121,6 +115,14 @@ def glob_files(
     Returns:
         set of pathlib.Path: A set of `pathlib.Path` objects representing the matched files.
     """
+    if patterns is None:
+        patterns = [
+            "snakemake.log",
+            ".nextflow.log",
+            "*.jobby*",
+            "master.log",
+            "runtime_statics*",
+        ]
     return {
         pathlib.Path(f)
         for pattern in patterns

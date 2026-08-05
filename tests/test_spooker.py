@@ -88,6 +88,6 @@ def test_spooker_help():
     assert (
         "Usage: spooker "
         in subprocess.run(
-            "spooker --help", shell=True, capture_output=True, text=True
+            "spooker --help", shell=True, capture_output=True, text=True, check=False
         ).stdout
     )

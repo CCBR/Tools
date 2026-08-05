@@ -59,14 +59,14 @@ from .pkg_util import get_version
 try:
     import pandas as pd
 except ImportError as err:
-    raise Exception(
+    raise ImportError(
         "❌ Missing required package: pandas. Install it with `pip install pandas`."
     ) from err
 
 try:
     import numpy as np
 except ImportError as err:
-    raise Exception(
+    raise ImportError(
         "❌ Missing required package: numpy. Install it with `pip install numpy`."
     ) from err
 
@@ -122,9 +122,7 @@ def parse_time_to_seconds(t: str):
             elif len(parts) == 1:
                 s = parts[0]
 
-            total_seconds = int(
-                round(int(days) * 86400 + int(h) * 3600 + int(m) * 60 + s)
-            )
+            total_seconds = round(int(days) * 86400 + int(h) * 3600 + int(m) * 60 + s)
     except ValueError:
         warnings.warn(f"❌ Invalid time format: {t}. Time will be set to NaN.")
     return total_seconds
@@ -224,17 +222,19 @@ def get_sacct_info(
             base_jobid = record_raw.get("JobID", "").split(".")[0]
             step_type = record_raw.get("JobID", "")
             # optionally include job log files & contents
-            if include_out_err:
-                if include_completed or (
+            if include_out_err and (
+                include_completed
+                or (
                     record_raw.get("State", "") != completed_state
                     or int(record_raw.get("ExitCode", "").split(":")[0])
                     != success_exit_code
-                ):
-                    record_raw.update(
-                        get_job_logs(
-                            job_id=base_jobid, workdir=record_raw.get("WorkDir", None)
-                        )
+                )
+            ):
+                record_raw.update(
+                    get_job_logs(
+                        job_id=base_jobid, workdir=record_raw.get("WorkDir", None)
                     )
+                )
             if base_jobid not in job_records:
                 # First time seeing this JobID: store info
                 job_records[base_jobid] = record_raw

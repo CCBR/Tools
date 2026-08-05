@@ -32,11 +32,10 @@ def pargs():
 
 def max_string(data):
     """Given a list of strings, finds the maximum strign length"""
-    max = -1
+    max_len = -1
     for value in data:
-        if len(value) > max:
-            max = len(value)
-    return max
+        max_len = max(max_len, len(value))
+    return max_len
 
 
 def print_header(filename, length):
@@ -79,25 +78,19 @@ def pprint(headlist, data, linelength, fn):
 def peek(filename, buffer, delim="\t"):
     # pargs()
 
-    # Getting contents of first line
     """Peek at the input data."""
     try:
-        fh = open(filename, "r")
+        with open(filename, "r") as fh:
+            headerlist = fh.readline().split(delim)
+            # Getting contents of second line
+            try:
+                datalist = fh.readlines()[0].split(delim)
+            except IndexError:
+                datalist = ["EMPTY_FIELD"]
     except OSError as e:
         # File does not exist
         print(f"\n{e}\nPlease check you filename!\n\n")
         usage()
-
-    headerlist = fh.readline().split(delim)
-    fh.close()
-
-    # Getting contents of second line
-    fh = open(filename, "r")
-    try:
-        datalist = fh.readlines()[1].split(delim)
-    except IndexError:
-        datalist = ["EMPTY_FIELD"]
-    fh.close()
 
     max_attr_length = max_string(datalist)
     total_length = max_attr_length + buffer

@@ -9,5 +9,6 @@ parser.add_argument(
     "-k", dest="key", required=True, help="key whose value is to be extracted"
 )
 args = parser.parse_args()
-data = yaml.safe_load(open(args.yaml))
+with open(args.yaml) as _fh:
+    data = yaml.safe_load(_fh)
 print(data[args.key])

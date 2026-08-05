@@ -165,9 +165,10 @@ def pause_for_input(txt, contkey="y", quitkey="q", log=None):
 def fasta_count(fastaFile):
     """Count FASTA records in a file."""
     seqcount = 0
-    for line in open(fastaFile, "r"):
-        if re.match(">", line):
-            seqcount += 1
+    with open(fastaFile, "r") as fh:
+        for line in fh:
+            if re.match(">", line):
+                seqcount += 1
     return seqcount
 
 
@@ -177,7 +178,8 @@ def fasta_count(fastaFile):
 def fasta_list(fastaFile):
     """List FASTA record identifiers."""
     seqs = []
-    for line in open(fastaFile, "r"):
-        if re.match(">", line):
-            seqs.append(re.sub(">", "", line.rstrip()))
+    with open(fastaFile, "r") as fh:
+        for line in fh:
+            if re.match(">", line):
+                seqs.append(re.sub(">", "", line.rstrip()))
     return seqs

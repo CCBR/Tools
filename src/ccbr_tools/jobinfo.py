@@ -144,7 +144,9 @@ def collect_args():
             + args.snakemakelog.name
             + ' | awk \'{print $NF}\' | sed "s/\'//g" | sed "s/\\.//g"'
         )
-        p1 = subprocess.run(cmd, capture_output=True, text=True, shell=True)
+        p1 = subprocess.run(
+            cmd, capture_output=True, text=True, shell=True, check=False
+        )
         args.joblist = p1.stdout.strip().split("\n")
 
     return args
@@ -230,14 +232,14 @@ def get_jobinfo(args):
         + " --archive --json --fields "
         + LONG_FIELDS
     )
-    p1 = subprocess.run(cmd, capture_output=True, text=True, shell=True)
+    p1 = subprocess.run(cmd, capture_output=True, text=True, shell=True, check=False)
     if p1.returncode != 0:
         exit_w_msg("dashboard_cli failed!")
     p1_json = json.loads(p1.stdout)
     p1_table = pd.json_normalize(p1_json)
     p1_table["epochtime"] = p1_table.apply(
         lambda row: time.mktime(
-            datetime.datetime.strptime(row.submit_time, "%Y-%m-%dT%H:%M:%S").timetuple()
+            datetime.datetime.strptime(row.submit_time, "%Y-%m-%dT%H:%M:%S").timetuple()  # noqa: DTZ007
         ),
         axis=1,
     )
@@ -259,13 +261,13 @@ def get_jobinfo(args):
         axis=1,
     )
     p1_table["queued_time_seconds"] = p1_table.apply(
-        lambda row: "%d" % (int(time2sec(row["queued_time"]))), axis=1
+        lambda row: f"{int(time2sec(row['queued_time']))}", axis=1
     )
     p1_table["elapsed_time_seconds"] = p1_table.apply(
-        lambda row: "%d" % (int(time2sec(row["elapsed_time"]))), axis=1
+        lambda row: f"{int(time2sec(row['elapsed_time']))}", axis=1
     )
     p1_table["timelimit_seconds"] = p1_table.apply(
-        lambda row: "%d" % (int(time2sec(row["timelimit"]))), axis=1
+        lambda row: f"{int(time2sec(row['timelimit']))}", axis=1
     )
     p1_table["time_util"] = p1_table.apply(
         lambda row: (

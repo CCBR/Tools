@@ -33,7 +33,7 @@ def run(
     pipeline_name=None,
     nextflow_args=None,
     debug=False,
-    hpc=get_hpc(),
+    hpc=None,
     hpc_modules="nextflow",
     hpc_walltime="1-00:00:00",
     hpc_memory="1G",
@@ -66,13 +66,15 @@ def run(
         - `~ccbr_tools.shell.shell_run`: Executes shell commands.
         - `~ccbr_tools.templates.use_template`: Generates files from templates.
     """
+    if hpc is None:
+        hpc = get_hpc()
     if not pipeline_name:
         pipeline_name = "CCBR-nxf" if nextfile_path.endswith(".nf") else nextfile_path
 
     if mode == "slurm" and not hpc:
         raise ValueError("mode is 'slurm' but no HPC environment was detected")
     # add any additional Nextflow commands
-    args_dict = dict()
+    args_dict = {}
     prev_arg = ""
     if nextflow_args:
         for arg in nextflow_args:
@@ -121,12 +123,7 @@ def run(
             WALLTIME=hpc_walltime,
             PIPELINE=pipeline_name,
             MODULES=hpc_modules,
-            ENV_VARS="\n".join(
-                (
-                    hpc.env_vars,
-                    # f"export SINGULARITY_CACHEDIR={get_singularity_cachedir()}",
-                )
-            ),  # TODO allow user override of singularity cache dir with CLI
+            ENV_VARS=f"{hpc.env_vars}",  # TODO allow user override of singularity cache dir with CLI
             RUN_COMMAND=nextflow_command,
         )
         run_command = f"sbatch {slurm_filename}"
