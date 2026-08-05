@@ -7,8 +7,8 @@ from pathlib import Path
 import pytest
 from click.testing import CliRunner
 
-from ccbr_tools.hooks import detect_absolute_paths as hooks
 import ccbr_tools.hooks.__main__ as hooks_main
+from ccbr_tools.hooks import detect_absolute_paths as hooks
 from ccbr_tools.hooks.sync_nextflow_version import (
     sync_nextflow_version,
     update_manifest_version,

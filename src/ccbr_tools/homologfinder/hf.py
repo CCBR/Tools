@@ -25,13 +25,14 @@ __email__ = "vishal.koparde@nih.gov"
 
 import argparse
 import importlib.resources
-import pandas as pd
 import sys
+
+import pandas as pd
 
 
 def exit_w_msg(message):
     """Gracefully exit with proper message"""
-    print("{} : EXITING!!".format(__file__))
+    print(f"{__file__} : EXITING!!")
     print(message)
     sys.exit()
 
@@ -42,7 +43,6 @@ def check_help(parser):
         print(__doc__)
         parser.print_help()
         parser.exit()
-    return
 
 
 def collect_args():
@@ -54,7 +54,7 @@ def collect_args():
 
     # add version
     parser.add_argument(
-        "-v", "--version", action="version", version="%(prog)s {}".format(__version__)
+        "-v", "--version", action="version", version=f"%(prog)s {__version__}"
     )
 
     # add joblist

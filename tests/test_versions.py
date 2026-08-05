@@ -1,14 +1,14 @@
 import pytest
 
 from ccbr_tools.versions import (
-    get_releases,
-    get_latest_release_tag,
-    get_latest_release_hash,
-    get_tag_hash,
-    match_semver,
     check_version_increments_by_one,
+    get_latest_release_hash,
+    get_latest_release_tag,
     get_major_minor_version,
+    get_releases,
+    get_tag_hash,
     is_ancestor,
+    match_semver,
 )
 
 

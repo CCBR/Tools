@@ -5,9 +5,9 @@ Send an email with an attachment
 Intended to run from biowulf
 """
 
-from email.message import EmailMessage
 import os
 import smtplib
+from email.message import EmailMessage
 
 
 def send_email_msg(

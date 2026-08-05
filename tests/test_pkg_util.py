@@ -1,5 +1,6 @@
-from ccbr_tools.pkg_util import repo_base, get_url_json
 import pytest
+
+from ccbr_tools.pkg_util import get_url_json, repo_base
 
 
 def test_repo_base():

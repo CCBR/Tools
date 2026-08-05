@@ -6,8 +6,8 @@ import json
 import re
 import warnings
 
-from .shell import shell_run
 from .pkg_util import get_url_json
+from .shell import shell_run
 
 
 def get_current_hash():

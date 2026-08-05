@@ -1,20 +1,21 @@
 import gzip
 import os
-import numpy as np
-import pandas as pd
 import pickle
 import pprint
+
+import numpy as np
+import pandas as pd
 import pytest
 
 from ccbr_tools.jobby import (
-    jobby,
-    parse_time_to_seconds,
-    parse_mem_to_gb,
     extract_jobids_from_file,
-    list_records,
-    records_to_df,
     format_df,
     get_job_logs,
+    jobby,
+    list_records,
+    parse_mem_to_gb,
+    parse_time_to_seconds,
+    records_to_df,
 )
 from ccbr_tools.pipeline.hpc import get_hpcname
 from ccbr_tools.shell import shell_run

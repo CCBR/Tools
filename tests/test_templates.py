@@ -1,9 +1,10 @@
 import os
 import pathlib
+
 import pytest
 
-from ccbr_tools.templates import read_template, use_template, use_quarto_ext
 from ccbr_tools.pipeline.hpc import get_hpc
+from ccbr_tools.templates import read_template, use_quarto_ext, use_template
 
 
 def test_read_template():

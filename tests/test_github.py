@@ -1,5 +1,6 @@
-from ccbr_tools.github import print_contributor_images, get_user_info
 import pytest
+
+from ccbr_tools.github import get_user_info, print_contributor_images
 
 
 def test_print_contributor_images():

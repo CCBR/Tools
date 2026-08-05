@@ -20,15 +20,16 @@ __date__ = "August 6, 2018"
 __version__ = "1.1"
 __copyright__ = "No copyright protection, can be used freely"
 
-import sys
+import argparse
+import datetime
 import os
 import re
-import datetime
+import sys
+from argparse import RawTextHelpFormatter
+
 import pandas as pd
 
-import argparse
-from argparse import RawTextHelpFormatter
-from .ncbr_huse import send_update, err_out
+from .ncbr_huse import err_out, send_update
 
 
 ####################################
@@ -190,9 +191,7 @@ Example:\n\
         log.write(" ".join(sys.argv) + "\n")
         log.write("deg2gs.py version " + __version__ + "\n")
         log.write(
-            "Exporting genes to {}, n={}, p={}, q={}, ".format(
-                outfile.name, nhits, pvalue, qvalue
-            )
+            f"Exporting genes to {outfile.name}, n={nhits}, p={pvalue}, q={qvalue}, "
         )
         log.flush()
 
@@ -214,9 +213,7 @@ Example:\n\
     #
     if df.shape[1] != len(in_cols):
         errMsg = (
-            '\nYour input file does not match the expected format "{}".\n'.format(
-                fformat
-            )
+            f'\nYour input file does not match the expected format "{fformat}".\n'
             + "Please check the file or the selected format and try again\n."
         )
         if keepLog:
@@ -229,7 +226,7 @@ Example:\n\
 
     # split the ensemblID|Gene if necessary
     if fformat == "topTable":  # and method == 'gsea':
-        df["gene"] = [re.sub("^.*\|", "", i) for i in df.index.values.tolist()]
+        df["gene"] = [re.sub(r"^.*\|", "", i) for i in df.index.values.tolist()]
 
     # Filter the df to the p-values, FDR, and number of hits specified
     df = filter_by_p(df, nhits, pvalue, qvalue)
@@ -253,11 +250,11 @@ Example:\n\
     # Close out the log file
     #
     if keepLog:
-        send_update("deg2gs.py successfully completed.  {} written.".format(fname), log)
+        send_update(f"deg2gs.py successfully completed.  {fname} written.", log)
         send_update(str(datetime.datetime.now()) + "\n", log)
         log.close()
     else:
-        print("deg2gs.py successfully completed.  {} written.".format(fname))
+        print(f"deg2gs.py successfully completed.  {fname} written.")
 
 
 if __name__ == "__main__":

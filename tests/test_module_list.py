@@ -1,5 +1,5 @@
+from ccbr_tools.pipeline.hpc import is_loaded, parse_modules
 from ccbr_tools.shell import shell_run
-from ccbr_tools.pipeline.hpc import parse_modules, is_loaded
 
 
 def test_module_list_cli():

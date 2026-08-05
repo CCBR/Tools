@@ -1,14 +1,14 @@
-from ccbr_tools.software import (
-    Software,
-    install,
-    SET_SYMLINK,
-    LATEST_SYMLINK,
-    FINAL_PERMISSIONS,
-)
+import pytest
+
 from ccbr_tools.pipeline.hpc import Biowulf
 from ccbr_tools.shell import exec_in_context
-
-import pytest
+from ccbr_tools.software import (
+    FINAL_PERMISSIONS,
+    LATEST_SYMLINK,
+    SET_SYMLINK,
+    Software,
+    install,
+)
 
 
 def test_python():

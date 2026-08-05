@@ -10,6 +10,7 @@ Contributor related functions:
 """
 
 import warnings
+
 from .pkg_util import get_url_json
 
 
@@ -64,7 +65,7 @@ def get_user_info(user_login):
     try:
         user_info = get_url_json(url)
     except ConnectionError as e:
-        warnings.warn(f"Could not retrieve user info for {user_login}. {str(e)}")
+        warnings.warn(f"Could not retrieve user info for {user_login}. {e!s}")
     return user_info
 
 

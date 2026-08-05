@@ -1,10 +1,11 @@
 import os
 import pathlib
-import pytest
 import subprocess
 
-from ccbr_tools.pipeline.nextflow import run, init
-from ccbr_tools.pipeline.hpc import Biowulf, FRCE
+import pytest
+
+from ccbr_tools.pipeline.hpc import FRCE, Biowulf
+from ccbr_tools.pipeline.nextflow import init, run
 from ccbr_tools.shell import exec_in_context
 
 

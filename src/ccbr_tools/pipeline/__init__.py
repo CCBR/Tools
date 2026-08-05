@@ -72,7 +72,7 @@ class Pipeline:
             nsamples = len(sample_names)
         except Exception as err:
             warnings.warn(
-                f"Could not determine number of samples. See original error message below:\n{repr(err)}"
+                f"Could not determine number of samples. See original error message below:\n{err!r}"
             )
         return nsamples, sample_names
 

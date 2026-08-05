@@ -1,4 +1,4 @@
-from ccbr_tools.shell import shell_run, exec_in_context, concat_newline
+from ccbr_tools.shell import concat_newline, exec_in_context, shell_run
 
 
 def test_exec():

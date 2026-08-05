@@ -1,6 +1,6 @@
 #!/usr/bin/env python
-import json
 import argparse
+import json
 
 parser = argparse.ArgumentParser(description="extract value for key from JSON")
 parser.add_argument("-j", dest="json", required=True, help="input JSON file")

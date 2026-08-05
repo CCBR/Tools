@@ -1,4 +1,5 @@
 import pytest
+
 import ccbr_tools.intersect
 from ccbr_tools.shell import exec_in_context
 
