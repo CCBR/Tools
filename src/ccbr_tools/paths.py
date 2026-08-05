@@ -56,11 +56,9 @@ def get_disk_usage(tree_dict, pipeline_outdir):
     """Get disk usage."""
     try:
         report = next(
-            (
-                item
-                for item in tree_dict
-                if isinstance(item, dict) and item.get("type") == "report"
-            )
+            item
+            for item in tree_dict
+            if isinstance(item, dict) and item.get("type") == "report"
         )
         dir_size = report.get("size", math.nan)
     except StopIteration:  # occurs when there is no report in the tree dict

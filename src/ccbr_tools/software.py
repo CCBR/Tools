@@ -1,6 +1,6 @@
 from .pipeline.hpc import Cluster
 from .shell import shell_run
-from .versions import match_semver, get_major_minor_version
+from .versions import get_major_minor_version, match_semver
 
 
 class Software:
@@ -88,7 +88,7 @@ class Installer:
 
 class PythonTool(Software):
     def __init__(self, name, version):
-        super(PythonTool, self).__init__(name, version)
+        super().__init__(name, version)
         self.repo_name = name.replace("ccbr_", "")
 
     def install(self, hpc: Cluster, branch_tag=None):
@@ -103,7 +103,7 @@ class PythonTool(Software):
 
 class BashTool(Software):
     def __init__(self, name, version):
-        super(BashTool, self).__init__(name, version)
+        super().__init__(name, version)
 
     def install(self, hpc: Cluster, branch_tag=None):
         """Return the install command."""
@@ -112,7 +112,7 @@ class BashTool(Software):
 
 class Nextflow(Software):
     def __init__(self, name, version):
-        super(Nextflow, self).__init__(name.upper(), version)
+        super().__init__(name.upper(), version)
 
     def path(self, hpc: Cluster):
         """Return the installation path."""
@@ -130,7 +130,7 @@ class Nextflow(Software):
 
 class Snakemake(Software):
     def __init__(self, name, version):
-        super(Snakemake, self).__init__(name.upper(), version)
+        super().__init__(name.upper(), version)
 
     def path(self, hpc: Cluster):
         """Return the installation path."""

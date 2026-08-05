@@ -81,9 +81,7 @@ def image_cache(sub_args, config):
                 # If local sif does not exist on in cache, print warning
                 # and default to pulling from URI in config/containers/images.json
                 print(
-                    'Warning: Local image "{}" does not exist in singularity cache'.format(
-                        sif
-                    ),
+                    f'Warning: Local image "{sif}" does not exist in singularity cache',
                     file=sys.stderr,
                 )
             else:
@@ -115,10 +113,10 @@ def check_cache(parser, cache, *args, **kwargs):
     elif os.path.isfile(cache):
         # Cache directory exists as file, raise error
         parser.error(
-            """\n\t\x1b[6;37;41mFatal: Failed to provided a valid singularity cache!\x1b[0m
+            f"""\n\t\x1b[6;37;41mFatal: Failed to provided a valid singularity cache!\x1b[0m
         The provided --singularity-cache already exists on the filesystem as a file.
-        Please run {} again with a different --singularity-cache location.
-        """.format(sys.argv[0])
+        Please run {sys.argv[0]} again with a different --singularity-cache location.
+        """
         )
     elif os.path.isdir(cache):
         # Provide cache exists as directory
@@ -130,11 +128,11 @@ def check_cache(parser, cache, *args, **kwargs):
         ):
             # User does NOT own the cache directory, raise error
             parser.error(
-                """\n\t\x1b[6;37;41mFatal: Failed to provided a valid singularity cache!\x1b[0m
+                f"""\n\t\x1b[6;37;41mFatal: Failed to provided a valid singularity cache!\x1b[0m
                 The provided --singularity-cache already exists on the filesystem with a different owner.
                 Singularity strictly enforces that the cache directory is not shared across users.
-                Please run {} again with a different --singularity-cache location.
-                """.format(sys.argv[0])
+                Please run {sys.argv[0]} again with a different --singularity-cache location.
+                """
             )
 
     return cache

@@ -1,8 +1,8 @@
-import pytest
 import gzip
 import json
 import subprocess
 
+import pytest
 
 from ccbr_tools.spooker import spooker
 
@@ -30,9 +30,7 @@ def test_spooker(data_dir_rel):
         "pipeline_version": "0.1.0",
         "sample_names": [],
     }
-    actual = {
-        k: v for k, v in spook_dat["pipeline_metadata"].items() if k in expected.keys()
-    }
+    actual = {k: v for k, v in spook_dat["pipeline_metadata"].items() if k in expected}
     assert actual == expected
 
 
@@ -74,9 +72,7 @@ def test_spooker_cli(data_dir_rel):
         "sample_names": [],
     }
     actual_meta = {
-        k: v
-        for k, v in spook_dat["pipeline_metadata"].items()
-        if k in expected_meta.keys()
+        k: v for k, v in spook_dat["pipeline_metadata"].items() if k in expected_meta
     }
     assert expected_meta == actual_meta
     assert spook_dat.keys() == {

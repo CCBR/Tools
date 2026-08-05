@@ -1,6 +1,7 @@
 #!/usr/bin/env python
-import yaml
 import argparse
+
+import yaml
 
 parser = argparse.ArgumentParser(description="extract value for key from YAML")
 parser.add_argument("-y", dest="yaml", required=True, help="input YAML file")

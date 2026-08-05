@@ -1,6 +1,6 @@
 import pytest
 
-import ccbr_tools.gb2gtf as gb2gtf
+from ccbr_tools import gb2gtf
 from ccbr_tools.shell import exec_in_context
 
 

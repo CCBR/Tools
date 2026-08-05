@@ -1,9 +1,9 @@
-from ccbr_tools.shell import shell_run
-
-import pytest
 import sys
 
-import ccbr_tools.GSEA.ncbr_huse as ncbr_huse
+import pytest
+
+from ccbr_tools.GSEA import ncbr_huse
+from ccbr_tools.shell import shell_run
 
 
 def test_help_deg():

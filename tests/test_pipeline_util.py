@@ -3,13 +3,13 @@ import os
 import pathlib
 
 from ccbr_tools.pipeline.util import (
-    copy_config,
-    get_tmp_dir,
     _get_file_mtime,
+    copy_config,
+    exists,
     get_genomes_dict,
+    get_tmp_dir,
     md5sum,
     permissions,
-    exists,
     which,
 )
 from ccbr_tools.pkg_util import repo_base

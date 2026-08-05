@@ -13,8 +13,8 @@ import pathlib
 from ..pkg_util import msg_box
 from ..shell import shell_run
 from ..templates import use_template
-from .util import copy_config
 from .hpc import get_hpc
+from .util import copy_config
 
 
 def init(output, repo_base, pipeline_name="pipeline"):
@@ -83,9 +83,7 @@ def run(
             prev_arg = arg
     # make sure profile matches biowulf or frce
     profiles = (
-        set(args_dict["-profile"].split(","))
-        if "-profile" in args_dict.keys()
-        else set()
+        set(args_dict["-profile"].split(",")) if "-profile" in args_dict else set()
     )
     if mode == "slurm":
         profiles.add("slurm")
@@ -95,16 +93,16 @@ def run(
         args_dict["-profile"] = ",".join(sorted(profiles))
 
     # use -resume by default, or do not use resume if force_all is True
-    if force_all and "-resume" in args_dict.keys():
+    if force_all and "-resume" in args_dict:
         args_dict.pop("-resume")
-    elif not force_all and "-resume" not in args_dict.keys():
+    elif not force_all and "-resume" not in args_dict:
         args_dict["-resume"] = ""
 
     nextflow_command = " ".join(
         ["nextflow", "run", nextfile_path] + [f"{k} {v}" for k, v in args_dict.items()]
     )
     # Print a preview before launching the actual run
-    if "-preview" not in args_dict.keys():
+    if "-preview" not in args_dict:
         preview_command = (
             (f'bash -c "module load {hpc_modules} && {nextflow_command} -preview"')
             if hpc and hpc_modules

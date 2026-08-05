@@ -2,17 +2,18 @@
 Miscellaneous utility functions for the package
 """
 
-import click
 import datetime
-import importlib.resources
 import importlib.metadata
+import importlib.resources
 import os
 import pathlib
-import requests
-from time import localtime, strftime
-import tomllib
 import uuid
+from time import localtime, strftime
 from urllib.parse import urlparse
+
+import click
+import requests
+import tomllib
 
 
 class CustomClickGroup(click.Group):
@@ -156,7 +157,7 @@ def msg_box(splash, errmsg=None):
     """
     msg("-" * (len(splash) + 4))
     msg(f"| {splash} |")
-    msg(("-" * (len(splash) + 4)))
+    msg("-" * (len(splash) + 4))
     if errmsg:
         click.echo("\n" + errmsg, err=True)
 
