@@ -2,20 +2,19 @@
 Entry point for CCBR Tools
 """
 
-import click
 import cffconvert.cli.cli
+import click
 
 from .pkg_util import (
+    CustomClickGroup,
     get_project_scripts,
     get_version,
     print_citation,
     repo_base,
-    CustomClickGroup,
 )
 from .send_email import send_email_msg
-from .templates import use_quarto_ext, get_quarto_extensions
 from .software import install as install_software
-
+from .templates import get_quarto_extensions, use_quarto_ext
 
 all_scripts = "All installed tools:\n" + "\n".join(
     [f"  {cmd}" for cmd in get_project_scripts()]
@@ -37,7 +36,6 @@ def cli():
 
     https://ccbr.github.io/Tools/
     """
-    pass
 
 
 @click.command()

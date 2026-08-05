@@ -3,8 +3,8 @@ import sys
 import pandas as pd
 import pytest
 
-import ccbr_tools.GSEA.deg2gs as deg2gs
 import ccbr_tools.GSEA.multitext2excel as mt2excel
+from ccbr_tools.GSEA import deg2gs
 
 
 def test_deg2gs_gsea_pipeliner(tmp_path, mocker):

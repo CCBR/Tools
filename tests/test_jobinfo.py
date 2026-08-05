@@ -1,10 +1,11 @@
 import argparse
 import json
 import sys
+
 import pytest
 
+from ccbr_tools.jobinfo import check_host, get_jobinfo, mem2gb, time2sec
 from ccbr_tools.shell import shell_run
-from ccbr_tools.jobinfo import get_jobinfo, check_host, mem2gb, time2sec
 
 
 def test_jobinfo_cli():

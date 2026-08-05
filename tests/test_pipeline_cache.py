@@ -1,10 +1,10 @@
 import argparse
 
 from ccbr_tools.pipeline.cache import (
+    check_cache,
     get_sif_cache_dir,
     get_singularity_cachedir,
     image_cache,
-    check_cache,
 )
 
 

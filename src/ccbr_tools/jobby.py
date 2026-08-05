@@ -44,9 +44,6 @@ EXAMPLES:
     ```
 """
 
-from .pkg_util import get_version
-from .paths import glob_files
-
 import itertools
 import json
 import os
@@ -54,6 +51,9 @@ import re
 import subprocess
 import sys
 import warnings
+
+from .paths import glob_files
+from .pkg_util import get_version
 
 # Graceful imports
 try:
@@ -123,7 +123,7 @@ def parse_time_to_seconds(t: str):
                 s = parts[0]
 
             total_seconds = int(
-                round((int(days) * 86400 + int(h) * 3600 + int(m) * 60 + s))
+                round(int(days) * 86400 + int(h) * 3600 + int(m) * 60 + s)
             )
     except ValueError:
         warnings.warn(f"❌ Invalid time format: {t}. Time will be set to NaN.")
@@ -171,7 +171,7 @@ def extract_jobids_from_file(filepath):
                         job_ids.append(match_nextflow.group(1))
     except FileNotFoundError:
         warnings.warn(f"❌ File not found: {filepath}")
-    return list(sorted(set(job_ids)))  # deduplicate
+    return sorted(set(job_ids))  # deduplicate
 
 
 def list_records(
@@ -242,7 +242,7 @@ def get_sacct_info(
                 # If this is .batch, update resource usage fields
                 if step_type.endswith(".batch"):
                     for resource_field in ("MaxRSS", "AveRSS", "MaxVMSize"):
-                        if resource_field in record_raw and record_raw[resource_field]:
+                        if record_raw.get(resource_field):
                             job_records[base_jobid][resource_field] = record_raw[
                                 resource_field
                             ]

@@ -7,7 +7,6 @@ Usage:
     intersect file1 file2
 """
 
-from __future__ import print_function
 import sys
 
 

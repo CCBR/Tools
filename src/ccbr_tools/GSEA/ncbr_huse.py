@@ -10,10 +10,10 @@ __author__ = "Susan Huse"
 __version__ = "1.0.0"
 __copyright__ = "none"
 
-import sys
 import os
 import re
 import subprocess
+import sys
 
 try:
     import MySQLdb
@@ -139,27 +139,19 @@ def pause_for_input(txt, contkey="y", quitkey="q", log=None):
             err_out("User elected to quit.  Exiting...\n", log)
 
         # if none, just return the input
-        if contkey is None:
-            result = answer
-
-        # if there is a contkey, then be sure it is correctly typed
-        elif answer == contkey:
+        if contkey is None or answer == contkey:
             result = answer
 
         else:
             # give them additional help and increment the answer count
-            reminder = "Note: only {} to continue and {} to quit are valid options.\nPlease try again.\n".format(
-                contkey, quitkey
-            )
+            reminder = f"Note: only {contkey} to continue and {quitkey} to quit are valid options.\nPlease try again.\n"
             if answer_cnt == 0:
                 txt = "\n" + txt + "\n" + reminder
 
             # Otherwise 3 strikes and exit from the loop
             if answer_cnt == 2:
                 err_out(
-                    "User failed to continue ({}) or quit ({}) three times in a row.  Exiting...".format(
-                        contkey, quitkey
-                    ),
+                    f"User failed to continue ({contkey}) or quit ({quitkey}) three times in a row.  Exiting...",
                     log,
                 )
 
