@@ -24,12 +24,13 @@ __author__ = "Vishal Koparde"
 __email__ = "vishal.koparde@nih.gov"
 
 import argparse
-import subprocess
+import datetime
 import json
 import os
-import datetime
-import time
+import subprocess
 import sys
+import time
+
 import pandas as pd
 
 # SHORT_FIELDS used to display on screen
@@ -45,7 +46,7 @@ FAILONLY = "FAILED,TIMEOUT"
 
 def exit_w_msg(message):
     """Gracefully exit with proper message"""
-    print("{} : EXITING!!".format(__file__))
+    print(f"{__file__} : EXITING!!")
     print(message)
     sys.exit()
 
@@ -56,7 +57,6 @@ def check_help(parser):
         print(__doc__)
         parser.print_help()
         parser.exit()
-    return
 
 
 def check_host():
@@ -79,7 +79,7 @@ def collect_args():
 
     # add version
     parser.add_argument(
-        "-v", "--version", action="version", version="%(prog)s {}".format(__version__)
+        "-v", "--version", action="version", version=f"%(prog)s {__version__}"
     )
 
     # add joblist
@@ -126,7 +126,7 @@ def collect_args():
     if args.output:
         args.output = os.path.abspath(args.output)
         if not os.access(os.path.dirname(args.output), os.W_OK):
-            msg = "File is not writable: {}".format(args.output)
+            msg = f"File is not writable: {args.output}"
             exit_w_msg(msg)
 
     if args.joblist and args.snakemakelog:
@@ -142,7 +142,7 @@ def collect_args():
         cmd = (
             'grep "external jobid" '
             + args.snakemakelog.name
-            + ' | awk \'{print $NF}\' | sed "s/\'//g" | sed "s/\.//g"'
+            + ' | awk \'{print $NF}\' | sed "s/\'//g" | sed "s/\\.//g"'
         )
         p1 = subprocess.run(cmd, capture_output=True, text=True, shell=True)
         args.joblist = p1.stdout.strip().split("\n")
@@ -292,7 +292,7 @@ def get_jobinfo(args):
                     columns=LONG_FIELDS.split(","),
                 )
         except OSError:
-            msg = "File is not writable: {}".format(args.output)
+            msg = f"File is not writable: {args.output}"
             exit_w_msg(msg)
     return p1_table
 

@@ -3,9 +3,10 @@ CLI for pre-commit hooks
 """
 
 import click
+
 from ..pkg_util import (
-    get_version,
     CustomClickGroup,
+    get_version,
 )
 from .detect_absolute_paths import detect_absolute_paths
 from .sync_nextflow_version import sync_nextflow_version
@@ -25,7 +26,6 @@ def cli():
 
     https://ccbr.github.io/Tools/hooks
     """
-    pass
 
 
 cli.add_command(detect_absolute_paths)

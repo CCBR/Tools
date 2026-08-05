@@ -1,6 +1,7 @@
 #!/usr/bin/env python
-import pysam
 import argparse
+
+import pysam
 
 parser = argparse.ArgumentParser(description="Filter BAM by readids")
 parser.add_argument(

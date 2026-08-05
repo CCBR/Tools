@@ -1,6 +1,6 @@
 import argparse
 
-import ccbr_tools.homologfinder.hf as hf
+from ccbr_tools.homologfinder import hf
 from ccbr_tools.shell import shell_run
 
 

@@ -4,20 +4,21 @@ Pipeline utility functions
 
 import collections
 import datetime
-import shutil
-import sys
+import glob
 import hashlib
 import json
-import glob
 import os
 import pathlib
 import re
+import shutil
 import stat
 import subprocess
+import sys
 import warnings
+
 import yaml
 
-from ..pkg_util import repo_base, msg
+from ..pkg_util import msg, repo_base
 from .hpc import get_hpcname
 
 
@@ -139,13 +140,9 @@ def permissions(parser, path, *args, **kwargs):
         str: Returns absolute path if it exists and permissions are correct.
     """
     if not exists(path):
-        parser.error(
-            "Path '{}' does not exists! Failed to provide valid input.".format(path)
-        )
+        parser.error(f"Path '{path}' does not exists! Failed to provide valid input.")
     if not os.access(path, *args, **kwargs):
-        parser.error(
-            "Path '{}' exists, but cannot read path due to permissions!".format(path)
-        )
+        parser.error(f"Path '{path}' exists, but cannot read path due to permissions!")
 
     return os.path.abspath(path)
 
@@ -266,16 +263,12 @@ def require(cmds, suggestions, path=None):
         if not available:
             error = True
             err(
-                """\x1b[6;37;41m\n\tFatal: {} is not in $PATH and is required during runtime!
-            └── Solution: please 'module load {}' and run again!\x1b[0m""".format(
-                    cmds[i], suggestions[i]
-                )
+                f"""\x1b[6;37;41m\n\tFatal: {cmds[i]} is not in $PATH and is required during runtime!
+            └── Solution: please 'module load {suggestions[i]}' and run again!\x1b[0m"""
             )
 
     if error:
         fatal()
-
-    return
 
 
 def safe_copy(source, target, resources=[]):
@@ -360,9 +353,7 @@ def check_python_version(MIN_PYTHON=(3, 11)):
     try:
         assert sys.version_info >= MIN_PYTHON
         print(
-            "Python version: {0}.{1}.{2}".format(
-                sys.version_info.major, sys.version_info.minor, sys.version_info.micro
-            )
+            f"Python version: {sys.version_info.major}.{sys.version_info.minor}.{sys.version_info.micro}"
         )
     except AssertionError:
         exit(
@@ -485,7 +476,7 @@ def rename(filename):
 
     if not converted:
         raise NameError(
-            """\n\tFatal: Failed to rename provided input '{}'!
+            f"""\n\tFatal: Failed to rename provided input '{filename}'!
         Cannot determine the extension of the user provided input file.
         Please rename the file list above before trying again.
         Here is example of acceptable input file extensions:
@@ -494,7 +485,7 @@ def rename(filename):
           sampleName_1.fastq.gz       sampleName_2.fastq.gz
         Please also check that your input files are gzipped?
         If they are not, please gzip them before proceeding again.
-        """.format(filename)
+        """
         )
 
     return renamed_filename

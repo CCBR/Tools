@@ -9,8 +9,8 @@ import pathlib
 import re
 import shutil
 
-from .cache import get_singularity_cachedir, get_sif_cache_dir
 from ..shell import shell_run
+from .cache import get_sif_cache_dir, get_singularity_cachedir
 
 
 class Cluster:

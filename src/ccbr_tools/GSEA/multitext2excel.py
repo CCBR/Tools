@@ -18,22 +18,21 @@ __version__ = "1.1"
 __copyright__ = "No copyright protection, can be used freely"
 
 # import csv
-import sys
-import os
-import re
-import datetime
-import pandas as pd
-import glob
-
 # import scipy
 # import numpy
-
 import argparse
+import datetime
+import glob
+import os
+import re
+import sys
 from argparse import RawTextHelpFormatter
+
+import pandas as pd
+
 from .ncbr_huse import (
     send_update,
 )
-
 
 ####################################
 #
@@ -150,11 +149,7 @@ def main():
         sheet_name = re.sub(indir + "/", "", filename).split(splitter)[0]
         if firstsplitter != "":
             sheet_name = sheet_name.split(firstsplitter)[1]
-        print(
-            "Writing data from input file: {} to output tab: {}".format(
-                filename, sheet_name
-            )
-        )
+        print(f"Writing data from input file: {filename} to output tab: {sheet_name}")
 
         # Read in the data
         df = pd.read_csv(filename, sep=delimiter, header=0, encoding="unicode_escape")
@@ -169,7 +164,7 @@ def main():
     # Close out the log file
     #
     send_update(
-        "multitext2excel.py successfully completed.  {} written.".format(outfile.name),
+        f"multitext2excel.py successfully completed.  {outfile.name} written.",
         log,
     )
     send_update(str(datetime.datetime.now()) + "\n", log)

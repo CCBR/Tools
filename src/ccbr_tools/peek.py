@@ -5,9 +5,8 @@ Usage:
     peek <file.tsv> [buffer]
 """
 
-from __future__ import print_function
-from pathlib import Path
 import sys
+from pathlib import Path
 
 
 def usage():
@@ -29,7 +28,6 @@ def pargs():
         sys.argv[1]
     except IndexError:
         usage()
-    return
 
 
 def max_string(data):
@@ -43,7 +41,7 @@ def max_string(data):
 
 def print_header(filename, length):
     """Print filenames and divider"""
-    print("# {}".format(filename))
+    print(f"# {filename}")
     print("{}".format("=" * length))
 
 
@@ -75,7 +73,7 @@ def pprint(headlist, data, linelength, fn):
 
         # Calculate spacing for justifying to the right
         insert_spaces = justify(len(column), len(value), linelength, rownumber)
-        print("{} {}{}{}".format(rownumber, column, insert_spaces, value))
+        print(f"{rownumber} {column}{insert_spaces}{value}")
 
 
 def peek(filename, buffer, delim="\t"):
@@ -85,9 +83,9 @@ def peek(filename, buffer, delim="\t"):
     """Peek at the input data."""
     try:
         fh = open(filename, "r")
-    except IOError as e:
+    except OSError as e:
         # File does not exist
-        print("\n{}\nPlease check you filename!\n\n".format(e))
+        print(f"\n{e}\nPlease check you filename!\n\n")
         usage()
 
     headerlist = fh.readline().split(delim)

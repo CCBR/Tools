@@ -1,7 +1,8 @@
 #!/usr/bin/env python
-import HTSeq
 import argparse
 import os
+
+import HTSeq
 
 
 def get_sname(s):

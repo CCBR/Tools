@@ -1,8 +1,9 @@
-from ccbr_tools.shell import shell_run
-
 import os
 import pathlib
+
 import pytest
+
+from ccbr_tools.shell import shell_run
 
 is_ci = (
     os.environ.get("CI", "false") == "true"

@@ -9,8 +9,9 @@ Usage:
 # Usage:python gb2gtf.py sequence.gb  > sequence.gtf
 
 import sys
-from Bio import SeqIO
+
 import Bio
+from Bio import SeqIO
 
 
 def main():
