@@ -5,7 +5,8 @@ exclude: |
       ^.*.svg|
       ^assets/|
       ^src/ccbr_tools/templates/mkdocs-fnl/docs/custom-overrides/|
-      ^tests/data/
+      ^tests/data/|
+      ^pixi.lock
    )
 ci:
   skip: [detect-absolute-paths]
