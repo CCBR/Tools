@@ -8,5 +8,6 @@ parser.add_argument(
     "-k", dest="key", required=True, help="key whose value is to be extracted"
 )
 args = parser.parse_args()
-data = json.load(open(args.json))
+with open(args.json) as _fh:
+    data = json.load(_fh)
 print(data[args.key])

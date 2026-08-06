@@ -33,8 +33,9 @@ parser.add_argument(
     help="complement the readid list, ie., include readids NOT in the list",
 )
 args = parser.parse_args()
-rids = set(map(lambda x: x.strip(), open(args.readids, "r").readlines()))
-sequences = dict((get_sname(s), s) for s in HTSeq.FastqReader(args.infq))
+with open(args.readids, "r") as _fh:
+    rids = {x.strip() for x in _fh}
+sequences = {get_sname(s): s for s in HTSeq.FastqReader(args.infq)}
 if args.complement:
     rids = set(sequences.keys()) - rids
 outfqfilename = args.outfq
@@ -42,10 +43,9 @@ dummy = outfqfilename.strip().split(".")
 if dummy[-1] == "gz":
     dummy.pop(-1)
     outfqfilename = ".".join(dummy)
-outfqfile = open(outfqfilename, "w")
-for rid in rids:
-    s = sequences[rid]
-    s.write_to_fastq_file(outfqfile)
-outfqfile.close()
+with open(outfqfilename, "w") as outfqfile:
+    for rid in rids:
+        s = sequences[rid]
+        s.write_to_fastq_file(outfqfile)
 if dummy[-1] == "gz":
     os.system("pigz -p4 -f " + outfqfilename)

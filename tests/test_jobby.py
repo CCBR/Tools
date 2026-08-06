@@ -195,7 +195,7 @@ def test_parse_time_to_seconds():
         ]
     ]
     with pytest.warns(UserWarning):
-        results.append(parse_time_to_seconds("invalid") is np.nan)
+        results.append(np.isnan(parse_time_to_seconds("invalid")))
     assert results[0]
     assert results[1]
     assert results[2]
@@ -215,7 +215,7 @@ def test_parse_mem_to_gb():
         ]
     ]
     with pytest.warns(UserWarning):
-        results.append(parse_mem_to_gb("invalid") is np.nan)
+        results.append(np.isnan(parse_mem_to_gb("invalid")))
     assert results[0]
     assert results[1]
     assert results[2]

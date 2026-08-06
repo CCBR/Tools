@@ -17,10 +17,6 @@ permissions:
 jobs:
   auto-format:
     runs-on: ubuntu-latest
-    strategy:
-      fail-fast: false
-      matrix:
-        python-version: ["3.11"]
 
     steps:
       - name: Generate a token
@@ -42,10 +38,10 @@ jobs:
           git config --global user.name "CCBR-bot"
           git config --global user.email "258092125+ccbr-bot@users.noreply.github.com"
 
-      - name: Set up Python ${{ matrix.python-version }}
+      - name: Set up Python
         uses: actions/setup-python@v5
         with:
-          python-version: ${{ matrix.python-version }}
+          python-version: "3.14"
           cache: "pip"
       - name: Install dependencies
         run: |

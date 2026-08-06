@@ -64,7 +64,7 @@ def gb2gtf(args):
             else:
                 strand = "-"
             if feat.type == "gene":
-                gffstring = list()
+                gffstring = []
                 gffstring.append(seqname)
                 gffstring.append("RefSeq")
                 gffstring.append("gene")
@@ -80,16 +80,16 @@ def gb2gtf(args):
                     try:
                         gene = q["locus_tag"][0]
                     except KeyError:
-                        exit("Something fishy!")
+                        sys.exit("Something fishy!")
 
-                x = 'gene_name "%s"; gene_id "%s"' % (gene, gene)
+                x = f'gene_name "{gene}"; gene_id "{gene}"'
                 gffstring.append(x)
                 print("\t".join(gffstring) + ";")
             #            #print(feat.qualifiers.keys())
             #            #print(feat.qualifiers.values())
             elif feat.type == "CDS":
                 # if feat.type=="CDS":
-                gffstring = list()
+                gffstring = []
                 gffstring.append(seqname)
                 gffstring.append("RefSeq")
                 gffstring.append("transcript")
@@ -105,11 +105,8 @@ def gb2gtf(args):
                     try:
                         gene = q["locus_tag"][0]
                     except KeyError:
-                        exit("Something fishy!")
-                x = (
-                    'gene_name "%s"; gene_id "%s"; transcript_id "%s"; transcript_name "%s"'
-                    % (gene, gene, gene, gene)
-                )
+                        sys.exit("Something fishy!")
+                x = f'gene_name "{gene}"; gene_id "{gene}"; transcript_id "{gene}"; transcript_name "{gene}"'
                 gffstring.append(x)
                 print("\t".join(gffstring) + ";")
                 gffstring[2] = "exon"
@@ -123,7 +120,7 @@ def gb2gtf(args):
                         gffstring2 = gffstring
                         gffstring2[3] = str(start)
                         gffstring2[4] = str(end)
-                        y = x + "; exon_number %s" % (str(j))
+                        y = x + f"; exon_number {j!s}"
                         gffstring2[8] = y
                         print("\t".join(gffstring2) + ";")
                 else:

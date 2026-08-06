@@ -22,7 +22,7 @@ from ..pkg_util import msg, repo_base
 from .hpc import get_hpcname
 
 
-def get_tmp_dir(tmp_dir, outdir, hpc=get_hpcname()):
+def get_tmp_dir(tmp_dir, outdir, hpc=None):
     """
     Get default temporary directory for biowulf and frce. Allow user override.
 
@@ -33,6 +33,8 @@ def get_tmp_dir(tmp_dir, outdir, hpc=get_hpcname()):
     Returns:
         tmp_dir (str): The default temporary directory path based on the HPC name and user-defined path.
     """
+    if hpc is None:
+        hpc = get_hpcname()
     if not tmp_dir:
         if hpc == "biowulf":
             tmp_dir = "/lscratch/$SLURM_JOBID"
@@ -43,7 +45,7 @@ def get_tmp_dir(tmp_dir, outdir, hpc=get_hpcname()):
     return tmp_dir
 
 
-def get_genomes_list(repo_base, hpcname=get_hpcname(), error_on_warnings=False):
+def get_genomes_list(repo_base, hpcname=None, error_on_warnings=False):
     """
     Get list of genome annotations available for the current platform
 
@@ -54,18 +56,18 @@ def get_genomes_list(repo_base, hpcname=get_hpcname(), error_on_warnings=False):
     Returns:
         genomes (list): A sorted list of genome annotations available for the current platform
     """
+    if hpcname is None:
+        hpcname = get_hpcname()
     return sorted(
-        list(
-            get_genomes_dict(
-                repo_base=repo_base,
-                hpcname=hpcname,
-                error_on_warnings=error_on_warnings,
-            ).keys()
-        )
+        get_genomes_dict(
+            repo_base=repo_base,
+            hpcname=hpcname,
+            error_on_warnings=error_on_warnings,
+        ).keys()
     )
 
 
-def get_genomes_dict(repo_base, hpcname=get_hpcname(), error_on_warnings=False):
+def get_genomes_dict(repo_base, hpcname=None, error_on_warnings=False):
     """
     Get dictionary of genome annotation versions and the paths to the corresponding JSON files.
 
@@ -76,6 +78,8 @@ def get_genomes_dict(repo_base, hpcname=get_hpcname(), error_on_warnings=False):
     Returns:
         genomes_dict (dict): A dictionary containing genome names as keys and corresponding JSON file paths as values.  { genome_name: json_file_path }
     """
+    if hpcname is None:
+        hpcname = get_hpcname()
     if error_on_warnings:
         warnings.filterwarnings("error")
     genomes_dir = repo_base("config", "genomes", hpcname)
@@ -271,7 +275,7 @@ def require(cmds, suggestions, path=None):
         fatal()
 
 
-def safe_copy(source, target, resources=[]):
+def safe_copy(source, target, resources=None):
     """
     Private function: Given a list paths it will recursively copy each to the
     target location. If a target path already exists, it will NOT over-write the
@@ -283,6 +287,8 @@ def safe_copy(source, target, resources=[]):
         target (str): Target path to copy templates and required resources.
     """
 
+    if resources is None:
+        resources = []
     for resource in resources:
         destination = os.path.join(target, resource)
         if not exists(destination):
@@ -311,7 +317,7 @@ def git_commit_hash(repo_path):
         # Typecast to fix python3 TypeError (Object of type bytes is not JSON serializable)
         # subprocess.check_output() returns a byte string
         githash = str(githash)
-    except Exception:
+    except Exception:  # noqa: BLE001
         # Github releases are missing the .git directory,
         # meaning you cannot get a commit hash, set the
         # commit hash to indicate its from a GH release
@@ -356,7 +362,7 @@ def check_python_version(MIN_PYTHON=(3, 11)):
             f"Python version: {sys.version_info.major}.{sys.version_info.minor}.{sys.version_info.micro}"
         )
     except AssertionError:
-        exit(
+        sys.exit(
             f"{sys.argv[0]} requires Python {'.'.join([str(n) for n in MIN_PYTHON])} or newer"
         )
 
@@ -370,14 +376,12 @@ def _get_file_mtime(f):
     Returns:
         str: Modification time of the file in the format 'yymmddHHMMSS'.
     """
-    timestamp = datetime.datetime.fromtimestamp(os.path.getmtime(os.path.abspath(f)))
+    timestamp = datetime.datetime.fromtimestamp(os.path.getmtime(os.path.abspath(f)))  # noqa: DTZ006
     mtime = timestamp.strftime("%y%m%d%H%M%S")
     return mtime
 
 
-def _cp_r_safe_(
-    source, target, resources=["workflow", "resources", "config"], safe_mode=True
-):
+def _cp_r_safe_(source, target, resources=None, safe_mode=True):
     """
     Private function: Given a list paths it will recursively copy each to the
     target location. If a target path already exists, it will not over-write the
@@ -391,6 +395,8 @@ def _cp_r_safe_(
         safe_mode (bool): Only copy the resources to the target path
             if they do not exist in the target path (default: True).
     """
+    if resources is None:
+        resources = ["workflow", "resources", "config"]
     for resource in resources:
         destination = os.path.join(target, resource)
         if os.path.exists(destination) and safe_mode:
@@ -456,7 +462,7 @@ def rename(filename):
         "_2.f(ast)?q.gz$": ".R2.fastq.gz",
     }
 
-    converted = filename.endswith(".R1.fastq.gz") or filename.endswith(".R2.fastq.gz")
+    converted = filename.endswith((".R1.fastq.gz", ".R2.fastq.gz"))
     renamed_filename = filename
     for regex, new_ext in extensions.items():
         matched = re.search(regex, renamed_filename)

@@ -51,7 +51,7 @@ mysql = [
     "mysqlclient"
 ]
 dev = [
-    "black >= 23.10.0",
+    "ruff >=0.16.1,<0.17",
     "pre-commit"
 ]
 test = [
@@ -139,3 +139,19 @@ script-files = [
     "scripts/run_jobby_on_snakemake_log_full_format",
     "scripts/which_vpn.sh"
 ]
+
+[tool.pixi.workspace]
+channels = ["conda-forge"]
+platforms = ["osx-arm64"]
+
+[tool.pixi.pypi-dependencies]
+ccbr_tools = { path = ".", editable = true }
+
+[tool.pixi.environments]
+default = { solve-group = "default" }
+dev = { features = ["dev"], solve-group = "default" }
+docs = { features = ["docs"], solve-group = "default" }
+mysql = { features = ["mysql"], solve-group = "default" }
+test = { features = ["test"], solve-group = "default" }
+
+[tool.pixi.tasks]

@@ -183,11 +183,11 @@ Example:\n\
 
     # If keepLog then set it up
     if keepLog:
-        thedate = str(datetime.datetime.now()).split()[0]
+        thedate = str(datetime.datetime.now(tz=datetime.timezone.utc)).split()[0]
         thedate = re.sub("-", "", thedate)
 
-        log = open("deg2gs" + ".log", "a")
-        log.write("\n" + str(datetime.datetime.now()) + "\n")
+        log = open("deg2gs" + ".log", "a")  # noqa: SIM115
+        log.write("\n" + str(datetime.datetime.now(tz=datetime.timezone.utc)) + "\n")
         log.write(" ".join(sys.argv) + "\n")
         log.write("deg2gs.py version " + __version__ + "\n")
         log.write(
@@ -198,7 +198,7 @@ Example:\n\
     #
     # Import from Excel or tabSV, if Excel extension than excel otherwise csv
     #
-    infile_name, infile_extension = os.path.splitext(infile.name)
+    _infile_name, infile_extension = os.path.splitext(infile.name)
     if infile_extension in [".xls", ".xlsx"]:
         if sheetname is None:
             err_out("Input Excel file requires sheet name", log)
@@ -251,7 +251,7 @@ Example:\n\
     #
     if keepLog:
         send_update(f"deg2gs.py successfully completed.  {fname} written.", log)
-        send_update(str(datetime.datetime.now()) + "\n", log)
+        send_update(str(datetime.datetime.now(tz=datetime.timezone.utc)) + "\n", log)
         log.close()
     else:
         print(f"deg2gs.py successfully completed.  {fname} written.")

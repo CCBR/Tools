@@ -75,7 +75,7 @@ def line_contains_absolute_path(line):
     """
     Detect absolute paths in a line of text
     """
-    return any([word_is_absolute_path(word) for word in line.split()])
+    return any(word_is_absolute_path(word) for word in line.split())
 
 
 def line_contains_ignore(line):
@@ -131,7 +131,7 @@ def raise_error_if_abs_paths_detected(files, ignored_patterns=None):
                 filtered_files.append(file)
         files = filtered_files
 
-    if any([file_contains_absolute_path(file) for file in files]):
+    if any(file_contains_absolute_path(file) for file in files):
         raise click.ClickException("Absolute paths detected in the above files.")
 
 

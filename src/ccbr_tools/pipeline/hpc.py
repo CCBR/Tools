@@ -130,11 +130,8 @@ class FRCE(Cluster):
     def __init__(self):
         super().__init__()
         self.name = "frce"
-        self.env_vars = "\n".join(
-            (
-                self.env_vars,
-                "export PATH=${PATH}:/mnt/projects/CCBR-Pipelines/bin",
-            )
+        self.env_vars = (
+            f"{self.env_vars}\nexport PATH=${{PATH}}:/mnt/projects/CCBR-Pipelines/bin"
         )
 
 
@@ -176,7 +173,7 @@ def get_hpcname():
         hpcname (str): The HPC name  (biowulf, frce, or an empty string)
     """
     scontrol_out = scontrol_show()
-    hpc = scontrol_out["ClusterName"] if "ClusterName" in scontrol_out.keys() else ""
+    hpc = scontrol_out.get("ClusterName", "")
     if hpc == "fnlcr":
         hpc = "frce"
     if not hpc:  # check hostname
@@ -193,7 +190,7 @@ def scontrol_show():
     Returns:
         scontrol_dict (dict): dictionary containing the output of `scontrol show config`
     """
-    scontrol_dict = dict()
+    scontrol_dict = {}
     scontrol_out = shell_run(
         "scontrol show config", shell=True, capture_output=True, text=True, check=False
     )
