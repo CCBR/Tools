@@ -948,11 +948,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </section>
 <section id="ccbr_tools.pipeline.util.get_genomes_dict" class="level3">
 <h3 class="anchored" data-anchor-id="ccbr_tools.pipeline.util.get_genomes_dict">get_genomes_dict</h3>
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb7"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a>pipeline.util.get_genomes_dict(</span>
-<span id="cb7-2"><a href="#cb7-2" aria-hidden="true" tabindex="-1"></a>    repo_base,</span>
-<span id="cb7-3"><a href="#cb7-3" aria-hidden="true" tabindex="-1"></a>    hpcname<span class="op">=</span>get_hpcname(),</span>
-<span id="cb7-4"><a href="#cb7-4" aria-hidden="true" tabindex="-1"></a>    error_on_warnings<span class="op">=</span><span class="va">False</span>,</span>
-<span id="cb7-5"><a href="#cb7-5" aria-hidden="true" tabindex="-1"></a>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb7"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a>pipeline.util.get_genomes_dict(repo_base, hpcname<span class="op">=</span><span class="va">None</span>, error_on_warnings<span class="op">=</span><span class="va">False</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <p>Get dictionary of genome annotation versions and the paths to the corresponding JSON files.</p>
 <section id="parameters-5" class="level4 doc-section doc-section-parameters">
 <h4 class="doc-section doc-section-parameters anchored" data-anchor-id="parameters-5">Parameters</h4>
@@ -976,7 +972,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <td>hpcname</td>
 <td><a href="https://docs.python.org/3/library/stdtypes.html#str">str</a></td>
 <td>Name of the HPC. Defaults to the value returned by get_hpcname().</td>
-<td><code>get_hpcname()</code></td>
+<td><code>None</code></td>
 </tr>
 <tr class="odd">
 <td>error_on_warnings</td>
@@ -991,11 +987,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </section>
 <section id="ccbr_tools.pipeline.util.get_genomes_list" class="level3">
 <h3 class="anchored" data-anchor-id="ccbr_tools.pipeline.util.get_genomes_list">get_genomes_list</h3>
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb8"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a>pipeline.util.get_genomes_list(</span>
-<span id="cb8-2"><a href="#cb8-2" aria-hidden="true" tabindex="-1"></a>    repo_base,</span>
-<span id="cb8-3"><a href="#cb8-3" aria-hidden="true" tabindex="-1"></a>    hpcname<span class="op">=</span>get_hpcname(),</span>
-<span id="cb8-4"><a href="#cb8-4" aria-hidden="true" tabindex="-1"></a>    error_on_warnings<span class="op">=</span><span class="va">False</span>,</span>
-<span id="cb8-5"><a href="#cb8-5" aria-hidden="true" tabindex="-1"></a>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb8"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a>pipeline.util.get_genomes_list(repo_base, hpcname<span class="op">=</span><span class="va">None</span>, error_on_warnings<span class="op">=</span><span class="va">False</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <p>Get list of genome annotations available for the current platform</p>
 <section id="parameters-6" class="level4 doc-section doc-section-parameters">
 <h4 class="doc-section doc-section-parameters anchored" data-anchor-id="parameters-6">Parameters</h4>
@@ -1019,7 +1011,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <td>hpcname</td>
 <td><a href="https://docs.python.org/3/library/stdtypes.html#str">str</a></td>
 <td>The name of the HPC. Defaults to the value returned by get_hpcname().</td>
-<td><code>get_hpcname()</code></td>
+<td><code>None</code></td>
 </tr>
 <tr class="odd">
 <td>error_on_warnings</td>
@@ -1034,7 +1026,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </section>
 <section id="ccbr_tools.pipeline.util.get_tmp_dir" class="level3">
 <h3 class="anchored" data-anchor-id="ccbr_tools.pipeline.util.get_tmp_dir">get_tmp_dir</h3>
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb9"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a>pipeline.util.get_tmp_dir(tmp_dir, outdir, hpc<span class="op">=</span>get_hpcname())</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb9"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a>pipeline.util.get_tmp_dir(tmp_dir, outdir, hpc<span class="op">=</span><span class="va">None</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <p>Get default temporary directory for biowulf and frce. Allow user override.</p>
 <section id="parameters-7" class="level4 doc-section doc-section-parameters">
 <h4 class="doc-section doc-section-parameters anchored" data-anchor-id="parameters-7">Parameters</h4>
@@ -1064,7 +1056,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <td>hpc</td>
 <td><a href="https://docs.python.org/3/library/stdtypes.html#str">str</a></td>
 <td>HPC name. Defaults to the value returned by get_hpcname().</td>
-<td><code>get_hpcname()</code></td>
+<td><code>None</code></td>
 </tr>
 </tbody>
 </table>
@@ -1441,7 +1433,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </section>
 <section id="ccbr_tools.pipeline.util.safe_copy" class="level3">
 <h3 class="anchored" data-anchor-id="ccbr_tools.pipeline.util.safe_copy">safe_copy</h3>
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb18"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb18-1"><a href="#cb18-1" aria-hidden="true" tabindex="-1"></a>pipeline.util.safe_copy(source, target, resources<span class="op">=</span>[])</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb18"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb18-1"><a href="#cb18-1" aria-hidden="true" tabindex="-1"></a>pipeline.util.safe_copy(source, target, resources<span class="op">=</span><span class="va">None</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <p>Private function: Given a list paths it will recursively copy each to the target location. If a target path already exists, it will NOT over-write the existing paths data.</p>
 <section id="parameters-16" class="level4 doc-section doc-section-parameters">
 <h4 class="doc-section doc-section-parameters anchored" data-anchor-id="parameters-16">Parameters</h4>
@@ -1459,7 +1451,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <td>resources</td>
 <td><a href="https://docs.python.org/3/library/stdtypes.html#list">list</a>[<a href="https://docs.python.org/3/library/stdtypes.html#str">str</a>]</td>
 <td>List of paths to copy over to target location.</td>
-<td><code>[]</code></td>
+<td><code>None</code></td>
 </tr>
 <tr class="even">
 <td>source</td>

@@ -646,7 +646,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <span id="cb2-5"><a href="#cb2-5" aria-hidden="true" tabindex="-1"></a>    pipeline_name<span class="op">=</span><span class="va">None</span>,</span>
 <span id="cb2-6"><a href="#cb2-6" aria-hidden="true" tabindex="-1"></a>    nextflow_args<span class="op">=</span><span class="va">None</span>,</span>
 <span id="cb2-7"><a href="#cb2-7" aria-hidden="true" tabindex="-1"></a>    debug<span class="op">=</span><span class="va">False</span>,</span>
-<span id="cb2-8"><a href="#cb2-8" aria-hidden="true" tabindex="-1"></a>    hpc<span class="op">=</span>get_hpc(),</span>
+<span id="cb2-8"><a href="#cb2-8" aria-hidden="true" tabindex="-1"></a>    hpc<span class="op">=</span><span class="va">None</span>,</span>
 <span id="cb2-9"><a href="#cb2-9" aria-hidden="true" tabindex="-1"></a>    hpc_modules<span class="op">=</span><span class="st">'nextflow'</span>,</span>
 <span id="cb2-10"><a href="#cb2-10" aria-hidden="true" tabindex="-1"></a>    hpc_walltime<span class="op">=</span><span class="st">'1-00:00:00'</span>,</span>
 <span id="cb2-11"><a href="#cb2-11" aria-hidden="true" tabindex="-1"></a>    hpc_memory<span class="op">=</span><span class="st">'1G'</span>,</span>
@@ -704,7 +704,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <td>hpc</td>
 <td><a href="https://docs.python.org/3/library/functions.html#object">object</a></td>
 <td>HPC environment object, used for SLURM execution and module loading. Defaults to result of <code>~ccbr_tools.pipeline.hpc.get_hpc()</code>.</td>
-<td><code>get_hpc()</code></td>
+<td><code>None</code></td>
 </tr>
 <tr class="even">
 <td>hpc_modules</td>
