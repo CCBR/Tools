@@ -36,7 +36,7 @@ def count_pipeline_samples(tree_str, pipeline_name):
         `~ccbr_tools.spooker.get_tree`: The function used to generate the tree structure.
     """
     nsamples = math.nan
-    sample_names = list()
+    sample_names = []
     pipeline = create_pipeline(pipeline_name)
     if pipeline:
         nsamples, sample_names = pipeline.count_samples(tree_str)
@@ -66,11 +66,11 @@ class Pipeline:
             `~ccbr_tools.spooker.get_tree`: The function used to generate the tree structure.
         """
         nsamples = math.nan
-        sample_names = list()
+        sample_names = []
         try:
             sample_names = cls.get_samples(tree_str)
             nsamples = len(sample_names)
-        except Exception as err:
+        except Exception as err:  # noqa: BLE001
             warnings.warn(
                 f"Could not determine number of samples. See original error message below:\n{err!r}"
             )

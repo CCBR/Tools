@@ -118,7 +118,7 @@ def get_external_scripts(pkg_name="ccbr_tools"):
     )
 
 
-def print_citation(citation_file=repo_base("CITATION.cff"), output_format="bibtex"):
+def print_citation(citation_file=None, output_format="bibtex"):
     """
     Prints the citation for the given citation file in the specified output format.
 
@@ -126,6 +126,8 @@ def print_citation(citation_file=repo_base("CITATION.cff"), output_format="bibte
         citation_file (str): The path to the citation file.
         output_format (str): The desired output format for the citation.
     """
+    if citation_file is None:
+        citation_file = repo_base("CITATION.cff")
     from cffconvert.cli.create_citation import create_citation
     from cffconvert.cli.validate_or_write_output import validate_or_write_output
 
@@ -196,4 +198,4 @@ def get_random_string():
 
 def get_timestamp():
     """Return the current timestamp."""
-    return datetime.datetime.now().strftime("%Y-%m-%dT%H-%M-%S")
+    return datetime.datetime.now(tz=datetime.timezone.utc).strftime("%Y-%m-%dT%H-%M-%S")

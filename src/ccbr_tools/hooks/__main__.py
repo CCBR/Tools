@@ -14,7 +14,7 @@ from .sync_nextflow_version import sync_nextflow_version
 
 @click.group(
     cls=CustomClickGroup,
-    context_settings=dict(help_option_names=["-h", "--help"]),
+    context_settings={"help_option_names": ["-h", "--help"]},
 )
 @click.version_option(get_version(), "-v", "--version", is_flag=True)
 def cli():

@@ -24,7 +24,7 @@ from .pkg_util import get_random_string, get_timestamp
 from .shell import get_groups, shell_run
 
 
-@click.command(context_settings=dict(help_option_names=["-h", "--help"]))
+@click.command(context_settings={"help_option_names": ["-h", "--help"]})
 @click.option(
     "--outdir",
     type=click.Path(exists=True),

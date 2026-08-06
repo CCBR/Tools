@@ -26,10 +26,10 @@ def test_image_cache(data_dir_rel):
         argparse.Namespace(
             output=str(data_dir_rel), sif_cache=str(data_dir_rel / "sif")
         ),
-        config=dict(),
+        config={},
     )
     assert "images" in d
-    assert list(d["images"].values())[0].startswith("docker://")
+    assert next(iter(d["images"].values())).startswith("docker://")
 
 
 def test_check_cache(tmp_path, data_dir_rel):

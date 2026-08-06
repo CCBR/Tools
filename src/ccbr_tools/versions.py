@@ -188,7 +188,7 @@ def check_version_increments_by_one(
         if increments:
             bigger_digit_increments = True
     # must increment by exactly one
-    if not (num_greater == 1):
+    if num_greater != 1:
         is_valid = False
         if error_on_false:
             raise ValueError(error_msg)

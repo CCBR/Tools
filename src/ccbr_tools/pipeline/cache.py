@@ -118,21 +118,19 @@ def check_cache(parser, cache, *args, **kwargs):
         Please run {sys.argv[0]} again with a different --singularity-cache location.
         """
         )
-    elif os.path.isdir(cache):
-        # Provide cache exists as directory
+    elif os.path.isdir(cache) and (
         # Check that the user owns the child cache directory
         # May revert to os.getuid() if user id is not sufficient
-        if (
-            os.path.exists(os.path.join(cache, "cache"))
-            and os.stat(os.path.join(cache, "cache")).st_uid != os.getuid()
-        ):
-            # User does NOT own the cache directory, raise error
-            parser.error(
-                f"""\n\t\x1b[6;37;41mFatal: Failed to provided a valid singularity cache!\x1b[0m
+        os.path.exists(os.path.join(cache, "cache"))
+        and os.stat(os.path.join(cache, "cache")).st_uid != os.getuid()
+    ):
+        # User does NOT own the cache directory, raise error
+        parser.error(
+            f"""\n\t\x1b[6;37;41mFatal: Failed to provided a valid singularity cache!\x1b[0m
                 The provided --singularity-cache already exists on the filesystem with a different owner.
                 Singularity strictly enforces that the cache directory is not shared across users.
                 Please run {sys.argv[0]} again with a different --singularity-cache location.
                 """
-            )
+        )
 
     return cache

@@ -112,7 +112,7 @@ def process_args(args, lookup):
     if args.genelistfile:
         with open(args.genelistfile) as f:
             lines = f.readlines()
-        lines = list(map(lambda x: x.strip(), lines))
+        lines = [x.strip() for x in lines]
         r = process_genelist(lines, lookup)
     return r
 
@@ -125,7 +125,7 @@ def print_results(result):
 
 def read_lookup():
     """Read the homolog lookup table."""
-    lookup = dict()
+    lookup = {}
     lookup_filepath = (
         importlib.resources.files(__package__) / "human_mouse_homolog_lookup.txt"
     )
@@ -137,20 +137,22 @@ def read_lookup():
 
 
 def create_homolog_table(
-    rpt_file=importlib.resources.files(__package__) / "HOM_MouseHumanSequence.rpt",
+    rpt_file=None,
 ):
     """Create the homolog lookup table."""
+    if rpt_file is None:
+        rpt_file = importlib.resources.files(__package__) / "HOM_MouseHumanSequence.rpt"
     cols = ["DB Class Key", "Common Organism Name", "Symbol"]
     df = pd.read_csv(rpt_file, usecols=cols, sep="\t")
     # human-mouse homologs file --> HOM_MouseHumanSequence.rpt
     # can be downloaded from http://www.informatics.jax.org/faq/ORTH_dload.shtml
-    lookup = dict()
-    lookup2 = dict()
+    lookup = {}
+    lookup2 = {}
     for index, row in df.iterrows():
         if row["DB Class Key"] not in lookup:
-            lookup[row["DB Class Key"]] = dict()
-            lookup[row["DB Class Key"]]["mouse, laboratory"] = list()
-            lookup[row["DB Class Key"]]["human"] = list()
+            lookup[row["DB Class Key"]] = {}
+            lookup[row["DB Class Key"]]["mouse, laboratory"] = []
+            lookup[row["DB Class Key"]]["human"] = []
         if row["Common Organism Name"] in lookup[row["DB Class Key"]]:
             lookup[row["DB Class Key"]][row["Common Organism Name"]].append(
                 row["Symbol"]
@@ -159,11 +161,11 @@ def create_homolog_table(
         # print(",".join(v["mouse, laboratory"]),",".join(v["human"]),sep="\t")
         for gene_symbol in v["mouse, laboratory"]:
             if gene_symbol not in lookup2:
-                lookup2[gene_symbol] = list()
+                lookup2[gene_symbol] = []
             lookup2[gene_symbol].extend(v["human"])
         for gene_symbol in v["human"]:
             if gene_symbol not in lookup2:
-                lookup2[gene_symbol] = list()
+                lookup2[gene_symbol] = []
             lookup2[gene_symbol].extend(v["mouse, laboratory"])
 
     for k, v in lookup2.items():

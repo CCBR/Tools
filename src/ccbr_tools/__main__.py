@@ -23,7 +23,7 @@ all_scripts = "All installed tools:\n" + "\n".join(
 
 @click.group(
     cls=CustomClickGroup,
-    context_settings=dict(help_option_names=["-h", "--help"]),
+    context_settings={"help_option_names": ["-h", "--help"]},
     epilog=all_scripts,
 )
 @click.version_option(get_version(), "-v", "--version", is_flag=True)
@@ -156,7 +156,7 @@ def quarto_add(ext_name):
     use_quarto_ext(ext_name)
 
 
-@click.command(context_settings=dict(help_option_names=["-h", "--help"]))
+@click.command(context_settings={"help_option_names": ["-h", "--help"]})
 @click.argument("tool_name")
 @click.argument("version_tag")
 @click.option(

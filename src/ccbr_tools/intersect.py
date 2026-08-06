@@ -12,46 +12,47 @@ import sys
 
 def indexFile(filename, joinindex, header):
     """Index a tab-delimited file by the join column."""
-    fh = open(filename, "r")
     filedict = {}
-    if header == 1:
-        firstline = next(fh).strip().replace('"', "").split("\t")
-        filedict["headerstr"] = firstline
+    with open(filename, "r") as fh:
+        if header == 1:
+            firstline = next(fh).strip().replace('"', "").split("\t")
+            filedict["headerstr"] = firstline
 
-    for line in fh:
-        linelist = line.strip().replace('"', "").split("\t")
-        joinon = linelist[joinindex]
-        filedict[joinon] = linelist
+        for line in fh:
+            linelist = line.strip().replace('"', "").split("\t")
+            joinon = linelist[joinindex]
+            filedict[joinon] = linelist
 
-    fh.close()
     return filedict
 
 
 def intersect(fileDict, file2, joinindex, header):
     """Print the intersecting rows between two files."""
-    fh2 = open(file2, "r")
     counter = 0
-
-    if header == 1:
-        firstline = next(fh2).strip().replace('"', "").split("\t")
-        headerline = (
-            "\t".join(fileDict["headerstr"]).rstrip("\n") + "\t" + "\t".join(firstline)
-        )
-        print(headerline)
-
-    for line in fh2:
-        linelist = line.strip().replace('"', "").split("\t")
-        # print(linelist)
-        joinon = linelist[joinindex]
-        if joinon in fileDict:
-            counter += 1
-            intersection = (
-                "\t".join(fileDict[joinon]).rstrip("\n") + "\t" + "\t".join(linelist)
+    with open(file2, "r") as fh2:
+        if header == 1:
+            firstline = next(fh2).strip().replace('"', "").split("\t")
+            headerline = (
+                "\t".join(fileDict["headerstr"]).rstrip("\n")
+                + "\t"
+                + "\t".join(firstline)
             )
-            print(intersection)
+            print(headerline)
+
+        for line in fh2:
+            linelist = line.strip().replace('"', "").split("\t")
+            # print(linelist)
+            joinon = linelist[joinindex]
+            if joinon in fileDict:
+                counter += 1
+                intersection = (
+                    "\t".join(fileDict[joinon]).rstrip("\n")
+                    + "\t"
+                    + "\t".join(linelist)
+                )
+                print(intersection)
 
     # print(counter)
-    fh2.close()
 
 
 def run_intersect(args):
@@ -71,7 +72,7 @@ def run_intersect(args):
             f2index = int(args[4])
 
         except IndexError:
-            exit(
+            sys.exit(
                 "INCORRECT USAGE:\nintersect filename1 filename2 f1ColumnIndex F2ColumnIndex\n\t--Ex. intersect file1 file2 0 0"
             )
 
