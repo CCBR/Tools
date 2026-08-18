@@ -52,7 +52,7 @@ mysql = [
 ]
 dev = [
     "ruff >=0.16.1,<0.17",
-    "pre-commit"
+    "pre-commit >=3.2"
 ]
 test = [
     "pytest",

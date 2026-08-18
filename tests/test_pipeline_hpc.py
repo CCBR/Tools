@@ -15,6 +15,9 @@ def test_hpc_biowulf():
         "<class 'ccbr_tools.pipeline.hpc.Biowulf'>({'name': 'biowulf'"
     )
     assert "mamba activate /" in hpc.CONDA_ACTIVATE
+    assert "SINGULARITY_CACHEDIR=/tmp/test-cache" in hpc.env_vars(
+        cache_dir="/tmp/test-cache"
+    )
 
 
 def test_hpc_frce():
@@ -22,7 +25,10 @@ def test_hpc_frce():
     hpc = get_hpc(debug="frce")
     assert hpc
     assert hpc.name == "frce"
-    assert "/mnt/projects/CCBR-Pipelines/bin" in hpc.env_vars
+    assert "/mnt/projects/CCBR-Pipelines/bin" in hpc.env_vars()
+    assert "SINGULARITY_CACHEDIR=/tmp/test-cache" in hpc.env_vars(
+        cache_dir="/tmp/test-cache"
+    )
     assert hpc.singularity_sif_dir == "/mnt/projects/CCBR-Pipelines/SIFs"
     assert "mamba activate " in hpc.CONDA_ACTIVATE
 

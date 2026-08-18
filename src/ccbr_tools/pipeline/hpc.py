@@ -10,7 +10,7 @@ import re
 import shutil
 
 from ..shell import shell_run
-from .cache import get_sif_cache_dir, get_singularity_cachedir
+from .cache import get_sif_cache_dir
 
 
 class Cluster:
@@ -22,16 +22,36 @@ class Cluster:
         modules (dict): A dictionary containing the modules installed on the cluster.
             The keys are the module names and the values are the corresponding versions.
         singularity_sif_dir (str): The directory where Singularity SIF files are stored.
-        env_vars (str): A string representing the environment variables to be set on the cluster.
+        env_vars (callable): A method that returns the environment variables to set on
+            the cluster.
     """
 
     SPOOK_DIR = pathlib.Path("/tmp/spook")
 
     def __init__(self):
         self.name = None
-        self.env_vars = "\n".join(
-            (f"export SINGULARITY_CACHEDIR={get_singularity_cachedir()}",)
-        )
+
+    def env_vars(
+        self, output_dir: str | None = None, cache_dir: str | None = None
+    ) -> str:
+        """Return shell exports for the cluster environment.
+
+        Args:
+            output_dir (str | None): Directory used to derive the default
+                Singularity cache directory.
+            cache_dir (str | None): Explicit Singularity cache directory.
+
+        Returns:
+            str: Shell commands that export the required environment variables.
+        """
+        environment_variables = ""
+        # environment_variables = "\n".join(
+        #     (
+        #         "export SINGULARITY_CACHEDIR="
+        #         f"{get_singularity_cachedir(output_dir, cache_dir)}",
+        #     )
+        # )
+        return environment_variables
 
     def __repr__(self):
         dict_with_props = dict(
@@ -77,7 +97,8 @@ class Biowulf(Cluster):
         name (str): The name of the cluster.
         modules (dict): A dictionary mapping module names to their corresponding commands.
         singularity_sif_dir (str): The directory path for Singularity SIF files.
-        env_vars (str): A string representing the environment variables to be set on the cluster.
+        env_vars (callable): A method that returns the environment variables to set on
+            the cluster.
     """
 
     GROUP = "CCBR_Pipeliner"
@@ -89,12 +110,27 @@ class Biowulf(Cluster):
     def __init__(self):
         super().__init__()
         self.name = "biowulf"
-        self.env_vars = "\n".join(
+
+    def env_vars(
+        self, output_dir: str | None = None, cache_dir: str | None = None
+    ) -> str:
+        """Return shell exports for the Biowulf environment.
+
+        Args:
+            output_dir (str | None): Directory used to derive the default
+                Singularity cache directory.
+            cache_dir (str | None): Explicit Singularity cache directory.
+
+        Returns:
+            str: Shell commands that export the required environment variables.
+        """
+        environment_variables = "\n".join(
             (
-                f"export SINGULARITY_CACHEDIR={get_singularity_cachedir()}",
-                'if ! command -v spooker 2>&1 >/dev/null; then export PATH="$PATH:/data/CCBR_Pipeliner/Tools/ccbr_tools/v0.4/bin/"; fi',
+                super().env_vars(output_dir=output_dir, cache_dir=cache_dir),
+                'if ! command -v spooker 2>&1 >/dev/null; then export PATH="$PATH:/data/CCBR_Pipeliner/Tools/ccbr_tools/v0.7/bin/"; fi',
             )
         )
+        return environment_variables
 
     # def spook(self, file, subdir=None):
     #     dest_dir = self.SPOOK_DIR / subdir if subdir else self.SPOOK_DIR
@@ -116,7 +152,8 @@ class FRCE(Cluster):
         name (str): The name of the cluster.
         modules (dict): A dictionary mapping module names to their corresponding commands.
         singularity_sif_dir (str): The directory path for Singularity SIF files.
-        env_vars (str): A string representing the environment variables to be set on the cluster.
+        env_vars (callable): A method that returns the environment variables to set on
+            the cluster.
     """
 
     GROUP = "nci-frederick-ccbr-pipelines"
@@ -130,9 +167,27 @@ class FRCE(Cluster):
     def __init__(self):
         super().__init__()
         self.name = "frce"
-        self.env_vars = (
-            f"{self.env_vars}\nexport PATH=${{PATH}}:/mnt/projects/CCBR-Pipelines/bin"
+
+    def env_vars(
+        self, output_dir: str | None = None, cache_dir: str | None = None
+    ) -> str:
+        """Return shell exports for the FRCE environment.
+
+        Args:
+            output_dir (str | None): Directory used to derive the default
+                Singularity cache directory.
+            cache_dir (str | None): Explicit Singularity cache directory.
+
+        Returns:
+            str: Shell commands that export the required environment variables.
+        """
+        environment_variables = "\n".join(
+            (
+                super().env_vars(output_dir=output_dir, cache_dir=cache_dir),
+                "export PATH=${PATH}:/mnt/projects/CCBR-Pipelines/bin",
+            )
         )
+        return environment_variables
 
 
 class GitHubActions(Cluster):

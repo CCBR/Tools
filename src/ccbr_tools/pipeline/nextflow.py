@@ -123,14 +123,14 @@ def run(
             WALLTIME=hpc_walltime,
             PIPELINE=pipeline_name,
             MODULES=hpc_modules,
-            ENV_VARS=f"{hpc.env_vars}",  # TODO allow user override of singularity cache dir with CLI
+            ENV_VARS=hpc.env_vars(),  # TODO allow user override of singularity cache dir with CLI
             RUN_COMMAND=nextflow_command,
         )
         run_command = f"sbatch {slurm_filename}"
         msg_box("Slurm batch job", errmsg=run_command)
     elif mode == "local":
         if hpc:
-            nextflow_command = f'bash -c "module load {hpc_modules} && {hpc.env_vars} && {nextflow_command}"'
+            nextflow_command = f'bash -c "module load {hpc_modules} && {hpc.env_vars()} && {nextflow_command}"'
         run_command = nextflow_command
     else:
         raise ValueError(f"mode {mode} not recognized")
