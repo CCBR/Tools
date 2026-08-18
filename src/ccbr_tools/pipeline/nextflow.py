@@ -33,6 +33,7 @@ def run(
     pipeline_name=None,
     nextflow_args=None,
     debug=False,
+    env_vars=None,
     hpc=None,
     hpc_modules="nextflow",
     hpc_walltime="1-00:00:00",
@@ -48,6 +49,7 @@ def run(
         pipeline_name (str, optional): Name of the pipeline for reporting/logging. Defaults to None.
         nextflow_args (list, optional): Additional command-line arguments for Nextflow. Defaults to None.
         debug (bool, optional): If True, prints commands without executing them. Defaults to False.
+        env_vars (list, optional): Environment variables to set before running Nextflow. Defaults to an empty list. eg. ["export NXF_VER=25.10.0"]
         hpc (object, optional): HPC environment object, used for SLURM execution and module loading. Defaults to result of `~ccbr_tools.pipeline.hpc.get_hpc()`.
         hpc_modules (str, optional): Name(s) of modules to load for Nextflow execution on HPC. Defaults to "nextflow".
         hpc_walltime (str, optional): Walltime for SLURM job submission. Defaults to "1-00:00:00".
@@ -66,6 +68,8 @@ def run(
         - `~ccbr_tools.shell.shell_run`: Executes shell commands.
         - `~ccbr_tools.templates.use_template`: Generates files from templates.
     """
+    if env_vars is None:
+        env_vars = []
     if hpc is None:
         hpc = get_hpc()
     if not pipeline_name:
@@ -123,14 +127,14 @@ def run(
             WALLTIME=hpc_walltime,
             PIPELINE=pipeline_name,
             MODULES=hpc_modules,
-            ENV_VARS=hpc.env_vars(),  # TODO allow user override of singularity cache dir with CLI
+            ENV_VARS=f"{hpc.env_vars()}\n" + "\n".join(env_vars),
             RUN_COMMAND=nextflow_command,
         )
         run_command = f"sbatch {slurm_filename}"
         msg_box("Slurm batch job", errmsg=run_command)
     elif mode == "local":
         if hpc:
-            nextflow_command = f'bash -c "module load {hpc_modules} && {hpc.env_vars()} && {nextflow_command}"'
+            nextflow_command = f'bash -c "module load {hpc_modules} && {hpc.env_vars()} && {" && ".join(env_vars)} && {nextflow_command}"'
         run_command = nextflow_command
     else:
         raise ValueError(f"mode {mode} not recognized")
