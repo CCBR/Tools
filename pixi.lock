@@ -625,13 +625,13 @@ packages:
   - tabulate
   - mysqlclient ; extra == 'mysql'
   - ruff>=0.16.1,<0.17 ; extra == 'dev'
-  - pre-commit ; extra == 'dev'
+  - pre-commit>=3.2 ; extra == 'dev'
   - pytest ; extra == 'test'
   - pytest-cov ; extra == 'test'
   - pytest-mock ; extra == 'test'
   - quartodoc>=0.7.6 ; extra == 'docs'
   - jupyter ; extra == 'docs'
-  requires_python: '>3.10'
+  requires_python: '>=3.10'
 - pypi: git+https://github.com/citation-file-format/cffconvert?rev=b6045d78aac9e02b039703b030588d54d53262ac#b6045d78aac9e02b039703b030588d54d53262ac
   name: cffconvert
   version: 3.0.0a0
