@@ -135,6 +135,8 @@ def run(
     elif mode == "local":
         if hpc:
             nextflow_command = f'bash -c "module load {hpc_modules} && {hpc.env_vars()} && {" && ".join(env_vars)} && {nextflow_command}"'
+        elif env_vars:
+            nextflow_command = " && ".join((*env_vars, nextflow_command))
         run_command = nextflow_command
     else:
         raise ValueError(f"mode {mode} not recognized")

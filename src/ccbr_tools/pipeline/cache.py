@@ -25,7 +25,7 @@ def get_singularity_cachedir(output_dir=None, cache_dir=None):
     """
     if not output_dir:
         output_dir = os.getcwd()
-    if not cache_dir or not os.path.exists(cache_dir):
+    if not cache_dir:
         cache_dir = os.path.join(output_dir, ".singularity")
     return cache_dir
 
