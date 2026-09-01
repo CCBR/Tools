@@ -92,6 +92,7 @@ for more information.
 
 ```python
 import ccbr_tools.shell
+
 print(ccbr_tools.shell.shell_run('echo "Hello, world!"'))
 ```
 
@@ -99,7 +100,8 @@ print(ccbr_tools.shell.shell_run('echo "Hello, world!"'))
 
 ```python
 import ccbr_tools.versions
-version = ccbr_tools.versions.match_semver('0.2.3')
+
+version = ccbr_tools.versions.match_semver("0.2.3")
 version.groupdict()
 ```
 
