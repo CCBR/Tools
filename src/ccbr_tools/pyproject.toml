@@ -25,14 +25,12 @@ classifiers = [
     "Natural Language :: English",
     "Operating System :: POSIX :: Linux",
     "Operating System :: MacOS :: MacOS X",
-    "Programming Language :: Python :: 3.8",
-    "Programming Language :: Python :: 3.9",
     "Programming Language :: Python :: 3.10",
     "Programming Language :: Python :: 3.11",
     "Programming Language :: Python :: 3.12",
     "Topic :: Scientific/Engineering :: Bio-Informatics",
 ]
-requires-python = ">3.10"
+requires-python = ">=3.10"
 dependencies = [
     "biopython",
     "cffconvert@git+https://github.com/citation-file-format/cffconvert@b6045d78aac9e02b039703b030588d54d53262ac",
@@ -52,7 +50,7 @@ mysql = [
 ]
 dev = [
     "ruff >=0.16.1,<0.17",
-    "pre-commit"
+    "pre-commit >=3.2"
 ]
 test = [
     "pytest",
@@ -63,7 +61,6 @@ docs = [
     "quartodoc >= 0.7.6",
     "jupyter"
 ]
-
 [project.scripts]
 ccbr_tools = "ccbr_tools.__main__:main"
 ccbr-hooks = "ccbr_tools.hooks.__main__:main"
@@ -149,7 +146,7 @@ ccbr_tools = { path = ".", editable = true }
 
 [tool.pixi.environments]
 default = { solve-group = "default" }
-dev = { features = ["dev"], solve-group = "default" }
+dev = { features = ["dev", "test"], solve-group = "default" }
 docs = { features = ["docs"], solve-group = "default" }
 mysql = { features = ["mysql"], solve-group = "default" }
 test = { features = ["test"], solve-group = "default" }

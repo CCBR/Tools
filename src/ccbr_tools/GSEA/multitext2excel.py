@@ -64,7 +64,9 @@ def main():
     )
 
     parser = argparse.ArgumentParser(
-        description=parseStr, formatter_class=RawTextHelpFormatter
+        prog="multitext2excel.py",
+        description=parseStr,
+        formatter_class=RawTextHelpFormatter,
     )
     #    parser.add_argument('-i', '--infile', required=True, nargs='?', type=argparse.FileType('r'), default=None,
     #                        help='Input file containing important things')
