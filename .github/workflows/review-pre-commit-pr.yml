@@ -64,6 +64,7 @@ jobs:
 
       - uses: CCBR/actions/review-pre-commit-pr@main
         with:
+          ccbr-actions-version: main
           github-token: ${{ steps.generate-token.outputs.token }}
           pr-number: ${{ matrix.pr-number }}
           repo: ${{ github.repository }}
