@@ -6,6 +6,12 @@ on:
       - opened
   # Manually re-scan open PRs for any that meet the pre-commit.ci autoupdate criteria
   workflow_dispatch:
+    inputs:
+      force-review:
+        description: "Force review of pre-commit.ci autoupdate PRs"
+        required: false
+        default: false
+        type: boolean
 
 permissions:
   contents: write
@@ -72,3 +78,4 @@ jobs:
           github-token: ${{ steps.generate-token.outputs.token }}
           pr-number: ${{ matrix.pr-number }}
           repo: ${{ github.repository }}
+          force-review: ${{ github.event.inputs.force-review || false }}
