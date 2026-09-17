@@ -1,5 +1,7 @@
 ## Tools development version
 
+## Tools 0.7.1
+
 - minor documentation improvements. (#197, #198, @kelly-sovacool)
 - `ccbr-hooks detect-absolute-paths`: Ignore self-closing HTML tags to avoid
   false positives from `/>`. (#228, @kelly-sovacool, @copilot)
