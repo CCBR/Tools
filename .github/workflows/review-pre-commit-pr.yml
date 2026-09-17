@@ -9,6 +9,7 @@ on:
 
 permissions:
   contents: write
+  issues: write
   pull-requests: write
 
 concurrency:
@@ -61,6 +62,9 @@ jobs:
           client-id: ${{ vars.CCBR_BOT_APP_ID }}
           private-key: ${{ secrets.CCBR_BOT_PRIVATE_KEY }}
           owner: ${{ github.repository_owner }}
+          permission-contents: read
+          permission-issues: write
+          permission-pull-requests: write
 
       - uses: CCBR/actions/review-pre-commit-pr@pr-review-manual
         with:
