@@ -62,7 +62,7 @@ jobs:
           client-id: ${{ vars.CCBR_BOT_APP_ID }}
           private-key: ${{ secrets.CCBR_BOT_PRIVATE_KEY }}
           owner: ${{ github.repository_owner }}
-          permission-contents: read
+          permission-contents: write
           permission-issues: write
           permission-pull-requests: write
 
