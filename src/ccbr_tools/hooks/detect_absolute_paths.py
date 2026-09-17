@@ -59,6 +59,7 @@ def word_is_absolute_path(word):
     return word.startswith("/") and not any(
         [
             word == "/",  # FP from pathlib. abs-path:ignore
+            word == "/>",  # FP from self-closing HTML tags. abs-path:ignore
             word.startswith("/dev/null"),
             word.startswith("/dev/shm"),
             word.startswith("//"),  # FP from groovy comments. abs-path:ignore

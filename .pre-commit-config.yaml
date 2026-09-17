@@ -23,8 +23,9 @@ repos:
         exclude: |
           (?x)^(
               .gitignore|
-              .gitattributes|
               .*.gitignore|
+              .gitattributes|
+              .github/CODEOWNERS|
               .*.diff|
               .*action.yml|
               examples/.*|

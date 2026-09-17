@@ -45,6 +45,7 @@ def test_word_is_absolute_path():
     assert not hooks.word_is_absolute_path("/dev/null")  # common shell redirection
     assert not hooks.word_is_absolute_path("/dev/shm")  # common shell redirection
     assert not hooks.word_is_absolute_path("/$")  # nextflow script
+    assert not hooks.word_is_absolute_path("/>")  # self-closing HTML tag
 
 
 def test_line_contains_absolute_path():
