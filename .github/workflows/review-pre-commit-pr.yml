@@ -52,6 +52,8 @@ jobs:
         pr-number: ${{ github.event_name == 'workflow_dispatch' && fromJson(needs.find-prs.outputs.pr-numbers) || fromJson(format('[{0}]', github.event.pull_request.number)) }}
 
     steps:
+      - uses: actions/checkout@v7
+        if: ${{ env.CCBR_ACTIONS_DOCKER != 'true' }}
       - name: Generate CCBR-bot token
         id: generate-token
         uses: actions/create-github-app-token@v2
