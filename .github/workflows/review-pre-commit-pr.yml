@@ -56,9 +56,9 @@ jobs:
         if: ${{ env.CCBR_ACTIONS_DOCKER != 'true' }}
       - name: Generate CCBR-bot token
         id: generate-token
-        uses: actions/create-github-app-token@v2
+        uses: actions/create-github-app-token@v3
         with:
-          app-id: ${{ vars.CCBR_BOT_APP_ID }}
+          client-id: ${{ vars.CCBR_BOT_APP_ID }}
           private-key: ${{ secrets.CCBR_BOT_PRIVATE_KEY }}
           owner: ${{ github.repository_owner }}
 
