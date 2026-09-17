@@ -83,8 +83,8 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <link href="../site_libs/quarto-html/quarto-syntax-highlighting-dark-0384d355bad17beb229ae90d6df7cfa0.css" rel="stylesheet" class="quarto-color-scheme quarto-color-alternate" id="quarto-text-highlighting-styles">
 <script src="../site_libs/bootstrap/bootstrap.min.js"></script>
 <link href="../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
-<link href="../site_libs/bootstrap/bootstrap-8a7b3be1b5c7083075e699fba8e42347.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme" id="quarto-bootstrap" data-mode="light">
-<link href="../site_libs/bootstrap/bootstrap-dark-566b335e3221a16d9f16c72a0b3f7cc8.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme quarto-color-alternate" id="quarto-bootstrap" data-mode="dark">
+<link href="../site_libs/bootstrap/bootstrap-f6cdb493fcd3b21488d44179139dd5f8.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme" id="quarto-bootstrap" data-mode="light">
+<link href="../site_libs/bootstrap/bootstrap-dark-34962548fcb124d9399da2408d6a2eab.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme quarto-color-alternate" id="quarto-bootstrap" data-mode="dark">
 <script id="quarto-search-options" type="application/json">{
   "location": "navbar",
   "copy-button": false,
@@ -666,61 +666,61 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <tbody>
 <tr class="odd">
 <td>nextfile_path</td>
-<td><a href="https://docs.python.org/3/library/stdtypes.html#str">str</a></td>
+<td><a href="https://docs.python.org/3/builtins/stdtypes.html#str">str</a></td>
 <td>Path to the Nextflow workflow file (main.nf), or GitHub repo (CCBR/CHAMPAGNE).</td>
 <td><em>required</em></td>
 </tr>
 <tr class="even">
 <td>mode</td>
-<td><a href="https://docs.python.org/3/library/stdtypes.html#str">str</a></td>
+<td><a href="https://docs.python.org/3/builtins/stdtypes.html#str">str</a></td>
 <td>Execution mode, either “local” or “slurm”. Defaults to “local”.</td>
 <td><code>'local'</code></td>
 </tr>
 <tr class="odd">
 <td>force_all</td>
-<td><a href="https://docs.python.org/3/library/functions.html#bool">bool</a></td>
+<td><a href="https://docs.python.org/3/builtins/functions.html#bool">bool</a></td>
 <td>If True, disables the Nextflow ‘-resume’ flag to force all processes to rerun. Defaults to False.</td>
 <td><code>False</code></td>
 </tr>
 <tr class="even">
 <td>pipeline_name</td>
-<td><a href="https://docs.python.org/3/library/stdtypes.html#str">str</a></td>
+<td><a href="https://docs.python.org/3/builtins/stdtypes.html#str">str</a></td>
 <td>Name of the pipeline for reporting/logging. Defaults to None.</td>
 <td><code>None</code></td>
 </tr>
 <tr class="odd">
 <td>nextflow_args</td>
-<td><a href="https://docs.python.org/3/library/stdtypes.html#list">list</a></td>
+<td><a href="https://docs.python.org/3/builtins/stdtypes.html#list">list</a></td>
 <td>Additional command-line arguments for Nextflow. Defaults to None.</td>
 <td><code>None</code></td>
 </tr>
 <tr class="even">
 <td>debug</td>
-<td><a href="https://docs.python.org/3/library/functions.html#bool">bool</a></td>
+<td><a href="https://docs.python.org/3/builtins/functions.html#bool">bool</a></td>
 <td>If True, prints commands without executing them. Defaults to False.</td>
 <td><code>False</code></td>
 </tr>
 <tr class="odd">
 <td>hpc</td>
-<td><a href="https://docs.python.org/3/library/functions.html#object">object</a></td>
+<td><a href="https://docs.python.org/3/builtins/functions.html#object">object</a></td>
 <td>HPC environment object, used for SLURM execution and module loading. Defaults to result of <code>~ccbr_tools.pipeline.hpc.get_hpc()</code>.</td>
 <td><code>None</code></td>
 </tr>
 <tr class="even">
 <td>hpc_modules</td>
-<td><a href="https://docs.python.org/3/library/stdtypes.html#str">str</a></td>
+<td><a href="https://docs.python.org/3/builtins/stdtypes.html#str">str</a></td>
 <td>Name(s) of modules to load for Nextflow execution on HPC. Defaults to “nextflow”.</td>
 <td><code>'nextflow'</code></td>
 </tr>
 <tr class="odd">
 <td>hpc_walltime</td>
-<td><a href="https://docs.python.org/3/library/stdtypes.html#str">str</a></td>
+<td><a href="https://docs.python.org/3/builtins/stdtypes.html#str">str</a></td>
 <td>Walltime for SLURM job submission. Defaults to “1-00:00:00”.</td>
 <td><code>'1-00:00:00'</code></td>
 </tr>
 <tr class="even">
 <td>hpc_memory</td>
-<td><a href="https://docs.python.org/3/library/stdtypes.html#str">str</a></td>
+<td><a href="https://docs.python.org/3/builtins/stdtypes.html#str">str</a></td>
 <td>Memory allocation for SLURM job submission. Defaults to “1G”.</td>
 <td><code>'1G'</code></td>
 </tr>
