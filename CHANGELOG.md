@@ -1,5 +1,7 @@
 ## Tools development version
 
+- New script `scripts/open-pipeline-issues.sh`: opens a GitHub issue with the same title and body in every Snakemake and Nextflow pipeline repo listed in `CCBR_SOFTWARE`, creating any missing labels. (#238, @kelly-sovacool, @copilot)
+
 ## Tools 0.7.1
 
 - minor documentation improvements. (#197, #198, @kelly-sovacool)
