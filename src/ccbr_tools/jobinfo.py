@@ -239,7 +239,7 @@ def get_jobinfo(args):
     p1_table = pd.json_normalize(p1_json)
     p1_table["epochtime"] = p1_table.apply(
         lambda row: time.mktime(
-            datetime.datetime.strptime(row.submit_time, "%Y-%m-%dT%H:%M:%S").timetuple()  # noqa: DTZ007
+            datetime.datetime.strptime(row.submit_time, "%Y-%m-%dT%H:%M:%S").timetuple()
         ),
         axis=1,
     )
