@@ -86,6 +86,7 @@ ensure_labels() {
                 echo "[dry run] would create label '${label}' in ${full}"
             else
                 gh label create "$label" --repo "$full" >/dev/null || return 1
+                existing+=$'\n'"$label"
                 echo "${full}: created label '${label}'"
             fi
         fi
