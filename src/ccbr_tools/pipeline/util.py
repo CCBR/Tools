@@ -376,7 +376,7 @@ def _get_file_mtime(f):
     Returns:
         str: Modification time of the file in the format 'yymmddHHMMSS'.
     """
-    timestamp = datetime.datetime.fromtimestamp(os.path.getmtime(os.path.abspath(f)))  # noqa: DTZ006
+    timestamp = datetime.datetime.fromtimestamp(os.path.getmtime(os.path.abspath(f)))
     mtime = timestamp.strftime("%y%m%d%H%M%S")
     return mtime
 
