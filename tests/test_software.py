@@ -51,9 +51,14 @@ def test_bash():
 
 def test_install():
     """Test install."""
-    result = exec_in_context(
-        install, tool_name="CHAMPAGNE", version="v0.3.0", dryrun=True, debug="biowulf"
-    )
+    with pytest.warns(FutureWarning, match=r"install\(\) will be deprecated"):
+        result = exec_in_context(
+            install,
+            tool_name="CHAMPAGNE",
+            version="v0.3.0",
+            dryrun=True,
+            debug="biowulf",
+        )
     assert "mamba activate /" in result
     assert (
         """pip install git+https://github.com/CCBR/CHAMPAGNE.git@v0.3.0 -t /data/CCBR_Pipeliner/Pipelines/CHAMPAGNE/.v0.3.0

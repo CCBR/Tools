@@ -1,3 +1,5 @@
+import warnings
+
 from .pipeline.hpc import Cluster
 from .shell import shell_run
 from .versions import get_major_minor_version, match_semver
@@ -197,6 +199,13 @@ def install(
     debug=False,
 ):
     """Return the install command."""
+
+    warnings.warn(
+        "install() will be deprecated in a future release. See ccbrpipeliner module 9 instead.",
+        FutureWarning,
+        stacklevel=2,
+    )
+
     hpc = Cluster.create_hpc(debug=debug)
     tool = Software.create_software(tool_name, version, software_type=software_type)
 
