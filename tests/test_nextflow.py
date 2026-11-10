@@ -87,5 +87,90 @@ def test_nextflow_preview_error(tmp_path, data_dir_rel):
     )
 
 
+def test_nextflow_env_vars_local():
+    """Test env_vars in local mode."""
+    env_vars = ["export VAR1=value1", "export VAR2=value2"]
+    output = exec_in_context(
+        run,
+        nextfile_path="CCBR/CHAMPAGNE",
+        debug=True,
+        mode="local",
+        env_vars=env_vars,
+    )
+    assert "export VAR1=value1" in output
+    assert "export VAR2=value2" in output
+    assert "nextflow run CCBR/CHAMPAGNE" in output
+
+
+def test_nextflow_env_vars_hpc_local():
+    """Test env_vars in local mode with HPC."""
+    env_vars = ["export NXF_VER=25.10.0", "export NXF_JAVA_OPTS=-Xmx2g"]
+    output = exec_in_context(
+        run,
+        nextfile_path="CCBR/CHAMPAGNE",
+        debug=True,
+        mode="local",
+        hpc=Biowulf(),
+        hpc_modules="nextflow/25",
+        env_vars=env_vars,
+    )
+    assert "module load nextflow/25" in output
+    assert "export NXF_VER=25.10.0" in output
+    assert "export NXF_JAVA_OPTS=-Xmx2g" in output
+    assert "nextflow run CCBR/CHAMPAGNE" in output
+
+
+def test_nextflow_env_vars_slurm(tmp_path):
+    """Test env_vars in SLURM mode."""
+    current_wd = pathlib.Path.cwd()
+    try:
+        os.chdir(tmp_path)
+        env_vars = ["export NXF_VER=25.10.0", "export NXF_JAVA_OPTS=-Xmx4g"]
+        out = exec_in_context(
+            run,
+            nextfile_path="CCBR/CHAMPAGNE",
+            debug=True,
+            hpc=Biowulf(),
+            mode="slurm",
+            env_vars=env_vars,
+        )
+        slurm_txt = (tmp_path / "submit_slurm.sh").read_text()
+    finally:
+        os.chdir(current_wd)
+    assert "sbatch submit_slurm.sh" in out
+    assert "export NXF_VER=25.10.0" in slurm_txt
+    assert "export NXF_JAVA_OPTS=-Xmx4g" in slurm_txt
+    assert "nextflow run CCBR/CHAMPAGNE" in slurm_txt
+
+
+def test_nextflow_env_vars_empty():
+    """Test that None env_vars defaults to empty list."""
+    output = exec_in_context(
+        run, nextfile_path="CCBR/CHAMPAGNE", debug=True, env_vars=None
+    )
+    assert "nextflow run CCBR/CHAMPAGNE" in output
+
+
+def test_nextflow_env_vars_multiple():
+    """Test multiple env_vars are properly joined."""
+    env_vars = [
+        "export VAR1=value1",
+        "export VAR2=value2",
+        "export VAR3=value3",
+    ]
+    output = exec_in_context(
+        run,
+        nextfile_path="CCBR/CHAMPAGNE",
+        debug=True,
+        mode="local",
+        env_vars=env_vars,
+    )
+    # All vars should be in the output
+    for var in env_vars:
+        assert var in output
+    # They should be joined with &&
+    assert "export VAR1=value1 && export VAR2=value2 && export VAR3=value3" in output
+
+
 if __name__ == "__main__":
     test_nextflow_slurm()

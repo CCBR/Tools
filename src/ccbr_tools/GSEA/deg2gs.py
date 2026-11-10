@@ -70,7 +70,7 @@ Example:\n\
     deg2gs.py -i DEanalysis.xlsx -o DEanalysis.topp.rnk -n 1000 -p 1e-05 -q 5e-02 -m toppfun -f topTable -s Sheet1\n\n"
 
     parser = argparse.ArgumentParser(
-        description=parseStr, formatter_class=RawTextHelpFormatter
+        prog="deg2gs.py", description=parseStr, formatter_class=RawTextHelpFormatter
     )
     parser.add_argument(
         "-i",
