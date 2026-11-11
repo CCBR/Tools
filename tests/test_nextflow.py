@@ -52,6 +52,31 @@ def test_nextflow_hpc(hpc, modules, monkeypatch):
     assert f"-profile {hpc.name}" in script
 
 
+@pytest.mark.parametrize("mode", ["local", "slurm"])
+@pytest.mark.parametrize("cluster", [Biowulf, FRCE])
+def test_nextflow_hpc_cache_with_spaced_directory(tmp_path, monkeypatch, mode, cluster):
+    """Preview and workflow use the correct cache in a directory with spaces."""
+    launch_dir = tmp_path / "analysis directory"
+    launch_dir.mkdir()
+    monkeypatch.chdir(launch_dir)
+    bin_dir = tmp_path / "bin"
+    bin_dir.mkdir()
+    executables = {
+        "module": "#!/usr/bin/env bash\nexit 0\n",
+        "nextflow": '#!/usr/bin/env bash\nprintf "%s\\n" "$SINGULARITY_CACHEDIR" >> cache.log\n',
+        "sbatch": '#!/usr/bin/env bash\nexec bash "$1"\n',
+    }
+    for name, script in executables.items():
+        executable = bin_dir / name
+        executable.write_text(script)
+        executable.chmod(0o755)
+    monkeypatch.setenv("PATH", f"{bin_dir}{os.pathsep}{os.environ['PATH']}")
+    run("main.nf", mode=mode, hpc=cluster())
+    assert (launch_dir / "cache.log").read_text().splitlines() == [
+        str(launch_dir / ".singularity")
+    ] * 2
+
+
 def test_nextflow_slurm(tmp_path):
     """Test nextflow slurm."""
     current_wd = pathlib.Path.cwd()
