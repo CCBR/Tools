@@ -52,3 +52,52 @@ version.groupdict()
 ```
 
 View the [API reference](https://ccbr.github.io/Tools/reference/) for more information.
+
+### Running Nextflow workflows
+
+Use `ccbr_tools.pipeline.nextflow.run()` for local execution or SLURM driver
+submission. Existing calls still preview automatically and resume by default.
+Arguments are a sequence of tokens, not a shell command string: repeated options,
+spaces, negative values, and quoted tool arguments retain their boundaries.
+
+```python
+from ccbr_tools.pipeline.nextflow import run
+
+run(
+    nextfile_path="/path/to/main.nf",
+    cwd="analysis",
+    mode="slurm",
+    pipeline_name="RENEE",
+    nextflow_args=["-c", "one.config", "-c", "two.config", "--threads", "4"],
+    preview=False,
+    wait=True,
+    hpc_partition="student",
+    hpc_walltime="12:00:00",
+    hpc_memory="4G",
+    env={"SINGULARITY_CACHEDIR": "/path/to/private-cache"},
+)
+```
+
+Create the launch directory first. `cwd` does not change the caller's working
+directory; resolve workflow and argument paths before calling if they are relative
+to a different directory. `env` overrides cluster defaults for previews, local runs,
+and SLURM scripts without modifying the parent environment. Callers remain
+responsible for validating cache ownership and other application-specific policies.
+
+`preview=False` disables the automatic preflight preview; an explicit `-preview`
+always runs locally without submitting a job, even in SLURM mode. `debug=True`
+prints commands and writes any submission script without launching processes.
+Generic SLURM clusters are supported without a recognized cluster profile.
+Module loading and cluster environment defaults apply only on recognized clusters;
+use `hpc_modules=""` to disable module loading there. SLURM logs go to
+`log/slurm_%j.log`.
+
+The runner adds `-resume` unless a session is supplied (`-resume SESSION` or
+`-resume=SESSION`). `force_all=True` removes either form. Profiles from repeated
+`-profile` or `-profile=...` options are merged with the cluster and execution-mode
+profiles. Malformed profile lists raise `ValueError`.
+
+Preview, workflow, and submission failures raise `subprocess.CalledProcessError`.
+With `wait=True`, `sbatch --wait` also reports driver job failure; without it,
+successful submission does not imply workflow completion. Module and environment
+setup failures stop execution instead of being hidden by a later command.
