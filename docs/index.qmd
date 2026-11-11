@@ -9,6 +9,8 @@
 
 {{< include _basic_usage.qmd >}}
 
+For advanced workflow execution, see the [Nextflow runner guide](nextflow.qmd).
+
 ## Help & Contributing
 
 {{< include _help.qmd >}}
