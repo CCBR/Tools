@@ -1,5 +1,7 @@
 ## Tools development version
 
+- Add Nextflow launch-directory, preview, SLURM wait/partition, and environment controls for reusable pipeline launchers and generic clusters. (#246, @kelly-sovacool)
+- Preserve repeated and quoted Nextflow arguments and report preview, workflow, setup, and submission failures. (#246, @kelly-sovacool)
 - New script `scripts/open-pipeline-issues.sh`: opens a GitHub issue with the same title and body in every Snakemake and Nextflow pipeline repo listed in `CCBR_SOFTWARE`, creating any missing labels. (#238, @kelly-sovacool, @copilot)
 
 ## Tools 0.7.1
