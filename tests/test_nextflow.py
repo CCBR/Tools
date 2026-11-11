@@ -69,8 +69,12 @@ def test_nextflow_slurm(tmp_path):
     assert '#SBATCH -J "CCBR/CHAMPAGNE"' in slurm_txt
 
 
-def test_nextflow_preview_error(tmp_path, data_dir_rel):
+def test_nextflow_preview_error(tmp_path, data_dir_rel, monkeypatch):
     """Test nextflow preview error."""
+    executable = tmp_path / "nextflow"
+    executable.write_text("#!/usr/bin/env bash\nexit 1\n")
+    executable.chmod(0o755)
+    monkeypatch.setenv("PATH", f"{tmp_path}{os.pathsep}{os.environ['PATH']}")
     current_wd = pathlib.Path.cwd()
     try:
         os.chdir(tmp_path)
@@ -80,6 +84,7 @@ def test_nextflow_preview_error(tmp_path, data_dir_rel):
                 nextfile_path=str(data_dir_rel / "nextflow" / "main.nf"),
                 debug=False,
                 mode="local",
+                hpc=Cluster(),
             )
     finally:
         os.chdir(current_wd)
