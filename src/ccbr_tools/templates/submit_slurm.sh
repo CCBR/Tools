@@ -8,7 +8,11 @@
 #SBATCH --output "log/slurm_%j.log"
 #SBATCH --error "log/slurm_%j.log"
 
-module load {MODULES}
+set -euo pipefail
+modules=({MODULES})
+if (( ${{#modules[@]}} )); then
+    module load "${{modules[@]}}"
+fi
 {ENV_VARS}
 
 {RUN_COMMAND}

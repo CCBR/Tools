@@ -7,6 +7,7 @@ which contains default attributes for supported clusters.
 
 import pathlib
 import re
+import shlex
 import shutil
 
 from ..shell import shell_run
@@ -29,8 +30,8 @@ class Cluster:
 
     def __init__(self):
         self.name = None
-        self.env_vars = "\n".join(
-            (f"export SINGULARITY_CACHEDIR={get_singularity_cachedir()}",)
+        self.env_vars = (
+            f"export SINGULARITY_CACHEDIR={shlex.quote(get_singularity_cachedir())}"
         )
 
     def __repr__(self):
@@ -89,12 +90,7 @@ class Biowulf(Cluster):
     def __init__(self):
         super().__init__()
         self.name = "biowulf"
-        self.env_vars = "\n".join(
-            (
-                f"export SINGULARITY_CACHEDIR={get_singularity_cachedir()}",
-                'if ! command -v spooker 2>&1 >/dev/null; then export PATH="$PATH:/data/CCBR_Pipeliner/Tools/ccbr_tools/v0.4/bin/"; fi',
-            )
-        )
+        self.env_vars += '\nif ! command -v spooker 2>&1 >/dev/null; then export PATH="$PATH:/data/CCBR_Pipeliner/Tools/ccbr_tools/v0.4/bin/"; fi'
 
     # def spook(self, file, subdir=None):
     #     dest_dir = self.SPOOK_DIR / subdir if subdir else self.SPOOK_DIR

@@ -114,6 +114,9 @@ version.groupdict()
 View the [API reference](https://ccbr.github.io/Tools/reference/) for
 more information.
 
+For advanced workflow execution, see the [Nextflow runner
+guide](https://ccbr.github.io/Tools/nextflow.html).
+
 ## CLI Utilities
 
 Command-line utilities in CCBR Tools.

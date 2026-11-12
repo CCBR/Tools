@@ -23,6 +23,8 @@ website:
           contents:
             - href: cli.qmd
             - href: scripts.qmd
+            - text: Pipeline utilities
+              href: nextflow.qmd
             - text: Python API reference
               href: reference/index.qmd
               contents: "_sidebar.yml"

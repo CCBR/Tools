@@ -30,7 +30,8 @@ def test_use_template(tmp_path):
     template_str = out_filepath.read_text()
     assert '#SBATCH -J "CCBR_nxf"' in template_str
     assert "#SBATCH --time=4-00:00:00" in template_str
-    assert "module load ccbrpipeliner nextflow" in template_str
+    assert "modules=(ccbrpipeliner nextflow)" in template_str
+    assert 'module load "${modules[@]}"' in template_str
     assert "export HELLO=WORLD" in template_str
     assert "nextflow run main.nf -stub" in template_str
 
