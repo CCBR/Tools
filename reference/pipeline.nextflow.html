@@ -319,6 +319,10 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
     <a class="dropdown-item" href="../scripts.html">
  <span class="dropdown-text">External scripts</span></a>
   </li>  
+        <li>
+    <a class="dropdown-item" href="../nextflow.html">
+ <span class="dropdown-text">Pipeline utilities</span></a>
+  </li>  
         <li><hr class="dropdown-divider"></li>
         <li class="dropdown-header">Project information</li>
         <li>
@@ -607,7 +611,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <p>Run Nextflow workflows in local and HPC environments.</p>
 <ul>
 <li>init(output, pipeline_name=‘pipeline’, **kwargs) Initialize the launch directory by copying the system default config files.</li>
-<li>run(nextfile_path=None, nextflow_args=None, mode=“local”, pipeline_name=None, debug=False, hpc_options={}) Run a Nextflow workflow.</li>
+<li>run(nextfile_path, mode=“local”, **kwargs) Run a Nextflow workflow.</li>
 </ul>
 <section id="functions" class="level2">
 <h2 class="anchored" data-anchor-id="functions">Functions</h2>
@@ -647,7 +651,13 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <span id="cb2-9"><a href="#cb2-9" aria-hidden="true" tabindex="-1"></a>    hpc_modules<span class="op">=</span><span class="st">'nextflow'</span>,</span>
 <span id="cb2-10"><a href="#cb2-10" aria-hidden="true" tabindex="-1"></a>    hpc_walltime<span class="op">=</span><span class="st">'1-00:00:00'</span>,</span>
 <span id="cb2-11"><a href="#cb2-11" aria-hidden="true" tabindex="-1"></a>    hpc_memory<span class="op">=</span><span class="st">'1G'</span>,</span>
-<span id="cb2-12"><a href="#cb2-12" aria-hidden="true" tabindex="-1"></a>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<span id="cb2-12"><a href="#cb2-12" aria-hidden="true" tabindex="-1"></a>    <span class="op">*</span>,</span>
+<span id="cb2-13"><a href="#cb2-13" aria-hidden="true" tabindex="-1"></a>    cwd<span class="op">=</span><span class="va">None</span>,</span>
+<span id="cb2-14"><a href="#cb2-14" aria-hidden="true" tabindex="-1"></a>    preview<span class="op">=</span><span class="va">True</span>,</span>
+<span id="cb2-15"><a href="#cb2-15" aria-hidden="true" tabindex="-1"></a>    wait<span class="op">=</span><span class="va">False</span>,</span>
+<span id="cb2-16"><a href="#cb2-16" aria-hidden="true" tabindex="-1"></a>    hpc_partition<span class="op">=</span><span class="va">None</span>,</span>
+<span id="cb2-17"><a href="#cb2-17" aria-hidden="true" tabindex="-1"></a>    env<span class="op">=</span><span class="va">None</span>,</span>
+<span id="cb2-18"><a href="#cb2-18" aria-hidden="true" tabindex="-1"></a>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <p>Runs a Nextflow workflow with support for local or SLURM (HPC) execution modes.</p>
 <section id="parameters" class="level4 doc-section doc-section-parameters">
 <h4 class="doc-section doc-section-parameters anchored" data-anchor-id="parameters">Parameters</h4>
@@ -721,6 +731,36 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <td>Memory allocation for SLURM job submission. Defaults to “1G”.</td>
 <td><code>'1G'</code></td>
 </tr>
+<tr class="odd">
+<td>cwd</td>
+<td><code>path</code> - <code>like</code></td>
+<td>Launch directory, without changing the caller’s working directory.</td>
+<td><code>None</code></td>
+</tr>
+<tr class="even">
+<td>preview</td>
+<td><a href="https://docs.python.org/3/builtins/functions.html#bool">bool</a></td>
+<td>Run an automatic preview before execution. Defaults to True. An explicit ‘-preview’ always runs locally, including in SLURM mode.</td>
+<td><code>True</code></td>
+</tr>
+<tr class="odd">
+<td>wait</td>
+<td><a href="https://docs.python.org/3/builtins/functions.html#bool">bool</a></td>
+<td>Wait for the SLURM driver job to finish. Defaults to False.</td>
+<td><code>False</code></td>
+</tr>
+<tr class="even">
+<td>hpc_partition</td>
+<td><a href="https://docs.python.org/3/builtins/stdtypes.html#str">str</a></td>
+<td>SLURM partition for the driver job.</td>
+<td><code>None</code></td>
+</tr>
+<tr class="odd">
+<td>env</td>
+<td><code>mapping</code></td>
+<td>Environment variable overrides, applied after cluster defaults to previews, local execution, and the SLURM driver without changing os.environ.</td>
+<td><code>None</code></td>
+</tr>
 </tbody>
 </table>
 </section>
@@ -732,6 +772,9 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <li>For SLURM mode, generates a SLURM submission script and submits it via sbatch.</li>
 <li>For local mode, optionally loads modules and environment variables before running Nextflow.</li>
 <li>Shows a preview of the pipeline execution before running.</li>
+<li>Supports generic SLURM clusters without requiring a recognized HPC environment.</li>
+<li>Preserves argument boundaries, repeated options, and values beginning with ‘-’.</li>
+<li>Raises subprocess.CalledProcessError for preview, execution, or submission failure.</li>
 <li>Executes the constructed command (unless debug is True).</li>
 </ul>
 </section>
@@ -739,7 +782,6 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <h4 class="doc-section doc-section-see-also anchored" data-anchor-id="see-also">See also</h4>
 <ul>
 <li><code>~ccbr_tools.pipeline.hpc.get_hpc</code>: Retrieves the HPC environment object.</li>
-<li><code>~ccbr_tools.shell.shell_run</code>: Executes shell commands.</li>
 <li><code>~ccbr_tools.templates.use_template</code>: Generates files from templates.</li>
 </ul>
 
