@@ -1,5 +1,8 @@
 import io
+import subprocess
 import sys
+
+import pytest
 
 from ccbr_tools.pipeline.hpc import get_hpc, get_hpcname
 from ccbr_tools.shell import shell_run
@@ -31,6 +34,26 @@ def test_hpc_none():
     """Test hpc none."""
     hpc = get_hpc(debug=" ")
     assert not any([hpc, hpc.name, hpc.singularity_sif_dir])
+
+
+@pytest.mark.parametrize("cluster", [" ", "biowulf", "frce"])
+@pytest.mark.parametrize(
+    "directory", ["output with spaces", "output;touch injected;#", "output's value"]
+)
+def test_cache_path_is_shell_quoted(tmp_path, monkeypatch, cluster, directory):
+    """Cluster environment setup preserves paths without evaluating shell syntax."""
+    output_dir = tmp_path / directory
+    output_dir.mkdir()
+    monkeypatch.chdir(output_dir)
+    hpc = get_hpc(debug=cluster)
+    result = subprocess.run(
+        ["bash", "-eu", "-c", f'{hpc.env_vars}\nprintf "%s" "$SINGULARITY_CACHEDIR"'],
+        check=True,
+        capture_output=True,
+        text=True,
+    )
+    assert result.stdout == str(output_dir / ".singularity")
+    assert not (output_dir / "injected").exists()
 
 
 def test_hpcname_type():

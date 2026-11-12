@@ -18,6 +18,8 @@ View the website for more detailed documentation:
 
 {{< include docs/_basic_usage.qmd >}}
 
+For advanced workflow execution, see the [Nextflow runner guide](https://ccbr.github.io/Tools/nextflow.html).
+
 ## CLI Utilities
 
 Command-line utilities in CCBR Tools.
